@@ -45,7 +45,7 @@ Ultima actualizacion: `2026-02-27`.
 | PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo + cooldown por sesion | smoke/e2e de formulario |
 | PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | rate limit por IP activo + integracion reCAPTCHA/hCaptcha implementada (activacion pendiente de llaves) | `build:pages` + `test:quality` + `test:e2e` OK |
 | PR-11 | IN_PROGRESS | CSP madura | endurecer seguridad de contenido | pasar de Report-Only a Enforce tras ventana de observacion | sin bloqueos legitimos en produccion |
-| PR-12 | IN_PROGRESS | Chequeo externo de enlaces | evitar links rotos de terceros | `npm run test:links:external` ejecutado; en este entorno falla por `network-error` generalizado (sin salida a red) | re-ejecutar en entorno con red para resultado valido |
+| PR-12 | IN_PROGRESS | Chequeo externo de enlaces | evitar links rotos de terceros | `npm run test:links:external` ejecutado con red; quedan 3 bloqueos reales (CV 404 + 2 dominios sin respuesta) | resolver URLs pendientes y re-ejecutar hasta 0 fallos |
 | PR-13 | IN_PROGRESS | QA Desktop v1.0 | cerrar calidad manual de release | checklist ya definido; falta pasada final en produccion | acta QA firmada |
 | PR-14 | IN_PROGRESS | QA Mobile v1.0 | asegurar UX real en moviles | checklist ya definido; falta pasada final en produccion | acta QA firmada |
 
@@ -194,6 +194,11 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
    - `src/components/shared/analytics-ga4.html`: runtime config central (`window.PORTFOLIO_RUNTIME.captcha`).
 8. Guardrails de calidad:
    - `tests/quality-guards.sh` ahora valida presencia de campos captcha y eventos GA4 clave del formulario.
+9. Normalizacion de enlaces sociales:
+   - LinkedIn consolidado a `https://linkedin.com/in/ibaifernandez`.
+   - WhatsApp normalizado a formato valido `https://wa.me/573224288532`.
+10. Estado actual de `test:links:external`:
+   - Fallos pendientes: `https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf` (404), `https://chankete.com` (sin respuesta), `https://chokilate.aglaya.biz` (sin respuesta).
 
 ## 13) Comandos de gate
 
