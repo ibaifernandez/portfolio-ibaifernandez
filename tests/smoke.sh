@@ -33,25 +33,27 @@ for _ in {1..40}; do
 done
 
 HOME_HTML="$(curl -fsS "${BASE_URL}/index.html")"
+HOME_HTML_FILE="${TMP_DIR}/home.html"
+printf '%s' "$HOME_HTML" > "$HOME_HTML_FILE"
 
-HOME_TITLE="$(echo "$HOME_HTML" | tr -d '\r' | grep -Eio '<title[^>]*>[^<]+</title>' | head -n 1 || true)"
+HOME_TITLE="$(tr -d '\r' < "$HOME_HTML_FILE" | grep -Eio '<title[^>]*>[^<]+</title>' | head -n 1 || true)"
 
 [[ -n "$HOME_TITLE" ]] || {
   echo "[FAIL] Home title not found (expected non-empty <title>)" >&2
   exit 1
 }
 
-echo "$HOME_HTML" | grep -q 'id="translate-button-icon"' || {
+grep -Eqi 'id=[\"\x27]translate-button-icon[\"\x27]' "$HOME_HTML_FILE" || {
   echo "[FAIL] Translate button not found" >&2
   exit 1
 }
 
-echo "$HOME_HTML" | grep -q 'name="website"' || {
+grep -Eqi "name=[\"']website[\"']" "$HOME_HTML_FILE" || {
   echo "[FAIL] Honeypot field not found in contact form" >&2
   exit 1
 }
 
-echo "$HOME_HTML" | grep -q 'name="form_started_at"' || {
+grep -Eqi "name=[\"']form_started_at[\"']" "$HOME_HTML_FILE" || {
   echo "[FAIL] form_started_at field not found in contact form" >&2
   exit 1
 }
