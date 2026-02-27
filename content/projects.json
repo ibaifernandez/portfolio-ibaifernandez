@@ -4,7 +4,7 @@
       "output": "project-debtracker.html",
       "template": "src/pages/project-debtracker.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/debtracker.webp\">\n<img class=\"project_spotlight_img--debtracker\" src=\"assets/images/debtracker.png\" alt=\"DebTracker dashboard\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\">\n</picture>",
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/debtracker.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/debtracker.webp\">\n<img class=\"project_spotlight_img--debtracker\" src=\"assets/images/debtracker.png\" alt=\"DebTracker dashboard\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
     "title": {
       "text": "DebTracker: Full-Stack Financial App",
       "translate": "project-debtracker-title"
@@ -26,7 +26,7 @@
       "output": "project-gymtracker.html",
       "template": "src/pages/project-gymtracker.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/gymtracker-cover-2.webp\">\n<img src=\"assets/images/gymtracker-cover-2.png\" alt=\"GymTracker architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\">\n</picture>",
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/gymtracker-cover-2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/gymtracker-cover-2.webp\">\n<img src=\"assets/images/gymtracker-cover-2.png\" alt=\"GymTracker architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
     "title": {
       "text": "GymTracker: Logic & API Architecture",
       "translate": "project-gymtracker-title"

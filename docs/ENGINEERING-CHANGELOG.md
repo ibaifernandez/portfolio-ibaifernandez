@@ -18,6 +18,22 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-02-27 - AVIF Coverage Hotfix (CI Parity)
+
+1. Fixed GitHub Actions quality failure caused by missing AVIF fallbacks in large home assets:
+   - `assets/images/uma.avif`
+   - `assets/images/debtracker.avif`
+   - `assets/images/gymtracker-cover-2.avif`
+2. Updated content sources so generated HTML includes deterministic AVIF `<source>` tags:
+   - `content/training.json` (`uma` logo picture block),
+   - `content/projects.json` (DebTracker and GymTracker spotlight cards).
+3. Rebuilt generated pages to keep template sync:
+   - `index.html`
+   - `project-debtracker.html`
+   - `project-gymtracker.html`
+4. Validation:
+   - `npm run test:quality` passed locally, including `check-avif-coverage`.
+
 ### 2026-02-27 - National Tech Evangelism Dossier (Interactive Route Wow)
 
 1. Added a dedicated template for the National-Scale case:

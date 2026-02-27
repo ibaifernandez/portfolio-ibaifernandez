@@ -221,7 +221,7 @@
     },
     "imagePrimary": {
       "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
-      "html": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/uma.webp\">\n<img src=\"assets/images/uma.png\" width=\"80\" alt=\"University of Málaga Logo\" loading=\"lazy\" decoding=\"async\" height=\"80\">\n</picture>"
+      "html": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/uma.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/uma.webp\">\n<img src=\"assets/images/uma.png\" width=\"80\" alt=\"University of Málaga Logo\" loading=\"lazy\" decoding=\"async\" height=\"80\" data-avif-fallback=\"true\">\n</picture>"
     },
     "imageSecondary": null
   }

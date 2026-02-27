@@ -165,6 +165,15 @@ Detalles de implementación:
 - `tests/check-avif-coverage.mjs`: bloquea cambios que dejen imagenes grandes sin fallback AVIF.
 - `tests/check-webp-coverage.mjs`: bloquea drift entre assets WebP generados y su `<source>` en HTML.
 
+Nota operativa CI (Linux):
+
+- La deteccion de alpha para PNG puede comportarse diferente entre macOS y runners Linux.
+- Si `quality` falla por `missing AVIF fallback asset`, no edites solo `index.html`: corrige la fuente data-driven (`content/*.json`) y regenera con `npm run build:pages`.
+- Checklist rapido de fix:
+  1. Crear `assets/images/<name>.avif`.
+  2. Incluir `<source type="image/avif" srcset="...">` en el bloque `<picture>` fuente (JSON/template).
+  3. Ejecutar `npm run build:pages && npm run test:quality`.
+
 ## Carga Lazy de Plugins
 
 `assets/js/custom.js` carga de forma diferida plugins no críticos:
