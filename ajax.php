@@ -54,6 +54,49 @@ function should_enforce_captcha(string $provider, string $secret): bool {
     return in_array($provider, ["recaptcha", "hcaptcha", "turnstile"], true);
 }
 
+function load_secret_overrides(): array {
+    $candidates = [];
+
+    $envFile = trim((string) (getenv("PORTFOLIO_SECRET_FILE") ?: ""));
+    if ($envFile !== "") {
+        $candidates[] = $envFile;
+    }
+
+    $homeDir = trim((string) ($_SERVER["HOME"] ?? getenv("HOME") ?? ""));
+    if ($homeDir !== "") {
+        $candidates[] = rtrim($homeDir, "/\\") . "/.config/portfolio-ibaifernandez/secrets.local.php";
+    }
+
+    // Local/dev fallback. Keep file gitignored.
+    $candidates[] = __DIR__ . "/config/secrets.local.php";
+
+    foreach ($candidates as $candidatePath) {
+        if (!is_string($candidatePath) || trim($candidatePath) === "" || !is_readable($candidatePath)) {
+            continue;
+        }
+
+        $loaded = require $candidatePath;
+        if (is_array($loaded)) {
+            return $loaded;
+        }
+    }
+
+    return [];
+}
+
+function get_config_string(array $overrides, string $key, string $default = ""): string {
+    if (array_key_exists($key, $overrides) && is_string($overrides[$key])) {
+        return trim($overrides[$key]);
+    }
+
+    $fromEnv = getenv($key);
+    if ($fromEnv === false) {
+        return $default;
+    }
+
+    return trim((string) $fromEnv);
+}
+
 function verify_captcha_token(string $provider, string $secret, string $token, string $remoteIp): bool {
     if ($token === "" || $secret === "") {
         return false;
@@ -190,8 +233,9 @@ $sessionRateLimitKey = "contact_last_submit_ts";
 $ipRateLimitWindowSeconds = (int) (getenv("PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS") ?: 600);
 $ipRateLimitMaxRequests = (int) (getenv("PORTFOLIO_RATE_LIMIT_MAX_REQUESTS") ?: 12);
 $ipRateLimitStorePath = __DIR__ . "/artifacts/contact-rate-limit.json";
-$captchaProvider = strtolower(trim((string) (getenv("PORTFOLIO_CAPTCHA_PROVIDER") ?: "")));
-$captchaSecret = trim((string) (getenv("PORTFOLIO_CAPTCHA_SECRET") ?: ""));
+$secretOverrides = load_secret_overrides();
+$captchaProvider = strtolower(get_config_string($secretOverrides, "PORTFOLIO_CAPTCHA_PROVIDER", ""));
+$captchaSecret = get_config_string($secretOverrides, "PORTFOLIO_CAPTCHA_SECRET", "");
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo 0;

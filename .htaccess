@@ -7,7 +7,9 @@ RedirectMatch 403 /\.git
 
 # Contact form anti-spam (Cloudflare Turnstile)
 SetEnv PORTFOLIO_CAPTCHA_PROVIDER "turnstile"
-SetEnv PORTFOLIO_CAPTCHA_SECRET "0x4AAAAAACjYYraLHx49DuNeL9Fa8pB48aQ"
+# Secret must be provisioned outside git:
+# - preferred: PORTFOLIO_SECRET_FILE pointing to a non-public PHP file
+# - fallback: server env var PORTFOLIO_CAPTCHA_SECRET set directly in hosting panel
 
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"

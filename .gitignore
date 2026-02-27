@@ -8,3 +8,4 @@ test-results/
 sandbox/
 artifacts/
 assets/webfonts/chomsky/README.md
+config/secrets.local.php

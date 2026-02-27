@@ -111,6 +111,10 @@ El formulario mantiene el flujo actual por defecto y permite activar captcha sin
   - `PORTFOLIO_CAPTCHA_PROVIDER` (`turnstile`/`recaptcha`/`hcaptcha`)
   - `PORTFOLIO_CAPTCHA_SECRET` (secret key)
   - opcional `PORTFOLIO_CAPTCHA_MIN_SCORE` (solo si usas flujo por score de reCAPTCHA)
+- Secret management recomendado (no versionar secretos):
+  - `ajax.php` carga overrides desde `PORTFOLIO_SECRET_FILE` (ruta absoluta a un PHP fuera del webroot) o, si no existe, desde `config/secrets.local.php` (gitignored).
+  - plantilla: `config/secrets.example.php`.
+  - `tests/quality-guards.sh` bloquea commits con `PORTFOLIO_CAPTCHA_SECRET` hardcodeado en `.htaccess`.
 - Rate limit por IP (backend):
   - `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` (default `600`)
   - `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS` (default `12`)

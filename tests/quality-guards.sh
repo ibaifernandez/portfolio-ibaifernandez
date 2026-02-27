@@ -39,6 +39,10 @@ for header in \
   fi
 done
 
+if rg -n 'SetEnv\s+PORTFOLIO_CAPTCHA_SECRET\s+"[^"]+"' .htaccess >/dev/null; then
+  fail "Detected hardcoded PORTFOLIO_CAPTCHA_SECRET in .htaccess"
+fi
+
 if ! rg -n 'name="website"' index.html >/dev/null; then
   fail "Missing honeypot website field in contact form"
 fi

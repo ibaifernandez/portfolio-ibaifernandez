@@ -145,12 +145,28 @@ Base tecnica ya implementada:
 1. `ajax.php` aplica rate limit por IP (storage en `artifacts/contact-rate-limit.json`) ademas del cooldown por sesion.
 2. `ajax.php` soporta verificacion captcha backend (Turnstile/reCAPTCHA/hCaptcha) via variables de entorno.
 3. Frontend soporta widget captcha via `window.PORTFOLIO_RUNTIME.captcha` (provider + siteKey).
+4. Secretos no versionados:
+   - `ajax.php` admite `PORTFOLIO_SECRET_FILE` (ruta absoluta) para cargar credenciales desde archivo PHP fuera del webroot.
+   - fallback local: `config/secrets.local.php` (gitignored).
+   - plantilla versionada: `config/secrets.example.php`.
+   - guardrail: `tests/quality-guards.sh` falla si detecta secreto hardcodeado en `.htaccess`.
 
 Activacion recomendada en produccion:
 
 1. Configurar `window.PORTFOLIO_RUNTIME.captcha.provider` y `window.PORTFOLIO_RUNTIME.captcha.siteKey`.
-2. Configurar en servidor `PORTFOLIO_CAPTCHA_PROVIDER` + `PORTFOLIO_CAPTCHA_SECRET`.
+2. Configurar `PORTFOLIO_CAPTCHA_PROVIDER` y guardar `PORTFOLIO_CAPTCHA_SECRET` fuera del repo usando `PORTFOLIO_SECRET_FILE` (recomendado) o variable de entorno server-side.
 3. Validar flujo real de envio en QA manual y revisar eventos en analitica.
+
+### Rotacion segura de Turnstile
+
+1. Ir a Cloudflare Dashboard -> Turnstile -> seleccionar widget.
+2. Rotar/revocar la secret key actual y copiar la nueva.
+3. Guardar la nueva secret en archivo no versionado:
+   - ruta recomendada: `~/.config/portfolio-ibaifernandez/secrets.local.php`
+   - contenido base: copiar `config/secrets.example.php`.
+4. Configurar `PORTFOLIO_SECRET_FILE` con esa ruta absoluta en hosting.
+5. Probar envio real de formulario en produccion y verificar evento `contact_submit_success`.
+6. No volver a introducir secrets en `.htaccess` ni en archivos versionados.
 
 Para observabilidad sin bloquear merges, el repo incluye:
 

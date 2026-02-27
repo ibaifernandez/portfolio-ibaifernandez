@@ -28,6 +28,7 @@ Ultima actualizacion: `2026-02-27`.
 - Schema estructurado JSON-LD: activo en home, blog y project pages.
 - Analitica: base cross-page + eventos clave de CTA/formulario activos.
 - Formulario: anti-spam avanzado activo (rate limit por IP + Cloudflare Turnstile en frontend/backend).
+- Secretos: se removio secret hardcodeado del repo; carga por env/archivo local no versionado.
 - CV imprimible: pagina dedicada `cv-print.html` enlazada desde CTAs de CV (sin PDF externo).
 - Pendiente de release final: CSP en modo enforce, verificacion de buscadores, QA manual en produccion.
 
@@ -61,6 +62,7 @@ Ultima actualizacion: `2026-02-27`.
 | RL-05 | IN_PROGRESS | QA final en produccion | Owner | ejecutar checklists Desktop/Mobile en URL real | checklist completo |
 | RL-06 | PENDING | Validacion de tracking en vivo | Owner | comprobar eventos/pageviews en tiempo real | eventos visibles |
 | RL-07 | PENDING | Activar CSP Enforce | Codex | cambiar header y desplegar | sitio estable sin bloqueos legitimos |
+| RL-08 | MANUAL | Rotacion y custodia de secreto Turnstile | Owner | rotar secret en Cloudflare y guardarlo fuera de git (`PORTFOLIO_SECRET_FILE`) | secreto nuevo operativo y no expuesto |
 
 ## 7) QA Desktop v1.0 (checklist ejecutable)
 
@@ -189,10 +191,11 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
 7. Anti-spam avanzado (base tecnica):
    - `ajax.php`: rate limit por IP con storage local (`artifacts/contact-rate-limit.json`), sin romper cooldown por sesion.
    - `ajax.php`: verificacion captcha backend activable via env (`PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, opcional `PORTFOLIO_CAPTCHA_MIN_SCORE`).
+   - `ajax.php`: carga segura de credenciales desde `PORTFOLIO_SECRET_FILE` o `config/secrets.local.php` (gitignored).
    - `assets/js/custom.js`: soporte de widget captcha (Turnstile/reCAPTCHA/hCaptcha) activable por runtime config.
    - `src/components/shared/analytics-ga4.html`: runtime config central (`window.PORTFOLIO_RUNTIME.captcha`).
 8. Guardrails de calidad:
-   - `tests/quality-guards.sh` ahora valida presencia de campos captcha y eventos GA4 clave del formulario.
+   - `tests/quality-guards.sh` valida campos captcha, eventos GA4 del formulario y bloqueo de secretos hardcodeados en `.htaccess`.
 9. Normalizacion de enlaces sociales:
    - LinkedIn consolidado a `https://linkedin.com/in/ibaifernandez`.
    - WhatsApp normalizado a formato valido `https://wa.me/573224288532`.
@@ -223,4 +226,5 @@ Objetivo de esta iteracion: preparar cierre de release con validacion manual fin
 1. Ejecutar QA manual completo Desktop + Mobile en produccion.
 2. Confirmar eventos en GA4 Realtime (CTA, formulario, language toggle).
 3. Verificar propiedad en GSC/Bing y enviar `sitemap.xml`.
-4. Con evidencias en mano, mover CSP a Enforce y cerrar release.
+4. Rotar secret de Turnstile y provisionarlo fuera de git.
+5. Con evidencias en mano, mover CSP a Enforce y cerrar release.
