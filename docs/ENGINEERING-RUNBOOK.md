@@ -140,6 +140,12 @@ Para observabilidad sin bloquear merges, el repo incluye:
 
 - `.github/workflows/link-health.yml` (job semanal + manual para enlaces externos)
 
+## Smoke tests (PHP server)
+
+- `tests/smoke.sh` valida el shell principal (`index.html`) sobre servidor PHP builtin cuando `php` esta disponible.
+- El check de `<title>` usa patron portable (`<title>...Portfolio</title>`) para evitar falsos negativos por acentos/locale en runners Linux.
+- Si el entorno no incluye `php`, el smoke se marca como `SKIP` por diseño y no bloquea la ejecucion local.
+
 ## Media pipeline (AVIF + WebP)
 
 Generar/actualizar assets modernos y aplicar fallback en HTML:
@@ -164,6 +170,10 @@ Detalles de implementación:
 - `scripts/wrap-images-with-avif-picture.mjs`: envuelve `<img>` elegibles en `<picture>`.
 - `tests/check-avif-coverage.mjs`: bloquea cambios que dejen imagenes grandes sin fallback AVIF.
 - `tests/check-webp-coverage.mjs`: bloquea drift entre assets WebP generados y su `<source>` en HTML.
+- Convencion de naming recomendada para evidencias de proyecto:
+  - prensa: `rdld-press-*`
+  - fotos de campo: `rdld-photo-*`
+  - logos institucionales: `rdld-logo-*`
 
 Nota operativa CI (Linux):
 

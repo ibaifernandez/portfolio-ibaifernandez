@@ -18,6 +18,25 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-02-27 - National Route V2 (Bilingual + Normalized Media + Smoke Hardening)
+
+1. Rebuilt `project-national-tech-evangelism` as fully bilingual (`EN/ES`) with real-time language switching:
+   - page-level copy now syncs with `document.documentElement.lang`,
+   - dynamic route simulator content (stop names, phase labels, KPI chips, controls) also switches language.
+2. Normalized all National Route media naming to deterministic prefixes:
+   - `rdld-press-*`
+   - `rdld-photo-*`
+   - `rdld-logo-*`
+3. Added optimized modern formats for route evidence media:
+   - generated `.webp` and `.avif` for all `rdld-press-*` and `rdld-photo-*`,
+   - wired `<picture>` fallbacks in the project template for press/photo evidence blocks.
+4. Hardened smoke test title assertion for CI portability:
+   - replaced exact accented-title match with resilient pattern `<title>...Portfolio</title>` to avoid locale/encoding false negatives on Linux runners.
+5. Validation:
+   - `npm run build:pages` ✅
+   - `npm run test:quality` ✅
+   - `npm run test:e2e` ✅
+
 ### 2026-02-27 - AVIF Coverage Hotfix (CI Parity)
 
 1. Fixed GitHub Actions quality failure caused by missing AVIF fallbacks in large home assets:

@@ -34,8 +34,8 @@ done
 
 HOME_HTML="$(curl -fsS "${BASE_URL}/index.html")"
 
-echo "$HOME_HTML" | grep -q "<title>Ibai Fernández - Portfolio</title>" || {
-  echo "[FAIL] Home title not found" >&2
+echo "$HOME_HTML" | grep -Eq '<title>[^<]*Portfolio</title>' || {
+  echo "[FAIL] Home title not found (expected <title>...Portfolio</title>)" >&2
   exit 1
 }
 
