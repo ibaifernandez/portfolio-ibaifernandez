@@ -2417,7 +2417,8 @@
 								</div>
 								<div class="col-12">
 									<div class="port_contact_form">
-											<form id="scroll_contact" novalidate aria-describedby="contact-response">
+											<form id="scroll_contact" novalidate aria-describedby="contact-response"
+												data-captcha-provider="" data-captcha-site-key="">
 												<div class="contact_antispam" aria-hidden="true"
 													style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">
 													<label for="contact-website">Website</label>
@@ -2425,6 +2426,8 @@
 														autocomplete="off">
 												</div>
 												<input type="hidden" name="form_started_at" id="form-started-at" value="">
+												<input type="hidden" name="captcha_provider" value="">
+												<input type="hidden" name="captcha_token" value="">
 												<div class="row">
 												<div class="col-sm-6">
 													<div class="form-group">
@@ -2466,6 +2469,9 @@
 															id="comment" placeholder="Hi, Ibai! I've taken a look at your portfolio and..."
 															required aria-required="true"></textarea>
 													</div>
+												</div>
+												<div class="col-12 text-center">
+													<div class="contact_captcha_widget" aria-live="polite"></div>
 												</div>
 												<div class="col-12 text-center">
 													<div class="banner_btn">
@@ -2717,6 +2723,14 @@
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
 	gtag('config', 'G-T8FTTWBQS3');
+
+	// Runtime toggles. Keep captcha fields empty until rollout is approved.
+	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
+	window.PORTFOLIO_RUNTIME.analytics = window.PORTFOLIO_RUNTIME.analytics || { enabled: true };
+	window.PORTFOLIO_RUNTIME.captcha = window.PORTFOLIO_RUNTIME.captcha || {
+		provider: '',
+		siteKey: ''
+	};
 </script>
 
 <!-- Optional JavaScript -->

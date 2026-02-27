@@ -88,6 +88,8 @@ Notas:
   - Sincronía de páginas generadas desde templates (`scripts/build-pages.mjs --check`).
   - Integridad de contenido data-driven (`content/projects.json`, `content/testimonials.json`, `content/training.json`, `content/ctas.json`, `content/services.json`, `content/experience.json`) con required fields.
   - Guardrails de seguridad y HTML.
+  - Verificacion de campos anti-spam avanzados (`captcha_provider`, `captcha_token`) y hooks backend (`enforce_ip_rate_limit`, `verify_captcha_token`).
+  - Presencia de eventos clave de analitica en formulario (`contact_submit_attempt/success/failure`).
   - Budget de rendimiento por pagina (`tests/performance-budget.config.json`).
   - Cobertura AVIF/WebP para imagenes grandes (`tests/check-avif-coverage.mjs`, `tests/check-webp-coverage.mjs`).
   - Bloqueo de asset legacy no usado (`assets/images/banner-bg.gif`).
@@ -114,7 +116,7 @@ Archivo fuente: `tests/performance-budget.config.json`
 - HTML, CSS, JS e imagenes por pagina (`index.html`, `blog.html`).
 - Limites globales por archivo (CSS/JS/imagen).
 - Para `<picture>`, el budget contabiliza el recurso preferido (AVIF/WebP) y no suma doble con fallback.
-- Estado actual: `index` JS estático ~`135.5 KB`; `blog` JS estático ~`132.9 KB`.
+- Estado actual: `index` JS estático ~`141.7 KB`; `blog` JS estático ~`138.5 KB`.
 
 Actualizacion recomendada de budget:
 
@@ -135,6 +137,20 @@ npm run test:links
 ```bash
 npm run test:links:external
 ```
+
+## Anti-spam avanzado (activacion controlada)
+
+Base tecnica ya implementada:
+
+1. `ajax.php` aplica rate limit por IP (storage en `artifacts/contact-rate-limit.json`) ademas del cooldown por sesion.
+2. `ajax.php` soporta verificacion captcha backend (reCAPTCHA/hCaptcha) via variables de entorno.
+3. Frontend soporta widget captcha via `window.PORTFOLIO_RUNTIME.captcha` (provider + siteKey).
+
+Activacion recomendada en produccion:
+
+1. Configurar `window.PORTFOLIO_RUNTIME.captcha.provider` y `window.PORTFOLIO_RUNTIME.captcha.siteKey`.
+2. Configurar en servidor `PORTFOLIO_CAPTCHA_PROVIDER` + `PORTFOLIO_CAPTCHA_SECRET`.
+3. Validar flujo real de envio en QA manual y revisar eventos en analitica.
 
 Para observabilidad sin bloquear merges, el repo incluye:
 

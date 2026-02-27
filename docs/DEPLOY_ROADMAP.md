@@ -1,244 +1,218 @@
-# Deploy Roadmap
+# Backlog Operativo de Pre-Release y Release
 
-## Scope
+## 1) Objetivo
 
-Pre-release and release process for `portfolio-ibaifernandez`, optimized for:
+Este documento es el backlog operativo para llevar `portfolio-ibaifernandez` a release de produccion sin regresiones.
+No es una lista suelta de ideas: cada item indica estado, por que existe, como se ejecuta y como se valida.
 
-1. Zero-regression deployment safety.
-2. Search and social discoverability.
-3. QA traceability for Desktop v1.0.
-4. Controlled production rollout with rollback path.
+Ultima actualizacion: `2026-02-27`.
 
-Date baseline: `2026-02-27`.
+## 2) Como leer este documento
 
-## Que Te Faltaba Anadir Al Plan
+1. `Backlog de pre-release`: trabajo tecnico que deja el producto listo para salir.
+2. `Backlog de release`: tareas de salida a produccion y verificacion final.
+3. Cada item tiene 5 campos obligatorios: estado, por que, como, validacion y cierre.
 
-1. Rollback strategy before push:
-   - Git tag before release.
-   - Previous-production snapshot reference.
-2. Deployment hardening:
-   - Avoid shipping full repo (`node_modules`, `docs`, `src`, `tests`).
-   - Deploy only public artifacts.
-3. Post-deploy verification gate:
-   - Functional checks against production URL, not only localhost.
-4. Cross-page metadata consistency:
-   - Canonical, OG, Twitter, robots, and structured discovery on all project pages.
-5. LLM discovery infrastructure:
-   - `llms.txt` and `llms-full.txt`.
-6. Indexing workflow:
-   - `sitemap.xml` complete and synced with canonical pages.
-   - `robots.txt` aligned to current indexing policy.
-7. Analytics governance:
-   - Ensure GA4 tag is present on all pages, not only home.
-8. Anti-spam and form governance:
-   - Existing honeypot + cooldown validated.
-   - reCAPTCHA/hCaptcha decision and rollout plan documented.
-9. Security headers maturity:
-   - Move from CSP `Report-Only` to enforced CSP after log review.
-10. External dependency verification:
-   - External links and integrations validated in network-enabled environment.
+## 3) Estados
 
-## Como Lo Hariamos (Orden De Ejecucion)
+- `DONE`: implementado y validado.
+- `PENDING`: pendiente de implementar.
+- `IN_PROGRESS`: en implementacion o validacion parcial.
+- `MANUAL`: requiere accion humana fuera del repo/pipeline.
 
-1. Pre-release hardening.
-2. Technical gate execution.
-3. Commit, tag, and push.
-4. Post-deploy QA on production.
-5. Monitoring and rollback readiness.
+## 4) Foto actual (resumen ejecutivo)
 
-## Execution Checklist
+- Pipeline CI `quality-and-e2e`: en verde.
+- Build/data sync/guardrails/performance/a11y/e2e: en verde.
+- Descubrimiento base: activo (`canonical`, Open Graph, Twitter, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`).
+- Schema estructurado JSON-LD: activo en home, blog y project pages.
+- Analitica: base cross-page + eventos clave de CTA/formulario activos.
+- Formulario: anti-spam avanzado parcialmente activo (rate limit por IP + backend captcha-ready).
+- Pendiente de release final: activar captcha con llaves reales, CSP en modo enforce, verificacion de buscadores, QA manual en produccion.
 
-### A. Pre-release Hardening
+## 5) Backlog de pre-release
 
-1. Build and generated-page sync:
-   - `npm run build:pages`
-2. Discoverability and metadata:
-   - Canonical, OG, Twitter on `index`, `blog`, and all `project-*`.
-   - `robots.txt` and `sitemap.xml` reviewed.
-   - `llms.txt` and `llms-full.txt` present.
-3. Deploy pipeline:
-   - `.cpanel.yml` restricted to public artifacts only.
-4. Analytics:
-   - GA4 snippet loaded in all page templates.
+| ID | Estado | Tema | Por que | Como se resuelve | Validacion |
+|---|---|---|---|---|---|
+| PR-01 | DONE | Gate tecnico base | Evitar regresiones antes de push | `build:pages`, `test:quality`, `test:e2e`, `test:smoke` (si hay PHP) | CI/local en verde |
+| PR-02 | DONE | Optimizacion de carga | Reducir tiempos y peso | AVIF/WebP, lazy-load de recursos no criticos, budgets | `test:quality` + budgets OK |
+| PR-03 | DONE | Deploy acotado | Evitar subir artefactos no publicos | `.cpanel.yml` copia solo artefactos publicos | revision de `.cpanel.yml` |
+| PR-04 | DONE | Discovery base por pagina | Mejora indexacion y social previews | canonical + OG + Twitter en templates | inspeccion HTML + CI |
+| PR-05 | DONE | Discovery LLM | Facilitar descubrimiento por modelos | `llms.txt` + `llms-full.txt` | endpoints accesibles |
+| PR-06 | DONE | Schema estructurado | Mejor interpretacion semantica en buscadores | JSON-LD en home/blog/projects, generado de forma determinista en build | inspeccion HTML generado |
+| PR-07 | DONE | Analitica base cross-page | Tener medicion unificada | componente GA4 compartido en todas las paginas | presencia de tag en HTML |
+| PR-08 | DONE | Eventos clave de analitica | Medir conversion real, no solo pageviews | instrumentados eventos de CTA, submit (attempt/success/failure) y cambio de idioma | `build:pages` + `test:quality` + `test:e2e` OK |
+| PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo + cooldown por sesion | smoke/e2e de formulario |
+| PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | rate limit por IP activo + integracion reCAPTCHA/hCaptcha implementada (activacion pendiente de llaves) | `build:pages` + `test:quality` + `test:e2e` OK |
+| PR-11 | IN_PROGRESS | CSP madura | endurecer seguridad de contenido | pasar de Report-Only a Enforce tras ventana de observacion | sin bloqueos legitimos en produccion |
+| PR-12 | IN_PROGRESS | Chequeo externo de enlaces | evitar links rotos de terceros | `npm run test:links:external` ejecutado; en este entorno falla por `network-error` generalizado (sin salida a red) | re-ejecutar en entorno con red para resultado valido |
+| PR-13 | IN_PROGRESS | QA Desktop v1.0 | cerrar calidad manual de release | checklist ya definido; falta pasada final en produccion | acta QA firmada |
+| PR-14 | IN_PROGRESS | QA Mobile v1.0 | asegurar UX real en moviles | checklist ya definido; falta pasada final en produccion | acta QA firmada |
 
-### B. Technical Gate
+## 6) Backlog de release (dia de salida)
 
-1. Quality:
-   - `npm run test:quality`
-2. E2E:
-   - `npm run test:e2e`
-3. Smoke:
-   - `npm run test:smoke` (requires local PHP runtime)
-4. External links:
-   - `npm run test:links:external` (requires network access)
+| ID | Estado | Tema | Responsable | Como se resuelve | Criterio de cierre |
+|---|---|---|---|---|---|
+| RL-01 | MANUAL | Verificar propiedad en Google | Owner | alta/verificacion en Search Console | propiedad verificada |
+| RL-02 | MANUAL | Verificar propiedad en Bing | Owner | alta/verificacion en Bing Webmaster | propiedad verificada |
+| RL-03 | MANUAL | Envio de sitemap | Owner | enviar `sitemap.xml` en ambos paneles | sitemap aceptado |
+| RL-04 | PENDING | Tag de release | Codex + Owner | crear tag estable pre-release/release | tag publicado |
+| RL-05 | IN_PROGRESS | QA final en produccion | Owner | ejecutar checklists Desktop/Mobile en URL real | checklist completo |
+| RL-06 | PENDING | Validacion de tracking en vivo | Owner | comprobar eventos/pageviews en tiempo real | eventos visibles |
+| RL-07 | PENDING | Activar CSP Enforce | Codex | cambiar header y desplegar | sitio estable sin bloqueos legitimos |
 
-Gate rule: do not push if any non-optional gate fails.
+## 7) QA Desktop v1.0 (checklist ejecutable)
 
-### C. Release Transaction
+### UI/Layout
 
-1. Confirm branch and workspace status:
-   - `git status`
-2. Commit with release scope.
-3. Tag release checkpoint:
-   - example: `v2026.02.27-predeploy`
-4. Push branch + tag:
-   - `git push origin <branch>`
-   - `git push origin --tags`
+1. Sidebar consistente entre home y project pages.
+2. Tarjetas de proyectos: imagen y CTA navegan correctamente.
+3. Cambio de idioma consistente en bloques dinamicos.
+4. Footer/contacto consistente en project pages.
 
-### D. Post-deploy QA (Production URL)
+### Funcional
 
-1. Critical UX flow:
-   - Home render, sidebar, language toggle, project navigation, contact form.
-2. Metadata validation:
-   - Social preview, canonical correctness, robots/sitemap availability.
-3. Analytics validation:
-   - Real-time pageview test in GA4.
-4. Performance and CWV quick pass:
-   - LCP/CLS sanity on Desktop and mobile viewport.
-5. Form path:
-   - Valid submit, spam guard behavior, cooldown behavior.
+1. Formulario: validacion y envio valido.
+2. Navegacion Prev/Next/All Projects operativa.
+3. Modulos interactivos de DebTracker/GymTracker/National estables.
 
-### E. Rollback Plan
+### Accesibilidad
 
-1. Trigger rollback if:
-   - form outage,
-   - broken navigation,
-   - major rendering regression,
-   - severe SEO metadata corruption.
-2. Rollback actions:
-   - redeploy previous tag state,
-   - verify health checks,
-   - open root-cause issue before reattempt.
+1. Skip-link como primer foco.
+2. Recorrido de teclado completo en nav, social y formulario.
+3. Sin errores graves/criticos en validacion automatica.
 
-## QA Desktop v1.0 (Release Sheet)
+### Performance
 
-### 1. UI and Layout
+1. Budgets de calidad en verde.
+2. Cobertura AVIF/WebP en verde.
+3. Sin regresion en paginas pesadas.
 
-1. Sidebar parity between home and project pages.
-2. Project cards image+copy links clickable.
-3. Language switch consistency across dynamic sections and testimonials.
-4. Footer/contact block consistency across project pages.
+### Discovery
 
-### 2. Functional
+1. Canonical unico y correcto por pagina.
+2. OG/Twitter coherentes por pagina.
+3. JSON-LD presente y valido por tipo de pagina.
+4. `robots`, `sitemap`, `llms` accesibles.
 
-1. Contact form validation and successful submission path.
-2. Project prev/next navigation chain.
-3. DebTracker interactive modules (toggle, logs terminal, protocol demo).
-4. GymTracker wow modules (command center, QA wall).
+## 8) QA Mobile v1.0 (checklist ejecutable)
 
-### 3. Accessibility
+### UI/Layout
 
-1. Skip-link first focus target.
-2. Keyboard traversal for sidebar, social links, and form controls.
-3. Axe serious/critical violations: zero tolerance.
+1. Sin overflow horizontal en 360px y 390px.
+2. Legibilidad correcta en proyectos (hero, copy, media, nav).
+3. Formulario usable completo en teclado movil.
+4. Cambio de idioma sin colisiones visuales.
 
-### 4. Performance
+### Funcional
 
-1. `test:budget` pass through `test:quality`.
-2. Image formats:
-   - AVIF/WebP coverage checks pass.
-3. No regression in heavy pages (`index`, `project-enterprise-crm`).
+1. Anclas de navegacion llevan a la seccion correcta.
+2. Imagen/CTA de tarjetas de proyecto navegan correctamente.
+3. Interactivos clave funcionan con touch.
 
-### 5. SEO / Discovery
+### Accesibilidad
 
-1. Canonical URLs valid and unique.
-2. OG/Twitter tags present and coherent.
-3. `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt` accessible.
-4. Search Console sitemap submission status tracked.
+1. Indicadores de foco visibles (donde aplique).
+2. Tap targets adecuados y sin solapes.
+3. Sin errores graves/criticos en rutas clave.
 
-## QA Mobile v1.0 (Release Sheet)
+### Performance
 
-### 1. UI and Layout
+1. LCP/CLS razonables en perfil movil.
+2. Sin saltos de layout relevantes al cargar recursos.
 
-1. Sidebar/toggle behavior does not hide primary content at 360px and 390px widths.
-2. Project pages preserve readability (hero, body copy, media blocks, nav prev/next).
-3. Contact form fields and CTA remain fully visible without horizontal scroll.
-4. Language switch does not break spacing, wrapping, or overlap.
+### Discovery
 
-### 2. Functional
+1. Metadatos equivalentes a desktop en source.
+2. Endpoints de discovery accesibles en produccion.
 
-1. Main navigation anchors scroll to correct sections.
-2. Project card image and CTA both navigate correctly.
-3. DebTracker/GymTracker/National modules remain usable with touch input.
-4. Contact submit path works on touch keyboard flow.
+## 9) Plan de ejecucion recomendado (orden)
 
-### 3. Accessibility
+1. Cerrar buildout de paginas de proyecto pendientes.
+2. Activar captcha real para `PR-10` (site key frontend + secret backend + prueba funcional).
+3. Re-ejecutar `PR-12` (links externos) en entorno con red real.
+4. Ejecutar QA manual Desktop/Mobile en produccion (`PR-13`, `PR-14`).
+5. Completar tareas manuales de buscadores (`RL-01`, `RL-02`, `RL-03`).
+6. Cambiar CSP a Enforce (`PR-11`/`RL-07`) solo con evidencia de estabilidad.
+7. Cerrar release con tag y validacion final de tracking (`RL-04`, `RL-06`).
 
-1. Focus indicators visible with external keyboard on mobile browsers where supported.
-2. Tap targets are large enough and not overlapping.
-3. No serious/critical a11y violations in key flows (home, project, contact).
+## 10) CSP: paso de Report-Only a Enforce
 
-### 4. Performance
+### Cuando hacerlo
 
-1. LCP/CLS sanity check on mobile profile.
-2. No large layout jumps when images/lazy assets load.
-3. AVIF/WebP fallback behavior confirmed on project-heavy sections.
+- Despues de terminar el buildout de paginas.
+- Despues de congelar analitica y formulario (para no reabrir allowlists cada dia).
 
-### 5. Discovery / Metadata
+### Procedimiento
 
-1. Canonical, OG, Twitter present in mobile-rendered source (same as desktop).
-2. robots/sitemap/llms endpoints reachable from production.
+1. Mantener Report-Only durante ventana de observacion.
+2. Recopilar violaciones legitimas.
+3. Ajustar allowlist minimamente.
+4. Cambiar a `Content-Security-Policy` (modo enforce).
+5. Ejecutar gate completo y QA rapido en produccion.
 
-## Ownership Matrix (Who Does What)
+### Reversa
 
-1. Codex/automation:
-   - Build/test gate (`build:pages`, `test:quality`, `test:e2e`, `test:smoke` when runtime allows).
-   - Metadata implementation in templates.
-   - Schema JSON-LD implementation.
-   - CSP policy drafting and rollout preparation.
-   - External links check execution (`test:links:external`) when network/runtime is available.
-2. Manual owner (you):
-   - Google Search Console property verification and sitemap submission.
-   - Bing Webmaster property verification and sitemap submission.
-   - Final production QA signoff (desktop/mobile visual and functional acceptance).
-   - Final analytics business validation in GA4 real-time.
+Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica y reintentar.
 
-## CSP Rollout Plan (Report-Only -> Enforce)
+## 11) Matriz de responsabilidades
 
-Recommended timing:
-1. After current project-page buildout is finished and stable.
-2. After analytics and form behavior are final (to avoid frequent CSP edits).
+### Codex
 
-Execution:
-1. Keep `Content-Security-Policy-Report-Only` active for observation window.
-2. Collect and review violation reports/log evidence.
-3. Patch allowlist only for required domains/resources.
-4. Promote to enforced header:
-   - replace `Content-Security-Policy-Report-Only` with `Content-Security-Policy`.
-5. Run full gate + production smoke after switch.
+1. Implementaciones en codigo/templates.
+2. Automatizacion de build/tests y hardening tecnico.
+3. Documentacion tecnica y actualizacion de este roadmap.
 
-Rollback:
-1. If breakage appears, temporarily revert to report-only and fix policy gaps.
+### Owner
 
-## Current Status (This Iteration)
+1. Verificaciones en paneles de buscadores.
+2. QA manual final en produccion.
+3. Decision final de release.
 
-Completed:
+## 12) Resuelto recientemente (que y como)
 
-1. `.cpanel.yml` hardened to deploy only public artifacts.
-2. `sitemap.xml` expanded to include home, blog, and all project pages.
-3. `robots.txt` reviewed and aligned.
-4. `llms.txt` and `llms-full.txt` added.
-5. SEO/social metadata normalized on project templates and blog.
-6. GA4 snippet componentized and included across templates.
-7. Structured discovery metadata (Schema JSON-LD) implemented:
-   - `index.template.html`: `WebSite + Person + WebPage`.
-   - `blog.template.html`: `WebSite + Person + CollectionPage`.
-   - All project templates: `WebSite + Person + WebPage + CreativeWork`.
-8. Project-schema generation made deterministic in build pipeline:
-   - `scripts/build-pages.mjs` now generates `pageStructuredDataJson` per project page with canonical URL, share image, and author identity.
-   - Templates consume this via `{{{pageStructuredDataJson}}}` to avoid manual drift.
-9. Review policy added for future project-page growth:
-   - When adding new project pages or changing project intent, review JSON-LD type suitability and fields (e.g., `CreativeWork` vs `SoftwareApplication`).
-   - Re-run full gate after metadata changes.
+1. Deploy acotado por artefactos:
+   - ajustado `.cpanel.yml` para no copiar repo completo.
+2. Discovery base:
+   - `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt` publicados.
+3. Metadatos sociales/SEO:
+   - canonical + OG + Twitter homogenizados por plantilla.
+4. Schema JSON-LD:
+   - `index`: `WebSite + Person + WebPage`.
+   - `blog`: `WebSite + Person + CollectionPage`.
+   - proyectos: `WebSite + Person + WebPage + CreativeWork`.
+   - generacion automatica por build en `scripts/build-pages.mjs` con `pageStructuredDataJson` para evitar drift.
+5. Estabilidad de CI:
+   - smoke hardenizado y visual snapshot estabilizado.
+6. Eventos de analitica:
+   - `assets/js/custom.js`: eventos `cta_click`, `contact_submit_attempt`, `contact_submit_success`, `contact_submit_failure`, `contact_submit_blocked`.
+   - `assets/js/translate.js`: evento `language_change`.
+7. Anti-spam avanzado (base tecnica):
+   - `ajax.php`: rate limit por IP con storage local (`artifacts/contact-rate-limit.json`), sin romper cooldown por sesion.
+   - `ajax.php`: verificacion captcha backend activable via env (`PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, opcional `PORTFOLIO_CAPTCHA_MIN_SCORE`).
+   - `assets/js/custom.js`: soporte de widget captcha (reCAPTCHA/hCaptcha) activable por runtime config.
+   - `src/components/shared/analytics-ga4.html`: runtime config central (`window.PORTFOLIO_RUNTIME.captcha`).
+8. Guardrails de calidad:
+   - `tests/quality-guards.sh` ahora valida presencia de campos captcha y eventos GA4 clave del formulario.
 
-Pending environment-dependent checks:
+## 13) Comandos de gate
 
-1. `test:smoke` in runtime with PHP binary.
-2. `test:links:external` in network-enabled environment.
-3. Search Console and reCAPTCHA configuration tasks.
+```bash
+npm run build:pages
+npm run test:quality
+npm run test:e2e
+npm run test:smoke            # requiere PHP
+npm run test:links:external   # requiere red
+```
 
-## Tracking Status
+Regla operativa: no cerrar release si falla cualquier gate no opcional.
 
-1. GA4 base tag is already present cross-page via shared component.
-2. Active Measurement ID in codebase: `G-T8FTTWBQS3`.
-3. Event-level tracking (CTA/form milestones) is pending implementation.
+## 14) Siguiente paso inmediato (ahora)
+
+Objetivo de esta iteracion: cerrar activacion final de seguridad y preparar QA manual de produccion.
+
+1. Definir proveedor de captcha (`recaptcha` o `hcaptcha`) y cargar `siteKey` en `window.PORTFOLIO_RUNTIME.captcha` (frontend).
+2. Configurar `PORTFOLIO_CAPTCHA_PROVIDER` y `PORTFOLIO_CAPTCHA_SECRET` en servidor (backend).
+3. Re-ejecutar `npm run test:links:external` en entorno con red.
+4. Ejecutar QA manual completo Desktop + Mobile en produccion.
+5. Con evidencias en mano, mover CSP a Enforce y cerrar release.

@@ -45,8 +45,15 @@ fi
 if ! rg -n 'name="form_started_at"' index.html >/dev/null; then
   fail "Missing form_started_at field in contact form"
 fi
-if ! rg -n 'form_started_at|website' ajax.php >/dev/null; then
+if ! rg -n 'name="captcha_token"|name="captcha_provider"' index.html >/dev/null; then
+  fail "Missing captcha hidden fields in contact form"
+fi
+if ! rg -n 'form_started_at|website|captcha_token|enforce_ip_rate_limit|verify_captcha_token' ajax.php >/dev/null; then
   fail "Missing anti-spam handling in ajax.php"
+fi
+
+if ! rg -n 'contact_submit_attempt|contact_submit_success|contact_submit_failure' assets/js/custom.js >/dev/null; then
+  fail "Missing key GA4 contact form events in assets/js/custom.js"
 fi
 
 if rg -n '<a href="#" class="siderbar_menuicon">' index.html >/dev/null; then

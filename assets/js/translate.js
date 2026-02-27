@@ -40,23 +40,42 @@ function toggleLanguageButton() {
     buttonIcon.setAttribute('aria-label', nextLanguageLabel);
 }
 
-function applyLanguage(language) {
+function trackLanguageChange(previousLanguage, nextLanguage, source) {
+    if (previousLanguage === nextLanguage) {
+        return;
+    }
+    if (typeof window.gtag !== 'function') {
+        return;
+    }
+    window.gtag('event', 'language_change', {
+        source: source || 'unknown',
+        from_language: previousLanguage,
+        to_language: nextLanguage,
+        page_path: window.location.pathname,
+        page_location: window.location.href,
+        page_title: document.title
+    });
+}
+
+function applyLanguage(language, source) {
     loadTranslations(language, function(error, translations) {
         if (error) {
             console.error(error);
             return;
         }
+        var previousLanguage = currentLanguage;
         currentLanguage = language;
         document.documentElement.setAttribute('lang', currentLanguage);
         translateElements(translations);
         toggleLanguageButton();
+        trackLanguageChange(previousLanguage, currentLanguage, source);
     });
 }
 
 // Función para cambiar entre idiomas y traducir los elementos
 function translate(language) {
     var targetLanguage = language || (currentLanguage === 'en' ? 'es' : 'en');
-    applyLanguage(targetLanguage);
+    applyLanguage(targetLanguage, 'toggle_button');
 }
 
 var buttonIcon = document.getElementById('translate-button-icon');
@@ -75,4 +94,4 @@ if (buttonIcon) {
 }
 
 var currentLanguage = 'en';
-applyLanguage(currentLanguage);
+applyLanguage(currentLanguage, 'initial_render');

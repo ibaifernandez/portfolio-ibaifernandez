@@ -58,6 +58,16 @@ grep -Eqi "name=[\"']form_started_at[\"']" "$HOME_HTML_FILE" || {
   exit 1
 }
 
+grep -Eqi "name=[\"']captcha_provider[\"']" "$HOME_HTML_FILE" || {
+  echo "[FAIL] captcha_provider field not found in contact form" >&2
+  exit 1
+}
+
+grep -Eqi "name=[\"']captcha_token[\"']" "$HOME_HTML_FILE" || {
+  echo "[FAIL] captcha_token field not found in contact form" >&2
+  exit 1
+}
+
 AJAX_GET="$(curl -sS "${BASE_URL}/ajax.php")"
 if [[ "$AJAX_GET" != "0" ]]; then
   echo "[FAIL] Expected ajax.php GET response to be 0, got: $AJAX_GET" >&2

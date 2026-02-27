@@ -23,6 +23,160 @@ function sanitize_multiline(string $value, int $maxLength): string {
     return substr($value, 0, $maxLength);
 }
 
+function get_client_ip(): string {
+    $candidates = [
+        "HTTP_CF_CONNECTING_IP",
+        "HTTP_X_FORWARDED_FOR",
+        "REMOTE_ADDR"
+    ];
+
+    foreach ($candidates as $key) {
+        if (!isset($_SERVER[$key])) {
+            continue;
+        }
+        $raw = trim((string) $_SERVER[$key]);
+        if ($raw === "") {
+            continue;
+        }
+        $ip = trim(explode(",", $raw)[0]);
+        if (filter_var($ip, FILTER_VALIDATE_IP)) {
+            return $ip;
+        }
+    }
+
+    return "";
+}
+
+function should_enforce_captcha(string $provider, string $secret): bool {
+    if ($secret === "") {
+        return false;
+    }
+    return in_array($provider, ["recaptcha", "hcaptcha"], true);
+}
+
+function verify_captcha_token(string $provider, string $secret, string $token, string $remoteIp): bool {
+    if ($token === "" || $secret === "") {
+        return false;
+    }
+
+    $verifyUrl = "";
+    if ($provider === "hcaptcha") {
+        $verifyUrl = "https://hcaptcha.com/siteverify";
+    } elseif ($provider === "recaptcha") {
+        $verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+    }
+
+    if ($verifyUrl === "") {
+        return false;
+    }
+
+    $payload = [
+        "secret" => $secret,
+        "response" => $token
+    ];
+    if ($remoteIp !== "") {
+        $payload["remoteip"] = $remoteIp;
+    }
+
+    $context = stream_context_create([
+        "http" => [
+            "method" => "POST",
+            "header" => "Content-Type: application/x-www-form-urlencoded\r\n",
+            "content" => http_build_query($payload),
+            "timeout" => 8
+        ]
+    ]);
+
+    $response = @file_get_contents($verifyUrl, false, $context);
+    if ($response === false) {
+        return false;
+    }
+
+    $decoded = json_decode($response, true);
+    if (!is_array($decoded) || empty($decoded["success"])) {
+        return false;
+    }
+
+    $minScoreRaw = getenv("PORTFOLIO_CAPTCHA_MIN_SCORE");
+    if ($provider === "recaptcha" && $minScoreRaw !== false && $minScoreRaw !== "" && isset($decoded["score"])) {
+        $minScore = (float) $minScoreRaw;
+        if (((float) $decoded["score"]) < $minScore) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function enforce_ip_rate_limit(string $ip, int $windowSeconds, int $maxRequests, string $storePath): bool {
+    if ($ip === "" || $windowSeconds <= 0 || $maxRequests <= 0) {
+        return false;
+    }
+
+    $directory = dirname($storePath);
+    if (!is_dir($directory) && !@mkdir($directory, 0755, true) && !is_dir($directory)) {
+        return false;
+    }
+
+    $handle = @fopen($storePath, "c+");
+    if ($handle === false) {
+        return false;
+    }
+
+    $isLimited = false;
+    $now = time();
+    $cutoff = $now - $windowSeconds;
+
+    if (flock($handle, LOCK_EX)) {
+        $raw = stream_get_contents($handle);
+        $data = [];
+        if (is_string($raw) && trim($raw) !== "") {
+            $decoded = json_decode($raw, true);
+            if (is_array($decoded)) {
+                $data = $decoded;
+            }
+        }
+
+        foreach ($data as $key => $timestamps) {
+            if (!is_array($timestamps)) {
+                unset($data[$key]);
+                continue;
+            }
+
+            $filtered = [];
+            foreach ($timestamps as $timestamp) {
+                $ts = (int) $timestamp;
+                if ($ts >= $cutoff) {
+                    $filtered[] = $ts;
+                }
+            }
+
+            if (count($filtered) > 0) {
+                $data[$key] = $filtered;
+            } else {
+                unset($data[$key]);
+            }
+        }
+
+        $bucket = $data[$ip] ?? [];
+        if (count($bucket) >= $maxRequests) {
+            $isLimited = true;
+        } else {
+            $bucket[] = $now;
+            $data[$ip] = $bucket;
+        }
+
+        rewind($handle);
+        ftruncate($handle, 0);
+        fwrite($handle, json_encode($data, JSON_UNESCAPED_SLASHES) ?: "{}");
+        fflush($handle);
+        flock($handle, LOCK_UN);
+    }
+
+    fclose($handle);
+    return $isLimited;
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -31,6 +185,11 @@ $minSubmitDelayMs = 1200;
 $maxFormLifetimeMs = 86400000;
 $sessionCooldownSeconds = 20;
 $sessionRateLimitKey = "contact_last_submit_ts";
+$ipRateLimitWindowSeconds = (int) (getenv("PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS") ?: 600);
+$ipRateLimitMaxRequests = (int) (getenv("PORTFOLIO_RATE_LIMIT_MAX_REQUESTS") ?: 12);
+$ipRateLimitStorePath = __DIR__ . "/artifacts/contact-rate-limit.json";
+$captchaProvider = strtolower(trim((string) (getenv("PORTFOLIO_CAPTCHA_PROVIDER") ?: "")));
+$captchaSecret = trim((string) (getenv("PORTFOLIO_CAPTCHA_SECRET") ?: ""));
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo 0;
@@ -39,6 +198,12 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 
 $formType = isset($_POST["form_type"]) ? (string) $_POST["form_type"] : "";
 if ($formType !== "contact") {
+    echo 0;
+    exit;
+}
+
+$clientIp = get_client_ip();
+if (enforce_ip_rate_limit($clientIp, $ipRateLimitWindowSeconds, $ipRateLimitMaxRequests, $ipRateLimitStorePath)) {
     echo 0;
     exit;
 }
@@ -61,6 +226,14 @@ $nowSec = time();
 if (isset($_SESSION[$sessionRateLimitKey])) {
     $lastSubmitTs = (int) $_SESSION[$sessionRateLimitKey];
     if (($nowSec - $lastSubmitTs) < $sessionCooldownSeconds) {
+        echo 0;
+        exit;
+    }
+}
+
+if (should_enforce_captcha($captchaProvider, $captchaSecret)) {
+    $captchaToken = isset($_POST["captcha_token"]) ? trim((string) $_POST["captcha_token"]) : "";
+    if (!verify_captcha_token($captchaProvider, $captchaSecret, $captchaToken, $clientIp)) {
         echo 0;
         exit;
     }

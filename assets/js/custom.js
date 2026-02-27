@@ -34,6 +34,7 @@ Assigned to: ThemeForest
 			------------------------------------------------------------------------------------------------*/
 			this.open_menu();
 			this.enhance_accessibility();
+			this.bind_analytics_events();
 			this.custom_scrollbar();
 			this.rightbtn_onload();
 			this.rightside_onload();
@@ -156,6 +157,65 @@ Assigned to: ThemeForest
 				return;
 			}
 			callback();
+		},
+
+		track_event: function(eventName, eventParams) {
+			var runtimeConfig = window.PORTFOLIO_RUNTIME || {};
+			if(runtimeConfig.analytics && runtimeConfig.analytics.enabled === false){
+				return;
+			}
+			if(typeof window.gtag !== 'function'){
+				return;
+			}
+			var params = $.extend({
+				page_path: window.location.pathname,
+				page_location: window.location.href,
+				page_title: document.title
+			}, eventParams || {});
+			try {
+				window.gtag('event', eventName, params);
+			} catch (error) {
+				// Fail-safe: analytics must never block UX flows.
+			}
+		},
+
+		bind_analytics_events: function() {
+			var _this = this;
+			if($(document.body).data('portfolio-analytics-bound')){
+				return;
+			}
+			$(document.body).data('portfolio-analytics-bound', true);
+
+			var trackedSelectors = [
+				'a.portfolio_btn',
+				'.project_spotlight_cta',
+				'.project_spotlight_media_link',
+				'.project_case_navlink',
+				'a.redirect_contact',
+				'.port_navigation a.siderbar_menuicon'
+			];
+
+			$(document).on('click', trackedSelectors.join(','), function() {
+				var element = $(this);
+				var rawText = element.text() || element.attr('aria-label') || element.attr('title') || '';
+				var normalizedText = rawText.replace(/\s+/g, ' ').trim();
+				var section = 'global';
+				if(element.closest('#about_sec').length > 0){
+					section = 'about';
+				}else if(element.closest('#training_sec').length > 0){
+					section = 'training';
+				}else if(element.closest('#project_sec').length > 0){
+					section = 'projects';
+				}else if(element.closest('#contact_sec, #scroll_contact').length > 0){
+					section = 'contact';
+				}
+				_this.track_event('cta_click', {
+					cta_text: normalizedText.slice(0, 120),
+					cta_href: element.attr('href') || '',
+					cta_section: section,
+					cta_classes: (element.attr('class') || '').replace(/\s+/g, ' ').trim().slice(0, 120)
+				});
+			});
 		},
 		
 		/*-------------- CV Portfolio Functions Calling ---------------------------------------------------
@@ -1021,13 +1081,20 @@ Assigned to: ThemeForest
 	// Contact Form Submission
 	contact_form: function() {
 		if($('.submitForm').length > 0){
+			var _this = this;
 			var minSubmitDelayMs = 1200;
 			var messages = {
 				missingFields: 'Please complete the required fields.',
 				waitBeforeSubmit: 'Please wait a moment and try again.',
+				completeCaptcha: 'Please complete the security check.',
+				captchaUnavailable: 'Security verification is temporarily unavailable. Please try again later.',
 				genericError: 'Something went wrong. Please try again later.',
 				success: 'Mail has been sent successfully.',
 				invalidRule: 'Validation rule is not configured.'
+			};
+			var captchaScriptSrc = {
+				recaptcha: 'https://www.google.com/recaptcha/api.js?render=explicit',
+				hcaptcha: 'https://js.hcaptcha.com/1/api.js?render=explicit'
 			};
 			function setResponse(targetResp, message, type){
 				targetResp.removeClass('is-error is-success');
@@ -1051,6 +1118,148 @@ Assigned to: ThemeForest
 				if(startedAtField.length > 0){
 					startedAtField.val(String(Date.now()));
 				}
+			}
+			function getRuntimeCaptchaConfig(){
+				var runtime = window.PORTFOLIO_RUNTIME || {};
+				return runtime.captcha || {};
+			}
+			function getCaptchaApi(provider){
+				if(provider === 'hcaptcha'){
+					return window.hcaptcha;
+				}
+				if(provider === 'recaptcha'){
+					return window.grecaptcha;
+				}
+				return null;
+			}
+			function createCaptchaState(targetForm){
+				var runtimeCaptcha = getRuntimeCaptchaConfig();
+				var provider = (targetForm.attr('data-captcha-provider') || runtimeCaptcha.provider || '').toLowerCase().trim();
+				var siteKey = (targetForm.attr('data-captcha-site-key') || runtimeCaptcha.siteKey || '').trim();
+				var enabled = (provider === 'hcaptcha' || provider === 'recaptcha') && siteKey !== '';
+				return {
+					enabled: enabled,
+					provider: provider,
+					siteKey: siteKey,
+					widgetId: null,
+					readyPromise: null
+				};
+			}
+			function ensureCaptchaState(targetForm){
+				var state = targetForm.data('captcha-state');
+				if(state){
+					return state;
+				}
+				state = createCaptchaState(targetForm);
+				targetForm.data('captcha-state', state);
+				return state;
+			}
+			function setCaptchaToken(targetForm, value){
+				targetForm.find('input[name="captcha_token"]').val((value || '').trim());
+			}
+			function setCaptchaProvider(targetForm, value){
+				targetForm.find('input[name="captcha_provider"]').val((value || '').trim());
+			}
+			function getCaptchaToken(targetForm, state){
+				var token = (targetForm.find('input[name="captcha_token"]').val() || '').trim();
+				if(token !== ''){
+					return token;
+				}
+				if(!state || !state.enabled || state.widgetId === null){
+					return '';
+				}
+				var api = getCaptchaApi(state.provider);
+				if(api && typeof api.getResponse === 'function'){
+					try {
+						return (api.getResponse(state.widgetId) || '').trim();
+					} catch (error) {
+						return '';
+					}
+				}
+				return '';
+			}
+			function resetCaptcha(targetForm){
+				var state = ensureCaptchaState(targetForm);
+				if(!state.enabled || state.widgetId === null){
+					setCaptchaToken(targetForm, '');
+					return;
+				}
+				var api = getCaptchaApi(state.provider);
+				if(api && typeof api.reset === 'function'){
+					try {
+						api.reset(state.widgetId);
+					} catch (error) {
+						// Ignore reset errors to keep form available.
+					}
+				}
+				setCaptchaToken(targetForm, '');
+			}
+			function renderCaptchaWidget(targetForm, state){
+				var widgetContainer = targetForm.find('.contact_captcha_widget');
+				if(widgetContainer.length === 0){
+					return Promise.resolve(state);
+				}
+				var api = getCaptchaApi(state.provider);
+				if(!api || typeof api.render !== 'function'){
+					return Promise.reject(new Error('Captcha API unavailable'));
+				}
+				var renderFn = function() {
+					widgetContainer.show();
+					setCaptchaProvider(targetForm, state.provider);
+					setCaptchaToken(targetForm, '');
+					state.widgetId = api.render(widgetContainer[0], {
+						sitekey: state.siteKey,
+						callback: function(token){
+							setCaptchaToken(targetForm, token);
+						},
+						'expired-callback': function(){
+							setCaptchaToken(targetForm, '');
+						},
+						'error-callback': function(){
+							setCaptchaToken(targetForm, '');
+						}
+					});
+					return state;
+				};
+
+				if(state.provider === 'recaptcha' && typeof api.ready === 'function'){
+					return new Promise(function(resolve, reject){
+						api.ready(function(){
+							try {
+								resolve(renderFn());
+							} catch (error) {
+								reject(error);
+							}
+						});
+					});
+				}
+
+				return Promise.resolve(renderFn());
+			}
+			function ensureCaptchaReady(targetForm){
+				var state = ensureCaptchaState(targetForm);
+				var widgetContainer = targetForm.find('.contact_captcha_widget');
+				if(!state.enabled){
+					if(widgetContainer.length > 0){
+						widgetContainer.hide().empty();
+					}
+					setCaptchaProvider(targetForm, '');
+					setCaptchaToken(targetForm, '');
+					return Promise.resolve(state);
+				}
+				if(state.readyPromise){
+					return state.readyPromise;
+				}
+				var scriptSrc = captchaScriptSrc[state.provider];
+				if(!scriptSrc){
+					state.enabled = false;
+					return Promise.resolve(state);
+				}
+				state.readyPromise = _this.load_script(scriptSrc)
+					.then(function(){
+						return renderCaptchaWidget(targetForm, state);
+					});
+				return state.readyPromise;
 			}
 			function checkRequire(formId , targetResp){
 				clearResponse(targetResp);
@@ -1117,6 +1326,13 @@ Assigned to: ThemeForest
 				var targetForm = $(this).closest('form');
 				refreshStartTimestamp(targetForm);
 				targetForm.find('.form-control').attr('aria-invalid', 'false');
+				ensureCaptchaReady(targetForm).catch(function(){
+					var state = ensureCaptchaState(targetForm);
+					state.enabled = false;
+					targetForm.find('.contact_captcha_widget').hide().empty();
+					setCaptchaProvider(targetForm, '');
+					setCaptchaToken(targetForm, '');
+				});
 			});
 			$(document).on('input change', '#scroll_contact .form-control', function(){
 				clearFieldInvalid($(this));
@@ -1131,11 +1347,17 @@ Assigned to: ThemeForest
 				var honeypotValue = targetForm.find('input[name="website"]').val();
 				var startedAtValue = parseInt(targetForm.find('input[name="form_started_at"]').val(), 10);
 				if(typeof honeypotValue === 'string' && honeypotValue.trim() !== ''){
+					portfolio.track_event('contact_submit_blocked', {
+						reason: 'honeypot_triggered'
+					});
 					setResponse(errroTarget, messages.genericError, 'error');
 					refreshStartTimestamp(targetForm);
 					return;
 				}
 				if(!startedAtValue || (Date.now() - startedAtValue) < minSubmitDelayMs){
+					portfolio.track_event('contact_submit_blocked', {
+						reason: 'too_fast'
+					});
 					setResponse(errroTarget, messages.waitBeforeSubmit, 'error');
 					return;
 				}
@@ -1143,32 +1365,75 @@ Assigned to: ThemeForest
 				if(check == 0){
 					clearResponse(errroTarget);
 					_this.prop('disabled', true).attr('aria-busy', 'true');
-					var formDetail = new FormData(targetForm[0]);
-	    					formDetail.append('form_type' , _this.attr('data-type'));
-					$.ajax({
-						method : 'post',
-						url : 'ajax.php',
-						data:formDetail,
-						cache:false,
-						contentType: false,
-						processData: false
-					}).done(function(resp){
-						if(resp == 1){
-							targetForm.find('input:not([type="hidden"])').val('');
-							targetForm.find('textarea').val('');
-							targetForm.find('input[name="website"]').val('');
-							targetForm.find('.form-control').attr('aria-invalid', 'false');
-							refreshStartTimestamp(targetForm);
-							setResponse(errroTarget, messages.success, 'success');
-						}else{
+					ensureCaptchaReady(targetForm).then(function(captchaState){
+						var token = getCaptchaToken(targetForm, captchaState);
+						if(captchaState.enabled && token === ''){
+							portfolio.track_event('contact_submit_blocked', {
+								reason: 'captcha_missing'
+							});
+							setResponse(errroTarget, messages.completeCaptcha, 'error');
+							_this.prop('disabled', false).removeAttr('aria-busy');
+							return;
+						}
+
+						var formDetail = new FormData(targetForm[0]);
+	    						formDetail.append('form_type' , _this.attr('data-type'));
+						if(captchaState.enabled){
+							formDetail.set('captcha_provider', captchaState.provider);
+							formDetail.set('captcha_token', token);
+						}
+						portfolio.track_event('contact_submit_attempt', {
+							captcha_enabled: captchaState.enabled ? '1' : '0'
+						});
+
+						$.ajax({
+							method : 'post',
+							url : 'ajax.php',
+							data:formDetail,
+							cache:false,
+							contentType: false,
+							processData: false
+						}).done(function(resp){
+							if(resp == 1){
+								targetForm.find('input:not([type="hidden"])').val('');
+								targetForm.find('textarea').val('');
+								targetForm.find('input[name="website"]').val('');
+								targetForm.find('.form-control').attr('aria-invalid', 'false');
+								refreshStartTimestamp(targetForm);
+								resetCaptcha(targetForm);
+								setResponse(errroTarget, messages.success, 'success');
+								portfolio.track_event('contact_submit_success', {
+									captcha_enabled: captchaState.enabled ? '1' : '0'
+								});
+							}else{
+								setResponse(errroTarget, messages.genericError, 'error');
+								refreshStartTimestamp(targetForm);
+								resetCaptcha(targetForm);
+								portfolio.track_event('contact_submit_failure', {
+									reason: 'server_rejected'
+								});
+							}
+						}).fail(function(){
 							setResponse(errroTarget, messages.genericError, 'error');
 							refreshStartTimestamp(targetForm);
-						}
-					}).fail(function(){
-						setResponse(errroTarget, messages.genericError, 'error');
+							resetCaptcha(targetForm);
+							portfolio.track_event('contact_submit_failure', {
+								reason: 'network_error'
+							});
+						}).always(function(){
+							_this.prop('disabled', false).removeAttr('aria-busy');
+						});
+					}).catch(function(){
+						setResponse(errroTarget, messages.captchaUnavailable, 'error');
+						portfolio.track_event('contact_submit_failure', {
+							reason: 'captcha_unavailable'
+						});
 						refreshStartTimestamp(targetForm);
-					}).always(function(){
 						_this.prop('disabled', false).removeAttr('aria-busy');
+					});
+				}else{
+					portfolio.track_event('contact_submit_blocked', {
+						reason: 'validation_error'
 					});
 				}
 			});

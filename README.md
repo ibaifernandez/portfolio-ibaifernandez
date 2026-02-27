@@ -69,7 +69,7 @@ npm run media:all
   - No `target="_blank"` sin `rel="noopener noreferrer"`.
   - No URL claramente rota (`https://https://...`).
   - Presencia de headers de seguridad clave en `.htaccess`.
-  - Presencia de campos anti-spam (`website`, `form_started_at`) y su validación backend.
+  - Presencia de campos anti-spam (`website`, `form_started_at`, `captcha_provider`, `captcha_token`) y su validación backend.
   - Presencia de `skip-link` de teclado a contenido principal.
   - Presencia de contenedor de estado accesible del formulario (`aria-live`).
   - Validación de carga lazy en dependencias no críticas (sin script tags estáticos en `index.html` y `blog.html`, incluyendo `bootstrap.min.js` y `cvtext*.js`).
@@ -99,6 +99,21 @@ npm run media:all
   - Feedback accesible para email inválido (`aria-invalid` + alerta).
   - Envio valido del formulario de contacto.
   - Enforzamiento de cooldown backend para envios consecutivos.
+
+## Anti-spam avanzado (rollout controlado)
+
+El formulario mantiene el flujo actual por defecto y permite activar captcha sin cambiar plantilla:
+
+- Frontend runtime config (en `src/components/shared/analytics-ga4.html`):
+  - `window.PORTFOLIO_RUNTIME.captcha.provider`: `recaptcha` o `hcaptcha`
+  - `window.PORTFOLIO_RUNTIME.captcha.siteKey`: site key publica
+- Backend (`ajax.php`) por variables de entorno:
+  - `PORTFOLIO_CAPTCHA_PROVIDER` (`recaptcha`/`hcaptcha`)
+  - `PORTFOLIO_CAPTCHA_SECRET` (secret key)
+  - opcional `PORTFOLIO_CAPTCHA_MIN_SCORE` (solo si usas flujo por score de reCAPTCHA)
+- Rate limit por IP (backend):
+  - `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` (default `600`)
+  - `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS` (default `12`)
 - `tests/e2e/a11y.spec.js`
   - Validacion de accesibilidad automatica (axe) sin violaciones `serious/critical` en contacto, secciones primarias del home y shell técnica del blog.
 - `tests/e2e/visual.spec.js`

@@ -5,4 +5,12 @@
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
 	gtag('config', 'G-T8FTTWBQS3');
+
+	// Runtime toggles. Keep captcha fields empty until rollout is approved.
+	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
+	window.PORTFOLIO_RUNTIME.analytics = window.PORTFOLIO_RUNTIME.analytics || { enabled: true };
+	window.PORTFOLIO_RUNTIME.captcha = window.PORTFOLIO_RUNTIME.captcha || {
+		provider: '',
+		siteKey: ''
+	};
 </script>
