@@ -1254,6 +1254,7 @@ transform: scale(1)!important;
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 	color: #00c8da;
@@ -1625,6 +1626,7 @@ h3.education_place {
 .education_rinfo p {
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2001,6 +2003,7 @@ border-radius: 100%;
     margin-top: 10px;
 	display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
 	    overflow: hidden
 }
@@ -2008,6 +2011,7 @@ border-radius: 100%;
 .ex_rightside.expand-intro-on-open.intro-expanded .ex_details {
 	display: block;
 	-webkit-line-clamp: unset;
+	line-clamp: unset;
 	-webkit-box-orient: initial;
 	overflow: visible;
 }
@@ -2605,8 +2609,9 @@ h3.core-features:nth-of-type(3)::before {
     display: block;
     text-transform: capitalize;
 	line-height:1.4;
-	 display: -webkit-box;
+		 display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2646,6 +2651,7 @@ h3.core-features:nth-of-type(3)::before {
     margin: 10px 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -2681,12 +2687,14 @@ h3.core-features:nth-of-type(3)::before {
 .port_blog_setions .right_content .port_blog_contentbox p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 .port_blog_setions .left_content .port_blog_contentbox p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }

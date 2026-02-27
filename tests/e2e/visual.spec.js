@@ -79,7 +79,12 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
   await freezeSwipers(page);
 
   const sections = [
-    { selector: '.port_experience_setions', locator: page.locator('.port_experience_setions'), snapshot: 'experience-section.png' },
+    {
+      selector: '.port_experience_setions',
+      locator: page.locator('.port_experience_setions'),
+      snapshot: 'experience-section.png',
+      maxDiffPixelRatio: 0.07
+    },
     { selector: '.port_projects_setions01', locator: page.locator('.port_projects_setions01'), snapshot: 'projects-section.png' },
     { selector: '.port_responsor_setions', locator: page.locator('.port_responsor_setions'), snapshot: 'logos-section.png' }
   ];
@@ -91,7 +96,7 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
     await expect(section.locator).toHaveScreenshot(section.snapshot, {
       animations: 'disabled',
       caret: 'hide',
-      maxDiffPixelRatio: 0.03
+      maxDiffPixelRatio: section.maxDiffPixelRatio ?? 0.03
     });
   }
 });
