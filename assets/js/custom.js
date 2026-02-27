@@ -1146,8 +1146,24 @@ Assigned to: ThemeForest
 					provider: provider,
 					siteKey: siteKey,
 					widgetId: null,
-					readyPromise: null
+					readyPromise: null,
+					tokenRequestPromise: null,
+					tokenRequestResolve: null,
+					tokenRequestTimer: null
 				};
+			}
+			function settleCaptchaTokenRequest(state, token){
+				if(!state || typeof state.tokenRequestResolve !== 'function'){
+					return;
+				}
+				if(state.tokenRequestTimer){
+					clearTimeout(state.tokenRequestTimer);
+					state.tokenRequestTimer = null;
+				}
+				var resolve = state.tokenRequestResolve;
+				state.tokenRequestResolve = null;
+				state.tokenRequestPromise = null;
+				resolve((token || '').trim());
 			}
 			function ensureCaptchaState(targetForm){
 				var state = targetForm.data('captcha-state');
@@ -1184,6 +1200,7 @@ Assigned to: ThemeForest
 			}
 			function resetCaptcha(targetForm){
 				var state = ensureCaptchaState(targetForm);
+				settleCaptchaTokenRequest(state, '');
 				if(!state.enabled || state.widgetId === null){
 					setCaptchaToken(targetForm, '');
 					return;
@@ -1211,18 +1228,26 @@ Assigned to: ThemeForest
 					widgetContainer.show();
 					setCaptchaProvider(targetForm, state.provider);
 					setCaptchaToken(targetForm, '');
-					state.widgetId = api.render(widgetContainer[0], {
+					var widgetOptions = {
 						sitekey: state.siteKey,
 						callback: function(token){
 							setCaptchaToken(targetForm, token);
+							settleCaptchaTokenRequest(state, token);
 						},
 						'expired-callback': function(){
 							setCaptchaToken(targetForm, '');
+							settleCaptchaTokenRequest(state, '');
 						},
 						'error-callback': function(){
 							setCaptchaToken(targetForm, '');
+							settleCaptchaTokenRequest(state, '');
 						}
-					});
+					};
+					if(state.provider === 'turnstile'){
+						widgetOptions.execution = 'execute';
+						widgetOptions.appearance = 'interaction-only';
+					}
+					state.widgetId = api.render(widgetContainer[0], widgetOptions);
 					return state;
 				};
 
@@ -1247,6 +1272,7 @@ Assigned to: ThemeForest
 					if(widgetContainer.length > 0){
 						widgetContainer.hide().empty();
 					}
+					settleCaptchaTokenRequest(state, '');
 					setCaptchaProvider(targetForm, '');
 					setCaptchaToken(targetForm, '');
 					return Promise.resolve(state);
@@ -1264,6 +1290,36 @@ Assigned to: ThemeForest
 						return renderCaptchaWidget(targetForm, state);
 					});
 				return state.readyPromise;
+			}
+			function requestCaptchaToken(targetForm, state){
+				var existingToken = getCaptchaToken(targetForm, state);
+				if(existingToken !== ''){
+					return Promise.resolve(existingToken);
+				}
+				if(!state || !state.enabled || state.provider !== 'turnstile' || state.widgetId === null){
+					return Promise.resolve('');
+				}
+				if(state.tokenRequestPromise){
+					return state.tokenRequestPromise;
+				}
+				var api = getCaptchaApi(state.provider);
+				if(!api || typeof api.execute !== 'function'){
+					return Promise.resolve('');
+				}
+
+				state.tokenRequestPromise = new Promise(function(resolve){
+					state.tokenRequestResolve = resolve;
+					state.tokenRequestTimer = window.setTimeout(function(){
+						settleCaptchaTokenRequest(state, '');
+					}, 10000);
+					try {
+						api.execute(state.widgetId);
+					} catch (error) {
+						settleCaptchaTokenRequest(state, '');
+					}
+				});
+
+				return state.tokenRequestPromise;
 			}
 			function checkRequire(formId , targetResp){
 				clearResponse(targetResp);
@@ -1367,7 +1423,15 @@ Assigned to: ThemeForest
 					clearResponse(errroTarget);
 					_this.prop('disabled', true).attr('aria-busy', 'true');
 					ensureCaptchaReady(targetForm).then(function(captchaState){
-						var token = getCaptchaToken(targetForm, captchaState);
+						return requestCaptchaToken(targetForm, captchaState).then(function(requestedToken){
+							return {
+								captchaState: captchaState,
+								token: requestedToken || getCaptchaToken(targetForm, captchaState)
+							};
+						});
+					}).then(function(captchaContext){
+						var captchaState = captchaContext.captchaState;
+						var token = (captchaContext.token || '').trim();
 						if(captchaState.enabled && token === ''){
 							portfolio.track_event('contact_submit_blocked', {
 								reason: 'captcha_missing'
@@ -1376,7 +1440,6 @@ Assigned to: ThemeForest
 							_this.prop('disabled', false).removeAttr('aria-busy');
 							return;
 						}
-
 						var formDetail = new FormData(targetForm[0]);
 	    						formDetail.append('form_type' , _this.attr('data-type'));
 						if(captchaState.enabled){
