@@ -146,6 +146,70 @@ Gate rule: do not push if any non-optional gate fails.
 3. `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt` accessible.
 4. Search Console sitemap submission status tracked.
 
+## QA Mobile v1.0 (Release Sheet)
+
+### 1. UI and Layout
+
+1. Sidebar/toggle behavior does not hide primary content at 360px and 390px widths.
+2. Project pages preserve readability (hero, body copy, media blocks, nav prev/next).
+3. Contact form fields and CTA remain fully visible without horizontal scroll.
+4. Language switch does not break spacing, wrapping, or overlap.
+
+### 2. Functional
+
+1. Main navigation anchors scroll to correct sections.
+2. Project card image and CTA both navigate correctly.
+3. DebTracker/GymTracker/National modules remain usable with touch input.
+4. Contact submit path works on touch keyboard flow.
+
+### 3. Accessibility
+
+1. Focus indicators visible with external keyboard on mobile browsers where supported.
+2. Tap targets are large enough and not overlapping.
+3. No serious/critical a11y violations in key flows (home, project, contact).
+
+### 4. Performance
+
+1. LCP/CLS sanity check on mobile profile.
+2. No large layout jumps when images/lazy assets load.
+3. AVIF/WebP fallback behavior confirmed on project-heavy sections.
+
+### 5. Discovery / Metadata
+
+1. Canonical, OG, Twitter present in mobile-rendered source (same as desktop).
+2. robots/sitemap/llms endpoints reachable from production.
+
+## Ownership Matrix (Who Does What)
+
+1. Codex/automation:
+   - Build/test gate (`build:pages`, `test:quality`, `test:e2e`, `test:smoke` when runtime allows).
+   - Metadata implementation in templates.
+   - Schema JSON-LD implementation.
+   - CSP policy drafting and rollout preparation.
+   - External links check execution (`test:links:external`) when network/runtime is available.
+2. Manual owner (you):
+   - Google Search Console property verification and sitemap submission.
+   - Bing Webmaster property verification and sitemap submission.
+   - Final production QA signoff (desktop/mobile visual and functional acceptance).
+   - Final analytics business validation in GA4 real-time.
+
+## CSP Rollout Plan (Report-Only -> Enforce)
+
+Recommended timing:
+1. After current project-page buildout is finished and stable.
+2. After analytics and form behavior are final (to avoid frequent CSP edits).
+
+Execution:
+1. Keep `Content-Security-Policy-Report-Only` active for observation window.
+2. Collect and review violation reports/log evidence.
+3. Patch allowlist only for required domains/resources.
+4. Promote to enforced header:
+   - replace `Content-Security-Policy-Report-Only` with `Content-Security-Policy`.
+5. Run full gate + production smoke after switch.
+
+Rollback:
+1. If breakage appears, temporarily revert to report-only and fix policy gaps.
+
 ## Current Status (This Iteration)
 
 Completed:
@@ -156,9 +220,25 @@ Completed:
 4. `llms.txt` and `llms-full.txt` added.
 5. SEO/social metadata normalized on project templates and blog.
 6. GA4 snippet componentized and included across templates.
+7. Structured discovery metadata (Schema JSON-LD) implemented:
+   - `index.template.html`: `WebSite + Person + WebPage`.
+   - `blog.template.html`: `WebSite + Person + CollectionPage`.
+   - All project templates: `WebSite + Person + WebPage + CreativeWork`.
+8. Project-schema generation made deterministic in build pipeline:
+   - `scripts/build-pages.mjs` now generates `pageStructuredDataJson` per project page with canonical URL, share image, and author identity.
+   - Templates consume this via `{{{pageStructuredDataJson}}}` to avoid manual drift.
+9. Review policy added for future project-page growth:
+   - When adding new project pages or changing project intent, review JSON-LD type suitability and fields (e.g., `CreativeWork` vs `SoftwareApplication`).
+   - Re-run full gate after metadata changes.
 
 Pending environment-dependent checks:
 
 1. `test:smoke` in runtime with PHP binary.
 2. `test:links:external` in network-enabled environment.
 3. Search Console and reCAPTCHA configuration tasks.
+
+## Tracking Status
+
+1. GA4 base tag is already present cross-page via shared component.
+2. Active Measurement ID in codebase: `G-T8FTTWBQS3`.
+3. Event-level tracking (CTA/form milestones) is pending implementation.

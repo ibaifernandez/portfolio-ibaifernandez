@@ -7,6 +7,9 @@ const args = new Set(process.argv.slice(2));
 const checkOnly = args.has('--check');
 const siteBaseUrl = 'https://portfolio.ibaifernandez.com';
 const defaultShareImage = `${siteBaseUrl}/assets/images/240610-featured-image.jpeg`;
+const personSchemaId = `${siteBaseUrl}/#ibai-fernandez`;
+const websiteSchemaId = `${siteBaseUrl}/#website`;
+const personSchemaName = 'Ibai Fernández';
 const projectShareImageMap = {
   'project-debtracker.html': 'assets/images/debtracker.png',
   'project-gymtracker.html': 'assets/images/gymtracker-cover-2.png',
@@ -137,6 +140,66 @@ function toAbsoluteUrl(value) {
     return value;
   }
   return `${siteBaseUrl}/${String(value).replace(/^\/+/, '')}`;
+}
+
+function createProjectStructuredData({
+  projectTitle,
+  pageTitle,
+  pageDescription,
+  pageCanonicalUrl,
+  pageShareImage
+}) {
+  const payload = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': websiteSchemaId,
+        url: `${siteBaseUrl}/`,
+        name: `${personSchemaName} Portfolio`,
+        inLanguage: ['en', 'es']
+      },
+      {
+        '@type': 'Person',
+        '@id': personSchemaId,
+        name: personSchemaName,
+        url: `${siteBaseUrl}/`,
+        image: `${siteBaseUrl}/assets/images/ibai-fernandez-1.jpg`,
+        email: 'mailto:info@ibaifernandez.com',
+        telephone: '+57 322 428 8532',
+        sameAs: [
+          'https://linkedin.com/in/ibaifernandez',
+          'https://github.com/ibaifernandez',
+          'https://instagram.com/ibaifernandezec',
+          'https://facebook.com/ibaifernandezec'
+        ]
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${pageCanonicalUrl}#webpage`,
+        url: pageCanonicalUrl,
+        name: pageTitle,
+        description: pageDescription,
+        isPartOf: { '@id': websiteSchemaId },
+        about: { '@id': personSchemaId },
+        inLanguage: 'en'
+      },
+      {
+        '@type': 'CreativeWork',
+        '@id': `${pageCanonicalUrl}#case-study`,
+        name: projectTitle,
+        description: pageDescription,
+        url: pageCanonicalUrl,
+        image: pageShareImage,
+        author: { '@id': personSchemaId },
+        creator: { '@id': personSchemaId },
+        mainEntityOfPage: { '@id': `${pageCanonicalUrl}#webpage` },
+        inLanguage: 'en'
+      }
+    ]
+  };
+
+  return JSON.stringify(payload, null, 2);
 }
 
 function renderDualCtaButtons(sectionKey) {
@@ -471,6 +534,13 @@ function renderProjectPageEntries() {
         pageKeywords: project.pageKeywords,
         pageAuthor: 'Ibai Fernández',
         pageOgType: 'article',
+        pageStructuredDataJson: createProjectStructuredData({
+          projectTitle: project.titleText,
+          pageTitle: `${project.titleText} | Project Dossier`,
+          pageDescription: project.pageDescription,
+          pageCanonicalUrl: project.pageCanonicalUrl,
+          pageShareImage: project.pageShareImage
+        }),
         projectTitle: project.titleText,
         projectDescription: project.descriptionText,
         projectMediaHtml: project.mediaHtml,
