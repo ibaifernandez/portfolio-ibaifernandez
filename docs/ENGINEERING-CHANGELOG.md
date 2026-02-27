@@ -18,6 +18,23 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-02-27 - National Tech Evangelism Dossier (Interactive Route Wow)
+
+1. Added a dedicated template for the National-Scale case:
+   - `src/pages/project-national-tech-evangelism.template.html`
+   - wired via `content/projects.json > page.template`.
+2. Implemented an interactive "Route Simulator" module:
+   - draggable/step-based mission marker (field -> cloud -> legacy),
+   - phase-based dynamic briefing panel with live KPI chips,
+   - autoplay mode with reduced-motion safeguards.
+3. Added a standalone visual layer for this page:
+   - `assets/css/national-route.css`
+   - custom journey track, stop states, mission panel, and responsive behavior.
+4. Updated page narrative blocks with the full roadmap copy:
+   - Physical Frontier (NIC.ec),
+   - Pandemic Pivot (2x2MKT),
+   - Systemic Impact & Legacy.
+
 ### 2026-02-27 - CI Stabilization (GitHub Actions)
 
 1. Fixed `quality.yml` runner bootstrap for Linux:
@@ -26,6 +43,9 @@ Single long-form technical history of the portfolio. This file consolidates the 
    - `tests/quality-guards.sh` depends on `rg`; missing binary in GitHub runner caused instant failures (`command not found`) and misleading downstream annotations.
 3. Documentation updated:
    - runbook now includes `ripgrep` as explicit CI requirement and workflow behavior note.
+4. Fixed README gating mismatch between local and CI:
+   - removed `README.md` from `.gitignore`,
+   - repository now tracks `README.md` so `tests/quality-guards.sh` can validate it consistently in GitHub Actions.
 
 ### 2026-02-27 - Print Fidelity Layer + Canonical PDF Export
 

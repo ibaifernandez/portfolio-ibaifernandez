@@ -67,7 +67,8 @@
   },
   {
     "page": {
-      "output": "project-national-tech-evangelism.html"
+      "output": "project-national-tech-evangelism.html",
+      "template": "src/pages/project-national-tech-evangelism.template.html"
     },
     "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/2x2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/2x2.webp\">\n<img src=\"assets/images/2x2.png\" alt=\"National-scale tech evangelism initiative\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
     "title": {

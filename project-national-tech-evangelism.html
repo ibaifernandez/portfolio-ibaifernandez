@@ -25,12 +25,13 @@
 	<link rel="stylesheet" href="assets/css/font.css">
 	<link rel="stylesheet" href="assets/css/animate.css">
 	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/national-route.css">
 	<link rel="stylesheet" href="assets/css/print.css" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 	<link rel="canonical" href="https://portfolio.ibaifernandez.com/project-national-tech-evangelism.html">
 </head>
 
-<body>
+<body class="route_scale_page">
 	<a class="skip-link" href="#project_main">Skip to main content</a>
 
 	<div class="preloader">
@@ -378,15 +379,15 @@
 		<span></span>
 	</div>
 
-		<div class="port_sec_warapper" id="project_main">
-			<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper">
-				<div class="container-fluid project_case_container">
+	<div class="port_sec_warapper" id="project_main">
+		<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper route_scale_wrapper">
+			<div class="container-fluid project_case_container">
 				<div class="row">
 					<div class="col-12">
 						<a href="index.html#project_sec" class="project_case_backlink">Back to portfolio</a>
 					</div>
 					<div class="col-xl-6 col-lg-12 mb-4 mb-xl-0">
-						<div class="project_case_media">
+						<div class="project_case_media route_scale_media">
 			<picture>
 			<source type="image/avif" srcset="assets/images/2x2.avif">
 			<source type="image/webp" srcset="assets/images/2x2.webp">
@@ -395,22 +396,115 @@
 						</div>
 					</div>
 					<div class="col-xl-6 col-lg-12">
-						<article class="project_case_content">
-							<p class="project_case_eyebrow">Project Dossier</p>
-							<h1 class="project_case_title">National-Scale Tech Evangelism</h1>
-							<p class="project_case_intro">Orchestrated nationwide digital literacy tours and remote crisis-response ecosystems during the global pandemic, successfully onboarding over 10,600 users into digital conversion funnels.</p>
-							<h2 class="project_case_heading">Current Status</h2>
-							<p class="project_case_paragraph">
-								Navigation and page scaffolding are now active. Architecture notes, evidence links, and implementation
-								artifacts will be added in the next content sprint.
+						<article class="project_case_content route_scale_intro_card">
+							<p class="project_case_eyebrow route_scale_eyebrow">National Scalability / Crisis Management</p>
+							<h1 class="project_case_title">The Route: From the Road to the Cloud</h1>
+							<p class="project_case_intro">
+								This wasn't built in an office; it was forged on the road. What began as a physical expedition across
+								Ecuador to bridge the gap between traditional commerce and the digital economy quickly evolved into a
+								mission-critical infrastructure when the 2020 pandemic hit. We pivoted from physical auditoriums to a
+								massive remote ecosystem, proving that systemic resilience is the only true defense against global
+								disruption.
 							</p>
-							<ul class="project_case_checklist">
-								<li>Evidence links: pending curation</li>
-								<li>Architecture decision notes: pending</li>
-								<li>Deployment and performance traces: pending</li>
+							<ul class="route_scale_quickfacts">
+								<li><strong>56</strong> conferences nationwide</li>
+								<li><strong>11</strong> operators on route</li>
+								<li><strong>11,000+</strong> professionals upskilled</li>
+								<li><strong>2,500%</strong> revenue growth impact</li>
 							</ul>
 						</article>
 					</div>
+
+					<div class="col-12">
+						<section class="route_scale_module" aria-labelledby="route-scale-heading">
+							<div class="route_scale_header">
+								<h2 id="route-scale-heading" class="project_case_heading">Interactive Route Simulator</h2>
+								<p class="route_scale_header_copy">
+									Move the mission marker and follow the transformation from physical field operations to crisis-proof
+									cloud infrastructure.
+								</p>
+							</div>
+
+							<div class="route_scale_layout">
+								<div class="route_scale_trackbox" aria-hidden="true">
+									<div class="route_scale_track" id="route-track">
+										<div class="route_scale_path"></div>
+										<div class="route_scale_marker" id="route-marker">
+											<i class="fas fa-location-arrow"></i>
+										</div>
+										<button type="button" class="route_scale_stop is-active" data-phase-stop="0"
+											style="--stop-position: 0%;">
+											<span>NIC.ec</span>
+										</button>
+										<button type="button" class="route_scale_stop" data-phase-stop="1"
+											style="--stop-position: 50%;">
+											<span>2x2MKT</span>
+										</button>
+										<button type="button" class="route_scale_stop" data-phase-stop="2"
+											style="--stop-position: 100%;">
+											<span>Legacy</span>
+										</button>
+									</div>
+								</div>
+
+								<div class="route_scale_panel" aria-live="polite" aria-atomic="true">
+									<p class="route_scale_phase_label" id="route-phase-label"></p>
+									<h3 class="route_scale_phase_title" id="route-phase-title"></h3>
+									<p class="route_scale_phase_copy" id="route-phase-copy"></p>
+									<ul class="route_scale_kpis" id="route-kpis"></ul>
+								</div>
+							</div>
+
+							<div class="route_scale_controls">
+								<label for="route-progress">Mission Progress</label>
+								<input id="route-progress" class="route_scale_slider" type="range" min="0" max="2" step="1" value="0">
+								<div class="route_scale_buttons">
+									<button type="button" class="route_scale_btn" id="route-prev">Previous Stop</button>
+									<button type="button" class="route_scale_btn" id="route-next">Next Stop</button>
+									<button type="button" class="route_scale_btn route_scale_btn--ghost" id="route-autoplay">Autoplay Route</button>
+								</div>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="route_scale_story">
+							<h2 class="project_case_heading">Phase 1 — The Physical Frontier (NIC.ec)</h2>
+							<p class="project_case_paragraph">
+								Before the lockdowns, the mandate was ground-level evangelism under the "Ecuador, un país digital"
+								campaign. Architecting the operational framework for NIC.ec, I orchestrated 56 conferences across the
+								country, managing an 11-person team. Backed by strategic alliances with the Ministry of
+								Telecommunications (MINTEL), Claro, and the Quito Chamber of Commerce, we successfully trained over 6,000
+								SMEs and facilitated the creation of 600+ e-commerce sites.
+							</p>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="route_scale_story">
+							<h2 class="project_case_heading">Phase 2 — The Pandemic Pivot (2x2MKT)</h2>
+							<p class="project_case_paragraph">
+								When the world closed, we scaled the infrastructure to the cloud. I re-engineered the entire initiative
+								into the "2x2MKT" program—a high-volume, 100% remote training ecosystem deployed through AGLAYA. Moving
+								from hundreds in person to thousands in sync, I governed the operations for massive webinars and digital
+								bootcamps, successfully upskilling over 5,000 individuals during a period of extreme economic uncertainty.
+							</p>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="route_scale_story route_scale_story--impact">
+							<h2 class="project_case_heading">Systemic Impact &amp; Legacy</h2>
+							<p class="project_case_paragraph">
+								The final result was a nationwide digital awakening. Between the physical tour and the remote 2x2MKT
+								initiative, over 11,000 businesses and professionals were integrated into these educational funnels. To
+								effectively manage this volume, the systemic architectures I deployed not only absorbed national demand but
+								also drove a 2,500% revenue growth for the operating agency. I can architect solutions that survive the
+								transition from the physical world to a crisis-driven digital reality.
+							</p>
+						</section>
+					</div>
+
 					<div class="col-12">
 						<nav class="project_case_nav" aria-label="Project navigation">
 <a class="project_case_navlink project_case_navlink--prev" href="project-enterprise-crm.html">Prev: Enterprise CRM &amp; Predictive Automation</a>
@@ -419,10 +513,10 @@
 						</nav>
 					</div>
 				</div>
-				</div>
 			</div>
+		</div>
 
-			<div class="port_contact_setions project_contact_setions">
+		<div class="port_contact_setions project_contact_setions">
 	<div class="contact_section">
 		<div class="container">
 			<div class="row">
@@ -514,7 +608,7 @@
 	</div>
 </div>
 
-			<div class="port_footer_setions ">
+		<div class="port_footer_setions ">
 				<!-- start footer section  -->
 				<div class="footer_section">
 					<div class="container">
@@ -723,7 +817,7 @@
 
 
 	
-		</div>
+	</div>
 
 	<div class="bottom_top">
 		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
@@ -746,6 +840,145 @@
 	<script defer src="assets/js/jquery.min.js"></script>
 	<script defer src="assets/js/custom.js"></script>
 	<script defer src="assets/js/translate.js"></script>
+	<script>
+		(function () {
+			var phases = [
+				{
+					label: 'Phase 1 / 2019',
+					title: 'NIC.ec Physical Frontier',
+					copy: '56 national conferences coordinated with a field team of 11 operators, training 6,000+ SMEs and launching 600+ eCommerce sites through strategic public-private alliances.',
+					kpis: ['56 conferences', '11-person team', '6,000+ SMEs', '600+ eCommerce sites']
+				},
+				{
+					label: 'Phase 2 / 2020',
+					title: '2x2MKT Pandemic Pivot',
+					copy: 'The operation was re-engineered into a 100% remote ecosystem, scaling from auditorium sessions to high-volume webinars and bootcamps with synchronized nationwide delivery.',
+					kpis: ['100% remote architecture', '5,000+ individuals upskilled', 'Massive webinar governance']
+				},
+				{
+					label: 'Phase 3 / Legacy',
+					title: 'National Impact Layer',
+					copy: 'The combined field and cloud strategy integrated 11,000+ professionals into digital funnels while absorbing crisis-level demand and driving 2,500% growth for the operating agency.',
+					kpis: ['11,000+ integrated', '2,500% growth impact', 'Physical-to-digital resilience']
+				}
+			];
+
+			var slider = document.getElementById('route-progress');
+			var marker = document.getElementById('route-marker');
+			var labelNode = document.getElementById('route-phase-label');
+			var titleNode = document.getElementById('route-phase-title');
+			var copyNode = document.getElementById('route-phase-copy');
+			var kpiList = document.getElementById('route-kpis');
+			var prevButton = document.getElementById('route-prev');
+			var nextButton = document.getElementById('route-next');
+			var autoplayButton = document.getElementById('route-autoplay');
+			var stopNodes = document.querySelectorAll('[data-phase-stop]');
+
+			if (!slider || !marker || !labelNode || !titleNode || !copyNode || !kpiList) {
+				return;
+			}
+
+			var autoplayTimer = null;
+			var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			function stopAutoplay() {
+				if (!autoplayTimer) {
+					return;
+				}
+				window.clearInterval(autoplayTimer);
+				autoplayTimer = null;
+				autoplayButton.textContent = 'Autoplay Route';
+				autoplayButton.setAttribute('aria-pressed', 'false');
+			}
+
+			function render(index) {
+				var phase = phases[index];
+				if (!phase) {
+					return;
+				}
+
+				var left = phases.length > 1 ? (index / (phases.length - 1)) * 100 : 0;
+				marker.style.left = left + '%';
+				labelNode.textContent = phase.label;
+				titleNode.textContent = phase.title;
+				copyNode.textContent = phase.copy;
+				kpiList.innerHTML = phase.kpis.map(function (kpi) {
+					return '<li>' + kpi + '</li>';
+				}).join('');
+
+				stopNodes.forEach(function (node, nodeIndex) {
+					node.classList.toggle('is-active', nodeIndex <= index);
+				});
+
+				prevButton.disabled = index === 0;
+				nextButton.disabled = index === phases.length - 1;
+			}
+
+			function setPhase(index) {
+				var safeIndex = Math.max(0, Math.min(phases.length - 1, index));
+				slider.value = String(safeIndex);
+				render(safeIndex);
+			}
+
+			function step(delta) {
+				setPhase(Number(slider.value) + delta);
+			}
+
+			function toggleAutoplay() {
+				if (prefersReducedMotion) {
+					return;
+				}
+				if (autoplayTimer) {
+					stopAutoplay();
+					return;
+				}
+
+				autoplayButton.textContent = 'Stop Autoplay';
+				autoplayButton.setAttribute('aria-pressed', 'true');
+				autoplayTimer = window.setInterval(function () {
+					var current = Number(slider.value);
+					var next = current >= phases.length - 1 ? 0 : current + 1;
+					setPhase(next);
+				}, 1700);
+			}
+
+			slider.addEventListener('input', function (event) {
+				stopAutoplay();
+				setPhase(Number(event.target.value));
+			});
+
+			prevButton.addEventListener('click', function () {
+				stopAutoplay();
+				step(-1);
+			});
+
+			nextButton.addEventListener('click', function () {
+				stopAutoplay();
+				step(1);
+			});
+
+			stopNodes.forEach(function (node) {
+				node.addEventListener('click', function () {
+					stopAutoplay();
+					setPhase(Number(node.getAttribute('data-phase-stop')));
+				});
+			});
+
+			autoplayButton.addEventListener('click', toggleAutoplay);
+			if (prefersReducedMotion) {
+				autoplayButton.disabled = true;
+				autoplayButton.textContent = 'Autoplay disabled (reduced motion)';
+			}
+
+			document.addEventListener('visibilitychange', function () {
+				if (document.hidden) {
+					stopAutoplay();
+				}
+			});
+
+			setPhase(0);
+		})();
+	</script>
 </body>
 
 </html>

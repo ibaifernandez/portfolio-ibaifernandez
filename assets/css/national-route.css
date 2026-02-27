@@ -1,0 +1,319 @@
+.route_scale_page {
+	--route-ink: #1f2736;
+	--route-muted: #5f6674;
+	--route-surface: #ffffff;
+	--route-border: #d6dce7;
+	--route-accent-a: #00c8da;
+	--route-accent-b: #ff7a45;
+	--route-accent-c: #ffd166;
+}
+
+.route_scale_wrapper {
+	background:
+		radial-gradient(circle at 8% 10%, rgba(0, 200, 218, 0.11), transparent 28%),
+		radial-gradient(circle at 92% 90%, rgba(255, 122, 69, 0.11), transparent 30%),
+		linear-gradient(135deg, #f4f7fc 0%, #eef3fa 100%);
+}
+
+.route_scale_intro_card {
+	border-color: var(--route-border);
+	background:
+		linear-gradient(165deg, rgba(255, 255, 255, 0.96), rgba(245, 249, 255, 0.96));
+}
+
+.route_scale_eyebrow {
+	color: var(--route-accent-a);
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.route_scale_quickfacts {
+	margin: 22px 0 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px 14px;
+}
+
+.route_scale_quickfacts li {
+	padding: 9px 12px;
+	border: 1px dashed #bfd1e6;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.8);
+	font-size: 15px;
+	color: var(--route-ink);
+}
+
+.route_scale_quickfacts strong {
+	color: var(--route-accent-b);
+}
+
+.route_scale_module {
+	margin-top: 26px;
+	padding: 28px;
+	border-radius: 14px;
+	border: 1px solid var(--route-border);
+	background:
+		linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.route_scale_header {
+	margin-bottom: 20px;
+}
+
+.route_scale_header_copy {
+	margin: 10px 0 0;
+	color: var(--route-muted);
+}
+
+.route_scale_layout {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr;
+	gap: 24px;
+	align-items: stretch;
+}
+
+.route_scale_trackbox {
+	padding: 20px 20px 16px;
+	border: 1px solid #dce5f3;
+	border-radius: 12px;
+	background:
+		repeating-linear-gradient(
+			135deg,
+			rgba(0, 0, 0, 0.016),
+			rgba(0, 0, 0, 0.016) 8px,
+			transparent 8px,
+			transparent 16px
+		),
+		#ffffff;
+}
+
+.route_scale_track {
+	position: relative;
+	min-height: 170px;
+}
+
+.route_scale_path {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 64px;
+	height: 8px;
+	border-radius: 999px;
+	background:
+		linear-gradient(90deg, var(--route-accent-a), var(--route-accent-b));
+	box-shadow: 0 0 0 4px rgba(0, 200, 218, 0.1);
+}
+
+.route_scale_marker {
+	position: absolute;
+	top: 34px;
+	left: 0;
+	transform: translateX(-50%);
+	width: 58px;
+	height: 58px;
+	border-radius: 999px;
+	background: var(--route-ink);
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+	box-shadow: 0 8px 20px rgba(31, 39, 54, 0.32);
+	z-index: 3;
+	transition: left 420ms cubic-bezier(0.2, 0.6, 0.2, 1);
+	animation: routePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes routePulse {
+	0%,
+	100% {
+		box-shadow: 0 8px 20px rgba(31, 39, 54, 0.32), 0 0 0 0 rgba(0, 200, 218, 0.35);
+	}
+	50% {
+		box-shadow: 0 10px 24px rgba(31, 39, 54, 0.3), 0 0 0 8px rgba(0, 200, 218, 0);
+	}
+}
+
+.route_scale_stop {
+	position: absolute;
+	left: var(--stop-position);
+	top: 98px;
+	transform: translateX(-50%);
+	border: 0;
+	padding: 0;
+	background: transparent;
+	color: var(--route-muted);
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+}
+
+.route_scale_stop::before {
+	content: "";
+	display: block;
+	margin: 0 auto 10px;
+	width: 14px;
+	height: 14px;
+	border-radius: 999px;
+	background: #9fb4cf;
+	border: 3px solid #f3f7fd;
+	box-shadow: 0 0 0 1px #9fb4cf;
+}
+
+.route_scale_stop.is-active {
+	color: var(--route-ink);
+}
+
+.route_scale_stop.is-active::before {
+	background: var(--route-accent-a);
+	box-shadow: 0 0 0 1px var(--route-accent-a);
+}
+
+.route_scale_panel {
+	padding: 20px 22px;
+	border: 1px solid #dce5f3;
+	border-radius: 12px;
+	background: #ffffff;
+}
+
+.route_scale_phase_label {
+	margin: 0 0 6px;
+	color: var(--route-accent-a);
+	font-size: 13px;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.route_scale_phase_title {
+	margin: 0;
+	font-size: 29px;
+	line-height: 1.1;
+	color: var(--route-ink);
+}
+
+.route_scale_phase_copy {
+	margin: 14px 0 0;
+	color: var(--route-muted);
+}
+
+.route_scale_kpis {
+	margin: 14px 0 0;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.route_scale_kpis li {
+	padding: 6px 10px;
+	border-radius: 999px;
+	border: 1px solid #d0def2;
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--route-ink);
+	background: #f6faff;
+}
+
+.route_scale_controls {
+	margin-top: 20px;
+}
+
+.route_scale_controls label {
+	display: block;
+	margin-bottom: 8px;
+	color: var(--route-ink);
+	font-weight: 600;
+}
+
+.route_scale_slider {
+	width: 100%;
+	accent-color: var(--route-accent-a);
+}
+
+.route_scale_buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 14px;
+}
+
+.route_scale_btn {
+	border: 1px solid var(--route-accent-a);
+	background: var(--route-accent-a);
+	color: #ffffff;
+	font-weight: 600;
+	padding: 8px 14px;
+	border-radius: 7px;
+	cursor: pointer;
+}
+
+.route_scale_btn:disabled {
+	opacity: 0.55;
+	cursor: not-allowed;
+}
+
+.route_scale_btn--ghost {
+	background: transparent;
+	color: var(--route-accent-a);
+}
+
+.route_scale_story {
+	margin-top: 26px;
+	padding: 22px 24px;
+	border-radius: 12px;
+	border: 1px solid var(--route-border);
+	background: #ffffff;
+}
+
+.route_scale_story--impact {
+	background:
+		linear-gradient(125deg, rgba(0, 200, 218, 0.08), rgba(255, 122, 69, 0.08)),
+		#ffffff;
+}
+
+.route_scale_story .project_case_paragraph {
+	margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+	.route_scale_layout {
+		grid-template-columns: 1fr;
+	}
+
+	.route_scale_quickfacts {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 576px) {
+	.route_scale_module {
+		padding: 20px 14px;
+	}
+
+	.route_scale_trackbox,
+	.route_scale_panel {
+		padding: 14px;
+	}
+
+	.route_scale_phase_title {
+		font-size: 24px;
+	}
+
+	.route_scale_stop {
+		font-size: 11px;
+		letter-spacing: 0.03em;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.route_scale_marker {
+		animation: none;
+	}
+}

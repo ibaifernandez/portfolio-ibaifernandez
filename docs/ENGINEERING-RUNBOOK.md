@@ -12,6 +12,7 @@ Guia operativa para mantener calidad, rendimiento y estabilidad del portfolio en
 - PHP 7.4+ (solo para smoke real contra `ajax.php`; opcional en entornos de CI donde no este disponible)
 - Encoder WebP (`cwebp`) o `ffmpeg` con `libwebp`
 - `ripgrep` (`rg`) para `tests/quality-guards.sh` en entornos CI no macOS
+- `README.md` versionado y no vacio (validado por `tests/quality-guards.sh`)
 
 Referencia macOS/Homebrew: `brew install webp ffmpeg-full && brew unlink ffmpeg && brew link ffmpeg-full --force`
 
