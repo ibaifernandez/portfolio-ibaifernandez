@@ -1,0 +1,31 @@
+{
+  "name": "portfolio-ibaifernandez",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local quality and E2E tooling for portfolio-ibaifernandez",
+  "scripts": {
+    "start": "node scripts/static-server.mjs --port 4173",
+    "build:pages": "node scripts/build-pages.mjs",
+    "test:templates": "node scripts/build-pages.mjs --check",
+    "media:avif": "node scripts/generate-avif-assets.mjs index.html blog.html && node scripts/wrap-images-with-avif-picture.mjs index.html blog.html",
+    "media:webp": "node scripts/generate-webp-assets.mjs index.html blog.html && node scripts/wrap-images-with-avif-picture.mjs index.html blog.html",
+    "media:all": "npm run media:avif && npm run media:webp",
+    "test:budget": "node tests/check-performance-budget.mjs",
+    "test:avif": "node tests/check-avif-coverage.mjs",
+    "test:webp": "node tests/check-webp-coverage.mjs",
+    "test:links": "node tests/check-links.mjs",
+    "test:links:external": "node tests/check-links.mjs --check-external",
+    "playwright:orphans:list": "bash scripts/playwright-orphans.sh --list",
+    "playwright:orphans:kill": "bash scripts/playwright-orphans.sh --kill",
+    "test:quality": "bash tests/quality-guards.sh",
+    "test:smoke": "bash tests/smoke.sh",
+    "test:e2e:clean": "bash scripts/run-e2e-with-cleanup.sh",
+    "test:e2e": "playwright test",
+    "test": "npm run test:quality && npm run test:e2e",
+    "test:ci": "npm run test:quality && npm run test:smoke && npm run test:e2e"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@playwright/test": "^1.49.0"
+  }
+}

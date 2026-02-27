@@ -1,0 +1,25 @@
+{
+  "global": {
+    "maxCssFileBytes": 160000,
+    "maxJsFileBytes": 135000,
+    "maxImageFileBytes": 300000
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "maxHtmlBytes": 285000,
+      "maxCssBytes": 470000,
+      "maxJsBytes": 500000,
+      "maxImageBytes": 1800000,
+      "maxImageCount": 70
+    },
+    {
+      "file": "blog.html",
+      "maxHtmlBytes": 60000,
+      "maxCssBytes": 440000,
+      "maxJsBytes": 230000,
+      "maxImageBytes": 350000,
+      "maxImageCount": 3
+    }
+  ]
+}

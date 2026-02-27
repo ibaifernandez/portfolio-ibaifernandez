@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /blog.html
 Disallow: /ajax.php
+Allow: /
 
 Sitemap: https://portfolio.ibaifernandez.com/sitemap.xml

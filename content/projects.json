@@ -1,0 +1,131 @@
+[
+  {
+    "page": {
+      "output": "project-debtracker.html",
+      "template": "src/pages/project-debtracker.template.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/debtracker.webp\">\n<img class=\"project_spotlight_img--debtracker\" src=\"assets/images/debtracker.png\" alt=\"DebTracker dashboard\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\">\n</picture>",
+    "title": {
+      "text": "DebTracker: Full-Stack Financial App",
+      "translate": "project-debtracker-title"
+    },
+    "description": {
+      "text": "Engineered and deployed a complete financial tracking application. Built from scratch to solve complex relational database challenges and deliver a frictionless user experience for debt management.",
+      "translate": "project-debtracker-copy"
+    },
+    "link": {
+      "href": "project-debtracker.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
+      "output": "project-gymtracker.html",
+      "template": "src/pages/project-gymtracker.template.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/gymtracker-cover-2.webp\">\n<img src=\"assets/images/gymtracker-cover-2.png\" alt=\"GymTracker architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\">\n</picture>",
+    "title": {
+      "text": "GymTracker: Logic & API Architecture",
+      "translate": "project-gymtracker-title"
+    },
+    "description": {
+      "text": "A hard-coded technical showcase demonstrating advanced backend logic, API integrations, and scalable Front-End architecture. Proof of my ability to transition from marketing concepts to robust software deployment.",
+      "translate": "project-gymtracker-copy"
+    },
+    "link": {
+      "href": "project-gymtracker.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
+      "output": "project-enterprise-crm.html",
+      "template": "src/pages/project-enterprise-crm.template.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/lfi-newspaper.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/lfi-newspaper.webp\">\n<img src=\"assets/images/lfi-newspaper.jpg\" alt=\"LFi newspaper project dossier\" loading=\"lazy\" decoding=\"async\" width=\"1800\" height=\"1075\" data-avif-fallback=\"true\">\n</picture>",
+    "title": {
+      "text": "Enterprise CRM & Predictive Automation",
+      "translate": "project-enterprise-crm-title"
+    },
+    "description": {
+      "text": "Architected automated Lead Scoring algorithms and dynamic decision trees for top-tier real estate and corporate clients. Shifted traditional email workflows into a highly predictable revenue engine.",
+      "translate": "project-enterprise-crm-copy"
+    },
+    "link": {
+      "href": "project-enterprise-crm.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
+      "output": "project-national-tech-evangelism.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/2x2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/2x2.webp\">\n<img src=\"assets/images/2x2.png\" alt=\"National-scale tech evangelism initiative\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "title": {
+      "text": "National-Scale Tech Evangelism",
+      "translate": "project-national-scale-title"
+    },
+    "description": {
+      "text": "Orchestrated nationwide digital literacy tours and remote crisis-response ecosystems during the global pandemic, successfully onboarding over 10,600 users into digital conversion funnels.",
+      "translate": "project-national-scale-copy"
+    },
+    "link": {
+      "href": "project-national-tech-evangelism.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
+      "output": "project-elm-st.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/elm-st-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/elm-st-web.webp\">\n<img src=\"assets/images/elm-st-web.png\" alt=\"Elm St custom web architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "title": {
+      "text": "Elm St: Custom Web & Brand Architecture",
+      "translate": "project-elmst-title"
+    },
+    "description": {
+      "text": "Bypassed traditional CMS platforms to hand-code a custom digital environment. This project perfectly fuses advanced UI/UX development with deep audiovisual narrative and psychological brand positioning.",
+      "translate": "project-elmst-copy"
+    },
+    "link": {
+      "href": "project-elm-st.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
+      "output": "project-aglaya.html"
+    },
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/aglaya-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/aglaya-web.webp\">\n<img src=\"assets/images/aglaya-web.png\" alt=\"AGLAYA B2B innovation ecosystem\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "title": {
+      "text": "AGLAYA: B2B Innovation Ecosystem",
+      "translate": "project-aglaya-title"
+    },
+    "description": {
+      "text": "A comprehensive business case study. Founded and scaled a 100% remote digital agency, engineering the operational infrastructure, agile marketing intelligence, and full-funnel acquisition strategies from the ground up.",
+      "translate": "project-aglaya-copy"
+    },
+    "link": {
+      "href": "project-aglaya.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  }
+]

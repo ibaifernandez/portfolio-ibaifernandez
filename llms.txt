@@ -1,0 +1,20 @@
+# Ibai Fernandez Portfolio
+
+Site: https://portfolio.ibaifernandez.com/
+Owner: Ibai Fernandez
+Contact: mailto:info@ibaifernandez.com
+Languages: en, es
+
+Primary pages:
+- https://portfolio.ibaifernandez.com/
+- https://portfolio.ibaifernandez.com/project-debtracker.html
+- https://portfolio.ibaifernandez.com/project-gymtracker.html
+- https://portfolio.ibaifernandez.com/project-enterprise-crm.html
+- https://portfolio.ibaifernandez.com/project-national-tech-evangelism.html
+- https://portfolio.ibaifernandez.com/project-elm-st.html
+- https://portfolio.ibaifernandez.com/project-aglaya.html
+
+Discovery:
+- robots: https://portfolio.ibaifernandez.com/robots.txt
+- sitemap: https://portfolio.ibaifernandez.com/sitemap.xml
+- llms-full: https://portfolio.ibaifernandez.com/llms-full.txt

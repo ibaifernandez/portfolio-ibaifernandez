@@ -1,0 +1,90 @@
+[
+  {
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/franco-ogaz.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/franco-ogaz.webp\">\n<img src=\"assets/images/franco-ogaz.jpeg\" alt=\"Franco Ogaz Palma - Head of Sales\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"799\" height=\"800\" data-avif-fallback=\"true\">\n</picture>",
+    "recommendation": {
+      "text": "Ibai is a true digital alchemist, turning ideas into effective and memorable email marketing campaigns. He has a level of care for detail that makes the difference, delivering impeccable campaigns that generate results and reflect his passion for what he does.",
+      "translate": "franco-recommendation",
+      "className": null
+    },
+    "name": "Franco Ogaz Palma",
+    "role": "Head of Sales",
+    "context": "Real Estate | LFi Client"
+  },
+  {
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/fernanda-munoz.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/fernanda-munoz.webp\">\n<img src=\"assets/images/fernanda-munoz.jpeg\" alt=\"Fernanda Muñoz Onetto - Account Director\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"800\" height=\"800\" data-avif-fallback=\"true\">\n</picture>",
+    "recommendation": {
+      "text": "Ibai is a great professional and person. He cares deeply about his team and the work, constantly seeks ways to optimize tasks, and has broad expertise in email marketing. It is a pleasure to work with him day to day!",
+      "translate": "fernanda-recommendation",
+      "className": null
+    },
+    "name": "Fernanda Muñoz Onetto",
+    "role": "Account Director",
+    "context": "LFi"
+  },
+  {
+    "imageHtml": "<img src=\"assets/images/bani-barranco.jpeg\" alt=\"Bani Barranco - Colleague at LFi\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"500\" height=\"500\">",
+    "recommendation": {
+      "text": "Ibai Fernández is a recent and invaluable asset to our team. His unique blend of skills in audiovisuals, development, and marketing automation is rare. Despite running a successful business, he finds time for complex requests. His peers at LFi Agency describe him as joyful, eloquent, kind, and direct. His ability to overdeliver and provide a wider perspective has lightened our workload. His sense of humor and commitment to timely solutions make him an integral part of our team. I wholeheartedly recommend Ibai for his consistent delivery of solutions that hugely contribute to our success. Ibai rocks! 🤘",
+      "translate": "bani-recommendation",
+      "className": null
+    },
+    "name": "Bani Barranco",
+    "role": "Automation Specialist",
+    "context": "Colleague at LFi"
+  },
+  {
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/marcelo-ricigliano.avif\">\n<img src=\"assets/images/marcelo-ricigliano.jpg\" alt=\"Marcelo Ricigliano - CEO 4Geeks Academy\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"800\" height=\"800\" data-avif-fallback=\"true\">\n</picture>",
+    "recommendation": {
+      "text": "Ibai has successfully completed the software development program, focusing on executing projects that enhance his abilities and skills as a developer. He is hardworking, committed, consistent, respectful, and focused. It's a privilege to have him on board.",
+      "translate": "marcelo-recommendation",
+      "className": null
+    },
+    "name": "Marcelo Ricigliano",
+    "role": "CEO 4Geeks Academy",
+    "context": "Full-Stack Developer Program Coach"
+  },
+  {
+    "imageHtml": "<img src=\"assets/images/cecilia-perdomo.jpeg\" alt=\"Cecilia Perdomo - Full Stack Software Developer\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"389\" height=\"389\">",
+    "recommendation": {
+      "text": "Ibai is a proactive person who meets the set objectives and adapts easily to work teams. He constantly seeks to improve himself and creates an excellent work environment.",
+      "translate": "cecilia-recommendation",
+      "className": null
+    },
+    "name": "Cecilia Perdomo",
+    "role": "Full Stack Software Developer",
+    "context": "Full-Stack Developer Program Coach"
+  },
+  {
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/sol-la-banca.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/sol-la-banca.webp\">\n<img src=\"assets/images/sol-la-banca.jpeg\" alt=\"Sol La Banca - Project Manager\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"668\" height=\"668\" data-avif-fallback=\"true\">\n</picture>",
+    "recommendation": {
+      "text": "I had the pleasure of sharing the 4Geeks Bootcamp with him and found him to be an outstanding professional with extensive technical knowledge. He is also eager to learn new things. As a person, it has been a delight to spend this time with him, as he is always willing to help his peers and create a pleasant team atmosphere.",
+      "translate": "sol-recommendation",
+      "className": null
+    },
+    "name": "Sol La Banca",
+    "role": "Project Manager",
+    "context": "Full-Stack Developer Program Classmate"
+  },
+  {
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/pablo-bullor.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/pablo-bullor.webp\">\n<img src=\"assets/images/pablo-bullor.jpeg\" alt=\"Pablo Bullor - Program Manager en 4Geeks LATAM\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"675\" height=\"675\" data-avif-fallback=\"true\">\n</picture>",
+    "recommendation": {
+      "text": "Ibai is someone who, once he sets his mind to something (whatever it may be), goes forward and doesn't stop until he becomes a specialist. He seeks to understand the reasons behind things and always goes the extra mile. He is incredibly empathetic, with a high degree of teamwork, making him essential for collaborative work. Technically, he has a very steep learning curve, which helps him acquire new knowledge in ways rarely seen. Without a doubt, if I were to build a development team, it would be a pleasure to have him on my team.",
+      "translate": "pablo-recommendation",
+      "className": null
+    },
+    "name": "Pablo Bullor",
+    "role": "Program Manager en 4Geeks LATAM",
+    "context": "Full-Stack Developer Program Coach"
+  },
+  {
+    "imageHtml": "<img src=\"assets/images/alfredo-centeno.jpeg\" alt=\"Alfredo Centeno -Full Stack JS Web Developer\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"450\" height=\"450\">",
+    "recommendation": {
+      "text": "Ibai is a person with a high level of involvement in his projects, constantly seeking to understand how things around him work, which means he continues to acquire new skills. Without a doubt, he will overcome any challenge that comes his way.",
+      "translate": "alfredo-recommendation",
+      "className": null
+    },
+    "name": "Alfredo Centeno",
+    "role": "Full Stack JS Web Developer",
+    "context": "Full-Stack Developer Program Coach"
+  }
+]

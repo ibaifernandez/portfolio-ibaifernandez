@@ -11,7 +11,7 @@ function loadTranslations(language, callback) {
             }
         }
     };
-    xhr.open('GET', language + '.json', true); // Cargar el archivo JSON del idioma correspondiente
+    xhr.open('GET', language + '.json', true);
     xhr.send();
 }
 
@@ -29,31 +29,50 @@ function translateElements(translations) {
 // Función para cambiar el ícono del botón de acuerdo al idioma actual
 function toggleLanguageButton() {
     var buttonIcon = document.getElementById('translate-button-icon');
-    var iconPath = currentLanguage === 'en' ? 'assets/images/spain.svg' : 'assets/images/english.svg';
+    if (!buttonIcon) {
+        return;
+    }
+    var isEnglish = currentLanguage === 'en';
+    var iconPath = isEnglish ? 'assets/images/spain.svg' : 'assets/images/english.svg';
+    var nextLanguageLabel = isEnglish ? 'Switch to Spanish' : 'Switch to English';
     buttonIcon.setAttribute('src', iconPath);
+    buttonIcon.setAttribute('alt', nextLanguageLabel);
+    buttonIcon.setAttribute('aria-label', nextLanguageLabel);
 }
 
-// Función para cambiar entre idiomas y traducir los elementos
-function translate() {
-    currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
-    loadTranslations(currentLanguage, function(error, translations) {
+function applyLanguage(language) {
+    loadTranslations(language, function(error, translations) {
         if (error) {
             console.error(error);
             return;
         }
+        currentLanguage = language;
+        document.documentElement.setAttribute('lang', currentLanguage);
         translateElements(translations);
         toggleLanguageButton();
     });
 }
 
-document.getElementById('translate-button-icon').addEventListener('click', toggleLanguageButton);
+// Función para cambiar entre idiomas y traducir los elementos
+function translate(language) {
+    var targetLanguage = language || (currentLanguage === 'en' ? 'es' : 'en');
+    applyLanguage(targetLanguage);
+}
+
+var buttonIcon = document.getElementById('translate-button-icon');
+if (buttonIcon) {
+    buttonIcon.setAttribute('role', 'button');
+    buttonIcon.setAttribute('tabindex', '0');
+    buttonIcon.addEventListener('click', function() {
+        translate();
+    });
+    buttonIcon.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            translate();
+        }
+    });
+}
 
 var currentLanguage = 'en';
-loadTranslations(currentLanguage, function(error, translations) {
-    if (error) {
-        console.error(error);
-        return;
-    }
-    translateElements(translations);
-    toggleLanguageButton();
-});
+applyLanguage(currentLanguage);

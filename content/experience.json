@@ -1,0 +1,45 @@
+{
+  "rows": [
+    {
+      "rowClass": "row d-flex justify-content-betweeen",
+      "cards": [
+        {
+          "component": "src/components/index/experience-cards/lfi-mail-mkt-auto-director.html"
+        },
+        {
+          "component": "src/components/index/experience-cards/lfi-marketing-coordinator.html"
+        }
+      ]
+    },
+    {
+      "rowClass": "row",
+      "cards": [
+        {
+          "component": "src/components/index/experience-cards/lfi-front-end-developer.html"
+        },
+        {
+          "component": "src/components/index/experience-cards/aglaya-ops-director.html"
+        }
+      ]
+    },
+    {
+      "rowClass": "row",
+      "cards": [
+        {
+          "component": "src/components/index/experience-cards/nic-ec-mkt-comms-manager.html"
+        },
+        {
+          "component": "src/components/index/experience-cards/nic-ec-mkt-comms-director.html"
+        }
+      ]
+    },
+    {
+      "rowClass": "row d-flex justify-content-center",
+      "cards": [
+        {
+          "component": "src/components/index/experience-cards/elm-st-founder-narrative-architect.html"
+        }
+      ]
+    }
+  ]
+}

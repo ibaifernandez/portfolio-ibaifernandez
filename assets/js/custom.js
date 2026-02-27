@@ -15,6 +15,9 @@ Assigned to: ThemeForest
 		initialised: false,
 		version: 1.0,
 		mobile: false,
+		reduceMotion: false,
+		scriptLoaders: {},
+		stylesheetLoaders: {},
 		init: function () {
 
 			if(!this.initialised) {
@@ -22,21 +25,24 @@ Assigned to: ThemeForest
 			} else {
 				return;
 			}
+			this.reduceMotion = !!(
+				window.matchMedia &&
+				window.matchMedia('(prefers-reduced-motion: reduce)').matches
+			);
 
 			/*-------------- CV Portfolio Functions Calling ---------------------------------------------------
 			------------------------------------------------------------------------------------------------*/
 			this.open_menu();
+			this.enhance_accessibility();
 			this.custom_scrollbar();
 			this.rightbtn_onload();
 			this.rightside_onload();
 			this.bannerleft_onload();
-			this.banner_typingtext();
-			this.typed_js();
-			this.about_opendetails();
-			this.isotop_gallery();
-			this.circle_progressbar();
-			this.magnific_popup();
-			this.testimonial_slider();
+				this.banner_typingtext();
+				this.typed_js();
+				this.about_opendetails();
+				this.circle_progressbar();
+				this.testimonial_slider();
 			this.popup_video();			
 			this.responsor_slider();			
 			this.world_map();
@@ -48,6 +54,109 @@ Assigned to: ThemeForest
 			this.read_more();
 			
 		},
+
+		load_script: function(src) {
+			var _this = this;
+			if(_this.scriptLoaders[src]){
+				return _this.scriptLoaders[src];
+			}
+			_this.scriptLoaders[src] = new Promise(function(resolve, reject) {
+				var existing = document.querySelector('script[src="' + src + '"]');
+				if(existing){
+					if(existing.dataset.loaded === 'true'){
+						resolve();
+						return;
+					}
+					existing.addEventListener('load', function() {
+						existing.dataset.loaded = 'true';
+						resolve();
+					}, { once: true });
+					existing.addEventListener('error', function() {
+						reject(new Error('Failed to load script: ' + src));
+					}, { once: true });
+					return;
+				}
+				var script = document.createElement('script');
+				script.src = src;
+				script.defer = true;
+				script.dataset.loaded = 'false';
+				script.addEventListener('load', function() {
+					script.dataset.loaded = 'true';
+					resolve();
+				}, { once: true });
+				script.addEventListener('error', function() {
+					reject(new Error('Failed to load script: ' + src));
+				}, { once: true });
+				document.head.appendChild(script);
+			}).catch(function(error) {
+				delete _this.scriptLoaders[src];
+				throw error;
+			});
+			return _this.scriptLoaders[src];
+		},
+
+		load_style: function(href) {
+			var _this = this;
+			if(_this.stylesheetLoaders[href]){
+				return _this.stylesheetLoaders[href];
+			}
+			_this.stylesheetLoaders[href] = new Promise(function(resolve, reject) {
+				var existing = document.querySelector('link[href="' + href + '"]');
+				if(existing){
+					if(existing.dataset.loaded === 'true' || existing.sheet){
+						existing.dataset.loaded = 'true';
+						resolve();
+						return;
+					}
+					existing.addEventListener('load', function() {
+						existing.dataset.loaded = 'true';
+						resolve();
+					}, { once: true });
+					existing.addEventListener('error', function() {
+						reject(new Error('Failed to load stylesheet: ' + href));
+					}, { once: true });
+					return;
+				}
+				var link = document.createElement('link');
+				link.rel = 'stylesheet';
+				link.href = href;
+				link.dataset.loaded = 'false';
+				link.addEventListener('load', function() {
+					link.dataset.loaded = 'true';
+					resolve();
+				}, { once: true });
+				link.addEventListener('error', function() {
+					reject(new Error('Failed to load stylesheet: ' + href));
+				}, { once: true });
+				document.head.appendChild(link);
+			}).catch(function(error) {
+				delete _this.stylesheetLoaders[href];
+				throw error;
+			});
+			return _this.stylesheetLoaders[href];
+		},
+
+		when_in_view: function(element, callback, options) {
+			var target = element && element.jquery ? element[0] : element;
+			if(!target || typeof callback !== 'function'){
+				return;
+			}
+			var opts = options || { rootMargin: '250px 0px' };
+			if('IntersectionObserver' in window){
+				var observer = new IntersectionObserver(function(entries, localObserver) {
+					var shouldRun = entries.some(function(entry) {
+						return entry.isIntersecting;
+					});
+					if(shouldRun){
+						localObserver.disconnect();
+						callback();
+					}
+				}, opts);
+				observer.observe(target);
+				return;
+			}
+			callback();
+		},
 		
 		/*-------------- CV Portfolio Functions Calling ---------------------------------------------------
 		---------------------------------------------------------------------------------------------------*/
@@ -57,7 +166,36 @@ Assigned to: ThemeForest
 		if($('.port_togglebox').length > 0){
 			$('.port_togglebox').on('click', function(){
 				$('body').toggleClass('port_menu_open');
+				var expanded = $('body').hasClass('port_menu_open');
+				$(this).attr('aria-expanded', expanded ? 'true' : 'false');
 			});
+		}
+	},
+	/*---------------------------------------------------------------------------------------------------*/
+	// improve keyboard and aria support without changing layout
+	enhance_accessibility: function() {
+		if($('.port_navigation .tooltip_box').length > 0){
+			$('.port_navigation .tooltip_box').each(function() {
+				var link = $(this).find('a.siderbar_menuicon').first();
+				var tooltip = $(this).find('.menu_tooltip').first().text().trim();
+				if(link.length > 0 && tooltip !== ''){
+					link.attr('aria-label', tooltip);
+					link.attr('title', tooltip);
+				}
+			});
+		}
+		if($('.port_togglebox').length > 0){
+			$('.port_togglebox')
+				.attr('role', 'button')
+				.attr('tabindex', '0')
+				.attr('aria-label', 'Toggle menu')
+				.attr('aria-expanded', 'false')
+				.on('keydown', function(event){
+					if(event.key === 'Enter' || event.key === ' '){
+						event.preventDefault();
+						$(this).trigger('click');
+					}
+				});
 		}
 	},
 	/*---------------------------------------------------------------------------------------------------*/
@@ -66,22 +204,46 @@ Assigned to: ThemeForest
 	/*---------------------------------------------------------------------------------------------------*/
 	//start custom scroll bar
 	custom_scrollbar: function() {
-		if($('.port_sidebar_wrapper').length > 0){
-			$('.port_sidebar_wrapper').mCustomScrollbar({
-			moveDragger:true,
-			scrollEasing:"easeOut"
-			});
+		var _this = this;
+		var sidebar = $('.port_sidebar_wrapper');
+		if(sidebar.length > 0){
+			var initScrollbar = function() {
+				if(sidebar.data('scrollbar-ready') || typeof $.fn.mCustomScrollbar !== 'function'){
+					return;
+				}
+				sidebar.mCustomScrollbar({
+					moveDragger:true,
+					scrollEasing:"easeOut"
+				});
+				sidebar.data('scrollbar-ready', true);
+			};
+			if(typeof $.fn.mCustomScrollbar === 'function' && document.querySelector('link[href="assets/css/scrollbar.css"]')){
+				initScrollbar();
+				return;
+			}
+			var scriptLoader = typeof $.fn.mCustomScrollbar === 'function'
+				? Promise.resolve()
+				: _this.load_script('assets/js/scrollbar.js');
+			Promise.all([
+				_this.load_style('assets/css/scrollbar.css'),
+				scriptLoader
+			])
+				.then(initScrollbar)
+				.catch(function() {
+					sidebar.data('scrollbar-failed', true);
+				});
 		}
 	},
 	/*---------------------------------------------------------------------------------------------------*/
 	
 	// start on load 
 	bannerleft_onload: function() {
+		var disableMotion = this.reduceMotion;
 		if($('.bannner_leftpart').length > 0){
 			$(window).on('load', function(){
 			setTimeout(function() {
 				$('.bannner_leftpart').addClass('mbannner_leftpart');
-				}, 300);
+				}, disableMotion ? 0 : 300);
 			});
 		}
 	},
@@ -89,11 +251,12 @@ Assigned to: ThemeForest
 
 	// right side image
 	rightside_onload: function() {
+		var disableMotion = this.reduceMotion;
 		if($('.banner_svg_box').length > 0){
 			$(window).on('load', function(){
 			setTimeout(function() {
 				$('.banner_svg_box').addClass('mbanner_svg_box');
-				}, 1500);
+				}, disableMotion ? 0 : 1500);
 			});
 		}
 	},		
@@ -101,11 +264,12 @@ Assigned to: ThemeForest
 	
 	// right side hire me btn
 	rightbtn_onload: function() {
+		var disableMotion = this.reduceMotion;
 		if($('.brc_hirebtn').length > 0){	
 			$(window).on('load', function(){
 			setTimeout(function() {
 				$('.brc_hirebtn').addClass('mbrc_hirebtn');
-				}, 2500);
+				}, disableMotion ? 0 : 2500);
 			});
 		}
 	},
@@ -114,6 +278,19 @@ Assigned to: ThemeForest
 	// Typed JS
 	typed_js: function() {
 		if($('.typed').length > 0){	
+			if(this.reduceMotion){
+				$('.typed').each(function(){
+					var _this = $(this);
+					var stringsContainer = _this.parent().find('.typed-strings');
+					if(stringsContainer.length > 0){
+						var firstText = stringsContainer.find('p').first().text().trim();
+						if(firstText !== ''){
+							_this.text(firstText);
+						}
+					}
+				});
+				return;
+			}
 			$('.typed').each(function(){
 				var _this = $(this);
 				var typed = new Typed(this, {
@@ -130,31 +307,59 @@ Assigned to: ThemeForest
 	
 	// animated banner text
 	banner_typingtext: function() {
-		if($('.icon').length > 0){
-			$('.banner_typingtext').textillate({
-				loop: true,
-				minDisplayTime: 2e3,
-				initialDelay: 0,
-				autoStart: true,
-				"in": {
-					effect: "bounceIn",
-					// effect: "bounceInDown",
-					delayScale: 2.5,
-					delay: 50,
-					sync: false,
-					shuffle: false,
-					reverse: false
-				},
-				out: {
-					effect: "bounceOut",
-					// effect: "bounceOut",
-					delayScale: 2.5,
-					delay: 0,
-					sync: false,
-					shuffle: false,
-					reverse: false
+		if(this.reduceMotion){
+			return;
+		}
+		var _this = this;
+		var typingTarget = $('.banner_typingtext');
+		if(typingTarget.length > 0){
+			var initTyping = function() {
+				if(typingTarget.data('textillate-ready') || typeof $.fn.textillate !== 'function'){
+					return;
 				}
-			});
+				typingTarget.textillate({
+					loop: true,
+					minDisplayTime: 2e3,
+					initialDelay: 0,
+					autoStart: true,
+					"in": {
+						effect: "bounceIn",
+						// effect: "bounceInDown",
+						delayScale: 2.5,
+						delay: 50,
+						sync: false,
+						shuffle: false,
+						reverse: false
+					},
+					out: {
+						effect: "bounceOut",
+						// effect: "bounceOut",
+						delayScale: 2.5,
+						delay: 0,
+						sync: false,
+						shuffle: false,
+						reverse: false
+					}
+				});
+				typingTarget.data('textillate-ready', true);
+			};
+			var bootTyping = function() {
+				if(typeof $.fn.textillate === 'function'){
+					initTyping();
+					return;
+				}
+				var loadTextillate = typeof $.fn.lettering === 'function'
+					? _this.load_script('assets/js/cvtext1.js')
+					: _this.load_script('assets/js/cvtext2.js').then(function() {
+						return _this.load_script('assets/js/cvtext1.js');
+					});
+				loadTextillate
+					.then(initTyping)
+					.catch(function() {
+						typingTarget.data('textillate-failed', true);
+					});
+			};
+			_this.when_in_view(typingTarget.get(0), bootTyping, { rootMargin: '150px 0px' });
 		}
 	},
 	/*------------------------------------------------------------------*/ 
@@ -168,59 +373,8 @@ Assigned to: ThemeForest
 		}
 	},
 	
-	/*------------------------------------------------------------------*/ 
-	// Start isotop gallery js 
-		isotop_gallery: function() {
-			if($('.gallery_grid').length > 0){
-				$('.gallery_grid').isotope({
-						itemSelector: '.grid-item',
-						filter: '*'
-					});
-					$('.port_project_gallery > .gallery_nav > ul > li').on( 'click', 'a', function() {
-						// filter button click
-						var filterValue = $( this ).attr('data-filter');
-						$('.gallery_grid').isotope({ filter: filterValue });
-
-						//active class added
-						$('a').removeClass('gallery_active');
-						$(this).addClass('gallery_active');
-					});
-			}
-		},
-	/*------------------------------------------------------------------*/ 
-	
-	// magnifiv popup for project gallery
-	magnific_popup: function() {
-        if ($('.view').length > 0) {
-            $('.view').magnificPopup({
-                type: 'image',
-                mainClass: 'mfp-with-zoom', // this class is for CSS animation below
-    
-                gallery: {
-                    enabled: true
-                },
-                callbacks: {
-                    open: function() {
-                        $(".mfp-figure figure").css("cursor", "zoom-in");
-                        $(".mfp-figure figure").zoom({
-                            on: "click",
-                            onZoomIn: function () {
-                                $(this).css("cursor", "zoom-out");
-                            },
-                            onZoomOut: function () {
-                                $(this).css("cursor", "zoom-in");
-                            }
-                        });
-                    },
-                    close: function() {
-                        // Will fire when popup is closed
-                    }
-                }
-            });
-        }
-    },
-
-    zoom_in: function() {
+		/*------------------------------------------------------------------*/ 
+	    zoom_in: function() {
         $(document).ready(function(){
             $('.mpf-img img').zoom({ on: 'click' });
         });
@@ -229,21 +383,49 @@ Assigned to: ThemeForest
 	/*------------------------------------------------------------------*/
 	// Start testimonial swipper slider
 	testimonial_slider: function() {
-		if($('.port_testimonial_setions .swiper-container').length > 0){
-			var swiper = new Swiper('.port_testimonial_setions .swiper-container', {
-			  slidesPerView: 1,
-			  spaceBetween: 30,
-			  loop: true,
-			  speed:1000,
-			   navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-				},
-			  autoplay: {
-					delay: 5500,
-					disableOnInteraction: false,
-				},
-			});
+		var _this = this;
+		var target = $('.port_testimonial_setions .swiper-container');
+		if(target.length > 0){
+			var disableMotion = this.reduceMotion;
+			var initSwiper = function() {
+				if(target.data('swiper-ready') || typeof window.Swiper !== 'function'){
+					return;
+				}
+				new Swiper('.port_testimonial_setions .swiper-container', {
+				  slidesPerView: 1,
+				  spaceBetween: 30,
+				  loop: true,
+				  speed:disableMotion ? 0 : 1000,
+				   navigation: {
+					nextEl: '.swiper-button-next',
+					prevEl: '.swiper-button-prev',
+					},
+				  autoplay: disableMotion ? false : {
+						delay: 5500,
+						disableOnInteraction: false,
+					},
+				});
+				target.data('swiper-ready', true);
+			};
+			var bootSwiper = function() {
+				if(typeof window.Swiper === 'function' && document.querySelector('link[href="assets/css/swiper.min.css"]')){
+					initSwiper();
+					return;
+				}
+				var scriptLoader = typeof window.Swiper === 'function'
+					? Promise.resolve()
+					: _this.load_script('assets/js/swiper.min.js');
+				Promise.all([
+					_this.load_style('assets/css/swiper.min.css'),
+					scriptLoader
+				])
+					.then(initSwiper)
+					.catch(function() {
+						target.data('swiper-failed', true);
+					});
+			};
+			var section = $('.port_testimonial_setions').get(0) || target.get(0);
+			_this.when_in_view(section, bootSwiper, { rootMargin: '250px 0px' });
 		}
 	},
 	// End testimonial swipper slider
@@ -251,36 +433,58 @@ Assigned to: ThemeForest
 	
 	// Re sponsor swipper slider
 	responsor_slider: function() {
-		if($('.port_responsor_setions .swiper-container').length > 0){
-			var swiper = new Swiper('.port_responsor_setions .swiper-container', {
-			  slidesPerView: 5,
-			  spaceBetween: 30,
-			  loop: true,
-			  speed:1000,
-			  autoplay: {
-					delay: 3500,
-				},
-				
-			// Responsive breakpoints
-			  breakpoints: {
-				// when window width is <= 320px
-				480: {
-				  slidesPerView: 1,
-				  spaceBetween: 10
-				},
-				// when window width is <= 480px
-				767: {
-				  slidesPerView: 3,
-				  spaceBetween: 20
-				},
-				// when window width is <= 640px
-				991: {
-				  slidesPerView: 4,
-				  spaceBetween: 30
+		var _this = this;
+		var target = $('.port_responsor_setions .swiper-container');
+		if(target.length > 0){
+			var disableMotion = this.reduceMotion;
+			var initSwiper = function() {
+				if(target.data('swiper-ready') || typeof window.Swiper !== 'function'){
+					return;
 				}
-			  }
-		 
-			});
+				new Swiper('.port_responsor_setions .swiper-container', {
+				  slidesPerView: 5,
+				  spaceBetween: 30,
+				  loop: true,
+				  speed:disableMotion ? 0 : 1000,
+				  autoplay: disableMotion ? false : {
+						delay: 3500,
+					},
+				  breakpoints: {
+					480: {
+					  slidesPerView: 1,
+					  spaceBetween: 10
+					},
+					767: {
+					  slidesPerView: 3,
+					  spaceBetween: 20
+					},
+					991: {
+					  slidesPerView: 4,
+					  spaceBetween: 30
+					}
+				  }
+				});
+				target.data('swiper-ready', true);
+			};
+			var bootSwiper = function() {
+				if(typeof window.Swiper === 'function' && document.querySelector('link[href="assets/css/swiper.min.css"]')){
+					initSwiper();
+					return;
+				}
+				var scriptLoader = typeof window.Swiper === 'function'
+					? Promise.resolve()
+					: _this.load_script('assets/js/swiper.min.js');
+				Promise.all([
+					_this.load_style('assets/css/swiper.min.css'),
+					scriptLoader
+				])
+					.then(initSwiper)
+					.catch(function() {
+						target.data('swiper-failed', true);
+					});
+			};
+			var section = $('.port_responsor_setions').get(0) || target.get(0);
+			_this.when_in_view(section, bootSwiper, { rootMargin: '250px 0px' });
 		}
 	},
 	
@@ -289,10 +493,17 @@ Assigned to: ThemeForest
 	
 	// circle progress bar js start
 	circle_progressbar: function() {
-		if($('.progressbar').length > 0){
-			$(document).ready(function(){
+		var _this = this;
+		var progressItems = $('.progressbar');
+		if(progressItems.length > 0){
+			var disableMotion = this.reduceMotion;
+			var initProgress = function() {
+				if(progressItems.data('circle-ready') || typeof $.fn.circleProgress !== 'function'){
+					return;
+				}
+				progressItems.data('circle-ready', true);
 				function animateElements() {
-					$('.progressbar').each(function () {
+					progressItems.each(function () {
 						var elementPos = $(this).offset().top;
 						var topOfWindow = $(window).scrollTop();
 						var percent = $(this).find('.circle').attr('data-percent');
@@ -305,22 +516,31 @@ Assigned to: ThemeForest
 								size : 400,
 								thickness: 15,
 								lineCap: 'round',
+								animation: disableMotion ? false : {
+									duration: 1100
+								},
 								fill: {
 									color: '#FF754A'
 								}
-							}).stop()
-                            // .on('circle-animation-progress', function (event, progress, stepValue) {
-							// 	$(this).find('strong').text((stepValue*100).toFixed(0) + "%");
-							// }).stop();
+							}).stop();
 						}
 					});
 				}
-
 				animateElements();
-				$(window).scroll(animateElements);
-
-			
-			});
+				$(window).off('scroll.circleProgress').on('scroll.circleProgress', animateElements);
+			};
+			var bootProgress = function() {
+				if(typeof $.fn.circleProgress === 'function'){
+					initProgress();
+					return;
+				}
+				_this.load_script('assets/js/circle-progress.js')
+					.then(initProgress)
+					.catch(function() {
+						progressItems.data('circle-failed', true);
+					});
+			};
+			_this.when_in_view(progressItems.get(0), bootProgress, { rootMargin: '300px 0px' });
 		}
 	},
 		
@@ -329,9 +549,38 @@ Assigned to: ThemeForest
 	
 	// start map js
 	world_map: function() {
+		var _this = this;
 		if($('#world-map').length > 0){
-			$(function(){
-				$('#world-map').vectorMap({
+			var mapContainer = $('#world-map');
+			var mapBooting = false;
+			var ensureVectorMapAssets = function() {
+				if(typeof mapContainer.vectorMap === 'function' && document.querySelector('link[href="assets/css/jquery-jvectormap-2.0.3.css"]')){
+					return Promise.resolve();
+				}
+				var mapScriptLoader = typeof mapContainer.vectorMap === 'function'
+					? Promise.resolve()
+					: _this.load_script('assets/js/jquery-jvectormap.min.js')
+						.then(function() {
+							return _this.load_script('assets/js/jquery-jvectormap-world-mill.js');
+						});
+				return Promise.all([
+					_this.load_style('assets/css/jquery-jvectormap-2.0.3.css'),
+					mapScriptLoader
+				]);
+			};
+			var initializeMap = function() {
+				if(mapContainer.data('map-initialized') || mapBooting){
+					return;
+				}
+				mapBooting = true;
+				ensureVectorMapAssets()
+					.then(function() {
+						if(mapContainer.data('map-initialized') || typeof mapContainer.vectorMap !== 'function'){
+							mapBooting = false;
+							return;
+						}
+						mapContainer.data('map-initialized', true);
+						mapContainer.vectorMap({
 				map: 'world_mill',
 				scaleColors: ['#C8EEFF', '#0071A4'],
 				normalizeFunction: 'polynomial',
@@ -710,33 +959,60 @@ Assigned to: ThemeForest
                         }
 					]
 				  });
-				});
-		}
-	},
+						mapBooting = false;
+					})
+					.catch(function() {
+						mapBooting = false;
+						mapContainer.data('map-init-failed', true);
+					});
+			};
+				_this.when_in_view(mapContainer[0], initializeMap, { rootMargin: '250px 0px' });
+			}
+		},
 	// end map js
 	/*------------------------------------------------------------------*/ 
 	
 	// start video popup js
 	popup_video: function() {
-		if($('.testimonial_icon .video').length > 0){
-			$('.testimonial_icon .video').magnificPopup({ 
-			type: 'iframe',
-			iframe: {
-				markup: '<div class="mfp-iframe-scaler">'+
-					'<div class="mfp-close"></div>'+
-					'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
-					'<div class="mfp-title">Some caption</div>'+
-					'</div>',
-				patterns: {
-					youtube: {
-						index: 'youtube.com/', 
-						id: 'v=',
-						src: 'https://www.youtube.com/embed/fpQcEiwxzQE'
+		var _this = this;
+		var videoItems = $('.testimonial_icon .video');
+		if(videoItems.length > 0){
+			var initPopup = function() {
+				if(videoItems.data('video-popup-ready') || typeof $.fn.magnificPopup !== 'function'){
+					return;
+				}
+				videoItems.magnificPopup({ 
+					type: 'iframe',
+					iframe: {
+						markup: '<div class="mfp-iframe-scaler">'+
+							'<div class="mfp-close"></div>'+
+							'<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+							'<div class="mfp-title">Some caption</div>'+
+							'</div>',
+						patterns: {
+							youtube: {
+								index: 'youtube.com/', 
+								id: 'v=',
+								src: 'https://www.youtube.com/embed/fpQcEiwxzQE'
+							}
 						}
 					}
+				});	
+				videoItems.data('video-popup-ready', true);
+			};
+			var bootPopup = function() {
+				if(typeof $.fn.magnificPopup === 'function'){
+					initPopup();
+					return;
 				}
-				// other options
-			});	
+				_this.load_script('assets/js/jquery.magnific-popup.min.js')
+					.then(initPopup)
+					.catch(function() {
+						videoItems.data('video-popup-failed', true);
+					});
+			};
+			var section = $('.port_testimonial_setions').get(0) || videoItems.get(0);
+			_this.when_in_view(section, bootPopup, { rootMargin: '250px 0px' });
 		}
 	},
 	// End video popup js
@@ -745,8 +1021,39 @@ Assigned to: ThemeForest
 	// Contact Form Submission
 	contact_form: function() {
 		if($('.submitForm').length > 0){
+			var minSubmitDelayMs = 1200;
+			var messages = {
+				missingFields: 'Please complete the required fields.',
+				waitBeforeSubmit: 'Please wait a moment and try again.',
+				genericError: 'Something went wrong. Please try again later.',
+				success: 'Mail has been sent successfully.',
+				invalidRule: 'Validation rule is not configured.'
+			};
+			function setResponse(targetResp, message, type){
+				targetResp.removeClass('is-error is-success');
+				targetResp.attr('role', type === 'error' ? 'alert' : 'status');
+				targetResp.addClass(type === 'error' ? 'is-error' : 'is-success');
+				targetResp.text(message);
+			}
+			function clearResponse(targetResp){
+				targetResp.removeClass('is-error is-success');
+				targetResp.attr('role', 'status');
+				targetResp.text('');
+			}
+			function setFieldInvalid(field){
+				field.addClass('error').attr('aria-invalid', 'true');
+			}
+			function clearFieldInvalid(field){
+				field.removeClass('error').attr('aria-invalid', 'false');
+			}
+			function refreshStartTimestamp(targetForm){
+				var startedAtField = targetForm.find('input[name="form_started_at"]');
+				if(startedAtField.length > 0){
+					startedAtField.val(String(Date.now()));
+				}
+			}
 			function checkRequire(formId , targetResp){
-				targetResp.html('');
+				clearResponse(targetResp);
 				var email = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 				var url = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
 				var image = /\.(jpe?g|gif|png|PNG|JPE?G)$/;
@@ -754,47 +1061,90 @@ Assigned to: ThemeForest
 				var facebook = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
 				var twitter = /^(https?:\/\/)?(www\.)?twitter.com\/[a-zA-Z0-9(\.\?)?]/;
 				var google_plus = /^(https?:\/\/)?(www\.)?plus.google.com\/[a-zA-Z0-9(\.\?)?]/;
+				var validators = {
+					email: email,
+					url: url,
+					image: image,
+					mobile: mobile,
+					facebook: facebook,
+					twitter: twitter,
+					google_plus: google_plus
+				};
 				var check = 0;
 				$('#er_msg').remove();
 				var target = (typeof formId == 'object')? $(formId):$('#'+formId);
+				target.find('.form-control').each(function(){
+					clearFieldInvalid($(this));
+				});
 				target.find('input , textarea , select').each(function(){
+					if($(this).attr('type') === 'hidden'){
+						return true;
+					}
 					if($(this).hasClass('require')){
 						if($(this).val().trim() == ''){
 							check = 1;
 							$(this).focus();
-							targetResp.html('You missed out some fields.');
-							$(this).addClass('error');
+							setFieldInvalid($(this));
+							setResponse(targetResp, messages.missingFields, 'error');
 							return false;
 						}else{
-							$(this).removeClass('error');
+							clearFieldInvalid($(this));
 						}
 					}
 					if($(this).val().trim() != ''){
 						var valid = $(this).attr('data-valid');
 						if(typeof valid != 'undefined'){
-							if(!eval(valid).test($(this).val().trim())){
-								$(this).addClass('error');
+							if(typeof validators[valid] === 'undefined'){
+								check = 1;
+								setResponse(targetResp, messages.invalidRule, 'error');
+								return false;
+							}
+							if(!validators[valid].test($(this).val().trim())){
+								setFieldInvalid($(this));
 								$(this).focus();
 								check = 1;
-								targetResp.html($(this).attr('data-error'));
+								setResponse(targetResp, $(this).attr('data-error'), 'error');
 								return false;
 							}else{
-								$(this).removeClass('error');
+								clearFieldInvalid($(this));
 							}
 						}
 					}
 				});
 				return check;
 			}
+			$('.submitForm').each(function(){
+				var targetForm = $(this).closest('form');
+				refreshStartTimestamp(targetForm);
+				targetForm.find('.form-control').attr('aria-invalid', 'false');
+			});
+			$(document).on('input change', '#scroll_contact .form-control', function(){
+				clearFieldInvalid($(this));
+			});
 			$('.submitForm').on('click', function() {
 				var _this = $(this);
-				console.log(_this.attr('data-type'));
+				if(_this.prop('disabled')){
+					return;
+				}
 				var targetForm = _this.closest('form');
 				var errroTarget = targetForm.find('.response');
+				var honeypotValue = targetForm.find('input[name="website"]').val();
+				var startedAtValue = parseInt(targetForm.find('input[name="form_started_at"]').val(), 10);
+				if(typeof honeypotValue === 'string' && honeypotValue.trim() !== ''){
+					setResponse(errroTarget, messages.genericError, 'error');
+					refreshStartTimestamp(targetForm);
+					return;
+				}
+				if(!startedAtValue || (Date.now() - startedAtValue) < minSubmitDelayMs){
+					setResponse(errroTarget, messages.waitBeforeSubmit, 'error');
+					return;
+				}
 				var check = checkRequire(targetForm , errroTarget);
 				if(check == 0){
+					clearResponse(errroTarget);
+					_this.prop('disabled', true).attr('aria-busy', 'true');
 					var formDetail = new FormData(targetForm[0]);
-    					formDetail.append('form_type' , _this.attr('data-type'));
+	    					formDetail.append('form_type' , _this.attr('data-type'));
 					$.ajax({
 						method : 'post',
 						url : 'ajax.php',
@@ -804,12 +1154,21 @@ Assigned to: ThemeForest
 						processData: false
 					}).done(function(resp){
 						if(resp == 1){
-							targetForm.find('input').val('');
+							targetForm.find('input:not([type="hidden"])').val('');
 							targetForm.find('textarea').val('');
-							errroTarget.html('<p style="color:green;">Mail has been sent successfully.</p>');
+							targetForm.find('input[name="website"]').val('');
+							targetForm.find('.form-control').attr('aria-invalid', 'false');
+							refreshStartTimestamp(targetForm);
+							setResponse(errroTarget, messages.success, 'success');
 						}else{
-							errroTarget.html('<p style="color:red;">Something went wrong please try again latter.</p>');
+							setResponse(errroTarget, messages.genericError, 'error');
+							refreshStartTimestamp(targetForm);
 						}
+					}).fail(function(){
+						setResponse(errroTarget, messages.genericError, 'error');
+						refreshStartTimestamp(targetForm);
+					}).always(function(){
+						_this.prop('disabled', false).removeAttr('aria-busy');
 					});
 				}
 			});
@@ -822,6 +1181,7 @@ Assigned to: ThemeForest
 	/*------------------------------------------------------------------*/
 	// Go to Top button
 	goto_top: function() {
+		var disableMotion = this.reduceMotion;
 		if($('.bottom_top').length > 0){
 			$(function(){
 				// Scroll Event
@@ -832,7 +1192,7 @@ Assigned to: ThemeForest
 				});  
 				// Click Event
 				$('.bottom_top').on('click', function() {
-					$("html, body").animate({ scrollTop: "0" },  500);
+					$("html, body").animate({ scrollTop: "0" }, disableMotion ? 0 : 500);
 				});
 			});
 		}
@@ -842,37 +1202,68 @@ Assigned to: ThemeForest
 	/*------------------------------------------------------------------*/ 
 	//Single page scroll js
 	page_scroll: function() {
-		if($('.port_navigation.index_navigation .nav_list li').length > 0){	
-			$('.port_navigation.index_navigation .nav_list li').on('click' , function(e){
+		var disableMotion = this.reduceMotion;
+		if($('.port_navigation.index_navigation .nav_list li').length > 0){
+			var navItems = $('.port_navigation.index_navigation .nav_list li');
+			var sectionTargets = $('.page_scroll[data-scroll]');
+			var scrollToTarget = function(scrollNumber) {
+				var target = sectionTargets.filter('[data-scroll="' + scrollNumber + '"]').first();
+				if(target.length === 0){
+					target = $('[data-scroll="' + scrollNumber + '"]').first();
+				}
+				if(target.length === 0){
+					return;
+				}
 				$('.port_navigation .nav_list li').removeClass('active');
-				$(this).addClass('active');
-				var target = $('[data-scroll='+$(this).attr('data-number')+']');
-				e.preventDefault();
-				var targetHeight = target.offset().top-0;
+				navItems.filter('[data-number="' + scrollNumber + '"]').addClass('active');
 				$('html, body').animate({
-					scrollTop: targetHeight
-				}, 0);
+					scrollTop: target.offset().top
+				}, disableMotion ? 0 : 220);
+			};
+
+			navItems.on('click', function(e){
+				e.preventDefault();
+				scrollToTarget($(this).attr('data-number'));
+			});
+
+			navItems.find('a.siderbar_menuicon').on('click', function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				scrollToTarget($(this).closest('li').attr('data-number'));
 			});
 		}
 	},	
 	//scroll active class js
 	window_scroll: function() {
 		if($('.port_navigation').length > 0){	
-			$(window).scroll(function() {
+			var navItems = $('.port_navigation .nav_list li');
+			var sectionTargets = $('.page_scroll[data-scroll]');
+			if(sectionTargets.length === 0){
+				sectionTargets = $('[data-scroll]');
+			}
+			sectionTargets = sectionTargets.filter(function() {
+				var scrollNumber = String($(this).attr('data-scroll'));
+				return navItems.filter('[data-number="' + scrollNumber + '"]').length > 0;
+			});
+			$(window).on('scroll', function() {
 				var windscroll = $(window).scrollTop();
-				var target = $('.port_navigation .nav_list li');
 				if (windscroll >= 0) {
-					$('[data-scroll]').each(function(i) {
-						if ($(this).position().top <= windscroll + 78) {
-							target.removeClass('active');
-							target.eq(i).addClass('active');
+					var activeNumber = null;
+					sectionTargets.each(function() {
+						if ($(this).offset().top <= windscroll + 120) {
+							activeNumber = String($(this).attr('data-scroll'));
 						}
 					});
+					if(activeNumber !== null){
+						navItems.removeClass('active');
+						navItems.filter('[data-number="' + activeNumber + '"]').addClass('active');
+					}
 				}else{
-					target.removeClass('active');
+					navItems.removeClass('active');
 					$('.port_navigation .nav_list li:first').addClass('active');
 				}
 			});
+			$(window).trigger('scroll');
 		}
 	},
 	/*------------------------------------------------------------------*/ 
@@ -880,34 +1271,64 @@ Assigned to: ThemeForest
 	/*------------------------------------------------------------------*/
 	//click to scroll
 	scroll_contact: function() {
+		var disableMotion = this.reduceMotion;
 		if($('.redirect_contact').length > 0){
-			$('.redirect_contact').on('click', function() {
+			$('.redirect_contact').on('click', function(e) {
+				e.preventDefault();
+				if(window.history && typeof window.history.pushState === 'function'){
+					window.history.pushState(null, '', '#scroll_contact');
+				}else{
+					window.location.hash = 'scroll_contact';
+				}
 				$('html, body').animate({
 					scrollTop: $('#scroll_contact').offset().top
-				}, 0);
+				}, disableMotion ? 0 : 220);
 			});
 		}
 	},
 	/*------------------------------------------------------------------*/ 
 	
 	/*------------------------------------------------------------------*/ 
-	//Read more
-	read_more: function() {
-		if($('.ex_btn').length > 0){
-			$('.ex_btn').on('click', function() {
-				$(".more_content").not($(this).siblings(".more_content")).slideUp();
-				$(".ex_btn").not(this).text("⬇️");
-				$(this).siblings('.more_content').slideToggle();
-			  if ($(this).text() == "⬇️") {
-				$(this).text("⬆️")
-			  } else {
-				$(this).text("⬇️")
-			  }
-			});
-			 $('.ex_rightside').on('click', function(e) {
-				e.stopPropagation(); 
-			});
-		}
+		//Read more
+		read_more: function() {
+			if($('.ex_btn').length > 0){
+				var disableMotion = this.reduceMotion;
+				var syncExpandedIntroState = function(button) {
+					var currentCard = button.closest('.ex_rightside');
+					$('.ex_rightside.expand-intro-on-open').not(currentCard).removeClass('intro-expanded');
+					if(!currentCard.hasClass('expand-intro-on-open')){
+						return;
+					}
+					var isOpen = button.siblings('.more_content:visible').length > 0;
+					currentCard.toggleClass('intro-expanded', isOpen);
+				};
+				$('.ex_btn').on('click', function() {
+					var button = $(this);
+					if(disableMotion){
+						$(".more_content").not($(this).siblings(".more_content")).hide();
+						$(this).siblings('.more_content').toggle();
+					}else{
+						$(".more_content").not($(this).siblings(".more_content")).slideUp();
+						$(this).siblings('.more_content').slideToggle();
+					}
+					$(".ex_btn").not(this).text("⬇️");
+				  if ($(this).text() == "⬇️") {
+					$(this).text("⬆️")
+				  } else {
+					$(this).text("⬇️")
+				  }
+				  if(disableMotion){
+					syncExpandedIntroState(button);
+				  }else{
+					setTimeout(function() {
+						syncExpandedIntroState(button);
+					}, 260);
+				  }
+				});
+				 $('.ex_rightside').on('click', function(e) {
+					e.stopPropagation(); 
+				});
+			}
 	},
 	/*------------------------------------------------------------------*/ 
 	
@@ -919,6 +1340,11 @@ Assigned to: ThemeForest
 	
 	
 	$(window).on('load', function() {
+		if(portfolio.reduceMotion){
+			$(".status").hide();
+			$(".preloader").hide();
+			return;
+		}
 		$(".status").fadeOut(1800);
 		$(".preloader").delay(1000).fadeOut("slow");
 	});

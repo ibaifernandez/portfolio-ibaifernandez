@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{{pageDescription}}">
+	<meta name="keywords" content="{{pageKeywords}}">
+	<meta name="author" content="{{pageAuthor}}">
+	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="theme-color" content="#f0ede7">
+	<meta property="og:type" content="{{pageOgType}}">
+	<meta property="og:url" content="{{pageCanonicalUrl}}">
+	<meta property="og:title" content="{{pageTitle}}">
+	<meta property="og:description" content="{{pageDescription}}">
+	<meta property="og:image" content="{{pageShareImage}}">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{pageCanonicalUrl}}">
+	<meta property="twitter:title" content="{{pageTitle}}">
+	<meta property="twitter:description" content="{{pageDescription}}">
+	<meta property="twitter:image" content="{{pageShareImage}}">
+	<title>{{pageTitle}}</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap">
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="{{pageCanonicalUrl}}">
+</head>
+
+<body class="debtracker_page">
+	<a class="skip-link" href="#project_main">Skip to main content</a>
+
+	<div class="preloader">
+		<div class="status">
+			<img src="assets/images/loader.gif" id="preloader_image" alt="loader" loading="eager" decoding="sync"
+				fetchpriority="high" width="150" height="150">
+		</div>
+	</div>
+
+	<!-- @include ../components/project/sidebar.html -->
+
+	<div class="port_togglebox">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div class="port_sec_warapper" id="project_main">
+			<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper debtracker_wrapper">
+				<div class="container-fluid project_case_container">
+				<div class="row">
+					<div class="col-12">
+						<a href="{{projectBackHref}}" class="project_case_backlink">Back to portfolio</a>
+					</div>
+					<div class="col-12">
+						<div class="debtracker_context" id="debtracker-context">
+							<p class="debtracker_context_status">
+								Active Context:
+								<strong id="context-current-label">Corporate View</strong>
+							</p>
+							<label class="debtracker_context_switch" for="context-switch">
+								<span class="debtracker_context_label">Corporate View</span>
+								<span class="debtracker_context_toggle_shell">
+									<input id="context-switch" type="checkbox" role="switch"
+										aria-label="Toggle between Corporate View and Spite Driven">
+									<span class="debtracker_context_slider" aria-hidden="true"></span>
+									<span class="debtracker_context_beacon" aria-hidden="true"></span>
+								</span>
+								<span class="debtracker_context_label">Spite Driven</span>
+							</label>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-12 mb-4 mb-xl-0">
+						<div class="project_case_media">
+{{{projectMediaHtml}}}
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-12">
+						<article class="project_case_content debtracker_content">
+							<p class="project_case_eyebrow debtracker_context_copy"
+								data-corporate="Full-Stack Financial Architecture / Next.js 15 PWA"
+								data-dev="Paranoid Architecture / Next.js 15 PWA">
+								Full-Stack Financial Architecture / Next.js 15 PWA
+							</p>
+							<h1 class="project_case_title debtracker_context_copy"
+								data-corporate="DebTracker: Zero-Trust Financial Ledger"
+								data-dev="DebTracker: Because Math Doesn't Forget">
+								DebTracker: Zero-Trust Financial Ledger
+							</h1>
+							<p class="project_case_intro debtracker_context_copy"
+								data-corporate="DebTracker is a modern web application built for type safety, performance, and serverless scalability. I engineered this platform to compete directly with industry incumbents like Splitwise by offering a &quot;Purist's Choice&quot; - respecting user time and data by eliminating ad interruptions, artificial transaction limits, and &quot;monetization by friction&quot;."
+								data-dev="I didn't build this to learn React; I built this out of pure, unfiltered spite for friends who miraculously &quot;forget&quot; their wallets. While industry incumbents ruin their UX with ads and arbitrary friction to force subscriptions, I engineered a highly vindictive, server-authoritative ledger where gaslighting is mathematically impossible.">
+								DebTracker is a modern web application built for type safety, performance, and serverless scalability. I engineered this platform to compete directly with industry incumbents like Splitwise by offering a "Purist's Choice" - respecting user time and data by eliminating ad interruptions, artificial transaction limits, and "monetization by friction".
+							</p>
+						</article>
+					</div>
+					<div class="col-12">
+						<section class="debtracker_section">
+							<h2 class="project_case_heading debtracker_context_copy"
+								data-corporate="The Architectural Paradigm"
+								data-dev="The &quot;Trust No One&quot; Architecture">
+								The Architectural Paradigm
+							</h2>
+							<p class="project_case_paragraph debtracker_context_copy"
+								data-corporate="To ensure the absolute integrity of financial data, I deployed a strict Zero-Trust, Server-Authoritative write model. In this architecture, the client SDK is entirely read-only. Every financial mutation is routed through Next.js Server Actions, centralizing validation and enforcing complex business logic natively on the server. By implementing a snapshot strategy and denormalizing data at write-time, I eradicated the N+1 query problem, replacing iterative fetching with highly efficient collection group queries."
+								data-dev="The frontend is a dumb terminal. The client SDK is deliberately restricted to read-only. Why? Because users lie. Every financial mutation is violently validated by Next.js Server Actions before hitting Firestore. I eradicated the N+1 query problem by executing heavy balance calculations at write-time, meaning the app loads your debts faster than you can formulate an excuse.">
+								To ensure the absolute integrity of financial data, I deployed a strict Zero-Trust, Server-Authoritative write model. In this architecture, the client SDK is entirely read-only. Every financial mutation is routed through Next.js Server Actions, centralizing validation and enforcing complex business logic natively on the server. By implementing a snapshot strategy and denormalizing data at write-time, I eradicated the N+1 query problem, replacing iterative fetching with highly efficient collection group queries.
+							</p>
+						</section>
+					</div>
+					<div class="col-12">
+						<div class="debtracker_terminal debtracker_security_terminal"
+							aria-label="Zero-Trust security log simulator terminal">
+							<div class="debtracker_terminal_bar">
+								<div class="debtracker_terminal_lights">
+									<span></span><span></span><span></span>
+								</div>
+								<p>zero-trust-security.log</p>
+							</div>
+							<pre class="debtracker_security_output" id="security-log-output" aria-live="polite"
+								aria-atomic="false"></pre>
+						</div>
+					</div>
+					<div class="col-12">
+						<section class="debtracker_section">
+							<h2 class="project_case_heading debtracker_context_copy"
+								data-corporate="Implacable Business Logic"
+								data-dev="Paranoid Business Logic">
+								Implacable Business Logic
+							</h2>
+							<p class="project_case_paragraph debtracker_context_copy"
+								data-corporate="Code is useless if the business logic is flawed. DebTracker operates under three unbreakable systemic protocols:"
+								data-dev="Code is useless if the business logic is naive. DebTracker runs under three paranoid protocols:">
+								Code is useless if the business logic is flawed. DebTracker operates under three unbreakable systemic protocols:
+							</p>
+							<div class="debtracker_demo" id="penny-perfect-demo">
+								<div class="debtracker_demo_controls">
+									<label class="debtracker_demo_label" for="demo-total-amount">
+										Total Amount
+										<input id="demo-total-amount" type="number" min="0" step="0.01" value="100.00">
+									</label>
+									<label class="debtracker_demo_label" for="demo-splits">
+										Splits
+										<input id="demo-splits" type="number" min="2" max="12" step="1" value="3">
+									</label>
+									<div class="debtracker_demo_actions">
+										<button type="button" class="debtracker_demo_btn" id="demo-iterate">Iterate Extra Cent</button>
+										<button type="button" class="debtracker_demo_btn debtracker_demo_btn--ghost" id="demo-reset">Reset</button>
+									</div>
+								</div>
+								<div class="debtracker_demo_meta" aria-live="polite">
+									<p class="debtracker_demo_status" id="demo-turn-status"></p>
+									<p class="debtracker_demo_status" id="demo-sum-status"></p>
+								</div>
+								<div class="debtracker_demo_grid" id="demo-grid"></div>
+								<p class="debtracker_demo_note">
+									Demo visualization uses deterministic iteration so you can track the extra cent. Production logic uses the Fisher-Yates randomization shown above.
+								</p>
+							</div>
+							<div class="debtracker_protocol_grid">
+								<article class="debtracker_protocol_card">
+									<h3 class="debtracker_context_copy"
+										data-corporate="The Penny Perfect Protocol"
+										data-dev="The Penny Perfect Protocol">
+										The Penny Perfect Protocol
+									</h3>
+									<p class="debtracker_context_copy"
+										data-corporate="The system adheres to the Law of Conservation of Money. Instead of standard division, it utilizes a randomized distribution (Fisher-Yates Shuffle) to handle algorithmic remainders, ensuring that not a single cent is ever lost or created out of thin air when splitting complex bills."
+										data-dev="$10 divided by 3 is $3.33, leaving an orphaned cent. Instead of hiding it, the backend uses a Fisher-Yates shuffle to randomly inflict that extra cent on one user. The universe is unfair; your ledger should be too.">
+										The system adheres to the Law of Conservation of Money. Instead of standard division,
+										it utilizes a randomized distribution (Fisher-Yates Shuffle) to handle algorithmic
+										remainders, ensuring that not a single cent is ever lost or created out of thin air
+										when splitting complex bills.
+									</p>
+								</article>
+								<article class="debtracker_protocol_card">
+									<h3 class="debtracker_context_copy"
+										data-corporate="The Liar Filter (Settlement Handshake)"
+										data-dev="The Liar Filter">
+										The Liar Filter (Settlement Handshake)
+									</h3>
+									<p class="debtracker_context_copy"
+										data-corporate="A zero-trust approach to debt clearance. When a debtor claims to have paid, the transaction is marked solely as pending. The debt remains visible in the system balances until the Creditor explicitly confirms receipt of the funds."
+										data-dev="You clicked &quot;I paid&quot;? Cute. The transaction is flagged as &quot;pending&quot;. The debt doesn't clear until the creditor explicitly confirms receipt. You cannot UX your way out of owing me money.">
+										A zero-trust approach to debt clearance. When a debtor claims to have paid, the
+										transaction is marked solely as pending. The debt remains visible in the system
+										balances until the Creditor explicitly confirms receipt of the funds.
+									</p>
+								</article>
+								<article class="debtracker_protocol_card">
+									<h3 class="debtracker_context_copy"
+										data-corporate="The No-Escape Integrity Rule"
+										data-dev="The No-Escape Rule">
+										The No-Escape Integrity Rule
+									</h3>
+									<p class="debtracker_context_copy"
+										data-corporate="A systemic blockade preventing users from abandoning groups or deleting their accounts if their calculated liability is not exactly zero (with a 0.01 floating-point tolerance)."
+										data-dev="You cannot leave a group or delete your account if your calculated liability deviates from zero. The server locks the digital doors until your balance is pristine.">
+										A systemic blockade preventing users from abandoning groups or deleting their accounts
+										if their calculated liability is not exactly zero (with a 0.01 floating-point tolerance).
+									</p>
+								</article>
+							</div>
+							<div class="debtracker_terminal" aria-label="Penny-Perfect Protocol code terminal">
+								<div class="debtracker_terminal_bar">
+									<div class="debtracker_terminal_lights">
+										<span></span><span></span><span></span>
+									</div>
+									<p>penny-perfect-protocol.ts</p>
+								</div>
+								<pre class="language-typescript"><code id="penny-perfect-code" class="language-typescript">export function distributeAmount(totalAmount: number, numberOfSplits: number): number[] {
+  if (numberOfSplits &lt;= 0) return [];
+  if (numberOfSplits === 1) return [Number(totalAmount.toFixed(2))];
+
+  // Work in cents to avoid precision loss
+  const cleanTotal = Math.round(totalAmount * 100);
+
+  // Integer division + remainder
+  const baseAmountInt = Math.floor(cleanTotal / numberOfSplits);
+  const remainderInt = cleanTotal % numberOfSplits;
+
+  // Base amount for all participants
+  const splits: number[] = new Array(numberOfSplits).fill(baseAmountInt);
+
+  // Participant indexes
+  const indices = Array.from({ length: numberOfSplits }, (_, i) =&gt; i);
+
+  // Fisher-Yates: randomize who gets the extra cents
+  for (let i = indices.length - 1; i &gt; 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+
+  // Assign +1 cent to the first "remainderInt" participants from random order
+  for (let i = 0; i &lt; remainderInt; i++) {
+    splits[indices[i]] += 1;
+  }
+
+  // Convert back to currency units
+  return splits.map((s) =&gt; s / 100);
+}</code></pre>
+							</div>
+						</section>
+					</div>
+					<div class="col-12">
+						<section class="debtracker_section">
+							<h2 class="project_case_heading debtracker_context_copy"
+								data-corporate="Native PWA &amp; Device Integration"
+								data-dev="Weaponized Device Integration">
+								Native PWA & Device Integration
+							</h2>
+							<p class="project_case_paragraph debtracker_context_copy"
+								data-corporate="Beyond database architecture, DebTracker is built as a first-class citizen on mobile devices. By leveraging the Web Share Target API, I engineered a service worker interception protocol that allows users to seamlessly share receipt images directly from their native OS gallery into the application's file storage, bypassing traditional browser upload friction."
+								data-dev="Deadbeats love to ask for receipts. To eliminate any friction in providing evidence, I hijacked the Web Share Target API. You can share a receipt directly from your native OS gallery straight into the app's storage, completely bypassing the browser. No excuses, just accountability.">
+								Beyond database architecture, DebTracker is built as a first-class citizen on mobile devices. By leveraging the Web Share Target API, I engineered a service worker interception protocol that allows users to seamlessly share receipt images directly from their native OS gallery into the application's file storage, bypassing traditional browser upload friction.
+							</p>
+						</section>
+					</div>
+					<div class="col-12">
+						<nav class="project_case_nav" aria-label="Project navigation">
+{{{previousProjectNavHtml}}}
+							<a class="project_case_navlink project_case_navlink--index" href="{{projectIndexHref}}">All Projects</a>
+{{{nextProjectNavHtml}}}
+						</nav>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<!-- @include ../components/project/contact-form.html -->
+			<!-- @include ../components/index/footer.html -->
+		</div>
+
+	<div class="bottom_top">
+		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
+	</div>
+
+	<!-- @include ../components/shared/translate-button.html -->
+	<!-- @include ../components/shared/analytics-ga4.html -->
+	<script defer src="assets/js/jquery.min.js"></script>
+	<script defer src="assets/js/custom.js"></script>
+	<script defer src="assets/js/translate.js"></script>
+	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+	<script defer
+		src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+	<script>
+		(function () {
+			var contextSwitch = document.getElementById('context-switch');
+			var contextLabel = document.getElementById('context-current-label');
+			if (!contextSwitch || !contextLabel) {
+				return;
+			}
+
+			var targets = document.querySelectorAll('.debtracker_context_copy[data-corporate][data-dev]');
+
+			function applyContext() {
+				var isDevReality = contextSwitch.checked;
+				document.body.classList.toggle('debtracker_dev_reality', isDevReality);
+				contextLabel.textContent = isDevReality ? 'Spite Driven' : 'Corporate View';
+				targets.forEach(function (node) {
+					node.textContent = isDevReality ? node.getAttribute('data-dev') : node.getAttribute('data-corporate');
+				});
+			}
+
+			contextSwitch.addEventListener('change', applyContext);
+			applyContext();
+
+			var pennyCodeNode = document.getElementById('penny-perfect-code');
+			function getPennyCode(lang) {
+				if ((lang || '').toLowerCase().indexOf('es') === 0) {
+					return 'export function distributeAmount(totalAmount: number, numberOfSplits: number): number[] {\n' +
+						'  if (numberOfSplits <= 0) return [];\n' +
+						'  if (numberOfSplits === 1) return [Number(totalAmount.toFixed(2))];\n\n' +
+						'  // Trabajamos en centavos para no perder precision\n' +
+						'  const cleanTotal = Math.round(totalAmount * 100);\n\n' +
+						'  // Division entera + remanente\n' +
+						'  const baseAmountInt = Math.floor(cleanTotal / numberOfSplits);\n' +
+						'  const remainderInt = cleanTotal % numberOfSplits;\n\n' +
+						'  // Base para todos\n' +
+						'  const splits: number[] = new Array(numberOfSplits).fill(baseAmountInt);\n\n' +
+						'  // Indices de participantes\n' +
+						'  const indices = Array.from({ length: numberOfSplits }, (_, i) => i);\n\n' +
+						'  // Fisher-Yates: randomizamos quien recibe los centavos extra\n' +
+						'  for (let i = indices.length - 1; i > 0; i--) {\n' +
+						'    const j = Math.floor(Math.random() * (i + 1));\n' +
+						'    [indices[i], indices[j]] = [indices[j], indices[i]];\n' +
+						'  }\n\n' +
+						'  // Asignamos +1 centavo a los primeros "remainderInt" del orden aleatorio\n' +
+						'  for (let i = 0; i < remainderInt; i++) {\n' +
+						'    splits[indices[i]] += 1;\n' +
+						'  }\n\n' +
+						'  // Regresamos a dolares/euros/etc.\n' +
+						'  return splits.map((s) => s / 100);\n' +
+						'}';
+				}
+
+				return 'export function distributeAmount(totalAmount: number, numberOfSplits: number): number[] {\n' +
+					'  if (numberOfSplits <= 0) return [];\n' +
+					'  if (numberOfSplits === 1) return [Number(totalAmount.toFixed(2))];\n\n' +
+					'  // Work in cents to avoid precision loss\n' +
+					'  const cleanTotal = Math.round(totalAmount * 100);\n\n' +
+					'  // Integer division + remainder\n' +
+					'  const baseAmountInt = Math.floor(cleanTotal / numberOfSplits);\n' +
+					'  const remainderInt = cleanTotal % numberOfSplits;\n\n' +
+					'  // Base amount for all participants\n' +
+					'  const splits: number[] = new Array(numberOfSplits).fill(baseAmountInt);\n\n' +
+					'  // Participant indexes\n' +
+					'  const indices = Array.from({ length: numberOfSplits }, (_, i) => i);\n\n' +
+					'  // Fisher-Yates: randomize who gets the extra cents\n' +
+					'  for (let i = indices.length - 1; i > 0; i--) {\n' +
+					'    const j = Math.floor(Math.random() * (i + 1));\n' +
+					'    [indices[i], indices[j]] = [indices[j], indices[i]];\n' +
+					'  }\n\n' +
+					'  // Assign +1 cent to the first "remainderInt" participants from random order\n' +
+					'  for (let i = 0; i < remainderInt; i++) {\n' +
+					'    splits[indices[i]] += 1;\n' +
+					'  }\n\n' +
+					'  // Convert back to currency units\n' +
+					'  return splits.map((s) => s / 100);\n' +
+					'}';
+			}
+
+			function syncPennyCodeLanguage() {
+				if (!pennyCodeNode) {
+					return;
+				}
+				var nextCode = getPennyCode(document.documentElement.lang || 'en');
+				if (pennyCodeNode.textContent === nextCode) {
+					return;
+				}
+				pennyCodeNode.textContent = nextCode;
+				if (window.Prism && typeof window.Prism.highlightElement === 'function') {
+					window.Prism.highlightElement(pennyCodeNode);
+				}
+			}
+
+			syncPennyCodeLanguage();
+			if (window.MutationObserver) {
+				var langObserver = new MutationObserver(function () {
+					syncPennyCodeLanguage();
+				});
+				langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+			}
+
+			var securityLogOutput = document.getElementById('security-log-output');
+			var securityLogLines = [
+				{ level: 'client', text: '> [CLIENT] Attempting direct write to Firestore...' },
+				{ level: 'rules', text: '> [FIREBASE RULES] 🛑 HTTP 403: Permission Denied. Client is read-only.' },
+				{ level: 'client', text: '> [CLIENT] Rerouting via Next.js Server Action...' },
+				{ level: 'server', text: '> [SERVER] Payload received. Validating Zod schema... ✅' },
+				{ level: 'server', text: '> [SERVER] Executing Penny Perfect Protocol... ✅' },
+				{ level: 'server', text: '> [SERVER] Writing to Firestore Admin SDK...' },
+				{ level: 'firebase', text: '> [FIREBASE] 🟢 HTTP 200: Transaction Successful.' }
+			];
+
+			function renderAllSecurityLogLines() {
+				if (!securityLogOutput) {
+					return;
+				}
+				securityLogOutput.textContent = '';
+				securityLogLines.forEach(function (line) {
+					var lineNode = document.createElement('span');
+					lineNode.className = 'debtracker_security_line debtracker_security_line--' + line.level;
+					lineNode.textContent = line.text;
+					securityLogOutput.appendChild(lineNode);
+				});
+			}
+
+			function startSecurityLogLoop() {
+				if (!securityLogOutput) {
+					return;
+				}
+
+				securityLogOutput.textContent = '';
+				var lineIndex = 0;
+
+				function printNextLine() {
+					if (lineIndex >= securityLogLines.length) {
+						window.setTimeout(startSecurityLogLoop, 1600);
+						return;
+					}
+
+					var line = securityLogLines[lineIndex];
+					var lineNode = document.createElement('span');
+					lineNode.className = 'debtracker_security_line debtracker_security_line--' + line.level;
+					lineNode.textContent = line.text;
+					securityLogOutput.appendChild(lineNode);
+					securityLogOutput.scrollTop = securityLogOutput.scrollHeight;
+					lineIndex += 1;
+					window.setTimeout(printNextLine, 860);
+				}
+
+				printNextLine();
+			}
+
+			var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			if (prefersReducedMotion) {
+				renderAllSecurityLogLines();
+			} else {
+				startSecurityLogLoop();
+			}
+
+			var totalAmountInput = document.getElementById('demo-total-amount');
+			var splitsInput = document.getElementById('demo-splits');
+			var iterateButton = document.getElementById('demo-iterate');
+			var resetButton = document.getElementById('demo-reset');
+			var demoGrid = document.getElementById('demo-grid');
+			var turnStatus = document.getElementById('demo-turn-status');
+			var sumStatus = document.getElementById('demo-sum-status');
+
+			if (!totalAmountInput || !splitsInput || !iterateButton || !resetButton || !demoGrid || !turnStatus || !sumStatus) {
+				return;
+			}
+
+			var demoState = { turn: 0 };
+
+			function clampSplits(value) {
+				if (!Number.isFinite(value)) return 3;
+				if (value < 2) return 2;
+				if (value > 12) return 12;
+				return Math.floor(value);
+			}
+
+			function parseAmount(value) {
+				if (!Number.isFinite(value) || value < 0) return 0;
+				return value;
+			}
+
+			function formatMoneyFromCents(cents) {
+				return (cents / 100).toFixed(2);
+			}
+
+			function getInputs() {
+				var totalAmount = parseAmount(Number(totalAmountInput.value));
+				var numberOfSplits = clampSplits(Number(splitsInput.value));
+				splitsInput.value = String(numberOfSplits);
+				return { totalAmount: totalAmount, numberOfSplits: numberOfSplits };
+			}
+
+			function calculateSplit(totalAmount, numberOfSplits, turn) {
+				var cleanTotal = Math.round(totalAmount * 100);
+				var baseAmountInt = Math.floor(cleanTotal / numberOfSplits);
+				var remainderInt = cleanTotal % numberOfSplits;
+				var splits = new Array(numberOfSplits).fill(baseAmountInt);
+				var recipients = [];
+
+				for (var i = 0; i < remainderInt; i += 1) {
+					var index = (turn + i) % numberOfSplits;
+					splits[index] += 1;
+					recipients.push(index);
+				}
+
+				return {
+					cleanTotal: cleanTotal,
+					splits: splits,
+					remainderInt: remainderInt,
+					recipients: recipients
+				};
+			}
+
+			function renderDemo() {
+				var inputs = getInputs();
+				if (demoState.turn >= inputs.numberOfSplits) {
+					demoState.turn = 0;
+				}
+
+				var result = calculateSplit(inputs.totalAmount, inputs.numberOfSplits, demoState.turn);
+				var sum = result.splits.reduce(function (acc, value) { return acc + value; }, 0);
+				var maxSplit = result.splits.reduce(function (acc, value) {
+					return value > acc ? value : acc;
+				}, 0);
+
+				demoGrid.innerHTML = result.splits.map(function (splitCents, index) {
+					var isExtraRecipient = result.recipients.indexOf(index) !== -1;
+					var width = maxSplit > 0 ? (splitCents / maxSplit) * 100 : 0;
+					return [
+						'<article class="debtracker_demo_user' + (isExtraRecipient ? ' is-extra' : '') + '">',
+						'<p class="debtracker_demo_user_label">User ' + (index + 1) + '</p>',
+						'<p class="debtracker_demo_user_value">$' + formatMoneyFromCents(splitCents) + '</p>',
+						'<div class="debtracker_demo_meter"><span style="width:' + width.toFixed(2) + '%"></span></div>',
+						'<p class="debtracker_demo_user_badge">' + (isExtraRecipient ? '+0.01 bonus cent' : '&nbsp;') + '</p>',
+						'</article>'
+					].join('');
+				}).join('');
+
+				if (result.remainderInt === 0) {
+					turnStatus.textContent = 'Exact split: no remainder cent to iterate.';
+				} else {
+					var recipientsLabel = result.recipients.map(function (recipientIndex) {
+						return 'User ' + (recipientIndex + 1);
+					}).join(', ');
+					turnStatus.textContent = 'Turn ' + (demoState.turn + 1) + ': +$0.01 assigned to ' + recipientsLabel + '.';
+				}
+
+				sumStatus.textContent = 'Distributed total: $' + formatMoneyFromCents(sum) + ' | Input total: $' + formatMoneyFromCents(result.cleanTotal);
+			}
+
+			function iterateDemo() {
+				var numberOfSplits = clampSplits(Number(splitsInput.value));
+				demoState.turn = (demoState.turn + 1) % numberOfSplits;
+				renderDemo();
+			}
+
+			function resetDemo() {
+				demoState.turn = 0;
+				renderDemo();
+			}
+
+			iterateButton.addEventListener('click', iterateDemo);
+			resetButton.addEventListener('click', resetDemo);
+			totalAmountInput.addEventListener('input', resetDemo);
+			splitsInput.addEventListener('input', resetDemo);
+
+			renderDemo();
+		})();
+	</script>
+</body>
+
+</html>

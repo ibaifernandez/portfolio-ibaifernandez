@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{{pageDescription}}">
+	<meta name="keywords" content="{{pageKeywords}}">
+	<meta name="author" content="{{pageAuthor}}">
+	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="theme-color" content="#f0ede7">
+	<meta property="og:type" content="{{pageOgType}}">
+	<meta property="og:url" content="{{pageCanonicalUrl}}">
+	<meta property="og:title" content="{{pageTitle}}">
+	<meta property="og:description" content="{{pageDescription}}">
+	<meta property="og:image" content="{{pageShareImage}}">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{pageCanonicalUrl}}">
+	<meta property="twitter:title" content="{{pageTitle}}">
+	<meta property="twitter:description" content="{{pageDescription}}">
+	<meta property="twitter:image" content="{{pageShareImage}}">
+	<title>{{pageTitle}}</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="{{pageCanonicalUrl}}">
+</head>
+
+<body>
+	<a class="skip-link" href="#project_main">Skip to main content</a>
+
+	<div class="preloader">
+		<div class="status">
+			<img src="assets/images/loader.gif" id="preloader_image" alt="loader" loading="eager" decoding="sync"
+				fetchpriority="high" width="150" height="150">
+		</div>
+	</div>
+
+	<!-- @include ../components/project/sidebar.html -->
+
+	<div class="port_togglebox">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+		<div class="port_sec_warapper" id="project_main">
+			<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper">
+				<div class="container-fluid project_case_container">
+				<div class="row">
+					<div class="col-12">
+						<a href="{{projectBackHref}}" class="project_case_backlink">Back to portfolio</a>
+					</div>
+					<div class="col-xl-6 col-lg-12 mb-4 mb-xl-0">
+						<div class="project_case_media">
+{{{projectMediaHtml}}}
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-12">
+						<article class="project_case_content">
+							<p class="project_case_eyebrow">Project Dossier</p>
+							<h1 class="project_case_title">{{projectTitle}}</h1>
+							<p class="project_case_intro">{{projectDescription}}</p>
+							<h2 class="project_case_heading">Current Status</h2>
+							<p class="project_case_paragraph">
+								Navigation and page scaffolding are now active. Architecture notes, evidence links, and implementation
+								artifacts will be added in the next content sprint.
+							</p>
+							<ul class="project_case_checklist">
+								<li>Evidence links: pending curation</li>
+								<li>Architecture decision notes: pending</li>
+								<li>Deployment and performance traces: pending</li>
+							</ul>
+						</article>
+					</div>
+					<div class="col-12">
+						<nav class="project_case_nav" aria-label="Project navigation">
+{{{previousProjectNavHtml}}}
+							<a class="project_case_navlink project_case_navlink--index" href="{{projectIndexHref}}">All Projects</a>
+{{{nextProjectNavHtml}}}
+						</nav>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<!-- @include ../components/project/contact-form.html -->
+			<!-- @include ../components/index/footer.html -->
+		</div>
+
+	<div class="bottom_top">
+		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
+	</div>
+
+	<!-- @include ../components/shared/translate-button.html -->
+	<!-- @include ../components/shared/analytics-ga4.html -->
+	<script defer src="assets/js/jquery.min.js"></script>
+	<script defer src="assets/js/custom.js"></script>
+	<script defer src="assets/js/translate.js"></script>
+</body>
+
+</html>

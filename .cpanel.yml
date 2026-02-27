@@ -1,4 +1,8 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home4/aglayabi/public_html/portfolio-ibaifernandez/
-    - /bin/cp -R . $DEPLOYPATH
+    - export DEPLOYPATH=/home4/aglayabi/public_html/portfolio-ibaifernandez
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/cp -f .htaccess "$DEPLOYPATH/"
+    - /bin/cp -f index.html blog.html project-*.html "$DEPLOYPATH/"
+    - /bin/cp -f en.json es.json ajax.php robots.txt sitemap.xml llms.txt llms-full.txt "$DEPLOYPATH/"
+    - /bin/cp -R assets "$DEPLOYPATH/"

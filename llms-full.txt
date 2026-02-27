@@ -1,0 +1,35 @@
+# Ibai Fernandez Portfolio - Full LLM Index
+
+Last-Updated: 2026-02-27
+Base-URL: https://portfolio.ibaifernandez.com/
+
+## Overview
+Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and enterprise-scale marketing operations.
+
+## Canonical Pages
+- Home: https://portfolio.ibaifernandez.com/
+  - Purpose: profile, capabilities, work history, project index, testimonials, contact.
+- DebTracker: https://portfolio.ibaifernandez.com/project-debtracker.html
+  - Purpose: zero-trust financial ledger case (Next.js, Server Actions, Firestore patterns, PWA integration).
+- GymTracker: https://portfolio.ibaifernandez.com/project-gymtracker.html
+  - Purpose: local-first architecture case (Python/Flask, SQLite, deterministic AI pipelines, QA automation).
+- LFi Enterprise CRM: https://portfolio.ibaifernandez.com/project-enterprise-crm.html
+  - Purpose: agency intrapreneurship case, promotion timeline, enterprise automation governance.
+- National-Scale Tech Evangelism: https://portfolio.ibaifernandez.com/project-national-tech-evangelism.html
+  - Purpose: nationwide upskilling and digital adoption program impact.
+- Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
+  - Purpose: narrative architecture and custom web/brand system case.
+- AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html
+  - Purpose: remote B2B innovation agency operating model case.
+- Dispatches: https://portfolio.ibaifernandez.com/blog.html
+  - Purpose: article and publication index.
+
+## Contact
+- Email: info@ibaifernandez.com
+- WhatsApp: +57 322 428 8532
+- LinkedIn: https://linkedin.com/in/ibaifernandez
+
+## Discovery Endpoints
+- robots: https://portfolio.ibaifernandez.com/robots.txt
+- sitemap: https://portfolio.ibaifernandez.com/sitemap.xml
+- llms index: https://portfolio.ibaifernandez.com/llms.txt

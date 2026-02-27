@@ -1,0 +1,53 @@
+{
+  "hero": {
+    "containerClass": "banner_btn",
+    "primary": {
+      "href": "https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf",
+      "download": true,
+      "className": "btn_yellow",
+      "firstTranslate": "download-cv",
+      "firstText": "Download CV",
+      "secondTranslate": "download",
+      "secondText": "Download"
+    },
+    "secondary": {
+      "href": "#scroll_contact",
+      "className": "btn_red redirect_contact",
+      "firstTranslate": "contact-me",
+      "firstText": "Contact me",
+      "secondTranslate": "contact",
+      "secondText": "Contact"
+    }
+  },
+  "about": {
+    "containerClass": "anout_section_btn",
+    "primary": {
+      "href": "https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf",
+      "download": true,
+      "className": "btn_yellow",
+      "firstTranslate": "download-cv",
+      "firstText": "Download CV",
+      "secondTranslate": "downolad",
+      "secondText": "Download"
+    },
+    "secondary": {
+      "href": "#scroll_contact",
+      "className": "btn_red redirect_contact",
+      "firstTranslate": "contact-me",
+      "firstText": "Contact Me",
+      "secondTranslate": "contactar",
+      "secondText": "Contact"
+    }
+  },
+  "trainingLinkedin": {
+    "columnClass": "col-md-12",
+    "containerClass": "linkedin-button banner_btn",
+    "href": "https://linkedin.com/in/ibaifernandez",
+    "target": "_blank",
+    "rel": "noopener noreferrer",
+    "buttonClass": "btn_yellow",
+    "firstTranslate": "go-to-my-linkedin",
+    "firstText": "Go to my LinkedIn",
+    "secondHtml": "<i class=\"fab fa-linkedin fa-big fa-mt-3\"></i>"
+  }
+}

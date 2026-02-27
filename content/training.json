@@ -1,0 +1,228 @@
+[
+  {
+    "boxClass": "education_firsrtbox firstbox",
+    "contentSideClass": "education_right",
+    "titleOrder": "year-location",
+    "year": "2023",
+    "location": {
+      "badgeClass": "bg-pink",
+      "translate": "united-states",
+      "text": "United States"
+    },
+    "degree": {
+      "translate": "full-stack-bootcamp",
+      "prefixHover": "Program",
+      "prefixText": "Full-Stack ",
+      "suffixText": "Software Engineering"
+    },
+    "institution": {
+      "className": "pink",
+      "translate": null,
+      "text": "4Geeks Academy"
+    },
+    "description": {
+      "translate": "successfully-completed",
+      "text": "Engineered the technical muscle to build autonomous agents and full-stack architectures. Mastered React.js, Python, Node.js, and API integrations to transition from marketing strategy to hard-coded, scalable deployments."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
+      "html": "<img src=\"assets/images/4geeks.png\" alt=\"4Geeks Logo\" loading=\"lazy\" decoding=\"async\" width=\"80\" height=\"80\">"
+    },
+    "imageSecondary": null
+  },
+  {
+    "boxClass": "education_secondbox secondbox",
+    "contentSideClass": "education_left",
+    "titleOrder": "location-year",
+    "year": "2019",
+    "location": {
+      "badgeClass": "bg-yellow",
+      "translate": "united-states",
+      "text": "United States"
+    },
+    "degree": {
+      "translate": "diploma-in-design-thinking",
+      "prefixHover": "Certification",
+      "prefixText": "Certification ",
+      "suffixText": "in Design Thinking: Strategy for Innovation"
+    },
+    "institution": {
+      "className": "yellow",
+      "translate": "mit",
+      "text": "Massachusetts Institute of Technology (MIT)"
+    },
+    "description": {
+      "translate": "acquire-expertise",
+      "text": "Internalized human-centered product development methodologies. Acquired the architectural frameworks to design digital solutions that prioritize predictive user behavior and frictionless conversion paths."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 newyork-desktop-screennone",
+      "html": "<img style=\"max-width:85px;\" src=\"assets/images/mit.png\" alt=\"MIT Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    },
+    "imageSecondary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center newyork-responsive-screennone",
+      "html": "<img style=\"max-width:85px;\" src=\"assets/images/mit.png\" alt=\"MIT Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    }
+  },
+  {
+    "boxClass": "education_firsrtbox thirdbox",
+    "contentSideClass": "education_right",
+    "titleOrder": "year-location",
+    "year": "2018",
+    "location": {
+      "badgeClass": "bg-orange",
+      "translate": null,
+      "text": "Ecuador"
+    },
+    "degree": {
+      "translate": "diploma-in-digital-marketing",
+      "prefixHover": "Diploma",
+      "prefixText": "Diploma ",
+      "suffixText": "in Digital Marketing"
+    },
+    "institution": {
+      "className": "orange",
+      "translate": null,
+      "text": "Universidad de Especialidades Espíritu Santo (UEES)"
+    },
+    "description": {
+      "translate": "focused-on-seo",
+      "text": "Mastered programmatic advertising, SEO, and SEM ecosystems. Weaponized digital acquisition channels to orchestrate data-driven revenue engines and massive conversion funnels."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
+      "html": "<img style=\"max-width:85px;\" src=\"assets/images/uees.png\" alt=\"UEES Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    },
+    "imageSecondary": null
+  },
+  {
+    "boxClass": "education_secondbox fourthbox",
+    "contentSideClass": "education_left",
+    "titleOrder": "location-year",
+    "year": "2016-2017",
+    "location": {
+      "badgeClass": "bg-cyan",
+      "translate": "Spain",
+      "text": "Spain"
+    },
+    "degree": {
+      "translate": "master-at-salamanca",
+      "prefixHover": "Master's",
+      "prefixText": "Master's",
+      "suffixText": " in Psychopedagogy of Language & Literature"
+    },
+    "institution": {
+      "className": "cyan",
+      "translate": "university-of-salamanca",
+      "text": "University of Salamanca"
+    },
+    "description": {
+      "translate": "advanced-expertise",
+      "text": "Deconstructed the psychology of language and human cognition. This deep understanding of narrative structure is the ultimate foundation for my high-conversion copywriting, UX writing, and precise LLM prompt engineering."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center DesktopNone",
+      "html": "<img class=\"usal\" src=\"assets/images/usal.png\" alt=\"University of Salamanca Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    },
+    "imageSecondary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center resNone",
+      "html": "<img style=\"max-width:85px\" src=\"assets/images/usal.png\" alt=\"University of Salamanca Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    }
+  },
+  {
+    "boxClass": "education_firsrtbox thirdbox",
+    "contentSideClass": "education_right",
+    "titleOrder": "year-location",
+    "year": "2007-2008",
+    "location": {
+      "badgeClass": "bg-orange",
+      "translate": "united-states",
+      "text": "United States"
+    },
+    "degree": {
+      "translate": "diploma-at-msu",
+      "prefixHover": "Diploma",
+      "prefixText": "Diploma ",
+      "suffixText": "in Media Management & Production (ISEP Scholar)"
+    },
+    "institution": {
+      "className": "orange",
+      "translate": null,
+      "text": "Missouri State University"
+    },
+    "description": {
+      "translate": "mastered-esential",
+      "text": "Acquired the operational frameworks to govern complex media productions and studio workflows. Laid the early groundwork for managing high-performing remote teams and digital agency operations."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
+      "html": "<img src=\"assets/images/msu.png\" alt=\"Missouri State University Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    },
+    "imageSecondary": null
+  },
+  {
+    "boxClass": "education_secondbox secondbox",
+    "contentSideClass": "education_left",
+    "titleOrder": "location-year",
+    "year": "2006-2007",
+    "location": {
+      "badgeClass": "bg-yellow",
+      "translate": "The Netherlands",
+      "text": "The Netherlands"
+    },
+    "degree": {
+      "translate": "diploma-at-the-hague",
+      "prefixHover": "Diploma",
+      "prefixText": "Diploma ",
+      "suffixText": "in Intercultural Communication (Socrates-Erasmus)"
+    },
+    "institution": {
+      "className": "yellow",
+      "translate": "de-haagse-hogeschool-den-haag",
+      "text": "De Haagse Hogeschool - Den Haag"
+    },
+    "description": {
+      "translate": "acquired-valuable",
+      "text": "Mastered cross-cultural communication dynamics and global friction points. Unlocked the vital geopolitical agility required to deploy and adapt digital campaigns across diverse international markets."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 newyork-desktop-screennone",
+      "html": "<img style=\"max-width:85px;\" src=\"assets/images/haagse-hogeschool.png\" alt=\"Haagse Hogeschool Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    },
+    "imageSecondary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center newyork-responsive-screennone",
+      "html": "<img style=\"max-width:85px;\" src=\"assets/images/haagse-hogeschool.png\" alt=\"Haagse Hogeschool\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
+    }
+  },
+  {
+    "boxClass": "education_firsrtbox firstbox",
+    "contentSideClass": "education_right",
+    "titleOrder": "year-location",
+    "year": "2003-2009",
+    "location": {
+      "badgeClass": "bg-pink",
+      "translate": null,
+      "text": "Spain"
+    },
+    "degree": {
+      "translate": "ba-in-av-comm",
+      "prefixHover": "Diploma",
+      "prefixText": "BA",
+      "suffixText": " in Audiovisual Communication"
+    },
+    "institution": {
+      "className": "pink",
+      "translate": "university-of-malaga",
+      "text": "University of Malaga"
+    },
+    "description": {
+      "translate": "gained-comprehensive",
+      "text": "The genesis of the narrative integrator. Deeply internalized visual storytelling, semiotics, and media theory to master the psychological flow of the message long before digitizing and automating it."
+    },
+    "imagePrimary": {
+      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
+      "html": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/uma.webp\">\n<img src=\"assets/images/uma.png\" width=\"80\" alt=\"University of Málaga Logo\" loading=\"lazy\" decoding=\"async\" height=\"80\">\n</picture>"
+    },
+    "imageSecondary": null
+  }
+]
