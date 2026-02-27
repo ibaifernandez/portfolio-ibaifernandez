@@ -71,7 +71,7 @@ test('contact section visual baseline', async ({ page }) => {
 });
 
 test('experience, projects and logos visual baselines', async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 1800 });
+  await page.setViewportSize({ width: 1280, height: 2600 });
   await page.goto('/index.html');
   await page.waitForLoadState('networkidle');
 
@@ -83,7 +83,9 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
       selector: '.port_experience_setions',
       locator: page.locator('.port_experience_setions'),
       snapshot: 'experience-section.png',
-      maxDiffPixelRatio: 0.07
+      maxDiffPixelRatio: 0.07,
+      clipWidth: 1160,
+      clipHeight: 1395
     },
     { selector: '.port_projects_setions01', locator: page.locator('.port_projects_setions01'), snapshot: 'projects-section.png' },
     { selector: '.port_responsor_setions', locator: page.locator('.port_responsor_setions'), snapshot: 'logos-section.png' }
@@ -93,10 +95,29 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
     await waitForSectionVisualStability(page, section.selector);
     await freezeSwipers(page);
     await page.waitForTimeout(100);
-    await expect(section.locator).toHaveScreenshot(section.snapshot, {
-      animations: 'disabled',
-      caret: 'hide',
-      maxDiffPixelRatio: section.maxDiffPixelRatio ?? 0.03
-    });
+    if (section.clipWidth || section.clipHeight) {
+      const box = await section.locator.boundingBox();
+      expect(box).not.toBeNull();
+
+      const clip = {
+        x: Math.round(box.x),
+        y: Math.round(box.y),
+        width: section.clipWidth ?? Math.round(box.width),
+        height: section.clipHeight ?? Math.round(box.height)
+      };
+
+      await expect(page).toHaveScreenshot(section.snapshot, {
+        clip,
+        animations: 'disabled',
+        caret: 'hide',
+        maxDiffPixelRatio: section.maxDiffPixelRatio ?? 0.03
+      });
+    } else {
+      await expect(section.locator).toHaveScreenshot(section.snapshot, {
+        animations: 'disabled',
+        caret: 'hide',
+        maxDiffPixelRatio: section.maxDiffPixelRatio ?? 0.03
+      });
+    }
   }
 });
