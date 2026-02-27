@@ -21,6 +21,7 @@
     "test:smoke": "bash tests/smoke.sh",
     "test:e2e:clean": "bash scripts/run-e2e-with-cleanup.sh",
     "test:e2e": "playwright test",
+    "print:pdf": "node scripts/generate-print-pdf.mjs",
     "test": "npm run test:quality && npm run test:e2e",
     "test:ci": "npm run test:quality && npm run test:smoke && npm run test:e2e"
   },

@@ -18,6 +18,31 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-02-27 - CI Stabilization (GitHub Actions)
+
+1. Fixed `quality.yml` runner bootstrap for Linux:
+   - added system dependency installation for `ripgrep` before quality checks.
+2. Root cause:
+   - `tests/quality-guards.sh` depends on `rg`; missing binary in GitHub runner caused instant failures (`command not found`) and misleading downstream annotations.
+3. Documentation updated:
+   - runbook now includes `ripgrep` as explicit CI requirement and workflow behavior note.
+
+### 2026-02-27 - Print Fidelity Layer + Canonical PDF Export
+
+1. Added dedicated print stylesheet:
+   - `assets/css/print.css` with `@page` + `@media print` rules to avoid browser-default print degradation.
+2. Wired print stylesheet in all page templates:
+   - `index`, `blog`, base `project` template, and dedicated project templates.
+3. Print-specific behavior hardening:
+   - hides non-print UI (`sidebar`, `preloader`, toggles, floating controls),
+   - forces expanded readability for experience cards and about details,
+   - controls page-break behavior for dense cards/modules,
+   - preserves color fidelity intent via `print-color-adjust`.
+4. Added canonical PDF generation workflow:
+   - `scripts/generate-print-pdf.mjs`
+   - `npm run print:pdf`
+   - outputs deterministic artifacts to `artifacts/print-pdf/` for recruiter-safe distribution.
+
 ### 2026-02-27 - Deploy Readiness Hardening (Pre-Release)
 
 1. Deployment pipeline hardened in `.cpanel.yml`:

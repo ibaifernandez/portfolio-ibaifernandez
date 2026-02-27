@@ -1,0 +1,176 @@
+@page {
+	size: A4;
+	margin: 12mm;
+}
+
+@media print {
+	:root {
+		color-scheme: light;
+	}
+
+	html,
+	body {
+		background: #fff !important;
+		color: #111 !important;
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+	}
+
+	* {
+		animation: none !important;
+		transition: none !important;
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	.preloader,
+	.port_sidebar_wrapper,
+	.mport_sidebar_wrapper,
+	.port_togglebox,
+	.port_tooglebox_container,
+	.bottom_top,
+	#translate-button-container,
+	.about_leftsection .icon,
+	.ex_btn,
+	.project_case_nav {
+		display: none !important;
+	}
+
+	.port_sec_warapper {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+
+	.container,
+	.container-fluid {
+		width: 100% !important;
+		max-width: none !important;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.row {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	[class*="col-"] {
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	img,
+	svg,
+	video,
+	canvas {
+		max-width: 100% !important;
+		break-inside: avoid-page;
+		page-break-inside: avoid;
+	}
+
+	.selfintro_section .about_leftsection:after {
+		display: none !important;
+	}
+
+	.about_leftsection .img_warapper img {
+		filter: none !important;
+	}
+
+	.selfintro_section .left_deatils {
+		position: static !important;
+		opacity: 1 !important;
+		visibility: visible !important;
+		background: #fff !important;
+		color: #111 !important;
+		padding: 14px 0 0 !important;
+		overflow: visible !important;
+	}
+
+	.personal_details h1.ps_name,
+	.personal_details p.ps_designation,
+	.personal_details ul.info-list li,
+	.personal_details ul.info-list li a,
+	.personal_details div.lets-get-social,
+	span.title,
+	span.value,
+	span.value a {
+		color: #111 !important;
+	}
+
+	.ex_rightside .ex_details {
+		display: block !important;
+		-webkit-line-clamp: unset !important;
+		-webkit-box-orient: initial !important;
+		overflow: visible !important;
+	}
+
+	.ex_rightside .more_content {
+		display: block !important;
+	}
+
+	.experience_section .exprince_box,
+	.education_main_wrapper .education_box,
+	.project_spotlight_project,
+	.project_case_content,
+	.debtracker_section,
+	.gymtracker_section,
+	.lfi_newsprint_panel,
+	.lfi_newsprint_figure {
+		break-inside: avoid-page;
+		page-break-inside: avoid;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		break-after: avoid-page;
+		page-break-after: avoid;
+	}
+
+	p,
+	li,
+	blockquote {
+		orphans: 3;
+		widows: 3;
+	}
+
+	a,
+	a:visited {
+		color: inherit !important;
+		text-decoration: underline !important;
+	}
+
+	.project_case_media,
+	.project_case_content,
+	.project_spotlight_project {
+		border: 1px solid #d8d8d8 !important;
+		background: #fff !important;
+	}
+
+	.debtracker_terminal,
+	.gymtracker_command_center,
+	.gymtracker_qa_wall {
+		background: #fff !important;
+		color: #111 !important;
+		border: 1px solid #c9c9c9 !important;
+	}
+
+	body.lfi_newsprint_page .lfi_newsprint_surface,
+	body.lfi_newsprint_page .lfi_newsprint_sheet {
+		background: #f8f8f5 !important;
+		box-shadow: none !important;
+	}
+
+	body.lfi_newsprint_page .lfi_newsprint_surface::before,
+	body.lfi_newsprint_page .lfi_newsprint_surface::after {
+		display: none !important;
+	}
+
+	body.lfi_newsprint_page .lfi_newsprint_prose {
+		column-count: 2 !important;
+		column-gap: 10mm !important;
+	}
+}

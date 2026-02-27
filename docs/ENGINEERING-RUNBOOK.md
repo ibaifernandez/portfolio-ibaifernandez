@@ -11,8 +11,13 @@ Guia operativa para mantener calidad, rendimiento y estabilidad del portfolio en
 - Playwright Chromium (`npx playwright install chromium`)
 - PHP 7.4+ (solo para smoke real contra `ajax.php`; opcional en entornos de CI donde no este disponible)
 - Encoder WebP (`cwebp`) o `ffmpeg` con `libwebp`
+- `ripgrep` (`rg`) para `tests/quality-guards.sh` en entornos CI no macOS
 
 Referencia macOS/Homebrew: `brew install webp ffmpeg-full && brew unlink ffmpeg && brew link ffmpeg-full --force`
+
+Nota CI GitHub Actions:
+
+- `quality.yml` instala `ripgrep` via `apt-get` antes de ejecutar `npm run test:quality`.
 
 ## Comandos principales
 
@@ -32,6 +37,7 @@ npm run playwright:orphans:kill
 npm run test:e2e:clean
 npm run test:e2e
 npm run test:ci
+npm run print:pdf
 ```
 
 ## Presubida (Pre-Deploy) Operativa
@@ -52,6 +58,14 @@ Checks condicionados por entorno:
 npm run test:smoke           # requiere PHP disponible
 npm run test:links:external  # requiere red saliente
 ```
+
+Salida de impresion canonica:
+
+```bash
+npm run print:pdf
+```
+
+Genera un set de PDFs consistentes en `artifacts/print-pdf/` usando Playwright + `@media print`.
 
 ## Higiene del workspace
 
