@@ -2,8 +2,9 @@
   "hero": {
     "containerClass": "banner_btn",
     "primary": {
-      "href": "https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf",
-      "download": true,
+      "href": "cv-print.html#print",
+      "target": "_blank",
+      "rel": "noopener noreferrer",
       "className": "btn_yellow",
       "firstTranslate": "download-cv",
       "firstText": "Download CV",
@@ -22,8 +23,9 @@
   "about": {
     "containerClass": "anout_section_btn",
     "primary": {
-      "href": "https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf",
-      "download": true,
+      "href": "cv-print.html#print",
+      "target": "_blank",
+      "rel": "noopener noreferrer",
       "className": "btn_yellow",
       "firstTranslate": "download-cv",
       "firstText": "Download CV",

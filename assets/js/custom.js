@@ -1094,7 +1094,8 @@ Assigned to: ThemeForest
 			};
 			var captchaScriptSrc = {
 				recaptcha: 'https://www.google.com/recaptcha/api.js?render=explicit',
-				hcaptcha: 'https://js.hcaptcha.com/1/api.js?render=explicit'
+				hcaptcha: 'https://js.hcaptcha.com/1/api.js?render=explicit',
+				turnstile: 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
 			};
 			function setResponse(targetResp, message, type){
 				targetResp.removeClass('is-error is-success');
@@ -1130,13 +1131,16 @@ Assigned to: ThemeForest
 				if(provider === 'recaptcha'){
 					return window.grecaptcha;
 				}
+				if(provider === 'turnstile'){
+					return window.turnstile;
+				}
 				return null;
 			}
 			function createCaptchaState(targetForm){
 				var runtimeCaptcha = getRuntimeCaptchaConfig();
 				var provider = (targetForm.attr('data-captcha-provider') || runtimeCaptcha.provider || '').toLowerCase().trim();
 				var siteKey = (targetForm.attr('data-captcha-site-key') || runtimeCaptcha.siteKey || '').trim();
-				var enabled = (provider === 'hcaptcha' || provider === 'recaptcha') && siteKey !== '';
+				var enabled = (provider === 'hcaptcha' || provider === 'recaptcha' || provider === 'turnstile') && siteKey !== '';
 				return {
 					enabled: enabled,
 					provider: provider,
@@ -1326,13 +1330,10 @@ Assigned to: ThemeForest
 				var targetForm = $(this).closest('form');
 				refreshStartTimestamp(targetForm);
 				targetForm.find('.form-control').attr('aria-invalid', 'false');
-				ensureCaptchaReady(targetForm).catch(function(){
-					var state = ensureCaptchaState(targetForm);
-					state.enabled = false;
-					targetForm.find('.contact_captcha_widget').hide().empty();
-					setCaptchaProvider(targetForm, '');
-					setCaptchaToken(targetForm, '');
-				});
+				var state = ensureCaptchaState(targetForm);
+				targetForm.find('.contact_captcha_widget').hide().empty();
+				setCaptchaProvider(targetForm, state.enabled ? state.provider : '');
+				setCaptchaToken(targetForm, '');
 			});
 			$(document).on('input change', '#scroll_contact .form-control', function(){
 				clearFieldInvalid($(this));

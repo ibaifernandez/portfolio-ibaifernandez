@@ -139,41 +139,53 @@ function collectLinks(pagePath, html) {
 }
 
 async function checkExternalLink(url, timeout) {
-  const signal = AbortSignal.timeout(timeout);
-
-  try {
-    let response = await fetch(url, {
-      method: 'HEAD',
+  const attempt = async (method) => {
+    const signal = AbortSignal.timeout(timeout);
+    return fetch(url, {
+      method,
       redirect: 'follow',
       signal
     });
+  };
 
-    if (response.status === 405 || response.status === 501) {
-      response = await fetch(url, {
-        method: 'GET',
-        redirect: 'follow',
-        signal
-      });
-    }
-
-    if (response.status === 404 || response.status === 410 || response.status >= 500) {
+  let response;
+  try {
+    response = await attempt('HEAD');
+  } catch (headError) {
+    try {
+      response = await attempt('GET');
+    } catch (getError) {
       return {
         ok: false,
-        status: response.status
+        status: 'network-error',
+        error: String(getError)
       };
     }
+  }
 
-    return {
-      ok: true,
-      status: response.status
-    };
-  } catch (error) {
+  if (response.status === 405 || response.status === 501) {
+    try {
+      response = await attempt('GET');
+    } catch (error) {
+      return {
+        ok: false,
+        status: 'network-error',
+        error: String(error)
+      };
+    }
+  }
+
+  if (response.status === 404 || response.status === 410 || response.status >= 500) {
     return {
       ok: false,
-      status: 'network-error',
-      error: String(error)
+      status: response.status
     };
   }
+
+  return {
+    ok: true,
+    status: response.status
+  };
 }
 
 async function main() {

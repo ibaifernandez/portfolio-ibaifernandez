@@ -105,15 +105,21 @@ npm run media:all
 El formulario mantiene el flujo actual por defecto y permite activar captcha sin cambiar plantilla:
 
 - Frontend runtime config (en `src/components/shared/analytics-ga4.html`):
-  - `window.PORTFOLIO_RUNTIME.captcha.provider`: `recaptcha` o `hcaptcha`
+  - `window.PORTFOLIO_RUNTIME.captcha.provider`: `turnstile`, `recaptcha` o `hcaptcha`
   - `window.PORTFOLIO_RUNTIME.captcha.siteKey`: site key publica
 - Backend (`ajax.php`) por variables de entorno:
-  - `PORTFOLIO_CAPTCHA_PROVIDER` (`recaptcha`/`hcaptcha`)
+  - `PORTFOLIO_CAPTCHA_PROVIDER` (`turnstile`/`recaptcha`/`hcaptcha`)
   - `PORTFOLIO_CAPTCHA_SECRET` (secret key)
   - opcional `PORTFOLIO_CAPTCHA_MIN_SCORE` (solo si usas flujo por score de reCAPTCHA)
 - Rate limit por IP (backend):
   - `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` (default `600`)
   - `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS` (default `12`)
+
+## CV imprimible
+
+- Nueva pagina dedicada: `cv-print.html`.
+- Los CTAs de CV en home/about abren `cv-print.html#print` (en lugar de PDF remoto).
+- La pagina incluye toolbar de pantalla (`Back`, `EN/ES`, `Print CV`) y layout A4 optimizado para impresion.
 - `tests/e2e/a11y.spec.js`
   - Validacion de accesibilidad automatica (axe) sin violaciones `serious/critical` en contacto, secciones primarias del home y shell técnica del blog.
 - `tests/e2e/visual.spec.js`

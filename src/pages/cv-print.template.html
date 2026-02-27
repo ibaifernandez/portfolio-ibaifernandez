@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Printable CV layout generated from the live portfolio content.">
+	<meta name="robots" content="noindex,nofollow">
+	<meta name="theme-color" content="#ffffff">
+	<title>Ibai Fernandez | Printable CV</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/cv-print.css">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+</head>
+
+<body class="cv_print_page">
+	<div id="print" aria-hidden="true"></div>
+	<div class="cv_print_toolbar">
+		<a class="cv_toolbar_link" href="index.html#project_sec">Back to Portfolio</a>
+		<button type="button" id="cv-language-toggle" class="cv_toolbar_btn">ES</button>
+		<button type="button" id="cv-print-trigger" class="cv_toolbar_btn cv_toolbar_btn--primary">Print CV</button>
+	</div>
+
+	<main class="cv_print_document" id="cv_main">
+		<header class="cv_print_header">
+			<h1>Ibai Fernandez</h1>
+			<p>Full-Stack Automation Architect | Revenue Engineering | Systemic Integrator</p>
+			<ul>
+				<li><strong>Website:</strong> portfolio.ibaifernandez.com</li>
+				<li><strong>Email:</strong> info@ibaifernandez.com</li>
+				<li><strong>Phone:</strong> +57 322 428 8532</li>
+				<li><strong>Location:</strong> Bogota, Colombia</li>
+			</ul>
+		</header>
+
+		<section class="cv_print_section">
+			<h2>Core Operating Capabilities</h2>
+			<div class="row">
+				<!-- @render services-grid -->
+			</div>
+		</section>
+
+		<section class="cv_print_section">
+			<h2>Professional Journey</h2>
+			<!-- @render experience-rows -->
+		</section>
+
+		<section class="cv_print_section">
+			<h2>Education</h2>
+			<!-- @render training-timeline -->
+		</section>
+
+		<section class="cv_print_section">
+			<h2>Selected Projects</h2>
+			<div class="project_spotlight_grid">
+				<!-- @render projects-grid -->
+			</div>
+		</section>
+	</main>
+
+	<!-- @include ../components/shared/analytics-ga4.html -->
+	<script defer src="assets/js/translate.js"></script>
+	<script defer src="assets/js/cv-print.js"></script>
+</body>
+
+</html>

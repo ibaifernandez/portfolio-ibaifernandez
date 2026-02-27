@@ -143,7 +143,7 @@ npm run test:links:external
 Base tecnica ya implementada:
 
 1. `ajax.php` aplica rate limit por IP (storage en `artifacts/contact-rate-limit.json`) ademas del cooldown por sesion.
-2. `ajax.php` soporta verificacion captcha backend (reCAPTCHA/hCaptcha) via variables de entorno.
+2. `ajax.php` soporta verificacion captcha backend (Turnstile/reCAPTCHA/hCaptcha) via variables de entorno.
 3. Frontend soporta widget captcha via `window.PORTFOLIO_RUNTIME.captcha` (provider + siteKey).
 
 Activacion recomendada en produccion:

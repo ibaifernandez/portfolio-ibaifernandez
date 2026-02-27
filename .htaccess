@@ -5,13 +5,17 @@
 
 RedirectMatch 403 /\.git
 
+# Contact form anti-spam (Cloudflare Turnstile)
+SetEnv PORTFOLIO_CAPTCHA_PROVIDER "turnstile"
+SetEnv PORTFOLIO_CAPTCHA_SECRET "0x4AAAAAACjYYraLHx49DuNeL9Fa8pB48aQ"
+
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header always set Cross-Origin-Resource-Policy "same-site"
-  Header always set Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com;"
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://challenges.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com;"
 
   <FilesMatch "\.(html|php)$">
     Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"

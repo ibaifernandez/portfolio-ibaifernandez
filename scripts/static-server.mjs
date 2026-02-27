@@ -17,7 +17,7 @@ const ipRateLimitWindowMs = Number(process.env.PORTFOLIO_RATE_LIMIT_WINDOW_SECON
 const ipRateLimitMaxRequests = Number(process.env.PORTFOLIO_RATE_LIMIT_MAX_REQUESTS || 12);
 const captchaProvider = (process.env.PORTFOLIO_CAPTCHA_PROVIDER || '').toLowerCase().trim();
 const captchaSecret = (process.env.PORTFOLIO_CAPTCHA_SECRET || '').trim();
-const enforceCaptcha = (captchaProvider === 'recaptcha' || captchaProvider === 'hcaptcha') && captchaSecret !== '';
+const enforceCaptcha = (captchaProvider === 'recaptcha' || captchaProvider === 'hcaptcha' || captchaProvider === 'turnstile') && captchaSecret !== '';
 const sessionCookieName = 'portfolio_sid';
 const lastSubmissionBySession = new Map();
 const submissionCountByIp = new Map();

@@ -51,7 +51,7 @@ function should_enforce_captcha(string $provider, string $secret): bool {
     if ($secret === "") {
         return false;
     }
-    return in_array($provider, ["recaptcha", "hcaptcha"], true);
+    return in_array($provider, ["recaptcha", "hcaptcha", "turnstile"], true);
 }
 
 function verify_captcha_token(string $provider, string $secret, string $token, string $remoteIp): bool {
@@ -64,6 +64,8 @@ function verify_captcha_token(string $provider, string $secret, string $token, s
         $verifyUrl = "https://hcaptcha.com/siteverify";
     } elseif ($provider === "recaptcha") {
         $verifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+    } elseif ($provider === "turnstile") {
+        $verifyUrl = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
     }
 
     if ($verifyUrl === "") {

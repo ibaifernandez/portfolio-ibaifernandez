@@ -21,7 +21,8 @@ const projectShareImageMap = {
 
 const basePageEntries = [
   { template: 'src/pages/index.template.html', output: 'index.html' },
-  { template: 'src/pages/blog.template.html', output: 'blog.html' }
+  { template: 'src/pages/blog.template.html', output: 'blog.html' },
+  { template: 'src/pages/cv-print.template.html', output: 'cv-print.html' }
 ];
 
 const includePattern = /<!--\s*@include\s+([^\s]+)\s*-->/g;

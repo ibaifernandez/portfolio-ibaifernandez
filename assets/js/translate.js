@@ -15,6 +15,27 @@ function loadTranslations(language, callback) {
     xhr.send();
 }
 
+function resolveInitialLanguage() {
+    var fallback = 'en';
+    try {
+        var urlLanguage = new URLSearchParams(window.location.search).get('lang');
+        if (urlLanguage === 'en' || urlLanguage === 'es') {
+            return urlLanguage;
+        }
+    } catch (error) {
+        // Ignore malformed URLSearchParams support issues.
+    }
+    try {
+        var stored = window.localStorage.getItem('portfolio_language');
+        if (stored === 'en' || stored === 'es') {
+            return stored;
+        }
+    } catch (error) {
+        // localStorage may be unavailable in strict privacy modes.
+    }
+    return fallback;
+}
+
 // Función para traducir los elementos con el atributo 'translate'
 function translateElements(translations) {
     var elements = document.querySelectorAll('[translate]');
@@ -65,6 +86,11 @@ function applyLanguage(language, source) {
         }
         var previousLanguage = currentLanguage;
         currentLanguage = language;
+        try {
+            window.localStorage.setItem('portfolio_language', currentLanguage);
+        } catch (error) {
+            // localStorage is optional.
+        }
         document.documentElement.setAttribute('lang', currentLanguage);
         translateElements(translations);
         toggleLanguageButton();
@@ -93,5 +119,5 @@ if (buttonIcon) {
     });
 }
 
-var currentLanguage = 'en';
+var currentLanguage = resolveInitialLanguage();
 applyLanguage(currentLanguage, 'initial_render');

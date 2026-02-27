@@ -767,9 +767,10 @@ Purchase:
 	// Runtime toggles. Keep captcha fields empty until rollout is approved.
 	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
 	window.PORTFOLIO_RUNTIME.analytics = window.PORTFOLIO_RUNTIME.analytics || { enabled: true };
+	var isLocalPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
 	window.PORTFOLIO_RUNTIME.captcha = window.PORTFOLIO_RUNTIME.captcha || {
-		provider: '',
-		siteKey: ''
+		provider: isLocalPreview ? '' : 'turnstile',
+		siteKey: isLocalPreview ? '' : '0x4AAAAAACjYYolqOwWE2xM1'
 	};
 </script>
 

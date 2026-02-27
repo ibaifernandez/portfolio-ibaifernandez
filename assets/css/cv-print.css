@@ -1,0 +1,161 @@
+.cv_print_page {
+	background: #f5f5f5;
+	color: #111;
+}
+
+.cv_print_toolbar {
+	position: sticky;
+	top: 0;
+	z-index: 30;
+	display: flex;
+	gap: 10px;
+	justify-content: flex-end;
+	padding: 16px 24px;
+	background: #fff;
+	border-bottom: 1px solid #d8d8d8;
+}
+
+.cv_toolbar_link,
+.cv_toolbar_btn {
+	border: 1px solid #bdbdbd;
+	background: #fff;
+	color: #111;
+	font-size: 14px;
+	line-height: 1;
+	padding: 10px 14px;
+	text-decoration: none;
+}
+
+.cv_toolbar_btn {
+	cursor: pointer;
+}
+
+.cv_toolbar_btn--primary {
+	background: #111;
+	border-color: #111;
+	color: #fff;
+}
+
+.cv_print_document {
+	max-width: 1040px;
+	margin: 24px auto 48px auto;
+	background: #fff;
+	padding: 36px 34px;
+	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cv_print_header {
+	border-bottom: 2px solid #111;
+	padding-bottom: 18px;
+	margin-bottom: 26px;
+}
+
+.cv_print_header h1 {
+	font-size: 44px;
+	line-height: 1.1;
+	margin: 0 0 8px 0;
+	color: #111;
+}
+
+.cv_print_header p {
+	font-size: 16px;
+	margin: 0 0 12px 0;
+	color: #222;
+}
+
+.cv_print_header ul {
+	margin: 0;
+	padding-left: 18px;
+}
+
+.cv_print_header li {
+	font-size: 15px;
+	line-height: 1.5;
+	color: #222;
+}
+
+.cv_print_section {
+	margin-bottom: 28px;
+	break-inside: avoid-page;
+}
+
+.cv_print_section h2 {
+	margin: 0 0 14px 0;
+	padding-bottom: 4px;
+	border-bottom: 1px solid #111;
+	font-size: 26px;
+	color: #111;
+}
+
+.cv_print_page .project_spotlight_project {
+	border-color: #d8d8d8;
+	background: #fff;
+}
+
+.cv_print_page .project_spotlight_media {
+	min-height: 230px;
+}
+
+.cv_print_page .project_spotlight_media img {
+	filter: grayscale(20%);
+}
+
+.cv_print_page .port_trainext_box {
+	margin-bottom: 18px;
+}
+
+.cv_print_page .exprince_box {
+	margin-bottom: 18px;
+}
+
+.cv_print_page .ex_details {
+	-webkit-line-clamp: initial;
+	-webkit-box-orient: initial;
+	display: block;
+	overflow: visible;
+}
+
+.cv_print_page .more_content {
+	display: block;
+}
+
+.cv_print_page .ex_btn {
+	display: none;
+}
+
+.cv_print_page .port_contact_setions,
+.cv_print_page .port_footer_wrapper,
+.cv_print_page .bottom_top,
+.cv_print_page .translate-button-wrapper {
+	display: none !important;
+}
+
+@media print {
+	@page {
+		size: A4;
+		margin: 12mm;
+	}
+
+	html,
+	body {
+		background: #fff !important;
+	}
+
+	.cv_print_toolbar {
+		display: none !important;
+	}
+
+	.cv_print_document {
+		max-width: none;
+		margin: 0;
+		padding: 0;
+		box-shadow: none;
+	}
+
+	.cv_print_section,
+	.exprince_box,
+	.port_trainext_box,
+	.project_spotlight_project {
+		break-inside: avoid-page;
+	}
+}

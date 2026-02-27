@@ -27,8 +27,9 @@ Ultima actualizacion: `2026-02-27`.
 - Descubrimiento base: activo (`canonical`, Open Graph, Twitter, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`).
 - Schema estructurado JSON-LD: activo en home, blog y project pages.
 - Analitica: base cross-page + eventos clave de CTA/formulario activos.
-- Formulario: anti-spam avanzado parcialmente activo (rate limit por IP + backend captcha-ready).
-- Pendiente de release final: activar captcha con llaves reales, CSP en modo enforce, verificacion de buscadores, QA manual en produccion.
+- Formulario: anti-spam avanzado activo (rate limit por IP + Cloudflare Turnstile en frontend/backend).
+- CV imprimible: pagina dedicada `cv-print.html` enlazada desde CTAs de CV (sin PDF externo).
+- Pendiente de release final: CSP en modo enforce, verificacion de buscadores, QA manual en produccion.
 
 ## 5) Backlog de pre-release
 
@@ -43,9 +44,9 @@ Ultima actualizacion: `2026-02-27`.
 | PR-07 | DONE | Analitica base cross-page | Tener medicion unificada | componente GA4 compartido en todas las paginas | presencia de tag en HTML |
 | PR-08 | DONE | Eventos clave de analitica | Medir conversion real, no solo pageviews | instrumentados eventos de CTA, submit (attempt/success/failure) y cambio de idioma | `build:pages` + `test:quality` + `test:e2e` OK |
 | PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo + cooldown por sesion | smoke/e2e de formulario |
-| PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | rate limit por IP activo + integracion reCAPTCHA/hCaptcha implementada (activacion pendiente de llaves) | `build:pages` + `test:quality` + `test:e2e` OK |
+| PR-10 | DONE | Anti-spam avanzado | Capa adicional ante abuso real | rate limit por IP + Cloudflare Turnstile integrado (frontend runtime + backend verify) | `build:pages` + `test:quality` + `test:e2e` OK |
 | PR-11 | IN_PROGRESS | CSP madura | endurecer seguridad de contenido | pasar de Report-Only a Enforce tras ventana de observacion | sin bloqueos legitimos en produccion |
-| PR-12 | IN_PROGRESS | Chequeo externo de enlaces | evitar links rotos de terceros | `npm run test:links:external` ejecutado con red; quedan 3 bloqueos reales (CV 404 + 2 dominios sin respuesta) | resolver URLs pendientes y re-ejecutar hasta 0 fallos |
+| PR-12 | DONE | Chequeo externo de enlaces | evitar links rotos de terceros | se eliminaron enlaces muertos y se reforzo el checker con fallback `HEAD -> GET` | `npm run test:links:external` OK |
 | PR-13 | IN_PROGRESS | QA Desktop v1.0 | cerrar calidad manual de release | checklist ya definido; falta pasada final en produccion | acta QA firmada |
 | PR-14 | IN_PROGRESS | QA Mobile v1.0 | asegurar UX real en moviles | checklist ya definido; falta pasada final en produccion | acta QA firmada |
 
@@ -129,12 +130,10 @@ Ultima actualizacion: `2026-02-27`.
 ## 9) Plan de ejecucion recomendado (orden)
 
 1. Cerrar buildout de paginas de proyecto pendientes.
-2. Activar captcha real para `PR-10` (site key frontend + secret backend + prueba funcional).
-3. Re-ejecutar `PR-12` (links externos) en entorno con red real.
-4. Ejecutar QA manual Desktop/Mobile en produccion (`PR-13`, `PR-14`).
-5. Completar tareas manuales de buscadores (`RL-01`, `RL-02`, `RL-03`).
-6. Cambiar CSP a Enforce (`PR-11`/`RL-07`) solo con evidencia de estabilidad.
-7. Cerrar release con tag y validacion final de tracking (`RL-04`, `RL-06`).
+2. Ejecutar QA manual Desktop/Mobile en produccion (`PR-13`, `PR-14`).
+3. Completar tareas manuales de buscadores (`RL-01`, `RL-02`, `RL-03`).
+4. Cambiar CSP a Enforce (`PR-11`/`RL-07`) solo con evidencia de estabilidad.
+5. Cerrar release con tag y validacion final de tracking (`RL-04`, `RL-06`).
 
 ## 10) CSP: paso de Report-Only a Enforce
 
@@ -190,15 +189,20 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
 7. Anti-spam avanzado (base tecnica):
    - `ajax.php`: rate limit por IP con storage local (`artifacts/contact-rate-limit.json`), sin romper cooldown por sesion.
    - `ajax.php`: verificacion captcha backend activable via env (`PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, opcional `PORTFOLIO_CAPTCHA_MIN_SCORE`).
-   - `assets/js/custom.js`: soporte de widget captcha (reCAPTCHA/hCaptcha) activable por runtime config.
+   - `assets/js/custom.js`: soporte de widget captcha (Turnstile/reCAPTCHA/hCaptcha) activable por runtime config.
    - `src/components/shared/analytics-ga4.html`: runtime config central (`window.PORTFOLIO_RUNTIME.captcha`).
 8. Guardrails de calidad:
    - `tests/quality-guards.sh` ahora valida presencia de campos captcha y eventos GA4 clave del formulario.
 9. Normalizacion de enlaces sociales:
    - LinkedIn consolidado a `https://linkedin.com/in/ibaifernandez`.
    - WhatsApp normalizado a formato valido `https://wa.me/573224288532`.
-10. Estado actual de `test:links:external`:
-   - Fallos pendientes: `https://portfolio.ibaifernandez.com/ibai-fernandez-cv-apr-2024.pdf` (404), `https://chankete.com` (sin respuesta), `https://chokilate.aglaya.biz` (sin respuesta).
+10. Eliminacion de codigo muerto visible:
+   - retirados del carrusel de marcas los dominios `chankete.com` y `chokilate.aglaya.biz`.
+11. CV imprimible operativo:
+   - nueva pagina `cv-print.html` con layout dedicado para impresion y trigger de `window.print()`.
+   - CTAs de CV ahora apuntan a `cv-print.html#print` en lugar de PDF externo.
+12. Estado actual de `test:links:external`:
+   - resultado en verde tras hardening del checker externo (`HEAD -> GET` fallback).
 
 ## 13) Comandos de gate
 
@@ -214,10 +218,9 @@ Regla operativa: no cerrar release si falla cualquier gate no opcional.
 
 ## 14) Siguiente paso inmediato (ahora)
 
-Objetivo de esta iteracion: cerrar activacion final de seguridad y preparar QA manual de produccion.
+Objetivo de esta iteracion: preparar cierre de release con validacion manual final.
 
-1. Definir proveedor de captcha (`recaptcha` o `hcaptcha`) y cargar `siteKey` en `window.PORTFOLIO_RUNTIME.captcha` (frontend).
-2. Configurar `PORTFOLIO_CAPTCHA_PROVIDER` y `PORTFOLIO_CAPTCHA_SECRET` en servidor (backend).
-3. Re-ejecutar `npm run test:links:external` en entorno con red.
-4. Ejecutar QA manual completo Desktop + Mobile en produccion.
-5. Con evidencias en mano, mover CSP a Enforce y cerrar release.
+1. Ejecutar QA manual completo Desktop + Mobile en produccion.
+2. Confirmar eventos en GA4 Realtime (CTA, formulario, language toggle).
+3. Verificar propiedad en GSC/Bing y enviar `sitemap.xml`.
+4. Con evidencias en mano, mover CSP a Enforce y cerrar release.
