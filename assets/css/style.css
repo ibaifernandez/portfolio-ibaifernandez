@@ -29,7 +29,7 @@ Assigned to: ThemeForest
 --------------------------------------------------------------------*/
 /* ================== 01 body start ================== */
 :root {
-    --font-family-base: 'Josefin Sans', sans-serif;
+    --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-family-heading: 'Josefin Sans';
     --color-text-primary: #222222;
     --color-text-muted: #747474;
