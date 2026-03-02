@@ -61,11 +61,14 @@
   [headers.values]
     Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
 
-# JSON de i18n — sin cache (cambia con el contenido)
+# JSON de i18n — 1 día fresh + 1 semana stale-while-revalidate.
+# El contenido cambia solo en deploys, que invalidan la CDN automáticamente.
+# El caché del navegador puede servir la versión anterior sin bloquear
+# la siguiente carga (stale-while-revalidate la renueva en background).
 [[headers]]
   for = "/*.json"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
 
 # CSS y JS — 7 días (los nombres de archivo no son fingerprinted, así que
 # conservador: suficiente para ahorrar requests sin arriesgarnos a stale cache)
