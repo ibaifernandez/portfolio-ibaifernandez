@@ -1,0 +1,28 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# .netlifyignore — excluye del deploy público ficheros que no deben servirse
+# Sintaxis idéntica a .gitignore.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# Fuentes de build (solo las usa el build step, no el navegador)
+src/
+scripts/
+content/
+
+# Tests y artefactos de CI
+tests/
+playwright.config.js
+playwright-report/
+test-results/
+
+# Docs internos
+docs/
+BACKLOG.md
+
+# Config con secrets de ejemplo
+config/
+
+# PHP legacy — ya no se ejecuta en Netlify; excluimos para no confundir
+ajax.php
+
+# Metadatos de proyecto (no son recursos de la web)
+package-lock.json

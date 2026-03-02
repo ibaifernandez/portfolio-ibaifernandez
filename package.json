@@ -25,6 +25,9 @@
     "test": "npm run test:quality && npm run test:e2e",
     "test:ci": "npm run test:quality && npm run test:smoke && npm run test:e2e"
   },
+  "dependencies": {
+    "resend": "^4.0.0"
+  },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.1",
     "@playwright/test": "^1.49.0"

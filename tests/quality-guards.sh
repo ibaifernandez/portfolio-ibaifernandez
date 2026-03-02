@@ -34,13 +34,17 @@ for header in \
   "Referrer-Policy" \
   "X-Frame-Options" \
   "Content-Security-Policy-Report-Only"; do
-  if ! rg -n "$header" .htaccess >/dev/null; then
-    fail "Missing expected security header directive in .htaccess: $header"
+  if ! rg -n "$header" netlify.toml >/dev/null; then
+    fail "Missing expected security header directive in netlify.toml: $header"
   fi
 done
 
-if rg -n 'SetEnv\s+PORTFOLIO_CAPTCHA_SECRET\s+"[^"]+"' .htaccess >/dev/null; then
-  fail "Detected hardcoded PORTFOLIO_CAPTCHA_SECRET in .htaccess"
+if rg -n 'PORTFOLIO_CAPTCHA_SECRET\s*=\s*"[^"]+"' netlify.toml >/dev/null 2>&1; then
+  fail "Detected hardcoded PORTFOLIO_CAPTCHA_SECRET in netlify.toml"
+fi
+
+if rg -n 'RESEND_API_KEY\s*=\s*"[^"]+"' netlify.toml >/dev/null 2>&1; then
+  fail "Detected hardcoded RESEND_API_KEY in netlify.toml"
 fi
 
 if ! rg -n 'name="website"' index.html >/dev/null; then
@@ -52,8 +56,8 @@ fi
 if ! rg -n 'name="captcha_token"|name="captcha_provider"' index.html >/dev/null; then
   fail "Missing captcha hidden fields in contact form"
 fi
-if ! rg -n 'form_started_at|website|captcha_token|enforce_ip_rate_limit|verify_captcha_token' ajax.php >/dev/null; then
-  fail "Missing anti-spam handling in ajax.php"
+if ! rg -n 'form_started_at|website|captcha_token|verifyCaptchaToken' netlify/functions/contact.js >/dev/null; then
+  fail "Missing anti-spam handling in netlify/functions/contact.js"
 fi
 
 if ! rg -n 'contact_submit_attempt|contact_submit_success|contact_submit_failure' assets/js/custom.js >/dev/null; then

@@ -1440,11 +1440,12 @@ Assigned to: ThemeForest
 							_this.prop('disabled', false).removeAttr('aria-busy');
 							return;
 						}
-						var formDetail = new FormData(targetForm[0]);
-	    						formDetail.append('form_type' , _this.attr('data-type'));
+						var formData = {};
+						targetForm[0].querySelectorAll('[name]').forEach(function(el){ formData[el.name] = el.value; });
+						formData.form_type = _this.attr('data-type');
 						if(captchaState.enabled){
-							formDetail.set('captcha_provider', captchaState.provider);
-							formDetail.set('captcha_token', token);
+							formData.captcha_provider = captchaState.provider;
+							formData.captcha_token = token;
 						}
 						portfolio.track_event('contact_submit_attempt', {
 							captcha_enabled: captchaState.enabled ? '1' : '0'
@@ -1452,10 +1453,10 @@ Assigned to: ThemeForest
 
 						$.ajax({
 							method : 'post',
-							url : 'ajax.php',
-							data:formDetail,
-							cache:false,
-							contentType: false,
+							url : '/.netlify/functions/contact',
+							data: JSON.stringify(formData),
+							cache: false,
+							contentType: 'application/json; charset=UTF-8',
 							processData: false
 						}).done(function(resp){
 							if(resp == 1){

@@ -1,0 +1,92 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# netlify.toml — portfolio.ibaifernandez.com
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Build ─────────────────────────────────────────────────────────────────────
+[build]
+  command   = "npm run build:pages"
+  publish   = "."
+  functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ── Functions ─────────────────────────────────────────────────────────────────
+[functions]
+  # esbuild bundles each function + its npm deps into a single file.
+  # No need for a separate package.json inside netlify/functions/.
+  node_bundler = "esbuild"
+
+# ── Dev (netlify dev) ─────────────────────────────────────────────────────────
+# Allows testing functions locally with: netlify dev
+[dev]
+  command   = "npm run start"
+  port      = 4173
+  publish   = "."
+
+# ── Redirects ─────────────────────────────────────────────────────────────────
+# Legacy cPanel URL → Netlify Function.
+# Useful as fallback for any cached references to the old endpoint.
+# The frontend already calls /.netlify/functions/contact directly.
+[[redirects]]
+  from   = "/ajax.php"
+  to     = "/.netlify/functions/contact"
+  status = 308
+  force  = true
+
+# ── Headers ───────────────────────────────────────────────────────────────────
+
+# Security headers on ALL paths
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options           = "nosniff"
+    Referrer-Policy                  = "strict-origin-when-cross-origin"
+    X-Frame-Options                  = "SAMEORIGIN"
+    Permissions-Policy               = "geolocation=(), microphone=(), camera=()"
+    Cross-Origin-Resource-Policy     = "same-site"
+    # CSP in Report-Only until PR-11/RL-07 promote it to enforce.
+    # connect-src includes 'self' which covers /.netlify/functions/contact.
+    Content-Security-Policy-Report-Only = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://challenges.cloudflare.com; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com;"
+
+# HTML — no cache (cada deploy genera HTML nuevo)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+
+# Root (index.html implícito)
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-store, no-cache, must-revalidate, max-age=0"
+
+# JSON de i18n — sin cache (cambia con el contenido)
+[[headers]]
+  for = "/*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# CSS y JS — 7 días (los nombres de archivo no son fingerprinted, así que
+# conservador: suficiente para ahorrar requests sin arriesgarnos a stale cache)
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# Imágenes — 30 días (cambian poco, peso alto)
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Webfonts — 30 días + immutable (nunca cambian sin cambiar el nombre)
+[[headers]]
+  for = "/assets/webfonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, immutable"
