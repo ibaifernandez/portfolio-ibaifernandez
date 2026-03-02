@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/* Roboto is now loaded as a non-blocking <link> in the HTML <head>.
+   See index.template.html — the @import was removed to eliminate the
+   2-step render-blocking chain (link → font.css → @import → Google Fonts). */
 
 /* vietnamese */
 @font-face {
