@@ -9,16 +9,19 @@ Guia operativa para mantener calidad, rendimiento y estabilidad del portfolio en
 - Node.js 20+
 - npm
 - Playwright Chromium (`npx playwright install chromium`)
-- PHP 7.4+ (solo para smoke real contra `ajax.php`; opcional en entornos de CI donde no este disponible)
 - Encoder WebP (`cwebp`) o `ffmpeg` con `libwebp`
 - `ripgrep` (`rg`) para `tests/quality-guards.sh` en entornos CI no macOS
 - `README.md` versionado y no vacio (validado por `tests/quality-guards.sh`)
+- **Netlify CLI** (opcional, para desarrollo local con funciones): `npm install -g netlify-cli` → `netlify dev` sirve el sitio en `:4173` con proxying de funciones Netlify.
 
 Referencia macOS/Homebrew: `brew install webp ffmpeg-full && brew unlink ffmpeg && brew link ffmpeg-full --force`
+
+> **Nota sobre PHP:** `ajax.php` ya no existe en el stack de producción. El formulario de contacto corre como Netlify Function (`netlify/functions/contact.mjs`, Node.js 20). PHP solo es relevante si se mantiene una copia del legacy en local para referencia histórica. Los smoke tests ya no dependen de PHP.
 
 Nota CI GitHub Actions:
 
 - `quality.yml` instala `ripgrep` via `apt-get` antes de ejecutar `npm run test:quality`.
+- `e2e.yml` instala Playwright Chromium y corre la suite completa (29 tests) en cada push a `main`.
 
 ## Comandos principales
 
@@ -41,11 +44,72 @@ npm run test:ci
 npm run print:pdf
 ```
 
+## Deploy (Netlify — plataforma actual desde 2026-03-02)
+
+> **El stack de deploy es ahora completamente automatizado vía GitHub Actions + Netlify CI.**
+> No se requiere ningún comando manual de deploy. El flujo es: editar → `git push origin main` → CI verde → Netlify deploy automático.
+
+### Flujo de deploy en producción
+
+```
+git push origin main
+  └─► GitHub Actions: quality.yml   (build + quality guards)
+  └─► GitHub Actions: e2e.yml       (Playwright 29 tests)
+      └─► Netlify CI:               (deploy atómico si CI verde)
+```
+
+- **Netlify deploy URL:** `https://portfolio.ibaifernandez.com`
+- **Netlify dashboard:** `https://app.netlify.com/sites/<site-slug>/deploys`
+- Los deploys son atómicos: Netlify prepara los archivos nuevos y hace el switch en un único paso. No hay ventana de estado parcial visible para usuarios.
+- En caso de fallo, Netlify permite roll-back manual a cualquier deploy previo desde el dashboard.
+
+### Variables de entorno en Netlify
+
+Almacenadas en Netlify dashboard → Site settings → Environment variables. **Nunca en el repositorio.**
+
+| Variable | Descripción |
+|---|---|
+| `RESEND_API_KEY` | API key de Resend para entrega de email del formulario de contacto |
+| `FROM_EMAIL` | Dirección de envío verificada en Resend (dominio configurado con SPF/DKIM) |
+| `TO_EMAIL` | Destinatario de los mensajes del formulario |
+| `ALLOWED_ORIGIN` | Origen permitido para CORS en la función de contacto (ej. `https://portfolio.ibaifernandez.com`) |
+| `PORTFOLIO_CAPTCHA_PROVIDER` | Proveedor de captcha activo (`turnstile`, `recaptcha`, `hcaptcha`) |
+| `PORTFOLIO_CAPTCHA_SECRET` | Secret key del proveedor de captcha para verificación backend |
+
+### Desarrollo local con funciones (Netlify CLI)
+
+Para probar la función de contacto localmente sin hacer deploy:
+
+```bash
+netlify dev
+# Sirve en http://localhost:4173
+# Proxea /.netlify/functions/* hacia netlify/functions/
+# Requiere variables de entorno en .env (gitignored)
+```
+
+Alternativamente, los tests E2E usan `scripts/static-server.mjs` (mock de la función) y no requieren Netlify CLI.
+
+### Estructura de la función de contacto
+
+```
+netlify/
+  functions/
+    contact.mjs    # ES Module, Node.js 20, bundleado por esbuild
+```
+
+La función es la única pieza serverless del stack. Maneja:
+- Validación CORS (header `ALLOWED_ORIGIN`)
+- Anti-spam (honeypot, tiempo mínimo, cooldown, rate limit por IP)
+- Verificación Cloudflare Turnstile (opcional, activable por env)
+- Envío de email vía Resend API REST
+
+---
+
 ## Presubida (Pre-Deploy) Operativa
 
 Documento fuente de release: `docs/DEPLOY_ROADMAP.md`
 
-Secuencia minima antes de `commit + push`:
+Secuencia mínima antes de `commit + push` (los gates de CI replicarán estos checks automáticamente):
 
 ```bash
 npm run build:pages
@@ -56,8 +120,7 @@ npm run test:e2e
 Checks condicionados por entorno:
 
 ```bash
-npm run test:smoke           # requiere PHP disponible
-npm run test:links:external  # requiere red saliente
+npm run test:links:external  # requiere red saliente (no obligatorio para CI)
 ```
 
 Salida de impresion canonica:
@@ -140,43 +203,42 @@ npm run test:links:external
 
 ## Anti-spam avanzado (activacion controlada)
 
-Base tecnica ya implementada:
+> **Contexto post-migración:** toda la lógica anti-spam vive en `netlify/functions/contact.mjs` (Node.js). Ya no hay `ajax.php`. Los secretos se gestionan en Netlify dashboard → Environment variables.
 
-1. `ajax.php` aplica rate limit por IP (storage en `artifacts/contact-rate-limit.json`) ademas del cooldown por sesion.
-2. `ajax.php` soporta verificacion captcha backend (Turnstile/reCAPTCHA/hCaptcha) via variables de entorno.
-3. Frontend soporta widget captcha via `window.PORTFOLIO_RUNTIME.captcha` (provider + siteKey).
-4. Secretos no versionados:
-   - `ajax.php` admite `PORTFOLIO_SECRET_FILE` (ruta absoluta) para cargar credenciales desde archivo PHP fuera del webroot.
-   - fallback local: `config/secrets.local.php` (gitignored).
-   - plantilla versionada: `config/secrets.example.php`.
-   - guardrail: `tests/quality-guards.sh` falla si detecta secreto hardcodeado en `.htaccess`.
+Base técnica implementada en `netlify/functions/contact.mjs`:
 
-Activacion recomendada en produccion:
+1. **Honeypot:** campo oculto en el formulario que debe estar vacío; si está relleno, la función rechaza el envío con 200 (para no dar feedback a bots).
+2. **Tiempo mínimo antes de submit:** el formulario registra el timestamp de apertura; la función valida que haya pasado el mínimo de tiempo antes de aceptar el envío.
+3. **Cooldown por sesión:** un campo de sesión en el cuerpo del POST impide re-envíos rápidos desde la misma sesión de navegador.
+4. **Rate limit por IP:** `artifacts/contact-rate-limit.json` persiste contadores por IP. Más de N envíos en una ventana temporal → rechazo con 429.
+5. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API de Cloudflare usando `PORTFOLIO_CAPTCHA_SECRET` (variable de entorno Netlify).
+6. **CORS:** `ALLOWED_ORIGIN` (variable de entorno Netlify) controla qué origen puede hacer POST a la función.
 
-1. Configurar `window.PORTFOLIO_RUNTIME.captcha.provider` y `window.PORTFOLIO_RUNTIME.captcha.siteKey`.
-2. Configurar `PORTFOLIO_CAPTCHA_PROVIDER` y guardar `PORTFOLIO_CAPTCHA_SECRET` fuera del repo usando `PORTFOLIO_SECRET_FILE` (recomendado) o variable de entorno server-side.
-3. Validar flujo real de envio en QA manual y revisar eventos en analitica.
+Activación recomendada en producción:
 
-### Rotacion segura de Turnstile
+1. Configurar `window.PORTFOLIO_RUNTIME.captcha.provider` y `window.PORTFOLIO_RUNTIME.captcha.siteKey` en el componente `src/components/shared/analytics-ga4.html`.
+2. En Netlify dashboard → Environment variables: añadir `PORTFOLIO_CAPTCHA_PROVIDER` y `PORTFOLIO_CAPTCHA_SECRET`.
+3. Hacer deploy y validar flujo real de envío en QA manual.
+4. Revisar eventos en GA4 Realtime: `contact_submit_attempt`, `contact_submit_success`, `contact_submit_failure`.
 
-1. Ir a Cloudflare Dashboard -> Turnstile -> seleccionar widget.
+### Rotación segura de Turnstile
+
+1. Ir a Cloudflare Dashboard → Turnstile → seleccionar widget.
 2. Rotar/revocar la secret key actual y copiar la nueva.
-3. Guardar la nueva secret en archivo no versionado:
-   - ruta recomendada: `~/.config/portfolio-ibaifernandez/secrets.local.php`
-   - contenido base: copiar `config/secrets.example.php`.
-4. Configurar `PORTFOLIO_SECRET_FILE` con esa ruta absoluta en hosting.
-5. Probar envio real de formulario en produccion y verificar evento `contact_submit_success`.
-6. No volver a introducir secrets en `.htaccess` ni en archivos versionados.
+3. En Netlify dashboard → Environment variables: actualizar `PORTFOLIO_CAPTCHA_SECRET` con la nueva clave.
+4. Hacer deploy (o usar Netlify's "Trigger deploy" si no hay cambios de código).
+5. Probar envío real de formulario en producción y verificar evento `contact_submit_success`.
+6. Los secretos nunca deben aparecer en el repositorio ni en archivos versionados.
 
 Para observabilidad sin bloquear merges, el repo incluye:
 
 - `.github/workflows/link-health.yml` (job semanal + manual para enlaces externos)
 
-## Smoke tests (PHP server)
+## Smoke tests
 
-- `tests/smoke.sh` valida el shell principal (`index.html`) sobre servidor PHP builtin cuando `php` esta disponible.
-- El check de `<title>` usa patron portable (`<title>...Portfolio</title>`) para evitar falsos negativos por acentos/locale en runners Linux.
-- Si el entorno no incluye `php`, el smoke se marca como `SKIP` por diseño y no bloquea la ejecucion local.
+- `tests/smoke.sh` valida el shell principal (`index.html`) sobre servidor estático.
+- El check de `<title>` usa patrón portable (`<title>...Portfolio</title>`) para evitar falsos negativos por acentos/locale en runners Linux.
+- Los smoke tests ya no dependen de PHP. Si el entorno no incluye el servidor de prueba configurado, el smoke se marca como `SKIP` y no bloquea la ejecución local.
 
 ## Media pipeline (AVIF + WebP)
 

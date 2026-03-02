@@ -5,7 +5,7 @@
 Este documento es el backlog operativo para llevar `portfolio-ibaifernandez` a release de produccion sin regresiones.
 No es una lista suelta de ideas: cada item indica estado, por que existe, como se ejecuta y como se valida.
 
-Ultima actualizacion: `2026-02-27`.
+Ultima actualizacion: `2026-03-02`.
 
 ## 2) Como leer este documento
 
@@ -20,17 +20,22 @@ Ultima actualizacion: `2026-02-27`.
 - `IN_PROGRESS`: en implementacion o validacion parcial.
 - `MANUAL`: requiere accion humana fuera del repo/pipeline.
 
-## 4) Foto actual (resumen ejecutivo)
+## 4) Foto actual (resumen ejecutivo) — actualizado 2026-03-02
 
-- Pipeline CI `quality-and-e2e`: en verde.
+- **Plataforma:** Netlify CDN + GitHub Actions CI/CD (migrado de cPanel el 2026-03-02). DNS propagado. SSL activo.
+- **Deploy:** automatizado vía git push → CI verde → Netlify deploy atómico. Sin pasos manuales.
+- **Formulario de contacto:** Netlify Function (`netlify/functions/contact.mjs`, Node.js 20 + Resend API). Migrado de `ajax.php` (PHP/PHPMailer).
+- Pipeline CI `quality` y `e2e`: en verde (29/29 tests).
 - Build/data sync/guardrails/performance/a11y/e2e: en verde.
 - Descubrimiento base: activo (`canonical`, Open Graph, Twitter, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`).
 - Schema estructurado JSON-LD: activo en home, blog y project pages.
 - Analitica: base cross-page + eventos clave de CTA/formulario activos.
 - Formulario: anti-spam avanzado activo (rate limit por IP + Cloudflare Turnstile en frontend/backend).
-- Secretos: se removio secret hardcodeado del repo; carga por env/archivo local no versionado.
+- Secretos: gestionados en Netlify dashboard → Environment variables. Sin secrets en el repositorio.
 - CV imprimible: pagina dedicada `cv-print.html` enlazada desde CTAs de CV (sin PDF externo).
-- Pendiente de release final: CSP en modo enforce, verificacion de buscadores, QA manual en produccion.
+- **PageSpeed baseline post-migración:** Desktop 84/94/96/92 · Mobile 61/94/96/92.
+- **Mejoras de performance/a11y aplicadas (2026-03-02):** `<main>` landmark, blog cleanup (sin `href="#"`), font chain no-bloqueante (preconnect + preload Roboto), `animate.css` diferido. Lab scores mejorarán en próxima captura.
+- Pendiente de release final: CSP en modo enforce, verificacion de buscadores, QA manual en produccion, captcha activado en produccion.
 
 ## 5) Backlog de pre-release
 
@@ -38,7 +43,7 @@ Ultima actualizacion: `2026-02-27`.
 |---|---|---|---|---|---|
 | PR-01 | DONE | Gate tecnico base | Evitar regresiones antes de push | `build:pages`, `test:quality`, `test:e2e`, `test:smoke` (si hay PHP) | CI/local en verde |
 | PR-02 | DONE | Optimizacion de carga | Reducir tiempos y peso | AVIF/WebP, lazy-load de recursos no criticos, budgets | `test:quality` + budgets OK |
-| PR-03 | DONE | Deploy acotado | Evitar subir artefactos no publicos | `.cpanel.yml` copia solo artefactos publicos | revision de `.cpanel.yml` |
+| PR-03 | DONE | Deploy automatizado | Pipeline CI/CD sin pasos manuales; solo artefactos publicos desplegados | GitHub Actions (`quality.yml` + `e2e.yml`) + Netlify CI/CD (migrado de `.cpanel.yml` + cPanel) | CI en verde; deploys automaticos en `push main` |
 | PR-04 | DONE | Discovery base por pagina | Mejora indexacion y social previews | canonical + OG + Twitter en templates | inspeccion HTML + CI |
 | PR-05 | DONE | Discovery LLM | Facilitar descubrimiento por modelos | `llms.txt` + `llms-full.txt` | endpoints accesibles |
 | PR-06 | DONE | Schema estructurado | Mejor interpretacion semantica en buscadores | JSON-LD en home/blog/projects, generado de forma determinista en build | inspeccion HTML generado |
@@ -172,8 +177,25 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
 
 ## 12) Resuelto recientemente (que y como)
 
-1. Deploy acotado por artefactos:
-   - ajustado `.cpanel.yml` para no copiar repo completo.
+0. **Migración de plataforma: cPanel → Netlify (2026-03-02):**
+   - Creado site Netlify conectado al repositorio GitHub via GitHub App.
+   - Formulario de contacto migrado de `ajax.php` (PHP/PHPMailer) a `netlify/functions/contact.mjs` (Node.js 20 + Resend API). Toda la lógica anti-spam preservada y portada.
+   - Frontend actualizado para POST a `/.netlify/functions/contact` con `Content-Type: application/json`.
+   - `netlify.toml` con build, funciones, headers de caché y seguridad, redirect `/ajax.php → /.netlify/functions/contact`.
+   - GitHub Actions CI: `quality.yml` (build + quality gates) y `e2e.yml` (Playwright 29 tests) en cada push a `main`.
+   - DNS transferido a Netlify. SSL auto-aprovisionado. DNS propagado. HTTPS activo.
+   - Secretos migrados a Netlify dashboard → Environment variables.
+
+0a. **Mejoras de performance y accesibilidad (2026-03-02):**
+   - `<main>` landmark añadido (div.port_sec_warapper → main.port_sec_warapper).
+   - Blog section descomentada; 3 tarjetas reemplazadas con "Coming soon…" (sin `href="#"`, sin dummy assets).
+   - `@import` de Google Fonts eliminado de `font.css`; Roboto cargado con `rel="preload"` + `<link rel="preconnect">` para ambos orígenes de Google Fonts.
+   - `animate.css` diferido con `rel="preload" as="style" onload="..."`.
+   - Cache JSON extendida a 1d fresh + 7d stale-while-revalidate.
+   - PageSpeed baseline pre-mejoras: Desktop 84/94/96/92 · Mobile 61/94/96/92.
+
+1. Deploy acotado por artefactos (legacy cPanel):
+   - históricamente ajustado `.cpanel.yml` para no copiar repo completo; sustituido por Netlify CI/CD.
 2. Discovery base:
    - `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt` publicados.
 3. Metadatos sociales/SEO:
@@ -219,12 +241,14 @@ npm run test:links:external   # requiere red
 
 Regla operativa: no cerrar release si falla cualquier gate no opcional.
 
-## 14) Siguiente paso inmediato (ahora)
+## 14) Siguiente paso inmediato (ahora) — actualizado 2026-03-02
 
-Objetivo de esta iteracion: preparar cierre de release con validacion manual final.
+Objetivo de esta iteracion: cerrar release con QA manual y validacion de mejoras de performance.
 
-1. Ejecutar QA manual completo Desktop + Mobile en produccion.
-2. Confirmar eventos en GA4 Realtime (CTA, formulario, language toggle).
-3. Verificar propiedad en GSC/Bing y enviar `sitemap.xml`.
-4. Rotar secret de Turnstile y provisionarlo fuera de git.
-5. Con evidencias en mano, mover CSP a Enforce y cerrar release.
+1. Capturar PageSpeed post-mejoras (correr Lighthouse lab en producción para validar impacto de improvements #1–4).
+2. Continuar con improvements #5 (jerarquía de headings) y #6 (contraste de colores accesible).
+3. Ejecutar QA manual completo Desktop + Mobile en produccion (`PR-13`, `PR-14`).
+4. Confirmar eventos en GA4 Realtime (CTA, formulario, language toggle).
+5. Verificar propiedad en GSC/Bing y enviar `sitemap.xml` (`RL-01`, `RL-02`, `RL-03`).
+6. Activar Cloudflare Turnstile en produccion (configurar variables en Netlify dashboard).
+7. Con evidencias en mano, mover CSP a Enforce (`PR-11`/`RL-07`) y cerrar release.

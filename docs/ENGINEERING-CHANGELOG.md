@@ -15,8 +15,245 @@ Single long-form technical history of the portfolio. This file consolidates the 
 4. Quality gates are enforced by:
    - `npm run test:quality`
    - `npm run test:e2e`
+5. **Hosting:** Netlify CDN (migrated from cPanel, 2026-03-02). Deploy triggered by push to `main` via GitHub Actions → Netlify CI integration. Atomic deploys; zero-downtime.
+6. **Contact form:** `netlify/functions/contact.mjs` — Node.js 20 Netlify Function using Resend API for email delivery. Migrated from `ajax.php` (PHP/PHPMailer). All anti-spam logic (honeypot, cooldown, rate limit, Turnstile) preserved and ported to Node.js.
+7. **CI/CD:** `.github/workflows/quality.yml` (build + quality gates) and `.github/workflows/e2e.yml` (Playwright, 29 tests) run on every push to `main` and on PRs. Netlify deploys only after CI green.
+8. **SSL:** auto-provisioned by Netlify (Let's Encrypt). Renewed automatically. HTTP → HTTPS enforced at CDN level.
 
 ## Timeline Of Engineering Work
+
+### 2026-03-02 - Performance + Accessibility Sprint: Improvements #1–4 + Blog Cleanup
+
+**Commit:** `ee6654d`
+
+#### Necessity
+
+PageSpeed Insights analysis run immediately after the Netlify migration DNS cutover revealed four high-impact, low-risk issues blocking better scores:
+
+- **Mobile Performance: 61/100** (Desktop: 84/100). A portfolio showcasing engineering skills cannot afford a sub-65 mobile performance score. The gap between desktop and mobile pointed specifically to render-blocking resources, since layout and content are identical across devices.
+- **Missing `<main>` landmark.** Lighthouse Accessibility flagged the absence of a landmark region wrapping the main content. The entire page content was wrapped in `<div class="port_sec_warapper">` — a generic container invisible to assistive technology. Screen-readers rely on landmark regions to let users jump directly to main content; without `<main>`, keyboard/AT navigation is degraded.
+- **6 `href="#"` links in the blog section.** Lighthouse SEO flagged these as non-descriptive, non-navigable placeholder links. The blog section had been kept visible in the built `index.html` despite being commented out in the template (the build had not been re-run since the comment was added). Three cards contained `href="#"` links for "By Admin" and "50 comments" — SEO-dead anchors that crawlers treat as low-quality signals.
+- **Render-blocking font chain (`@import` inside `font.css`).** `font.css` opened with `@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap')`. The browser must: (1) fetch and parse `font.css` (blocking), (2) discover the `@import` directive, (3) open a new blocking connection to `fonts.googleapis.com` and fetch the Roboto CSS, (4) discover `@font-face` entries pointing to `fonts.gstatic.com`, and (5) begin font file fetches. Steps 1–3 are fully sequential and block all painting. Two separate round-trips to two different origins before any pixel renders.
+- **`animate.css` blocking render (~80 KB).** Loaded as a synchronous `<link rel="stylesheet">` in `<head>`. No element visible on initial viewport uses an animate.css class. The browser was blocking all painting until this 80 KB file was fully fetched and parsed on every page load.
+
+#### Process
+
+1. **Blog cleanup:**
+   - Confirmed that the blog section (`port_blog_setions`, lines 644–753 in the template) was already commented out but still present in the built `index.html` from a stale build. The 6 `href="#"` links and `dummyimage.com` images were therefore visible in production.
+   - Uncommented the section in `index.template.html`; replaced all 3 blog card interiors with clean "Coming soon…" placeholders — no images, no `href="#"` links, no fake dates, no Lorem Ipsum, no external dummy assets.
+   - Updated section heading from "My Blog / Recent News" to "My Projects / Coming Soon".
+   - Saved the original vertical card structure to `src/components/index/blog-card.template.html` for future project-page use (noted in comment header with usage instructions).
+
+2. **`<main>` landmark:**
+   - Changed `<div class="port_sec_warapper">` (template line 117) to `<main class="port_sec_warapper">` and its matching closing tag (template line 1016). No visual change — all styling is class-driven.
+   - The `port_sec_warapper` class wraps every page section after the sidebar (about, experience, services, projects, skills, testimonials, blog, sponsors, contact, footer). Adding `<main>` here satisfies WCAG 2.1 SC 1.3.6 (Identify Purpose) and the Lighthouse "Page has a `<main>` region" audit.
+
+3. **Font loading chain fix:**
+   - Removed the `@import url(…)` from `assets/css/font.css` line 1. Added a comment explaining the change and why.
+   - Added `<link rel="preconnect" href="https://fonts.googleapis.com">` and `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>` to the template `<head>`, immediately before the CSS link block. These pre-warm the DNS resolution and TLS handshake to both Google origins before any font request fires — independently of when the font stylesheet loads.
+   - Added Roboto as a non-blocking preload: `<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">` with `<noscript><link rel="stylesheet" href="…"></noscript>` fallback. The browser fetches the font CSS in parallel with all other resources and applies it after first paint — zero blocking.
+
+4. **`animate.css` defer:**
+   - Changed `<link rel="stylesheet" href="assets/css/animate.css">` to `<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="assets/css/animate.css">` with `<noscript>` fallback. The browser preloads the file at high priority (correct, since it will be needed soon) but does not apply it as a stylesheet until the `onload` fires — after first paint. `this.onload=null` prevents the handler firing again if the browser re-evaluates the attribute.
+
+5. **Rebuild and validate:** `npm run build:pages` → `npm run test:quality` → `npm run test:e2e` — 29/29 green. Pushed to `main`; GitHub Actions CI green; Netlify deploy triggered automatically.
+
+#### Expected Results
+
+- **`<main>` landmark:** closes the Lighthouse Accessibility "page has no `<main>` region" flag entirely. Expected +1–2 points Accessibility on desktop and mobile.
+- **Blog `href="#"` links:** closes the Lighthouse SEO "links are not crawlable" / "links do not have descriptive text" flags. Expected +1–3 points SEO on desktop and mobile.
+- **Font chain:** eliminates one sequential blocking round-trip on the critical path. The browser now discovers and starts fetching the Roboto CSS in the same pass as all other `<head>` resources, with a pre-warmed connection. Expected FCP improvement of 200–400 ms on mobile (cold connection), contributing to the Performance score.
+- **`animate.css` defer:** removes the largest single blocking resource from the critical path (~80 KB). Expected to be the highest-impact individual change for mobile FCP. Estimated contribution: 300–600 ms FCP reduction on mobile emulation.
+- **Combined effect:** estimated +10–18 points Mobile Performance, +1–3 points Accessibility, +1–3 points SEO. Desktop should also improve but was already at 84, so the delta will be smaller.
+
+#### Actual Results
+
+- All 29 E2E tests pass. Build clean. No regressions.
+- Deployed to Netlify. CDN propagation immediate.
+- PageSpeed lab scores not re-captured immediately after deploy (CrUX field data requires 28-day collection window to update; Lighthouse lab run will reflect changes immediately but is not cached in PageSpeed's reporting layer until next crawl cycle). Post-improvement lab run is a pending action.
+
+---
+
+### 2026-03-02 - Performance: JSON i18n Cache Header Optimization
+
+**Commit:** `dd4abf1`
+
+#### Necessity
+
+The `content/*.json` files — the i18n string sources for the EN/ES language switcher (`en.json`, `es.json`) — were served with `Cache-Control: public, max-age=0, must-revalidate`. In practice this means: on every visit after the initial load, the browser must send a conditional GET (with `If-None-Match` / `If-Modified-Since`) to the origin and wait for a response before it can serve the JSON. Even if the server responds 304 Not Modified in ~50 ms, that is a blocking roundtrip that delays language switching.
+
+With Netlify hosting, these files only change when a new deploy is pushed — and Netlify automatically invalidates its CDN cache on every deploy. The `max-age=0` was producing unnecessary network traffic with no correctness benefit.
+
+#### Process
+
+- Changed `netlify.toml` `/*.json` headers from `Cache-Control: public, max-age=0, must-revalidate` to `Cache-Control: public, max-age=86400, stale-while-revalidate=604800`.
+- `max-age=86400` (1 day): browsers serve from local cache for up to 24 hours without any network request.
+- `stale-while-revalidate=604800` (1 week): after the 1-day freshness window expires, the browser may serve the stale cached version immediately while revalidating in the background. Users never block waiting for a JSON file.
+- Safety: Netlify CDN purge on deploy is the primary freshness mechanism. If JSON content changes (deploy), the CDN cache is instantly invalidated and all subsequent requests fetch the new version. Browser cache can hold a stale copy for up to 1 day in edge cases, but for a portfolio i18n file this is acceptable — the worst case is a user sees the previous i18n strings for up to 24 hours before their cache refreshes, which is not a correctness problem.
+
+#### Expected Results
+
+- Repeat visits: 2–4 fewer conditional GET roundtrips per session for users with the language switcher active.
+- Reduced perceived latency on language switch after the cache is warm.
+- No stale content risk: Netlify CDN invalidation on deploy + 1-day browser max-age provide two independent freshness layers.
+
+#### Actual Results
+
+- No regressions. Validated with `npm run test:quality`.
+- Cache headers correct in `netlify.toml`. Netlify applies them as CDN response headers.
+
+---
+
+### 2026-03-02 - E2E Compatibility Fix: Static Server Post-Migration
+
+**Commit:** `321ea7b`
+
+#### Necessity
+
+After the Netlify migration, the contact form frontend (`assets/js/custom.js`) was updated to POST to `/.netlify/functions/contact` with a JSON body (`Content-Type: application/json`). However, `scripts/static-server.mjs` — the lightweight Node.js HTTP server used to serve the site during Playwright E2E tests — had not been updated to match. It had two incompatibilities:
+
+1. **Missing route:** it only handled `/ajax.php`. Requests to `/.netlify/functions/contact` returned a 404.
+2. **Missing JSON body parser:** `parseFormFields()` handled `multipart/form-data` and `application/x-www-form-urlencoded` bodies, but silently returned an empty field map for `application/json` bodies. Even if the route had been present, the function would have received empty fields and rejected the submission.
+
+Net effect: every E2E contact form test received a 404 or a rejection, the frontend showed "Something went wrong", and the CI suite failed after the migration was otherwise complete.
+
+#### Process
+
+1. **Added JSON parsing branch** in `parseFormFields()` of `scripts/static-server.mjs`:
+   ```javascript
+   if (mimeType.includes('application/json')) {
+     try {
+       const parsed = JSON.parse(body);
+       if (parsed && typeof parsed === 'object') {
+         for (const [key, value] of Object.entries(parsed)) {
+           fields.set(key, String(value ?? ''));
+         }
+       }
+     } catch {}
+     return fields;
+   }
+   ```
+
+2. **Added route handler** for the new function URL alongside the existing `/ajax.php` route:
+   ```javascript
+   if (pathname === '/ajax.php' || pathname === '/.netlify/functions/contact') {
+     return handleAjax(req, res);
+   }
+   ```
+   Both routes call the same `handleAjax()` mock function, which simulates a successful form submission response — consistent with how the static server approximated `ajax.php`.
+
+3. **Validated:** `npm run test:e2e` — 29/29 green.
+
+#### Expected Results
+
+- E2E contact form tests pass under the new `/.netlify/functions/contact` endpoint URL and `application/json` content-type.
+- Legacy `/ajax.php` route continues to be handled for completeness.
+- No behavior change in production — the static server is strictly a test fixture; production traffic routes to the real Netlify Function.
+
+#### Actual Results
+
+- 29/29 E2E tests green immediately after the fix.
+- GitHub Actions E2E job green on subsequent push.
+
+---
+
+### 2026-03-02 - Platform Migration: cPanel → Netlify
+
+#### Necessity
+
+The portfolio was hosted on a cPanel shared server. This imposed a set of constraints that were increasingly at odds with the engineering standards established during the February componentization and hardening sprints:
+
+1. **No automated CI/CD.** Deployment was mediated by `.cpanel.yml` (cPanel's Git integration) or manual FTP. There was no mechanism to run quality gates or E2E tests before a change reached production. A bug that passed local review could reach production unchecked.
+
+2. **PHP-only serverless runtime.** The contact form (`ajax.php`) required a live PHP 7.4 interpreter on the server. cPanel's PHP configuration is shared, non-containerized, and subject to hosting provider changes. Node.js was not available in the cPanel serverless surface. Migrating the contact form to a more modern stack (rate limiting, captcha verification, structured logging) would have required staying in PHP indefinitely.
+
+3. **Single-origin delivery (no CDN).** Static assets were served from one origin server. Visitors outside the server's geographic region experienced higher latency for every asset — HTML, CSS, JS, images, webfonts. No edge caching, no geographic distribution.
+
+4. **Fragile secrets management.** The email sending credentials (SMTP, or Resend API key post-migration) had to live in the PHP environment or in cPanel environment variables — a configuration surface shared with the hosting provider and harder to audit than a dedicated secrets store.
+
+5. **Manual SSL renewal risk.** While cPanel can auto-renew Let's Encrypt certificates, the process is tied to the hosting provider's automation — failure to renew means outage. No independent control.
+
+6. **No atomic deploys.** Files were overwritten in place during deploy. A partially-uploaded deploy state was observable by live users.
+
+The decision to move to Netlify was driven by the need to close all six gaps simultaneously with a managed platform that required minimal operational overhead.
+
+#### Process
+
+**Phase 1 — Netlify site creation and `netlify.toml` authoring**
+
+1. Created a new Netlify site linked to the `ibaifernandez/portfolio-ibaifernandez` GitHub repository via the Netlify GitHub App.
+2. Authored `netlify.toml` with the following configuration:
+   - **Build:** `command = "npm run build:pages"`, `publish = "."` (root — the site is pre-built static HTML; Netlify's build step just runs the template compiler), `functions = "netlify/functions"`.
+   - **Node version:** `NODE_VERSION = "20"` in `[build.environment]`.
+   - **Dev:** `command = "npm run start"`, `port = 4173` — allows `netlify dev` to serve the site locally with function proxying.
+   - **Redirects:** `/ajax.php → /.netlify/functions/contact` (308 Permanent) — backward compatibility for any cached references to the old PHP endpoint.
+   - **Headers:** security headers on `/*` (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`, `Cross-Origin-Resource-Policy`, `Content-Security-Policy-Report-Only`); cache control per asset type (HTML: no-cache; JSON: 1d + SWR 7d; CSS/JS: 7d; images: 30d; webfonts: 30d + immutable).
+
+**Phase 2 — Contact form migration: `ajax.php` → `netlify/functions/contact.mjs`**
+
+The PHP contact handler was completely replaced with a Netlify Function:
+
+- **Runtime:** Node.js 20 ES module (`contact.mjs`), bundled by esbuild (Netlify's default function bundler).
+- **Email transport:** Resend API. A single authenticated `POST https://api.resend.com/emails` replaces PHPMailer's SMTP handshake. Credentials: `RESEND_API_KEY` (Netlify environment variable), `FROM_EMAIL`, `TO_EMAIL`.
+- **CORS:** The function reads `ALLOWED_ORIGIN` from environment and validates the `Origin` header on every request. Requests from unlisted origins are rejected with 403 before any processing.
+- **Anti-spam logic preserved:**
+  - Honeypot field check (hidden field must be empty).
+  - Minimum time-before-submit guard (form must be open for at least N seconds).
+  - Session-based cooldown (prevents rapid re-submission within the same session).
+  - IP-based rate limiting (`artifacts/contact-rate-limit.json`, same mechanism as the PHP version).
+  - Cloudflare Turnstile captcha verification (reads `captcha_provider` and `captcha_token` from the POST body; verifies against Cloudflare's API using `PORTFOLIO_CAPTCHA_SECRET`).
+- **Frontend update:** `assets/js/custom.js` updated to POST to `/.netlify/functions/contact` with `Content-Type: application/json` body instead of the legacy `/ajax.php` form-encoded POST.
+- **Bundler config:** `netlify.toml` `[functions]` section sets `node_bundler = "esbuild"` — Netlify bundles each function with its `node_modules` dependencies into a single file. No `package.json` inside `netlify/functions/` required.
+
+**Phase 3 — GitHub Actions CI/CD**
+
+1. Added `.github/workflows/quality.yml`:
+   - Triggers on push to `main` and on PRs targeting `main`.
+   - Steps: checkout → Node 20 setup → `npm ci` → `npm run build:pages` → `apt-get install ripgrep` (Linux CI dependency) → `npm run test:quality`.
+   - Purpose: gate on build integrity and quality guards before Netlify sees the commit.
+
+2. Added `.github/workflows/e2e.yml`:
+   - Triggers on push to `main`.
+   - Steps: checkout → Node 20 setup → `npm ci` → Playwright Chromium install → `npm run build:pages` → `npm run test:e2e`.
+   - Purpose: gate on behavioral correctness before production deploy.
+
+3. **Netlify deploy integration:** Netlify's GitHub App triggers a deploy on every push to `main`. The deploy runs after GitHub Actions (Netlify's deploy preview also runs on PRs). Netlify's deploy status check appears in the GitHub PR checks panel.
+
+**Phase 4 — DNS transfer**
+
+1. Domain registrar nameservers updated to Netlify's DNS (`dns1.p01.nsone.net` etc.).
+2. Netlify DNS records configured: `A` record for `portfolio.ibaifernandez.com` pointing to Netlify's load balancer.
+3. DNS propagation confirmed globally within 24–48 hours via `dig` and external DNS propagation checkers.
+
+**Phase 5 — SSL**
+
+- Netlify auto-provisions a Let's Encrypt certificate as soon as DNS propagation resolves. Certificate covers `portfolio.ibaifernandez.com` and `www.portfolio.ibaifernandez.com`.
+- HTTPS enforced by Netlify CDN (HTTP requests receive 301 redirect to HTTPS). No application-layer configuration required.
+- Renewal: automatic via Netlify/Let's Encrypt. No manual intervention required.
+
+#### Expected Results
+
+- **Automated CI/CD:** every push to `main` triggers quality + E2E gates. No deploy reaches production without passing the test suite. No manual FTP or `.cpanel.yml`-mediated uploads.
+- **Serverless contact form:** no PHP server to maintain. Cold-start latency ~50–200 ms (acceptable for a contact form). Runtime updates handled by Netlify (no server patching).
+- **CDN edge delivery:** static assets served from Netlify's global edge network (100+ PoPs). Reduced TTFB and asset latency for international visitors.
+- **Automatic SSL:** certificate provisioned and renewed by Netlify/Let's Encrypt indefinitely, with no manual intervention or renewal risk.
+- **Atomic deploys:** Netlify stages new files, then switches atomically. No partial deploy state observable by users.
+- **Environment variable security:** secrets stored in Netlify's encrypted variable store, never committed to the repository.
+
+#### Actual Results
+
+- DNS propagation confirmed: ✅
+- SSL auto-provisioned and HTTPS enforced: ✅
+- GitHub Actions `quality` and `e2e` CI jobs green: ✅ (after `321ea7b` E2E fix)
+- All 29 E2E tests passing in CI: ✅
+- Contact form functional on production (Resend delivery confirmed): ✅
+- Netlify deploy on git push operational: ✅
+- **PageSpeed baseline captured immediately post-migration (before improvement sprint):**
+  - Desktop: Performance **84** | Accessibility **94** | Best Practices **96** | SEO **92**
+  - Mobile: Performance **61** | Accessibility **94** | Best Practices **96** | SEO **92**
+  - These scores served as the baseline for the subsequent performance and accessibility improvement sprint.
+
+---
 
 ### 2026-02-27 - National Route V2 (Bilingual + Normalized Media + Smoke Hardening)
 
@@ -447,6 +684,57 @@ Rationale:
 1. Minimize visual regressions.
 2. Keep predictable cascade behavior in legacy-compatible environment.
 3. Maintain performance discipline with explicit budgets.
+
+### ADR-003 (Platform: Netlify over cPanel)
+
+Decision: migrate hosting from cPanel to Netlify (2026-03-02).
+
+Rationale:
+1. CI/CD integration (GitHub → Netlify via GitHub App) eliminates manual deployment steps and introduces automated quality gates (`quality.yml` + `e2e.yml`) in the production path. A commit that fails quality guards or E2E tests cannot reach production.
+2. Netlify Functions (Node.js 20, esbuild-bundled) provide a modern serverless runtime for the contact form, removing the PHP maintenance dependency and enabling the Resend API migration.
+3. Netlify's global CDN edge network provides low-latency delivery of static assets to international visitors without additional infrastructure configuration.
+4. Automatic SSL provisioning (Let's Encrypt via Netlify) removes certificate renewal risk and manual intervention.
+5. Atomic deploys eliminate partial-deploy visibility windows.
+6. Netlify's encrypted environment variable store provides a cleaner secrets management model than cPanel environment variables.
+
+Alternatives considered:
+- **Vercel:** functionally equivalent for this use case. Rejected in favor of Netlify because `netlify.toml` (headers, redirects, functions) is more expressive for a multi-concern configuration (cache headers per path, security headers, legacy redirects) than Vercel's `vercel.json`.
+- **GitHub Pages:** no serverless functions; would have required a separate API service for the contact form. No custom response headers without a 3rd-party Action. Rejected.
+- **Cloudflare Pages:** viable alternative with better edge performance. The Cloudflare Workers runtime has historically differed from standard Node.js (no native `process.env`, Web APIs instead of Node APIs). Rejected to avoid porting the contact function to a different runtime. Revisitable in a future migration if performance data warrants it.
+- **Self-hosted VPS (DigitalOcean, Hetzner):** full control, but introduces server maintenance (OS patches, Node.js upgrades, Nginx/Caddy config, certificate renewal) that is disproportionate for a single-page portfolio with one serverless function.
+
+### ADR-004 (Contact Form Email Transport: Resend over SMTP/PHPMailer)
+
+Decision: use Resend API as the email transport in the Netlify Function (2026-03-02).
+
+Rationale:
+1. **Serverless fit.** Resend is a REST API (`POST https://api.resend.com/emails` with JSON payload) — no SMTP handshake, no persistent TCP connection, no TLS negotiation in application code. This is the correct transport model for a stateless serverless function where each invocation is independent.
+2. **Simplicity.** A single authenticated HTTP request replaces PHPMailer's multi-step SMTP session. Less code surface, fewer failure modes.
+3. **Deliverability.** Resend supports custom sending domains with automatic SPF/DKIM/DMARC configuration. Emails from `FROM_EMAIL` (a verified Resend domain) are less likely to be flagged as spam than emails from a generic shared-hosting SMTP relay.
+4. **Free tier sufficiency.** Resend's free tier (100 emails/day, 3,000/month) is more than adequate for a portfolio contact form.
+5. **Secret management.** A single `RESEND_API_KEY` environment variable is the only secret required, stored in Netlify's encrypted variable store.
+
+Alternatives considered:
+- **PHPMailer over SMTP (existing):** PHP-only. Incompatible with Node.js Netlify Function runtime. Rejected.
+- **Nodemailer + SMTP:** would require a stable SMTP host and credentials. Cold-start latency higher (TLS handshake per invocation). More complex configuration (host, port, auth, TLS options). Rejected.
+- **SendGrid:** same category as Resend (REST API for transactional email). More complex SDK, stricter free tier (requires credit card for higher limits). Rejected in favor of simpler Resend API.
+- **Amazon SES:** excellent deliverability and pricing at scale. Requires AWS account, IAM credentials, region selection, and verified sending identity — disproportionate setup overhead for a single-function portfolio. Rejected.
+
+### ADR-005 (CSS Loading: `rel="preload"` Defer for Non-Critical Stylesheets)
+
+Decision: load `animate.css` and Google Fonts Roboto as non-blocking resources using `<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">` with `<noscript>` fallback (2026-03-02).
+
+Rationale:
+1. **`animate.css` is not render-critical.** No element visible in the initial viewport (above the fold) uses an `animate.css` class. Loading it synchronously — as a render-blocking `<link rel="stylesheet">` — penalizes every page load for content that does not affect the first paint. Deferring it eliminates the blocking penalty while preserving the animation behavior for below-fold content.
+2. **The `@import` pattern in `font.css` created a sequential blocking chain.** Browser must (1) fetch `font.css` (blocking), (2) parse it, (3) discover `@import`, (4) open a new connection to `fonts.googleapis.com` and fetch Roboto CSS (blocking), (5) discover `@font-face` entries, (6) fetch font files from `fonts.gstatic.com`. Steps 1–4 are fully sequential and block rendering. Moving Roboto to a `rel="preload"` in the HTML `<head>` collapses steps 1–4 into a parallel preload that the browser discovers in the same pass as all other resources, while `<link rel="preconnect">` pre-warms the DNS + TLS to both font origins.
+3. **`rel="preload"` is semantically correct.** Unlike the `media="print"` workaround (also common), `rel="preload"` explicitly signals to the browser that this resource will be needed soon and should be fetched at high priority — just not applied synchronously. The browser can optimize its fetch scheduling accordingly.
+4. **`<noscript>` fallback.** Users with JavaScript disabled receive the stylesheets via the synchronous fallback link, preserving full visual fidelity.
+5. **`this.onload=null` guard.** Prevents some browsers from firing the `onload` handler multiple times when `this.rel` is reassigned, which could cause a second application cycle.
+
+Alternatives considered:
+- **`media="print"` trick:** `<link rel="stylesheet" media="print" onload="this.media='all'">`. Functionally equivalent and widely supported. `rel="preload"` is semantically cleaner and provides stronger preload priority hints to the browser's resource scheduler. Either approach is valid; `rel="preload"` was chosen for semantic precision.
+- **CSS bundler + PurgeCSS:** would eliminate unused CSS from both `animate.css` and `style.css`, reducing their size dramatically. Higher impact but also higher complexity and regression risk (PurgeCSS needs careful safelist configuration for dynamically-applied classes). Deferred to Improvement #7.
+- **Self-hosting Google Fonts (Roboto):** eliminates the external origin dependency and the `fonts.googleapis.com` request entirely. `font.css` already self-hosts Josefin Sans and Poppins via `@font-face`. Roboto could be self-hosted in the same file. Deferred — the font files would need to be downloaded, versioned, and kept updated. The preload approach achieves most of the performance benefit with zero additional asset management overhead.
 
 ## Validation Standard (Non-Negotiable)
 
