@@ -106,6 +106,18 @@ function parseFormFields(body, contentType) {
   const fields = new Map();
   const mimeType = (contentType || '').toLowerCase();
 
+  if (mimeType.includes('application/json')) {
+    try {
+      const parsed = JSON.parse(body);
+      if (parsed && typeof parsed === 'object') {
+        for (const [key, value] of Object.entries(parsed)) {
+          fields.set(key, String(value ?? ''));
+        }
+      }
+    } catch {}
+    return fields;
+  }
+
   if (mimeType.includes('application/x-www-form-urlencoded')) {
     const params = new URLSearchParams(body);
     for (const [key, value] of params.entries()) {
@@ -217,7 +229,7 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${host}:${port}`);
   let pathname = decodeURIComponent(parsedUrl.pathname);
 
-  if (pathname === '/ajax.php') {
+  if (pathname === '/ajax.php' || pathname === '/.netlify/functions/contact') {
     return handleAjax(req, res);
   }
 
