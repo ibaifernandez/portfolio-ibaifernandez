@@ -83,7 +83,9 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
       selector: '.port_experience_setions',
       locator: page.locator('.port_experience_setions'),
       snapshot: 'experience-section.png',
-      maxDiffPixelRatio: 0.07,
+      // Text-heavy section: Ubuntu and macOS rasterize fonts differently enough
+      // to create a stable but larger visual delta than the other snapshots.
+      maxDiffPixelRatio: 0.10,
       clipWidth: 1160,
       clipHeight: 1395
     },
