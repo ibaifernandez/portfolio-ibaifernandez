@@ -67,20 +67,20 @@
   },
   {
     "page": {
-      "output": "project-national-tech-evangelism.html",
-      "template": "src/pages/project-national-tech-evangelism.template.html"
+      "output": "project-ruta-digitalizacion-2x2mkt.html",
+      "template": "src/pages/project-ruta-digitalizacion-2x2mkt.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/2x2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/2x2.webp\">\n<img src=\"assets/images/2x2.png\" alt=\"National-scale tech evangelism initiative\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/2x2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/2x2.webp\">\n<img src=\"assets/images/2x2.png\" alt=\"The Route to Digitalization / 2x2MKT initiative\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
     "title": {
-      "text": "National-Scale Tech Evangelism",
+      "text": "The Route to Digitalization / 2x2MKT",
       "translate": "project-national-scale-title"
     },
     "description": {
-      "text": "Orchestrated nationwide digital literacy tours and remote crisis-response ecosystems during the global pandemic, successfully onboarding over 10,600 users into digital conversion funnels.",
+      "text": "Led a national-scale digital literacy tour and re-engineered it into a crisis-proof remote operation during the pandemic, onboarding more than 10,600 users into digital conversion funnels.",
       "translate": "project-national-scale-copy"
     },
     "link": {
-      "href": "project-national-tech-evangelism.html",
+      "href": "project-ruta-digitalizacion-2x2mkt.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"

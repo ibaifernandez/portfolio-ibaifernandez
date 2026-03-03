@@ -29,6 +29,12 @@
 # Useful as fallback for any cached references to the old endpoint.
 # The frontend already calls /.netlify/functions/contact directly.
 [[redirects]]
+  from   = "/project-national-tech-evangelism.html"
+  to     = "/project-ruta-digitalizacion-2x2mkt.html"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/ajax.php"
   to     = "/.netlify/functions/contact"
   status = 308

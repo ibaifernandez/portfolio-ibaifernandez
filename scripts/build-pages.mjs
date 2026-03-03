@@ -14,7 +14,7 @@ const projectShareImageMap = {
   'project-debtracker.html': 'assets/images/debtracker.png',
   'project-gymtracker.html': 'assets/images/gymtracker-cover-2.png',
   'project-enterprise-crm.html': 'assets/images/lfi-newspaper.jpg',
-  'project-national-tech-evangelism.html': 'assets/images/2x2.png',
+  'project-ruta-digitalizacion-2x2mkt.html': 'assets/images/2x2.png',
   'project-elm-st.html': 'assets/images/elm-st-web.png',
   'project-aglaya.html': 'assets/images/aglaya-web.png'
 };

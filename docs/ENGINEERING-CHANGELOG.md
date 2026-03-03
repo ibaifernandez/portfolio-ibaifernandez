@@ -22,6 +22,87 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Home Cleanup: Remove Obsolete Hardcoded "Coming Soon" Projects Block
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The homepage still contained a second, older projects-like section below testimonials. It was hardcoded and unrelated to the real data-driven project grid, which caused a misleading "Coming Soon" block to appear in production even though the actual project showcase was already rendered above it.
+
+#### Process
+
+1. Removed the obsolete hardcoded block from `src/pages/index.template.html`.
+2. Left the real data-driven projects grid untouched (`content/projects.json` + `@render projects-grid` remains the source of truth).
+
+#### Actual Results
+
+- The homepage no longer shows a duplicate "Coming Soon" projects section
+- The visible projects area is now the single canonical showcase driven by `content/projects.json`
+
+---
+
+### 2026-03-03 - Manual Production Validation: Contact Flow + GA4 Realtime Confirmed
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The Turnstile UX hotfix needed a real production check because local E2E does not exercise Cloudflare Turnstile. The goal was to close the real production validation loop for the contact flow: UI behavior, inbox delivery, and analytics ingestion.
+
+#### Process
+
+1. Deployed commit `5a44afc` to production via the standard GitHub Actions pipeline.
+2. Repeated a real contact-form submission on `https://portfolio.ibaifernandez.com`.
+3. Observed the live UI behavior after submit.
+4. Confirmed that both transactional emails arrived in the target inbox:
+   - autoresponse (`Thank you for your message`)
+   - owner notification (submitted subject line)
+5. Confirmed GA4 Realtime ingestion in production:
+   - `page_view`
+   - `contact_submit_attempt`
+   - `contact_submit_success`
+6. Captured post-hardening PageSpeed results on production:
+   - Desktop: `93 / 95 / 96 / 92`
+   - Mobile: `62 / 95 / 92 / 92`
+
+#### Actual Results
+
+- Invisible Turnstile no longer introduces the visible white block / layout jump in the happy path
+- The new success notice renders correctly and reads `Your message has been sent successfully.`
+- Production contact UX is now visually stable for the normal submit path
+- Real inbox delivery is confirmed end to end
+- GA4 Realtime confirms both pageview and contact conversion events
+- Contact flow production validation is now fully closed
+- Launch-readiness metrics now have a fresh post-hardening baseline, not just the post-migration baseline
+
+---
+
+### 2026-03-03 - Public Slug Normalization: 2x2MKT / The Route To Digitalization
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The public slug `project-national-tech-evangelism.html` was technically valid but editorially weak. It did not match the recognisable identity of the project (`The Route to Digitalization / 2x2MKT`) and was not a URL worth carrying into launch.
+
+#### Process
+
+1. Renamed the public output path to `project-ruta-digitalizacion-2x2mkt.html`.
+2. Renamed the source template path to match the public slug.
+3. Updated the project card title/copy to use the recognisable project name.
+4. Added a Netlify `308` redirect from the old slug to the new slug, preserving backwards compatibility.
+5. Updated generation scripts so print-PDF targets and social metadata maps follow the new slug.
+6. Aligned static discovery files (`sitemap.xml`, `llms.txt`, `llms-full.txt`) to the new public URL.
+
+#### Actual Results
+
+- The project now has a recognisable launch-ready public URL
+- Existing links to the old slug continue to resolve cleanly through Netlify
+- The public project URL, redirects, discovery files, project nav, and print targets now point to the normalized slug consistently
+
+---
+
 ### 2026-03-03 - Contact UX Hotfix: Invisible Turnstile Layout Shift + Feedback Styling
 
 **Commit:** `working tree (uncommitted)`

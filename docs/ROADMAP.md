@@ -185,20 +185,38 @@ Delivered:
 
 ---
 
-### Phase 5.5 — Measurement + Launch Verification
+### Phase 5.5 — Measurement + Launch Verification ✅
+*Completed: 2026-03-03*
+
+Delivered:
+
+**#9 — Re-capture PageSpeed + compare against baseline**
+- Desktop PageSpeed result: `93 / 95 / 96 / 92`
+- Mobile PageSpeed result: `62 / 95 / 92 / 92`
+- Mobile bottleneck is now clearly isolated to paint timing (`FCP 4.7s`, `LCP 7.6s`), not script blocking (`TBT 0ms`) or layout instability (`CLS 0.004`)
+- Result: desktop is already in release-safe territory; mobile still has LCP headroom if the target remains `>= 95`
+
+**Production flow verification**
+- Real contact-form submission validated end to end in production
+- Inbox delivery confirmed through Resend (`FROM_EMAIL` / `TO_EMAIL` on Netlify now explicit)
+- GA4 Realtime confirms `page_view`, `contact_submit_attempt`, and `contact_submit_success`
+- Invisible Turnstile UX validated live after the layout-shift hotfix
+
+---
+
+### Phase 5.6 — Manual QA + Launch Hardening
 *Estimated: next session*
 
 Priority items:
 
-**#9 — Re-capture PageSpeed + compare against baseline**
-- Re-run PageSpeed Insights after the a11y, minification, and media sprints
-- Record deltas against the 2026-03-03 baseline
-- Use that measurement to decide whether any further perf work is warranted before Phase 6
+- Prepare and run the manual QA checklist on desktop
+- Prepare and run the manual QA checklist on mobile
+- Resolve any regressions found before Search Console / Bing onboarding
 
 ---
 
 ### Phase 6 — CSP Enforce Mode
-*Estimated: after Phase 5.5*
+*Estimated: after Phase 5.6*
 
 - Promote CSP from `Content-Security-Policy-Report-Only` to `Content-Security-Policy`
 - Requires: audit of all inline scripts + styles, verify no legitimate violations in report
@@ -211,7 +229,9 @@ Priority items:
 
 Priority items:
 - **Hero rewrite:** Problem → solution → result structure for headline
-- **Project curation:** Each entry must communicate business impact, not just technology used
+- **Project curation:** Final launch set expands to 8 active dossiers (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) with stronger outcome-driven narratives
+- **Slug normalization:** Replace legacy public slugs with recognizable URLs and preserve old links through redirects
+- **LFi redesign:** Rebuild the LFi dossier with a modern visual system, then remove obsolete newspaper-only assets
 - **Blog section:** Decide: real posts, remove section, or keep "Coming soon" indefinitely
 - **Translation audit:** Every EN string must have an ES equivalent; no untranslated fragments
 - **SEO metadata:** Unique title + description + OG tags per page
@@ -226,8 +246,8 @@ Acceptance criteria: Portfolio communicates seniority and expertise in < 60 seco
 - [ ] Google Search Console verification
 - [ ] Bing Webmaster Tools verification
 - [ ] Sitemap submission (`sitemap.xml`)
-- [ ] PageSpeed Insights re-capture and comparison vs baseline
-- [ ] Turnstile real-flow validation in production
+- [x] PageSpeed Insights re-capture and comparison vs baseline
+- [x] Turnstile real-flow validation in production
 - [ ] Release tag `v2.0.0`
 - [ ] QA manual on Desktop and Mobile
 
@@ -254,8 +274,9 @@ Phase 5.2   ████████████████ DONE (Mar 2026-03-0
 
 Phase 5.3   ████████████████ DONE (Mar 2026-03-03)
 Phase 5.4   ████████████████ DONE (Mar 2026-03-03)
-Phase 5.5   ░░░░░░░░         Next session (measurement + verification)
-Phase 6     ░░░░░░░░         After 5.5 (CSP enforce)
+Phase 5.5   ████████████████ DONE (Mar 2026-03-03)
+Phase 5.6   ░░░░░░░░         Next session (manual QA)
+Phase 6     ░░░░░░░░         After 5.6 (CSP enforce)
 Phase 7     ░░░░░░░░░░░░     Content sprint (1–2 sessions)
 Phase 8     ░░░░░░░░         Launch (after content)
 Phase 9     ░░░░░░░░░░░░░░░░ Post-MVP (observability)

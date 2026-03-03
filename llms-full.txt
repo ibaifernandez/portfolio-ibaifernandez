@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-02-27
+Last-Updated: 2026-03-03
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
@@ -15,8 +15,8 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
   - Purpose: local-first architecture case (Python/Flask, SQLite, deterministic AI pipelines, QA automation).
 - LFi Enterprise CRM: https://portfolio.ibaifernandez.com/project-enterprise-crm.html
   - Purpose: agency intrapreneurship case, promotion timeline, enterprise automation governance.
-- National-Scale Tech Evangelism: https://portfolio.ibaifernandez.com/project-national-tech-evangelism.html
-  - Purpose: nationwide upskilling and digital adoption program impact.
+- The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html
+  - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
 - Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
   - Purpose: narrative architecture and custom web/brand system case.
 - AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html

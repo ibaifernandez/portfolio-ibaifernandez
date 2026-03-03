@@ -102,8 +102,8 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 - [ ] Fields: name, email, subject, message
 - [ ] Honeypot anti-bot field (`website`, hidden)
 - [ ] Timing-based bot detection (`form_started_at`)
-- [ ] Captcha integration ready (Cloudflare Turnstile)
-- [ ] Rate limiting by IP
+- [ ] Optional invisible captcha validation (Cloudflare Turnstile in production)
+- [ ] Stateless anti-spam baseline (honeypot + timing gate; no persistent in-memory rate limiter in the current serverless contract)
 - [ ] Accessible error and success feedback (`aria-live`, `aria-invalid`)
 - [ ] Backend delivery via Resend API
 
@@ -140,11 +140,11 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 
 | Metric | Target | Current |
 |---|---|---|
-| Lighthouse Performance (desktop) | ≥ 95 | 84 (pre-sprint baseline) |
-| Lighthouse Performance (mobile) | ≥ 95 | 61 (pre-sprint baseline) |
-| Lighthouse Accessibility | ≥ 95 | 94 (pre-sprint baseline) |
-| LCP (mobile 4G) | ≤ 2.2s | TBD (post-sprint) |
-| CLS | ≤ 0.05 | TBD |
+| Lighthouse Performance (desktop) | ≥ 95 | 93 (PageSpeed, 2026-03-03) |
+| Lighthouse Performance (mobile) | ≥ 95 | 62 (PageSpeed, 2026-03-03) |
+| Lighthouse Accessibility | ≥ 95 | 95 (PageSpeed, 2026-03-03) |
+| LCP (mobile 4G) | ≤ 2.2s | 7.6s (PageSpeed, 2026-03-03) |
+| CLS | ≤ 0.05 | 0.004 (PageSpeed, 2026-03-03) |
 | JS initial budget | ≤ 220KB gzip | TBD |
 | CSS initial budget | ≤ 120KB gzip | TBD |
 
@@ -182,7 +182,8 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 | Security headers | ✅ (X-Frame-Options, X-Content-Type-Options, etc.) |
 | No hardcoded secrets | ✅ |
 | CSP enforce mode | ⏳ Pending (currently report-only) |
-| Captcha production validation | ⏳ Pending (Turnstile configured; real send validation still required) |
+| Captcha production validation | ✅ Validated in production (2026-03-03) |
+| Realtime analytics ingestion | ✅ `page_view` + contact conversion events confirmed in GA4 Realtime (2026-03-03) |
 
 ### NFR-06 — Maintainability
 
@@ -237,10 +238,11 @@ Every page must have:
 |---|---|---|---|
 | OQ-01 | Final copy for hero headline and sub-heading (EN + ES) | Ibai | High |
 | OQ-02 | CSP enforce mode — timeline | Ibai | Medium |
-| OQ-03 | Turnstile real-flow validation in production | Ibai | Medium |
+| OQ-03 | Turnstile real-flow validation in production | Closed (2026-03-03) | Resolved |
 | OQ-04 | Blog content strategy — real posts or remove section? | Ibai | Low |
 | OQ-05 | Google Search Console + sitemap submission | Ibai | Medium |
 | OQ-06 | hreflang strategy — single URL or `/en` / `/es` paths? | Ibai | Low |
+| OQ-07 | Final launch roster and dossier refresh for the 8 featured projects | Ibai | High |
 
 ---
 
@@ -252,11 +254,11 @@ The portfolio is considered **production-ready (v2.0)** when:
 - [ ] Lighthouse Performance ≥ 90 on mobile (baseline for release; ≥ 95 is north star)
 - [ ] Lighthouse Accessibility ≥ 95
 - [ ] Zero axe serious/critical violations
-- [ ] All E2E tests pass (29/29)
-- [ ] Contact form works end-to-end in production
+- [x] All E2E tests pass (29/29)
+- [x] Contact form works end-to-end in production
 - [ ] CV print page works in Chrome and Safari
 - [ ] Language toggle works for all visible content
-- [ ] No broken internal links
+- [x] No broken internal links
 - [ ] CSP policy decided (enforce or extend report-only with justification)
 - [ ] Google Search Console verified
 

@@ -219,20 +219,22 @@ Completed in this sprint:
 Priority items for next session:
 
 ### #9 — Re-capture PageSpeed against the current baseline
-- **Problem:** The baseline still reflects the state before headings, contrast, minification, and residual media fixes were fully closed
-- **Fix:** Run new PageSpeed captures and compare deltas against the documented baseline
-- **Impact:** Evidence-based decision on whether any further performance work is needed before launch-hardening
+- **Status:** Closed on 2026-03-03
+- **Desktop:** `93 / 95 / 96 / 92`
+- **Mobile:** `62 / 95 / 92 / 92`
+- **Key metric readout (mobile):** `FCP 4.7s`, `LCP 7.6s`, `TBT 0ms`, `CLS 0.004`
+- **Impact:** Desktop is now in a strong release band; mobile has improved but still needs targeted LCP work if the goal remains `>= 95`
 
 ---
 
 ## Post-Sprint Backlog (Production Readiness)
 
-- [ ] Validate Turnstile real flow in production (submit + captcha + email delivery)
+- [x] Close production validation loop for contact flow (UI success path + inbox delivery + GA4 realtime confirmed on 2026-03-03)
 - [ ] QA manual on Desktop + Mobile
 - [ ] Google Search Console verification
 - [ ] Bing Webmaster Tools verification
 - [ ] Sitemap submission (`sitemap.xml`)
-- [ ] PageSpeed re-capture after improvements #1–8
+- [x] PageSpeed re-capture after improvements #1–8 (documented on 2026-03-03)
 - [ ] Promote CSP from report-only to enforce mode (after 2 weeks clean in report-only)
 - [ ] Release tag `v2.0.0`
 
@@ -317,6 +319,9 @@ Priority items for next session:
 - [ ] BL-CNT-004: **Resolve Blog Lorem Ipsum block (pending, do not modify now).**
 - [x] BL-CNT-005: Remove legacy experience from `Experience` timeline and rebalance layout (from 2+4+1 to 2+2+2 cards) without regressions.
 - [x] BL-CNT-006: Remove the same legacy brand from projects grid and logos carousel for complete removal from public portfolio.
+- [ ] BL-CNT-007: Refresh the project roster for the final launch set (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) while keeping all dossiers live.
+- [ ] BL-CNT-008: Normalize public project slugs with explicit legacy redirects (`2x2MKT` first; continue as pages are refreshed).
+- [ ] BL-CNT-009: Redesign the LFi dossier away from the legacy newspaper aesthetic, then retire newspaper-only assets that are no longer used.
 
 ---
 
