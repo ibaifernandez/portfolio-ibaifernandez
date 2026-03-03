@@ -230,6 +230,7 @@ Priority items for next session:
 ## Post-Sprint Backlog (Production Readiness)
 
 - [x] Close production validation loop for contact flow (UI success path + inbox delivery + GA4 realtime confirmed on 2026-03-03)
+- [x] Prepare manual QA runbooks for desktop and mobile (`docs/QA-DESKTOP.md`, `docs/QA-MOBILE.md`)
 - [ ] QA manual on Desktop + Mobile
 - [ ] Google Search Console verification
 - [ ] Bing Webmaster Tools verification
@@ -296,6 +297,7 @@ Priority items for next session:
 - [x] BL-QA-009: Robust Playwright operability protocol (orphan process diagnosis/cleanup + `test:e2e:clean` wrapper).
 - [x] BL-QA-010: Expand Home visual regression with dedicated snapshots for `Experience`, `Projects`, and `logos`, including Swiper carousel stabilization.
 - [x] BL-QA-008: Re-activate `color-contrast` as blocking rule in `tests/e2e/a11y.spec.js` after closing the last failing project CTA contrast debt.
+- [x] BL-QA-011: Add manual QA runbooks for desktop and mobile release validation.
 
 ### A11y / UX
 

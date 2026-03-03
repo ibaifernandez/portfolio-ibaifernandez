@@ -85,9 +85,8 @@ Comprobacion manual en Netlify dashboard:
 - La pantalla de Deploys debe mostrar **"Builds are stopped"**
 - El dominio activo debe ser `portfolio.ibaifernandez.com`
 - El ultimo deploy productivo debe provenir del flujo de GitHub Actions, no de un auto-build de Netlify
-- Variables minimas esperadas: `RESEND_API_KEY`
+- Variables minimas esperadas: `RESEND_API_KEY`, `FROM_EMAIL`, `TO_EMAIL`
 - Variables de captcha ya observadas en produccion (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`
-- Variables recomendadas para evitar depender del fallback: `FROM_EMAIL`, `TO_EMAIL`
 
 ### Variables de entorno en Netlify
 
@@ -124,10 +123,28 @@ netlify/
 
 La función es la única pieza serverless del stack. Maneja:
 - Anti-spam base (honeypot, tiempo mínimo)
-- Verificación Cloudflare Turnstile (ya configurada en producción; falta validación manual end to end)
+- Verificación Cloudflare Turnstile (ya configurada y validada en producción el 2026-03-03)
 - Envío de email vía Resend API REST
 
 El mock local de `scripts/static-server.mjs` replica el contrato real de producción: honeypot, tiempo mínimo, validación básica y captcha opcional.
+
+## QA manual (release gate humano)
+
+Documentos operativos:
+
+- `docs/QA-DESKTOP.md`
+- `docs/QA-MOBILE.md`
+
+Orden recomendado:
+
+1. Ejecutar Desktop QA
+2. Corregir incidencias de severidad alta/media
+3. Ejecutar Mobile QA
+4. Repetir una pasada corta de formulario en producción si se tocaron UI, layout, o scripts de contacto
+
+Regla de cierre:
+
+- No avanzar a Search Console / Bing hasta cerrar QA manual en desktop y mobile
 
 ---
 
@@ -235,7 +252,7 @@ Base técnica implementada en `netlify/functions/contact.js`:
 
 1. **Honeypot:** campo oculto en el formulario que debe estar vacío; si está relleno, la función rechaza el envío con 200 (para no dar feedback a bots).
 2. **Tiempo mínimo antes de submit:** el formulario registra el timestamp de apertura; la función valida que haya pasado el mínimo de tiempo antes de aceptar el envío.
-3. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API del proveedor usando `PORTFOLIO_CAPTCHA_SECRET`. En producción, las variables de captcha ya están presentes; lo pendiente es validar el flujo real con un envío manual.
+3. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API del proveedor usando `PORTFOLIO_CAPTCHA_SECRET`. En producción, el flujo real ya fue validado con envío manual, inbox delivery y confirmación visual de UX estable.
 4. **Validación y saneamiento:** valida email, subject/message y escapa HTML antes de enviar vía Resend.
 
 Cobertura adicional en entorno local de pruebas:

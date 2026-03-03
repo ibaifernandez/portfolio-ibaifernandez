@@ -22,6 +22,29 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Manual QA Runbooks: Desktop + Mobile
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The project is approaching launch-hardening. Automated tests are already strong, but there was no explicit human QA gate documented for desktop and mobile before Search Console / Bing onboarding.
+
+#### Process
+
+1. Added a dedicated desktop release checklist in `docs/QA-DESKTOP.md`.
+2. Added a dedicated mobile release checklist in `docs/QA-MOBILE.md`.
+3. Updated `docs/ENGINEERING-RUNBOOK.md` so the manual QA step is now part of the formal release flow.
+4. Updated roadmap and backlog references so the QA documentation is tracked separately from the QA execution itself.
+
+#### Actual Results
+
+- The project now has an explicit human release gate for desktop and mobile
+- QA can proceed in a controlled, repeatable way without waiting for final content freeze
+- Launch sequencing is clearer: manual QA before Search Console / Bing
+
+---
+
 ### 2026-03-03 - Home Cleanup: Remove Obsolete Hardcoded "Coming Soon" Projects Block
 
 **Commit:** `working tree (uncommitted)`

@@ -209,6 +209,7 @@ Delivered:
 
 Priority items:
 
+- Manual QA checklists prepared in `docs/QA-DESKTOP.md` and `docs/QA-MOBILE.md`
 - Prepare and run the manual QA checklist on desktop
 - Prepare and run the manual QA checklist on mobile
 - Resolve any regressions found before Search Console / Bing onboarding
