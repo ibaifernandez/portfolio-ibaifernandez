@@ -6909,3 +6909,397 @@ select:focus-visible,
 		height: 62px;
 	}
 }
+
+body.aglaya_dossier_page {
+	background:
+		radial-gradient(circle at top right, rgba(241, 166, 126, 0.18), transparent 36%),
+		radial-gradient(circle at 15% 18%, rgba(60, 145, 165, 0.16), transparent 28%),
+		linear-gradient(180deg, #f7f1e7 0%, #f3ece2 100%);
+	color: #24313a;
+}
+
+.aglaya_dossier_surface {
+	max-width: 1540px;
+}
+
+.aglaya_dossier_hero,
+.aglaya_dossier_stage,
+.aglaya_dossier_section,
+.aglaya_dossier_intro,
+.aglaya_dossier_stage_callout,
+.aglaya_dossier_card,
+.aglaya_dossier_method,
+.aglaya_dossier_phase,
+.aglaya_dossier_proof_card,
+.aglaya_dossier_capability {
+	border-radius: 28px;
+}
+
+.aglaya_dossier_hero,
+.aglaya_dossier_stage,
+.aglaya_dossier_section {
+	display: grid;
+	gap: 24px;
+	padding: 34px;
+	background: rgba(255, 255, 255, 0.82);
+	border: 1px solid rgba(36, 49, 58, 0.08);
+	box-shadow: 0 26px 52px rgba(36, 49, 58, 0.08);
+}
+
+.aglaya_dossier_hero,
+.aglaya_dossier_stage,
+.aglaya_dossier_positioning_grid,
+.aglaya_dossier_method_grid,
+.aglaya_dossier_phase_grid,
+.aglaya_dossier_proof_grid,
+.aglaya_dossier_capability_grid {
+	display: grid;
+	gap: 24px;
+}
+
+.aglaya_dossier_hero,
+.aglaya_dossier_stage {
+	grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.95fr);
+	align-items: start;
+}
+
+.aglaya_dossier_intro {
+	display: grid;
+	gap: 20px;
+	padding: 0;
+}
+
+.aglaya_dossier_signal_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.aglaya_dossier_signal {
+	display: grid;
+	gap: 4px;
+	padding: 18px;
+	border-radius: 22px;
+	background: linear-gradient(180deg, rgba(60, 145, 165, 0.08), rgba(255, 255, 255, 0.72));
+	border: 1px solid rgba(60, 145, 165, 0.14);
+}
+
+.aglaya_dossier_signal_label,
+.aglaya_dossier_section_tag,
+.aglaya_dossier_stage_tag,
+.aglaya_dossier_method_label,
+.aglaya_dossier_placeholder_tag {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.aglaya_dossier_signal_label,
+.aglaya_dossier_section_tag,
+.aglaya_dossier_stage_tag,
+.aglaya_dossier_method_label {
+	color: #3c91a5;
+}
+
+.aglaya_dossier_signal_value {
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 1.1;
+	color: #24313a;
+}
+
+.aglaya_dossier_signal_note {
+	font-size: 14px;
+	color: #5b6771;
+}
+
+.aglaya_dossier_actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.aglaya_dossier_cta,
+.aglaya_dossier_secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 14px 22px;
+	border-radius: 999px;
+	font-weight: 700;
+	text-decoration: none;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.aglaya_dossier_cta {
+	background: linear-gradient(135deg, #f16f5c, #d94e3d);
+	color: #fff;
+	box-shadow: 0 16px 28px rgba(217, 78, 61, 0.24);
+}
+
+.aglaya_dossier_secondary {
+	background: rgba(36, 49, 58, 0.06);
+	color: #24313a;
+	border: 1px solid rgba(36, 49, 58, 0.1);
+}
+
+.aglaya_dossier_cta:hover,
+.aglaya_dossier_cta:focus,
+.aglaya_dossier_secondary:hover,
+.aglaya_dossier_secondary:focus {
+	color: inherit;
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+
+.aglaya_dossier_cta:hover,
+.aglaya_dossier_cta:focus {
+	color: #fff;
+}
+
+.aglaya_dossier_stage {
+	padding: 0;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+}
+
+.aglaya_dossier_stage_media,
+.aglaya_dossier_stage_callout {
+	padding: 26px;
+	border-radius: 28px;
+	background: rgba(255, 255, 255, 0.82);
+	border: 1px solid rgba(36, 49, 58, 0.08);
+	box-shadow: 0 22px 40px rgba(36, 49, 58, 0.08);
+}
+
+.aglaya_dossier_stage_media picture,
+.aglaya_dossier_stage_media img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 20px;
+}
+
+.aglaya_dossier_stage_callout {
+	display: grid;
+	gap: 14px;
+}
+
+.aglaya_dossier_section_header {
+	display: grid;
+	gap: 8px;
+}
+
+.aglaya_dossier_positioning_grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.aglaya_dossier_card,
+.aglaya_dossier_method,
+.aglaya_dossier_phase,
+.aglaya_dossier_proof_card,
+.aglaya_dossier_capability {
+	display: grid;
+	gap: 14px;
+	padding: 24px;
+	background: rgba(255, 255, 255, 0.72);
+	border: 1px solid rgba(36, 49, 58, 0.08);
+}
+
+.aglaya_dossier_card--accent {
+	background: linear-gradient(160deg, rgba(241, 111, 92, 0.11), rgba(255, 255, 255, 0.82));
+	border-color: rgba(217, 78, 61, 0.16);
+}
+
+.aglaya_dossier_method_grid {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.aglaya_dossier_method {
+	background: linear-gradient(180deg, rgba(60, 145, 165, 0.08), rgba(255, 255, 255, 0.82));
+}
+
+.aglaya_dossier_method_label {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	background: rgba(60, 145, 165, 0.12);
+}
+
+.aglaya_dossier_phase_grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.aglaya_dossier_phase {
+	position: relative;
+	padding-top: 28px;
+}
+
+.aglaya_dossier_phase_id {
+	position: absolute;
+	top: 18px;
+	right: 18px;
+	font-size: 42px;
+	font-weight: 700;
+	line-height: 1;
+	color: rgba(36, 49, 58, 0.08);
+}
+
+.aglaya_dossier_phase_intro {
+	font-size: 15px;
+	color: #5b6771;
+}
+
+.aglaya_dossier_phase ul,
+.aglaya_dossier_note p,
+.aglaya_dossier_proof_card p,
+.aglaya_dossier_card p,
+.aglaya_dossier_method p,
+.aglaya_dossier_capability p {
+	margin: 0;
+}
+
+.aglaya_dossier_phase ul {
+	display: grid;
+	gap: 8px;
+	padding-left: 20px;
+}
+
+.aglaya_dossier_note {
+	padding: 20px 24px;
+	border-radius: 22px;
+	background: rgba(36, 49, 58, 0.05);
+	border: 1px solid rgba(36, 49, 58, 0.08);
+}
+
+.aglaya_dossier_note a {
+	color: #1c6b82;
+	font-weight: 700;
+}
+
+.aglaya_dossier_proof_grid {
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.aglaya_dossier_proof_card--dark {
+	background: linear-gradient(180deg, #24313a 0%, #182229 100%);
+	color: #fff;
+	border-color: rgba(36, 49, 58, 0.2);
+}
+
+.aglaya_dossier_proof_stack {
+	display: grid;
+	gap: 24px;
+}
+
+.aglaya_dossier_placeholder {
+	display: grid;
+	gap: 10px;
+	padding: 22px;
+	border-radius: 24px;
+	border: 1px dashed rgba(241, 111, 92, 0.4);
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02)),
+		repeating-linear-gradient(
+			90deg,
+			rgba(255, 255, 255, 0.025) 0px,
+			rgba(255, 255, 255, 0.025) 1px,
+			rgba(255, 255, 255, 0) 1px,
+			rgba(255, 255, 255, 0) 16px
+		),
+		rgba(255, 255, 255, 0.06);
+}
+
+.aglaya_dossier_placeholder p {
+	margin: 0;
+	font-size: 15px;
+}
+
+.aglaya_dossier_placeholder_tag {
+	color: #f7c7bc;
+}
+
+.aglaya_dossier_placeholder--light {
+	border-color: rgba(60, 145, 165, 0.22);
+	background:
+		repeating-linear-gradient(
+			90deg,
+			rgba(60, 145, 165, 0.03) 0px,
+			rgba(60, 145, 165, 0.03) 1px,
+			rgba(60, 145, 165, 0) 1px,
+			rgba(60, 145, 165, 0) 16px
+		),
+		rgba(60, 145, 165, 0.04);
+}
+
+.aglaya_dossier_placeholder--light .aglaya_dossier_placeholder_tag {
+	color: #3c91a5;
+}
+
+.aglaya_dossier_capability_grid {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.aglaya_dossier_capability {
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(245, 238, 228, 0.86));
+}
+
+@media (max-width: 1199px) {
+	.aglaya_dossier_hero,
+	.aglaya_dossier_stage,
+	.aglaya_dossier_positioning_grid,
+	.aglaya_dossier_proof_grid {
+		grid-template-columns: 1fr;
+	}
+
+	.aglaya_dossier_method_grid,
+	.aglaya_dossier_capability_grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 991px) {
+	.aglaya_dossier_phase_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.aglaya_dossier_hero,
+	.aglaya_dossier_section {
+		padding: 20px;
+		border-radius: 22px;
+	}
+
+	.aglaya_dossier_stage_media,
+	.aglaya_dossier_stage_callout,
+	.aglaya_dossier_card,
+	.aglaya_dossier_method,
+	.aglaya_dossier_phase,
+	.aglaya_dossier_proof_card,
+	.aglaya_dossier_capability,
+	.aglaya_dossier_placeholder,
+	.aglaya_dossier_note {
+		padding: 18px;
+		border-radius: 20px;
+	}
+
+	.aglaya_dossier_signal_grid,
+	.aglaya_dossier_method_grid,
+	.aglaya_dossier_capability_grid {
+		grid-template-columns: 1fr;
+	}
+
+	.aglaya_dossier_signal_value {
+		font-size: 24px;
+	}
+
+	.aglaya_dossier_actions {
+		flex-direction: column;
+	}
+}

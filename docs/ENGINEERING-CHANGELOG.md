@@ -22,6 +22,43 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - AGLAYA Dossier: Conversion-First Remote Agency Case
+
+**Commit:** `see Git history after merge to main`
+
+#### Necessity
+
+`AGLAYA` was still using the generic fallback project template, which flattened one of the portfolio's strongest business-design cases into a content stub. The live agency already has a dense public narrative, but the wrong part to emphasize here would have been the education branch, because that angle is already properly documented in the separate `2x2MKT` dossier.
+
+#### Process
+
+1. Re-read the live `aglaya.biz` site and extracted the signals that matter for this portfolio:
+   - anti-conformist positioning,
+   - the free visual-identity-test CTA,
+   - the fully remote agency model,
+   - the four strategic methods,
+   - the staged service architecture for brand birth, consolidation, and expansion.
+2. Replaced the generic fallback with a dedicated `src/pages/project-aglaya.template.html`.
+3. Framed the page around the commercial operating system:
+   - qualification-first messaging,
+   - conversion-oriented UX,
+   - remote delivery logic,
+   - brand strategy tied explicitly to sales and positioning.
+4. Explicitly excluded the education branch from the center of the dossier and linked that narrative back to `The Route to Digitalization / 2x2MKT`, preventing content duplication between the two cases.
+5. Added reserved proof placeholders for future:
+   - brand-audit / evaluation captures,
+   - portfolio montage proof,
+   while still making the page indexable and semantically descriptive today.
+
+#### Actual Results
+
+- `AGLAYA` now reads like a real agency-systems case instead of a generic placeholder route
+- The portfolio can now showcase this brand as a conversion architecture project, not just as a broad "innovation ecosystem"
+- The content avoids duplicating the training narrative already covered in `2x2MKT`
+- The page is structurally ready for richer media without blocking launch sequencing
+
+---
+
 ### 2026-03-03 - Elm St Dossier: Cinematic Case Study With Reserved YouTube Embed Slots
 
 **Commit:** `working tree (uncommitted)`

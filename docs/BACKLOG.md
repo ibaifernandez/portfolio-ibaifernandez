@@ -329,6 +329,8 @@ Priority items for next session:
 - [ ] BL-CNT-012: Replace placeholder proof assets in the Portfolio and MyBoard dossiers with real screenshots/video once the final media set is curated.
 - [x] BL-CNT-013: Create a dedicated Elm St dossier grounded in the real source repo, with cinematic presentation and reserved YouTube embed slots.
 - [ ] BL-CNT-014: Replace the Elm St YouTube placeholder slots with final embed blocks, curated thumbnails, and the definitive reel ordering.
+- [x] BL-CNT-015: Replace the generic AGLAYA stub with a dedicated dossier focused on the remote agency conversion system, not the education branch already documented in 2x2MKT.
+- [ ] BL-CNT-016: Replace the reserved AGLAYA proof placeholders with final brand-evaluation captures, portfolio proof media, and testimonial assets once curated.
 
 ---
 

@@ -203,10 +203,28 @@
 		border: 1px solid #d8d8d8 !important;
 	}
 
-	body.elmst_dossier_page .elmst_dossier_embed_frame,
-	body.elmst_dossier_page .elmst_dossier_stack_card--dark {
-		background: #fff !important;
-		color: #111 !important;
-		border: 1px solid #c9c9c9 !important;
-	}
+body.elmst_dossier_page .elmst_dossier_embed_frame,
+body.elmst_dossier_page .elmst_dossier_stack_card--dark {
+	background: #fff !important;
+	color: #111 !important;
+	border: 1px solid #c9c9c9 !important;
+}
+
+body.aglaya_dossier_page .aglaya_dossier_surface,
+body.aglaya_dossier_page .aglaya_dossier_hero,
+body.aglaya_dossier_page .aglaya_dossier_section,
+body.aglaya_dossier_page .aglaya_dossier_stage_media,
+body.aglaya_dossier_page .aglaya_dossier_stage_callout,
+body.aglaya_dossier_page .aglaya_dossier_card,
+body.aglaya_dossier_page .aglaya_dossier_method,
+body.aglaya_dossier_page .aglaya_dossier_phase,
+body.aglaya_dossier_page .aglaya_dossier_proof_card,
+body.aglaya_dossier_page .aglaya_dossier_capability,
+body.aglaya_dossier_page .aglaya_dossier_placeholder,
+body.aglaya_dossier_page .aglaya_dossier_note {
+	background: #fff !important;
+	color: #111 !important;
+	box-shadow: none !important;
+	border: 1px solid #d8d8d8 !important;
+}
 }
