@@ -138,7 +138,9 @@
   },
   {
     "page": {
-      "output": "project-elm-st.html"
+      "output": "project-elm-st.html",
+      "template": "src/pages/project-elm-st.template.html",
+      "keywords": "Elm St, audiovisual production, cinematic web design, YouTube reel, custom brand website, Ibai Fernandez"
     },
     "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/elm-st-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/elm-st-web.webp\">\n<img src=\"assets/images/elm-st-web.png\" alt=\"Elm St custom web architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
     "title": {

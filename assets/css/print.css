@@ -119,7 +119,13 @@
 	.lfi_dossier_stack_module,
 	.lfi_dossier_proof_panel,
 	.lfi_dossier_timeline_item,
-	.lfi_dossier_placeholder {
+	.lfi_dossier_placeholder,
+	.elmst_dossier_card,
+	.elmst_dossier_stack_card,
+	.elmst_dossier_stack_module,
+	.elmst_dossier_embed_placeholder,
+	.elmst_dossier_crew_card,
+	.elmst_dossier_value_card {
 		break-inside: avoid-page;
 		page-break-inside: avoid;
 	}
@@ -176,6 +182,29 @@
 
 	body.lfi_dossier_page .lfi_dossier_stage_media,
 	body.lfi_dossier_page .lfi_dossier_stack_card--dark {
+		background: #fff !important;
+		color: #111 !important;
+		border: 1px solid #c9c9c9 !important;
+	}
+
+	body.elmst_dossier_page .elmst_dossier_surface,
+	body.elmst_dossier_page .elmst_dossier_intro,
+	body.elmst_dossier_page .elmst_dossier_stage,
+	body.elmst_dossier_page .elmst_dossier_section,
+	body.elmst_dossier_page .elmst_dossier_card,
+	body.elmst_dossier_page .elmst_dossier_stack_card,
+	body.elmst_dossier_page .elmst_dossier_stack_module,
+	body.elmst_dossier_page .elmst_dossier_embed_placeholder,
+	body.elmst_dossier_page .elmst_dossier_crew_card,
+	body.elmst_dossier_page .elmst_dossier_value_card {
+		background: #fff !important;
+		color: #111 !important;
+		box-shadow: none !important;
+		border: 1px solid #d8d8d8 !important;
+	}
+
+	body.elmst_dossier_page .elmst_dossier_embed_frame,
+	body.elmst_dossier_page .elmst_dossier_stack_card--dark {
 		background: #fff !important;
 		color: #111 !important;
 		border: 1px solid #c9c9c9 !important;

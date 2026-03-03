@@ -22,7 +22,7 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
 - MyBoard: https://portfolio.ibaifernandez.com/project-myboard.html
   - Purpose: local-first Kanban product proving zero vendor lock-in, modular architecture, and a clear runway toward enterprise and AI-assisted use.
 - Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
-  - Purpose: narrative architecture and custom web/brand system case.
+  - Purpose: cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case.
 - AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html
   - Purpose: remote B2B innovation agency operating model case.
 - Dispatches: https://portfolio.ibaifernandez.com/blog.html

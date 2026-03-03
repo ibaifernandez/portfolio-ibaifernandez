@@ -327,6 +327,8 @@ Priority items for next session:
 - [x] BL-CNT-010: Create a dedicated dossier for the portfolio itself, using real production metrics and placeholder media where richer proof assets are still pending.
 - [x] BL-CNT-011: Create the dedicated MyBoard dossier with placeholder media and then replace placeholders with real captures.
 - [ ] BL-CNT-012: Replace placeholder proof assets in the Portfolio and MyBoard dossiers with real screenshots/video once the final media set is curated.
+- [x] BL-CNT-013: Create a dedicated Elm St dossier grounded in the real source repo, with cinematic presentation and reserved YouTube embed slots.
+- [ ] BL-CNT-014: Replace the Elm St YouTube placeholder slots with final embed blocks, curated thumbnails, and the definitive reel ordering.
 
 ---
 

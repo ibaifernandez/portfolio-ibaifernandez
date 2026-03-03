@@ -22,6 +22,40 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Elm St Dossier: Cinematic Case Study With Reserved YouTube Embed Slots
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+`Elm St` was still falling back to the generic project template, which wasted one of the strongest narrative opportunities in the portfolio: a custom audiovisual studio website already backed by a real source repository, real team structure, and a real categorized body of work.
+
+#### Process
+
+1. Inspected the real `elm-st-web` source repository to extract verifiable project signals:
+   - audiovisual studio positioning,
+   - the "Si se ve o se escucha, lo hacemos" promise,
+   - the multi-page structure (`inicio`, `nosotros`, `portafolio`, `contacto`),
+   - the 18-piece categorized portfolio,
+   - the three-person creative leadership surface.
+2. Replaced the generic fallback with a dedicated `src/pages/project-elm-st.template.html`.
+3. Framed the dossier with a restrained cinematic visual system:
+   - dark surfaces,
+   - warm accent highlights,
+   - video-first proof blocks,
+   - stronger mood without turning it into a costume theme.
+4. Added explicit YouTube embed placeholders for the reel and three named pieces (`Noche sin Mañana`, `2x2`, `JIT`) so the content structure is ready before the final embeds are dropped in.
+5. Updated the project entry so `Elm St` now generates from its own dedicated template instead of the generic placeholder page.
+
+#### Actual Results
+
+- `Elm St` now reads like a real case study instead of a "content pending" stub
+- The dossier is grounded in actual source material from the original site repo
+- The page is structurally ready for future YouTube embeds without blocking content and indexing work
+- The visual direction is cinematic, but controlled enough to stay aligned with the stronger modern dossiers
+
+---
+
 ### 2026-03-03 - LFi Dossier Modernization (Modern Systems Narrative + Newspaper Retirement)
 
 **Commit:** `working tree (uncommitted)`
