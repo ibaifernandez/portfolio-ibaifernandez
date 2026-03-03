@@ -22,6 +22,40 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Contact UX Hotfix: Invisible Turnstile Layout Shift + Feedback Styling
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The first real production form submission exposed a UX regression in the contact flow:
+
+- invisible Turnstile still caused a visible white placeholder block to appear during submit
+- the captcha mount pushed the form layout just before completion
+- the success feedback rendered as plain text with weak visual affordance
+
+The backend behavior was correct, but the frontend experience felt unstable and unfinished.
+
+#### Process
+
+1. Updated the contact form templates so the response message renders before the captcha mount and the response itself sits inside a proper full-width Bootstrap column.
+2. Changed the captcha mount behavior in `assets/js/custom.js`:
+   - invisible Turnstile now mounts in a staged off-flow state by default
+   - the script is warmed on first form-field focus instead of only at submit time
+   - the widget is only brought back into the visible flow if a real interactive captcha retry is needed
+3. Refined the response UI in `assets/css/style.css`:
+   - success/error messages now render as styled notice cards
+   - updated the success copy to `Your message has been sent successfully.`
+4. Updated the contact E2E assertion to match the new success copy.
+
+#### Actual Results
+
+- Normal invisible Turnstile submissions no longer introduce a visible layout jump in the happy path
+- The success/error state is clearer and more polished
+- The form retains a recovery path for visible captcha interaction if Turnstile requests it
+
+---
+
 ### 2026-03-03 - Infra Audit: Git Remote Parity + Netlify Runtime Hygiene
 
 **Commit:** `working tree (uncommitted)`

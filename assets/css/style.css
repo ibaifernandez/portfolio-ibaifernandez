@@ -2824,24 +2824,82 @@ h3.core-features:nth-of-type(3)::before {
     cursor: not-allowed;
 }
 .port_contact_form .response {
+    display: none;
 	color: #556d91;
-    min-height: 24px;
-    padding-left: 18px;
-    padding-top: 5px;
+    margin: 16px auto 0;
+    max-width: 460px;
+    min-height: 0;
+    padding: 0;
     font-size: 14px;
     font-weight: 600;
+    line-height: 1.5;
+    text-align: left;
+}
+.port_contact_form .response:not(:empty) {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border: 1px solid #d9e3f3;
+    border-radius: 14px;
+    background: #f7f9fc;
+}
+.port_contact_form .response:before {
+    display: none;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: center;
+}
+.port_contact_form .response:not(:empty):before {
+    display: block;
 }
 .port_contact_form .response.is-error {
-    color: #d93025;
+    color: #8b1e1e;
+    border-color: #f4c7c3;
+    background: #fff4f2;
+}
+.port_contact_form .response.is-error:before {
+    content: "!";
+    color: #ffffff;
+    background: #d93025;
 }
 .port_contact_form .response.is-success {
-    color: #1f7a3d;
+    color: #165b31;
+    border-color: #c7e7cf;
+    background: #eef8f0;
+}
+.port_contact_form .response.is-success:before {
+    content: "\2713";
+    color: #ffffff;
+    background: #1f7a3d;
 }
 .port_contact_form .contact_captcha_widget {
     display: none;
-    margin: 0 auto 20px auto;
+    margin: 16px auto 0 auto;
     min-height: 78px;
     width: min(304px, 100%);
+}
+.port_contact_form .contact_captcha_widget.is-prepared {
+    display: block;
+}
+.port_contact_form .contact_captcha_widget.is-staged {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.port_contact_form .contact_captcha_widget.is-visible {
+    position: static;
+    margin: 16px auto 0 auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 .port_contact_form .contact_captcha_widget iframe {
     margin: 0 auto;

@@ -1089,7 +1089,7 @@ Assigned to: ThemeForest
 				completeCaptcha: 'Please complete the security check.',
 				captchaUnavailable: 'Security verification is temporarily unavailable. Please try again later.',
 				genericError: 'Something went wrong. Please try again later.',
-				success: 'Mail has been sent successfully.',
+				success: 'Your message has been sent successfully.',
 				invalidRule: 'Validation rule is not configured.'
 			};
 			var captchaScriptSrc = {
@@ -1198,6 +1198,22 @@ Assigned to: ThemeForest
 				}
 				return '';
 			}
+			function setCaptchaPresentation(targetForm, state, presentation){
+				var widgetContainer = targetForm.find('.contact_captcha_widget');
+				if(widgetContainer.length === 0){
+					return;
+				}
+				widgetContainer.removeClass('is-prepared is-staged is-visible').removeAttr('aria-hidden');
+				if(presentation === 'visible'){
+					widgetContainer.show().addClass('is-prepared is-visible');
+					return;
+				}
+				if(presentation === 'staged' && state && state.provider === 'turnstile'){
+					widgetContainer.show().addClass('is-prepared is-staged').attr('aria-hidden', 'true');
+					return;
+				}
+				widgetContainer.hide();
+			}
 			function resetCaptcha(targetForm){
 				var state = ensureCaptchaState(targetForm);
 				settleCaptchaTokenRequest(state, '');
@@ -1225,7 +1241,7 @@ Assigned to: ThemeForest
 					return Promise.reject(new Error('Captcha API unavailable'));
 				}
 				var renderFn = function() {
-					widgetContainer.show();
+					setCaptchaPresentation(targetForm, state, state.provider === 'turnstile' ? 'staged' : 'visible');
 					setCaptchaProvider(targetForm, state.provider);
 					setCaptchaToken(targetForm, '');
 					var widgetOptions = {
@@ -1270,7 +1286,7 @@ Assigned to: ThemeForest
 				var widgetContainer = targetForm.find('.contact_captcha_widget');
 				if(!state.enabled){
 					if(widgetContainer.length > 0){
-						widgetContainer.hide().empty();
+						widgetContainer.removeClass('is-prepared is-staged is-visible').removeAttr('aria-hidden').hide().empty();
 					}
 					settleCaptchaTokenRequest(state, '');
 					setCaptchaProvider(targetForm, '');
@@ -1288,6 +1304,10 @@ Assigned to: ThemeForest
 				state.readyPromise = _this.load_script(scriptSrc)
 					.then(function(){
 						return renderCaptchaWidget(targetForm, state);
+					}).catch(function(error){
+						state.readyPromise = null;
+						setCaptchaPresentation(targetForm, state, 'hidden');
+						throw error;
 					});
 				return state.readyPromise;
 			}
@@ -1387,9 +1407,27 @@ Assigned to: ThemeForest
 				refreshStartTimestamp(targetForm);
 				targetForm.find('.form-control').attr('aria-invalid', 'false');
 				var state = ensureCaptchaState(targetForm);
-				targetForm.find('.contact_captcha_widget').hide().empty();
+				targetForm.find('.contact_captcha_widget')
+					.removeClass('is-prepared is-staged is-visible')
+					.removeAttr('aria-hidden')
+					.hide()
+					.empty();
 				setCaptchaProvider(targetForm, state.enabled ? state.provider : '');
 				setCaptchaToken(targetForm, '');
+			});
+			$(document).on('focusin', '#scroll_contact .form-control', function(){
+				var targetForm = $(this).closest('form');
+				var state = ensureCaptchaState(targetForm);
+				if(!state.enabled || state.readyPromise){
+					return;
+				}
+				ensureCaptchaReady(targetForm).catch(function(){
+					targetForm.find('.contact_captcha_widget')
+						.removeClass('is-prepared is-staged is-visible')
+						.removeAttr('aria-hidden')
+						.hide()
+						.empty();
+				});
 			});
 			$(document).on('input change', '#scroll_contact .form-control', function(){
 				clearFieldInvalid($(this));
@@ -1433,6 +1471,9 @@ Assigned to: ThemeForest
 						var captchaState = captchaContext.captchaState;
 						var token = (captchaContext.token || '').trim();
 						if(captchaState.enabled && token === ''){
+							if(captchaState.provider === 'turnstile'){
+								setCaptchaPresentation(targetForm, captchaState, 'visible');
+							}
 							portfolio.track_event('contact_submit_blocked', {
 								reason: 'captcha_missing'
 							});
@@ -1446,6 +1487,9 @@ Assigned to: ThemeForest
 						if(captchaState.enabled){
 							formData.captcha_provider = captchaState.provider;
 							formData.captcha_token = token;
+						}
+						if(captchaState.provider === 'turnstile'){
+							setCaptchaPresentation(targetForm, captchaState, 'staged');
 						}
 						portfolio.track_event('contact_submit_attempt', {
 							captcha_enabled: captchaState.enabled ? '1' : '0'
@@ -1466,6 +1510,9 @@ Assigned to: ThemeForest
 								targetForm.find('.form-control').attr('aria-invalid', 'false');
 								refreshStartTimestamp(targetForm);
 								resetCaptcha(targetForm);
+								if(captchaState.provider === 'turnstile'){
+									setCaptchaPresentation(targetForm, captchaState, 'staged');
+								}
 								setResponse(errroTarget, messages.success, 'success');
 								portfolio.track_event('contact_submit_success', {
 									captcha_enabled: captchaState.enabled ? '1' : '0'
@@ -1474,6 +1521,9 @@ Assigned to: ThemeForest
 								setResponse(errroTarget, messages.genericError, 'error');
 								refreshStartTimestamp(targetForm);
 								resetCaptcha(targetForm);
+								if(captchaState.provider === 'turnstile'){
+									setCaptchaPresentation(targetForm, captchaState, 'staged');
+								}
 								portfolio.track_event('contact_submit_failure', {
 									reason: 'server_rejected'
 								});
@@ -1482,6 +1532,9 @@ Assigned to: ThemeForest
 							setResponse(errroTarget, messages.genericError, 'error');
 							refreshStartTimestamp(targetForm);
 							resetCaptcha(targetForm);
+							if(captchaState.provider === 'turnstile'){
+								setCaptchaPresentation(targetForm, captchaState, 'staged');
+							}
 							portfolio.track_event('contact_submit_failure', {
 								reason: 'network_error'
 							});

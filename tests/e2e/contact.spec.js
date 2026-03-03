@@ -45,7 +45,7 @@ test('contact form accepts a valid submission', async ({ page }) => {
   await page.waitForTimeout(1300);
   await page.locator('button.submitForm').click();
 
-  await expect(page.locator('.response')).toContainText(/Mail has been sent successfully\./i);
+  await expect(page.locator('.response')).toContainText(/Your message has been sent successfully\./i);
 });
 
 test('contact function rejects too-fast payloads', async ({ request }) => {
