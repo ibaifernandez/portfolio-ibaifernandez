@@ -90,16 +90,49 @@ function toAvifPath(url) {
   return url.replace(/\.(?:png|jpe?g)$/i, '.avif');
 }
 
-function hasAlphaChannel(filePath) {
-  const result = spawnSync('sips', ['-g', 'hasAlpha', filePath], {
-    encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'ignore']
-  });
+const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
 
-  if (result.status !== 0) {
+function pngHasTransparency(filePath) {
+  const buffer = fs.readFileSync(filePath);
+  if (buffer.length < PNG_SIGNATURE.length || !buffer.subarray(0, PNG_SIGNATURE.length).equals(PNG_SIGNATURE)) {
     return false;
   }
-  return /hasAlpha:\s*yes/i.test(result.stdout || '');
+
+  let offset = PNG_SIGNATURE.length;
+  while (offset + 8 <= buffer.length) {
+    const chunkLength = buffer.readUInt32BE(offset);
+    const chunkType = buffer.toString('ascii', offset + 4, offset + 8);
+    const chunkDataStart = offset + 8;
+    const chunkDataEnd = chunkDataStart + chunkLength;
+    const nextOffset = chunkDataEnd + 4;
+
+    if (nextOffset > buffer.length) {
+      return false;
+    }
+
+    if (chunkType === 'IHDR' && chunkLength >= 10) {
+      const colorType = buffer[chunkDataStart + 9];
+      if (colorType === 4 || colorType === 6) {
+        return true;
+      }
+    }
+
+    if (chunkType === 'tRNS') {
+      return true;
+    }
+
+    if (chunkType === 'IEND') {
+      break;
+    }
+
+    offset = nextOffset;
+  }
+
+  return false;
+}
+
+function hasAlphaChannel(filePath) {
+  return pngHasTransparency(filePath);
 }
 
 function collectCandidatesFromHtml(filePath) {

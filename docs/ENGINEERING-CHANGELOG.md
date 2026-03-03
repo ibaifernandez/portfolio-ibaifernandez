@@ -22,6 +22,29 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - CI Parity Hotfix: Platform-Independent PNG Alpha Detection
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The expanded AVIF coverage checks were behaving differently on macOS and GitHub Actions Ubuntu runners. Locally, `sips` correctly identified alpha-channel PNGs and skipped them from AVIF requirements. In CI, `sips` does not exist, so those same PNGs were treated as non-alpha and incorrectly failed the quality gate.
+
+#### Process
+
+1. Replaced the OS-specific `sips` alpha detection in:
+   - `tests/check-avif-coverage.mjs`
+   - `scripts/generate-avif-assets.mjs`
+   with an in-process PNG parser that inspects the PNG color type and `tRNS` chunk directly.
+2. Re-ran `npm run test:quality` to confirm local and CI logic now match.
+
+#### Actual Results
+
+- AVIF alpha-PNG skipping is now deterministic across macOS and Linux
+- `npm run test:quality` green again with the same expected skip count
+
+---
+
 ### 2026-03-03 - Performance Sprint #4: Residual AVIF/WebP Closure Across All Generated Pages
 
 **Commit:** `working tree (uncommitted)`
