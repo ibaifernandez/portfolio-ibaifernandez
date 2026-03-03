@@ -232,7 +232,7 @@ Priority items:
 - **Hero rewrite:** Problem → solution → result structure for headline
 - **Project curation:** Final launch set expands to 8 active dossiers (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) with stronger outcome-driven narratives
 - **Slug normalization:** Replace legacy public slugs with recognizable URLs and preserve old links through redirects
-- **LFi redesign:** Rebuild the LFi dossier with a modern visual system, then remove obsolete newspaper-only assets
+- **LFi redesign:** LFi is now rebuilt with a modern visual system and the obsolete newspaper-only assets have been retired from the live stack
 - **Blog section:** Decide: real posts, remove section, or keep "Coming soon" indefinitely
 - **Translation audit:** Every EN string must have an ES equivalent; no untranslated fragments
 - **SEO metadata:** Unique title + description + OG tags per page

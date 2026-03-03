@@ -114,8 +114,12 @@
 	.project_case_content,
 	.debtracker_section,
 	.gymtracker_section,
-	.lfi_newsprint_panel,
-	.lfi_newsprint_figure {
+	.lfi_dossier_card,
+	.lfi_dossier_stack_card,
+	.lfi_dossier_stack_module,
+	.lfi_dossier_proof_panel,
+	.lfi_dossier_timeline_item,
+	.lfi_dossier_placeholder {
 		break-inside: avoid-page;
 		page-break-inside: avoid;
 	}
@@ -158,19 +162,22 @@
 		border: 1px solid #c9c9c9 !important;
 	}
 
-	body.lfi_newsprint_page .lfi_newsprint_surface,
-	body.lfi_newsprint_page .lfi_newsprint_sheet {
-		background: #f8f8f5 !important;
+	body.lfi_dossier_page .lfi_dossier_surface,
+	body.lfi_dossier_page .lfi_dossier_intro,
+	body.lfi_dossier_page .lfi_dossier_stage,
+	body.lfi_dossier_page .lfi_dossier_section,
+	body.lfi_dossier_page .lfi_dossier_stack_card,
+	body.lfi_dossier_page .lfi_dossier_stack_module {
+		background: #fff !important;
+		color: #111 !important;
 		box-shadow: none !important;
+		border: 1px solid #d8d8d8 !important;
 	}
 
-	body.lfi_newsprint_page .lfi_newsprint_surface::before,
-	body.lfi_newsprint_page .lfi_newsprint_surface::after {
-		display: none !important;
-	}
-
-	body.lfi_newsprint_page .lfi_newsprint_prose {
-		column-count: 2 !important;
-		column-gap: 10mm !important;
+	body.lfi_dossier_page .lfi_dossier_stage_media,
+	body.lfi_dossier_page .lfi_dossier_stack_card--dark {
+		background: #fff !important;
+		color: #111 !important;
+		border: 1px solid #c9c9c9 !important;
 	}
 }

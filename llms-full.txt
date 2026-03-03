@@ -13,8 +13,8 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
   - Purpose: zero-trust financial ledger case (Next.js, Server Actions, Firestore patterns, PWA integration).
 - GymTracker: https://portfolio.ibaifernandez.com/project-gymtracker.html
   - Purpose: local-first architecture case (Python/Flask, SQLite, deterministic AI pipelines, QA automation).
-- LFi Enterprise CRM: https://portfolio.ibaifernandez.com/project-enterprise-crm.html
-  - Purpose: agency intrapreneurship case, promotion timeline, enterprise automation governance.
+- LFi RevOps & Predictive Automation: https://portfolio.ibaifernandez.com/project-enterprise-crm.html
+  - Purpose: agency operating-system case, promotion arc, enterprise automation governance, and multi-sector delivery scale.
 - The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html
   - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
 - Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html

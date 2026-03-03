@@ -117,7 +117,7 @@ for script in \
   fi
 done
 
-if rg -n 'assets/css/(font|animate|style|print|cv-print|lfi-newsprint|national-route)\.css|assets/js/(custom|translate|cv-print)\.js' \
+if rg -n 'assets/css/(font|animate|style|print|cv-print|national-route)\.css|assets/js/(custom|translate|cv-print)\.js' \
   index.html blog.html cv-print.html project-*.html >/dev/null; then
   fail "Found legacy unminified asset references in generated HTML"
 fi

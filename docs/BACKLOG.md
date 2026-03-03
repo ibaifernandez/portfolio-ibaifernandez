@@ -321,9 +321,9 @@ Priority items for next session:
 - [ ] BL-CNT-004: **Resolve Blog Lorem Ipsum block (pending, do not modify now).**
 - [x] BL-CNT-005: Remove legacy experience from `Experience` timeline and rebalance layout (from 2+4+1 to 2+2+2 cards) without regressions.
 - [x] BL-CNT-006: Remove the same legacy brand from projects grid and logos carousel for complete removal from public portfolio.
-- [ ] BL-CNT-007: Refresh the project roster for the final launch set (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) while keeping all dossiers live.
+- [x] BL-CNT-007: Refresh the project roster for the final launch set (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) while keeping all dossiers live.
 - [ ] BL-CNT-008: Normalize public project slugs with explicit legacy redirects (`2x2MKT` first; continue as pages are refreshed).
-- [ ] BL-CNT-009: Redesign the LFi dossier away from the legacy newspaper aesthetic, then retire newspaper-only assets that are no longer used.
+- [x] BL-CNT-009: Redesign the LFi dossier away from the legacy newspaper aesthetic, then retire newspaper-only assets that are no longer used.
 - [x] BL-CNT-010: Create a dedicated dossier for the portfolio itself, using real production metrics and placeholder media where richer proof assets are still pending.
 - [x] BL-CNT-011: Create the dedicated MyBoard dossier with placeholder media and then replace placeholders with real captures.
 - [ ] BL-CNT-012: Replace placeholder proof assets in the Portfolio and MyBoard dossiers with real screenshots/video once the final media set is curated.

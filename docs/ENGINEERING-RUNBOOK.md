@@ -378,18 +378,15 @@ Ultimo ajuste aplicado para `Projects`:
   - QA Shield Wall animado (`97/97` + bloques por modulo),
   - comparador No Vendor Lock-In (SaaS vs Local-First),
   - bloque de evidencia interna con `gymtracker.png` dentro de la pagina de proyecto.
-- Caso actual: Enterprise CRM usa plantilla dedicada `src/pages/project-enterprise-crm.template.html` con:
-  - direccion visual vintage newsprint (masthead `Chomsky`, titulares `Playfair`, cuerpo `Libre Baskerville`),
-  - CSS dedicado y aislado en `assets/css/lfi-newsprint.css` (no mezcla con `style.css` global),
-  - texturas de papel en capa (`texture-newspaper-1/2/3`) + ornamentos (`assets/images/ornaments/*`) con tono desaturado (gris/blanco sucio),
-  - cuerpo editorial en doble columna (`column-count: 2; column-gap: 2rem`) para lectura tipo diario,
-  - tratamiento de evidencia visual tipo tinta impresa (`grayscale + contrast + sepia + multiply`) para mantener ilusion de papel,
-  - variante V4 en full-width con overlay blanco de legibilidad sobre textura,
-  - timeline `Trajectory Wire` en sidebar derecha, con eje visual y nodos (look/legibilidad de timeline real),
-  - timeline de ascenso (`Aug 2023 -> Jun 2024 -> Dec 2024`) con KPI por etapa en formato de alto contraste,
-  - board de sectores convertido a logo-wall real con enlaces corporativos,
-  - bloque `Testimonial Ledger` en sidebar derecha, con citas largas y avatares con reveal a color en hover/focus,
-  - `Field Evidence Archive` retirado para priorizar narrativa expandida en `The Intrapreneurial Pivot` y `Scale & Cross-Industry Impact`.
+- Caso actual: Enterprise CRM / LFi usa plantilla dedicada `src/pages/project-enterprise-crm.template.html` con:
+  - direccion visual moderna, centrada en sistemas operativos y prueba de escala en vez de una estetica editorial de newspaper,
+  - estilos integrados en `assets/css/style.css` (sin hoja dedicada extra ni dependencias tipograficas externas),
+  - hero de dos columnas con captura real de operaciones, metricas de escala y chips de sistema,
+  - bloques de narrativa modular (`Operating Shift`, `Execution Stack`, `Trajectory`, `Proof Surface`) con ritmo de lectura mas claro,
+  - timeline de ascenso (`Aug 2023 -> Jun 2024 -> Dec 2024`) conservada, pero convertida a cards de dossier modernas,
+  - logo wall corporativa y testimonios mantenidos como prueba de mercado y confianza,
+  - placeholders explicitos para futuros assets de evidencia (video walkthrough, diagrama CRM, before/after operativo),
+  - retiro del concepto legacy `lfi-newsprint` y de sus assets de newspaper asociados.
 - Sidebar de paginas de proyecto unificada con home mediante componente:
   - `src/components/project/sidebar.html` (misma estructura/estetica que home, con anclas hacia `index.html#...`).
 - Cierre de paginas de proyecto unificado:
@@ -401,9 +398,9 @@ Ultimo ajuste aplicado para `Projects`:
   - `assets/images/gymtracker-cover-2.png` optimizada a `1800x1005`,
   - fallback moderno `assets/images/gymtracker-cover-2.webp` integrado en `content/projects.json`,
   - `assets/images/gymtracker.png/.webp` retenida para evidencia interna del dossier.
-- Imagen card Enterprise CRM (newspaper variant):
-  - `assets/images/lfi-newspaper.jpg` optimizada a `1800x1075`,
-  - fallback moderno `assets/images/lfi-newspaper.webp` integrado en `content/projects.json`.
+- Imagen card Enterprise CRM / LFi:
+  - `assets/images/lfi-la.png/.webp` pasa a ser la superficie visual canonica para card + hero,
+  - el cover `lfi-newspaper.*` queda retirado del stack activo.
 - Se eliminan hooks JS legacy de filtro/popup de portfolio (`isotop_gallery` / `magnific_popup`) para reducir complejidad.
 - Se actualizan snapshots de regresion visual al nuevo baseline de layout (`projects-section.png`, `logos-section.png`).
 

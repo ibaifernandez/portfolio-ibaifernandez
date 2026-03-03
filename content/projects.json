@@ -46,15 +46,16 @@
   {
     "page": {
       "output": "project-enterprise-crm.html",
-      "template": "src/pages/project-enterprise-crm.template.html"
+      "template": "src/pages/project-enterprise-crm.template.html",
+      "keywords": "LFi, revenue operations, agency automation, CRM systems, Salesforce, HubSpot, enterprise campaign delivery"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/lfi-newspaper.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/lfi-newspaper.webp\">\n<img src=\"assets/images/lfi-newspaper.jpg\" alt=\"LFi newspaper project dossier\" loading=\"lazy\" decoding=\"async\" width=\"1800\" height=\"1075\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/lfi-la.webp\">\n<img class=\"project_spotlight_img--lfi\" src=\"assets/images/lfi-la.png\" alt=\"LFi operations cockpit showing enterprise campaign orchestration and automation controls\" loading=\"lazy\" decoding=\"async\" width=\"1800\" height=\"1005\" data-avif-fallback=\"true\">\n</picture>",
     "title": {
-      "text": "Enterprise CRM & Predictive Automation",
+      "text": "LFi: RevOps & Predictive Automation",
       "translate": "project-enterprise-crm-title"
     },
     "description": {
-      "text": "Architected automated Lead Scoring algorithms and dynamic decision trees for top-tier real estate and corporate clients. Shifted traditional email workflows into a highly predictable revenue engine.",
+      "text": "Scaled an agency delivery engine across 18+ enterprise accounts by turning campaign execution into modular launch systems, CRM decision trees, and predictable multi-sector operations.",
       "translate": "project-enterprise-crm-copy"
     },
     "link": {

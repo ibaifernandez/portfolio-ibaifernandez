@@ -2282,6 +2282,9 @@ h3.core-features:nth-of-type(3)::before {
 .project_spotlight_media img.project_spotlight_img--debtracker {
 	object-position: left center;
 }
+.project_spotlight_media img.project_spotlight_img--lfi {
+	object-position: center top;
+}
 .project_spotlight_project:hover .project_spotlight_media img {
 	transform: scale(1.06);
 }
@@ -5961,6 +5964,489 @@ select:focus-visible,
 	.portfolio_dossier_card p,
 	.portfolio_dossier_placeholder p,
 	.portfolio_dossier_release_item p {
+		font-size: 16px;
+	}
+}
+
+.lfi_dossier_page {
+	background:
+		radial-gradient(circle at 18% 18%, rgba(0, 200, 218, 0.1), transparent 34%),
+		radial-gradient(circle at 82% 8%, rgba(255, 117, 74, 0.14), transparent 28%),
+		linear-gradient(180deg, #eef5fb 0%, #f8fafc 44%, #eef3f8 100%);
+}
+
+.lfi_dossier_wrapper {
+	background: transparent;
+}
+
+.lfi_dossier_surface {
+	padding-top: 10px;
+	padding-bottom: 8px;
+}
+
+.lfi_dossier_intro,
+.lfi_dossier_stage,
+.lfi_dossier_section {
+	border: 1px solid rgba(17, 38, 63, 0.08);
+	border-radius: 30px;
+	background: rgba(255, 255, 255, 0.92);
+	box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+	backdrop-filter: blur(8px);
+}
+
+.lfi_dossier_hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+	gap: 24px;
+	align-items: stretch;
+}
+
+.lfi_dossier_intro,
+.lfi_dossier_section,
+.lfi_dossier_stage {
+	padding: 34px;
+}
+
+.lfi_dossier_stage {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	background:
+		linear-gradient(160deg, rgba(17, 38, 63, 0.96) 0%, rgba(8, 47, 73, 0.98) 48%, rgba(10, 112, 142, 0.96) 100%);
+	color: #fff;
+}
+
+.lfi_dossier_stage_media {
+	position: relative;
+	overflow: hidden;
+	border-radius: 24px;
+	padding: 14px;
+	background: rgba(255, 255, 255, 0.08);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.lfi_dossier_stage_media::after {
+	content: "";
+	position: absolute;
+	inset: auto 16px 16px;
+	height: 36%;
+	border-radius: 18px;
+	background: linear-gradient(180deg, rgba(8, 47, 73, 0) 0%, rgba(8, 47, 73, 0.52) 100%);
+	pointer-events: none;
+}
+
+.lfi_dossier_stage_media picture,
+.lfi_dossier_stage_media img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 18px;
+}
+
+.lfi_dossier_signal_row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.lfi_dossier_signal_row span {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.lfi_dossier_stage_caption {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, 0.84);
+}
+
+.lfi_dossier_metric_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 14px;
+	margin-top: 26px;
+}
+
+.lfi_dossier_metric {
+	display: grid;
+	gap: 4px;
+	padding: 18px;
+	border-radius: 22px;
+	background: linear-gradient(180deg, #11263f 0%, #183652 100%);
+	color: #fff;
+}
+
+.lfi_dossier_metric_label {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.lfi_dossier_metric_value {
+	font-size: clamp(28px, 3.1vw, 42px);
+	line-height: 1;
+	letter-spacing: -0.04em;
+}
+
+.lfi_dossier_metric_note {
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.lfi_dossier_section {
+	margin-top: 2px;
+}
+
+.lfi_dossier_section_header {
+	margin-bottom: 22px;
+}
+
+.lfi_dossier_section_tag {
+	margin: 0 0 10px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #0e7490;
+}
+
+.lfi_dossier_card_grid,
+.lfi_dossier_proof_grid,
+.lfi_dossier_placeholder_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.lfi_dossier_card,
+.lfi_dossier_stack_card,
+.lfi_dossier_stack_module,
+.lfi_dossier_proof_panel,
+.lfi_dossier_placeholder {
+	border: 1px solid rgba(17, 38, 63, 0.08);
+	border-radius: 24px;
+	background: #fff;
+	box-shadow: 0 16px 32px rgba(15, 23, 42, 0.05);
+}
+
+.lfi_dossier_card {
+	padding: 24px;
+}
+
+.lfi_dossier_card h3,
+.lfi_dossier_stack_card h3,
+.lfi_dossier_stack_module h3,
+.lfi_dossier_proof_panel h3,
+.lfi_dossier_placeholder h3,
+.lfi_dossier_timeline_item h3,
+.lfi_dossier_testimonial h4 {
+	margin: 0 0 10px;
+	font-size: 24px;
+	line-height: 1.15;
+	color: #14233b;
+}
+
+.lfi_dossier_card p,
+.lfi_dossier_stack_card p,
+.lfi_dossier_stack_module p,
+.lfi_dossier_placeholder p,
+.lfi_dossier_timeline_item p,
+.lfi_dossier_testimonial blockquote {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.7;
+	color: #526174;
+}
+
+.lfi_dossier_icon {
+	width: 54px;
+	height: 54px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 18px;
+	border-radius: 18px;
+	background: linear-gradient(135deg, rgba(0, 200, 218, 0.14), rgba(255, 117, 74, 0.16));
+	color: #0e7490;
+	font-size: 22px;
+}
+
+.lfi_dossier_stack {
+	display: grid;
+	grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+	gap: 18px;
+}
+
+.lfi_dossier_stack_card {
+	padding: 28px;
+}
+
+.lfi_dossier_stack_card--dark {
+	background: linear-gradient(180deg, #11263f 0%, #183652 100%);
+	color: #fff;
+	border-color: transparent;
+}
+
+.lfi_dossier_stack_card--dark h3,
+.lfi_dossier_stack_card--dark p,
+.lfi_dossier_stack_card--dark li {
+	color: #fff;
+}
+
+.lfi_dossier_signal_list {
+	margin: 18px 0 0;
+	padding-left: 18px;
+	display: grid;
+	gap: 10px;
+}
+
+.lfi_dossier_signal_list li {
+	font-size: 16px;
+	line-height: 1.6;
+	color: rgba(255, 255, 255, 0.86);
+}
+
+.lfi_dossier_stack_panel {
+	display: grid;
+	gap: 18px;
+}
+
+.lfi_dossier_stack_module {
+	padding: 24px;
+}
+
+.lfi_dossier_stack_label {
+	display: inline-flex;
+	margin-bottom: 12px;
+	padding: 5px 10px;
+	border-radius: 999px;
+	background: rgba(14, 116, 144, 0.1);
+	color: #0e7490;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.lfi_dossier_timeline {
+	display: grid;
+	gap: 16px;
+}
+
+.lfi_dossier_timeline_item {
+	display: grid;
+	grid-template-columns: 150px 1fr;
+	gap: 20px;
+	padding: 24px 26px;
+	border-radius: 24px;
+	background: linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+	border: 1px solid rgba(17, 38, 63, 0.08);
+	box-shadow: 0 16px 32px rgba(15, 23, 42, 0.05);
+}
+
+.lfi_dossier_timeline_date {
+	display: inline-flex;
+	align-self: flex-start;
+	justify-content: center;
+	padding: 10px 14px;
+	border-radius: 16px;
+	background: #11263f;
+	color: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.lfi_dossier_timeline_kpi {
+	margin-top: 10px !important;
+	padding-top: 12px;
+	border-top: 1px solid rgba(17, 38, 63, 0.12);
+}
+
+.lfi_dossier_timeline_kpi span {
+	margin-right: 6px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #0e7490;
+}
+
+.lfi_dossier_timeline_kpi strong {
+	color: #14233b;
+}
+
+.lfi_dossier_proof_panel {
+	padding: 24px;
+}
+
+.lfi_dossier_proof_head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	margin-bottom: 18px;
+}
+
+.lfi_dossier_proof_head a {
+	font-size: 13px;
+	font-weight: 700;
+	color: #0e7490;
+	text-decoration: none;
+}
+
+.lfi_dossier_proof_head a:hover,
+.lfi_dossier_proof_head a:focus {
+	color: #ff754a;
+}
+
+.lfi_dossier_logo_wall {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.lfi_dossier_logo_wall a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 92px;
+	padding: 12px;
+	border-radius: 18px;
+	background: #f8fbfe;
+	border: 1px solid rgba(17, 38, 63, 0.06);
+}
+
+.lfi_dossier_logo_wall img {
+	max-width: 88px;
+	max-height: 56px;
+	width: auto;
+	height: auto;
+	filter: saturate(0.88) contrast(1.02);
+	transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.lfi_dossier_logo_wall a:hover img,
+.lfi_dossier_logo_wall a:focus img,
+.lfi_dossier_logo_wall a:focus-visible img {
+	transform: scale(1.04);
+	filter: none;
+}
+
+.lfi_dossier_testimonials {
+	display: grid;
+	gap: 18px;
+}
+
+.lfi_dossier_testimonial {
+	display: grid;
+	grid-template-columns: 72px 1fr;
+	gap: 14px;
+	padding: 18px;
+	border-radius: 20px;
+	background: linear-gradient(180deg, #f8fbfe 0%, #ffffff 100%);
+	border: 1px solid rgba(17, 38, 63, 0.06);
+}
+
+.lfi_dossier_testimonial picture,
+.lfi_dossier_testimonial img {
+	display: block;
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.lfi_dossier_testimonial_meta {
+	margin: 0 0 8px;
+	font-size: 12px !important;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #0e7490 !important;
+}
+
+.lfi_dossier_testimonial blockquote {
+	font-size: 16px;
+	font-style: italic;
+}
+
+.lfi_dossier_placeholder {
+	padding: 24px;
+	border-style: dashed;
+}
+
+.lfi_dossier_placeholder_label {
+	display: inline-flex;
+	margin-bottom: 12px;
+	padding: 5px 10px;
+	border-radius: 999px;
+	background: rgba(255, 117, 74, 0.12);
+	color: #ff754a;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+@media (max-width: 1199px) {
+	.lfi_dossier_hero,
+	.lfi_dossier_stack,
+	.lfi_dossier_proof_grid,
+	.lfi_dossier_card_grid,
+	.lfi_dossier_placeholder_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.lfi_dossier_intro,
+	.lfi_dossier_stage,
+	.lfi_dossier_section {
+		padding: 18px;
+		border-radius: 22px;
+	}
+
+	.lfi_dossier_metric_grid,
+	.lfi_dossier_logo_wall {
+		grid-template-columns: 1fr;
+	}
+
+	.lfi_dossier_timeline_item,
+	.lfi_dossier_testimonial {
+		grid-template-columns: 1fr;
+	}
+
+	.lfi_dossier_card h3,
+	.lfi_dossier_stack_card h3,
+	.lfi_dossier_stack_module h3,
+	.lfi_dossier_proof_panel h3,
+	.lfi_dossier_placeholder h3,
+	.lfi_dossier_timeline_item h3,
+	.lfi_dossier_testimonial h4 {
+		font-size: 21px;
+	}
+
+	.lfi_dossier_card p,
+	.lfi_dossier_stack_card p,
+	.lfi_dossier_stack_module p,
+	.lfi_dossier_placeholder p,
+	.lfi_dossier_timeline_item p,
+	.lfi_dossier_testimonial blockquote {
 		font-size: 16px;
 	}
 }

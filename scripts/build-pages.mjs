@@ -13,7 +13,7 @@ const personSchemaName = 'Ibai Fernández';
 const projectShareImageMap = {
   'project-debtracker.html': 'assets/images/debtracker.png',
   'project-gymtracker.html': 'assets/images/gymtracker-cover-2.png',
-  'project-enterprise-crm.html': 'assets/images/lfi-newspaper.jpg',
+  'project-enterprise-crm.html': 'assets/images/lfi-la.png',
   'project-ruta-digitalizacion-2x2mkt.html': 'assets/images/2x2.png',
   'project-elm-st.html': 'assets/images/elm-st-web.png',
   'project-aglaya.html': 'assets/images/aglaya-web.png'
@@ -32,7 +32,6 @@ const generatedAssetEntries = [
   { source: 'assets/css/cv-print.css', output: 'assets/css/cv-print.min.css', type: 'css' },
   { source: 'assets/css/scrollbar.css', output: 'assets/css/scrollbar.min.css', type: 'css' },
   { source: 'assets/css/jquery-jvectormap-2.0.3.css', output: 'assets/css/jquery-jvectormap-2.0.3.min.css', type: 'css' },
-  { source: 'assets/css/lfi-newsprint.css', output: 'assets/css/lfi-newsprint.min.css', type: 'css' },
   { source: 'assets/css/national-route.css', output: 'assets/css/national-route.min.css', type: 'css' },
   { source: 'assets/js/custom.js', output: 'assets/js/custom.min.js', type: 'js' },
   { source: 'assets/js/translate.js', output: 'assets/js/translate.min.js', type: 'js' },
