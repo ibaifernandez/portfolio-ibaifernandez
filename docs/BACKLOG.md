@@ -325,7 +325,8 @@ Priority items for next session:
 - [ ] BL-CNT-008: Normalize public project slugs with explicit legacy redirects (`2x2MKT` first; continue as pages are refreshed).
 - [ ] BL-CNT-009: Redesign the LFi dossier away from the legacy newspaper aesthetic, then retire newspaper-only assets that are no longer used.
 - [x] BL-CNT-010: Create a dedicated dossier for the portfolio itself, using real production metrics and placeholder media where richer proof assets are still pending.
-- [ ] BL-CNT-011: Create the dedicated MyBoard dossier with placeholder media and then replace placeholders with real captures.
+- [x] BL-CNT-011: Create the dedicated MyBoard dossier with placeholder media and then replace placeholders with real captures.
+- [ ] BL-CNT-012: Replace placeholder proof assets in the Portfolio and MyBoard dossiers with real screenshots/video once the final media set is curated.
 
 ---
 

@@ -22,6 +22,37 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - MyBoard Dossier: Product Case Study With Enterprise Runway
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+`MyBoard` is no longer just an internal side project mention. Its own repo already proves a clear product thesis: zero vendor lock-in, local-first ownership, modular React + Express architecture, and a roadmap toward enterprise and AI-assisted workflows. It needed a proper dossier in the portfolio.
+
+#### Process
+
+1. Added a new public project route: `project-myboard.html`.
+2. Added `MyBoard` to `content/projects.json`, making it part of the home showcase and generated project navigation.
+3. Wrote a dedicated case-study template using only verifiable material from the `MyBoard` repository docs:
+   - React 18 + Vite frontend
+   - Express backend
+   - JSON persistence in `tasks.json`
+   - `@dnd-kit` drag and drop
+   - Tailwind UI layer
+   - multi-board, categories, filters, and roadmap through AI-assisted Phase 4
+4. Added placeholder proof media blocks so the dossier is structurally complete before the real screenshots and video are dropped in.
+5. Updated discovery files and print-PDF targets so the page behaves as a first-class public asset.
+
+#### Actual Results
+
+- `MyBoard` now exists as an explicit product case study inside the portfolio
+- The home project showcase reaches the intended 8-dossier launch set
+- The dossier already contains indexable narrative, technical framing, and semantic placeholder media labels
+- The remaining upgrade path is simple: swap placeholder proof blocks for real captures
+
+---
+
 ### 2026-03-03 - Portfolio Dossier: Dedicated Case Study With Placeholder Proof Media
 
 **Commit:** `working tree (uncommitted)`

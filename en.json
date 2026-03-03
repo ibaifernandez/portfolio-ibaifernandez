@@ -323,6 +323,8 @@
     "project-national-scale-copy": "Led a national-scale digital literacy tour and re-engineered it into a crisis-proof remote operation during the pandemic, onboarding more than 10,600 users into digital conversion funnels.",
     "project-portfolio-title": "Portfolio Ibai Fernandez: Live Delivery System",
     "project-portfolio-copy": "Rebuilt this portfolio from a static brochure into a production-validated delivery system: Netlify migration, CI/CD, Playwright coverage, accessibility hardening, media pipelines, and a stable real contact flow.",
+    "project-myboard-title": "MyBoard: Zero-Lock-In Kanban Engine",
+    "project-myboard-copy": "A modular Kanban application built with React, Express, and JSON persistence to prove that task management can be fast, expressive, and fully owned by the operator from day one.",
     "project-elmst-title": "Elm St: Custom Web & Brand Architecture",
     "project-elmst-copy": "Bypassed traditional CMS platforms to hand-code a custom digital environment. This project perfectly fuses advanced UI/UX development with deep audiovisual narrative and psychological brand positioning.",
     "project-aglaya-title": "AGLAYA: B2B Innovation Ecosystem",

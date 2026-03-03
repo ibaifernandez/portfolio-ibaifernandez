@@ -19,6 +19,8 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
   - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
 - Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html
   - Purpose: living proof of delivery capability through CI/CD, performance hardening, accessibility, and production validation.
+- MyBoard: https://portfolio.ibaifernandez.com/project-myboard.html
+  - Purpose: local-first Kanban product proving zero vendor lock-in, modular architecture, and a clear runway toward enterprise and AI-assisted use.
 - Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
   - Purpose: narrative architecture and custom web/brand system case.
 - AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html

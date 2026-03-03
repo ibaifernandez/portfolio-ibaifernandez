@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{{pageDescription}}">
+	<meta name="keywords" content="{{pageKeywords}}">
+	<meta name="author" content="{{pageAuthor}}">
+	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="theme-color" content="#0b1220">
+	<meta property="og:type" content="{{pageOgType}}">
+	<meta property="og:url" content="{{pageCanonicalUrl}}">
+	<meta property="og:title" content="{{pageTitle}}">
+	<meta property="og:description" content="{{pageDescription}}">
+	<meta property="og:image" content="{{pageShareImage}}">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="{{pageCanonicalUrl}}">
+	<meta property="twitter:title" content="{{pageTitle}}">
+	<meta property="twitter:description" content="{{pageDescription}}">
+	<meta property="twitter:image" content="{{pageShareImage}}">
+	<title>{{pageTitle}}</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font.min.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/style.min.css">
+	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="{{pageCanonicalUrl}}">
+	<script type="application/ld+json">
+{{{pageStructuredDataJson}}}
+	</script>
+</head>
+
+<body class="myboard_dossier_page">
+	<a class="skip-link" href="#project_main">Skip to main content</a>
+
+	<div class="preloader">
+		<div class="status">
+			<img src="assets/images/loader.gif" id="preloader_image" alt="loader" loading="eager" decoding="sync"
+				fetchpriority="high" width="150" height="150">
+		</div>
+	</div>
+
+	<!-- @include ../components/project/sidebar.html -->
+
+	<div class="port_togglebox">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<div class="port_sec_warapper" id="project_main">
+		<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper myboard_dossier_wrapper">
+			<div class="container-fluid project_case_container myboard_dossier_surface">
+				<div class="row g-4">
+					<div class="col-12">
+						<a href="{{projectBackHref}}" class="project_case_backlink">Back to portfolio</a>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_hero" aria-labelledby="myboard-dossier-title">
+							<div class="myboard_dossier_intro">
+								<p class="project_case_eyebrow">Product Case Study / Own The Tool, Own The Workflow</p>
+								<h1 id="myboard-dossier-title" class="project_case_title">MyBoard: A Kanban Product Built To Refuse Vendor Dependence</h1>
+								<p class="project_case_intro">
+									MyBoard starts with a simple thesis: task management should not require surrendering your
+									data, your pricing power, or your roadmap to a third-party platform. So instead of extending
+									someone else's SaaS, I built the product from scratch.
+								</p>
+								<p class="project_case_paragraph">
+									The result is a modular Kanban application with a React 18 + Vite frontend, an Express API,
+									JSON persistence, drag and drop powered by `@dnd-kit`, runtime-editable categories, real-time
+									filters, and a roadmap that already anticipates enterprise deployment and AI-assisted
+									operations without rewriting the core model.
+								</p>
+
+								<div class="myboard_dossier_metric_grid" aria-label="MyBoard phase one metrics">
+									<article class="myboard_dossier_metric">
+										<span class="myboard_dossier_metric_label">Phase</span>
+										<strong class="myboard_dossier_metric_value">1</strong>
+										<span class="myboard_dossier_metric_note">MVP complete</span>
+									</article>
+									<article class="myboard_dossier_metric">
+										<span class="myboard_dossier_metric_label">Cards In Use</span>
+										<strong class="myboard_dossier_metric_value">50+</strong>
+										<span class="myboard_dossier_metric_note">real data</span>
+									</article>
+									<article class="myboard_dossier_metric">
+										<span class="myboard_dossier_metric_label">API Domains</span>
+										<strong class="myboard_dossier_metric_value">4</strong>
+										<span class="myboard_dossier_metric_note">boards, columns, cards, categories</span>
+									</article>
+									<article class="myboard_dossier_metric">
+										<span class="myboard_dossier_metric_label">Data Lock-In</span>
+										<strong class="myboard_dossier_metric_value">0</strong>
+										<span class="myboard_dossier_metric_note">owner-controlled JSON</span>
+									</article>
+								</div>
+							</div>
+
+							<div class="myboard_dossier_stage">
+{{{projectMediaHtml}}}
+								<p class="myboard_dossier_stage_caption">
+									The card uses a designed placeholder instead of a fake screenshot. When you drop the real board
+									capture later, it should replace this exact slot without changing the storytelling structure.
+								</p>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_section" aria-labelledby="myboard-thesis-title">
+							<div class="myboard_dossier_section_header">
+								<p class="myboard_dossier_section_tag">Product Thesis</p>
+								<h2 id="myboard-thesis-title" class="project_case_heading">Why This Product Exists</h2>
+							</div>
+
+							<div class="myboard_dossier_thesis_grid">
+								<article class="myboard_dossier_card">
+									<h3>The Problem With Existing Tools</h3>
+									<p>
+										Mainstream task platforms solve organization while creating a second dependency problem:
+										your workflow ends up tied to someone else's pricing, hosting, feature priorities, and
+										terms. That trade-off is tolerated by default, but it is not inevitable.
+									</p>
+								</article>
+								<article class="myboard_dossier_card myboard_dossier_card--accent">
+									<h3>The Counter-Position</h3>
+									<p>
+										MyBoard inverts the equation. The code is owned, the data is readable, and the persistence
+										layer starts in plain JSON. That means the product is useful now, while staying easy to
+										migrate later to stronger infrastructure without rebuilding the user experience.
+									</p>
+								</article>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_section" aria-labelledby="myboard-stack-title">
+							<div class="myboard_dossier_section_header">
+								<p class="myboard_dossier_section_tag">Technical Construction</p>
+								<h2 id="myboard-stack-title" class="project_case_heading">A Stack Chosen For Control, Not Trend Chasing</h2>
+							</div>
+
+							<div class="myboard_dossier_arch_grid">
+								<article class="myboard_dossier_arch_card">
+									<div class="myboard_dossier_arch_icon"><i class="fab fa-react" aria-hidden="true"></i></div>
+									<h3>React 18 + Vite</h3>
+									<p>Fast iteration in development, clear component boundaries, and no unnecessary SSR complexity for a SPA product.</p>
+								</article>
+								<article class="myboard_dossier_arch_card">
+									<div class="myboard_dossier_arch_icon"><i class="fas fa-server" aria-hidden="true"></i></div>
+									<h3>Express API</h3>
+									<p>A clean server boundary keeps business logic explicit and turns the same API into the future bridge for enterprise and AI layers.</p>
+								</article>
+								<article class="myboard_dossier_arch_card">
+									<div class="myboard_dossier_arch_icon"><i class="fas fa-file-code" aria-hidden="true"></i></div>
+									<h3>Human-Readable Persistence</h3>
+									<p>`tasks.json` is not a shortcut; it is a strategic phase-one persistence choice that keeps backups, inspection, and migration transparent.</p>
+								</article>
+								<article class="myboard_dossier_arch_card">
+									<div class="myboard_dossier_arch_icon"><i class="fas fa-arrows-alt" aria-hidden="true"></i></div>
+									<h3>Correct Drag &amp; Drop</h3>
+									<p>`@dnd-kit` is used to persist real positional changes, not just visual movement. Reordering logic updates the affected set, not only the dragged card.</p>
+								</article>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_section" aria-labelledby="myboard-feature-title">
+							<div class="myboard_dossier_section_header">
+								<p class="myboard_dossier_section_tag">Feature Surface</p>
+								<h2 id="myboard-feature-title" class="project_case_heading">What Phase 1 Already Delivers</h2>
+							</div>
+
+							<div class="myboard_dossier_feature_board" aria-label="Phase 1 feature board">
+								<article class="myboard_dossier_feature_column">
+									<h3>Board Core</h3>
+									<ul>
+										<li>Kanban columns with drag &amp; drop between and within columns</li>
+										<li>Multi-board navigation with create, rename, and delete flows</li>
+										<li>Optimistic state updates through dedicated hooks</li>
+									</ul>
+								</article>
+								<article class="myboard_dossier_feature_column">
+									<h3>Card System</h3>
+									<ul>
+										<li>Markdown description, checklist, tags, due date, and priority layers</li>
+										<li>Visual priority indicators and overdue highlighting</li>
+										<li>Persistent ordering and consistent card mutation paths</li>
+									</ul>
+								</article>
+								<article class="myboard_dossier_feature_column">
+									<h3>Runtime Flexibility</h3>
+									<ul>
+										<li>Editable categories with a 12-color palette</li>
+										<li>Live filters by category, priority, and tag</li>
+										<li>React Context avoids prop drilling and redundant fetches</li>
+									</ul>
+								</article>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_section" aria-labelledby="myboard-runway-title">
+							<div class="myboard_dossier_section_header">
+								<p class="myboard_dossier_section_tag">Runway</p>
+								<h2 id="myboard-runway-title" class="project_case_heading">Why The Architecture Is Better Than A Mere MVP</h2>
+							</div>
+
+							<div class="myboard_dossier_runway">
+								<article class="myboard_dossier_runway_item">
+									<span class="myboard_dossier_runway_phase">Phase 1</span>
+									<div>
+										<h3>Personal Kanban, fully usable now</h3>
+										<p>The current product is already functional and in real use, not speculative wireframe work.</p>
+									</div>
+								</article>
+								<article class="myboard_dossier_runway_item">
+									<span class="myboard_dossier_runway_phase">Phase 2</span>
+									<div>
+										<h3>Enterprise deploy without a rewrite</h3>
+										<p>The persistence layer can graduate from JSON to a database while preserving the same application shape and UX model.</p>
+									</div>
+								</article>
+								<article class="myboard_dossier_runway_item">
+									<span class="myboard_dossier_runway_phase">Phase 4</span>
+									<div>
+										<h3>AI as a real client of the same API</h3>
+										<p>The roadmap already anticipates Claude-driven task creation, backlog hygiene, and board chat through the same API contract, not a disconnected "magic" layer.</p>
+									</div>
+								</article>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<section class="myboard_dossier_section" aria-labelledby="myboard-proof-title">
+							<div class="myboard_dossier_section_header">
+								<p class="myboard_dossier_section_tag">Placeholder Proof Assets</p>
+								<h2 id="myboard-proof-title" class="project_case_heading">What Media Should Replace These Placeholders Later</h2>
+							</div>
+
+							<div class="myboard_dossier_placeholder_grid">
+								<article class="myboard_dossier_placeholder">
+									<span class="myboard_dossier_placeholder_label">Placeholder Image</span>
+									<h3>Main Board Capture</h3>
+									<p>Hero screenshot of the real board showing multiple columns, cards, priority badges, and the visual hierarchy of the app.</p>
+								</article>
+								<article class="myboard_dossier_placeholder">
+									<span class="myboard_dossier_placeholder_label">Placeholder Video</span>
+									<h3>Drag &amp; Drop Demo</h3>
+									<p>Short interaction clip proving that moving cards feels clean, stable, and intentional rather than merely animated.</p>
+								</article>
+								<article class="myboard_dossier_placeholder">
+									<span class="myboard_dossier_placeholder_label">Placeholder Image</span>
+									<h3>Category Settings Modal</h3>
+									<p>UI proof that categories are editable in runtime, with color palette and no redeploy required.</p>
+								</article>
+								<article class="myboard_dossier_placeholder">
+									<span class="myboard_dossier_placeholder_label">Placeholder Image</span>
+									<h3>API / Data Ownership Proof</h3>
+									<p>One technical capture tying together the board UI, API layer, and `tasks.json` persistence to support the zero lock-in argument.</p>
+								</article>
+							</div>
+						</section>
+					</div>
+
+					<div class="col-12">
+						<nav class="project_case_nav" aria-label="Project navigation">
+{{{previousProjectNavHtml}}}
+							<a class="project_case_navlink project_case_navlink--index" href="{{projectIndexHref}}">All Projects</a>
+{{{nextProjectNavHtml}}}
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- @include ../components/project/contact-form.html -->
+		<!-- @include ../components/index/footer.html -->
+	</div>
+
+	<div class="bottom_top">
+		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
+	</div>
+
+	<!-- @include ../components/shared/translate-button.html -->
+	<!-- @include ../components/shared/analytics-ga4.html -->
+	<script defer src="assets/js/jquery.min.js"></script>
+	<script defer src="assets/js/custom.min.js"></script>
+	<script defer src="assets/js/translate.min.js"></script>
+</body>
+
+</html>

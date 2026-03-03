@@ -113,6 +113,30 @@
   },
   {
     "page": {
+      "output": "project-myboard.html",
+      "template": "src/pages/project-myboard.template.html",
+      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "keywords": "MyBoard, Kanban, React, Express, dnd-kit, Tailwind, zero vendor lock-in, task management"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--myboard\" role=\"img\" aria-label=\"MyBoard product preview placeholder showing a kanban board concept with local-first ownership\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--board\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Kanban OS</span>\n<strong>Local-First Task Control</strong>\n<span class=\"project_spotlight_mockup_metric\">React + Express</span>\n<span class=\"project_spotlight_mockup_note\">Drag & drop · JSON persistence · Zero lock-in</span>\n</div>",
+    "title": {
+      "text": "MyBoard: Zero-Lock-In Kanban Engine",
+      "translate": "project-myboard-title"
+    },
+    "description": {
+      "text": "A modular Kanban application built with React, Express, and JSON persistence to prove that task management can be fast, expressive, and fully owned by the operator from day one.",
+      "translate": "project-myboard-copy"
+    },
+    "link": {
+      "href": "project-myboard.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
       "output": "project-elm-st.html"
     },
     "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/elm-st-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/elm-st-web.webp\">\n<img src=\"assets/images/elm-st-web.png\" alt=\"Elm St custom web architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
