@@ -49,11 +49,11 @@ The contact form is protected by multiple layers:
 - Field: `form_started_at` (timestamp populated on page load by JS)
 - If form submitted in under 1.2 seconds → bot detection triggered
 
-### Layer 3 — Cloudflare Turnstile (configured, pending live validation)
+### Layer 3 — Cloudflare Turnstile (configured and validated in production)
 - Frontend: `captcha_provider` and `captcha_token` fields in form
 - Backend: token verified via Turnstile API before processing
 - Production state (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER` and `PORTFOLIO_CAPTCHA_SECRET` are present in Netlify environment variables
-- Remaining action: run a real production submission and confirm the captcha flow end to end
+- Status: real production submission already validated on 2026-03-03
 - See `docs/ENGINEERING-RUNBOOK.md` for Turnstile key rotation procedure
 
 ### Layer 4 — Input validation
@@ -161,8 +161,8 @@ If a security issue is discovered:
 
 | Item | Risk | Status |
 |---|---|---|
-| CSP in report-only mode | Medium — CSP not enforced, XSS possible if inline scripts introduced | Pending (Phase 6) |
-| Turnstile production flow not yet manually validated | Low — platform configuration is present, but a real send test is still pending | Pending (Phase 8 validation) |
+| CSP in report-only mode | Medium — CSP not enforced, XSS possible if inline scripts introduced | Deferred until post-v2 hardening |
+| Turnstile production flow not yet manually validated | Resolved — the real flow was validated in production on 2026-03-03 | Closed |
 | No explicit CORS check in production function | Low — cross-origin POSTs are possible, but abuse still depends on anti-spam controls | Accepted for now |
 | Some CDN scripts without SRI | Low | Backlog |
 | DNSSEC not validated | Low | Backlog |

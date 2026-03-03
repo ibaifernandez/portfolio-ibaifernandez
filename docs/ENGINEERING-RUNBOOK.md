@@ -142,9 +142,11 @@ Orden recomendado:
 3. Ejecutar Mobile QA
 4. Repetir una pasada corta de formulario en producción si se tocaron UI, layout, o scripts de contacto
 
-Regla de cierre:
+Regla operativa:
 
-- No avanzar a Search Console / Bing hasta cerrar QA manual en desktop y mobile
+- Lo recomendado es cerrar QA manual antes de indexacion.
+- Si el owner decide diferir QA, la verificacion de propiedad en Search Console / Bing puede hacerse igual.
+- En ese caso, lo prudente es dejar el envio de `sitemap.xml` para despues del freeze de contenido visible.
 
 ---
 

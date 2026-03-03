@@ -5,6 +5,8 @@
 **Last updated:** 2026-03-03
 **Owner:** Ibai Fernandez
 
+> Status note: this is the product specification, not the live task board. Use `docs/ROADMAP.md` for current status and `docs/BACKLOG.md` for open work.
+
 ---
 
 ## 1. Product Vision
@@ -223,7 +225,7 @@ Every page must have:
 
 | Item | Reason |
 |---|---|
-| Blog with real posts | Pending content strategy; placeholder active |
+| Blog with real posts | Out of scope for v2.0.0.0; the current product direction is to remove or permanently hide the blog surface before indexing |
 | CMS integration | Static-first approach; data JSON is the CMS |
 | User accounts / authentication | Not applicable for portfolio |
 | Analytics dashboard | Planned post-MVP (Epic G) |
@@ -236,13 +238,10 @@ Every page must have:
 
 | # | Question | Owner | Priority |
 |---|---|---|---|
-| OQ-01 | Final copy for hero headline and sub-heading (EN + ES) | Ibai | High |
-| OQ-02 | CSP enforce mode — timeline | Ibai | Medium |
-| OQ-03 | Turnstile real-flow validation in production | Closed (2026-03-03) | Resolved |
-| OQ-04 | Blog content strategy — real posts or remove section? | Ibai | Low |
-| OQ-05 | Google Search Console + sitemap submission | Ibai | Medium |
-| OQ-06 | hreflang strategy — single URL or `/en` / `/es` paths? | Ibai | Low |
-| OQ-07 | Final launch roster and dossier refresh for the 8 featured projects | Ibai | High |
+| OQ-01 | Google Search Console + Bing property verification + sitemap submission timing | Ibai | Medium |
+| OQ-02 | Remaining public slug normalization beyond `2x2MKT` | Ibai | Medium |
+| OQ-03 | `hreflang` strategy — single URL or `/en` / `/es` paths? | Ibai | Low |
+| OQ-04 | Final replacement timing for dossier placeholder assets | Ibai | Medium |
 
 ---
 
@@ -251,7 +250,7 @@ Every page must have:
 The portfolio is considered **production-ready (v2.0)** when:
 
 - [ ] All placeholder content removed or appropriately hidden
-- [ ] Lighthouse Performance ≥ 90 on mobile (baseline for release; ≥ 95 is north star)
+- [ ] Mobile performance accepted for current release scope, with follow-up LCP work tracked after v2.0.0.0
 - [ ] Lighthouse Accessibility ≥ 95
 - [ ] Zero axe serious/critical violations
 - [x] All E2E tests pass (29/29)
@@ -259,7 +258,7 @@ The portfolio is considered **production-ready (v2.0)** when:
 - [ ] CV print page works in Chrome and Safari
 - [ ] Language toggle works for all visible content
 - [x] No broken internal links
-- [ ] CSP policy decided (enforce or extend report-only with justification)
+- [x] CSP policy decided: remain in report-only for v2.0.0.0 and revisit after a monitored post-release window
 - [ ] Google Search Console verified
 
 ---

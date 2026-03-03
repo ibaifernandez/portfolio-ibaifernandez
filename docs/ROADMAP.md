@@ -1,301 +1,170 @@
-# ROADMAP.md — Strategic Project Roadmap
+# ROADMAP.md — Current State, Release Path, and Next Work
 
 **Last updated:** 2026-03-03
-**Status:** Active
+**Purpose:** This is the single source of truth for where the project came from, where it is now, and what still remains.
 
 ---
 
-## Vision
+## 1. Current State
 
-Transform the portfolio into a **state-of-the-art professional showcase** that demonstrates senior-level Front-End and product engineering capabilities — without breaking existing behavior or introducing regressions.
+The portfolio is in a late pre-release state.
 
----
+What is already true:
 
-## North-Star Metrics
+- The platform migration is complete: Netlify CDN + GitHub Actions + Netlify Function + Resend.
+- `main` is aligned with `origin/main`.
+- The production contact flow is validated end to end.
+- GA4 Realtime already confirms `page_view`, `contact_submit_attempt`, and `contact_submit_success`.
+- Playwright is green (`29/29`).
+- Desktop PageSpeed is in a strong release band.
+- Mobile is usable and materially improved, but still has LCP headroom.
+- The public project roster is already live as 8 dossiers:
+  - DebTracker
+  - GymTracker
+  - LFi
+  - The Route to Digitalization / 2x2MKT
+  - Portfolio Ibai Fernandez
+  - MyBoard
+  - Elm St
+  - AGLAYA
 
-| Metric | Target | Baseline (2026-03-02) | Post-Sprint #1 |
-|---|---|---|---|
-| Lighthouse Performance (mobile) | ≥ 95 | 61 | TBD (re-capture pending) |
-| Lighthouse Performance (desktop) | ≥ 95 | 84 | TBD |
-| Lighthouse Accessibility | ≥ 95 | 94 | TBD |
-| LCP (mobile 4G) | ≤ 2.2s | TBD | TBD |
-| CLS | ≤ 0.05 | TBD | TBD |
-| JS initial (gzip) | ≤ 220KB | TBD | TBD |
-| CSS initial (gzip) | ≤ 120KB | TBD | TBD |
-| E2E test coverage | ≥ 90% critical journeys | 29/29 (100%) | 29/29 |
-| Broken links | 0 | 0 | 0 |
+Current measured snapshot:
 
----
-
-## Completed Phases
-
-### Phase 0 — Quality & Security Foundation (Epic A) ✅
-*Completed 2026-01*
-
-Key outcomes:
-- Security headers in hosting config (`netlify.toml`) (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
-- Honeypot + timing-based anti-spam on contact form
-- Backend anti-spam hardening (`ajax.php` originally; current production contract is honeypot + timing + optional captcha)
-- Quality guards shell script (`tests/quality-guards.sh`)
-- CSP in report-only mode
-
----
-
-### Phase 1 — Performance & Media Pipeline (Epic B) ✅
-*Completed 2026-02*
-
-Key outcomes:
-- All images with `loading`, `width`, `height` (CLS prevention)
-- AVIF pipeline (29 images) with `<picture>` fallback
-- WebP pipeline (29 images) with `<picture>` fallback
-- Asset size budget enforced in CI
-- Lazy initialization: `jvectormap`, `isotope`, `magnific`, `swiper`, `circle-progress`, `zoom`, `scrollbar`
-- `bootstrap.min.js` eliminated from static load
+| Area | Current state |
+|---|---|
+| Desktop PageSpeed | `93 / 95 / 96 / 92` |
+| Mobile PageSpeed | `62 / 95 / 92 / 92` |
+| Mobile bottleneck | `FCP 4.7s`, `LCP 7.6s` |
+| CLS | `0.004` |
+| Automated release gate | `29/29` Playwright + `test:quality` green |
+| Contact form | Validated in production |
+| Turnstile | Configured and validated in production |
+| GA4 Realtime | Validated in production |
 
 ---
 
-### Phase 2 — Componentization (Epic C) ✅
-*Completed 2026-02*
+## 2. Where We Came From
 
-Key outcomes:
-- Template + partial build system (`scripts/build-pages.mjs`)
-- Design tokens in `style.css` `:root`
-- Data-driven: Projects, Testimonials, Training, CTAs, Services, Experience
-- `content/*.json` is the editorial layer — no markup changes needed for content edits
-- ADR-001 (componentization strategy) and ADR-002 (CSS tokens) documented
+The technical foundation is already closed.
 
----
+### Closed foundation work
 
-### Phase 3 — Professional Testing & CI/CD (Epic D) ✅
-*Completed 2026-02*
+- **Phase 0-4:** quality/security base, performance/media pipeline, componentization, CI/CD, accessibility hardening.
+- **Phase 5:** migration from cPanel/PHP to Netlify/Node.
+- **Phase 5.2:** heading hierarchy + color contrast.
+- **Phase 5.3:** CSS/JS minification.
+- **Phase 5.4:** AVIF/WebP coverage across all generated pages.
+- **Phase 5.5:** production verification and PageSpeed re-capture.
 
-Key outcomes:
-- Playwright baseline (29 tests covering render, navigation, keyboard, a11y, visual, contact)
-- GitHub Actions: `ci.yml` on every push to `main`
-- Axe accessibility automation integrated into E2E suite
-- Visual regression snapshots for Contact, Experience, Projects, Logos
-- Link checker (internal + external)
-- Performance budget runner
+### Closed content-system work
 
----
+- The old generic project stubs have been replaced by real dossiers for:
+  - LFi
+  - Portfolio
+  - MyBoard
+  - Elm St
+  - AGLAYA
+- The 2x2 route already has a normalized public slug.
+- The obsolete LFi newspaper presentation is retired.
 
-### Phase 4 — Accessibility Hardening (Epic E) ✅
-*Completed 2026-02*
-
-Key outcomes:
-- `<main>` ARIA landmark (div → main)
-- `skip-link` on all pages
-- `aria-live` + `aria-invalid` on contact form
-- `prefers-reduced-motion` in CSS and JS
-- Icon-only controls with `aria-label`
-- Axe baseline: zero serious/critical violations on Home, Contact, Blog shell
-- Full keyboard navigation E2E coverage
+This means the project is no longer waiting on foundational engineering. The remaining work is release hygiene, documentation clarity, and final content polish.
 
 ---
 
-### Phase 5 — Platform Migration (cPanel → Netlify) ✅
-*Completed 2026-03-02*
+## 3. What Still Remains
 
-Key outcomes:
-- Static HTML + Netlify CDN replacing PHP + cPanel
-- Contact form migrated to Netlify Function (Node.js 20) + Resend API
-- GitHub Actions CI/CD replacing manual FTP deploy
-- `ajax.php` retired; PHP dependency eliminated
-- E2E static server updated for new function routes
-- Baselines captured: Desktop 84/94/96/92, Mobile 61/94/96/92
-- ADR-003 (Netlify), ADR-004 (Resend), ADR-005 (CSS non-blocking) documented
+Only open work belongs here. Historical detail lives in `docs/ENGINEERING-CHANGELOG.md`.
 
----
+### A. Release-adjacent work
 
-### Phase 5.1 — Performance + A11y Sprint #1 ✅
-*Completed 2026-03-03*
+- **Manual QA (recommended, currently deferred by owner):**
+  - Desktop checklist
+  - Mobile checklist
+- **Search visibility (manual external actions):**
+  - Google Search Console property verification
+  - Bing Webmaster Tools property verification
+  - `sitemap.xml` submission
+- **Release administration (explicitly deferred for now):**
+  - release tag `v2.0.0.0`
 
-Key outcomes:
-1. Blog section: Lorem Ipsum cards removed; "Coming soon" placeholder; original card structure saved as template
-2. `<main>` landmark: `div.port_sec_warapper` → `<main>` (a11y hardening)
-3. Fonts: Google Fonts `@import` eliminated from `font.css`; Roboto loaded via non-blocking `rel="preload"` + `rel="preconnect"` (eliminates 2-step render-blocking chain)
-4. `animate.css`: converted to non-blocking preload (defers decorative CSS)
-- All 29 E2E tests remain green
+### B. Content work that still matters for launch
 
----
+- Final polish of project dossiers where placeholders remain:
+  - Portfolio
+  - MyBoard
+  - Elm St
+  - AGLAYA
+- Public slug normalization beyond `2x2MKT`
+- SEO metadata pass (titles, descriptions, OG refinement where needed)
+- Blog removal / permanent retirement before indexing (the current product decision is: **this portfolio will not have a blog**)
 
-## Current Sprint — Documentation Sprint ✅
-*2026-03-03*
+### C. Security / hardening still open
 
-Key outcomes:
-- `AGENTS.md` (root): AI agent guidance
-- `docs/AI_RULES.md`: extended rules for AI tools
-- `docs/ARCHITECTURE.md`: full technical architecture
-- `docs/PRD.md`: product requirements
-- `docs/ROADMAP.md`: this file
-- `docs/SECURITY.md`: security policy
-- `docs/GLOSSARY.md`: project glossary
-- `docs/BACKLOG.md`: moved + updated from root
-- `README.md`: complete rewrite for Netlify stack
-- `ENGINEERING-CHANGELOG.md`: updated with Phase 5 + 5.1 entries and ADRs
+- **CSP stays in report-only for v2.0.0.0.**
+  - Decision: do **not** promote to enforce yet.
+  - Reason: the site is stable, but there is no audited clean observation window and no value in risking a late-stage break for this release.
+  - Next: promote after a short monitored production window and a targeted policy audit.
+- Add SRI hashes to CDN-served scripts
+- Validate or intentionally defer DNSSEC
 
----
+### D. Post-v2 work (not blocking this release)
 
-## Upcoming Phases
-
-### Phase 5.2 — Performance + A11y Sprint #2 ✅
-*Completed: 2026-03-03*
-
-Delivered:
-
-**#5 — Fix heading hierarchy** (a11y, SEO)
-- Replaced section eyebrow headings `h2.port_sub_heading` with `p.port_sub_heading`
-- Replaced section titles `h1.port_heading*` with `h2.port_heading*`
-- Applied in home templates and generated project pages; added a `tests/quality-guards.sh` regression check to fail the build if this hierarchy regresses
-
-**#6 — Color contrast WCAG AA**
-- Introduced text-safe accent tokens for yellow, pink, orange, and cyan while preserving vivid decorative accent colors
-- Rewired text/icon surfaces (sidebar icons + tooltips, about headline, timeline accents, reusable accent utility classes) to use the darker text-safe palette
-- Hardened project spotlight CTAs so white button text now meets AA contrast against its background
-- Re-activated `color-contrast` as a blocking Playwright axe rule in `tests/e2e/a11y.spec.js`
-- Updated Playwright visual baselines where the intentional palette change affected snapshots
+- Frontend error tracking (Sentry or equivalent)
+- Lightweight health dashboard (Core Web Vitals + key funnel view)
+- Formal post-release checklist / ops cadence
+- Larger copy overhaul (hero and overall narrative refinement) can move to a later content-focused release
 
 ---
 
-### Phase 5.3 — Performance Sprint #3 ✅
-*Completed: 2026-03-03*
+## 4. Release Decision Notes
 
-Delivered:
+These are current project decisions, not open debates.
 
-**#7 — CSS/JS minification**
-- `scripts/build-pages.mjs` now generates deterministic `.min` derivatives from the readable CSS/JS source files and verifies them in `--check`
-- Generated pages now serve `.min` CSS/JS bundles by default; `assets/js/custom.js` lazy-load paths were switched to `.min` variants where local generated equivalents exist
-- `tests/quality-guards.sh` now fails if generated HTML or lazy-load paths regress to legacy unminified references
-- Measured impact on the current Home budget: CSS `410.3 KB → 359.3 KB`, JS `144.4 KB → 127.2 KB`
-
----
-
-### Phase 5.4 — Performance Sprint #4 ✅
-*Completed: 2026-03-03*
-
-Delivered:
-
-**#8 — WebP/AVIF for remaining images**
-- Media conversion and coverage scripts now target all generated root HTML pages by default (`index`, `blog`, `cv-print`, `project-*`)
-- Standard `npm run media:avif` / `npm run media:webp` workflow now regenerates assets and then rebuilds pages, avoiding post-build drift against template sources
-- Closed the remaining media gaps detected outside Home/Blog:
-  - restored missing AVIF `<source>` entries in the LFi project dossier testimonial blocks
-  - added the missing WebP derivative for `marcelo-ricigliano.jpg` (manual lower-quality encode because the default WebP settings did not beat the original size)
-- Quality guard result after closing the sprint: `AVIF checked=43`, `WebP checked=53`, `skipped_missing_asset=0`
+- **Manual QA is recommended, but not required to continue current content work.**
+- **Search Console and Bing property verification can happen now.**
+- **`sitemap.xml` submission is better after content freeze, but not technically blocked by QA.**
+- **CSP enforce mode is intentionally deferred past v2.0.0.0.**
+- **Hero copy rewrite is not a blocker for v2.0.0.0.**
+- **The blog is not part of the final product direction.**
 
 ---
 
-### Phase 5.5 — Measurement + Launch Verification ✅
-*Completed: 2026-03-03*
+## 5. Canonical Document Roles
 
-Delivered:
+To avoid documentation drift, use each document for one job only:
 
-**#9 — Re-capture PageSpeed + compare against baseline**
-- Desktop PageSpeed result: `93 / 95 / 96 / 92`
-- Mobile PageSpeed result: `62 / 95 / 92 / 92`
-- Mobile bottleneck is now clearly isolated to paint timing (`FCP 4.7s`, `LCP 7.6s`), not script blocking (`TBT 0ms`) or layout instability (`CLS 0.004`)
-- Result: desktop is already in release-safe territory; mobile still has LCP headroom if the target remains `>= 95`
+- `docs/ROADMAP.md`
+  - Current state
+  - What remains
+  - Release direction
+- `docs/BACKLOG.md`
+  - Active work only
+  - No historical narrative
+- `docs/ENGINEERING-RUNBOOK.md`
+  - Operational procedures
+  - Deploy / QA / environment steps
+- `docs/ENGINEERING-CHANGELOG.md`
+  - Historical technical record
+- `docs/PRD.md`
+  - Product specification
+  - Not a live task board
 
-**Production flow verification**
-- Real contact-form submission validated end to end in production
-- Inbox delivery confirmed through Resend (`FROM_EMAIL` / `TO_EMAIL` on Netlify now explicit)
-- GA4 Realtime confirms `page_view`, `contact_submit_attempt`, and `contact_submit_success`
-- Invisible Turnstile UX validated live after the layout-shift hotfix
-
----
-
-### Phase 5.6 — Manual QA + Launch Hardening
-*Estimated: next session*
-
-Priority items:
-
-- Manual QA checklists prepared in `docs/QA-DESKTOP.md` and `docs/QA-MOBILE.md`
-- Prepare and run the manual QA checklist on desktop
-- Prepare and run the manual QA checklist on mobile
-- Resolve any regressions found before Search Console / Bing onboarding
+`docs/DEPLOY_ROADMAP.md` is now a bridge document only and should not be treated as the source of truth for project status.
 
 ---
 
-### Phase 6 — CSP Enforce Mode
-*Estimated: after Phase 5.6*
+## 6. Practical Next Sequence
 
-- Promote CSP from `Content-Security-Policy-Report-Only` to `Content-Security-Policy`
-- Requires: audit of all inline scripts + styles, verify no legitimate violations in report
-- Gate: zero CSP violations in report-only mode for 2 weeks before enforcing
+If the goal is to simplify the path to release, the recommended order is:
 
----
-
-### Phase 7 — Content & Narrative (Epic F)
-*Estimated: 1–2 sprints*
-
-Priority items:
-- **Hero rewrite:** Problem → solution → result structure for headline
-- **Project curation:** Final launch set expands to 8 active dossiers (DebTracker, GymTracker, LFi, The Route / 2x2MKT, Portfolio, MyBoard, Elm St, AGLAYA) with stronger outcome-driven narratives
-- **Slug normalization:** Replace legacy public slugs with recognizable URLs and preserve old links through redirects
-- **LFi redesign:** LFi is now rebuilt with a modern visual system and the obsolete newspaper-only assets have been retired from the live stack
-- **Blog section:** Decide: real posts, remove section, or keep "Coming soon" indefinitely
-- **Translation audit:** Every EN string must have an ES equivalent; no untranslated fragments
-- **SEO metadata:** Unique title + description + OG tags per page
-
-Acceptance criteria: Portfolio communicates seniority and expertise in < 60 seconds for any target audience.
+1. Finish the remaining project-page content/assets that matter.
+2. Perform Search Console / Bing property verification.
+3. Freeze visible content.
+4. Submit `sitemap.xml`.
+5. Run manual QA when the owner chooses to do so.
+6. Apply any fixes found.
+7. Tag the release when the owner is ready.
 
 ---
 
-### Phase 8 — Launch & Search Visibility
-*Estimated: after Phase 7*
-
-- [ ] Google Search Console verification
-- [ ] Bing Webmaster Tools verification
-- [ ] Sitemap submission (`sitemap.xml`)
-- [x] PageSpeed Insights re-capture and comparison vs baseline
-- [x] Turnstile real-flow validation in production
-- [ ] Release tag `v2.0.0`
-- [ ] QA manual on Desktop and Mobile
-
----
-
-### Phase 9 — Observability (Epic G)
-*Post-MVP, not blocking*
-
-- Error tracking (Sentry or similar)
-- Analytics events (CTA clicks, contact form, language switch)
-- Core Web Vitals monitoring dashboard
-- Release checklist and post-release runbook
-
----
-
-## Roadmap Summary (Gantt-like)
-
-```
-Phase 0-4   ████████████████ DONE (Jan–Feb 2026)
-Phase 5     ████████████████ DONE (Mar 2026-03-02)
-Phase 5.1   ████████████████ DONE (Mar 2026-03-03)
-Doc Sprint  ████████████████ DONE (Mar 2026-03-03)
-Phase 5.2   ████████████████ DONE (Mar 2026-03-03)
-
-Phase 5.3   ████████████████ DONE (Mar 2026-03-03)
-Phase 5.4   ████████████████ DONE (Mar 2026-03-03)
-Phase 5.5   ████████████████ DONE (Mar 2026-03-03)
-Phase 5.6   ░░░░░░░░         Next session (manual QA)
-Phase 6     ░░░░░░░░         After 5.6 (CSP enforce)
-Phase 7     ░░░░░░░░░░░░     Content sprint (1–2 sessions)
-Phase 8     ░░░░░░░░         Launch (after content)
-Phase 9     ░░░░░░░░░░░░░░░░ Post-MVP (observability)
-```
-
----
-
-## Decision Log
-
-| Date | Decision | Rationale |
-|---|---|---|
-| 2026-03 | Netlify over cPanel | Atomic deploys, CI/CD, serverless functions, no PHP dependency |
-| 2026-03 | Resend over SMTP | Reliability, deliverability, no credentials management |
-| 2026-03 | Static-first over SSR | Performance, simplicity, Netlify CDN optimization |
-| 2026-02 | Nunjucks-like partials over Astro | No framework migration risk; incremental componentization |
-| 2026-02 | JSON content over Markdown | Simpler parsing; schema validation; no Markdown parser needed |
-| 2026-02 | AVIF-primary image strategy | Best compression; WebP fallback covers remaining browsers |
-
----
-
-*Last updated: 2026-03-03*
+*Status summary:* the project is technically strong, publicly credible, and close to release. The remaining work is mostly release hygiene and content finish, not systems engineering.

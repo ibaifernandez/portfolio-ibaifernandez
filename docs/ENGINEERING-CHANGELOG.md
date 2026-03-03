@@ -22,6 +22,47 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Documentation Consolidation: One Status Story Instead Of Five Conflicting Ones
+
+**Commit:** `working tree (documentation consolidation)`
+
+#### Necessity
+
+The project had reached a strong late pre-release state, but the documentation layer was still making it look more chaotic than it really was. Multiple files were repeating the same status with different wording, and some of them were still describing already-resolved items as if they were open.
+
+#### Process
+
+1. Reframed `docs/ROADMAP.md` as the single source of truth for:
+   - current state,
+   - release path,
+   - what remains,
+   - explicit release decisions.
+2. Reduced `docs/BACKLOG.md` to active open work only, moving historical context out of the task list.
+3. Reduced `docs/DEPLOY_ROADMAP.md` to a bridge document so it no longer competes with `ROADMAP`, `BACKLOG`, or the runbook.
+4. Synced stale support docs that were still out of date:
+   - `docs/SECURITY.md`
+   - `docs/ARCHITECTURE.md`
+   - `docs/GLOSSARY.md`
+   - `docs/ENGINEERING-RUNBOOK.md`
+   - `docs/QA-DESKTOP.md`
+   - `docs/QA-MOBILE.md`
+   - `docs/PRD.md`
+5. Made the release posture explicit:
+   - Turnstile is validated in production
+   - manual QA is recommended but currently deferred by the owner
+   - Search Console / Bing verification can proceed before QA if desired
+   - `sitemap.xml` submission is better after content freeze
+   - CSP enforce mode is intentionally deferred beyond `v2.0.0.0`
+
+#### Actual Results
+
+- The repo now has a much clearer documentation hierarchy
+- Open work is easier to identify without reading the same information in multiple places
+- Resolved items are less likely to be misread as blockers
+- Human readers and AI agents now have a cleaner path from "where we came from" to "where we are" to "where we go next"
+
+---
+
 ### 2026-03-03 - AGLAYA Dossier: Conversion-First Remote Agency Case
 
 **Commit:** `see Git history after merge to main`
@@ -354,7 +395,7 @@ Before running production validation (real contact-form send, analytics realtime
 5. Confirmed manually from the Netlify dashboard that:
    - the site shows **"Builds are stopped"**, so Netlify auto-builds are disabled and GitHub Actions remains the only production deploy gate
    - `RESEND_API_KEY`, `PORTFOLIO_CAPTCHA_PROVIDER`, and `PORTFOLIO_CAPTCHA_SECRET` are present in Netlify environment variables
-   - Turnstile is therefore configured at the platform level and should be treated as **pending live production validation**, not pending activation
+   - Turnstile was therefore correctly reclassified from "not activated" to "awaiting live production validation" at that moment; the real production flow was later validated on 2026-03-03
 
 #### Actual Results
 

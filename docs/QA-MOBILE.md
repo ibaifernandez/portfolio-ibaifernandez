@@ -17,10 +17,12 @@ Validate these public routes:
 3. `https://portfolio.ibaifernandez.com/project-gymtracker.html`
 4. `https://portfolio.ibaifernandez.com/project-enterprise-crm.html`
 5. `https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html`
-6. `https://portfolio.ibaifernandez.com/project-elm-st.html`
-7. `https://portfolio.ibaifernandez.com/project-aglaya.html`
-8. `https://portfolio.ibaifernandez.com/blog.html`
-9. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
+6. `https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html`
+7. `https://portfolio.ibaifernandez.com/project-myboard.html`
+8. `https://portfolio.ibaifernandez.com/project-elm-st.html`
+9. `https://portfolio.ibaifernandez.com/project-aglaya.html`
+10. `https://portfolio.ibaifernandez.com/blog.html`
+11. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
 
 ---
 

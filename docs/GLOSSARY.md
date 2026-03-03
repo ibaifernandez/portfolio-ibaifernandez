@@ -62,7 +62,7 @@ Named variables for visual properties (colors, spacing, typography, shadows) def
 A test that exercises the full browser experience from navigation through interaction. This project uses Playwright (Chromium) for E2E tests in `tests/e2e/`. Current suite: 29 tests.
 
 **Epic**
-A large body of work grouped around a theme. This project uses 7 epics (A–G) in `docs/BACKLOG.md`. Epics A–E are complete; F–G are pending.
+A large body of work grouped around a theme. In practical terms, the remaining open work is now concentrated in content polish, release hygiene, and post-v2 observability. For the live action list, use `docs/BACKLOG.md`.
 
 ---
 
@@ -126,7 +126,7 @@ The idiom `<link rel="preload" as="style" onload="this.onload=null;this.rel='sty
 The HTML5 element and ARIA landmark role that identifies the primary content of a page. Required by WCAG 2.1 SC 4.1.2. The portfolio's `port_sec_warapper` div was promoted to `<main>` in Phase 5.1.
 
 **Minification**
-Removing whitespace, comments, and other non-essential characters from CSS and JS files to reduce file size. Planned for Phase 5.2 (`#7 — CSS/JS minification`).
+Removing whitespace, comments, and other non-essential characters from CSS and JS files to reduce file size. This is already implemented in the current build pipeline: `scripts/build-pages.mjs` generates the committed `.min` assets served by production.
 
 ---
 
@@ -164,7 +164,7 @@ A CSS media query that detects user system preference for reduced animation. All
 A document defining what a product should do, for whom, and why. See `docs/PRD.md`.
 
 **PurgeCSS**
-A tool that removes unused CSS rules by analyzing HTML and JS. Planned for Phase 5.2 to reduce CSS bundle size.
+A tool that removes unused CSS rules by analyzing HTML and JS. It is not part of the current release path. It remains an optional future optimization, not an active requirement for v2.0.0.0.
 
 ---
 
@@ -207,7 +207,7 @@ A minimal Node.js HTTP server (`scripts/static-server.mjs`) that serves the port
 A source file in `src/pages/` (e.g., `index.template.html`) that contains the page structure with `@include` and `@render` directives. NOT the final HTML — the build script generates the final HTML from templates.
 
 **Turnstile**
-Cloudflare's CAPTCHA alternative. User-friendly, privacy-preserving bot detection. Integrated in the contact form frontend and backend. As of 2026-03-03, the Netlify environment variables for captcha are present; the remaining task is validating the real production submission flow end to end.
+Cloudflare's CAPTCHA alternative. User-friendly, privacy-preserving bot detection. It is integrated in the contact form frontend and backend, and the real production flow was validated on 2026-03-03.
 
 ---
 
