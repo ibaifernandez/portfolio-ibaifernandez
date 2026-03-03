@@ -4,7 +4,12 @@ import path from 'node:path';
 
 const files = process.argv.slice(2);
 if (files.length === 0) {
-  files.push('index.html', 'blog.html');
+  files.push(
+    ...fs.readdirSync(process.cwd())
+      .filter((file) => file.endsWith('.html'))
+      .filter((file) => fs.statSync(path.resolve(process.cwd(), file)).isFile())
+      .sort()
+  );
 }
 
 function normalizeUrl(raw) {

@@ -277,15 +277,15 @@ Assigned to: ThemeForest
 				});
 				sidebar.data('scrollbar-ready', true);
 			};
-			if(typeof $.fn.mCustomScrollbar === 'function' && document.querySelector('link[href="assets/css/scrollbar.css"]')){
+			if(typeof $.fn.mCustomScrollbar === 'function' && document.querySelector('link[href="assets/css/scrollbar.min.css"]')){
 				initScrollbar();
 				return;
 			}
 			var scriptLoader = typeof $.fn.mCustomScrollbar === 'function'
 				? Promise.resolve()
-				: _this.load_script('assets/js/scrollbar.js');
+				: _this.load_script('assets/js/scrollbar.min.js');
 			Promise.all([
-				_this.load_style('assets/css/scrollbar.css'),
+				_this.load_style('assets/css/scrollbar.min.css'),
 				scriptLoader
 			])
 				.then(initScrollbar)
@@ -409,9 +409,9 @@ Assigned to: ThemeForest
 					return;
 				}
 				var loadTextillate = typeof $.fn.lettering === 'function'
-					? _this.load_script('assets/js/cvtext1.js')
-					: _this.load_script('assets/js/cvtext2.js').then(function() {
-						return _this.load_script('assets/js/cvtext1.js');
+					? _this.load_script('assets/js/cvtext1.min.js')
+					: _this.load_script('assets/js/cvtext2.min.js').then(function() {
+						return _this.load_script('assets/js/cvtext1.min.js');
 					});
 				loadTextillate
 					.then(initTyping)
@@ -594,7 +594,7 @@ Assigned to: ThemeForest
 					initProgress();
 					return;
 				}
-				_this.load_script('assets/js/circle-progress.js')
+				_this.load_script('assets/js/circle-progress.min.js')
 					.then(initProgress)
 					.catch(function() {
 						progressItems.data('circle-failed', true);
@@ -614,17 +614,17 @@ Assigned to: ThemeForest
 			var mapContainer = $('#world-map');
 			var mapBooting = false;
 			var ensureVectorMapAssets = function() {
-				if(typeof mapContainer.vectorMap === 'function' && document.querySelector('link[href="assets/css/jquery-jvectormap-2.0.3.css"]')){
+				if(typeof mapContainer.vectorMap === 'function' && document.querySelector('link[href="assets/css/jquery-jvectormap-2.0.3.min.css"]')){
 					return Promise.resolve();
 				}
 				var mapScriptLoader = typeof mapContainer.vectorMap === 'function'
 					? Promise.resolve()
 					: _this.load_script('assets/js/jquery-jvectormap.min.js')
 						.then(function() {
-							return _this.load_script('assets/js/jquery-jvectormap-world-mill.js');
+							return _this.load_script('assets/js/jquery-jvectormap-world-mill.min.js');
 						});
 				return Promise.all([
-					_this.load_style('assets/css/jquery-jvectormap-2.0.3.css'),
+					_this.load_style('assets/css/jquery-jvectormap-2.0.3.min.css'),
 					mapScriptLoader
 				]);
 			};

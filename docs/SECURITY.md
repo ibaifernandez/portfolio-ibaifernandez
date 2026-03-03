@@ -15,7 +15,7 @@ The portfolio has three attack surfaces:
 
 ## 2. HTTP Security Headers
 
-All responses include the following headers, set in `.htaccess` and validated by `tests/quality-guards.sh`:
+All responses include the following headers, set in `netlify.toml` and validated by `tests/quality-guards.sh`:
 
 | Header | Value | Purpose |
 |---|---|---|
@@ -23,7 +23,6 @@ All responses include the following headers, set in `.htaccess` and validated by
 | `X-Content-Type-Options` | `nosniff` | MIME-type sniffing prevention |
 | `Referrer-Policy` | `strict-origin-when-cross-origin` | Referrer data minimization |
 | `Permissions-Policy` | `camera=(), microphone=(), geolocation=()` | Feature policy |
-| `Strict-Transport-Security` | `max-age=31536000; includeSubDomains` | HSTS |
 
 ### Content Security Policy
 
@@ -48,29 +47,24 @@ The contact form is protected by multiple layers:
 
 ### Layer 2 — Timing check
 - Field: `form_started_at` (timestamp populated on page load by JS)
-- If form submitted in under 3 seconds → bot detection triggered
+- If form submitted in under 1.2 seconds → bot detection triggered
 
-### Layer 3 — Rate limiting
-- Enforced in `netlify/functions/contact.mjs`
-- Environment variables: `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` (default: 600), `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS` (default: 12)
-- Per-IP tracking within the function execution context
-
-### Layer 4 — Cloudflare Turnstile (ready, pending activation)
+### Layer 3 — Cloudflare Turnstile (ready, pending activation)
 - Frontend: `captcha_provider` and `captcha_token` fields in form
 - Backend: token verified via Turnstile API before processing
 - Activation: set `PORTFOLIO_CAPTCHA_PROVIDER=turnstile` and `PORTFOLIO_CAPTCHA_SECRET` in Netlify environment variables
 - See `docs/ENGINEERING-RUNBOOK.md` for Turnstile key rotation procedure
 
-### Layer 5 — Input validation
+### Layer 4 — Input validation
 - All fields validated server-side (type, length, format)
 - Email format validated with regex
 - Message length capped
 - No direct use of input in SQL, shell, or template interpolation
 
-### Layer 6 — CORS
-- `ALLOWED_ORIGIN` environment variable controls which origin may POST to the function
-- Set to production domain (`https://ibaifernandez.com`)
-- Requests from other origins are rejected with `403`
+### Layer 5 — Operational note
+- The production Netlify Function does **not** implement persistent IP rate limiting or explicit CORS checks.
+- The local E2E mock (`scripts/static-server.mjs`) mirrors the same production contract for contact submissions.
+- For production abuse resistance, the intended control is Turnstile activation plus the existing honeypot and timing checks.
 
 ---
 
@@ -78,7 +72,7 @@ The contact form is protected by multiple layers:
 
 ### Principles
 - **Never commit secrets.** API keys, captcha secrets, and passwords must never appear in any committed file.
-- **Never put secrets in `.htaccess`.** Quality guards block commits containing `PORTFOLIO_CAPTCHA_SECRET=` in `.htaccess`.
+- **Never put secrets in `netlify.toml` or any committed file.** Quality guards block commits containing `PORTFOLIO_CAPTCHA_SECRET=` or `RESEND_API_KEY=` in `netlify.toml`.
 
 ### Production secrets (Netlify environment variables)
 
@@ -86,20 +80,12 @@ The contact form is protected by multiple layers:
 |---|---|---|
 | `RESEND_API_KEY` | Resend transactional email | Netlify Dashboard → Site → Environment Variables |
 | `PORTFOLIO_CAPTCHA_SECRET` | Turnstile verification secret | Netlify Dashboard |
-| `ALLOWED_ORIGIN` | CORS allowed origin | Netlify Dashboard |
 | `FROM_EMAIL` | Sender address | Netlify Dashboard |
 | `TO_EMAIL` | Recipient address | Netlify Dashboard |
 
 ### Local development secrets
 
-Option A (recommended): `config/secrets.local.php` (gitignored)
-```php
-<?php
-// This file is gitignored. Never commit.
-define('PORTFOLIO_CAPTCHA_SECRET', 'your-secret-here');
-```
-
-Option B: `.env` file (gitignored) loaded by `netlify dev`
+Recommended: `.env` file (gitignored) loaded by `netlify dev`
 
 ### Secret rotation procedure (Turnstile)
 
@@ -116,7 +102,7 @@ Option B: `.env` file (gitignored) loaded by `netlify dev`
 
 | Rule | Status |
 |---|---|
-| No `eval()` in `assets/js/form.js` | ✅ Enforced by quality guard |
+| No `eval()` in `assets/js/custom.js` | ✅ Enforced by quality guard |
 | All `target="_blank"` have `rel="noopener noreferrer"` | ✅ Enforced by quality guard |
 | No inline event handlers (`onclick=`) | ✅ Not present |
 | No mixed content (HTTP resources on HTTPS page) | ✅ All resources HTTPS |
@@ -158,7 +144,7 @@ Option B: `.env` file (gitignored) loaded by `netlify dev`
 If a security issue is discovered:
 
 1. **Assess impact:** Is data being exfiltrated? Is the form being abused?
-2. **Contain:** If form abuse → increase rate limit, activate captcha
+2. **Contain:** If form abuse → activate captcha and/or add edge-layer throttling
 3. **Fix:** Patch in a feature branch, run full CI (`npm run test:ci`), deploy
 4. **Document:** Add entry to `docs/ENGINEERING-CHANGELOG.md` with incident timeline and resolution
 5. **Post-mortem:** Update this document if the issue reveals a gap in the security model
@@ -175,7 +161,8 @@ If a security issue is discovered:
 | Item | Risk | Status |
 |---|---|---|
 | CSP in report-only mode | Medium — CSP not enforced, XSS possible if inline scripts introduced | Pending (Phase 6) |
-| Turnstile not yet activated in production | Low–Medium — honeypot + rate limit active but no CAPTCHA | Pending (Phase 8) |
+| Turnstile not yet activated in production | Low–Medium — honeypot + timing active but no CAPTCHA | Pending (Phase 8) |
+| No explicit CORS check in production function | Low — cross-origin POSTs are possible, but abuse still depends on anti-spam controls | Accepted for now |
 | Some CDN scripts without SRI | Low | Backlog |
 | DNSSEC not validated | Low | Backlog |
 | `color-contrast` axe rule not yet blocker in CI | Low–Medium | Pending (BL-QA-008) |
@@ -186,7 +173,7 @@ If a security issue is discovered:
 
 This portfolio does not collect, store, or process personal data beyond:
 - Contact form submissions (email, name, message) — delivered via Resend and not stored
-- IP addresses — used transiently for rate limiting only, not persisted
+- IP addresses — may be forwarded transiently to captcha providers during verification, but are not persisted by the site itself
 - No cookies set by the portfolio itself (third-party services may set their own)
 
 GDPR/privacy note: If analytics (Epic G) are added, a cookie consent banner and privacy policy will be required.

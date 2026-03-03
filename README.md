@@ -2,21 +2,21 @@
 
 Portfolio estático personal orientado a mostrar experiencia en Front-End, marketing y contenido.
 
-**Live:** https://ibaifernandez.com
+**Live:** https://portfolio.ibaifernandez.com
 
 ---
 
 ## Stack
 
 - HTML5 + CSS3 + JavaScript (jQuery + plugins)
-- Node.js build pipeline (`scripts/build-pages.mjs`) — páginas generadas desde templates
+- Node.js build pipeline (`scripts/build-pages.mjs`) — páginas + assets `.min` generados desde fuentes legibles
 - Contenido data-driven en `content/*.json`
 - Netlify CDN (hosting + deploys atómicos)
 - Netlify Functions (Node.js 20) — formulario de contacto
 - Resend API — entrega de emails transaccionales
-- GitHub Actions — CI/CD (`quality.yml` + `e2e.yml`)
+- GitHub Actions — CI/CD (`ci.yml`)
 
-> **No requiere PHP.** El formulario de contacto corre en `netlify/functions/contact.mjs`.
+> **No requiere PHP.** El formulario de contacto corre en `netlify/functions/contact.js`.
 
 ---
 
@@ -25,11 +25,11 @@ Portfolio estático personal orientado a mostrar experiencia en Front-End, marke
 ```bash
 # Servidor estático básico (para testing sin funciones)
 npm run start
-# Abre: http://localhost:3000
+# Abre: http://localhost:4173
 
 # Servidor completo con Netlify Functions
 netlify dev
-# Abre: http://localhost:8888
+# Abre en el puerto configurado en netlify.toml (actualmente :4173)
 ```
 
 ---
@@ -86,12 +86,12 @@ Los datos de cards, slides y timelines se gestionan en:
 ## Optimización de imágenes (AVIF/WebP + fallback)
 
 ```bash
-npm run media:all      # genera AVIF + WebP para todas las imágenes
+npm run media:all      # genera assets modernos para todas las páginas HTML del root y recompila
 npm run test:avif      # valida cobertura AVIF
 npm run test:webp      # valida cobertura WebP
 ```
 
-Estado actual: 29 imágenes con fuente AVIF y 29 con fuente WebP, servidas con `<picture>` y fallback al original.
+Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas generadas del root (`index`, `blog`, `cv-print`, `project-*`) y no quedan faltantes de WebP en los quality guards.
 
 ---
 
@@ -103,7 +103,7 @@ Estado actual: 29 imágenes con fuente AVIF y 29 con fuente WebP, servidas con `
 - No enlaces con `href=""` ni `href="javascript:;"`.
 - No `target="_blank"` sin `rel="noopener noreferrer"`.
 - No URL claramente rota (`https://https://...`).
-- Presencia de headers de seguridad clave en `.htaccess`.
+- Presencia de headers de seguridad clave en `netlify.toml`.
 - Presencia de campos anti-spam (`website`, `form_started_at`, `captcha_provider`, `captcha_token`) y su validación backend.
 - Presencia de `skip-link` de teclado a contenido principal.
 - Presencia de contenedor de estado accesible del formulario (`aria-live`).
@@ -123,7 +123,7 @@ Estado actual: 29 imágenes con fuente AVIF y 29 con fuente WebP, servidas con `
 ### `tests/e2e/` (Playwright, 29 tests)
 
 - `home.spec.js` — Render del home y bloques críticos. Sidebar, skip-link, AVIF/WebP, idioma, hardening de links.
-- `contact.spec.js` — Feedback accesible, validación de email, envío válido, cooldown backend.
+- `contact.spec.js` — Feedback accesible, validación de email, envío válido, timing guard real del endpoint.
 - `blog.spec.js` — Render crítico de `blog.html`. Links sociales accesibles. No overflow horizontal en móvil.
 - `keyboard.spec.js` — Tab order para navegación crítica (skip-link, sidebar anchors, formulario, redes sociales).
 - `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home, Contact y shell técnica del blog.
@@ -138,12 +138,13 @@ El formulario mantiene flujo actual por defecto y permite activar captcha sin ca
 - **Frontend** runtime config (en `src/components/shared/analytics-ga4.html`):
   - `window.PORTFOLIO_RUNTIME.captcha.provider`: `turnstile`, `recaptcha` o `hcaptcha`
   - `window.PORTFOLIO_RUNTIME.captcha.siteKey`: site key pública
-- **Backend** (`netlify/functions/contact.mjs`) por variables de entorno Netlify:
+- **Backend** (`netlify/functions/contact.js`) por variables de entorno Netlify:
+  - `FROM_EMAIL` (opcional; fallback: `info@ibaifernandez.com`)
+  - `TO_EMAIL` (opcional; fallback: `info@ibaifernandez.com`)
   - `PORTFOLIO_CAPTCHA_PROVIDER` (`turnstile`/`recaptcha`/`hcaptcha`)
   - `PORTFOLIO_CAPTCHA_SECRET` (secret key — nunca commitear)
-- **Rate limit** por IP:
-  - `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` (default `600`)
-  - `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS` (default `12`)
+
+Contrato actual de producción: honeypot + timing check + captcha opcional. El mock local usado por `scripts/static-server.mjs` replica ese mismo contrato para E2E.
 
 Ver rotación de claves y procedimiento completo en `docs/ENGINEERING-RUNBOOK.md`.
 
@@ -180,13 +181,11 @@ Workflow programado: `.github/workflows/link-health.yml` (lunes 09:00 UTC + ejec
 
 ## Deploy
 
-Cada push a `main` desencadena:
+Cada push a `main` desencadena un único workflow:
 
-1. **GitHub Actions `quality.yml`** — build + quality guards.
-2. **GitHub Actions `e2e.yml`** — 29 tests Playwright.
-3. **Netlify CD** — deploy atómico a CDN (solo si los gates pasan).
+1. **GitHub Actions `ci.yml`** — install + build + quality guards + 29 tests Playwright + deploy a Netlify (solo si todo pasa).
 
-Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EMAIL`, `TO_EMAIL`, `ALLOWED_ORIGIN`.
+Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EMAIL`, `TO_EMAIL`. Opcionales para captcha: `PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, `PORTFOLIO_CAPTCHA_MIN_SCORE`.
 
 ---
 
@@ -211,7 +210,7 @@ Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EM
 
 ## Siguiente evolución recomendada
 
-1. Performance + A11y Sprint #2: jerarquía de headings, contraste WCAG AA, minificación CSS/JS.
+1. Re-capturar PageSpeed post-accesibilidad + minificación + media y comparar contra la baseline del 2026-03-03.
 2. Promover CSP de report-only a enforce (Phase 6).
 3. Reescribir narrativa de home por impacto (problema → solución → resultado).
 4. Google Search Console + sitemap + activación de Turnstile en producción.

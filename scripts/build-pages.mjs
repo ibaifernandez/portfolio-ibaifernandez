@@ -24,6 +24,25 @@ const basePageEntries = [
   { template: 'src/pages/blog.template.html', output: 'blog.html' },
   { template: 'src/pages/cv-print.template.html', output: 'cv-print.html' }
 ];
+const generatedAssetEntries = [
+  { source: 'assets/css/font.css', output: 'assets/css/font.min.css', type: 'css' },
+  { source: 'assets/css/animate.css', output: 'assets/css/animate.min.css', type: 'css' },
+  { source: 'assets/css/style.css', output: 'assets/css/style.min.css', type: 'css' },
+  { source: 'assets/css/print.css', output: 'assets/css/print.min.css', type: 'css' },
+  { source: 'assets/css/cv-print.css', output: 'assets/css/cv-print.min.css', type: 'css' },
+  { source: 'assets/css/scrollbar.css', output: 'assets/css/scrollbar.min.css', type: 'css' },
+  { source: 'assets/css/jquery-jvectormap-2.0.3.css', output: 'assets/css/jquery-jvectormap-2.0.3.min.css', type: 'css' },
+  { source: 'assets/css/lfi-newsprint.css', output: 'assets/css/lfi-newsprint.min.css', type: 'css' },
+  { source: 'assets/css/national-route.css', output: 'assets/css/national-route.min.css', type: 'css' },
+  { source: 'assets/js/custom.js', output: 'assets/js/custom.min.js', type: 'js' },
+  { source: 'assets/js/translate.js', output: 'assets/js/translate.min.js', type: 'js' },
+  { source: 'assets/js/cv-print.js', output: 'assets/js/cv-print.min.js', type: 'js' },
+  { source: 'assets/js/scrollbar.js', output: 'assets/js/scrollbar.min.js', type: 'js' },
+  { source: 'assets/js/cvtext1.js', output: 'assets/js/cvtext1.min.js', type: 'js' },
+  { source: 'assets/js/cvtext2.js', output: 'assets/js/cvtext2.min.js', type: 'js' },
+  { source: 'assets/js/circle-progress.js', output: 'assets/js/circle-progress.min.js', type: 'js' },
+  { source: 'assets/js/jquery-jvectormap-world-mill.js', output: 'assets/js/jquery-jvectormap-world-mill.min.js', type: 'js' }
+];
 
 const includePattern = /<!--\s*@include\s+([^\s]+)\s*-->/g;
 const renderPattern = /<!--\s*@render\s+([^\s]+)\s*-->/g;
@@ -48,6 +67,58 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function ensureTrailingNewline(value) {
+  return value.endsWith('\n') ? value : `${value}\n`;
+}
+
+function minifyCss(source) {
+  const normalized = source
+    .replace(/\r\n/g, '\n')
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([{}:;])\s*/g, '$1')
+    .replace(/\s*\(\s*/g, '(')
+    .replace(/\s*\)\s*/g, ')')
+    .replace(/\s*,\s*/g, ',')
+    .replace(/;}/g, '}')
+    .trim();
+
+  return ensureTrailingNewline(normalized);
+}
+
+function stripStandaloneBlockComments(source) {
+  return source.replace(/^[\t ]*\/\*[\s\S]*?\*\/[\t ]*(?:\r?\n)?/gm, '');
+}
+
+function minifyJs(source) {
+  const compact = stripStandaloneBlockComments(source)
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line) => line !== '' && !line.startsWith('//'))
+    .join('\n')
+    .trim();
+
+  return ensureTrailingNewline(compact);
+}
+
+function renderMinifiedAsset(entry) {
+  const sourcePath = path.resolve(rootDir, entry.source);
+  if (!fs.existsSync(sourcePath)) {
+    throw new Error(`Asset source not found: ${entry.source}`);
+  }
+
+  const raw = fs.readFileSync(sourcePath, 'utf8');
+  if (entry.type === 'css') {
+    return minifyCss(raw);
+  }
+  if (entry.type === 'js') {
+    return minifyJs(raw);
+  }
+
+  throw new Error(`Unsupported asset minification type: ${entry.type}`);
 }
 
 function getValueByPath(data, keyPath) {
@@ -602,6 +673,30 @@ for (const entry of pageEntries) {
 
     fs.writeFileSync(outputPath, rendered);
     console.log(`[OK] Built ${entry.output} from ${entry.template}`);
+  } catch (error) {
+    hasErrors = true;
+    console.error(`[FAIL] ${entry.output}: ${error.message}`);
+  }
+}
+
+for (const entry of generatedAssetEntries) {
+  try {
+    const rendered = renderMinifiedAsset(entry);
+    const outputPath = path.resolve(rootDir, entry.output);
+
+    if (checkOnly) {
+      const current = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : '';
+      if (current !== rendered) {
+        hasErrors = true;
+        console.error(`[FAIL] Outdated generated asset: ${entry.output} (run: npm run build:pages)`);
+      } else {
+        console.log(`[OK] ${entry.output} is in sync with source`);
+      }
+      continue;
+    }
+
+    fs.writeFileSync(outputPath, rendered);
+    console.log(`[OK] Built ${entry.output} from ${entry.source}`);
   } catch (error) {
     hasErrors = true;
     console.error(`[FAIL] ${entry.output}: ${error.message}`);

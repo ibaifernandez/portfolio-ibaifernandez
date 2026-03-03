@@ -24,13 +24,13 @@ Ultima actualizacion: `2026-03-02`.
 
 - **Plataforma:** Netlify CDN + GitHub Actions CI/CD (migrado de cPanel el 2026-03-02). DNS propagado. SSL activo.
 - **Deploy:** automatizado vía git push → CI verde → Netlify deploy atómico. Sin pasos manuales.
-- **Formulario de contacto:** Netlify Function (`netlify/functions/contact.mjs`, Node.js 20 + Resend API). Migrado de `ajax.php` (PHP/PHPMailer).
-- Pipeline CI `quality` y `e2e`: en verde (29/29 tests).
+- **Formulario de contacto:** Netlify Function (`netlify/functions/contact.js`, Node.js 20 + Resend API). Migrado de `ajax.php` (PHP/PHPMailer).
+- Pipeline CI `ci.yml`: en verde (29/29 tests).
 - Build/data sync/guardrails/performance/a11y/e2e: en verde.
 - Descubrimiento base: activo (`canonical`, Open Graph, Twitter, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`).
 - Schema estructurado JSON-LD: activo en home, blog y project pages.
 - Analitica: base cross-page + eventos clave de CTA/formulario activos.
-- Formulario: anti-spam avanzado activo (rate limit por IP + Cloudflare Turnstile en frontend/backend).
+- Formulario: honeypot + tiempo minimo activos; captcha integrado y pendiente de activacion en produccion. El mock local replica ese mismo contrato para E2E.
 - Secretos: gestionados en Netlify dashboard → Environment variables. Sin secrets en el repositorio.
 - CV imprimible: pagina dedicada `cv-print.html` enlazada desde CTAs de CV (sin PDF externo).
 - **PageSpeed baseline post-migración:** Desktop 84/94/96/92 · Mobile 61/94/96/92.
@@ -41,16 +41,16 @@ Ultima actualizacion: `2026-03-02`.
 
 | ID | Estado | Tema | Por que | Como se resuelve | Validacion |
 |---|---|---|---|---|---|
-| PR-01 | DONE | Gate tecnico base | Evitar regresiones antes de push | `build:pages`, `test:quality`, `test:e2e`, `test:smoke` (si hay PHP) | CI/local en verde |
+| PR-01 | DONE | Gate tecnico base | Evitar regresiones antes de push | `build:pages`, `test:quality`, `test:e2e`, `test:smoke` | CI/local en verde |
 | PR-02 | DONE | Optimizacion de carga | Reducir tiempos y peso | AVIF/WebP, lazy-load de recursos no criticos, budgets | `test:quality` + budgets OK |
-| PR-03 | DONE | Deploy automatizado | Pipeline CI/CD sin pasos manuales; solo artefactos publicos desplegados | GitHub Actions (`quality.yml` + `e2e.yml`) + Netlify CI/CD (migrado de `.cpanel.yml` + cPanel) | CI en verde; deploys automaticos en `push main` |
+| PR-03 | DONE | Deploy automatizado | Pipeline CI/CD sin pasos manuales; solo artefactos publicos desplegados | GitHub Actions (`ci.yml`) + `netlify-cli deploy --prod` (migrado de `.cpanel.yml` + cPanel) | CI en verde; deploys automaticos en `push main` |
 | PR-04 | DONE | Discovery base por pagina | Mejora indexacion y social previews | canonical + OG + Twitter en templates | inspeccion HTML + CI |
 | PR-05 | DONE | Discovery LLM | Facilitar descubrimiento por modelos | `llms.txt` + `llms-full.txt` | endpoints accesibles |
 | PR-06 | DONE | Schema estructurado | Mejor interpretacion semantica en buscadores | JSON-LD en home/blog/projects, generado de forma determinista en build | inspeccion HTML generado |
 | PR-07 | DONE | Analitica base cross-page | Tener medicion unificada | componente GA4 compartido en todas las paginas | presencia de tag en HTML |
 | PR-08 | DONE | Eventos clave de analitica | Medir conversion real, no solo pageviews | instrumentados eventos de CTA, submit (attempt/success/failure) y cambio de idioma | `build:pages` + `test:quality` + `test:e2e` OK |
-| PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo + cooldown por sesion | smoke/e2e de formulario |
-| PR-10 | DONE | Anti-spam avanzado | Capa adicional ante abuso real | rate limit por IP + Cloudflare Turnstile integrado (frontend runtime + backend verify) | `build:pages` + `test:quality` + `test:e2e` OK |
+| PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo, en produccion y en el mock E2E | smoke/e2e de formulario |
+| PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | Cloudflare Turnstile integrado en codigo; falta activacion en produccion | `build:pages` + `test:quality` + `test:e2e` OK + QA manual tras activar env vars |
 | PR-11 | IN_PROGRESS | CSP madura | endurecer seguridad de contenido | pasar de Report-Only a Enforce tras ventana de observacion | sin bloqueos legitimos en produccion |
 | PR-12 | DONE | Chequeo externo de enlaces | evitar links rotos de terceros | se eliminaron enlaces muertos y se reforzo el checker con fallback `HEAD -> GET` | `npm run test:links:external` OK |
 | PR-13 | IN_PROGRESS | QA Desktop v1.0 | cerrar calidad manual de release | checklist ya definido; falta pasada final en produccion | acta QA firmada |
@@ -179,10 +179,10 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
 
 0. **Migración de plataforma: cPanel → Netlify (2026-03-02):**
    - Creado site Netlify conectado al repositorio GitHub via GitHub App.
-   - Formulario de contacto migrado de `ajax.php` (PHP/PHPMailer) a `netlify/functions/contact.mjs` (Node.js 20 + Resend API). Toda la lógica anti-spam preservada y portada.
+   - Formulario de contacto migrado de `ajax.php` (PHP/PHPMailer) a `netlify/functions/contact.js` (Node.js 20 + Resend API). El contrato productivo actual conserva honeypot, tiempo minimo y captcha opcional.
    - Frontend actualizado para POST a `/.netlify/functions/contact` con `Content-Type: application/json`.
    - `netlify.toml` con build, funciones, headers de caché y seguridad, redirect `/ajax.php → /.netlify/functions/contact`.
-   - GitHub Actions CI: `quality.yml` (build + quality gates) y `e2e.yml` (Playwright 29 tests) en cada push a `main`.
+   - GitHub Actions CI: `ci.yml` (build + quality gates + Playwright 29 tests + deploy) en cada push a `main`.
    - DNS transferido a Netlify. SSL auto-aprovisionado. DNS propagado. HTTPS activo.
    - Secretos migrados a Netlify dashboard → Environment variables.
 
@@ -211,13 +211,13 @@ Si algo legitimo se rompe, volver temporalmente a Report-Only, corregir politica
    - `assets/js/custom.js`: eventos `cta_click`, `contact_submit_attempt`, `contact_submit_success`, `contact_submit_failure`, `contact_submit_blocked`.
    - `assets/js/translate.js`: evento `language_change`.
 7. Anti-spam avanzado (base tecnica):
-   - `ajax.php`: rate limit por IP con storage local (`artifacts/contact-rate-limit.json`), sin romper cooldown por sesion.
-   - `ajax.php`: verificacion captcha backend activable via env (`PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, opcional `PORTFOLIO_CAPTCHA_MIN_SCORE`).
-   - `ajax.php`: carga segura de credenciales desde `PORTFOLIO_SECRET_FILE` o `config/secrets.local.php` (gitignored).
+   - `netlify/functions/contact.js`: honeypot + tiempo minimo + verificacion captcha backend activable via env (`PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, opcional `PORTFOLIO_CAPTCHA_MIN_SCORE`).
+   - `netlify/functions/contact.js`: `FROM_EMAIL` y `TO_EMAIL` configurables por entorno, con fallback seguro.
+   - `scripts/static-server.mjs`: mock local del endpoint alineado con el contrato real de produccion para cobertura E2E.
    - `assets/js/custom.js`: soporte de widget captcha (Turnstile/reCAPTCHA/hCaptcha) activable por runtime config.
    - `src/components/shared/analytics-ga4.html`: runtime config central (`window.PORTFOLIO_RUNTIME.captcha`).
 8. Guardrails de calidad:
-   - `tests/quality-guards.sh` valida campos captcha, eventos GA4 del formulario y bloqueo de secretos hardcodeados en `.htaccess`.
+   - `tests/quality-guards.sh` valida campos captcha, eventos GA4 del formulario y bloqueo de secretos hardcodeados en `netlify.toml`.
 9. Normalizacion de enlaces sociales:
    - LinkedIn consolidado a `https://linkedin.com/in/ibaifernandez`.
    - WhatsApp normalizado a formato valido `https://wa.me/573224288532`.

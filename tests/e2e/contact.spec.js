@@ -48,17 +48,20 @@ test('contact form accepts a valid submission', async ({ page }) => {
   await expect(page.locator('.response')).toContainText(/Mail has been sent successfully\./i);
 });
 
-test('contact form enforces backend cooldown after a valid submission', async ({ page }) => {
-  await page.goto('/index.html');
+test('contact function rejects too-fast payloads', async ({ request }) => {
+  const response = await request.post('/.netlify/functions/contact', {
+    data: {
+      form_type: 'contact',
+      first_name: 'Test',
+      last_name: 'User',
+      email: 'test-fast@example.com',
+      subject: 'Portfolio Contact Test',
+      message: 'Automated test submission.',
+      website: '',
+      form_started_at: Date.now()
+    }
+  });
 
-  await fillContactForm(page, '2');
-  await page.waitForTimeout(1300);
-  await page.locator('button.submitForm').click();
-  await expect(page.locator('.response')).toContainText(/Mail has been sent successfully\./i);
-
-  await fillContactForm(page, '3');
-  await page.waitForTimeout(1300);
-  await page.locator('button.submitForm').click();
-
-  await expect(page.locator('.response')).toContainText(/Something went wrong/i);
+  expect(response.ok()).toBeTruthy();
+  await expect(response.text()).resolves.toBe('0');
 });

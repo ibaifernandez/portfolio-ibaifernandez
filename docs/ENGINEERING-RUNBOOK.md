@@ -16,12 +16,11 @@ Guia operativa para mantener calidad, rendimiento y estabilidad del portfolio en
 
 Referencia macOS/Homebrew: `brew install webp ffmpeg-full && brew unlink ffmpeg && brew link ffmpeg-full --force`
 
-> **Nota sobre PHP:** `ajax.php` ya no existe en el stack de producción. El formulario de contacto corre como Netlify Function (`netlify/functions/contact.mjs`, Node.js 20). PHP solo es relevante si se mantiene una copia del legacy en local para referencia histórica. Los smoke tests ya no dependen de PHP.
+> **Nota sobre PHP:** `ajax.php` ya fue retirado del repositorio. El formulario de contacto corre como Netlify Function (`netlify/functions/contact.js`, Node.js 20). Los smoke tests ya no dependen de PHP.
 
 Nota CI GitHub Actions:
 
-- `quality.yml` instala `ripgrep` via `apt-get` antes de ejecutar `npm run test:quality`.
-- `e2e.yml` instala Playwright Chromium y corre la suite completa (29 tests) en cada push a `main`.
+- `ci.yml` instala `ripgrep`, construye páginas, ejecuta `npm run test:quality`, instala Playwright Chromium, corre la suite completa (29 tests) y despliega a Netlify si todo queda en verde.
 
 ## Comandos principales
 
@@ -46,16 +45,15 @@ npm run print:pdf
 
 ## Deploy (Netlify — plataforma actual desde 2026-03-02)
 
-> **El stack de deploy es ahora completamente automatizado vía GitHub Actions + Netlify CI.**
+> **El stack de deploy es ahora completamente automatizado vía GitHub Actions + Netlify CLI.**
 > No se requiere ningún comando manual de deploy. El flujo es: editar → `git push origin main` → CI verde → Netlify deploy automático.
 
 ### Flujo de deploy en producción
 
 ```
 git push origin main
-  └─► GitHub Actions: quality.yml   (build + quality guards)
-  └─► GitHub Actions: e2e.yml       (Playwright 29 tests)
-      └─► Netlify CI:               (deploy atómico si CI verde)
+  └─► GitHub Actions: ci.yml        (build + quality guards + Playwright + deploy)
+      └─► Netlify CDN:              (deploy atómico si CI verde)
 ```
 
 - **Netlify deploy URL:** `https://portfolio.ibaifernandez.com`
@@ -72,7 +70,6 @@ Almacenadas en Netlify dashboard → Site settings → Environment variables. **
 | `RESEND_API_KEY` | API key de Resend para entrega de email del formulario de contacto |
 | `FROM_EMAIL` | Dirección de envío verificada en Resend (dominio configurado con SPF/DKIM) |
 | `TO_EMAIL` | Destinatario de los mensajes del formulario |
-| `ALLOWED_ORIGIN` | Origen permitido para CORS en la función de contacto (ej. `https://portfolio.ibaifernandez.com`) |
 | `PORTFOLIO_CAPTCHA_PROVIDER` | Proveedor de captcha activo (`turnstile`, `recaptcha`, `hcaptcha`) |
 | `PORTFOLIO_CAPTCHA_SECRET` | Secret key del proveedor de captcha para verificación backend |
 
@@ -87,21 +84,22 @@ netlify dev
 # Requiere variables de entorno en .env (gitignored)
 ```
 
-Alternativamente, los tests E2E usan `scripts/static-server.mjs` (mock de la función) y no requieren Netlify CLI.
+Alternativamente, los tests E2E usan `scripts/static-server.mjs` (mock alineado con el contrato real de la función) y no requieren Netlify CLI.
 
 ### Estructura de la función de contacto
 
 ```
 netlify/
   functions/
-    contact.mjs    # ES Module, Node.js 20, bundleado por esbuild
+    contact.js     # CommonJS, Node.js 20, bundleado por esbuild
 ```
 
 La función es la única pieza serverless del stack. Maneja:
-- Validación CORS (header `ALLOWED_ORIGIN`)
-- Anti-spam (honeypot, tiempo mínimo, cooldown, rate limit por IP)
+- Anti-spam base (honeypot, tiempo mínimo)
 - Verificación Cloudflare Turnstile (opcional, activable por env)
 - Envío de email vía Resend API REST
+
+El mock local de `scripts/static-server.mjs` replica el contrato real de producción: honeypot, tiempo mínimo, validación básica y captcha opcional.
 
 ---
 
@@ -151,7 +149,7 @@ Notas:
   - Sincronía de páginas generadas desde templates (`scripts/build-pages.mjs --check`).
   - Integridad de contenido data-driven (`content/projects.json`, `content/testimonials.json`, `content/training.json`, `content/ctas.json`, `content/services.json`, `content/experience.json`) con required fields.
   - Guardrails de seguridad y HTML.
-  - Verificacion de campos anti-spam avanzados (`captcha_provider`, `captcha_token`) y hooks backend (`enforce_ip_rate_limit`, `verify_captcha_token`).
+  - Verificacion de campos anti-spam avanzados (`captcha_provider`, `captcha_token`) y del hook backend `verifyCaptchaToken`.
   - Presencia de eventos clave de analitica en formulario (`contact_submit_attempt/success/failure`).
   - Budget de rendimiento por pagina (`tests/performance-budget.config.json`).
   - Cobertura AVIF/WebP para imagenes grandes (`tests/check-avif-coverage.mjs`, `tests/check-webp-coverage.mjs`).
@@ -167,7 +165,7 @@ Notas:
   - Validacion de fallback AVIF (`<picture>`) en imagen critica.
   - Activacion de cambio de idioma via teclado.
   - Cobertura de foco/teclado en navegación crítica + formulario + redes sociales en index+blog (`tests/e2e/keyboard.spec.js`).
-  - Formulario de contacto (feedback accesible en errores, envio valido y cooldown backend).
+  - Formulario de contacto (feedback accesible en errores, envio valido y timing guard del endpoint).
   - Accesibilidad automatica con axe sobre contacto, secciones primarias del home y shell técnica del blog.
   - Regresion visual de `contact_section`.
   - Estado actual de suite: `29/29` en verde.
@@ -203,16 +201,19 @@ npm run test:links:external
 
 ## Anti-spam avanzado (activacion controlada)
 
-> **Contexto post-migración:** toda la lógica anti-spam vive en `netlify/functions/contact.mjs` (Node.js). Ya no hay `ajax.php`. Los secretos se gestionan en Netlify dashboard → Environment variables.
+> **Contexto post-migración:** toda la lógica anti-spam de producción vive en `netlify/functions/contact.js` (Node.js). Ya no hay `ajax.php`. Los secretos se gestionan en Netlify dashboard → Environment variables.
 
-Base técnica implementada en `netlify/functions/contact.mjs`:
+Base técnica implementada en `netlify/functions/contact.js`:
 
 1. **Honeypot:** campo oculto en el formulario que debe estar vacío; si está relleno, la función rechaza el envío con 200 (para no dar feedback a bots).
 2. **Tiempo mínimo antes de submit:** el formulario registra el timestamp de apertura; la función valida que haya pasado el mínimo de tiempo antes de aceptar el envío.
-3. **Cooldown por sesión:** un campo de sesión en el cuerpo del POST impide re-envíos rápidos desde la misma sesión de navegador.
-4. **Rate limit por IP:** `artifacts/contact-rate-limit.json` persiste contadores por IP. Más de N envíos en una ventana temporal → rechazo con 429.
-5. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API de Cloudflare usando `PORTFOLIO_CAPTCHA_SECRET` (variable de entorno Netlify).
-6. **CORS:** `ALLOWED_ORIGIN` (variable de entorno Netlify) controla qué origen puede hacer POST a la función.
+3. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API del proveedor usando `PORTFOLIO_CAPTCHA_SECRET` cuando el captcha está activado.
+4. **Validación y saneamiento:** valida email, subject/message y escapa HTML antes de enviar vía Resend.
+
+Cobertura adicional en entorno local de pruebas:
+
+1. `scripts/static-server.mjs` sirve un mock local del endpoint para E2E.
+2. Ese mock replica el mismo contrato que la Netlify Function de producción para evitar falsos positivos de test.
 
 Activación recomendada en producción:
 

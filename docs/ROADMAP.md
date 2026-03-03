@@ -33,9 +33,9 @@ Transform the portfolio into a **state-of-the-art professional showcase** that d
 *Completed 2026-01*
 
 Key outcomes:
-- Security headers in `.htaccess` (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
+- Security headers in hosting config (`netlify.toml`) (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
 - Honeypot + timing-based anti-spam on contact form
-- Rate limiting in backend (`ajax.php` → Netlify Function)
+- Backend anti-spam hardening (`ajax.php` originally; current production contract is honeypot + timing + optional captcha)
 - Quality guards shell script (`tests/quality-guards.sh`)
 - CSP in report-only mode
 
@@ -71,7 +71,7 @@ Key outcomes:
 
 Key outcomes:
 - Playwright baseline (29 tests covering render, navigation, keyboard, a11y, visual, contact)
-- GitHub Actions: `quality.yml` + `e2e.yml` on every push to `main`
+- GitHub Actions: `ci.yml` on every push to `main`
 - Axe accessibility automation integrated into E2E suite
 - Visual regression snapshots for Contact, Experience, Projects, Logos
 - Link checker (internal + external)
@@ -138,34 +138,67 @@ Key outcomes:
 
 ## Upcoming Phases
 
-### Phase 5.2 — Performance + A11y Sprint #2
+### Phase 5.2 — Performance + A11y Sprint #2 ✅
+*Completed: 2026-03-03*
+
+Delivered:
+
+**#5 — Fix heading hierarchy** (a11y, SEO)
+- Replaced section eyebrow headings `h2.port_sub_heading` with `p.port_sub_heading`
+- Replaced section titles `h1.port_heading*` with `h2.port_heading*`
+- Applied in home templates and generated project pages; added a `tests/quality-guards.sh` regression check to fail the build if this hierarchy regresses
+
+**#6 — Color contrast WCAG AA**
+- Introduced text-safe accent tokens for yellow, pink, orange, and cyan while preserving vivid decorative accent colors
+- Rewired text/icon surfaces (sidebar icons + tooltips, about headline, timeline accents, reusable accent utility classes) to use the darker text-safe palette
+- Hardened project spotlight CTAs so white button text now meets AA contrast against its background
+- Re-activated `color-contrast` as a blocking Playwright axe rule in `tests/e2e/a11y.spec.js`
+- Updated Playwright visual baselines where the intentional palette change affected snapshots
+
+---
+
+### Phase 5.3 — Performance Sprint #3 ✅
+*Completed: 2026-03-03*
+
+Delivered:
+
+**#7 — CSS/JS minification**
+- `scripts/build-pages.mjs` now generates deterministic `.min` derivatives from the readable CSS/JS source files and verifies them in `--check`
+- Generated pages now serve `.min` CSS/JS bundles by default; `assets/js/custom.js` lazy-load paths were switched to `.min` variants where local generated equivalents exist
+- `tests/quality-guards.sh` now fails if generated HTML or lazy-load paths regress to legacy unminified references
+- Measured impact on the current Home budget: CSS `410.3 KB → 359.3 KB`, JS `144.4 KB → 127.2 KB`
+
+---
+
+### Phase 5.4 — Performance Sprint #4 ✅
+*Completed: 2026-03-03*
+
+Delivered:
+
+**#8 — WebP/AVIF for remaining images**
+- Media conversion and coverage scripts now target all generated root HTML pages by default (`index`, `blog`, `cv-print`, `project-*`)
+- Standard `npm run media:avif` / `npm run media:webp` workflow now regenerates assets and then rebuilds pages, avoiding post-build drift against template sources
+- Closed the remaining media gaps detected outside Home/Blog:
+  - restored missing AVIF `<source>` entries in the LFi project dossier testimonial blocks
+  - added the missing WebP derivative for `marcelo-ricigliano.jpg` (manual lower-quality encode because the default WebP settings did not beat the original size)
+- Quality guard result after closing the sprint: `AVIF checked=43`, `WebP checked=53`, `skipped_missing_asset=0`
+
+---
+
+### Phase 5.5 — Measurement + Launch Verification
 *Estimated: next session*
 
 Priority items:
 
-**#5 — Fix heading hierarchy** (a11y, SEO)
-- `h2.port_sub_heading` appears *before* `h1.port_heading` in section blocks → invalid
-- Fix: change `h2.port_sub_heading` to `p.port_sub_heading`; change section `h1.port_heading` to `h2.port_heading`
-- Impact: WCAG 2.2 SC 1.3.1, SEO semantic structure
-
-**#6 — Color contrast WCAG AA**
-- Yellow `#F5C500` (~1.5:1 vs white), pink `#FF6B9D` (~3.0:1), orange `#FF8C42` (~2.5:1), cyan `#00D4AA` (~2.0:1) all fail on white backgrounds
-- Fix: darken each accent color by ~30–40% for text/icon use; maintain vivid variant for decorative use only
-- Impact: WCAG 2.2 SC 1.4.3 (AA compliance), Lighthouse Accessibility score
-
-**#7 — CSS/JS minification**
-- Current: unminified CSS and JS in production
-- Fix: PurgeCSS for unused CSS; terser/esbuild for JS
-- Impact: significant reduction in CSS and JS transfer size → Performance score
-
-**#8 — WebP/AVIF for remaining images**
-- Any images added since the bulk conversion run that lack modern format variants
-- Fix: `npm run media:all` + wrap in `<picture>`
+**#9 — Re-capture PageSpeed + compare against baseline**
+- Re-run PageSpeed Insights after the a11y, minification, and media sprints
+- Record deltas against the 2026-03-03 baseline
+- Use that measurement to decide whether any further perf work is warranted before Phase 6
 
 ---
 
 ### Phase 6 — CSP Enforce Mode
-*Estimated: after Phase 5.2*
+*Estimated: after Phase 5.5*
 
 - Promote CSP from `Content-Security-Policy-Report-Only` to `Content-Security-Policy`
 - Requires: audit of all inline scripts + styles, verify no legitimate violations in report
@@ -217,9 +250,12 @@ Phase 0-4   ████████████████ DONE (Jan–Feb 202
 Phase 5     ████████████████ DONE (Mar 2026-03-02)
 Phase 5.1   ████████████████ DONE (Mar 2026-03-03)
 Doc Sprint  ████████████████ DONE (Mar 2026-03-03)
+Phase 5.2   ████████████████ DONE (Mar 2026-03-03)
 
-Phase 5.2   ░░░░░░░░         Next session (perf + a11y #2)
-Phase 6     ░░░░░░░░         After 5.2 (CSP enforce)
+Phase 5.3   ████████████████ DONE (Mar 2026-03-03)
+Phase 5.4   ████████████████ DONE (Mar 2026-03-03)
+Phase 5.5   ░░░░░░░░         Next session (measurement + verification)
+Phase 6     ░░░░░░░░         After 5.5 (CSP enforce)
 Phase 7     ░░░░░░░░░░░░     Content sprint (1–2 sessions)
 Phase 8     ░░░░░░░░         Launch (after content)
 Phase 9     ░░░░░░░░░░░░░░░░ Post-MVP (observability)

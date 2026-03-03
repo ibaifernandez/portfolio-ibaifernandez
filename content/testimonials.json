@@ -33,7 +33,7 @@
     "context": "Colleague at LFi"
   },
   {
-    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/marcelo-ricigliano.avif\">\n<img src=\"assets/images/marcelo-ricigliano.jpg\" alt=\"Marcelo Ricigliano - CEO 4Geeks Academy\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"800\" height=\"800\" data-avif-fallback=\"true\">\n</picture>",
+    "imageHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/marcelo-ricigliano.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/marcelo-ricigliano.webp\">\n<img src=\"assets/images/marcelo-ricigliano.jpg\" alt=\"Marcelo Ricigliano - CEO 4Geeks Academy\" class=\"img-fluid\" loading=\"lazy\" decoding=\"async\" width=\"800\" height=\"800\" data-avif-fallback=\"true\">\n</picture>",
     "recommendation": {
       "text": "Ibai has successfully completed the software development program, focusing on executing projects that enhance his abilities and skills as a developer. He is hardworking, committed, consistent, respectful, and focused. It's a privilege to have him on board.",
       "translate": "marcelo-recommendation",

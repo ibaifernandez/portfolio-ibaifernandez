@@ -82,6 +82,14 @@ if ! rg -n '<a class="skip-link" href="#blog_main">' blog.html >/dev/null; then
   fail "Missing keyboard skip-link for main content in blog.html"
 fi
 
+if rg -n -g 'index.html' -g 'project-*.html' '<h2[^>]*class="[^"]*port_sub_heading(_2)?([^"]*)"' . >/dev/null; then
+  fail "Found section eyebrow copy still rendered as h2 in generated pages"
+fi
+
+if rg -n -g 'index.html' -g 'project-*.html' '<h1[^>]*class="[^"]*port_heading(_[234])?([^"]*)"' . >/dev/null; then
+  fail "Found section titles still rendered as h1 in generated pages"
+fi
+
 if rg -n '<a href="#" class="siderbar_icon"' blog.html >/dev/null; then
   fail "Found placeholder social links in blog.html"
 fi
@@ -108,6 +116,16 @@ for script in \
     fail "Found static script include that should be lazy-loaded by custom.js: ${script}"
   fi
 done
+
+if rg -n 'assets/css/(font|animate|style|print|cv-print|lfi-newsprint|national-route)\.css|assets/js/(custom|translate|cv-print)\.js' \
+  index.html blog.html cv-print.html project-*.html >/dev/null; then
+  fail "Found legacy unminified asset references in generated HTML"
+fi
+
+if rg -n 'assets/css/(scrollbar|jquery-jvectormap-2\.0\.3)\.css|assets/js/(scrollbar|cvtext1|cvtext2|circle-progress|jquery-jvectormap-world-mill)\.js' \
+  assets/js/custom.js >/dev/null; then
+  fail "Found legacy unminified lazy-load asset references in assets/js/custom.js"
+fi
 
 if ! rg -n 'prefers-reduced-motion' assets/css/style.css >/dev/null; then
   fail "Missing prefers-reduced-motion accessibility baseline in assets/css/style.css"

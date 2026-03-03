@@ -8,9 +8,9 @@ This file tells AI coding agents (Claude Code, GitHub Copilot, Cursor, etc.) eve
 
 **What it is:** Static personal portfolio — Front-End / Marketing / Content.
 **Runtime:** Static HTML/CSS/JS served from Netlify CDN. No SSR, no framework.
-**Contact form backend:** Netlify Function (`netlify/functions/contact.mjs`, Node.js 20) → Resend API.
+**Contact form backend:** Netlify Function (`netlify/functions/contact.js`, Node.js 20) → Resend API.
 **Build tool:** Custom Node.js pipeline (`scripts/build-pages.mjs`) — NOT a bundler like Webpack/Vite.
-**Live URL:** https://ibaifernandez.com (Netlify, auto-deploy on push to `main`).
+**Live URL:** https://portfolio.ibaifernandez.com (Netlify, deploy from GitHub Actions on push to `main`).
 
 ---
 
@@ -24,7 +24,7 @@ This file tells AI coding agents (Claude Code, GitHub Copilot, Cursor, etc.) eve
 | Build | Node.js 20 + `scripts/build-pages.mjs` |
 | Contact form | Netlify Functions (Node.js 20) + Resend API |
 | Hosting | Netlify CDN |
-| CI/CD | GitHub Actions (`quality.yml`, `e2e.yml`) |
+| CI/CD | GitHub Actions (`ci.yml`) |
 | Testing | Playwright (Chromium) + shell quality guards |
 | Fonts | Roboto (Google Fonts, non-blocking preload) |
 
@@ -76,7 +76,7 @@ npm run media:all
 ├── cv-print.html          ← GENERATED (do not edit directly)
 ├── assets/
 │   ├── css/               ← stylesheets (font.css, style.css, etc.)
-│   ├── js/                ← scripts (custom.js, form.js, etc.)
+│   ├── js/                ← scripts (custom.js, translate.js, etc.)
 │   └── images/            ← images (AVIF+WebP+original per image)
 ├── content/               ← data-driven content (JSON)
 │   ├── projects.json
@@ -88,7 +88,7 @@ npm run media:all
 ├── docs/                  ← all documentation except README.md + AGENTS.md
 ├── netlify/
 │   └── functions/
-│       └── contact.mjs    ← contact form backend (Netlify Function)
+│       └── contact.js     ← contact form backend (Netlify Function)
 ├── scripts/               ← build + media pipeline scripts
 ├── src/
 │   ├── pages/             ← template source files (*.template.html)
@@ -124,7 +124,7 @@ These are blocked by quality guards. Use real anchors or omit the href.
 Enforced by quality guard. No exceptions.
 
 ### 6. No hardcoded captcha secrets
-`PORTFOLIO_CAPTCHA_SECRET` must never appear in `.htaccess` or any committed file. Use Netlify environment variables.
+`PORTFOLIO_CAPTCHA_SECRET` must never appear in `netlify.toml` or any committed file. Use Netlify environment variables.
 
 ### 7. CSS loading must stay non-blocking for above-the-fold
 `animate.css` and Google Fonts are loaded via `rel="preload" as="style" onload="..."` pattern. Do not revert to synchronous `<link>` or `@import`.
@@ -143,24 +143,21 @@ The wrapper `port_sec_warapper` must remain a `<main>` element (not a `<div>`) f
 | `src/pages/*.template.html` | ✅ Safe | Rebuild required |
 | `assets/css/style.css` | ⚠️ Caution | Run visual regression + a11y tests after changes |
 | `assets/js/custom.js` | ⚠️ Caution | jQuery-based; test all interactive sections |
-| `assets/js/form.js` | ⚠️ Caution | Contact form logic; run E2E contact tests |
-| `netlify/functions/contact.mjs` | ⚠️ Caution | Backend; test spam/rate-limit paths |
+| `assets/js/custom.js` | ⚠️ Caution | Contact form logic lives here; run E2E contact tests |
+| `netlify/functions/contact.js` | ⚠️ Caution | Backend; test honeypot/timing/captcha paths |
 | `index.html` | 🚫 Do not edit | Generated |
 | `blog.html` | 🚫 Do not edit | Generated |
 | `project-*.html` | 🚫 Do not edit | Generated |
-| `.htaccess` | ⚠️ Caution | Security headers; no captcha secrets here |
 | `netlify.toml` | ⚠️ Caution | Routing + function config; test locally first |
 
 ---
 
 ## CI Gates
 
-Every push to `main` runs two GitHub Actions workflows:
+Every push to `main` runs one GitHub Actions workflow:
 
-1. **`quality.yml`** — build + `npm run test:quality`
-   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets.
-2. **`e2e.yml`** — `npm run test:e2e` (Playwright, Chromium)
-   - 29 tests covering: render, navigation, keyboard, accessibility (axe), visual regression, contact form, language switching.
+1. **`ci.yml`** — install + build + `npm run test:quality` + `npm run test:e2e` + Netlify deploy
+   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, and any of the 29 Playwright failures.
 
 ---
 
@@ -171,7 +168,6 @@ Every push to `main` runs two GitHub Actions workflows:
 | `RESEND_API_KEY` | Resend transactional email API key |
 | `FROM_EMAIL` | Sender address for contact emails |
 | `TO_EMAIL` | Recipient address for contact emails |
-| `ALLOWED_ORIGIN` | CORS allowed origin (production domain) |
 | `PORTFOLIO_CAPTCHA_PROVIDER` | `turnstile` / `recaptcha` / `hcaptcha` |
 | `PORTFOLIO_CAPTCHA_SECRET` | Captcha verification secret (never commit) |
 

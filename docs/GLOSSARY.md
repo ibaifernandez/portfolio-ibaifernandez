@@ -79,14 +79,14 @@ A CSS descriptor that instructs the browser to show fallback text while the cust
 ## G
 
 **GitHub Actions**
-The CI/CD platform used to automate quality checks and E2E tests on every push to `main`. Two workflows: `quality.yml` (build + quality guards) and `e2e.yml` (Playwright tests).
+The CI/CD platform used to automate quality checks, E2E tests, and production deploys on every push to `main`. Current workflow: `ci.yml`.
 
 ---
 
 ## H
 
 **HSTS (HTTP Strict Transport Security)**
-A security header that tells browsers to only access the site over HTTPS and to reject HTTP connections. Set in `.htaccess` with `max-age=31536000; includeSubDomains`.
+A security header that tells browsers to only access a site over HTTPS and to reject HTTP connections. Useful when explicitly configured, but not currently defined in this repository's `netlify.toml`.
 
 **Honeypot (anti-spam)**
 A hidden form field (`website`) that real users won't fill but bots typically will. If the field is non-empty when the form is submitted, the contact function silently rejects the request.
@@ -136,7 +136,7 @@ Removing whitespace, comments, and other non-essential characters from CSS and J
 The CDN and serverless functions platform hosting this portfolio. Replaced cPanel hosting on 2026-03-02. Provides: atomic deploys, automatic HTTPS, serverless functions, environment variable management.
 
 **Netlify Function**
-A serverless Node.js function deployed alongside the static site on Netlify. The contact form backend lives in `netlify/functions/contact.mjs`. Invoked at `/.netlify/functions/contact`.
+A serverless Node.js function deployed alongside the static site on Netlify. The contact form backend lives in `netlify/functions/contact.js`. Invoked at `/.netlify/functions/contact`.
 
 **`netlify.toml`**
 The Netlify configuration file in the repository root. Defines routing rules, redirect rules, and the function directory.
@@ -178,7 +178,7 @@ Shell-based checks in `tests/quality-guards.sh` that enforce a set of project ru
 ## R
 
 **Rate limiting**
-A protection mechanism in `netlify/functions/contact.mjs` that limits how many contact form submissions a single IP can make within a time window. Configurable via `PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS` and `PORTFOLIO_RATE_LIMIT_MAX_REQUESTS`.
+An anti-abuse mechanism that limits how many requests a client can make in a time window. It is not currently implemented in the production Netlify Function for this repo.
 
 **`@render` directive**
 A custom build directive: `<!-- @render component-name -->`. The build script reads the corresponding JSON from `content/`, iterates over items, and renders the component template once per item with `{{field}}` placeholder substitution.
@@ -197,7 +197,7 @@ A visually hidden link that becomes visible on keyboard focus, allowing keyboard
 A Cache-Control directive that allows serving a stale cached response while fetching a fresh version in the background. Applied to JSON i18n files to improve perceived performance on repeat visits.
 
 **Static server**
-A minimal Node.js HTTP server (`scripts/static-server.mjs`) that serves the portfolio locally for E2E tests. Handles `/.netlify/functions/contact` routes and `application/json` request parsing. Started via `npm run start`.
+A minimal Node.js HTTP server (`scripts/static-server.mjs`) that serves the portfolio locally for E2E tests. Handles `/.netlify/functions/contact`, parses `application/json`, and mirrors the production contact contract closely enough for deterministic tests. Started via `npm run start`.
 
 ---
 

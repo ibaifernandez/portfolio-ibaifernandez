@@ -9,7 +9,7 @@ Portfolio Ibai Fernandez is a **static website** served from Netlify CDN, with a
 │                        BROWSER                                   │
 │  ┌──────────┐  ┌──────────────┐  ┌──────────────────────────┐  │
 │  │ HTML/CSS │  │   JS/jQuery  │  │   Contact Form (JS)      │  │
-│  │ (static) │  │   (plugins)  │  │   form.js → fetch()      │  │
+│  │ (static) │  │   (plugins)  │  │ custom.js → fetch()      │  │
 │  └──────────┘  └──────────────┘  └──────────┬───────────────┘  │
 └─────────────────────────────────────────────│───────────────────┘
                                               │ POST JSON
@@ -19,7 +19,7 @@ Portfolio Ibai Fernandez is a **static website** served from Netlify CDN, with a
               │  │  Static Assets (HTML, CSS, JS, Images)   │    │
               │  └──────────────────────────────────────────┘    │
               │  ┌──────────────────────────────────────────┐    │
-              │  │  Netlify Function: contact.mjs            │    │
+              │  │  Netlify Function: contact.js             │    │
               │  │  (Node.js 20, serverless)                 │    │
               │  └──────────────┬───────────────────────────┘    │
               └─────────────────│─────────────────────────────────┘
@@ -36,19 +36,19 @@ Portfolio Ibai Fernandez is a **static website** served from Netlify CDN, with a
 
 | Component | Technology | Details |
 |---|---|---|
-| CDN / Hosting | Netlify | Auto-deploy from `main` branch |
-| Serverless Functions | Netlify Functions (Node.js 20) | `netlify/functions/contact.mjs` |
+| CDN / Hosting | Netlify | Production deploys come from GitHub Actions via `netlify-cli`; Netlify auto-builds are stopped |
+| Serverless Functions | Netlify Functions (Node.js 20) | `netlify/functions/contact.js` |
 | Email transport | Resend API | REST, no SMTP dependency |
-| Domain | ibaifernandez.com | DNS managed via Netlify |
+| Domain | portfolio.ibaifernandez.com | DNS managed via Netlify |
 | SSL | Let's Encrypt (auto) | Managed by Netlify |
-| CI/CD | GitHub Actions | `quality.yml` + `e2e.yml` |
+| CI/CD | GitHub Actions | `ci.yml` |
 | Source control | GitHub | `main` branch → production |
 
 ---
 
 ## Build Pipeline
 
-The build system transforms **template sources + data** into **committed static HTML**.
+The build system transforms **template sources + data + readable CSS/JS assets** into **committed static HTML + generated `.min` runtime assets**.
 
 ```
 content/*.json          (data)
@@ -65,11 +65,14 @@ src/pages/
 scripts/build-pages.mjs   (Node.js build script)
   │
   ▼
-*.html (root)             (committed static output)
+*.html (root) + *.min assets
+                         (committed static output)
   index.html
   blog.html
   cv-print.html
   project-*.html
+  assets/css/*.min.css
+  assets/js/*.min.js
 ```
 
 ### Build Directives
@@ -85,7 +88,10 @@ scripts/build-pages.mjs   (Node.js build script)
 npm run build:pages
 ```
 
-This must be run and the output committed any time templates, components, or content JSON change.
+This must be run and the output committed any time templates, components, content JSON, or readable served CSS/JS source files change.
+
+Media note:
+- `npm run media:avif` and `npm run media:webp` now scan all generated root HTML pages by default and finish by calling `npm run build:pages`, so the standard image-optimization workflow stays aligned with the template build.
 
 ---
 
@@ -105,15 +111,19 @@ This must be run and the output committed any time templates, components, or con
 │
 ├── assets/
 │   ├── css/
-│   │   ├── style.css            ← main stylesheet (design tokens in :root)
-│   │   ├── font.css             ← local font-face declarations (no @import)
+│   │   ├── style.css            ← readable source stylesheet (design tokens in :root)
+│   │   ├── style.min.css        ← GENERATED, served in production HTML
+│   │   ├── font.css             ← readable font-face source (no @import)
+│   │   ├── font.min.css         ← GENERATED, served in production HTML
 │   │   ├── bootstrap.min.css
 │   │   ├── all.min.css          ← Font Awesome
-│   │   ├── animate.css          ← loaded non-blocking
-│   │   └── print.css            ← print media only
+│   │   ├── animate.css          ← readable source, loaded non-blocking
+│   │   ├── animate.min.css      ← GENERATED, loaded non-blocking in production HTML
+│   │   └── print.min.css        ← GENERATED print media stylesheet
 │   ├── js/
-│   │   ├── custom.js            ← main page behaviour (jQuery-based)
-│   │   ├── form.js              ← contact form (fetch + validation)
+│   │   ├── custom.js            ← readable source (page behavior + contact form)
+│   │   ├── custom.min.js        ← GENERATED, served in production HTML
+│   │   ├── translate.min.js     ← GENERATED runtime i18n script
 │   │   └── *.js                 ← plugin files
 │   └── images/
 │       ├── *.jpg / *.png        ← source images
@@ -132,7 +142,7 @@ This must be run and the output committed any time templates, components, or con
 │
 ├── netlify/
 │   └── functions/
-│       └── contact.mjs          ← serverless contact form handler
+│       └── contact.js           ← serverless contact form handler
 │
 ├── scripts/
 │   ├── build-pages.mjs          ← main build script
@@ -174,7 +184,7 @@ This must be run and the output committed any time templates, components, or con
 ## Contact Form Data Flow
 
 ```
-Browser (form.js)
+Browser (custom.js)
   │
   │  1. Collect: name, email, subject, message,
   │              website (honeypot), form_started_at,
@@ -184,27 +194,25 @@ Browser (form.js)
   │     Content-Type: application/json
   │
   ▼
-netlify/functions/contact.mjs
+netlify/functions/contact.js
   │
-  │  3. Check CORS (ALLOWED_ORIGIN env var)
-  │  4. Parse JSON body
-  │  5. Honeypot check (website field must be empty)
-  │  6. Timing check (form_started_at < 3 seconds → bot)
-  │  7. Rate limit by IP (PORTFOLIO_RATE_LIMIT_*)
-  │  8. Captcha verification (if PORTFOLIO_CAPTCHA_PROVIDER set)
+  │  3. Parse JSON body
+  │  4. Honeypot check (website field must be empty)
+  │  5. Timing check (form_started_at < 1.2 s → bot)
+  │  6. Captcha verification (if provider + secret are configured)
   │     └── Cloudflare Turnstile / reCAPTCHA / hCaptcha
-  │  9. Input validation (name, email format, message length)
-  │  10. Send via Resend API
+  │  7. Input validation (name, email format, message required)
+  │  8. Send auto-reply + owner notification via Resend API
   │
   ▼
 Resend API
   │
-  │  11. Deliver email to TO_EMAIL
+  │  9. Deliver email(s)
   │
   ▼
-Browser (form.js)
+Browser (custom.js)
   │
-  │  12. Show accessible success/error feedback
+  │  10. Show accessible success/error feedback
   │      (aria-live region, aria-invalid on fields)
 ```
 
@@ -215,33 +223,18 @@ Browser (form.js)
 ```
 Developer push → main branch
   │
-  ├── GitHub Actions: quality.yml
-  │   ├── npm install
+  ├── GitHub Actions: ci.yml
+  │   ├── npm ci
   │   ├── npm run build:pages
-  │   ├── npm run test:quality    ← bash quality-guards.sh
-  │   │   ├── Security checks
-  │   │   ├── Accessibility baseline
-  │   │   ├── Performance budget
-  │   │   ├── AVIF/WebP coverage
-  │   │   └── Broken link detection
-  │   └── PASS / FAIL
-  │
-  ├── GitHub Actions: e2e.yml
-  │   ├── npm install
-  │   ├── npx playwright install chromium
+  │   ├── npm run test:quality    ← shell quality gates
+  │   ├── npx playwright install --with-deps chromium
   │   ├── npm run test:e2e        ← 29 Playwright tests
-  │   │   ├── Home render + navigation
-  │   │   ├── Contact form submission
-  │   │   ├── Keyboard accessibility
-  │   │   ├── Axe a11y (zero serious/critical)
-  │   │   ├── Visual regression snapshots
-  │   │   └── Blog shell
-  │   └── PASS / FAIL
+  │   └── npx netlify-cli deploy --prod --dir .
   │
-  └── Netlify CD (triggered by GitHub push)
-      ├── Build (static, no build command for Netlify)
-      ├── Deploy to CDN (atomic)
-      └── Live at ibaifernandez.com
+  └── Netlify CDN
+      ├── Receives prebuilt artifacts only
+      ├── Deploys atomically
+      └── Live at portfolio.ibaifernandez.com
 ```
 
 ---
@@ -312,12 +305,12 @@ Pages support EN/ES language toggle via:
 | Requirement | Implementation |
 |---|---|
 | ARIA landmark | `<main class="port_sec_warapper">` |
-| Skip navigation | `<a class="skip-link" href="#main_content">` in every page |
+| Skip navigation | Skip link targets the first meaningful main section (`#about_sec` in Home, `#blog_main` in Blog) |
 | Keyboard focus | `:focus-visible` styles in `style.css` |
 | Motion | `@media (prefers-reduced-motion: reduce)` in `style.css` |
 | Form feedback | `aria-live="polite"` status region + `aria-invalid` on fields |
 | Icon controls | `aria-label` on all icon-only `<a>` and `<button>` |
-| Contrast | WCAG AA (4.5:1 normal text) — partial pending (see BACKLOG BL-UX-009) |
+| Contrast | WCAG AA enforced in Playwright axe coverage (`color-contrast` is blocking) |
 
 ---
 
@@ -325,11 +318,11 @@ Pages support EN/ES language toggle via:
 
 | Layer | Mechanism |
 |---|---|
-| HTTP headers | `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy` in `.htaccess` |
+| HTTP headers | `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, `Permissions-Policy` in `netlify.toml` |
 | CSP | `Content-Security-Policy-Report-Only` (report-only; enforce pending) |
-| HTTPS | Enforced by Netlify + HSTS header |
+| HTTPS | Enforced by Netlify CDN |
 | Contact form — bot | Honeypot field (`website`), timing check (`form_started_at`) |
-| Contact form — rate limit | IP-based rate limit in Netlify Function |
+| Contact form — test parity | `scripts/static-server.mjs` mirrors the production contact contract for E2E |
 | Contact form — captcha | Cloudflare Turnstile integration (ready, pending activation) |
 | Secrets | Netlify environment variables only — never committed |
 | JS safety | No `eval()` in form handling |

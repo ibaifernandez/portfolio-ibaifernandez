@@ -24,7 +24,14 @@ if (!Number.isFinite(minBytes) || minBytes < 0) {
   process.exit(1);
 }
 
-const targets = htmlFiles.length > 0 ? htmlFiles : ['index.html', 'blog.html'];
+function getDefaultHtmlFiles() {
+  return fs.readdirSync(rootDir)
+    .filter((file) => file.endsWith('.html'))
+    .filter((file) => fs.statSync(path.resolve(rootDir, file)).isFile())
+    .sort();
+}
+
+const targets = htmlFiles.length > 0 ? htmlFiles : getDefaultHtmlFiles();
 
 function normalizeUrl(raw) {
   if (!raw) return '';

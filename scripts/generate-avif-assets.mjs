@@ -3,7 +3,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 
-const DEFAULT_HTML_FILES = ['index.html', 'blog.html'];
 const options = {
   htmlFiles: [],
   minBytes: 50000,
@@ -56,8 +55,15 @@ if (!Number.isFinite(options.minBytes) || !Number.isFinite(options.crf) || !Numb
   usageAndExit(1);
 }
 
+function getDefaultHtmlFiles() {
+  return fs.readdirSync(process.cwd())
+    .filter((file) => file.endsWith('.html'))
+    .filter((file) => fs.statSync(path.resolve(process.cwd(), file)).isFile())
+    .sort();
+}
+
 if (options.htmlFiles.length === 0) {
-  options.htmlFiles = DEFAULT_HTML_FILES;
+  options.htmlFiles = getDefaultHtmlFiles();
 }
 
 function normalizeUrl(raw) {

@@ -4,10 +4,12 @@
  * netlify/functions/contact.js
  * Contact form handler — puerto de ajax.php para Netlify Functions.
  *
- * Variables de entorno requeridas (configurar en Netlify UI →
+ * Variables de entorno configurables (configurar en Netlify UI →
  * Site configuration → Environment variables):
  *
- *   RESEND_API_KEY               Resend API key
+ *   RESEND_API_KEY               Resend API key (requerida)
+ *   FROM_EMAIL                   Remitente verificado en Resend (opcional)
+ *   TO_EMAIL                     Destinatario de mensajes del formulario (opcional)
  *   PORTFOLIO_CAPTCHA_PROVIDER   "turnstile" | "recaptcha" | "hcaptcha"
  *   PORTFOLIO_CAPTCHA_SECRET     Captcha secret key
  *   PORTFOLIO_CAPTCHA_MIN_SCORE  (opcional) float 0-1, solo para reCAPTCHA v3
@@ -29,13 +31,12 @@ const { Resend } = require('resend');
 const MIN_SUBMIT_DELAY_MS  = 1_200;
 const MAX_FORM_LIFETIME_MS = 86_400_000; // 24 h
 
-const FROM_EMAIL = 'info@ibaifernandez.com';
-const TO_EMAIL   = 'info@ibaifernandez.com';
-
 // ── Entorno ───────────────────────────────────────────────────────────────────
-const RESEND_API_KEY    = process.env.RESEND_API_KEY    || '';
+const RESEND_API_KEY    = process.env.RESEND_API_KEY || '';
+const FROM_EMAIL        = (process.env.FROM_EMAIL || 'info@ibaifernandez.com').trim();
+const TO_EMAIL          = (process.env.TO_EMAIL || 'info@ibaifernandez.com').trim();
 const CAPTCHA_PROVIDER  = (process.env.PORTFOLIO_CAPTCHA_PROVIDER || '').toLowerCase().trim();
-const CAPTCHA_SECRET    = (process.env.PORTFOLIO_CAPTCHA_SECRET   || '').trim();
+const CAPTCHA_SECRET    = (process.env.PORTFOLIO_CAPTCHA_SECRET || '').trim();
 const CAPTCHA_MIN_SCORE = parseFloat(process.env.PORTFOLIO_CAPTCHA_MIN_SCORE || '0');
 
 // ── Helpers ───────────────────────────────────────────────────────────────────

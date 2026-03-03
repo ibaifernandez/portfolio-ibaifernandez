@@ -48,12 +48,12 @@ Editing `content/*.json` alone does not update the HTML. You must rebuild and co
 
 | Violation | Rule |
 |---|---|
-| `eval(` in `assets/js/form.js` | No eval in contact form |
+| `eval(` in `assets/js/custom.js` | No eval in contact form |
 | `href=""` or `href="javascript:;"` | No empty or JS-void links |
 | `target="_blank"` without `rel="noopener noreferrer"` | XSS/privacy protection |
 | Duplicate `https://https://` in URLs | Broken URL detection |
-| Missing `X-Frame-Options` / `X-Content-Type-Options` in `.htaccess` | Security headers required |
-| `PORTFOLIO_CAPTCHA_SECRET=` literal in `.htaccess` | No hardcoded secrets |
+| Missing `X-Frame-Options` / `X-Content-Type-Options` in `netlify.toml` | Security headers required |
+| `PORTFOLIO_CAPTCHA_SECRET=` or `RESEND_API_KEY=` literal in `netlify.toml` | No hardcoded secrets |
 | Missing `skip-link` in HTML | Keyboard accessibility |
 | Missing `aria-live` on form status container | Accessible form feedback |
 | Static `<script>` tags for bootstrap/cvtext in index/blog | Lazy-load enforcement |
@@ -89,7 +89,7 @@ Any CSS animation or transition must have a corresponding `@media (prefers-reduc
 ## 4. JavaScript Rules
 
 ### 4.1 — No `eval()` anywhere in form handling
-Contact form validation and submission (`assets/js/form.js`) must never use `eval()`.
+Contact form validation and submission (`assets/js/custom.js`) must never use `eval()`.
 
 ### 4.2 — Lazy-load all non-critical plugins
 jQuery plugins (`jvectormap`, `isotope`, `magnific`, `swiper`, `circle-progress`, `zoom`, `scrollbar`) must be dynamically loaded on demand, not in a static `<script>` tag. Pattern: `IntersectionObserver` or user-interaction trigger.
@@ -98,7 +98,7 @@ jQuery plugins (`jvectormap`, `isotope`, `magnific`, `swiper`, `circle-progress`
 `bootstrap.min.js` was removed from this project. Do not re-add it as a static script.
 
 ### 4.4 — Contact form must use `application/json` POST
-`assets/js/form.js` sends to `/.netlify/functions/contact` with `Content-Type: application/json`. Do not revert to `multipart/form-data` or `application/x-www-form-urlencoded`.
+`assets/js/custom.js` sends to `/.netlify/functions/contact` with `Content-Type: application/json`. Do not revert to `multipart/form-data` or `application/x-www-form-urlencoded`.
 
 ---
 
@@ -145,11 +145,11 @@ Run `npm run media:all` after adding images. Then wrap in `<picture>` with `<sou
 ### 7.1 — No secrets in committed files
 Captcha secrets, API keys, and passwords must live in Netlify environment variables (production) or `config/secrets.local.php` / equivalent gitignored file (local dev). See `docs/SECURITY.md`.
 
-### 7.2 — Contact function must validate origin
-`netlify/functions/contact.mjs` checks `ALLOWED_ORIGIN`. Do not bypass this check.
+### 7.2 — Contact function contract must stay truthful
+`netlify/functions/contact.js` currently enforces honeypot, timing checks, input validation, and optional captcha verification. Do not document CORS checks or persistent IP throttling as active unless you actually implement and test them.
 
-### 7.3 — Rate limiting must remain active
-The contact function enforces rate limiting. Do not remove the IP-based throttle.
+### 7.3 — Serverless throttling needs real state
+If you add rate limiting in the production Netlify Function, use an external state store or an edge-layer control. Do not add in-memory throttling and present it as production protection.
 
 ### 7.4 — Anti-spam fields must remain
 Form fields `website` (honeypot), `form_started_at`, `captcha_provider`, and `captcha_token` must remain in the form and be validated backend-side.

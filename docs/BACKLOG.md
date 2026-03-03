@@ -43,8 +43,8 @@ Status: **Completed**
 - [x] Eliminate `eval` in frontend validations.
 - [x] Harden `target="_blank"` with `rel="noopener noreferrer"`.
 - [x] Quality guardrails (`tests/quality-guards.sh`).
-- [x] Add HTTP security headers in `.htaccess`.
-- [x] Prepare basic rate-limit / contact anti-spam (honeypot + cooldown).
+- [x] Add HTTP security headers in hosting config (`netlify.toml` in the current stack).
+- [x] Prepare basic contact anti-spam (honeypot + timing gate).
 - [x] Define progressive CSP policy (report-only → enforce).
 
 Acceptance criteria:
@@ -137,7 +137,7 @@ Status: **Completed (2026-03-02)**
 
 - [x] Migrate from cPanel + PHP to Netlify CDN.
 - [x] Migrate contact form from `ajax.php` (PHP + SMTP) to Netlify Function (Node.js 20) + Resend API.
-- [x] Set up GitHub Actions CI/CD (`quality.yml` + `e2e.yml`) replacing manual FTP deploy.
+- [x] Set up GitHub Actions CI/CD (`ci.yml`) replacing manual FTP deploy.
 - [x] Update E2E static server for Netlify function routes.
 - [x] Capture performance baselines post-migration: Desktop 84/94/96/92, Mobile 61/94/96/92.
 - [x] Update all documentation to remove PHP/cPanel references.
@@ -179,31 +179,49 @@ Acceptance criteria:
 
 ---
 
-## Upcoming Sprint — Performance + A11y #2
+## Sprint Closed — Performance + A11y #2 (2026-03-03)
+
+Completed in this sprint:
+
+### #5 — Fix heading hierarchy
+- `h2.port_sub_heading` → `p.port_sub_heading`
+- `h1.port_heading*` → `h2.port_heading*`
+- Applied to home templates and generated project pages
+- Added a blocking quality guard so CI fails if the invalid heading order returns
+
+### #6 — Color contrast WCAG AA
+- Split the accent palette into vivid decorative colors and darker text-safe colors
+- Rewired text/icon surfaces in Home (sidebar icons/tooltips, about headline, timeline accents, reusable accent utility classes) to use the text-safe palette
+- Updated visual baselines for the intentional contrast change
+
+## Sprint Closed — Performance #3 (2026-03-03)
+
+Completed in this sprint:
+
+### #7 — CSS/JS minification
+- `scripts/build-pages.mjs` now generates committed `.min` CSS/JS derivatives from the readable source assets
+- Generated HTML now serves `.min` assets by default and CI verifies both the generated files and the `.min` references
+- `assets/js/custom.js` now lazy-loads local `.min` plugin assets where generated equivalents exist
+- Home budget delta after the change: CSS `410.3 KB → 359.3 KB`, JS `144.4 KB → 127.2 KB`
+
+## Sprint Closed — Performance #4 (2026-03-03)
+
+Completed in this sprint:
+
+### #8 — WebP/AVIF for remaining images
+- Media conversion/check scripts now cover every generated root HTML page by default, not just Home/Blog
+- `media:avif` / `media:webp` now rebuild the site after asset generation, so the normal workflow does not create HTML drift against templates
+- Closed the remaining out-of-band gaps found in generated project pages and testimonial media
+- Quality now reports `skipped_missing_asset=0` in WebP coverage
+
+## Upcoming Sprint — Measurement + Launch Verification
 
 Priority items for next session:
 
-### #5 — Fix heading hierarchy
-- **Problem:** `h2.port_sub_heading` appears before `h1.port_heading` in each section block. This is an invalid heading hierarchy (h2 → h1 inversion).
-- **Fix:** Change `h2.port_sub_heading` → `p.port_sub_heading`; change section `h1.port_heading` → `h2.port_heading`
-- **Impact:** WCAG 2.2 SC 1.3.1, SEO semantic structure
-
-### #6 — Color contrast WCAG AA
-- **Problem:** 4 accent colors fail WCAG AA on white backgrounds: yellow `#F5C500` (~1.5:1), pink `#FF6B9D` (~3.0:1), orange `#FF8C42` (~2.5:1), cyan `#00D4AA` (~2.0:1)
-- **Fix:** Darken each accent color by ~30–40% for text/icon use; maintain vivid variant for decorative-only use
-- **Impact:** WCAG 2.2 SC 1.4.3 compliance, Lighthouse Accessibility score
-
-### #7 — CSS/JS minification
-- **Problem:** Unminified CSS and JS in production
-- **Fix:** PurgeCSS for unused CSS; terser/esbuild for JS
-- **Impact:** Significant reduction in CSS and JS transfer size → Performance score
-
-### #8 — WebP/AVIF for remaining images
-- **Problem:** Images added after the bulk conversion may lack modern format variants
-- **Fix:** `npm run media:all` + wrap in `<picture>`
-
-### #9 — Heading hierarchy fix (blog.html)
-- Ensure the same heading hierarchy fix applies to `blog.html` and all project pages
+### #9 — Re-capture PageSpeed against the current baseline
+- **Problem:** The baseline still reflects the state before headings, contrast, minification, and residual media fixes were fully closed
+- **Fix:** Run new PageSpeed captures and compare deltas against the documented baseline
+- **Impact:** Evidence-based decision on whether any further performance work is needed before launch-hardening
 
 ---
 
@@ -224,9 +242,9 @@ Priority items for next session:
 
 ### Security / Infra
 
-- [x] BL-SEC-001: Add security headers in `.htaccess`.
+- [x] BL-SEC-001: Add security headers in hosting config (`netlify.toml` in the current stack).
 - [x] BL-SEC-002: Anti-bot honeypot in contact form.
-- [x] BL-SEC-003: Soft rate-limit by IP/session in contact function.
+- [x] BL-SEC-003: Stateless-safe contact anti-spam baseline (honeypot + timing gate in the current Netlify flow).
 - [x] BL-SEC-004: CSP report-only + violation collection.
 - [ ] BL-SEC-005: Promote CSP to enforce mode (after validation period).
 - [ ] BL-SEC-006: Add SRI (Subresource Integrity) hashes for CDN-loaded scripts.
@@ -244,8 +262,9 @@ Priority items for next session:
 - [x] BL-PERF-009: Remove legacy `banner-bg.gif` and block re-introduction in quality gates.
 - [x] BL-PERF-010: Eliminate Google Fonts `@import` from `font.css`; non-blocking preload.
 - [x] BL-PERF-011: Convert `animate.css` to non-blocking preload.
-- [ ] BL-PERF-012: CSS minification with PurgeCSS.
-- [ ] BL-PERF-013: JS minification with terser/esbuild.
+- [x] BL-PERF-012: Build-generated CSS minification for served `.min` assets (dependency-free path; readable sources preserved).
+- [x] BL-PERF-013: Build-generated JS minification/compaction for served `.min` assets (dependency-free path; readable sources preserved).
+- [x] BL-PERF-014: Extend AVIF/WebP generation + coverage defaults from Home/Blog to all generated root HTML pages.
 
 ### Architecture
 
@@ -274,7 +293,7 @@ Priority items for next session:
 - [x] BL-QA-007: Blog shell E2E coverage (critical render, social links accessible/hardened, no horizontal overflow on mobile).
 - [x] BL-QA-009: Robust Playwright operability protocol (orphan process diagnosis/cleanup + `test:e2e:clean` wrapper).
 - [x] BL-QA-010: Expand Home visual regression with dedicated snapshots for `Experience`, `Projects`, and `logos`, including Swiper carousel stabilization.
-- [ ] BL-QA-008: Re-activate `color-contrast` as blocking rule in `tests/e2e/a11y.spec.js` after closing contrast debt.
+- [x] BL-QA-008: Re-activate `color-contrast` as blocking rule in `tests/e2e/a11y.spec.js` after closing the last failing project CTA contrast debt.
 
 ### A11y / UX
 
@@ -287,8 +306,8 @@ Priority items for next session:
 - [x] BL-UX-007: Fix `serious/critical` contrasts detected by axe in Home/Contact.
 - [x] BL-UX-008: Extend `tests/e2e/a11y.spec.js` to cover primary Home sections.
 - [x] BL-UX-010: `<main>` ARIA landmark — promote `div.port_sec_warapper` to `<main>`.
-- [ ] BL-UX-009: Final WCAG AA contrast round in Home (timeline, services cards, secondary typographies) to eliminate `color-contrast` violations.
-- [ ] BL-UX-011: Fix heading hierarchy (h2→h1 inversion in section blocks).
+- [x] BL-UX-009: Final WCAG AA contrast round in Home (text/icon accent palette split across timeline, services cards, and secondary typographies). Blocking `color-contrast` automation is active again in Playwright.
+- [x] BL-UX-011: Fix heading hierarchy (h2→h1 inversion in section blocks) across Home + generated project pages, with CI guard coverage.
 
 ### Content / Brand
 

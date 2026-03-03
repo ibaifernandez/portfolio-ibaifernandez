@@ -2,7 +2,6 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
-import crypto from 'node:crypto';
 import { URL } from 'node:url';
 
 const args = process.argv.slice(2);
@@ -12,15 +11,9 @@ const host = '127.0.0.1';
 const root = process.cwd();
 const minSubmitDelayMs = 1200;
 const maxFormLifetimeMs = 86400000;
-const cooldownMs = 20000;
-const ipRateLimitWindowMs = Number(process.env.PORTFOLIO_RATE_LIMIT_WINDOW_SECONDS || 600) * 1000;
-const ipRateLimitMaxRequests = Number(process.env.PORTFOLIO_RATE_LIMIT_MAX_REQUESTS || 12);
 const captchaProvider = (process.env.PORTFOLIO_CAPTCHA_PROVIDER || '').toLowerCase().trim();
 const captchaSecret = (process.env.PORTFOLIO_CAPTCHA_SECRET || '').trim();
 const enforceCaptcha = (captchaProvider === 'recaptcha' || captchaProvider === 'hcaptcha' || captchaProvider === 'turnstile') && captchaSecret !== '';
-const sessionCookieName = 'portfolio_sid';
-const lastSubmissionBySession = new Map();
-const submissionCountByIp = new Map();
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -47,21 +40,6 @@ function send(res, statusCode, content, contentType = 'text/plain; charset=utf-8
     ...extraHeaders
   });
   res.end(content);
-}
-
-function parseCookies(rawCookieHeader) {
-  if (!rawCookieHeader) {
-    return {};
-  }
-
-  return rawCookieHeader.split(';').reduce((acc, entry) => {
-    const [rawKey, ...rest] = entry.trim().split('=');
-    if (!rawKey) {
-      return acc;
-    }
-    acc[rawKey] = decodeURIComponent(rest.join('='));
-    return acc;
-  }, {});
 }
 
 function parseMultipartFormData(body, contentType) {
@@ -133,38 +111,9 @@ function parseFormFields(body, contentType) {
   return fields;
 }
 
-function resolveSession(req) {
-  const cookies = parseCookies(req.headers.cookie || '');
-  const existing = cookies[sessionCookieName];
-
-  if (existing) {
-    return {
-      id: existing,
-      headers: {}
-    };
-  }
-
-  const id = crypto.randomUUID();
-  return {
-    id,
-    headers: {
-      'Set-Cookie': `${sessionCookieName}=${id}; Path=/; HttpOnly; SameSite=Lax`
-    }
-  };
-}
-
-function getClientIp(req) {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (typeof forwarded === 'string' && forwarded.trim() !== '') {
-    return forwarded.split(',')[0].trim();
-  }
-  return req.socket.remoteAddress || 'unknown';
-}
-
 function handleAjax(req, res) {
-  const session = resolveSession(req);
   if (req.method === 'GET') {
-    return send(res, 200, '0', 'text/plain; charset=utf-8', session.headers);
+    return send(res, 200, '0');
   }
 
   if (req.method === 'POST') {
@@ -180,20 +129,11 @@ function handleAjax(req, res) {
       const formType = fields.get('form_type') || '';
       const honeypot = (fields.get('website') || '').trim();
       const email = (fields.get('email') || '').trim();
+      const message = (fields.get('message') || '').trim();
       const captchaToken = (fields.get('captcha_token') || '').trim();
       const startedAt = Number(fields.get('form_started_at') || 0);
       const now = Date.now();
       const formAgeMs = now - startedAt;
-      const clientIp = getClientIp(req);
-      const lastSubmission = lastSubmissionBySession.get(session.id) || 0;
-      const isCoolingDown = (now - lastSubmission) < cooldownMs;
-      const ipHistory = submissionCountByIp.get(clientIp) || [];
-      const recentIpSubmissions = ipHistory.filter((timestamp) => (now - timestamp) < ipRateLimitWindowMs);
-      const isIpRateLimited = recentIpSubmissions.length >= ipRateLimitMaxRequests;
-      if (!isIpRateLimited) {
-        recentIpSubmissions.push(now);
-      }
-      submissionCountByIp.set(clientIp, recentIpSubmissions);
       const hasValidTiming = Number.isFinite(startedAt) &&
         startedAt > 0 &&
         formAgeMs >= minSubmitDelayMs &&
@@ -205,20 +145,18 @@ function handleAjax(req, res) {
         honeypot === '' &&
         hasValidTiming &&
         email.includes('@') &&
-        !isCoolingDown &&
-        !isIpRateLimited &&
+        message !== '' &&
         hasValidCaptcha
       ) {
-        lastSubmissionBySession.set(session.id, now);
-        send(res, 200, '1', 'text/plain; charset=utf-8', session.headers);
+        send(res, 200, '1');
       } else {
-        send(res, 200, '0', 'text/plain; charset=utf-8', session.headers);
+        send(res, 200, '0');
       }
     });
     return;
   }
 
-  send(res, 405, 'Method Not Allowed', 'text/plain; charset=utf-8', session.headers);
+  send(res, 405, 'Method Not Allowed');
 }
 
 const server = http.createServer((req, res) => {
@@ -229,7 +167,7 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${host}:${port}`);
   let pathname = decodeURIComponent(parsedUrl.pathname);
 
-  if (pathname === '/ajax.php' || pathname === '/.netlify/functions/contact') {
+  if (pathname === '/.netlify/functions/contact') {
     return handleAjax(req, res);
   }
 

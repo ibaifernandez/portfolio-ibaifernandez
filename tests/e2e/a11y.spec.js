@@ -1,6 +1,5 @@
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require('@axe-core/playwright').default;
-const NON_BLOCKING_A11Y_RULES = new Set(['color-contrast']);
 
 function formatViolations(violations) {
   return violations
@@ -17,7 +16,6 @@ function formatViolations(violations) {
 function getBlockingViolations(results) {
   return results.violations.filter((violation) =>
     ['serious', 'critical'].includes(violation.impact)
-    && !NON_BLOCKING_A11Y_RULES.has(violation.id)
   );
 }
 
