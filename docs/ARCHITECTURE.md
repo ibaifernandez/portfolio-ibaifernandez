@@ -323,7 +323,7 @@ Pages support EN/ES language toggle via:
 | HTTPS | Enforced by Netlify CDN |
 | Contact form — bot | Honeypot field (`website`), timing check (`form_started_at`) |
 | Contact form — test parity | `scripts/static-server.mjs` mirrors the production contact contract for E2E |
-| Contact form — captcha | Cloudflare Turnstile integration (ready, pending activation) |
+| Contact form — captcha | Cloudflare Turnstile configured in runtime + Netlify env; live production validation pending |
 | Secrets | Netlify environment variables only — never committed |
 | JS safety | No `eval()` in form handling |
 | Link safety | All `target="_blank"` have `rel="noopener noreferrer"` |

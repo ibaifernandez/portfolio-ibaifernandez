@@ -50,7 +50,7 @@ Ultima actualizacion: `2026-03-02`.
 | PR-07 | DONE | Analitica base cross-page | Tener medicion unificada | componente GA4 compartido en todas las paginas | presencia de tag en HTML |
 | PR-08 | DONE | Eventos clave de analitica | Medir conversion real, no solo pageviews | instrumentados eventos de CTA, submit (attempt/success/failure) y cambio de idioma | `build:pages` + `test:quality` + `test:e2e` OK |
 | PR-09 | DONE | Anti-spam base formulario | Frenar bots triviales | honeypot + tiempo minimo, en produccion y en el mock E2E | smoke/e2e de formulario |
-| PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | Cloudflare Turnstile integrado en codigo; falta activacion en produccion | `build:pages` + `test:quality` + `test:e2e` OK + QA manual tras activar env vars |
+| PR-10 | IN_PROGRESS | Anti-spam avanzado | Capa adicional ante abuso real | Cloudflare Turnstile integrado en codigo y variables presentes en Netlify; falta validar flujo real en produccion | `build:pages` + `test:quality` + `test:e2e` OK + QA manual con envio real |
 | PR-11 | IN_PROGRESS | CSP madura | endurecer seguridad de contenido | pasar de Report-Only a Enforce tras ventana de observacion | sin bloqueos legitimos en produccion |
 | PR-12 | DONE | Chequeo externo de enlaces | evitar links rotos de terceros | se eliminaron enlaces muertos y se reforzo el checker con fallback `HEAD -> GET` | `npm run test:links:external` OK |
 | PR-13 | IN_PROGRESS | QA Desktop v1.0 | cerrar calidad manual de release | checklist ya definido; falta pasada final en produccion | acta QA firmada |

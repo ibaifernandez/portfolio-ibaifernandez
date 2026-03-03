@@ -61,6 +61,34 @@ git push origin main
 - Los deploys son atómicos: Netlify prepara los archivos nuevos y hace el switch en un único paso. No hay ventana de estado parcial visible para usuarios.
 - En caso de fallo, Netlify permite roll-back manual a cualquier deploy previo desde el dashboard.
 
+### Auditoria rapida antes de QA en produccion (GitHub + Netlify)
+
+Usar esta secuencia antes de probar en vivo formulario, analytics o QA manual:
+
+```bash
+git fetch --prune origin
+git status --short --branch
+git branch -r
+git branch -r --merged origin/main
+git tag --list --sort=-creatordate
+```
+
+Estado esperado hoy (2026-03-03):
+
+- `main` alineada con `origin/main`
+- Sin artefactos locales sin ignorar (por ejemplo `/.claude/`, `/.netlify/`, `.env`)
+- Remoto esperado: `origin/main`
+- Tag historico presente: `v2026.02.27-predeploy`
+
+Comprobacion manual en Netlify dashboard:
+
+- La pantalla de Deploys debe mostrar **"Builds are stopped"**
+- El dominio activo debe ser `portfolio.ibaifernandez.com`
+- El ultimo deploy productivo debe provenir del flujo de GitHub Actions, no de un auto-build de Netlify
+- Variables minimas esperadas: `RESEND_API_KEY`
+- Variables de captcha ya observadas en produccion (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`
+- Variables recomendadas para evitar depender del fallback: `FROM_EMAIL`, `TO_EMAIL`
+
 ### Variables de entorno en Netlify
 
 Almacenadas en Netlify dashboard → Site settings → Environment variables. **Nunca en el repositorio.**
@@ -96,7 +124,7 @@ netlify/
 
 La función es la única pieza serverless del stack. Maneja:
 - Anti-spam base (honeypot, tiempo mínimo)
-- Verificación Cloudflare Turnstile (opcional, activable por env)
+- Verificación Cloudflare Turnstile (ya configurada en producción; falta validación manual end to end)
 - Envío de email vía Resend API REST
 
 El mock local de `scripts/static-server.mjs` replica el contrato real de producción: honeypot, tiempo mínimo, validación básica y captcha opcional.
@@ -207,7 +235,7 @@ Base técnica implementada en `netlify/functions/contact.js`:
 
 1. **Honeypot:** campo oculto en el formulario que debe estar vacío; si está relleno, la función rechaza el envío con 200 (para no dar feedback a bots).
 2. **Tiempo mínimo antes de submit:** el formulario registra el timestamp de apertura; la función valida que haya pasado el mínimo de tiempo antes de aceptar el envío.
-3. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API del proveedor usando `PORTFOLIO_CAPTCHA_SECRET` cuando el captcha está activado.
+3. **Cloudflare Turnstile (captcha backend):** la función lee `captcha_provider` y `captcha_token` del cuerpo del POST y verifica contra la API del proveedor usando `PORTFOLIO_CAPTCHA_SECRET`. En producción, las variables de captcha ya están presentes; lo pendiente es validar el flujo real con un envío manual.
 4. **Validación y saneamiento:** valida email, subject/message y escapa HTML antes de enviar vía Resend.
 
 Cobertura adicional en entorno local de pruebas:

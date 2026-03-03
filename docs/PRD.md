@@ -182,7 +182,7 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 | Security headers | ✅ (X-Frame-Options, X-Content-Type-Options, etc.) |
 | No hardcoded secrets | ✅ |
 | CSP enforce mode | ⏳ Pending (currently report-only) |
-| Captcha activation | ⏳ Pending (Turnstile ready, not yet activated) |
+| Captcha production validation | ⏳ Pending (Turnstile configured; real send validation still required) |
 
 ### NFR-06 — Maintainability
 
@@ -237,7 +237,7 @@ Every page must have:
 |---|---|---|---|
 | OQ-01 | Final copy for hero headline and sub-heading (EN + ES) | Ibai | High |
 | OQ-02 | CSP enforce mode — timeline | Ibai | Medium |
-| OQ-03 | Turnstile activation in production | Ibai | Medium |
+| OQ-03 | Turnstile real-flow validation in production | Ibai | Medium |
 | OQ-04 | Blog content strategy — real posts or remove section? | Ibai | Low |
 | OQ-05 | Google Search Console + sitemap submission | Ibai | Medium |
 | OQ-06 | hreflang strategy — single URL or `/en` / `/es` paths? | Ibai | Low |

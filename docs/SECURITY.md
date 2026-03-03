@@ -49,10 +49,11 @@ The contact form is protected by multiple layers:
 - Field: `form_started_at` (timestamp populated on page load by JS)
 - If form submitted in under 1.2 seconds → bot detection triggered
 
-### Layer 3 — Cloudflare Turnstile (ready, pending activation)
+### Layer 3 — Cloudflare Turnstile (configured, pending live validation)
 - Frontend: `captcha_provider` and `captcha_token` fields in form
 - Backend: token verified via Turnstile API before processing
-- Activation: set `PORTFOLIO_CAPTCHA_PROVIDER=turnstile` and `PORTFOLIO_CAPTCHA_SECRET` in Netlify environment variables
+- Production state (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER` and `PORTFOLIO_CAPTCHA_SECRET` are present in Netlify environment variables
+- Remaining action: run a real production submission and confirm the captcha flow end to end
 - See `docs/ENGINEERING-RUNBOOK.md` for Turnstile key rotation procedure
 
 ### Layer 4 — Input validation
@@ -64,7 +65,7 @@ The contact form is protected by multiple layers:
 ### Layer 5 — Operational note
 - The production Netlify Function does **not** implement persistent IP rate limiting or explicit CORS checks.
 - The local E2E mock (`scripts/static-server.mjs`) mirrors the same production contract for contact submissions.
-- For production abuse resistance, the intended control is Turnstile activation plus the existing honeypot and timing checks.
+- For production abuse resistance, the intended control is Turnstile plus the existing honeypot and timing checks.
 
 ---
 
@@ -161,11 +162,11 @@ If a security issue is discovered:
 | Item | Risk | Status |
 |---|---|---|
 | CSP in report-only mode | Medium — CSP not enforced, XSS possible if inline scripts introduced | Pending (Phase 6) |
-| Turnstile not yet activated in production | Low–Medium — honeypot + timing active but no CAPTCHA | Pending (Phase 8) |
+| Turnstile production flow not yet manually validated | Low — platform configuration is present, but a real send test is still pending | Pending (Phase 8 validation) |
 | No explicit CORS check in production function | Low — cross-origin POSTs are possible, but abuse still depends on anti-spam controls | Accepted for now |
 | Some CDN scripts without SRI | Low | Backlog |
 | DNSSEC not validated | Low | Backlog |
-| `color-contrast` axe rule not yet blocker in CI | Low–Medium | Pending (BL-QA-008) |
+| `color-contrast` axe rule not yet blocker in CI | Resolved — blocking again in Playwright | Closed |
 
 ---
 

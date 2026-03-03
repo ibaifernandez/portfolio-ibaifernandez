@@ -227,7 +227,7 @@ Acceptance criteria: Portfolio communicates seniority and expertise in < 60 seco
 - [ ] Bing Webmaster Tools verification
 - [ ] Sitemap submission (`sitemap.xml`)
 - [ ] PageSpeed Insights re-capture and comparison vs baseline
-- [ ] Turnstile captcha activation in production
+- [ ] Turnstile real-flow validation in production
 - [ ] Release tag `v2.0.0`
 - [ ] QA manual on Desktop and Mobile
 

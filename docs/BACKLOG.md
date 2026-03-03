@@ -227,7 +227,7 @@ Priority items for next session:
 
 ## Post-Sprint Backlog (Production Readiness)
 
-- [ ] Activate Turnstile captcha in production (set env vars in Netlify dashboard)
+- [ ] Validate Turnstile real flow in production (submit + captcha + email delivery)
 - [ ] QA manual on Desktop + Mobile
 - [ ] Google Search Console verification
 - [ ] Bing Webmaster Tools verification

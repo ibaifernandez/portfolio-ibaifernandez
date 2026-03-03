@@ -207,7 +207,7 @@ A minimal Node.js HTTP server (`scripts/static-server.mjs`) that serves the port
 A source file in `src/pages/` (e.g., `index.template.html`) that contains the page structure with `@include` and `@render` directives. NOT the final HTML — the build script generates the final HTML from templates.
 
 **Turnstile**
-Cloudflare's CAPTCHA alternative. User-friendly, privacy-preserving bot detection. Integrated in the contact form frontend and backend, but not yet activated in production. Activation requires setting `PORTFOLIO_CAPTCHA_PROVIDER=turnstile` in Netlify environment variables.
+Cloudflare's CAPTCHA alternative. User-friendly, privacy-preserving bot detection. Integrated in the contact form frontend and backend. As of 2026-03-03, the Netlify environment variables for captcha are present; the remaining task is validating the real production submission flow end to end.
 
 ---
 

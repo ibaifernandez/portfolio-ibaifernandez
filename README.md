@@ -213,4 +213,4 @@ Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EM
 1. Re-capturar PageSpeed post-accesibilidad + minificación + media y comparar contra la baseline del 2026-03-03.
 2. Promover CSP de report-only a enforce (Phase 6).
 3. Reescribir narrativa de home por impacto (problema → solución → resultado).
-4. Google Search Console + sitemap + activación de Turnstile en producción.
+4. Google Search Console + sitemap + validación real de Turnstile en producción.

@@ -22,6 +22,50 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Infra Audit: Git Remote Parity + Netlify Runtime Hygiene
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+Before running production validation (real contact-form send, analytics realtime checks, manual QA), the repository and the live platform needed a fresh parity audit. The goal was to verify that:
+
+- local `main` still matches GitHub,
+- no local-only tooling artifacts are at risk of accidental commit,
+- Netlify remains configured as a passive deploy target behind GitHub Actions.
+
+#### Process
+
+1. Refreshed remote refs with `git fetch --prune origin`.
+2. Verified Git state:
+   - `main` == `origin/main` at commit `0371ecf`
+   - `origin/claude/affectionate-lovelace` was already fully merged into `origin/main`
+   - removed the stale merged local branches `new-branch` and `claude/affectionate-lovelace`
+   - removed the stale merged remote branch `origin/claude/affectionate-lovelace`
+   - the historical tag `v2026.02.27-predeploy` is still present
+3. Audited repository hygiene:
+   - confirmed no tracked `.env`, key, PDF, Playwright artifact, or local tool state files
+   - added `/.claude/`, `/.netlify/`, `.env`, and `.env.*` to `.gitignore` (while keeping `!.env.example` allowed)
+4. Re-checked deploy configuration in:
+   - `.github/workflows/ci.yml`
+   - `netlify.toml`
+   - `netlify/functions/contact.js`
+5. Confirmed manually from the Netlify dashboard that:
+   - the site shows **"Builds are stopped"**, so Netlify auto-builds are disabled and GitHub Actions remains the only production deploy gate
+   - `RESEND_API_KEY`, `PORTFOLIO_CAPTCHA_PROVIDER`, and `PORTFOLIO_CAPTCHA_SECRET` are present in Netlify environment variables
+   - Turnstile is therefore configured at the platform level and should be treated as **pending live production validation**, not pending activation
+
+#### Actual Results
+
+- Local/remote parity is confirmed for `main`
+- Only `origin/main` remains as an active remote branch
+- The only local drift source was tooling state; it is now ignored by default
+- No unexpected tracked secrets or generated artifacts were found
+- No urgent repo-side Netlify configuration change is required before production validation
+- Turnstile should no longer be documented as "not activated"; the remaining task is validating the real production flow end to end
+
+---
+
 ### 2026-03-03 - CI Parity Hotfix: Platform-Independent PNG Alpha Detection
 
 **Commit:** `working tree (uncommitted)`
