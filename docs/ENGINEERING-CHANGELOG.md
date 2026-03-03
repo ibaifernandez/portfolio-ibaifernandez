@@ -22,6 +22,32 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-03 - Portfolio Dossier: Dedicated Case Study With Placeholder Proof Media
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The portfolio itself had become a substantive engineering case study: platform migration, CI/CD hardening, accessibility work, performance improvements, production validation, and release governance. It needed to exist as a first-class project dossier instead of only being implied through the homepage.
+
+#### Process
+
+1. Added a new public project route: `project-portfolio-ibaifernandez.html`.
+2. Added the portfolio to `content/projects.json`, so it now appears in the home project showcase and participates in generated project navigation.
+3. Wrote a dedicated project template with content grounded in the current repo state: Netlify migration, test coverage, PageSpeed results, anti-spam contract, and production validation.
+4. Introduced placeholder media blocks for the proof assets that should exist later (walkthrough video, before/after evidence, launch proof captures) without blocking the content build.
+5. Updated discovery files (`sitemap.xml`, `llms.txt`, `llms-full.txt`) and print-PDF targets so the new dossier is treated as a first-class public page.
+6. Re-generated the Playwright visual baselines for the Home projects/logos section because the grid height changed intentionally when the new project card entered the roster.
+
+#### Actual Results
+
+- The portfolio is now represented as an explicit, sellable project case study
+- The copy is grounded in the real engineering work already completed in this repository
+- Placeholder media exists where richer screenshots or videos should later be substituted with real assets
+- The project roster now moves closer to the intended 8-dossier launch set
+
+---
+
 ### 2026-03-03 - Manual QA Runbooks: Desktop + Mobile
 
 **Commit:** `working tree (uncommitted)`

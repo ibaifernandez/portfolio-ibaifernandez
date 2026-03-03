@@ -11,6 +11,7 @@ Primary pages:
 - https://portfolio.ibaifernandez.com/project-gymtracker.html
 - https://portfolio.ibaifernandez.com/project-enterprise-crm.html
 - https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html
+- https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html
 - https://portfolio.ibaifernandez.com/project-elm-st.html
 - https://portfolio.ibaifernandez.com/project-aglaya.html
 

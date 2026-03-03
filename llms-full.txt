@@ -17,6 +17,8 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
   - Purpose: agency intrapreneurship case, promotion timeline, enterprise automation governance.
 - The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html
   - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
+- Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html
+  - Purpose: living proof of delivery capability through CI/CD, performance hardening, accessibility, and production validation.
 - Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
   - Purpose: narrative architecture and custom web/brand system case.
 - AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html

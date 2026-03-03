@@ -89,6 +89,30 @@
   },
   {
     "page": {
+      "output": "project-portfolio-ibaifernandez.html",
+      "template": "src/pages/project-portfolio-ibaifernandez.template.html",
+      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "keywords": "Ibai Fernandez, portfolio case study, Netlify, Playwright, accessibility, performance, CI/CD"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--portfolio\" role=\"img\" aria-label=\"Portfolio production hardening preview\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Live Build</span>\n<strong>CI/CD + A11y + Performance</strong>\n<span class=\"project_spotlight_mockup_metric\">29/29 green</span>\n<span class=\"project_spotlight_mockup_note\">Desktop 93 · A11y 95 · Contact live</span>\n</div>",
+    "title": {
+      "text": "Portfolio Ibai Fernandez: Live Delivery System",
+      "translate": "project-portfolio-title"
+    },
+    "description": {
+      "text": "Rebuilt this portfolio from a static brochure into a production-validated delivery system: Netlify migration, CI/CD, Playwright coverage, accessibility hardening, media pipelines, and a stable real contact flow.",
+      "translate": "project-portfolio-copy"
+    },
+    "link": {
+      "href": "project-portfolio-ibaifernandez.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
       "output": "project-elm-st.html"
     },
     "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/elm-st-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/elm-st-web.webp\">\n<img src=\"assets/images/elm-st-web.png\" alt=\"Elm St custom web architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
