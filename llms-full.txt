@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-03-03
+Last-Updated: 2026-03-04
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
@@ -21,6 +21,8 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
   - Purpose: living proof of delivery capability through CI/CD, performance hardening, accessibility, and production validation.
 - MyBoard: https://portfolio.ibaifernandez.com/project-myboard.html
   - Purpose: local-first Kanban product proving zero vendor lock-in, modular architecture, and a clear runway toward enterprise and AI-assisted use.
+- The Research Engine: https://portfolio.ibaifernandez.com/project-the-research-engine.html
+  - Purpose: productized intelligence workflow pack sold through a VSL + Gumroad funnel, proving end-to-end digital product and GTM execution.
 - Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
   - Purpose: cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case.
 - AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html

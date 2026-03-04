@@ -326,6 +326,8 @@
     "project-portfolio-copy": "Reconstruí este portafolio desde un brochure estático hasta convertirlo en un sistema de entrega validado en producción: migración a Netlify, CI/CD, cobertura Playwright, endurecimiento de accesibilidad, pipeline de media y un flujo real de contacto estable.",
     "project-myboard-title": "MyBoard: Motor Kanban Sin Lock-In",
     "project-myboard-copy": "Una aplicación Kanban modular construida con React, Express y persistencia en JSON para demostrar que la gestión de tareas puede ser rápida, expresiva y 100% propiedad del operador desde el primer día.",
+    "project-research-engine-title": "The Research Engine: Inteligencia Productizada",
+    "project-research-engine-copy": "Auditado y transformado desde un corpus crudo de prompts hasta un producto comercial de inteligencia con 55 workflows, pricing por tiers, narrativa VSL y una superficie de venta activa en Gumroad.",
     "project-elmst-title": "Elm St: Arquitectura Web y de Marca a Medida",
     "project-elmst-copy": "Bypasseé plataformas CMS tradicionales para codificar a mano un entorno digital personalizado. Este proyecto fusiona desarrollo UI/UX avanzado con narrativa audiovisual profunda y posicionamiento psicológico de marca.",
     "project-aglaya-title": "AGLAYA: Ecosistema B2B de Innovación",

@@ -1,6 +1,6 @@
 # BACKLOG.md — Active Work Only
 
-**Last updated:** 2026-03-03
+**Last updated:** 2026-03-04
 **Purpose:** This file lists only open work. Closed history belongs in `docs/ENGINEERING-CHANGELOG.md`.
 
 ---
@@ -31,6 +31,7 @@
 
 - [ ] Replace placeholder proof assets in the Portfolio dossier
 - [ ] Replace placeholder proof assets in the MyBoard dossier
+- [ ] Replace placeholder proof assets in The Research Engine dossier
 - [ ] Replace placeholder YouTube blocks / final reel ordering in Elm St
 - [ ] Replace placeholder proof assets in AGLAYA
 

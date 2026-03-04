@@ -16,6 +16,7 @@ const targets = [
   { route: 'project-ruta-digitalizacion-2x2mkt.html', file: 'project-ruta-digitalizacion-2x2mkt.pdf' },
   { route: 'project-portfolio-ibaifernandez.html', file: 'project-portfolio-ibaifernandez.pdf' },
   { route: 'project-myboard.html', file: 'project-myboard.pdf' },
+  { route: 'project-the-research-engine.html', file: 'project-the-research-engine.pdf' },
   { route: 'project-elm-st.html', file: 'project-elm-st.pdf' },
   { route: 'project-aglaya.html', file: 'project-aglaya.pdf' },
   { route: 'blog.html', file: 'blog.pdf' }

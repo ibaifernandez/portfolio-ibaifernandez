@@ -138,6 +138,30 @@
   },
   {
     "page": {
+      "output": "project-the-research-engine.html",
+      "template": "src/pages/project-the-research-engine.template.html",
+      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "keywords": "The Research Engine, AI prompt pack, digital product, VSL, Gumroad, product marketing, research workflows"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--researchengine\" role=\"img\" aria-label=\"The Research Engine product preview with VSL and Gumroad commerce positioning\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Digital Product</span>\n<strong>The Research Engine</strong>\n<span class=\"project_spotlight_mockup_metric\">55 Workflows</span>\n<span class=\"project_spotlight_mockup_note\">VSL live + Gumroad checkout</span>\n</div>",
+    "title": {
+      "text": "The Research Engine: Productized Intelligence",
+      "translate": "project-research-engine-title"
+    },
+    "description": {
+      "text": "Audited and transformed a raw prompt corpus into a commercial 55-workflow intelligence product with tiered pricing, VSL narrative, and a live Gumroad sales surface.",
+      "translate": "project-research-engine-copy"
+    },
+    "link": {
+      "href": "project-the-research-engine.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
       "output": "project-elm-st.html",
       "template": "src/pages/project-elm-st.template.html",
       "keywords": "Elm St, audiovisual production, cinematic web design, YouTube reel, custom brand website, Ibai Fernandez"

@@ -216,6 +216,24 @@ Assigned to: ThemeForest
 					cta_classes: (element.attr('class') || '').replace(/\s+/g, ' ').trim().slice(0, 120)
 				});
 			});
+
+			$(document).on('click', '[data-track-event]', function() {
+				var element = $(this);
+				var eventName = (element.attr('data-track-event') || '').trim();
+				if(!eventName){
+					return;
+				}
+				var rawText = element.text() || element.attr('aria-label') || element.attr('title') || '';
+				var normalizedText = rawText.replace(/\s+/g, ' ').trim();
+				_this.track_event(eventName, {
+					cta_text: normalizedText.slice(0, 120),
+					cta_href: element.attr('href') || '',
+					cta_section: element.attr('data-track-section') || 'global',
+					cta_location: element.attr('data-track-location') || '',
+					cta_target: element.attr('data-track-target') || '',
+					cta_classes: (element.attr('class') || '').replace(/\s+/g, ' ').trim().slice(0, 120)
+				});
+			});
 		},
 		
 		/*-------------- CV Portfolio Functions Calling ---------------------------------------------------

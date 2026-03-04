@@ -125,7 +125,12 @@
 	.elmst_dossier_stack_module,
 	.elmst_dossier_embed_placeholder,
 	.elmst_dossier_crew_card,
-	.elmst_dossier_value_card {
+	.elmst_dossier_value_card,
+	.researchengine_dossier_card,
+	.researchengine_dossier_tier,
+	.researchengine_dossier_value_card,
+	.researchengine_dossier_placeholder,
+	.researchengine_dossier_vsl_copy {
 		break-inside: avoid-page;
 		page-break-inside: avoid;
 	}
@@ -226,5 +231,25 @@ body.aglaya_dossier_page .aglaya_dossier_note {
 	color: #111 !important;
 	box-shadow: none !important;
 	border: 1px solid #d8d8d8 !important;
+}
+
+body.researchengine_dossier_page .researchengine_dossier_surface,
+body.researchengine_dossier_page .researchengine_dossier_intro,
+body.researchengine_dossier_page .researchengine_dossier_stage,
+body.researchengine_dossier_page .researchengine_dossier_section,
+body.researchengine_dossier_page .researchengine_dossier_card,
+body.researchengine_dossier_page .researchengine_dossier_tier,
+body.researchengine_dossier_page .researchengine_dossier_value_card,
+body.researchengine_dossier_page .researchengine_dossier_placeholder,
+body.researchengine_dossier_page .researchengine_dossier_vsl_copy {
+	background: #fff !important;
+	color: #111 !important;
+	box-shadow: none !important;
+	border: 1px solid #d8d8d8 !important;
+}
+
+body.researchengine_dossier_page .researchengine_dossier_vsl_frame {
+	background: #fff !important;
+	border: 1px solid #c9c9c9 !important;
 }
 }

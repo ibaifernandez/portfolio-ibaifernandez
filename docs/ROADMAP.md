@@ -1,6 +1,6 @@
 # ROADMAP.md — Current State, Release Path, and Next Work
 
-**Last updated:** 2026-03-03
+**Last updated:** 2026-03-04
 **Purpose:** This is the single source of truth for where the project came from, where it is now, and what still remains.
 
 ---
@@ -18,13 +18,14 @@ What is already true:
 - Playwright is green (`29/29`).
 - Desktop PageSpeed is in a strong release band.
 - Mobile is usable and materially improved, but still has LCP headroom.
-- The public project roster is already live as 8 dossiers:
+- The public project roster is already live as 9 dossiers:
   - DebTracker
   - GymTracker
   - LFi
   - The Route to Digitalization / 2x2MKT
   - Portfolio Ibai Fernandez
   - MyBoard
+  - The Research Engine
   - Elm St
   - AGLAYA
 
@@ -62,6 +63,7 @@ The technical foundation is already closed.
   - LFi
   - Portfolio
   - MyBoard
+  - The Research Engine
   - Elm St
   - AGLAYA
 - The 2x2 route already has a normalized public slug.

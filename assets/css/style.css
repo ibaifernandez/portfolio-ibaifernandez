@@ -2442,6 +2442,9 @@ h3.core-features:nth-of-type(3)::before {
 .project_spotlight_mockup--myboard {
 	background: linear-gradient(145deg, #0f172a 0%, #0f766e 42%, #22c55e 100%);
 }
+.project_spotlight_mockup--researchengine {
+	background: linear-gradient(145deg, #0b1020 0%, #2f236f 46%, #e86039 100%);
+}
 @media (max-width: 1499px) {
 	.project_spotlight_title {
 		font-size: 30px;
@@ -5921,6 +5924,377 @@ select:focus-visible,
 	.myboard_dossier_arch_card p,
 	.myboard_dossier_placeholder p,
 	.myboard_dossier_runway_item p {
+		font-size: 16px;
+	}
+}
+
+/*  ================== The Research Engine Dossier ==================  */
+
+.researchengine_dossier_page {
+	background:
+		radial-gradient(circle at 9% 10%, rgba(88, 67, 191, 0.24), transparent 32%),
+		radial-gradient(circle at 84% 0%, rgba(232, 96, 57, 0.2), transparent 26%),
+		linear-gradient(180deg, #0b1020 0%, #121a30 42%, #080d19 100%);
+}
+
+.researchengine_dossier_surface {
+	max-width: 1660px;
+	padding: clamp(22px, 2.4vw, 38px);
+	border: 1px solid rgba(148, 163, 184, 0.15);
+	border-radius: 30px;
+	background: rgba(12, 18, 34, 0.88);
+	backdrop-filter: blur(14px);
+	box-shadow: 0 28px 72px rgba(0, 0, 0, 0.35);
+}
+
+.researchengine_dossier_page .project_case_title,
+.researchengine_dossier_page .project_case_heading {
+	color: #f9f9ff;
+}
+
+.researchengine_dossier_page .project_case_intro,
+.researchengine_dossier_page .project_case_paragraph {
+	color: rgba(232, 237, 255, 0.82);
+}
+
+.researchengine_dossier_page .project_case_backlink {
+	color: #a8b9ff;
+}
+
+.researchengine_dossier_page .project_case_backlink:hover,
+.researchengine_dossier_page .project_case_backlink:focus {
+	color: #ffbf8e;
+}
+
+.researchengine_dossier_hero {
+	display: grid;
+	grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+	gap: 24px;
+}
+
+.researchengine_dossier_intro,
+.researchengine_dossier_stage,
+.researchengine_dossier_section {
+	padding: clamp(22px, 2.2vw, 32px);
+	border-radius: 28px;
+	border: 1px solid rgba(148, 163, 184, 0.16);
+	background: rgba(19, 29, 52, 0.88);
+	box-shadow: 0 20px 42px rgba(4, 8, 20, 0.34);
+}
+
+.researchengine_dossier_intro,
+.researchengine_dossier_section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.researchengine_dossier_stage {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	background:
+		linear-gradient(156deg, rgba(30, 36, 70, 0.96) 0%, rgba(25, 25, 58, 0.94) 44%, rgba(56, 27, 35, 0.94) 100%);
+}
+
+.researchengine_dossier_stage .project_spotlight_mockup {
+	min-height: 100%;
+	border-radius: 24px;
+}
+
+.researchengine_dossier_stage_caption {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.65;
+	color: rgba(232, 237, 255, 0.74);
+}
+
+.researchengine_dossier_actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+
+.researchengine_dossier_cta,
+.researchengine_dossier_secondary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 13px 20px;
+	border-radius: 999px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	text-decoration: none;
+	transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.researchengine_dossier_cta {
+	background: linear-gradient(135deg, #ef7e4f, #d54a2d);
+	color: #fff;
+	box-shadow: 0 14px 26px rgba(213, 74, 45, 0.35);
+}
+
+.researchengine_dossier_secondary {
+	background: rgba(168, 185, 255, 0.12);
+	border: 1px solid rgba(168, 185, 255, 0.24);
+	color: #d2dcff;
+}
+
+.researchengine_dossier_cta:hover,
+.researchengine_dossier_cta:focus,
+.researchengine_dossier_secondary:hover,
+.researchengine_dossier_secondary:focus {
+	color: inherit;
+	text-decoration: none;
+	transform: translateY(-2px);
+}
+
+.researchengine_dossier_cta:hover,
+.researchengine_dossier_cta:focus {
+	color: #fff;
+}
+
+.researchengine_dossier_metric_grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.researchengine_dossier_metric {
+	display: grid;
+	gap: 6px;
+	padding: 17px;
+	border-radius: 20px;
+	border: 1px solid rgba(168, 185, 255, 0.2);
+	background: linear-gradient(180deg, rgba(27, 40, 75, 0.92), rgba(19, 28, 52, 0.92));
+}
+
+.researchengine_dossier_metric_label,
+.researchengine_dossier_section_tag,
+.researchengine_dossier_tier_label,
+.researchengine_dossier_placeholder_label {
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.researchengine_dossier_metric_label,
+.researchengine_dossier_section_tag,
+.researchengine_dossier_tier_label {
+	color: #a8b9ff;
+}
+
+.researchengine_dossier_metric_value {
+	font-size: clamp(24px, 2.4vw, 34px);
+	line-height: 1;
+	color: #fff;
+}
+
+.researchengine_dossier_metric_note {
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(232, 237, 255, 0.72);
+}
+
+.researchengine_dossier_section_header {
+	display: grid;
+	gap: 8px;
+}
+
+.researchengine_dossier_section_tag {
+	margin: 0;
+}
+
+.researchengine_dossier_card_grid,
+.researchengine_dossier_tier_grid,
+.researchengine_dossier_value_grid,
+.researchengine_dossier_placeholder_grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.researchengine_dossier_card,
+.researchengine_dossier_tier,
+.researchengine_dossier_value_card,
+.researchengine_dossier_placeholder,
+.researchengine_dossier_vsl_copy {
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-radius: 24px;
+	background: rgba(17, 26, 48, 0.85);
+	box-shadow: 0 16px 34px rgba(4, 8, 20, 0.28);
+}
+
+.researchengine_dossier_card,
+.researchengine_dossier_tier,
+.researchengine_dossier_value_card,
+.researchengine_dossier_placeholder,
+.researchengine_dossier_vsl_copy {
+	padding: 24px;
+}
+
+.researchengine_dossier_card h3,
+.researchengine_dossier_tier h3,
+.researchengine_dossier_value_card h3,
+.researchengine_dossier_placeholder h3,
+.researchengine_dossier_vsl_copy h3 {
+	margin: 0 0 10px;
+	font-size: 24px;
+	line-height: 1.18;
+	color: #fff;
+}
+
+.researchengine_dossier_card p,
+.researchengine_dossier_tier p,
+.researchengine_dossier_value_card p,
+.researchengine_dossier_placeholder p,
+.researchengine_dossier_vsl_copy p {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.7;
+	color: rgba(232, 237, 255, 0.78);
+}
+
+.researchengine_dossier_icon {
+	width: 54px;
+	height: 54px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 16px;
+	border-radius: 18px;
+	background: linear-gradient(135deg, rgba(168, 185, 255, 0.16), rgba(232, 96, 57, 0.16));
+	color: #b8c6ff;
+	font-size: 22px;
+}
+
+.researchengine_dossier_vsl {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+	gap: 18px;
+}
+
+.researchengine_dossier_vsl_frame {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	border-radius: 24px;
+	overflow: hidden;
+	border: 1px solid rgba(168, 185, 255, 0.24);
+	background: rgba(9, 14, 28, 0.86);
+}
+
+.researchengine_dossier_vsl_frame iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.researchengine_dossier_vsl_copy {
+	display: grid;
+	gap: 14px;
+}
+
+.researchengine_dossier_vsl_copy ul {
+	margin: 0;
+	padding-left: 18px;
+	display: grid;
+	gap: 8px;
+}
+
+.researchengine_dossier_vsl_copy li {
+	font-size: 16px;
+	line-height: 1.6;
+	color: rgba(232, 237, 255, 0.78);
+}
+
+.researchengine_dossier_tier {
+	display: grid;
+	gap: 12px;
+}
+
+.researchengine_dossier_tier_label {
+	display: inline-flex;
+	align-self: flex-start;
+	padding: 5px 10px;
+	border-radius: 999px;
+	background: rgba(168, 185, 255, 0.14);
+}
+
+.researchengine_dossier_tier--featured {
+	border-color: rgba(232, 96, 57, 0.42);
+	background: linear-gradient(165deg, rgba(232, 96, 57, 0.2), rgba(22, 33, 60, 0.92));
+}
+
+.researchengine_dossier_placeholder {
+	position: relative;
+	padding-top: 56px;
+}
+
+.researchengine_dossier_placeholder_label {
+	position: absolute;
+	top: 18px;
+	left: 22px;
+	display: inline-flex;
+	padding: 6px 10px;
+	border-radius: 999px;
+	background: rgba(232, 96, 57, 0.16);
+	color: #ffbf8e;
+}
+
+@media (max-width: 1299px) {
+	.researchengine_dossier_metric_grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 1199px) {
+	.researchengine_dossier_hero,
+	.researchengine_dossier_vsl,
+	.researchengine_dossier_card_grid,
+	.researchengine_dossier_tier_grid,
+	.researchengine_dossier_value_grid,
+	.researchengine_dossier_placeholder_grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.researchengine_dossier_surface,
+	.researchengine_dossier_intro,
+	.researchengine_dossier_stage,
+	.researchengine_dossier_section,
+	.researchengine_dossier_card,
+	.researchengine_dossier_tier,
+	.researchengine_dossier_value_card,
+	.researchengine_dossier_placeholder,
+	.researchengine_dossier_vsl_copy {
+		padding: 18px;
+		border-radius: 22px;
+	}
+
+	.researchengine_dossier_metric_grid {
+		grid-template-columns: 1fr;
+	}
+
+	.researchengine_dossier_card h3,
+	.researchengine_dossier_tier h3,
+	.researchengine_dossier_value_card h3,
+	.researchengine_dossier_placeholder h3,
+	.researchengine_dossier_vsl_copy h3 {
+		font-size: 21px;
+	}
+
+	.researchengine_dossier_card p,
+	.researchengine_dossier_tier p,
+	.researchengine_dossier_value_card p,
+	.researchengine_dossier_placeholder p,
+	.researchengine_dossier_vsl_copy p,
+	.researchengine_dossier_vsl_copy li {
 		font-size: 16px;
 	}
 }
