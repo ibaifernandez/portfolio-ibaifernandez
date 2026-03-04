@@ -66,6 +66,7 @@
 
 - [ ] Frontend error tracking (Sentry or equivalent)
 - [ ] Lightweight health dashboard (Core Web Vitals + funnel sanity)
+- [ ] Server-side purchase tracking (Gumroad webhook -> GA4 Measurement Protocol) once credentials are available
 - [ ] Formal post-release checklist / maintenance cadence
 
 ---

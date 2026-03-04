@@ -113,6 +113,7 @@ Only open work belongs here. Historical detail lives in `docs/ENGINEERING-CHANGE
 
 - Frontend error tracking (Sentry or equivalent)
 - Lightweight health dashboard (Core Web Vitals + key funnel view)
+- Server-side purchase tracking (Gumroad webhook -> GA4 Measurement Protocol) once secrets are available
 - Formal post-release checklist / ops cadence
 - Larger copy overhaul (hero and overall narrative refinement) can move to a later content-focused release
 

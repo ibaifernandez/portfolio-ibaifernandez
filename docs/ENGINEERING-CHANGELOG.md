@@ -22,36 +22,49 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
-### 2026-03-04 - GA4 Instrumentation for The Research Engine CTAs
+### 2026-03-04 - GA4 Intent Instrumentation for The Research Engine Sales Page
 
 **Commit:** `working tree (uncommitted)`
 
 #### Necessity
 
-The new dossier needed more than generic CTA telemetry. We needed explicit event names for the two commercial conversion intents: VSL consumption and checkout intent.
+The sales-page rewrite needed full intent telemetry, not only generic `cta_click` events. We needed specific event names for video consumption milestones, tier exploration, FAQ engagement, checkout intent, and deep-scroll buying behavior.
 
 #### Process
 
-1. Added targeted CTA tracking attributes in `src/pages/project-the-research-engine.template.html`:
-   - `research_engine_vsl_click`
-   - `research_engine_gumroad_click`
-2. Extended analytics binding in `assets/js/custom.js` to read `[data-track-event]` and dispatch a dedicated GA4 event payload while keeping the existing generic `cta_click` event path.
-3. Rebuilt generated assets/pages and re-ran quality + E2E gates.
+1. Added explicit tracking attributes in `src/pages/project-the-research-engine.template.html` for:
+   - VSL click and checkout click CTAs
+   - tier-card view tracking
+   - tier selection tracking
+   - FAQ expansion tracking
+2. Extended `assets/js/custom.js` analytics handling to support:
+   - `data-track-event-secondary` (dual event dispatch on the same click)
+   - view-based tracking via `IntersectionObserver` for tier visibility
+   - FAQ open events (`research_engine_faq_open`)
+   - page-depth milestones (`research_engine_scroll_50`, `research_engine_scroll_90`)
+3. Added YouTube Iframe API telemetry for VSL milestones:
+   - `research_engine_vsl_play`
+   - `research_engine_vsl_progress_25`
+   - `research_engine_vsl_progress_50`
+   - `research_engine_vsl_progress_75`
+   - `research_engine_vsl_complete`
+4. Rebuilt generated assets/pages and re-ran quality + E2E gates.
 
 #### Actual Results
 
-- GA4 now receives explicit click events for VSL and Gumroad CTAs on the Research Engine dossier
+- GA4 now receives intent events across the whole sales flow, not only button clicks
+- The Research Engine page can be analyzed like a real conversion surface (watching, considering, selecting, buying intent)
 - Existing analytics coverage remains intact (no regressions in automated tests)
 
 ---
 
-### 2026-03-04 - The Research Engine Dossier: Productized Intelligence + VSL Commerce Layer
+### 2026-03-04 - The Research Engine Rewrite: From Case Dossier to Conversion-First Sales Page
 
 **Commit:** `working tree (uncommitted)`
 
 #### Necessity
 
-The portfolio already proved service delivery and technical execution, but it still needed a clear commercial product case that shows productization, offer design, and direct-response GTM in one artifact.
+The first implementation still behaved too much like a "project dossier". The target was stricter: a real VSL sales page that proves productization, hard-copywriting execution, and funnel logic under direct-response standards.
 
 #### Process
 
@@ -59,18 +72,28 @@ The portfolio already proved service delivery and technical execution, but it st
    - `project-the-research-engine.html`
    - dedicated template `src/pages/project-the-research-engine.template.html`
    - home-card copy + translation keys in `en.json` and `es.json`.
-2. Built a dedicated dossier around verifiable product facts from the source workspace:
+2. Replaced the dossier narrative with a conversion sequence:
+   - hard hook + risk framing
+   - PAS section (problem / agitation / solution)
+   - mechanism explanation
+   - VSL block with repeated checkout CTA
+   - category/product stack
+   - offer tiers + objection handling FAQ
+   - final close CTA
+3. Built the sales copy from the source marketing docs (`biz plan`, `sales main copy`, `tiers`, `manual`, `marketing plan`) while keeping claims verifiable.
+4. Added placeholder legend blocks (`Asset Slot A1-A5`) so final media can be dropped in exactly where the conversion narrative expects it.
+5. Kept the product facts anchored to source material:
    - 53 raw prompts audited,
    - final 55-workflow package,
    - 5-category structure,
    - tiered commercial model (`Free`, `$9`, `$19`, `$49`).
-3. Added a live VSL + commerce surface:
+6. Added a live VSL + commerce surface:
    - YouTube VSL embed (`N0sUEMesXYM`)
    - direct Gumroad CTA (`the-research-engine-ai-prompt-pack`).
-4. Introduced dedicated visual language in `assets/css/style.css`:
+7. Introduced dedicated visual language in `assets/css/style.css`:
    - `project_spotlight_mockup--researchengine`
    - full `researchengine_dossier_*` style system with responsive rules.
-5. Extended operational/discovery surfaces for the new route:
+8. Extended operational/discovery surfaces for the new route:
    - `scripts/generate-print-pdf.mjs`
    - `sitemap.xml`
    - `llms.txt`
@@ -80,8 +103,9 @@ The portfolio already proved service delivery and technical execution, but it st
 
 #### Actual Results
 
-- The portfolio now includes a first-class digital-product case, not only service/client dossiers
-- VSL, offer architecture, and checkout intent are represented as a coherent system
+- The page now behaves like a sales asset first, portfolio proof second
+- Copy, offer stack, and CTA cadence are aligned with direct conversion intent
+- Placeholder media positions are explicitly mapped for rapid asset replacement
 - The public roster is now 9 dossiers
 - Discovery, QA scope, and print generation are synchronized with the new route
 

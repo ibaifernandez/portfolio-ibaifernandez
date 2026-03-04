@@ -130,7 +130,11 @@
 	.researchengine_dossier_tier,
 	.researchengine_dossier_value_card,
 	.researchengine_dossier_placeholder,
-	.researchengine_dossier_vsl_copy {
+	.researchengine_dossier_vsl_copy,
+	.researchengine_dossier_problem_card,
+	.researchengine_dossier_catalog_card,
+	.researchengine_dossier_step,
+	.researchengine_dossier_final_cta {
 		break-inside: avoid-page;
 		page-break-inside: avoid;
 	}
@@ -241,7 +245,12 @@ body.researchengine_dossier_page .researchengine_dossier_card,
 body.researchengine_dossier_page .researchengine_dossier_tier,
 body.researchengine_dossier_page .researchengine_dossier_value_card,
 body.researchengine_dossier_page .researchengine_dossier_placeholder,
-body.researchengine_dossier_page .researchengine_dossier_vsl_copy {
+body.researchengine_dossier_page .researchengine_dossier_vsl_copy,
+body.researchengine_dossier_page .researchengine_dossier_problem_card,
+body.researchengine_dossier_page .researchengine_dossier_catalog_card,
+body.researchengine_dossier_page .researchengine_dossier_step,
+body.researchengine_dossier_page .researchengine_dossier_final_cta,
+body.researchengine_dossier_page .researchengine_dossier_faq details {
 	background: #fff !important;
 	color: #111 !important;
 	box-shadow: none !important;

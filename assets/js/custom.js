@@ -18,6 +18,7 @@ Assigned to: ThemeForest
 		reduceMotion: false,
 		scriptLoaders: {},
 		stylesheetLoaders: {},
+		youtubeApiPromise: null,
 		init: function () {
 
 			if(!this.initialised) {
@@ -179,6 +180,55 @@ Assigned to: ThemeForest
 			}
 		},
 
+		load_youtube_api: function() {
+			var _this = this;
+			if(_this.youtubeApiPromise){
+				return _this.youtubeApiPromise;
+			}
+			_this.youtubeApiPromise = new Promise(function(resolve, reject) {
+				if(window.YT && typeof window.YT.Player === 'function'){
+					resolve(window.YT);
+					return;
+				}
+				var timeoutId = window.setTimeout(function() {
+					reject(new Error('YouTube Iframe API load timeout'));
+				}, 10000);
+				var previousReady = window.onYouTubeIframeAPIReady;
+				window.onYouTubeIframeAPIReady = function() {
+					window.clearTimeout(timeoutId);
+					if(typeof previousReady === 'function'){
+						try {
+							previousReady();
+						} catch (error) {
+							// Ignore external callback errors.
+						}
+					}
+					if(window.YT && typeof window.YT.Player === 'function'){
+						resolve(window.YT);
+						return;
+					}
+					reject(new Error('YouTube API loaded without Player constructor'));
+				};
+				var scriptSrc = 'https://www.youtube.com/iframe_api';
+				var existing = document.querySelector('script[src="' + scriptSrc + '"]');
+				if(existing){
+					return;
+				}
+				var script = document.createElement('script');
+				script.src = scriptSrc;
+				script.async = true;
+				script.addEventListener('error', function() {
+					window.clearTimeout(timeoutId);
+					reject(new Error('Failed to load YouTube Iframe API'));
+				}, { once: true });
+				document.head.appendChild(script);
+			}).catch(function(error) {
+				_this.youtubeApiPromise = null;
+				throw error;
+			});
+			return _this.youtubeApiPromise;
+		},
+
 		bind_analytics_events: function() {
 			var _this = this;
 			if($(document.body).data('portfolio-analytics-bound')){
@@ -233,7 +283,208 @@ Assigned to: ThemeForest
 					cta_target: element.attr('data-track-target') || '',
 					cta_classes: (element.attr('class') || '').replace(/\s+/g, ' ').trim().slice(0, 120)
 				});
+				var secondaryEvent = (element.attr('data-track-event-secondary') || '').trim();
+				if(secondaryEvent){
+					_this.track_event(secondaryEvent, {
+						cta_text: normalizedText.slice(0, 120),
+						cta_href: element.attr('href') || '',
+						cta_section: element.attr('data-track-section') || 'global',
+						cta_location: element.attr('data-track-location') || '',
+						cta_target: element.attr('data-track-target') || '',
+						cta_classes: (element.attr('class') || '').replace(/\s+/g, ' ').trim().slice(0, 120)
+					});
+				}
 			});
+
+			if('IntersectionObserver' in window){
+				var viewObserver = new IntersectionObserver(function(entries, observer) {
+					entries.forEach(function(entry) {
+						if(!entry.isIntersecting){
+							return;
+						}
+						var target = entry.target;
+						var eventName = (target.getAttribute('data-track-view') || '').trim();
+						if(!eventName || target.getAttribute('data-track-view-fired') === 'true'){
+							observer.unobserve(target);
+							return;
+						}
+						target.setAttribute('data-track-view-fired', 'true');
+						_this.track_event(eventName, {
+							cta_section: target.getAttribute('data-track-section') || 'global',
+							cta_location: target.getAttribute('data-track-location') || 'unknown',
+							cta_target: target.getAttribute('data-track-target') || '',
+							view_text: (target.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 160)
+						});
+						observer.unobserve(target);
+					});
+				}, {
+					threshold: 0.45
+				});
+				$('[data-track-view]').each(function() {
+					viewObserver.observe(this);
+				});
+			}
+
+			$('details[data-track-faq]').each(function() {
+				var details = this;
+				if(details.dataset.analyticsBound === 'true'){
+					return;
+				}
+				details.dataset.analyticsBound = 'true';
+				details.addEventListener('toggle', function() {
+					if(!details.open){
+						return;
+					}
+					_this.track_event('research_engine_faq_open', {
+						cta_section: 'research-engine',
+						cta_location: 'faq',
+						cta_target: details.getAttribute('data-track-target') || '',
+						faq_question: ((details.querySelector('summary') || {}).textContent || '').replace(/\s+/g, ' ').trim().slice(0, 160)
+					});
+				});
+			});
+
+			if(document.body && document.body.classList.contains('researchengine_dossier_page')){
+				var scrollEventsState = { milestone50: false, milestone90: false };
+				var scrollTicking = false;
+				var onScrollMilestones = function() {
+					if(scrollTicking){
+						return;
+					}
+					scrollTicking = true;
+					window.requestAnimationFrame(function() {
+						var doc = document.documentElement;
+						var scrollable = Math.max(0, doc.scrollHeight - window.innerHeight);
+						if(scrollable <= 0){
+							scrollTicking = false;
+							return;
+						}
+						var progress = ((window.pageYOffset || window.scrollY || 0) / scrollable) * 100;
+						if(progress >= 50 && !scrollEventsState.milestone50){
+							scrollEventsState.milestone50 = true;
+							_this.track_event('research_engine_scroll_50', {
+								cta_section: 'research-engine',
+								cta_location: 'scroll',
+								scroll_percent: 50
+							});
+						}
+						if(progress >= 90 && !scrollEventsState.milestone90){
+							scrollEventsState.milestone90 = true;
+							_this.track_event('research_engine_scroll_90', {
+								cta_section: 'research-engine',
+								cta_location: 'scroll',
+								scroll_percent: 90
+							});
+						}
+						scrollTicking = false;
+					});
+				};
+				window.addEventListener('scroll', onScrollMilestones, { passive: true });
+				onScrollMilestones();
+
+				var trackedVideo = document.querySelector('iframe[data-track-youtube]');
+				if(trackedVideo){
+					var videoId = trackedVideo.getAttribute('data-video-id') || '';
+					var prefix = (trackedVideo.getAttribute('data-track-prefix') || 'research_engine_vsl').trim();
+					if(!trackedVideo.id){
+						trackedVideo.id = 'tracked-youtube-vsl';
+					}
+					_this.load_youtube_api()
+						.then(function() {
+							var state = {
+								playTracked: false,
+								q25Tracked: false,
+								q50Tracked: false,
+								q75Tracked: false,
+								completeTracked: false,
+								progressTimer: null
+							};
+							var stopTimer = function() {
+								if(state.progressTimer){
+									window.clearInterval(state.progressTimer);
+									state.progressTimer = null;
+								}
+							};
+							var trackProgress = function(player) {
+								if(typeof player.getDuration !== 'function' || typeof player.getCurrentTime !== 'function'){
+									return;
+								}
+								var duration = player.getDuration();
+								if(!duration || duration <= 0){
+									return;
+								}
+								var progress = (player.getCurrentTime() / duration) * 100;
+								if(progress >= 25 && !state.q25Tracked){
+									state.q25Tracked = true;
+									_this.track_event(prefix + '_progress_25', {
+										cta_section: 'research-engine',
+										cta_location: 'vsl',
+										cta_target: videoId,
+										video_progress_percent: 25
+									});
+								}
+								if(progress >= 50 && !state.q50Tracked){
+									state.q50Tracked = true;
+									_this.track_event(prefix + '_progress_50', {
+										cta_section: 'research-engine',
+										cta_location: 'vsl',
+										cta_target: videoId,
+										video_progress_percent: 50
+									});
+								}
+								if(progress >= 75 && !state.q75Tracked){
+									state.q75Tracked = true;
+									_this.track_event(prefix + '_progress_75', {
+										cta_section: 'research-engine',
+										cta_location: 'vsl',
+										cta_target: videoId,
+										video_progress_percent: 75
+									});
+								}
+							};
+							new window.YT.Player(trackedVideo.id, {
+								events: {
+									onStateChange: function(event) {
+										var YTRef = window.YT;
+										if(!YTRef || !YTRef.PlayerState){
+											return;
+										}
+										if(event.data === YTRef.PlayerState.PLAYING){
+											if(!state.playTracked){
+												state.playTracked = true;
+												_this.track_event(prefix + '_play', {
+													cta_section: 'research-engine',
+													cta_location: 'vsl',
+													cta_target: videoId
+												});
+											}
+											stopTimer();
+											state.progressTimer = window.setInterval(function() {
+												trackProgress(event.target);
+											}, 1000);
+										} else if(event.data === YTRef.PlayerState.ENDED){
+											trackProgress(event.target);
+											if(!state.completeTracked){
+												state.completeTracked = true;
+												_this.track_event(prefix + '_complete', {
+													cta_section: 'research-engine',
+													cta_location: 'vsl',
+													cta_target: videoId
+												});
+											}
+											stopTimer();
+										} else if(event.data === YTRef.PlayerState.PAUSED || event.data === YTRef.PlayerState.BUFFERING){
+											stopTimer();
+										}
+									}
+								}
+							});
+						})
+						.catch(function() {
+							// If YouTube API fails, keep page functional without blocking.
+						});
+				}
+			}
 		},
 		
 		/*-------------- CV Portfolio Functions Calling ---------------------------------------------------

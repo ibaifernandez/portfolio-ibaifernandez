@@ -6009,6 +6009,61 @@ select:focus-visible,
 	color: rgba(232, 237, 255, 0.74);
 }
 
+.researchengine_sales_hero_pitch {
+	margin: 0;
+	font-size: clamp(19px, 2vw, 25px);
+	line-height: 1.5;
+	color: #fff;
+}
+
+.researchengine_sales_claims {
+	margin: 0;
+	padding-left: 18px;
+	display: grid;
+	gap: 10px;
+}
+
+.researchengine_sales_claims li {
+	font-size: 16px;
+	line-height: 1.65;
+	color: rgba(232, 237, 255, 0.8);
+}
+
+.researchengine_sales_flag {
+	display: grid;
+	gap: 8px;
+	padding: 16px 18px;
+	border-radius: 16px;
+	border: 1px solid rgba(232, 96, 57, 0.26);
+	background: rgba(232, 96, 57, 0.1);
+}
+
+.researchengine_sales_flag span {
+	display: inline-flex;
+	align-self: flex-start;
+	padding: 4px 9px;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.14);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #ffd6c7;
+}
+
+.researchengine_sales_flag strong {
+	font-size: 20px;
+	line-height: 1.2;
+	color: #fff;
+}
+
+.researchengine_sales_flag p {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.6;
+	color: rgba(255, 219, 205, 0.9);
+}
+
 .researchengine_dossier_actions {
 	display: flex;
 	flex-wrap: wrap;
@@ -6115,6 +6170,184 @@ select:focus-visible,
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 18px;
+}
+
+.researchengine_dossier_problem_grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 18px;
+}
+
+.researchengine_dossier_problem_card,
+.researchengine_dossier_catalog_card,
+.researchengine_dossier_step {
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-radius: 24px;
+	background: rgba(17, 26, 48, 0.85);
+	box-shadow: 0 16px 34px rgba(4, 8, 20, 0.28);
+	padding: 24px;
+}
+
+.researchengine_dossier_problem_card h3,
+.researchengine_dossier_catalog_card h3,
+.researchengine_dossier_step h3 {
+	margin: 0 0 10px;
+	font-size: 24px;
+	line-height: 1.18;
+	color: #fff;
+}
+
+.researchengine_dossier_problem_card p,
+.researchengine_dossier_catalog_card p,
+.researchengine_dossier_step p {
+	margin: 0;
+	font-size: 17px;
+	line-height: 1.7;
+	color: rgba(232, 237, 255, 0.78);
+}
+
+.researchengine_dossier_problem_card--solution {
+	border-color: rgba(232, 96, 57, 0.4);
+	background: linear-gradient(165deg, rgba(232, 96, 57, 0.2), rgba(17, 26, 48, 0.92));
+}
+
+.researchengine_dossier_mechanism {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.researchengine_dossier_step {
+	display: grid;
+	gap: 12px;
+	padding-top: 18px;
+}
+
+.researchengine_dossier_step span {
+	display: inline-flex;
+	align-self: flex-start;
+	padding: 5px 10px;
+	border-radius: 999px;
+	background: rgba(168, 185, 255, 0.14);
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: #a8b9ff;
+}
+
+.researchengine_dossier_catalog_grid {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.researchengine_dossier_catalog_card {
+	display: grid;
+	gap: 10px;
+	padding: 20px;
+}
+
+.researchengine_dossier_catalog_card h3 {
+	font-size: 20px;
+}
+
+.researchengine_dossier_catalog_card p {
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.researchengine_dossier_table_wrap {
+	overflow-x: auto;
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-radius: 20px;
+}
+
+.researchengine_dossier_table {
+	width: 100%;
+	border-collapse: collapse;
+	min-width: 760px;
+}
+
+.researchengine_dossier_table th,
+.researchengine_dossier_table td {
+	padding: 14px 16px;
+	border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+	font-size: 15px;
+	line-height: 1.55;
+	vertical-align: top;
+}
+
+.researchengine_dossier_table th {
+	background: rgba(168, 185, 255, 0.16);
+	color: #fff;
+	text-align: left;
+	font-weight: 700;
+}
+
+.researchengine_dossier_table td {
+	color: rgba(232, 237, 255, 0.82);
+}
+
+.researchengine_dossier_offer_note {
+	margin: 2px 0 0;
+	font-size: 14px;
+	line-height: 1.6;
+	color: rgba(232, 237, 255, 0.7);
+}
+
+.researchengine_dossier_faq {
+	display: grid;
+	gap: 12px;
+}
+
+.researchengine_dossier_faq details {
+	border: 1px solid rgba(148, 163, 184, 0.2);
+	border-radius: 18px;
+	background: rgba(17, 26, 48, 0.78);
+	overflow: hidden;
+}
+
+.researchengine_dossier_faq summary {
+	padding: 16px 18px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1.45;
+	color: #fff;
+}
+
+.researchengine_dossier_faq p {
+	margin: 0;
+	padding: 0 18px 18px;
+	font-size: 16px;
+	line-height: 1.65;
+	color: rgba(232, 237, 255, 0.8);
+}
+
+.researchengine_dossier_final_cta {
+	padding: clamp(24px, 2.4vw, 34px);
+	border-radius: 28px;
+	border: 1px solid rgba(232, 96, 57, 0.32);
+	background:
+		linear-gradient(162deg, rgba(232, 96, 57, 0.2) 0%, rgba(42, 27, 58, 0.9) 62%, rgba(17, 26, 48, 0.96) 100%);
+	box-shadow: 0 22px 48px rgba(4, 8, 20, 0.34);
+	display: grid;
+	gap: 14px;
+}
+
+.researchengine_dossier_final_cta h2 {
+	margin: 0;
+	font-size: clamp(30px, 3vw, 44px);
+	line-height: 1.1;
+	color: #fff;
+}
+
+.researchengine_dossier_final_cta p {
+	margin: 0;
+	font-size: 18px;
+	line-height: 1.65;
+	color: rgba(255, 222, 207, 0.9);
 }
 
 .researchengine_dossier_card,
@@ -6250,6 +6483,15 @@ select:focus-visible,
 	.researchengine_dossier_metric_grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
+	.researchengine_dossier_catalog_grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.researchengine_dossier_mechanism {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.researchengine_dossier_problem_grid {
+		grid-template-columns: 1fr;
+	}
 }
 
 @media (max-width: 1199px) {
@@ -6259,6 +6501,10 @@ select:focus-visible,
 	.researchengine_dossier_tier_grid,
 	.researchengine_dossier_value_grid,
 	.researchengine_dossier_placeholder_grid {
+		grid-template-columns: 1fr;
+	}
+	.researchengine_dossier_catalog_grid,
+	.researchengine_dossier_mechanism {
 		grid-template-columns: 1fr;
 	}
 }
@@ -6296,6 +6542,22 @@ select:focus-visible,
 	.researchengine_dossier_vsl_copy p,
 	.researchengine_dossier_vsl_copy li {
 		font-size: 16px;
+	}
+	.researchengine_dossier_problem_card h3,
+	.researchengine_dossier_catalog_card h3,
+	.researchengine_dossier_step h3,
+	.researchengine_dossier_faq summary {
+		font-size: 21px;
+	}
+	.researchengine_dossier_problem_card p,
+	.researchengine_dossier_catalog_card p,
+	.researchengine_dossier_step p,
+	.researchengine_dossier_faq p,
+	.researchengine_dossier_final_cta p {
+		font-size: 16px;
+	}
+	.researchengine_dossier_final_cta h2 {
+		font-size: 30px;
 	}
 }
 
