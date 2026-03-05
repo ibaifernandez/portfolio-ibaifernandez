@@ -22,6 +22,37 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-05 - Stitch-Inspired Research Engine Reframe + Compact Project Sidebar
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The previous Research Engine visual system was technically correct but not aligned with the desired conversion mood. The target style was a more cinematic direct-response look (deep black surface, cyan accent hierarchy, tighter cards, stronger CTA contrast) while also reducing desktop sidebar visual weight on all project pages.
+
+#### Process
+
+1. Updated `src/components/project/sidebar.html` to tag the project-only sidebar wrapper (`project_sidebar`) without touching the homepage sidebar component.
+2. Added desktop-only compact sidebar behavior in `assets/css/style.css` for project pages:
+   - reduced width to `72px`,
+   - reduced avatar/nav spacing,
+   - hidden social vertical label block,
+   - adjusted project-wrapper left offset via sibling selector.
+3. Reworked the Research Engine design language in `assets/css/style.css`:
+   - switched to dark/cyan palette and reduced rounded corners,
+   - tightened cards, section separators, FAQ/table styling, and tier emphasis,
+   - updated CTA visuals to neon-cyan primary + outlined secondary,
+   - aligned spotlight mockup gradient to the same palette.
+4. Rebuilt generated assets/pages and validated gates (`build`, `quality`, `e2e`).
+
+#### Actual Results
+
+- The Research Engine page now reads as a high-contrast sales surface closer to the intended VSL aesthetic.
+- Project pages on desktop now give more horizontal room to the dossier itself by compacting the left rail.
+- Automated quality and Playwright suites remain green after the visual shift.
+
+---
+
 ### 2026-03-04 - GA4 Intent Instrumentation for The Research Engine Sales Page
 
 **Commit:** `working tree (uncommitted)`
