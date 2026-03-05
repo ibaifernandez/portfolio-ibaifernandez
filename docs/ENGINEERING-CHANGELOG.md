@@ -22,34 +22,34 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
-### 2026-03-05 - Stitch-Inspired Research Engine Reframe + Compact Project Sidebar
+### 2026-03-05 - Stitch-Faithful Research Engine Reframe + Project Sidebar Hidden on Desktop
 
 **Commit:** `working tree (uncommitted)`
 
 #### Necessity
 
-The previous Research Engine visual system was technically correct but not aligned with the desired conversion mood. The target style was a more cinematic direct-response look (deep black surface, cyan accent hierarchy, tighter cards, stronger CTA contrast) while also reducing desktop sidebar visual weight on all project pages.
+The prior implementation still looked like a styled dossier, not like the provided stitch reference. The target was a closer direct-response VSL composition (centered hero, stronger typographic hierarchy, dominant video frame, staggered cards, and offer-first layout). The project sidebar behavior also needed an explicit correction: hide it on desktop in project pages, not compact it.
 
 #### Process
 
 1. Updated `src/components/project/sidebar.html` to tag the project-only sidebar wrapper (`project_sidebar`) without touching the homepage sidebar component.
-2. Added desktop-only compact sidebar behavior in `assets/css/style.css` for project pages:
-   - reduced width to `72px`,
-   - reduced avatar/nav spacing,
-   - hidden social vertical label block,
-   - adjusted project-wrapper left offset via sibling selector.
-3. Reworked the Research Engine design language in `assets/css/style.css`:
-   - switched to dark/cyan palette and reduced rounded corners,
-   - tightened cards, section separators, FAQ/table styling, and tier emphasis,
-   - updated CTA visuals to neon-cyan primary + outlined secondary,
-   - aligned spotlight mockup gradient to the same palette.
-4. Rebuilt generated assets/pages and validated gates (`build`, `quality`, `e2e`).
+2. Replaced compact behavior with desktop hide behavior in `assets/css/style.css`:
+   - `project_sidebar` is now hidden on desktop breakpoints,
+   - project content wrapper resets to `margin-left: 0`.
+3. Rebuilt `src/pages/project-the-research-engine.template.html` using a stitch-faithful VSL structure:
+   - centered protocol header and oversized uppercase headline,
+   - dominant VSL frame with play-overlay treatment,
+   - risk cards, infrastructure grid, and vertical deployment sequence,
+   - offer-stack section with featured `Complete` tier emphasis,
+   - FAQ and placeholder legend kept for production asset swap.
+4. Added a dedicated `researchengine_stitch_*` style system in `assets/css/style.css` (dark base + cyan accent) while preserving existing analytics events and CTA tracking hooks.
+5. Rebuilt generated assets/pages and validated gates (`build`, `quality`, `e2e`).
 
 #### Actual Results
 
-- The Research Engine page now reads as a high-contrast sales surface closer to the intended VSL aesthetic.
-- Project pages on desktop now give more horizontal room to the dossier itself by compacting the left rail.
-- Automated quality and Playwright suites remain green after the visual shift.
+- The Research Engine page now follows the intended stitch visual direction much more closely.
+- Desktop project pages no longer render the left sidebar, maximizing dossier width and focus.
+- Quality guards and Playwright remain green after the structural rewrite.
 
 ---
 
