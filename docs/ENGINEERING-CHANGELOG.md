@@ -22,6 +22,95 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-05 - Project Pages Contact Strip Removed (Form + Contact Data)
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+Project pages should remain focused on the dossier/VSL narrative and avoid re-introducing the global contact form + location/phone/email block at the end of each case.
+
+#### Process
+
+1. Created a project-specific footer component with only copyright:
+   - `src/components/project/footer-minimal.html`
+2. Updated all project templates (`project-*.template.html` + `project.template.html`) to:
+   - remove `@include ../components/project/contact-form.html`
+   - replace `@include ../components/index/footer.html` with `@include ../components/project/footer-minimal.html`
+3. Rebuilt generated pages and reran gates.
+
+#### Actual Results
+
+- All project pages now finish at project nav + minimal footer (no contact form, no location/phone/email panel).
+- Home and blog keep their existing contact surfaces unchanged.
+- Pipeline remains green (`build`, `quality`, `e2e`).
+
+---
+
+### 2026-03-05 - Research Engine VSL Proportion Polish (Golden Rhythm Pass)
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+After the hard reset, the visual language was correct but the composition still needed finer proportion control (section rhythm, asymmetry balance, type scale continuity, and CTA cadence).
+
+#### Process
+
+1. Refined `researchengine_stitch_*` spacing tokens in `assets/css/style.css` to standardize left/right asymmetry and vertical flow.
+2. Tuned headline/subtitle/body scales and line lengths for editorial rhythm while keeping the dark brutalist direction intact.
+3. Reduced residual rigidness in content modules:
+   - staggered feature columns,
+   - improved risk-column balance,
+   - refined featured-offer emphasis without reverting to card-heavy framing.
+4. Improved FAQ interaction readability (custom summary marker + stronger hierarchy).
+5. Preserved the visual constraints:
+   - no light backgrounds,
+   - no generic centered SaaS container behavior,
+   - cyan reserved for strategic emphasis and primary CTAs.
+6. Added responsive harmony adjustments (tablet/mobile) so staggered desktop composition collapses cleanly without breaking rhythm.
+7. Mitigated YouTube embed stability issues by switching to `youtube-nocookie` and explicit `referrerpolicy="origin"` on the VSL iframe.
+
+#### Actual Results
+
+- Layout now feels more harmonic and less mechanically stacked.
+- Hero, VSL block, and section transitions have cleaner editorial pacing.
+- The page keeps the intended dark-brutalist identity while improving scanability.
+
+---
+
+### 2026-03-05 - Dark Brutalism Hard Reset for Research Engine VSL
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The page still read as a boxed template instead of a premium sales surface. The design target was restated with strict constraints: no centered SaaS container rhythm, no card-heavy framing, solid abyss-black canvas, colossal typography, asymmetric spacing, and a single cyan accent hierarchy.
+
+#### Process
+
+1. Rebuilt `src/pages/project-the-research-engine.template.html` to remove Bootstrap `container/row/col` wrappers for this route and keep a direct full-width section flow.
+2. Reworked `assets/css/style.css` (`researchengine_stitch_*` block) to enforce:
+   - true dark-canvas background inheritance on page wrappers,
+   - left/right asymmetric section offsets with large negative-space zones,
+   - oversized uppercase headline system with tight tracking,
+   - subdued secondary copy color and cyan used only for strategic emphasis,
+   - border-light hierarchy separators instead of card stacks,
+   - dark glassmorphism treatment for the VSL frame (`backdrop-filter` + cyan ambient glow).
+3. Kept event instrumentation and CTA tracking unchanged.
+4. Rebuilt generated outputs and re-ran checks.
+
+#### Actual Results
+
+- Visual direction is now materially closer to the required dark-brutalist/editorial VSL.
+- Layout flow is fluid and asymmetrical, with reduced boxed scaffolding.
+- CI-equivalent local gates remain green:
+  - `npm run build:pages`
+  - `npm run test:quality`
+  - `npm run test:e2e` (29/29)
+
+---
+
 ### 2026-03-05 - Fluid Contrast Fix for Research Engine (Seamless Pass)
 
 **Commit:** `working tree (uncommitted)`

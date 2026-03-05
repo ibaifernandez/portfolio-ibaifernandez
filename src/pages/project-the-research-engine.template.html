@@ -26,6 +26,15 @@
 	<link rel="stylesheet" href="assets/css/animate.min.css">
 	<link rel="stylesheet" href="assets/css/style.min.css">
 	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preload" as="style"
+		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap"
+		onload="this.onload=null;this.rel='stylesheet'">
+	<noscript>
+		<link rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap">
+	</noscript>
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 	<link rel="canonical" href="{{pageCanonicalUrl}}">
 	<script type="application/ld+json">
@@ -33,7 +42,7 @@
 	</script>
 </head>
 
-<body class="researchengine_dossier_page researchengine_stitch_page">
+<body class="researchengine_stitch_page">
 	<a class="skip-link" href="#project_main">Skip to main content</a>
 
 	<div class="preloader">
@@ -53,184 +62,196 @@
 
 	<div class="port_sec_warapper" id="project_main">
 		<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper researchengine_stitch_wrapper">
-			<div class="container-fluid project_case_container researchengine_stitch_surface">
-				<div class="row g-4">
-					<div class="col-12">
-						<a href="{{projectBackHref}}" class="project_case_backlink researchengine_stitch_backlink">Back to portfolio</a>
-					</div>
+			<div class="researchengine_stitch_surface">
+				<div class="researchengine_stitch_flow">
+					<a href="{{projectBackHref}}" class="project_case_backlink researchengine_stitch_backlink">Back to portfolio</a>
 
-					<div class="col-12">
-						<header class="researchengine_stitch_header" aria-labelledby="researchengine-stitch-title">
-							<p class="researchengine_stitch_protocol"><i class="fas fa-shield-alt"></i> Classified protocol // Ver. 4.0.1</p>
-							<h1 id="researchengine-stitch-title" class="researchengine_stitch_title">Relying on naked AI is executive negligence.</h1>
-							<p class="researchengine_stitch_subtitle">
-								Transform standard AI models into a <span>mathematically verified</span> intelligence engine.
-							</p>
-							<p class="researchengine_stitch_copy">
-								The Research Engine is a 55-workflow execution system designed for founders, consultants, investors,
-								and analysts who cannot afford fabricated sources or fragile outputs in high-risk decisions.
-							</p>
-							<div class="researchengine_stitch_actions">
-								<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
-									href="https://youtu.be/N0sUEMesXYM"
-									target="_blank"
-									rel="noopener noreferrer"
-									data-track-event="research_engine_vsl_click"
-									data-track-section="research-engine"
-									data-track-location="hero"
-									data-track-target="youtube-vsl">Watch the VSL</a>
-								<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
-									href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
-									target="_blank"
-									rel="noopener noreferrer"
-									data-track-event="research_engine_gumroad_click"
-									data-track-section="research-engine"
-									data-track-location="hero"
-									data-track-target="gumroad-main">Secure access now</a>
-							</div>
-						</header>
-					</div>
+					<header class="researchengine_stitch_header" aria-labelledby="researchengine-stitch-title">
+						<p class="researchengine_stitch_protocol"><i class="fas fa-shield-alt"></i> Classified protocol // Ver. 4.0.1</p>
+						<h1 id="researchengine-stitch-title" class="researchengine_stitch_title">Relying on naked AI is executive negligence.</h1>
+						<p class="researchengine_stitch_subtitle">
+							Transform standard AI models into a <span>mathematically verified</span> intelligence engine.
+						</p>
+						<p class="researchengine_stitch_copy">
+							The Research Engine is a 55-workflow execution system designed for founders, consultants, investors,
+							and analysts who cannot afford fabricated sources or fragile outputs in high-risk decisions.
+						</p>
+						<div class="researchengine_stitch_actions">
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
+								href="https://youtu.be/N0sUEMesXYM"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_vsl_click"
+								data-track-section="research-engine"
+								data-track-location="hero"
+								data-track-target="youtube-vsl">Watch the VSL</a>
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
+								href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_gumroad_click"
+								data-track-section="research-engine"
+								data-track-location="hero"
+								data-track-target="gumroad-main">Secure access now</a>
+						</div>
+					</header>
 
-					<div class="col-12">
-						<section class="researchengine_stitch_video_block" aria-labelledby="researchengine-stitch-video-title">
-							<h2 id="researchengine-stitch-video-title" class="sr-only">Research Engine VSL</h2>
-							<div class="researchengine_stitch_video_frame">
-								<iframe
-									id="research-engine-vsl-player"
-									src="https://www.youtube.com/embed/N0sUEMesXYM?enablejsapi=1&amp;rel=0&amp;modestbranding=1"
-									title="The Research Engine VSL"
-									loading="lazy"
-									referrerpolicy="strict-origin-when-cross-origin"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-									allowfullscreen
-									data-track-youtube="research-engine-vsl"
-									data-track-prefix="research_engine_vsl"
-									data-video-id="N0sUEMesXYM">
-								</iframe>
-								<div class="researchengine_stitch_video_overlay" aria-hidden="true">
-									<div class="researchengine_stitch_play"><i class="fas fa-play"></i></div>
-								</div>
-								<div class="researchengine_stitch_video_progress" aria-hidden="true"><span></span></div>
+					<section class="researchengine_stitch_video_block" aria-labelledby="researchengine-stitch-video-title">
+						<h2 id="researchengine-stitch-video-title" class="sr-only">Research Engine VSL</h2>
+						<div class="researchengine_stitch_video_frame">
+							<iframe
+								id="research-engine-vsl-player"
+								src="https://www.youtube-nocookie.com/embed/N0sUEMesXYM?enablejsapi=1&amp;rel=0&amp;modestbranding=1&amp;origin=https%3A%2F%2Fportfolio.ibaifernandez.com"
+								title="The Research Engine VSL"
+								loading="lazy"
+								referrerpolicy="origin"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								allowfullscreen
+								data-track-youtube="research-engine-vsl"
+								data-track-prefix="research_engine_vsl"
+								data-video-id="N0sUEMesXYM">
+							</iframe>
+							<div class="researchengine_stitch_video_overlay" aria-hidden="true">
+								<div class="researchengine_stitch_play"><i class="fas fa-play"></i></div>
 							</div>
-							<div class="researchengine_stitch_video_actions">
-								<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
-									href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
-									target="_blank"
-									rel="noopener noreferrer"
-									data-track-event="research_engine_gumroad_click"
-									data-track-section="research-engine"
-									data-track-location="vsl-block"
-									data-track-target="gumroad-after-vsl">Get the engine now</a>
-							</div>
-						</section>
-					</div>
+							<div class="researchengine_stitch_video_progress" aria-hidden="true"><span></span></div>
+						</div>
+						<div class="researchengine_stitch_video_actions">
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
+								href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_gumroad_click"
+								data-track-section="research-engine"
+								data-track-location="vsl-block"
+								data-track-target="gumroad-after-vsl">Get the engine now</a>
+						</div>
+					</section>
 
-					<div class="col-12">
-						<section class="researchengine_stitch_section researchengine_stitch_section--risk" aria-labelledby="researchengine-stitch-risk-title">
-							<div class="researchengine_stitch_section_head">
-								<p class="researchengine_stitch_tag">Risk assessment</p>
-								<h2 id="researchengine-stitch-risk-title">The high cost of unverified output</h2>
+					<section class="researchengine_stitch_section researchengine_stitch_section--risk researchengine_stitch_section--left" aria-labelledby="researchengine-stitch-risk-title">
+						<div class="researchengine_stitch_section_head">
+							<p class="researchengine_stitch_tag">Risk assessment</p>
+							<h2 id="researchengine-stitch-risk-title">The high cost of unverified output</h2>
+						</div>
+						<div class="researchengine_stitch_risk_layout">
+							<div class="researchengine_stitch_risk_copy">
+								<p>
+									Traditional LLM workflows optimize for speed, not reliability. In executive contexts,
+									that margin of error is a legal and strategic liability.
+								</p>
+								<p>
+									This system introduces enforced source pressure, conflict resolution, and deterministic
+									structures before any final recommendation is accepted.
+								</p>
 							</div>
-							<div class="researchengine_stitch_risk_layout">
-								<div class="researchengine_stitch_risk_copy">
-									<p>
-										Traditional LLM workflows optimize for speed, not reliability. In executive contexts,
-										that margin of error is a legal and strategic liability.
-									</p>
-									<p>
-										This system introduces enforced source pressure, conflict resolution, and deterministic
-										structures before any final recommendation is accepted.
-									</p>
-								</div>
-								<div class="researchengine_stitch_risk_cards">
-									<article class="researchengine_stitch_risk_card researchengine_stitch_risk_card--primary">
-										<h3>AI hallucinations</h3>
-										<p>Fabricated claims in decision documents can destroy trust in one meeting.</p>
-									</article>
-									<article class="researchengine_stitch_risk_card">
-										<h3>Wasted time</h3>
-										<p>Teams burn hours re-validating weak outputs generated in seconds.</p>
-									</article>
-									<article class="researchengine_stitch_risk_card">
-										<h3>Source opacity</h3>
-										<p>Generic prompting hides evidence quality and weakens executive confidence.</p>
-									</article>
-								</div>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-						<section class="researchengine_stitch_section" aria-labelledby="researchengine-stitch-advantage-title">
-							<div class="researchengine_stitch_section_head">
-								<p class="researchengine_stitch_tag">Core infrastructure</p>
-								<h2 id="researchengine-stitch-advantage-title">The unfair advantage</h2>
-							</div>
-							<div class="researchengine_stitch_feature_grid">
-								<article class="researchengine_stitch_feature_card">
-									<h3>55 advanced protocols</h3>
-									<p>Non-linear prompting architecture tuned for deep market synthesis and extraction.</p>
+							<div class="researchengine_stitch_risk_cards">
+								<article class="researchengine_stitch_risk_card researchengine_stitch_risk_card--primary">
+									<h3>AI hallucinations</h3>
+									<p>Fabricated claims in decision documents can destroy trust in one meeting.</p>
 								</article>
-								<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-sm">
-									<h3>Master Notion database</h3>
-									<p>A centralized command center for prompts, outputs, tags, and workflow routing.</p>
+								<article class="researchengine_stitch_risk_card">
+									<h3>Wasted time</h3>
+									<p>Teams burn hours re-validating weak outputs generated in seconds.</p>
 								</article>
-								<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-md">
-									<h3>AI agent masterclass</h3>
-									<p>Execution modules to operationalize these workflows as reusable autonomous agents.</p>
-								</article>
-								<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-lg">
-									<h3>Zero-hallucination logic</h3>
-									<p>Structured loops force the model to justify, contrast, and validate before output.</p>
+								<article class="researchengine_stitch_risk_card">
+									<h3>Source opacity</h3>
+									<p>Generic prompting hides evidence quality and weakens executive confidence.</p>
 								</article>
 							</div>
-						</section>
-					</div>
+						</div>
+					</section>
 
-					<div class="col-12">
-						<section class="researchengine_stitch_section researchengine_stitch_section--sequence" aria-labelledby="researchengine-stitch-sequence-title">
-							<div class="researchengine_stitch_section_head researchengine_stitch_section_head--center">
-								<p class="researchengine_stitch_tag">Execution sequence</p>
-								<h2 id="researchengine-stitch-sequence-title">Deploy in under 120 seconds</h2>
-							</div>
-							<div class="researchengine_stitch_sequence">
-								<article class="researchengine_stitch_step">
-									<span class="researchengine_stitch_step_num">01</span>
-									<h3>Duplicate Notion hub</h3>
-									<p>Clone the command architecture and initialize your research control center.</p>
-								</article>
-								<div class="researchengine_stitch_flowline" aria-hidden="true"></div>
-								<article class="researchengine_stitch_step">
-									<span class="researchengine_stitch_step_num">02</span>
-									<h3>Inject AI behavior</h3>
-									<p>Apply the protocol stack to your model so outputs follow verification logic.</p>
-								</article>
-								<div class="researchengine_stitch_flowline" aria-hidden="true"></div>
-								<article class="researchengine_stitch_step">
-									<span class="researchengine_stitch_step_num researchengine_stitch_step_num--active">03</span>
-									<h3>Execute research</h3>
-									<p>Run objectives and receive structured, decision-grade intelligence outputs.</p>
-								</article>
-							</div>
-						</section>
-					</div>
+					<section class="researchengine_stitch_section researchengine_stitch_section--right" aria-labelledby="researchengine-stitch-advantage-title">
+						<div class="researchengine_stitch_section_head">
+							<p class="researchengine_stitch_tag">Core infrastructure</p>
+							<h2 id="researchengine-stitch-advantage-title">The unfair advantage</h2>
+						</div>
+						<div class="researchengine_stitch_feature_grid">
+							<article class="researchengine_stitch_feature_card">
+								<h3>55 advanced protocols</h3>
+								<p>Non-linear prompting architecture tuned for deep market synthesis and extraction.</p>
+							</article>
+							<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-sm">
+								<h3>Master Notion database</h3>
+								<p>A centralized command center for prompts, outputs, tags, and workflow routing.</p>
+							</article>
+							<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-md">
+								<h3>AI agent masterclass</h3>
+								<p>Execution modules to operationalize these workflows as reusable autonomous agents.</p>
+							</article>
+							<article class="researchengine_stitch_feature_card researchengine_stitch_feature_card--offset-lg">
+								<h3>Zero-hallucination logic</h3>
+								<p>Structured loops force the model to justify, contrast, and validate before output.</p>
+							</article>
+						</div>
+					</section>
 
-					<div class="col-12">
-						<section class="researchengine_stitch_section researchengine_stitch_section--offers" aria-labelledby="researchengine-stitch-offers-title">
-							<div class="researchengine_stitch_section_head researchengine_stitch_section_head--center">
-								<p class="researchengine_stitch_tag">Offer stack</p>
-								<h2 id="researchengine-stitch-offers-title">Choose your protocol</h2>
-							</div>
+					<section class="researchengine_stitch_section researchengine_stitch_section--sequence researchengine_stitch_section--left" aria-labelledby="researchengine-stitch-sequence-title">
+						<div class="researchengine_stitch_section_head researchengine_stitch_section_head--center">
+							<p class="researchengine_stitch_tag">Execution sequence</p>
+							<h2 id="researchengine-stitch-sequence-title">Deploy in under 120 seconds</h2>
+						</div>
+						<div class="researchengine_stitch_sequence">
+							<article class="researchengine_stitch_step">
+								<span class="researchengine_stitch_step_num">01</span>
+								<h3>Duplicate Notion hub</h3>
+								<p>Clone the command architecture and initialize your research control center.</p>
+							</article>
+							<div class="researchengine_stitch_flowline" aria-hidden="true"></div>
+							<article class="researchengine_stitch_step">
+								<span class="researchengine_stitch_step_num">02</span>
+								<h3>Inject AI behavior</h3>
+								<p>Apply the protocol stack to your model so outputs follow verification logic.</p>
+							</article>
+							<div class="researchengine_stitch_flowline" aria-hidden="true"></div>
+							<article class="researchengine_stitch_step">
+								<span class="researchengine_stitch_step_num researchengine_stitch_step_num--active">03</span>
+								<h3>Execute research</h3>
+								<p>Run objectives and receive structured, decision-grade intelligence outputs.</p>
+							</article>
+						</div>
+					</section>
 
-							<article class="researchengine_stitch_freebie"
+					<section class="researchengine_stitch_section researchengine_stitch_section--offers researchengine_stitch_section--right" aria-labelledby="researchengine-stitch-offers-title">
+						<div class="researchengine_stitch_section_head researchengine_stitch_section_head--center">
+							<p class="researchengine_stitch_tag">Offer stack</p>
+							<h2 id="researchengine-stitch-offers-title">Choose your protocol</h2>
+						</div>
+
+						<article class="researchengine_stitch_freebie"
+							data-track-view="research_engine_tier_view"
+							data-track-section="research-engine"
+							data-track-location="offers"
+							data-track-target="freebie">
+							<div>
+								<h3>Freebie ($0)</h3>
+								<p>PR-001 + VSL bridge + case-study teaser to validate fit before scaling.</p>
+							</div>
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
+								href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_tier_select"
+								data-track-event-secondary="research_engine_gumroad_click"
+								data-track-section="research-engine"
+								data-track-location="offers"
+								data-track-target="freebie">Claim freebie</a>
+						</article>
+
+						<div class="researchengine_stitch_tier_row">
+							<article class="researchengine_stitch_tier"
 								data-track-view="research_engine_tier_view"
 								data-track-section="research-engine"
 								data-track-location="offers"
-								data-track-target="freebie">
-								<div>
-									<h3>Freebie ($0)</h3>
-									<p>PR-001 + VSL bridge + case-study teaser to validate fit before scaling.</p>
-								</div>
+								data-track-target="essential">
+								<p class="researchengine_stitch_tier_kicker">Tier 01</p>
+								<h3>Essential</h3>
+								<p class="researchengine_stitch_tier_price">$9</p>
+								<ul>
+									<li>Top 25 protocols</li>
+									<li>Execution manual</li>
+									<li>Rapid start workflow</li>
+								</ul>
 								<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
 									href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
 									target="_blank"
@@ -239,189 +260,154 @@
 									data-track-event-secondary="research_engine_gumroad_click"
 									data-track-section="research-engine"
 									data-track-location="offers"
-									data-track-target="freebie">Claim freebie</a>
+									data-track-target="essential">Initialize</a>
 							</article>
 
-							<div class="researchengine_stitch_tier_row">
-								<article class="researchengine_stitch_tier"
-									data-track-view="research_engine_tier_view"
-									data-track-section="research-engine"
-									data-track-location="offers"
-									data-track-target="essential">
-									<p class="researchengine_stitch_tier_kicker">Tier 01</p>
-									<h3>Essential</h3>
-									<p class="researchengine_stitch_tier_price">$9</p>
-									<ul>
-										<li>Top 25 protocols</li>
-										<li>Execution manual</li>
-										<li>Rapid start workflow</li>
-									</ul>
-									<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
-										href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
-										target="_blank"
-										rel="noopener noreferrer"
-										data-track-event="research_engine_tier_select"
-										data-track-event-secondary="research_engine_gumroad_click"
-										data-track-section="research-engine"
-										data-track-location="offers"
-										data-track-target="essential">Initialize</a>
-								</article>
-
-								<article class="researchengine_stitch_tier researchengine_stitch_tier--featured"
-									data-track-view="research_engine_tier_view"
-									data-track-section="research-engine"
-									data-track-location="offers"
-									data-track-target="complete">
-									<p class="researchengine_stitch_tier_kicker">Recommended</p>
-									<h3>Complete</h3>
-									<p class="researchengine_stitch_tier_price">$49</p>
-									<ul>
-										<li>50 protocols</li>
-										<li>Notion command hub</li>
-										<li>AI agent masterclass</li>
-										<li>5 bonus workflows</li>
-									</ul>
-									<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
-										href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
-										target="_blank"
-										rel="noopener noreferrer"
-										data-track-event="research_engine_tier_select"
-										data-track-event-secondary="research_engine_gumroad_click"
-										data-track-section="research-engine"
-										data-track-location="offers"
-										data-track-target="complete">Get complete access</a>
-								</article>
-
-								<article class="researchengine_stitch_tier"
-									data-track-view="research_engine_tier_view"
-									data-track-section="research-engine"
-									data-track-location="offers"
-									data-track-target="professional">
-									<p class="researchengine_stitch_tier_kicker">Tier 02</p>
-									<h3>Professional</h3>
-									<p class="researchengine_stitch_tier_price">$19</p>
-									<ul>
-										<li>Full 50-workflow library</li>
-										<li>Operational briefing format</li>
-										<li>High-speed decision templates</li>
-									</ul>
-									<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
-										href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
-										target="_blank"
-										rel="noopener noreferrer"
-										data-track-event="research_engine_tier_select"
-										data-track-event-secondary="research_engine_gumroad_click"
-										data-track-section="research-engine"
-										data-track-location="offers"
-										data-track-target="professional">Initialize</a>
-								</article>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-						<section class="researchengine_stitch_section" aria-labelledby="researchengine-stitch-faq-title">
-							<div class="researchengine_stitch_section_head">
-								<p class="researchengine_stitch_tag">Technical Q&amp;A</p>
-								<h2 id="researchengine-stitch-faq-title">Fast objections handling</h2>
-							</div>
-							<div class="researchengine_stitch_faq">
-								<details data-track-faq data-track-target="paid-models-required">
-									<summary>Do I need paid ChatGPT or Claude plans?</summary>
-									<p>No. The protocol architecture works on free plans. Paid web-enabled models increase depth and speed.</p>
-								</details>
-								<details data-track-faq data-track-target="just-reddit-prompts">
-									<summary>Is this just another random prompt pack?</summary>
-									<p>No. This is a structured execution system with validation logic, not isolated prompt snippets.</p>
-								</details>
-								<details data-track-faq data-track-target="commercial-use">
-									<summary>Can I use outputs in paid client work?</summary>
-									<p>Yes. Once acquired, the workflows can be used in commercial contexts and internal strategy teams.</p>
-								</details>
-								<details data-track-faq data-track-target="refund-policy">
-									<summary>What is the refund policy?</summary>
-									<p>No refunds. This is digital intellectual property with immediate full access and replicable value.</p>
-								</details>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-						<section class="researchengine_stitch_section" aria-labelledby="researchengine-stitch-assets-title">
-							<div class="researchengine_stitch_section_head">
-								<p class="researchengine_stitch_tag">Placeholder asset legend</p>
-								<h2 id="researchengine-stitch-assets-title">Drop-in map for final media</h2>
-							</div>
-							<div class="researchengine_stitch_placeholder_grid">
-								<article class="researchengine_stitch_placeholder">
-									<span>Asset Slot A1</span>
-									<h3>Hero product visual</h3>
-									<div class="researchengine_stitch_placeholder_visual">
-{{{projectMediaHtml}}}
-									</div>
-								</article>
-								<article class="researchengine_stitch_placeholder">
-									<span>Asset Slot A2</span>
-									<h3>Notion hub proof</h3>
-									<p>Screenshot with tags, filters, and workflow index so buyers see execution depth.</p>
-								</article>
-								<article class="researchengine_stitch_placeholder">
-									<span>Asset Slot A3</span>
-									<h3>Case-study PDF preview</h3>
-									<p>Visual proof of hallucination teardown and source validation flow.</p>
-								</article>
-								<article class="researchengine_stitch_placeholder">
-									<span>Asset Slot A4</span>
-									<h3>Gumroad checkout capture</h3>
-									<p>Real checkout frame with tier highlights for trust and conversion reinforcement.</p>
-								</article>
-								<article class="researchengine_stitch_placeholder">
-									<span>Asset Slot A5</span>
-									<h3>Workflow architecture map</h3>
-									<p>Diagram showing movement from objective lock to final executive briefing output.</p>
-								</article>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-						<section class="researchengine_stitch_final" aria-labelledby="researchengine-stitch-final-title">
-							<h2 id="researchengine-stitch-final-title">Your next decision will happen anyway. Run it with verified intelligence.</h2>
-							<p>Generic prompting gives speed. The Research Engine gives control, structure, and strategic confidence.</p>
-							<div class="researchengine_stitch_actions">
+							<article class="researchengine_stitch_tier researchengine_stitch_tier--featured"
+								data-track-view="research_engine_tier_view"
+								data-track-section="research-engine"
+								data-track-location="offers"
+								data-track-target="complete">
+								<p class="researchengine_stitch_tier_kicker">Recommended</p>
+								<h3>Complete</h3>
+								<p class="researchengine_stitch_tier_price">$49</p>
+								<ul>
+									<li>50 protocols</li>
+									<li>Notion command hub</li>
+									<li>AI agent masterclass</li>
+									<li>5 bonus workflows</li>
+								</ul>
 								<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
 									href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
 									target="_blank"
 									rel="noopener noreferrer"
-									data-track-event="research_engine_gumroad_click"
+									data-track-event="research_engine_tier_select"
+									data-track-event-secondary="research_engine_gumroad_click"
 									data-track-section="research-engine"
-									data-track-location="final-cta"
-									data-track-target="gumroad-final">Access the research engine</a>
+									data-track-location="offers"
+									data-track-target="complete">Get complete access</a>
+							</article>
+
+							<article class="researchengine_stitch_tier"
+								data-track-view="research_engine_tier_view"
+								data-track-section="research-engine"
+								data-track-location="offers"
+								data-track-target="professional">
+								<p class="researchengine_stitch_tier_kicker">Tier 02</p>
+								<h3>Professional</h3>
+								<p class="researchengine_stitch_tier_price">$19</p>
+								<ul>
+									<li>Full 50-workflow library</li>
+									<li>Operational briefing format</li>
+									<li>High-speed decision templates</li>
+								</ul>
 								<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
-									href="https://youtu.be/N0sUEMesXYM"
+									href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
 									target="_blank"
 									rel="noopener noreferrer"
-									data-track-event="research_engine_vsl_click"
+									data-track-event="research_engine_tier_select"
+									data-track-event-secondary="research_engine_gumroad_click"
 									data-track-section="research-engine"
-									data-track-location="final-cta"
-									data-track-target="youtube-final">Watch the VSL again</a>
-							</div>
-						</section>
-					</div>
+									data-track-location="offers"
+									data-track-target="professional">Initialize</a>
+							</article>
+						</div>
+					</section>
 
-					<div class="col-12">
-						<nav class="project_case_nav" aria-label="Project navigation">
+					<section class="researchengine_stitch_section researchengine_stitch_section--left" aria-labelledby="researchengine-stitch-faq-title">
+						<div class="researchengine_stitch_section_head">
+							<p class="researchengine_stitch_tag">Technical Q&amp;A</p>
+							<h2 id="researchengine-stitch-faq-title">Fast objections handling</h2>
+						</div>
+						<div class="researchengine_stitch_faq">
+							<details data-track-faq data-track-target="paid-models-required">
+								<summary>Do I need paid ChatGPT or Claude plans?</summary>
+								<p>No. The protocol architecture works on free plans. Paid web-enabled models increase depth and speed.</p>
+							</details>
+							<details data-track-faq data-track-target="just-reddit-prompts">
+								<summary>Is this just another random prompt pack?</summary>
+								<p>No. This is a structured execution system with validation logic, not isolated prompt snippets.</p>
+							</details>
+							<details data-track-faq data-track-target="commercial-use">
+								<summary>Can I use outputs in paid client work?</summary>
+								<p>Yes. Once acquired, the workflows can be used in commercial contexts and internal strategy teams.</p>
+							</details>
+							<details data-track-faq data-track-target="refund-policy">
+								<summary>What is the refund policy?</summary>
+								<p>No refunds. This is digital intellectual property with immediate full access and replicable value.</p>
+							</details>
+						</div>
+					</section>
+
+					<section class="researchengine_stitch_section researchengine_stitch_section--right" aria-labelledby="researchengine-stitch-assets-title">
+						<div class="researchengine_stitch_section_head">
+							<p class="researchengine_stitch_tag">Placeholder asset legend</p>
+							<h2 id="researchengine-stitch-assets-title">Drop-in map for final media</h2>
+						</div>
+						<div class="researchengine_stitch_placeholder_grid">
+							<article class="researchengine_stitch_placeholder">
+								<span>Asset Slot A1</span>
+								<h3>Hero product visual</h3>
+								<div class="researchengine_stitch_placeholder_visual">
+{{{projectMediaHtml}}}
+								</div>
+							</article>
+							<article class="researchengine_stitch_placeholder">
+								<span>Asset Slot A2</span>
+								<h3>Notion hub proof</h3>
+								<p>Screenshot with tags, filters, and workflow index so buyers see execution depth.</p>
+							</article>
+							<article class="researchengine_stitch_placeholder">
+								<span>Asset Slot A3</span>
+								<h3>Case-study PDF preview</h3>
+								<p>Visual proof of hallucination teardown and source validation flow.</p>
+							</article>
+							<article class="researchengine_stitch_placeholder">
+								<span>Asset Slot A4</span>
+								<h3>Gumroad checkout capture</h3>
+								<p>Real checkout frame with tier highlights for trust and conversion reinforcement.</p>
+							</article>
+							<article class="researchengine_stitch_placeholder">
+								<span>Asset Slot A5</span>
+								<h3>Workflow architecture map</h3>
+								<p>Diagram showing movement from objective lock to final executive briefing output.</p>
+							</article>
+						</div>
+					</section>
+
+					<section class="researchengine_stitch_final researchengine_stitch_section--left" aria-labelledby="researchengine-stitch-final-title">
+						<h2 id="researchengine-stitch-final-title">Your next decision will happen anyway. Run it with verified intelligence.</h2>
+						<p>Generic prompting gives speed. The Research Engine gives control, structure, and strategic confidence.</p>
+						<div class="researchengine_stitch_actions">
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--primary"
+								href="https://ibaifernandez.gumroad.com/l/the-research-engine-ai-prompt-pack"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_gumroad_click"
+								data-track-section="research-engine"
+								data-track-location="final-cta"
+								data-track-target="gumroad-final">Access the research engine</a>
+							<a class="researchengine_stitch_btn researchengine_stitch_btn--secondary"
+								href="https://youtu.be/N0sUEMesXYM"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track-event="research_engine_vsl_click"
+								data-track-section="research-engine"
+								data-track-location="final-cta"
+								data-track-target="youtube-final">Watch the VSL again</a>
+						</div>
+					</section>
+
+					<nav class="project_case_nav researchengine_stitch_nav" aria-label="Project navigation">
 {{{previousProjectNavHtml}}}
-							<a class="project_case_navlink project_case_navlink--index" href="{{projectIndexHref}}">All Projects</a>
+						<a class="project_case_navlink project_case_navlink--index" href="{{projectIndexHref}}">All Projects</a>
 {{{nextProjectNavHtml}}}
-						</nav>
-					</div>
+					</nav>
 				</div>
 			</div>
 		</div>
 
-		<!-- @include ../components/project/contact-form.html -->
-		<!-- @include ../components/index/footer.html -->
+		<!-- @include ../components/project/footer-minimal.html -->
 	</div>
 
 	<div class="bottom_top">

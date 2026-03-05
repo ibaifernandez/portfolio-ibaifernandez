@@ -391,9 +391,9 @@ Ultimo ajuste aplicado para `Projects`:
   - retiro del concepto legacy `lfi-newsprint` y de sus assets de newspaper asociados.
 - Sidebar de paginas de proyecto unificada con home mediante componente:
   - `src/components/project/sidebar.html` (misma estructura/estetica que home, con anclas hacia `index.html#...`).
-- Cierre de paginas de proyecto unificado:
-  - `src/components/project/contact-form.html` (mismo formulario de contacto que home),
-  - orden estandar: `project content -> contact form -> footer icons/copyright`.
+- Cierre de paginas de proyecto minimalista:
+  - `src/components/project/footer-minimal.html` (solo copyright, sin bloque de contacto),
+  - orden estandar: `project content -> project nav -> minimal footer`.
 - Ajuste de encuadre DebTracker en grid:
   - selector dedicado `.project_spotlight_img--debtracker` + `object-position: left center`.
 - Imagen GymTracker:
