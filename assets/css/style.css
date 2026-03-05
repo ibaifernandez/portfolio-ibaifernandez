@@ -7343,6 +7343,193 @@ select:focus-visible,
 	}
 }
 
+/* Fluid polish pass: remove heavy boxed feel and enforce dark contrast */
+.researchengine_stitch_page .port_singleblog_wrapper {
+	background: transparent;
+}
+
+.researchengine_stitch_page .project_case_container {
+	max-width: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.researchengine_stitch_surface {
+	max-width: none;
+	padding: clamp(24px, 3vw, 42px) 0 clamp(90px, 10vw, 140px);
+}
+
+.researchengine_stitch_backlink,
+.researchengine_stitch_header,
+.researchengine_stitch_video_block,
+.researchengine_stitch_section,
+.researchengine_stitch_final,
+.researchengine_stitch_page .project_case_nav {
+	width: min(1240px, calc(100% - 64px));
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.researchengine_stitch_header {
+	padding: clamp(28px, 5vw, 72px) 0 clamp(12px, 2vw, 20px);
+}
+
+.researchengine_stitch_title {
+	max-width: 1040px;
+	font-size: clamp(56px, 8.2vw, 132px);
+	letter-spacing: -0.03em;
+	color: #f9fdff;
+}
+
+.researchengine_stitch_subtitle {
+	max-width: 920px;
+	font-size: clamp(30px, 2.7vw, 44px);
+	color: #93a2b8;
+}
+
+.researchengine_stitch_copy {
+	max-width: 1000px;
+	font-size: 20px;
+	line-height: 1.68;
+	color: rgba(214, 227, 241, 0.88);
+}
+
+.researchengine_stitch_video_block {
+	padding-top: clamp(20px, 4vw, 46px);
+}
+
+.researchengine_stitch_video_frame {
+	border-color: rgba(13, 204, 242, 0.36);
+	box-shadow: 0 0 40px rgba(13, 204, 242, 0.12);
+}
+
+.researchengine_stitch_video_overlay {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.35));
+}
+
+.researchengine_stitch_section {
+	padding: clamp(74px, 9vw, 124px) 0 0;
+	border: 0;
+	background: transparent;
+	backdrop-filter: none;
+}
+
+.researchengine_stitch_section_head {
+	padding: 0;
+}
+
+.researchengine_stitch_section h2 {
+	font-size: clamp(44px, 5.8vw, 88px);
+}
+
+.researchengine_stitch_section--risk,
+.researchengine_stitch_section--offers {
+	position: relative;
+}
+
+.researchengine_stitch_section--risk::before,
+.researchengine_stitch_section--offers::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.05), transparent 48%),
+		linear-gradient(140deg, rgba(31, 34, 40, 0.74), rgba(13, 14, 19, 0.86));
+	z-index: -1;
+}
+
+.researchengine_stitch_section--risk,
+.researchengine_stitch_section--offers {
+	padding: clamp(34px, 4vw, 56px);
+}
+
+.researchengine_stitch_risk_card,
+.researchengine_stitch_feature_card,
+.researchengine_stitch_tier,
+.researchengine_stitch_faq details,
+.researchengine_stitch_placeholder {
+	border-color: rgba(255, 255, 255, 0.06);
+	background: rgba(6, 7, 10, 0.8);
+}
+
+.researchengine_stitch_feature_card {
+	border-top-width: 2px;
+}
+
+.researchengine_stitch_tier_row {
+	gap: 14px;
+}
+
+.researchengine_stitch_tier:nth-child(1),
+.researchengine_stitch_tier:nth-child(3) {
+	transform: none;
+}
+
+.researchengine_stitch_tier--featured {
+	transform: none;
+}
+
+.researchengine_stitch_faq {
+	gap: 12px;
+}
+
+.researchengine_stitch_final {
+	padding: clamp(84px, 9vw, 128px) 0 0;
+	border: 0;
+	background: transparent;
+	box-shadow: none;
+}
+
+.researchengine_stitch_final h2,
+.researchengine_stitch_final p {
+	max-width: 1040px;
+}
+
+.researchengine_stitch_final h2 {
+	font-size: clamp(44px, 5.6vw, 84px);
+}
+
+.researchengine_stitch_page .project_case_nav {
+	padding-top: clamp(40px, 6vw, 70px);
+}
+
+@media (max-width: 767px) {
+	.researchengine_stitch_backlink,
+	.researchengine_stitch_header,
+	.researchengine_stitch_video_block,
+	.researchengine_stitch_section,
+	.researchengine_stitch_final,
+	.researchengine_stitch_page .project_case_nav {
+		width: min(1240px, calc(100% - 24px));
+	}
+
+	.researchengine_stitch_title {
+		font-size: clamp(36px, 15vw, 58px);
+	}
+
+	.researchengine_stitch_subtitle {
+		font-size: clamp(22px, 8vw, 30px);
+	}
+
+	.researchengine_stitch_copy {
+		font-size: 17px;
+	}
+
+	.researchengine_stitch_section {
+		padding-top: 52px;
+	}
+
+	.researchengine_stitch_section--risk,
+	.researchengine_stitch_section--offers {
+		padding: 18px;
+	}
+
+	.researchengine_stitch_section h2,
+	.researchengine_stitch_final h2 {
+		font-size: clamp(30px, 10vw, 44px);
+	}
+}
+
 @media (max-width: 1199px) {
 	.portfolio_dossier_hero,
 	.portfolio_dossier_card_grid,

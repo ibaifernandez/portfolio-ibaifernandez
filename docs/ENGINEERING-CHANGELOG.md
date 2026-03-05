@@ -22,6 +22,34 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-05 - Fluid Contrast Fix for Research Engine (Seamless Pass)
+
+**Commit:** `working tree (uncommitted)`
+
+#### Necessity
+
+The previous pass still looked too boxed and had poor visual contrast because project wrapper defaults were leaking light backgrounds into the VSL page. The target was a seamless long-form surface with stronger readability and fewer container borders.
+
+#### Process
+
+1. Overrode project wrapper defaults for this route in `assets/css/style.css`:
+   - force transparent project wrapper background for this page,
+   - remove extra container boxing and reset section layout to full-flow.
+2. Added a dedicated fluid polish layer to `researchengine_stitch_*` styles:
+   - reduced heavy section borders/background cards,
+   - switched to continuous spacing rhythm and full-width composition,
+   - kept only strategic dark modules (risk cards / offers) where hierarchy needs friction.
+3. Improved headline and paragraph contrast and adjusted typography scale for desktop/mobile readability.
+4. Rebuilt and validated (`build`, `quality`, `e2e`).
+
+#### Actual Results
+
+- Contrast is restored against a dark canvas.
+- The page now reads more “seamless” and less boxed.
+- Automated quality gates remain green.
+
+---
+
 ### 2026-03-05 - Stitch-Faithful Research Engine Reframe + Project Sidebar Hidden on Desktop
 
 **Commit:** `working tree (uncommitted)`
