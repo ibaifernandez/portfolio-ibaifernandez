@@ -12,14 +12,6 @@
       "maxJsBytes": 500000,
       "maxImageBytes": 1800000,
       "maxImageCount": 70
-    },
-    {
-      "file": "blog.html",
-      "maxHtmlBytes": 60000,
-      "maxCssBytes": 440000,
-      "maxJsBytes": 230000,
-      "maxImageBytes": 350000,
-      "maxImageCount": 3
     }
   ]
 }

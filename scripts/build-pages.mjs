@@ -11,18 +11,38 @@ const personSchemaId = `${siteBaseUrl}/#ibai-fernandez`;
 const websiteSchemaId = `${siteBaseUrl}/#website`;
 const personSchemaName = 'Ibai Fernández';
 const projectShareImageMap = {
-  'project-debtracker.html': 'assets/images/debtracker.png',
-  'project-gymtracker.html': 'assets/images/gymtracker-cover-2.png',
-  'project-enterprise-crm.html': 'assets/images/lfi-la.png',
-  'project-ruta-digitalizacion-2x2mkt.html': 'assets/images/2x2.png',
-  'project-elm-st.html': 'assets/images/elm-st-web.png',
-  'project-aglaya.html': 'assets/images/aglaya-web.png'
+  'debtracker.html': 'assets/images/debtracker.png',
+  'gymtracker.html': 'assets/images/gymtracker-cover-2.png',
+  'lfi.html': 'assets/images/lfi-la.png',
+  'ruta-de-la-digitalizacion-y-2x2-mkt.html': 'assets/images/2x2.png',
+  'elm-st.html': 'assets/images/elm-st-web.png',
+  'aglaya.html': 'assets/images/aglaya-web.png'
 };
 
 const basePageEntries = [
   { template: 'src/pages/index.template.html', output: 'index.html' },
-  { template: 'src/pages/blog.template.html', output: 'blog.html' },
   { template: 'src/pages/cv-print.template.html', output: 'cv-print.html' }
+];
+const legacyPageEntries = [
+  {
+    template: 'src/pages/lfi-legacy.template.html',
+    output: 'lfi-legacy.html',
+    data: {
+      pageTitle: 'LFi Legacy Dossier | Archived Case Study',
+      pageDescription: 'Archived pre-redesign LFi dossier kept as a private fallback reference outside the public discovery surface.',
+      pageCanonicalUrl: `${siteBaseUrl}/lfi-legacy.html`,
+      pageShareImage: `${siteBaseUrl}/assets/images/lfi-la.png`,
+      pageKeywords: 'LFi legacy dossier, archived case study, agency systems history',
+      pageAuthor: 'Ibai Fernández',
+      pageOgType: 'article',
+      pageStructuredDataJson: '{}',
+      projectBackHref: 'index.html#project_sec',
+      projectIndexHref: 'index.html#project_sec',
+      previousProjectNavHtml: '',
+      nextProjectNavHtml: '',
+      projectMediaHtml: '<picture>\n<source type="image/avif" srcset="assets/images/lfi-la.avif">\n<source type="image/webp" srcset="assets/images/lfi-la.webp">\n<img class="project_spotlight_img--lfi" src="assets/images/lfi-la.png" alt="LFi operations cockpit showing enterprise campaign orchestration and automation controls" loading="lazy" decoding="async" width="1800" height="1005" data-avif-fallback="true">\n</picture>'
+    }
+  }
 ];
 const generatedAssetEntries = [
   { source: 'assets/css/font.css', output: 'assets/css/font.min.css', type: 'css' },
@@ -647,7 +667,7 @@ function renderWithIncludes(filePath, stack = [], data = {}) {
 }
 
 let hasErrors = false;
-const pageEntries = [...basePageEntries, ...renderProjectPageEntries()];
+const pageEntries = [...basePageEntries, ...legacyPageEntries, ...renderProjectPageEntries()];
 
 for (const entry of pageEntries) {
   const templatePath = path.resolve(rootDir, entry.template);

@@ -13,17 +13,16 @@ This checklist is structural and can run before final content freeze.
 Validate these public routes:
 
 1. `https://portfolio.ibaifernandez.com/`
-2. `https://portfolio.ibaifernandez.com/project-debtracker.html`
-3. `https://portfolio.ibaifernandez.com/project-gymtracker.html`
-4. `https://portfolio.ibaifernandez.com/project-enterprise-crm.html`
-5. `https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html`
-6. `https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html`
-7. `https://portfolio.ibaifernandez.com/project-myboard.html`
-8. `https://portfolio.ibaifernandez.com/project-the-research-engine.html`
-9. `https://portfolio.ibaifernandez.com/project-elm-st.html`
-10. `https://portfolio.ibaifernandez.com/project-aglaya.html`
-11. `https://portfolio.ibaifernandez.com/blog.html`
-12. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
+2. `https://portfolio.ibaifernandez.com/debtracker.html`
+3. `https://portfolio.ibaifernandez.com/gymtracker.html`
+4. `https://portfolio.ibaifernandez.com/lfi.html`
+5. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+6. `https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html`
+7. `https://portfolio.ibaifernandez.com/my-board.html`
+8. `https://portfolio.ibaifernandez.com/the-research-engine.html`
+9. `https://portfolio.ibaifernandez.com/elm-st.html`
+10. `https://portfolio.ibaifernandez.com/aglaya.html`
+11. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
 
 ---
 
@@ -69,7 +68,6 @@ If no physical device is available, use responsive emulation as fallback, but re
 ### B. Layout Integrity
 
 - [ ] No horizontal scrolling on Home.
-- [ ] No horizontal scrolling on Blog.
 - [ ] Sidebar/mobile nav state does not block content unexpectedly.
 - [ ] Cards stack correctly and keep readable spacing.
 - [ ] Text remains readable without zoom.

@@ -20,7 +20,7 @@ Referencia macOS/Homebrew: `brew install webp ffmpeg-full && brew unlink ffmpeg 
 
 Nota CI GitHub Actions:
 
-- `ci.yml` instala `ripgrep`, construye páginas, ejecuta `npm run test:quality`, instala Playwright Chromium, corre la suite completa (29 tests) y despliega a Netlify si todo queda en verde.
+- `ci.yml` instala `ripgrep`, construye páginas, ejecuta `npm run test:quality`, instala Playwright Chromium, corre la suite completa y despliega a Netlify si todo queda en verde.
 
 ## Comandos principales
 
@@ -87,6 +87,21 @@ Comprobacion manual en Netlify dashboard:
 - El ultimo deploy productivo debe provenir del flujo de GitHub Actions, no de un auto-build de Netlify
 - Variables minimas esperadas: `RESEND_API_KEY`, `FROM_EMAIL`, `TO_EMAIL`
 - Variables de captcha ya observadas en produccion (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`
+
+Comprobacion manual de routing canonico:
+
+- Los dossiers publicos ya no usan prefijo `project-`.
+- URLs canonicas esperadas hoy:
+  - `/debtracker.html`
+  - `/gymtracker.html`
+  - `/lfi.html`
+  - `/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+  - `/portfolio-ibaifernandez.html`
+  - `/my-board.html`
+  - `/the-research-engine.html`
+  - `/elm-st.html`
+  - `/aglaya.html`
+- Las rutas heredadas `project-*.html` deben redirigir a sus equivalentes canonicos, no responder como paginas independientes.
 
 ### Variables de entorno en Netlify
 
@@ -206,25 +221,24 @@ Notas:
   - Baseline de accesibilidad CSS (`focus-visible`, `prefers-reduced-motion`).
 - `test:e2e`
   - Flujo home, idioma, hardening links, anti-spam.
-  - Flujo blog shell (render crítico, redes accesibles/hardened, sanity móvil).
   - Navegacion sidebar con anclas validas por seccion.
   - `skip-link` funcional para acceso rapido por teclado.
   - Validacion de fallback AVIF (`<picture>`) en imagen critica.
   - Activacion de cambio de idioma via teclado.
-  - Cobertura de foco/teclado en navegación crítica + formulario + redes sociales en index+blog (`tests/e2e/keyboard.spec.js`).
+  - Cobertura de foco/teclado en navegación crítica + formulario + redes sociales en home (`tests/e2e/keyboard.spec.js`).
   - Formulario de contacto (feedback accesible en errores, envio valido y timing guard del endpoint).
-  - Accesibilidad automatica con axe sobre contacto, secciones primarias del home y shell técnica del blog.
+  - Accesibilidad automatica con axe sobre contacto y secciones primarias del home.
   - Regresion visual de `contact_section`.
-  - Estado actual de suite: `29/29` en verde.
+  - La ruta retirada `/blog(.html)` redirige al home tanto en Netlify como en el servidor local de pruebas.
 
 ## Presupuestos de rendimiento
 
 Archivo fuente: `tests/performance-budget.config.json`
 
-- HTML, CSS, JS e imagenes por pagina (`index.html`, `blog.html`).
+- HTML, CSS, JS e imagenes por pagina (`index.html` y dossiers de proyecto).
 - Limites globales por archivo (CSS/JS/imagen).
 - Para `<picture>`, el budget contabiliza el recurso preferido (AVIF/WebP) y no suma doble con fallback.
-- Estado actual: `index` JS estático ~`141.7 KB`; `blog` JS estático ~`138.5 KB`.
+- Estado actual: el budget activo se centra en `index.html`; los dossiers y `cv-print.html` siguen cubiertos por quality + link + media checks y pueden ampliarse si se justifica técnicamente.
 
 Actualizacion recomendada de budget:
 
@@ -380,15 +394,16 @@ Ultimo ajuste aplicado para `Projects`:
   - QA Shield Wall animado (`97/97` + bloques por modulo),
   - comparador No Vendor Lock-In (SaaS vs Local-First),
   - bloque de evidencia interna con `gymtracker.png` dentro de la pagina de proyecto.
-- Caso actual: Enterprise CRM / LFi usa plantilla dedicada `src/pages/project-enterprise-crm.template.html` con:
-  - direccion visual moderna, centrada en sistemas operativos y prueba de escala en vez de una estetica editorial de newspaper,
-  - estilos integrados en `assets/css/style.css` (sin hoja dedicada extra ni dependencias tipograficas externas),
-  - hero de dos columnas con captura real de operaciones, metricas de escala y chips de sistema,
-  - bloques de narrativa modular (`Operating Shift`, `Execution Stack`, `Trajectory`, `Proof Surface`) con ritmo de lectura mas claro,
-  - timeline de ascenso (`Aug 2023 -> Jun 2024 -> Dec 2024`) conservada, pero convertida a cards de dossier modernas,
-  - logo wall corporativa y testimonios mantenidos como prueba de mercado y confianza,
-  - placeholders explicitos para futuros assets de evidencia (video walkthrough, diagrama CRM, before/after operativo),
-  - retiro del concepto legacy `lfi-newsprint` y de sus assets de newspaper asociados.
+- Caso actual: LFi usa plantilla dedicada `src/pages/lfi.template.html` con:
+  - direccion editorial asimetrica de "operating atlas", no estetica SaaS ni newspaper,
+  - hero monumental + side rails de contexto + modulos de prueba en zig-zag,
+  - visuales de datos nativos (HTML/CSS) para POCURO y Leben sin dependencia de librerias de charts,
+  - prueba publicada hoy centrada en POCURO y Leben, dejando Banco Internacional y Bill Capital para iteraciones posteriores,
+  - timeline real de ascenso (`Aug 2023 -> May 2024 -> Dec 2024`) como progresion de ownership operativo,
+  - logo wall corporativa y testimonios mantenidos como prueba de mercado y confianza.
+- Archivo legacy preservado solo como referencia interna:
+  - `src/pages/lfi-legacy.template.html` -> `lfi-legacy.html`
+  - excluido de `robots.txt`, fuera de sitemap/LLM discovery, y con `meta robots="noindex,nofollow"`.
 - Sidebar de paginas de proyecto unificada con home mediante componente:
   - `src/components/project/sidebar.html` (misma estructura/estetica que home, con anclas hacia `index.html#...`).
 - Cierre de paginas de proyecto minimalista:
@@ -400,9 +415,10 @@ Ultimo ajuste aplicado para `Projects`:
   - `assets/images/gymtracker-cover-2.png` optimizada a `1800x1005`,
   - fallback moderno `assets/images/gymtracker-cover-2.webp` integrado en `content/projects.json`,
   - `assets/images/gymtracker.png/.webp` retenida para evidencia interna del dossier.
-- Imagen card Enterprise CRM / LFi:
-  - `assets/images/lfi-la.png/.webp` pasa a ser la superficie visual canonica para card + hero,
-  - el cover `lfi-newspaper.*` queda retirado del stack activo.
+- Card canonica de LFi en home:
+  - ya no usa imagen fotografica como portada principal,
+  - se renderiza como mockup tipografico via `content/projects.json` + estilos `project_spotlight_mockup--lfi`,
+  - el stack visual del home ahora puede comunicar posicionamiento por copy y senales de sistema sin depender de screenshots.
 - Se eliminan hooks JS legacy de filtro/popup de portfolio (`isotop_gallery` / `magnific_popup`) para reducir complejidad.
 - Se actualizan snapshots de regresion visual al nuevo baseline de layout (`projects-section.png`, `logos-section.png`).
 

@@ -72,7 +72,6 @@ npm run media:all
 ├── AGENTS.md              ← you are here
 ├── README.md              ← human-facing project summary
 ├── index.html             ← GENERATED (do not edit directly)
-├── blog.html              ← GENERATED (do not edit directly)
 ├── cv-print.html          ← GENERATED (do not edit directly)
 ├── assets/
 │   ├── css/               ← stylesheets (font.css, style.css, etc.)
@@ -102,7 +101,7 @@ npm run media:all
 ## The Golden Rules
 
 ### 1. Never edit generated files directly
-`index.html`, `blog.html`, `cv-print.html`, and `project-*.html` are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
+`index.html`, `cv-print.html`, and the root-level dossier HTML pages (for example `debtracker.html` or `lfi.html`) are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
 
 - To change page content → edit `src/pages/*.template.html`
 - To change component markup → edit `src/components/**/*.html`
@@ -146,8 +145,7 @@ The wrapper `port_sec_warapper` must remain a `<main>` element (not a `<div>`) f
 | `assets/js/custom.js` | ⚠️ Caution | Contact form logic lives here; run E2E contact tests |
 | `netlify/functions/contact.js` | ⚠️ Caution | Backend; test honeypot/timing/captcha paths |
 | `index.html` | 🚫 Do not edit | Generated |
-| `blog.html` | 🚫 Do not edit | Generated |
-| `project-*.html` | 🚫 Do not edit | Generated |
+| root-level dossier HTML pages | 🚫 Do not edit | Generated |
 | `netlify.toml` | ⚠️ Caution | Routing + function config; test locally first |
 
 ---
@@ -157,7 +155,7 @@ The wrapper `port_sec_warapper` must remain a `<main>` element (not a `<div>`) f
 Every push to `main` runs one GitHub Actions workflow:
 
 1. **`ci.yml`** — install + build + `npm run test:quality` + `npm run test:e2e` + Netlify deploy
-   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, and any of the 29 Playwright failures.
+   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, and any Playwright suite failure.
 
 ---
 

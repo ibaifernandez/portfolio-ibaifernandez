@@ -126,35 +126,3 @@ test('sidebar social links are keyboard reachable and named for assistive tech',
     await expect(socialLink).toHaveAttribute('aria-label', expectedLabels[index]);
   }
 });
-
-test('blog page skip link is first focus target and points to main content', async ({ page }) => {
-  await page.goto('/blog.html');
-
-  await page.keyboard.press('Tab');
-  await expectActiveElementMatches(page, 'a.skip-link[href="#blog_main"]');
-
-  await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/#blog_main$/);
-});
-
-test('blog sidebar social links are keyboard reachable and named for assistive tech', async ({ page }) => {
-  await page.goto('/blog.html');
-
-  const contactMenuAnchor = '.port_navigation a.siderbar_menuicon[href="index.html#contact_sec"]';
-  await page.locator(contactMenuAnchor).focus();
-  await expectActiveElementMatches(page, contactMenuAnchor);
-
-  const firstSocialSelector = '.port_sidebar_social .social_list a.siderbar_icon[href="https://facebook.com/ibaifernandezec"]';
-  const reachedFirstSocial = await tabUntilFocus(page, firstSocialSelector, 12);
-  expect(reachedFirstSocial).toBe(true);
-
-  const socialLinks = page.locator('.port_sidebar_social .social_list a.siderbar_icon');
-  const count = await socialLinks.count();
-  expect(count).toBeGreaterThan(0);
-
-  const expectedLabels = ['Facebook', 'LinkedIn', 'WhatsApp', 'GitHub', 'Instagram'];
-  for (let index = 0; index < count; index += 1) {
-    const socialLink = socialLinks.nth(index);
-    await expect(socialLink).toHaveAttribute('aria-label', expectedLabels[index]);
-  }
-});

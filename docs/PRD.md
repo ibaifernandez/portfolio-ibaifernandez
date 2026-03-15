@@ -2,7 +2,7 @@
 
 **Product:** Portfolio Ibai Fernandez
 **Version:** 2.0 (post-Netlify migration)
-**Last updated:** 2026-03-03
+**Last updated:** 2026-03-13
 **Owner:** Ibai Fernandez
 
 > Status note: this is the product specification, not the live task board. Use `docs/ROADMAP.md` for current status and `docs/BACKLOG.md` for open work.
@@ -44,7 +44,7 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 ### Journey 2 — Project Deep Dive
 
 1. Click a project card on the home page
-2. Navigate to `project-*.html`
+2. Navigate to the dedicated dossier URL for that project (for example `debtracker.html` or `lfi.html`)
 3. Read the problem → solution → result narrative
 4. View screenshots or demo
 5. Click "Back" or navigate to another project
@@ -201,7 +201,7 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 ## 6. Content Requirements
 
 ### CR-01 — No placeholder content in production
-All Lorem Ipsum, `dummyimage.com` images, and `href="#"` links must be replaced before any section is visible to real users. The blog section is currently hidden ("Coming soon") pending real content.
+All Lorem Ipsum, `dummyimage.com` images, and `href="#"` links must be replaced before any section is visible to real users. The blog is not part of the public product and must remain retired/redirected rather than exposed as a placeholder surface.
 
 ### CR-02 — Bilingual (EN/ES)
 All user-visible text must be available in both English and Spanish. The language toggle must produce complete translations with no untranslated fragments.
@@ -225,7 +225,7 @@ Every page must have:
 
 | Item | Reason |
 |---|---|
-| Blog with real posts | Out of scope for v2.0.0.0; the current product direction is to remove or permanently hide the blog surface before indexing |
+| Blog with real posts | Out of scope for v2.0.0.0; the product direction is to keep the blog retired and use project dossiers as the editorial surface |
 | CMS integration | Static-first approach; data JSON is the CMS |
 | User accounts / authentication | Not applicable for portfolio |
 | Analytics dashboard | Planned post-MVP (Epic G) |
@@ -253,7 +253,7 @@ The portfolio is considered **production-ready (v2.0)** when:
 - [ ] Mobile performance accepted for current release scope, with follow-up LCP work tracked after v2.0.0.0
 - [ ] Lighthouse Accessibility ≥ 95
 - [ ] Zero axe serious/critical violations
-- [x] All E2E tests pass (29/29)
+- [x] All E2E tests pass
 - [x] Contact form works end-to-end in production
 - [ ] CV print page works in Chrome and Safari
 - [ ] Language toggle works for all visible content
@@ -263,4 +263,4 @@ The portfolio is considered **production-ready (v2.0)** when:
 
 ---
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-03-13*

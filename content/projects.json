@@ -1,10 +1,10 @@
 [
   {
     "page": {
-      "output": "project-debtracker.html",
+      "output": "debtracker.html",
       "template": "src/pages/project-debtracker.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/debtracker.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/debtracker.webp\">\n<img class=\"project_spotlight_img--debtracker\" src=\"assets/images/debtracker.png\" alt=\"DebTracker dashboard\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--debtracker\" role=\"img\" aria-label=\"DebTracker preview showing a debt-control ledger and payment-flow architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--ledger\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Financial OS</span>\n<strong>Debt Ledger Control</strong>\n<span class=\"project_spotlight_mockup_metric\">Auth + relational logic</span>\n<span class=\"project_spotlight_mockup_note\">Collections UX · Payment flows · Full-stack delivery</span>\n</div>",
     "title": {
       "text": "DebTracker: Full-Stack Financial App",
       "translate": "project-debtracker-title"
@@ -14,7 +14,7 @@
       "translate": "project-debtracker-copy"
     },
     "link": {
-      "href": "project-debtracker.html",
+      "href": "debtracker.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -23,10 +23,10 @@
   },
   {
     "page": {
-      "output": "project-gymtracker.html",
+      "output": "gymtracker.html",
       "template": "src/pages/project-gymtracker.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/gymtracker-cover-2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/gymtracker-cover-2.webp\">\n<img src=\"assets/images/gymtracker-cover-2.png\" alt=\"GymTracker architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--gymtracker\" role=\"img\" aria-label=\"GymTracker preview showing backend logic and API architecture for a training system\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--stack\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Backend Showcase</span>\n<strong>Logic + API Architecture</strong>\n<span class=\"project_spotlight_mockup_metric\">Flask + SQLite</span>\n<span class=\"project_spotlight_mockup_note\">Training logic · Deterministic pipelines · Local-first build</span>\n</div>",
     "title": {
       "text": "GymTracker: Logic & API Architecture",
       "translate": "project-gymtracker-title"
@@ -36,7 +36,7 @@
       "translate": "project-gymtracker-copy"
     },
     "link": {
-      "href": "project-gymtracker.html",
+      "href": "gymtracker.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -45,21 +45,21 @@
   },
   {
     "page": {
-      "output": "project-enterprise-crm.html",
-      "template": "src/pages/project-enterprise-crm.template.html",
+      "output": "lfi.html",
+      "template": "src/pages/lfi.template.html",
       "keywords": "LFi, revenue operations, agency automation, CRM systems, Salesforce, HubSpot, enterprise campaign delivery"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/webp\" srcset=\"assets/images/lfi-la.webp\">\n<img class=\"project_spotlight_img--lfi\" src=\"assets/images/lfi-la.png\" alt=\"LFi operations cockpit showing enterprise campaign orchestration and automation controls\" loading=\"lazy\" decoding=\"async\" width=\"1800\" height=\"1005\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--lfi\" role=\"img\" aria-label=\"LFi preview showing agency operating systems, enterprise accounts, and revenue operations governance\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Agency OS</span>\n<strong>Revenue Operations</strong>\n<span class=\"project_spotlight_mockup_metric\">18+ enterprise accounts</span>\n<span class=\"project_spotlight_mockup_note\">POCURO · Leben · CRM routing · QA systems</span>\n</div>",
     "title": {
-      "text": "LFi: RevOps & Predictive Automation",
+      "text": "LFi: Agency Operating Systems",
       "translate": "project-enterprise-crm-title"
     },
     "description": {
-      "text": "Scaled an agency delivery engine across 18+ enterprise accounts by turning campaign execution into modular launch systems, CRM decision trees, and predictable multi-sector operations.",
+      "text": "Rebuilt agency delivery into a governed operating layer across 18+ enterprise accounts, with POCURO and Leben proving the model under real revenue pressure.",
       "translate": "project-enterprise-crm-copy"
     },
     "link": {
-      "href": "project-enterprise-crm.html",
+      "href": "lfi.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -68,10 +68,10 @@
   },
   {
     "page": {
-      "output": "project-ruta-digitalizacion-2x2mkt.html",
+      "output": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
       "template": "src/pages/project-ruta-digitalizacion-2x2mkt.template.html"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/2x2.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/2x2.webp\">\n<img src=\"assets/images/2x2.png\" alt=\"The Route to Digitalization / 2x2MKT initiative\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--ruta\" role=\"img\" aria-label=\"Route to Digitalization preview showing a national field program turned into a remote conversion engine\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--route\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Field Program</span>\n<strong>National Adoption Pivot</strong>\n<span class=\"project_spotlight_mockup_metric\">10,600+ users</span>\n<span class=\"project_spotlight_mockup_note\">On-site rollout · Remote conversion engine · Crisis pivot</span>\n</div>",
     "title": {
       "text": "The Route to Digitalization / 2x2MKT",
       "translate": "project-national-scale-title"
@@ -81,7 +81,7 @@
       "translate": "project-national-scale-copy"
     },
     "link": {
-      "href": "project-ruta-digitalizacion-2x2mkt.html",
+      "href": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -90,12 +90,12 @@
   },
   {
     "page": {
-      "output": "project-portfolio-ibaifernandez.html",
+      "output": "portfolio-ibaifernandez.html",
       "template": "src/pages/project-portfolio-ibaifernandez.template.html",
       "shareImage": "assets/images/240610-featured-image.jpeg",
       "keywords": "Ibai Fernandez, portfolio case study, Netlify, Playwright, accessibility, performance, CI/CD"
     },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--portfolio\" role=\"img\" aria-label=\"Portfolio production hardening preview\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Live Build</span>\n<strong>CI/CD + A11y + Performance</strong>\n<span class=\"project_spotlight_mockup_metric\">29/29 green</span>\n<span class=\"project_spotlight_mockup_note\">Desktop 93 · A11y 95 · Contact live</span>\n</div>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--portfolio\" role=\"img\" aria-label=\"Portfolio production hardening preview\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Live Build</span>\n<strong>CI/CD + A11y + Performance</strong>\n<span class=\"project_spotlight_mockup_metric\">Regression suite green</span>\n<span class=\"project_spotlight_mockup_note\">Desktop 93 · A11y 95 · Contact live</span>\n</div>",
     "title": {
       "text": "Portfolio Ibai Fernandez: Live Delivery System",
       "translate": "project-portfolio-title"
@@ -105,7 +105,7 @@
       "translate": "project-portfolio-copy"
     },
     "link": {
-      "href": "project-portfolio-ibaifernandez.html",
+      "href": "portfolio-ibaifernandez.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -114,12 +114,12 @@
   },
   {
     "page": {
-      "output": "project-myboard.html",
+      "output": "my-board.html",
       "template": "src/pages/project-myboard.template.html",
       "shareImage": "assets/images/240610-featured-image.jpeg",
       "keywords": "MyBoard, Kanban, React, Express, dnd-kit, Tailwind, zero vendor lock-in, task management"
     },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--myboard\" role=\"img\" aria-label=\"MyBoard product preview placeholder showing a kanban board concept with local-first ownership\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--board\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Kanban OS</span>\n<strong>Local-First Task Control</strong>\n<span class=\"project_spotlight_mockup_metric\">React + Express</span>\n<span class=\"project_spotlight_mockup_note\">Drag & drop · JSON persistence · Zero lock-in</span>\n</div>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--myboard\" role=\"img\" aria-label=\"MyBoard product preview showing a kanban board concept with local-first ownership\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--board\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Kanban OS</span>\n<strong>Local-First Task Control</strong>\n<span class=\"project_spotlight_mockup_metric\">React + Express</span>\n<span class=\"project_spotlight_mockup_note\">Drag & drop · JSON persistence · Zero lock-in</span>\n</div>",
     "title": {
       "text": "MyBoard: Zero-Lock-In Kanban Engine",
       "translate": "project-myboard-title"
@@ -129,7 +129,7 @@
       "translate": "project-myboard-copy"
     },
     "link": {
-      "href": "project-myboard.html",
+      "href": "my-board.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -138,7 +138,7 @@
   },
   {
     "page": {
-      "output": "project-the-research-engine.html",
+      "output": "the-research-engine.html",
       "template": "src/pages/project-the-research-engine.template.html",
       "shareImage": "assets/images/240610-featured-image.jpeg",
       "keywords": "The Research Engine, AI prompt pack, digital product, VSL, Gumroad, product marketing, research workflows"
@@ -153,7 +153,7 @@
       "translate": "project-research-engine-copy"
     },
     "link": {
-      "href": "project-the-research-engine.html",
+      "href": "the-research-engine.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -162,11 +162,11 @@
   },
   {
     "page": {
-      "output": "project-elm-st.html",
+      "output": "elm-st.html",
       "template": "src/pages/project-elm-st.template.html",
       "keywords": "Elm St, audiovisual production, cinematic web design, YouTube reel, custom brand website, Ibai Fernandez"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/elm-st-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/elm-st-web.webp\">\n<img src=\"assets/images/elm-st-web.png\" alt=\"Elm St custom web architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--elmst\" role=\"img\" aria-label=\"Elm St preview showing a cinematic reel-first website and custom brand architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--cinema\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Cinematic Brand</span>\n<strong>Reel-First Web System</strong>\n<span class=\"project_spotlight_mockup_metric\">Custom-coded presence</span>\n<span class=\"project_spotlight_mockup_note\">YouTube embeds · Brand psychology · Audiovisual UX</span>\n</div>",
     "title": {
       "text": "Elm St: Custom Web & Brand Architecture",
       "translate": "project-elmst-title"
@@ -176,7 +176,7 @@
       "translate": "project-elmst-copy"
     },
     "link": {
-      "href": "project-elm-st.html",
+      "href": "elm-st.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"
@@ -185,11 +185,11 @@
   },
   {
     "page": {
-      "output": "project-aglaya.html",
+      "output": "aglaya.html",
       "template": "src/pages/project-aglaya.template.html",
       "keywords": "AGLAYA, remote agency, brand evaluation, growth strategy, conversion-focused UX, marketing systems"
     },
-    "mediaHtml": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/aglaya-web.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/aglaya-web.webp\">\n<img src=\"assets/images/aglaya-web.png\" alt=\"AGLAYA remote agency interface focused on brand evaluation and growth architecture\" loading=\"lazy\" decoding=\"async\" width=\"540\" height=\"405\" data-avif-fallback=\"true\">\n</picture>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--aglaya\" role=\"img\" aria-label=\"AGLAYA preview showing a remote agency operating system and conversion-focused growth architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Remote Agency</span>\n<strong>Conversion Infrastructure</strong>\n<span class=\"project_spotlight_mockup_metric\">Offer system</span>\n<span class=\"project_spotlight_mockup_note\">Assessment funnel · B2B positioning · Growth architecture</span>\n</div>",
     "title": {
       "text": "AGLAYA: B2B Innovation Ecosystem",
       "translate": "project-aglaya-title"
@@ -199,7 +199,7 @@
       "translate": "project-aglaya-copy"
     },
     "link": {
-      "href": "project-aglaya.html",
+      "href": "aglaya.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"

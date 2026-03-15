@@ -22,9 +22,6 @@ An open-source accessibility testing library. Used in this project via the `@axe
 **Baseline (performance)**
 A captured measurement of Lighthouse scores, Core Web Vitals, and other metrics at a specific point in time, used as a reference for before/after comparisons. Baseline for this project was captured on 2026-03-02 immediately after Netlify migration: Desktop 84/94/96/92, Mobile 61/94/96/92.
 
-**Blog section**
-The section of `index.html` showing blog/project cards. Currently replaced with a "Coming soon" placeholder. See `BL-CNT-004` in `docs/BACKLOG.md`. The original card template is preserved in `src/components/index/blog-card.template.html`.
-
 **Budget (performance)**
 A defined limit on the size of assets (CSS, JS, images, total) per page. Defined in `tests/performance-budget.config.json` and enforced by `npm run test:budget` in CI.
 
@@ -59,7 +56,7 @@ Named variables for visual properties (colors, spacing, typography, shadows) def
 ## E
 
 **E2E test (End-to-End test)**
-A test that exercises the full browser experience from navigation through interaction. This project uses Playwright (Chromium) for E2E tests in `tests/e2e/`. Current suite: 29 tests.
+A test that exercises the full browser experience from navigation through interaction. This project uses Playwright (Chromium) for E2E tests in `tests/e2e/`.
 
 **Epic**
 A large body of work grouped around a theme. In practical terms, the remaining open work is now concentrated in content polish, release hygiene, and post-v2 observability. For the live action list, use `docs/BACKLOG.md`.

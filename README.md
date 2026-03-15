@@ -43,7 +43,7 @@ npm run test:quality   # quality-guards.sh + checks de cobertura
 bash tests/smoke.sh    # humo básico con servidor levantado
 ```
 
-Suite E2E profesional (Playwright, 29 tests):
+Suite E2E profesional (Playwright):
 
 ```bash
 npm install
@@ -62,7 +62,7 @@ npm run test:ci
 ## Build de páginas
 
 ```bash
-npm run build:pages    # genera index.html, blog.html, cv-print.html, project-*.html
+npm run build:pages    # genera index.html, cv-print.html y los dossiers HTML públicos del root
 ```
 
 > Los archivos `*.html` en la raíz son GENERADOS. No los edites directamente.
@@ -91,7 +91,7 @@ npm run test:avif      # valida cobertura AVIF
 npm run test:webp      # valida cobertura WebP
 ```
 
-Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas generadas del root (`index`, `blog`, `cv-print`, `project-*`) y no quedan faltantes de WebP en los quality guards.
+Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas generadas del root (`index`, `cv-print` y dossiers públicos) y no quedan faltantes de WebP en los quality guards.
 
 ---
 
@@ -108,7 +108,7 @@ Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas gene
 - Presencia de `skip-link` de teclado a contenido principal.
 - Presencia de contenedor de estado accesible del formulario (`aria-live`).
 - Validación de carga lazy en dependencias no críticas.
-- Todas las imágenes en `index.html` y `blog.html` tienen `loading`, `width` y `height`.
+- Las imágenes críticas de `index.html` mantienen `loading`, `width` y `height`.
 - Presupuesto de rendimiento por página y por tipo de asset.
 - Cobertura AVIF y WebP en imágenes grandes (fallback real con `<picture>`).
 - Validación de render data-driven (si falta un campo requerido en `content/*.json`, el build falla).
@@ -120,14 +120,15 @@ Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas gene
 - El sitio levanta por HTTP local.
 - `index.html` responde y contiene marcadores clave.
 
-### `tests/e2e/` (Playwright, 29 tests)
+### `tests/e2e/` (Playwright)
 
 - `home.spec.js` — Render del home y bloques críticos. Sidebar, skip-link, AVIF/WebP, idioma, hardening de links.
 - `contact.spec.js` — Feedback accesible, validación de email, envío válido, timing guard real del endpoint.
-- `blog.spec.js` — Render crítico de `blog.html`. Links sociales accesibles. No overflow horizontal en móvil.
 - `keyboard.spec.js` — Tab order para navegación crítica (skip-link, sidebar anchors, formulario, redes sociales).
-- `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home, Contact y shell técnica del blog.
+- `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home y Contact.
 - `visual.spec.js` — Regresión visual de referencia para secciones clave.
+
+Nota de producto: el portfolio ya no tiene blog público. La ruta heredada `/blog` / `/blog.html` redirige al home y los proyectos son la única superficie editorial pública.
 
 ---
 
@@ -183,7 +184,7 @@ Workflow programado: `.github/workflows/link-health.yml` (lunes 09:00 UTC + ejec
 
 Cada push a `main` desencadena un único workflow:
 
-1. **GitHub Actions `ci.yml`** — install + build + quality guards + 29 tests Playwright + deploy a Netlify (solo si todo pasa).
+1. **GitHub Actions `ci.yml`** — install + build + quality guards + Playwright + deploy a Netlify (solo si todo pasa).
 
 Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EMAIL`, `TO_EMAIL`. Opcionales para captcha: `PORTFOLIO_CAPTCHA_PROVIDER`, `PORTFOLIO_CAPTCHA_SECRET`, `PORTFOLIO_CAPTCHA_MIN_SCORE`.
 

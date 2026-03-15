@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 const { test, expect } = require('@playwright/test');
 
 test('home renders critical UI blocks', async ({ page }) => {
@@ -115,6 +116,46 @@ test('contact form exposes anti-spam guard fields', async ({ page }) => {
   await expect(honeypot).toBeAttached();
   await expect(startedAt).toBeAttached();
   await expect(startedAt).not.toHaveValue('');
+});
+
+test('retired blog route redirects to home', async ({ page }) => {
+  const response = await page.goto('/blog.html');
+
+  expect(response).not.toBeNull();
+  expect(response.status()).toBe(200);
+  await expect(page).toHaveURL(/\/(?:index\.html)?$/);
+  await expect(page.locator('h1.banner_name')).toBeVisible();
+});
+
+test('legacy project routes redirect to the normalized dossier slugs', async ({ page }) => {
+  const legacyRoutes = [
+    ['/project-debtracker.html', '/debtracker.html'],
+    ['/project-gymtracker.html', '/gymtracker.html'],
+    ['/project-enterprise-crm.html', '/lfi.html'],
+    ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['/project-portfolio-ibaifernandez.html', '/portfolio-ibaifernandez.html'],
+    ['/project-myboard.html', '/my-board.html'],
+    ['/project-the-research-engine.html', '/the-research-engine.html'],
+    ['/project-elm-st.html', '/elm-st.html'],
+    ['/project-aglaya.html', '/aglaya.html']
+  ];
+
+  for (const [legacyPath, normalizedPath] of legacyRoutes) {
+    const response = await page.goto(legacyPath);
+    expect(response).not.toBeNull();
+    expect(response.status(), `${legacyPath} should resolve to ${normalizedPath}`).toBe(200);
+    await expect(page).toHaveURL(new RegExp(`${normalizedPath.replace('.', '\\.')}$`));
+  }
+});
+
+test('legacy LFi draft alias remains redirected in routing config', async () => {
+  const netlifyToml = fs.readFileSync('netlify.toml', 'utf8');
+  const staticServer = fs.readFileSync('scripts/static-server.mjs', 'utf8');
+
+  expect(netlifyToml).toContain('from   = "/lfi-v2.html"');
+  expect(netlifyToml).toContain('from   = "/lfi-v2"');
+  expect(staticServer).toContain("pathname === '/lfi-v2'");
+  expect(staticServer).toContain("pathname === '/lfi-v2.html'");
 });
 
 test('main content wrapper is not nested in hero and aligns after sidebar', async ({ page }) => {

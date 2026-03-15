@@ -1,6 +1,6 @@
 # ROADMAP.md — Current State, Release Path, and Next Work
 
-**Last updated:** 2026-03-04
+**Last updated:** 2026-03-13
 **Purpose:** This is the single source of truth for where the project came from, where it is now, and what still remains.
 
 ---
@@ -15,7 +15,7 @@ What is already true:
 - `main` is aligned with `origin/main`.
 - The production contact flow is validated end to end.
 - GA4 Realtime already confirms `page_view`, `contact_submit_attempt`, and `contact_submit_success`.
-- Playwright is green (`29/29`).
+- Playwright is green.
 - Desktop PageSpeed is in a strong release band.
 - Mobile is usable and materially improved, but still has LCP headroom.
 - The public project roster is already live as 9 dossiers:
@@ -37,7 +37,7 @@ Current measured snapshot:
 | Mobile PageSpeed | `62 / 95 / 92 / 92` |
 | Mobile bottleneck | `FCP 4.7s`, `LCP 7.6s` |
 | CLS | `0.004` |
-| Automated release gate | `29/29` Playwright + `test:quality` green |
+| Automated release gate | Playwright + `test:quality` green |
 | Contact form | Validated in production |
 | Turnstile | Configured and validated in production |
 | GA4 Realtime | Validated in production |
@@ -98,7 +98,6 @@ Only open work belongs here. Historical detail lives in `docs/ENGINEERING-CHANGE
   - AGLAYA
 - Public slug normalization beyond `2x2MKT`
 - SEO metadata pass (titles, descriptions, OG refinement where needed)
-- Blog removal / permanent retirement before indexing (the current product decision is: **this portfolio will not have a blog**)
 
 ### C. Security / hardening still open
 
@@ -128,7 +127,7 @@ These are current project decisions, not open debates.
 - **`sitemap.xml` submission is better after content freeze, but not technically blocked by QA.**
 - **CSP enforce mode is intentionally deferred past v2.0.0.0.**
 - **Hero copy rewrite is not a blocker for v2.0.0.0.**
-- **The blog is not part of the final product direction.**
+- **The blog is already retired from the public product surface. Legacy `/blog` traffic should resolve to home.**
 
 ---
 

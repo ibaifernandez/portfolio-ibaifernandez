@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /ajax.php
+Disallow: /lfi-legacy.html
 Allow: /
 
 Sitemap: https://portfolio.ibaifernandez.com/sitemap.xml

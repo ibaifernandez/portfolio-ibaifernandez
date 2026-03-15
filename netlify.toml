@@ -30,7 +30,85 @@
 # The frontend already calls /.netlify/functions/contact directly.
 [[redirects]]
   from   = "/project-national-tech-evangelism.html"
-  to     = "/project-ruta-digitalizacion-2x2mkt.html"
+  to     = "/ruta-de-la-digitalizacion-y-2x2-mkt.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-debtracker.html"
+  to     = "/debtracker.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-gymtracker.html"
+  to     = "/gymtracker.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-enterprise-crm.html"
+  to     = "/lfi.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/lfi-v2.html"
+  to     = "/lfi.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/lfi-v2"
+  to     = "/lfi.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-ruta-digitalizacion-2x2mkt.html"
+  to     = "/ruta-de-la-digitalizacion-y-2x2-mkt.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-portfolio-ibaifernandez.html"
+  to     = "/portfolio-ibaifernandez.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-myboard.html"
+  to     = "/my-board.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-the-research-engine.html"
+  to     = "/the-research-engine.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-elm-st.html"
+  to     = "/elm-st.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/project-aglaya.html"
+  to     = "/aglaya.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/blog"
+  to     = "/"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/blog.html"
+  to     = "/"
   status = 308
   force  = true
 

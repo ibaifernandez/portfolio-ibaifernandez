@@ -1,6 +1,6 @@
 # BACKLOG.md — Active Work Only
 
-**Last updated:** 2026-03-04
+**Last updated:** 2026-03-13
 **Purpose:** This file lists only open work. Closed history belongs in `docs/ENGINEERING-CHANGELOG.md`.
 
 ---
@@ -37,7 +37,6 @@
 
 ### Public structure
 
-- [ ] Remove or permanently hide the public blog surface before indexing
 - [ ] Normalize remaining public project slugs beyond `2x2MKT`
 - [ ] Run a focused SEO metadata / Open Graph pass on visible pages
 - [ ] Curate visible project narratives where the framing still feels too deliverable-led and not outcome-led
@@ -85,6 +84,7 @@ These are listed here only so a reader can orient quickly. The full record is in
 - [x] MyBoard dossier
 - [x] Elm St dossier
 - [x] AGLAYA dossier
+- [x] Blog retired from the public surface with legacy redirect to home
 
 ---
 

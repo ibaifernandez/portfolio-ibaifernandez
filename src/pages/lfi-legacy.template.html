@@ -7,7 +7,7 @@
 	<meta name="description" content="{{pageDescription}}">
 	<meta name="keywords" content="{{pageKeywords}}">
 	<meta name="author" content="{{pageAuthor}}">
-	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="robots" content="noindex,nofollow,max-image-preview:large">
 	<meta name="theme-color" content="#11263f">
 	<meta property="og:type" content="{{pageOgType}}">
 	<meta property="og:url" content="{{pageCanonicalUrl}}">
@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="assets/css/style.min.css">
 	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-	<link rel="canonical" href="{{pageCanonicalUrl}}">
+	<link rel="canonical" href="https://portfolio.ibaifernandez.com/lfi.html">
 	<script type="application/ld+json">
 {{{pageStructuredDataJson}}}
 	</script>
@@ -56,7 +56,10 @@
 			<div class="container-fluid project_case_container lfi_dossier_surface">
 				<div class="row g-4">
 					<div class="col-12">
-						<a href="{{projectBackHref}}" class="project_case_backlink">Back to portfolio</a>
+						<div class="d-flex flex-wrap align-items-center justify-content-between" style="gap: 12px;">
+							<a href="{{projectBackHref}}" class="project_case_backlink">Back to portfolio</a>
+							<p class="project_case_eyebrow mb-0">Legacy dossier archive / not indexed</p>
+						</div>
 					</div>
 
 					<div class="col-12">
@@ -316,23 +319,23 @@
 					<div class="col-12">
 						<section class="lfi_dossier_section" aria-labelledby="lfi-assets-title">
 							<div class="lfi_dossier_section_header">
-								<p class="lfi_dossier_section_tag">Placeholder Proof Assets</p>
-								<h2 id="lfi-assets-title" class="project_case_heading">What Media Should Be Added Next</h2>
+								<p class="lfi_dossier_section_tag">Proof Layer</p>
+								<h2 id="lfi-assets-title" class="project_case_heading">Proof Assets That Strengthen The System Story</h2>
 							</div>
 
 							<div class="lfi_dossier_placeholder_grid">
 								<article class="lfi_dossier_placeholder">
-									<span class="lfi_dossier_placeholder_label">Placeholder Video</span>
+									<span class="lfi_dossier_placeholder_label">Video Proof</span>
 									<h3>Live workflow walkthrough</h3>
 									<p>Short capture showing how campaign setup moved from manual repetition to reusable launch architecture.</p>
 								</article>
 								<article class="lfi_dossier_placeholder">
-									<span class="lfi_dossier_placeholder_label">Placeholder Image</span>
+									<span class="lfi_dossier_placeholder_label">Technical Proof</span>
 									<h3>CRM decision-tree blueprint</h3>
 									<p>Annotated diagram of the routing logic, escalation paths, and quality gates that made the system scale.</p>
 								</article>
 								<article class="lfi_dossier_placeholder">
-									<span class="lfi_dossier_placeholder_label">Placeholder Image</span>
+									<span class="lfi_dossier_placeholder_label">Operational Proof</span>
 									<h3>Before / after delivery evidence</h3>
 									<p>A simple board comparing the old operating tempo versus the post-system cadence that reduced launch cycles to hours.</p>
 								</article>

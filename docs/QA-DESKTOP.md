@@ -13,17 +13,16 @@ This checklist is safe to run before final content freeze because it focuses on 
 Validate these public routes:
 
 1. `https://portfolio.ibaifernandez.com/`
-2. `https://portfolio.ibaifernandez.com/project-debtracker.html`
-3. `https://portfolio.ibaifernandez.com/project-gymtracker.html`
-4. `https://portfolio.ibaifernandez.com/project-enterprise-crm.html`
-5. `https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html`
-6. `https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html`
-7. `https://portfolio.ibaifernandez.com/project-myboard.html`
-8. `https://portfolio.ibaifernandez.com/project-the-research-engine.html`
-9. `https://portfolio.ibaifernandez.com/project-elm-st.html`
-10. `https://portfolio.ibaifernandez.com/project-aglaya.html`
-11. `https://portfolio.ibaifernandez.com/blog.html`
-12. `https://portfolio.ibaifernandez.com/cv-print.html`
+2. `https://portfolio.ibaifernandez.com/debtracker.html`
+3. `https://portfolio.ibaifernandez.com/gymtracker.html`
+4. `https://portfolio.ibaifernandez.com/lfi.html`
+5. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+6. `https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html`
+7. `https://portfolio.ibaifernandez.com/my-board.html`
+8. `https://portfolio.ibaifernandez.com/the-research-engine.html`
+9. `https://portfolio.ibaifernandez.com/elm-st.html`
+10. `https://portfolio.ibaifernandez.com/aglaya.html`
+11. `https://portfolio.ibaifernandez.com/cv-print.html`
 
 ---
 
@@ -121,13 +120,7 @@ Run this section on every project page listed in Scope.
 - [ ] `#print` flow opens print preview correctly in Chrome.
 - [ ] Layout is readable and does not collapse in desktop viewport.
 
-### H. Blog Shell
-
-- [ ] Blog page loads without layout break.
-- [ ] "Coming soon" state is intentional and visually consistent.
-- [ ] Sidebar and social links behave correctly here too.
-
-### I. Accessibility Sanity (Manual)
+### H. Accessibility Sanity (Manual)
 
 - [ ] First `Tab` lands on the skip link.
 - [ ] Skip link moves focus to main content.
@@ -136,7 +129,7 @@ Run this section on every project page listed in Scope.
 - [ ] Keyboard-only navigation can reach the contact form and submit button.
 - [ ] Focus indicator is always visible.
 
-### J. Visual Polish
+### I. Visual Polish
 
 - [ ] No unexpected font swap or missing icon fonts.
 - [ ] Contrast is acceptable in real use, not just in audits.

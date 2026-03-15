@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-03-04
+Last-Updated: 2026-03-15
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
@@ -9,27 +9,24 @@ Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and 
 ## Canonical Pages
 - Home: https://portfolio.ibaifernandez.com/
   - Purpose: profile, capabilities, work history, project index, testimonials, contact.
-- DebTracker: https://portfolio.ibaifernandez.com/project-debtracker.html
+- DebTracker: https://portfolio.ibaifernandez.com/debtracker.html
   - Purpose: zero-trust financial ledger case (Next.js, Server Actions, Firestore patterns, PWA integration).
-- GymTracker: https://portfolio.ibaifernandez.com/project-gymtracker.html
+- GymTracker: https://portfolio.ibaifernandez.com/gymtracker.html
   - Purpose: local-first architecture case (Python/Flask, SQLite, deterministic AI pipelines, QA automation).
-- LFi RevOps & Predictive Automation: https://portfolio.ibaifernandez.com/project-enterprise-crm.html
-  - Purpose: agency operating-system case, promotion arc, enterprise automation governance, and multi-sector delivery scale.
-- The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/project-ruta-digitalizacion-2x2mkt.html
+- LFi: Agency Operating Systems: https://portfolio.ibaifernandez.com/lfi.html
+  - Purpose: agency operating-systems case proving CRM routing, qualification logic, launch governance, and commercial reliability through the POCURO and Leben proof modules.
+- The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html
   - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
-- Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/project-portfolio-ibaifernandez.html
+- Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html
   - Purpose: living proof of delivery capability through CI/CD, performance hardening, accessibility, and production validation.
-- MyBoard: https://portfolio.ibaifernandez.com/project-myboard.html
+- MyBoard: https://portfolio.ibaifernandez.com/my-board.html
   - Purpose: local-first Kanban product proving zero vendor lock-in, modular architecture, and a clear runway toward enterprise and AI-assisted use.
-- The Research Engine: https://portfolio.ibaifernandez.com/project-the-research-engine.html
+- The Research Engine: https://portfolio.ibaifernandez.com/the-research-engine.html
   - Purpose: productized intelligence workflow pack sold through a VSL + Gumroad funnel, proving end-to-end digital product and GTM execution.
-- Elm St: https://portfolio.ibaifernandez.com/project-elm-st.html
+- Elm St: https://portfolio.ibaifernandez.com/elm-st.html
   - Purpose: cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case.
-- AGLAYA: https://portfolio.ibaifernandez.com/project-aglaya.html
+- AGLAYA: https://portfolio.ibaifernandez.com/aglaya.html
   - Purpose: conversion-first remote agency operating system, staged growth services, and brand-evaluation-driven acquisition case.
-- Dispatches: https://portfolio.ibaifernandez.com/blog.html
-  - Purpose: article and publication index.
-
 ## Contact
 - Email: info@ibaifernandez.com
 - WhatsApp: +57 322 428 8532

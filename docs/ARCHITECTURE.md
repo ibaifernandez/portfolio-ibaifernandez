@@ -68,9 +68,8 @@ scripts/build-pages.mjs   (Node.js build script)
 *.html (root) + *.min assets
                          (committed static output)
   index.html
-  blog.html
   cv-print.html
-  project-*.html
+  dossier HTML pages (for example `debtracker.html`, `lfi.html`, `elm-st.html`)
   assets/css/*.min.css
   assets/js/*.min.js
 ```
@@ -105,9 +104,8 @@ Media note:
 ├── package.json                 ← NPM scripts and dev deps
 │
 ├── index.html                   ← GENERATED — do not edit
-├── blog.html                    ← GENERATED — do not edit
 ├── cv-print.html                ← GENERATED — do not edit
-├── project-*.html               ← GENERATED — do not edit
+├── *.html dossier pages         ← GENERATED — do not edit
 │
 ├── assets/
 │   ├── css/
@@ -154,13 +152,11 @@ Media note:
 ├── src/
 │   ├── pages/
 │   │   ├── index.template.html
-│   │   ├── blog.template.html
 │   │   ├── cv-print.template.html
 │   │   └── project-*.template.html
 │   └── components/
 │       ├── shared/              ← header, footer, nav, analytics
-│       ├── index/               ← home-specific components
-│       └── blog/                ← blog-specific components
+│       └── index/               ← home-specific components
 │
 └── tests/
     ├── quality-guards.sh        ← shell-based quality gate
@@ -173,7 +169,6 @@ Media note:
     └── e2e/
         ├── home.spec.js
         ├── contact.spec.js
-        ├── blog.spec.js
         ├── keyboard.spec.js
         ├── a11y.spec.js
         └── visual.spec.js
@@ -228,7 +223,7 @@ Developer push → main branch
   │   ├── npm run build:pages
   │   ├── npm run test:quality    ← shell quality gates
   │   ├── npx playwright install --with-deps chromium
-  │   ├── npm run test:e2e        ← 29 Playwright tests
+  │   ├── npm run test:e2e        ← 24 Playwright tests
   │   └── npx netlify-cli deploy --prod --dir .
   │
   └── Netlify CDN
@@ -305,7 +300,7 @@ Pages support EN/ES language toggle via:
 | Requirement | Implementation |
 |---|---|
 | ARIA landmark | `<main class="port_sec_warapper">` |
-| Skip navigation | Skip link targets the first meaningful main section (`#about_sec` in Home, `#blog_main` in Blog) |
+| Skip navigation | Skip link targets the first meaningful main section (`#about_sec` in Home) |
 | Keyboard focus | `:focus-visible` styles in `style.css` |
 | Motion | `@media (prefers-reduced-motion: reduce)` in `style.css` |
 | Form feedback | `aria-live="polite"` status region + `aria-invalid` on fields |

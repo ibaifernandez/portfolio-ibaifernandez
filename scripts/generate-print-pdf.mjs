@@ -10,16 +10,15 @@ const baseUrl = `http://127.0.0.1:${port}`;
 const outputDir = path.resolve(rootDir, 'artifacts/print-pdf');
 const targets = [
   { route: 'index.html', file: 'index.pdf' },
-  { route: 'project-debtracker.html', file: 'project-debtracker.pdf' },
-  { route: 'project-gymtracker.html', file: 'project-gymtracker.pdf' },
-  { route: 'project-enterprise-crm.html', file: 'project-enterprise-crm.pdf' },
-  { route: 'project-ruta-digitalizacion-2x2mkt.html', file: 'project-ruta-digitalizacion-2x2mkt.pdf' },
-  { route: 'project-portfolio-ibaifernandez.html', file: 'project-portfolio-ibaifernandez.pdf' },
-  { route: 'project-myboard.html', file: 'project-myboard.pdf' },
-  { route: 'project-the-research-engine.html', file: 'project-the-research-engine.pdf' },
-  { route: 'project-elm-st.html', file: 'project-elm-st.pdf' },
-  { route: 'project-aglaya.html', file: 'project-aglaya.pdf' },
-  { route: 'blog.html', file: 'blog.pdf' }
+  { route: 'debtracker.html', file: 'debtracker.pdf' },
+  { route: 'gymtracker.html', file: 'gymtracker.pdf' },
+  { route: 'lfi.html', file: 'lfi.pdf' },
+  { route: 'ruta-de-la-digitalizacion-y-2x2-mkt.html', file: 'ruta-de-la-digitalizacion-y-2x2-mkt.pdf' },
+  { route: 'portfolio-ibaifernandez.html', file: 'portfolio-ibaifernandez.pdf' },
+  { route: 'my-board.html', file: 'my-board.pdf' },
+  { route: 'the-research-engine.html', file: 'the-research-engine.pdf' },
+  { route: 'elm-st.html', file: 'elm-st.pdf' },
+  { route: 'aglaya.html', file: 'aglaya.pdf' }
 ];
 
 function sleep(ms) {

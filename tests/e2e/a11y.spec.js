@@ -50,19 +50,3 @@ test('home primary sections have no serious/critical WCAG violations', async ({ 
 
   expect(hardViolations, formatViolations(hardViolations)).toEqual([]);
 });
-
-test('blog technical shell has no serious/critical WCAG violations', async ({ page }) => {
-  await page.goto('/blog.html');
-
-  const results = await new AxeBuilder({ page })
-    .withTags(['wcag2a', 'wcag2aa'])
-    .include('.port_sidebar_wrapper')
-    .include('.port_togglebox')
-    .include('.blog_searchbox')
-    .include('.blog_shareinfo .blog_social')
-    .analyze();
-
-  const hardViolations = getBlockingViolations(results);
-
-  expect(hardViolations, formatViolations(hardViolations)).toEqual([]);
-});

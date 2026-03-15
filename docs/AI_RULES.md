@@ -24,7 +24,7 @@ src/pages/*.template.html
   → *.html (root level, committed)
 ```
 
-**Rule:** Never edit `index.html`, `blog.html`, `cv-print.html`, or `project-*.html` directly. These will be overwritten.
+**Rule:** Never edit `index.html`, `cv-print.html`, or the generated dossier HTML pages in the repo root directly. These will be overwritten.
 
 **Rule:** After any change to a template or component, run `npm run build:pages` and commit the regenerated HTML.
 
@@ -56,8 +56,8 @@ Editing `content/*.json` alone does not update the HTML. You must rebuild and co
 | `PORTFOLIO_CAPTCHA_SECRET=` or `RESEND_API_KEY=` literal in `netlify.toml` | No hardcoded secrets |
 | Missing `skip-link` in HTML | Keyboard accessibility |
 | Missing `aria-live` on form status container | Accessible form feedback |
-| Static `<script>` tags for bootstrap/cvtext in index/blog | Lazy-load enforcement |
-| Images without `loading`, `width`, `height` in index/blog | CLS prevention |
+| Static `<script>` tags for bootstrap/cvtext in generated HTML | Lazy-load enforcement |
+| Missing image geometry on critical generated HTML | CLS prevention |
 | Budget overruns (see `tests/performance-budget.config.json`) | Performance budget |
 | Missing AVIF or WebP `<source>` for large images | Modern format coverage |
 | Missing required fields in `content/*.json` | Data integrity |
@@ -114,7 +114,7 @@ Section headings must follow a valid hierarchy. The `port_sub_heading` element a
 Any `<a>` or `<button>` containing only an icon (Font Awesome `<i>`) must have an `aria-label` describing its action.
 
 ### 5.4 — All images need `alt`, `width`, `height`, and `loading`
-In `index.html` and `blog.html`:
+In `index.html`:
 - `loading="lazy"` (or `loading="eager"` for LCP candidate)
 - `width` and `height` (prevents CLS)
 - Meaningful `alt` text (or `alt=""` for decorative images)
@@ -123,7 +123,7 @@ In `index.html` and `blog.html`:
 Do not remove or suppress `:focus-visible` styles. They are required for keyboard navigation.
 
 ### 5.6 — Axe baseline must remain green
-Tests in `tests/e2e/a11y.spec.js` check for zero `serious` or `critical` axe violations on Home, Contact, and Blog shell. Do not introduce new violations.
+Tests in `tests/e2e/a11y.spec.js` check for zero `serious` or `critical` axe violations on Home and Contact. Do not introduce new violations.
 
 ---
 

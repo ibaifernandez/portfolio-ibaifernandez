@@ -13,7 +13,11 @@ const timeoutMs = timeoutArg ? Number(timeoutArg.split('=')[1]) : 8000;
 const concurrency = concurrencyArg ? Number(concurrencyArg.split('=')[1]) : 6;
 const maxExternal = maxExternalArg ? Number(maxExternalArg.split('=')[1]) : Infinity;
 const pageArgs = args.filter((arg) => !arg.startsWith('--'));
-const pages = pageArgs.length > 0 ? pageArgs : ['index.html', 'blog.html'];
+const pages = pageArgs.length > 0
+  ? pageArgs
+  : fs.readdirSync(rootDir)
+      .filter((entry) => entry.endsWith('.html'))
+      .sort((left, right) => left.localeCompare(right));
 
 let hasFailures = false;
 

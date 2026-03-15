@@ -171,6 +171,37 @@ const server = http.createServer((req, res) => {
     return handleAjax(req, res);
   }
 
+  const legacyRedirects = new Map([
+    ['/project-national-tech-evangelism.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['/project-debtracker.html', '/debtracker.html'],
+    ['/project-gymtracker.html', '/gymtracker.html'],
+    ['/project-enterprise-crm.html', '/lfi.html'],
+    ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['/project-portfolio-ibaifernandez.html', '/portfolio-ibaifernandez.html'],
+    ['/project-myboard.html', '/my-board.html'],
+    ['/project-the-research-engine.html', '/the-research-engine.html'],
+    ['/project-elm-st.html', '/elm-st.html'],
+    ['/project-aglaya.html', '/aglaya.html']
+  ]);
+
+  if (legacyRedirects.has(pathname)) {
+    return send(res, 308, '', 'text/plain; charset=utf-8', {
+      Location: legacyRedirects.get(pathname)
+    });
+  }
+
+  if (pathname === '/lfi-v2' || pathname === '/lfi-v2.html' || pathname === '/lfi-v2.html/') {
+    return send(res, 308, '', 'text/plain; charset=utf-8', {
+      Location: '/lfi.html'
+    });
+  }
+
+  if (pathname === '/blog' || pathname === '/blog.html') {
+    return send(res, 308, '', 'text/plain; charset=utf-8', {
+      Location: '/'
+    });
+  }
+
   if (pathname === '/') {
     pathname = '/index.html';
   }

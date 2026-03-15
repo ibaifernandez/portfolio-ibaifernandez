@@ -3,6 +3,9 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
+shopt -s nullglob
+
+generated_html=( *.html )
 
 fail() {
   echo "[FAIL] $1" >&2
@@ -13,11 +16,11 @@ if rg -n "eval\\(" assets/js/custom.js >/dev/null; then
   fail "Found eval() usage in assets/js/custom.js"
 fi
 
-if rg -n 'href="javascript:;"|href=""' index.html blog.html >/dev/null; then
+if rg -n 'href="javascript:;"|href=""' "${generated_html[@]}" >/dev/null; then
   fail "Found invalid placeholder href values"
 fi
 
-if rg -n 'https://https://' index.html >/dev/null; then
+if rg -n 'https://https://' "${generated_html[@]}" >/dev/null; then
   fail "Found malformed URL with duplicated protocol"
 fi
 
@@ -78,20 +81,12 @@ if ! rg -n '<a class="skip-link" href="#about_sec">' index.html >/dev/null; then
   fail "Missing keyboard skip-link for main content in index.html"
 fi
 
-if ! rg -n '<a class="skip-link" href="#blog_main">' blog.html >/dev/null; then
-  fail "Missing keyboard skip-link for main content in blog.html"
-fi
-
-if rg -n -g 'index.html' -g 'project-*.html' '<h2[^>]*class="[^"]*port_sub_heading(_2)?([^"]*)"' . >/dev/null; then
+if rg -n '<h2[^>]*class="[^"]*port_sub_heading(_2)?([^"]*)"' "${generated_html[@]}" >/dev/null; then
   fail "Found section eyebrow copy still rendered as h2 in generated pages"
 fi
 
-if rg -n -g 'index.html' -g 'project-*.html' '<h1[^>]*class="[^"]*port_heading(_[234])?([^"]*)"' . >/dev/null; then
+if rg -n '<h1[^>]*class="[^"]*port_heading(_[234])?([^"]*)"' "${generated_html[@]}" >/dev/null; then
   fail "Found section titles still rendered as h1 in generated pages"
-fi
-
-if rg -n '<a href="#" class="siderbar_icon"' blog.html >/dev/null; then
-  fail "Found placeholder social links in blog.html"
 fi
 
 if ! rg -n 'id="contact-response"' index.html >/dev/null; then
@@ -112,13 +107,13 @@ for script in \
   "assets/js/bootstrap.min.js" \
   "assets/js/cvtext1.js" \
   "assets/js/cvtext2.js"; do
-  if rg -n "<script[^>]*src=[\"']${script}[\"']" index.html blog.html >/dev/null; then
+  if rg -n "<script[^>]*src=[\"']${script}[\"']" "${generated_html[@]}" >/dev/null; then
     fail "Found static script include that should be lazy-loaded by custom.js: ${script}"
   fi
 done
 
 if rg -n 'assets/css/(font|animate|style|print|cv-print|national-route)\.css|assets/js/(custom|translate|cv-print)\.js' \
-  index.html blog.html cv-print.html project-*.html >/dev/null; then
+  "${generated_html[@]}" >/dev/null; then
   fail "Found legacy unminified asset references in generated HTML"
 fi
 
@@ -135,11 +130,7 @@ if ! rg -n 'focus-visible' assets/css/style.css >/dev/null; then
   fail "Missing focus-visible accessibility baseline in assets/css/style.css"
 fi
 
-target_blank_total="$(rg -n 'target="_blank"' index.html blog.html | wc -l | tr -d ' ')"
-target_blank_secure="$(rg -n 'target="_blank"[^>]*rel="noopener noreferrer"' index.html blog.html | wc -l | tr -d ' ')"
-if [[ "$target_blank_total" != "$target_blank_secure" ]]; then
-  fail "Some target=_blank links are missing rel=noopener noreferrer"
-fi
+node tests/check-target-blank.mjs "${generated_html[@]}"
 
 if [[ ! -s README.md ]]; then
   fail "README.md is empty"
@@ -155,7 +146,7 @@ node tests/check-avif-coverage.mjs
 node tests/check-webp-coverage.mjs
 node tests/check-links.mjs
 
-for file in index.html blog.html; do
+for file in index.html; do
   total_imgs="$(rg -n "<img " "$file" | wc -l | tr -d ' ')"
   with_loading="$(rg -n '<img [^>]*loading="' "$file" | wc -l | tr -d ' ')"
   with_width="$(rg -n '<img [^>]*width="' "$file" | wc -l | tr -d ' ')"
