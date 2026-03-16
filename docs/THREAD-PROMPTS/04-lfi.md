@@ -21,6 +21,7 @@ This is not a generic case study. It is not a SaaS landing page. It is not a com
 - Current page-local stylesheet in use: `assets/css/dossiers/lfi.css`
 - Dossier-local CSS convention: `assets/css/dossiers/lfi.css`
 - Public dossier copy must remain wired to the shared EN/ES translation layer via `translate`, `translate-html`, and LFi-specific keys in `en.json` / `es.json`
+- Head metadata for LFi now also syncs per language inside `src/pages/lfi.template.html`; keep title/description/JSON-LD aligned when editorial SEO copy changes
 - Legacy LFi dossier has already been archived and must not be resurrected as the public direction
 
 ## Your ownership boundaries

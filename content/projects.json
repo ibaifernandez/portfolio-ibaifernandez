@@ -68,6 +68,31 @@
   },
   {
     "page": {
+      "output": "norden.html",
+      "template": "src/pages/project-norden.template.html",
+      "published": false,
+      "shareImage": "assets/images/norden.png",
+      "keywords": "Norden Intelligence System, reporting architecture, cohort logic, client reporting, decision support, Brevo, LFi"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--norden\" style=\"background:linear-gradient(145deg,#431506 0%,#ff6800 52%,#ffad63 100%)\" role=\"img\" aria-label=\"Norden Intelligence System exhibit showing reporting registry, client and internal views, and printable evidence surfaces\" translate-aria-label=\"norden-registry-media-aria\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\" translate=\"norden-registry-media-tag\">Case File</span>\n<strong translate=\"norden-registry-media-title\">Reporting Registry</strong>\n<span class=\"project_spotlight_mockup_metric\" translate=\"norden-registry-media-metric\">Client / internal / print</span>\n<span class=\"project_spotlight_mockup_note\" translate=\"norden-registry-media-note\">Snapshots, cohort hashes, and reusable evidence surfaces</span>\n</div>",
+    "title": {
+      "text": "Norden Intelligence System: Reporting Dossier and Cohort Logic",
+      "translate": "project-norden-title"
+    },
+    "description": {
+      "text": "A standalone dossier about the system built around a live LFi client case: reporting architecture, hashed cohorts, internal/client view separation, and operational decision support built from real account evidence.",
+      "translate": "project-norden-copy"
+    },
+    "link": {
+      "href": "norden.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
       "output": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
       "template": "src/pages/project-ruta-digitalizacion-2x2mkt.template.html"
     },

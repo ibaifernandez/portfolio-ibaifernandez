@@ -345,7 +345,7 @@ function renderSingleCtaButton(sectionKey) {
 }
 
 function renderProjectsGrid() {
-  const projects = readJson('content/projects.json');
+  const projects = readJson('content/projects.json').filter(isPublishedProject);
   const cardTemplate = readComponent('src/components/index/project-card.html');
   const linkTemplate = '<a class="project_spotlight_cta" href="{{href}}"{{{targetAttr}}}{{{relAttr}}}{{{labelTranslateAttr}}}>{{labelText}}</a>';
   const mediaLinkTemplate = '<a class="project_spotlight_media_link" href="{{href}}"{{{targetAttr}}}{{{relAttr}}}{{{ariaLabelAttr}}}>';
@@ -566,8 +566,12 @@ function renderDirective(renderName) {
   return renderer();
 }
 
+function isPublishedProject(project) {
+  return project?.page?.published !== false;
+}
+
 function renderProjectPageEntries() {
-  const projects = readJson('content/projects.json');
+  const projects = readJson('content/projects.json').filter(isPublishedProject);
   const localPages = projects.map((project, index) => {
     const labelPrefix = `projects[${index}]`;
     const page = project.page || {};
