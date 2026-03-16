@@ -1,17 +1,47 @@
+function buildTranslationUrl(language) {
+    var url = new URL(language + '.json', window.location.href);
+    // Bust local/dev caches so ?lang=es remains reliable after rebuilds.
+    url.searchParams.set('v', '2026-03-16');
+    return url.toString();
+}
+
 // Función para cargar las traducciones
 function loadTranslations(language, callback) {
+    var requestUrl = buildTranslationUrl(language);
+
+    if (typeof window.fetch === 'function') {
+        window.fetch(requestUrl, { cache: 'no-store' })
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Error loading translations: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(function(translations) {
+                callback(null, translations);
+            })
+            .catch(function(error) {
+                callback(error.message, null);
+            });
+        return;
+    }
+
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var translations = JSON.parse(xhr.responseText);
-                callback(null, translations);
+            if (xhr.status >= 200 && xhr.status < 300) {
+                try {
+                    var translations = JSON.parse(xhr.responseText);
+                    callback(null, translations);
+                } catch (error) {
+                    callback('Error parsing translations: ' + error.message, null);
+                }
             } else {
                 callback('Error loading translations: ' + xhr.status, null);
             }
         }
     };
-    xhr.open('GET', language + '.json', true);
+    xhr.open('GET', requestUrl, true);
     xhr.send();
 }
 

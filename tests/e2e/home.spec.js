@@ -107,6 +107,18 @@ test('contact CTA points to contact section anchor', async ({ page }) => {
   await expect(page).toHaveURL(/#scroll_contact$/);
 });
 
+test('published Norden dossier appears in the projects grid', async ({ page }) => {
+  await page.goto('/index.html');
+
+  const nordenCard = page.locator('.project_spotlight_project', {
+    has: page.locator('a.project_spotlight_media_link[href="norden.html"]')
+  });
+
+  await expect(nordenCard).toBeVisible();
+  await expect(nordenCard.locator('.project_spotlight_title')).toContainText(/Norden Intelligence System/i);
+  await expect(nordenCard.locator('.project_spotlight_cta')).toHaveAttribute('href', 'norden.html');
+});
+
 test('contact form exposes anti-spam guard fields', async ({ page }) => {
   await page.goto('/index.html');
 

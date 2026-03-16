@@ -1,0 +1,865 @@
+body.norden_registry_page {
+	--norden-ink: #f8efe5;
+	--norden-muted: rgba(248, 239, 229, 0.76);
+	--norden-rule: rgba(248, 239, 229, 0.16);
+	--norden-rule-strong: rgba(248, 239, 229, 0.28);
+	--norden-accent: #ff6800;
+	--norden-accent-soft: #ff9544;
+	--norden-accent-pale: #ffc894;
+	--norden-pad-left: clamp(4.2rem, 7vw, 6.6rem);
+	--norden-pad-right: clamp(2rem, 2vw, 2rem);
+	--norden-float-lane: clamp(3.2rem, 5vw, 4.8rem);
+	background: #120804;
+	color: var(--norden-ink);
+}
+
+body.norden_registry_page .port_sec_warapper,
+body.norden_registry_page .norden_registry_wrapper,
+body.norden_registry_page .norden_registry_surface {
+	background: transparent;
+}
+
+body.norden_registry_page .port_singleblog_wrapper {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+body.norden_registry_page .port_togglebox span {
+	background: var(--norden-ink);
+}
+
+body.norden_registry_page code {
+	padding: 0.12rem 0.38rem;
+	border: 1px solid rgba(248, 239, 229, 0.16);
+	border-radius: 0.35rem;
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(248, 239, 229, 0.96);
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.92em;
+}
+
+body.norden_registry_page .project_case_nav {
+	margin: 0;
+	padding: 2rem calc(var(--norden-pad-right) + var(--norden-float-lane)) 3rem var(--norden-pad-left);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem 1.35rem;
+	flex-wrap: wrap;
+	background: #0c0807;
+}
+
+body.norden_registry_page .project_case_nav .project_case_navlink,
+body.norden_registry_page .project_case_backlink {
+	color: var(--norden-ink);
+}
+
+body.norden_registry_page .project_case_nav .project_case_navlink {
+	border-color: rgba(248, 239, 229, 0.18);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+body.norden_registry_page .project_case_nav .project_case_navlink:hover,
+body.norden_registry_page .project_case_nav .project_case_navlink:focus {
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--norden-ink);
+}
+
+.norden_registry_surface {
+	position: relative;
+	overflow: hidden;
+	background: #120804;
+}
+
+.norden_registry_flow {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.norden_registry_hero,
+.norden_registry_section,
+.norden_registry_final {
+	position: relative;
+	overflow: hidden;
+	padding: clamp(1rem, 2.2vw, 1.45rem) calc(var(--norden-pad-right) + var(--norden-float-lane)) clamp(4.2rem, 7vw, 6.2rem) var(--norden-pad-left);
+}
+
+.norden_registry_hero {
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.6rem, 3vw, 2.6rem);
+	padding-top: clamp(0.55rem, 1.3vw, 0.85rem);
+	background:
+		radial-gradient(circle at 84% 14%, rgba(255, 104, 0, 0.28), transparent 0 24rem),
+		radial-gradient(circle at 14% 82%, rgba(255, 171, 99, 0.18), transparent 0 24rem),
+		linear-gradient(138deg, #120804 0%, #25110a 42%, #3a1404 100%);
+}
+
+.norden_registry_hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: clamp(5rem, 11vw, 8rem);
+	background: linear-gradient(180deg, rgba(37, 17, 10, 0), #21110b 100%);
+	pointer-events: none;
+}
+
+.norden_registry_section::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: clamp(5rem, 12vw, 8rem);
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0), var(--band-next));
+	pointer-events: none;
+}
+
+.norden_registry_internal,
+.norden_registry_protocol,
+.norden_registry_tag,
+.norden_registry_stage_label {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.76rem;
+	letter-spacing: 0.34em;
+	text-transform: uppercase;
+	color: rgba(248, 239, 229, 0.6);
+}
+
+.norden_registry_tag {
+    text-align: right;
+}
+
+.norden_registry_meta_row {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+    padding: 2rem 0 0.35rem;
+}
+
+.norden_registry_backlink {
+	margin: 0;
+	line-height: 1.15;
+	color: var(--norden-ink);
+}
+
+.norden_registry_protocol,
+.norden_registry_internal {
+	margin: 0;
+	line-height: 1.2;
+}
+
+.norden_registry_protocol {
+	margin-top: 2.85rem;
+}
+
+.norden_registry_hero_grid {
+	display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(2.5rem, 4vw, 4.8rem);
+}
+
+.norden_registry_hero_side {
+    flex: 1 1 21rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    /* padding-top: clamp(1rem, 2vw, 1.6rem); */
+    max-width: 25rem;
+    text-align: right;
+}
+
+.norden_registry_hero_head {
+	/* flex: 1 1 34rem;
+	min-width: 0;
+	display: flex;
+	justify-content: flex-end; */
+}
+
+.norden_registry_title {
+    max-width: 9ch;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(4rem, 6.6vw, 4rem);
+    font-weight: 700;
+    line-height: 0.83;
+    letter-spacing: -0.075em;
+    text-transform: uppercase;
+    text-align: left;
+    color: rgba(248, 239, 229, 0.99);
+}
+
+.norden_registry_lead {
+    margin: 0;
+    /* max-width: 14ch; */
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: clamp(1.7rem, 2.8vw, 2rem);
+    font-weight: 500;
+    line-height: 1.03;
+    letter-spacing: -0.045em;
+    color: rgba(248, 239, 229, 0.96);
+}
+
+.norden_registry_intro,
+.norden_registry_section_intro,
+.norden_registry_section_head,
+.norden_registry_section_body,
+.norden_registry_manifest,
+.norden_registry_claims,
+.norden_registry_step_copy {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.norden_registry_intro p,
+.norden_registry_section_intro p,
+.norden_registry_column li,
+.norden_registry_step_copy p,
+.norden_registry_surface_row p,
+.norden_registry_window_row p,
+.norden_registry_segment_row p,
+.norden_registry_final p,
+.norden_registry_question_list li,
+.norden_registry_reading_lane li {
+	margin: 0;
+	font-size: 1.04rem;
+	line-height: 1.72;
+	color: var(--norden-muted);
+}
+
+.norden_registry_hero_band {
+	width: min(100%, 84rem);
+	margin-left: auto;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: clamp(2rem, 4vw, 4rem);
+}
+
+.norden_registry_exhibit {
+    flex: 1 1 18rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden {
+	position: relative;
+	min-height: clamp(23rem, 34vw, 31rem);
+	padding: clamp(1.25rem, 2vw, 1.7rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #1a0c05;
+	background:
+		radial-gradient(circle at 80% 14%, rgba(255, 255, 255, 0.32), transparent 0 8rem),
+		linear-gradient(155deg, #ffbb7d 0%, #ff6800 46%, #8a2500 100%);
+	border-radius: 0;
+	clip-path: polygon(0 0, 100% 0, 100% 89%, 93% 100%, 0 100%);
+	transform: rotate(-2deg) translateY(0.8rem);
+	box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden::before {
+	width: 16rem;
+	height: 16rem;
+	top: -6rem;
+	right: -4rem;
+	background: rgba(255, 244, 232, 0.26);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden::after {
+	width: 13rem;
+	height: 13rem;
+	left: -3rem;
+	bottom: -4rem;
+	background: rgba(26, 12, 5, 0.22);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_tag {
+	align-self: flex-start;
+	width: fit-content;
+	border-radius: 999px;
+	background: rgba(26, 12, 5, 0.12);
+	color: rgba(26, 12, 5, 0.78);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden strong {
+	max-width: 8ch;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(2.4rem, 4vw, 3.2rem);
+	font-weight: 700;
+	line-height: 0.92;
+	letter-spacing: -0.05em;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_metric {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_note {
+	max-width: 18rem;
+	color: rgba(26, 12, 5, 0.8);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: 0.85rem;
+	min-height: 15rem;
+	padding: 0;
+	position: relative;
+	inset: auto;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span {
+	border: 0;
+	border-radius: 0;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08)),
+		rgba(26, 12, 5, 0.18);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(1) {
+	flex: 1 1 52%;
+	min-height: 14rem;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(2),
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(3),
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(4) {
+	flex: 1 1 calc(48% - 0.85rem);
+	min-height: 4.1rem;
+}
+
+.norden_registry_manifest {
+	flex: 1 1 20rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	gap: 1rem 2rem;
+	padding-top: 1.25rem;
+}
+
+.norden_registry_manifest div {
+	flex: 1 1 calc(50% - 2rem);
+	min-width: 13rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	padding-top: 0.85rem;
+	border-top: 1px solid rgba(248, 239, 229, 0.12);
+}
+
+.norden_registry_manifest span,
+.norden_registry_step_path {
+	margin: 0;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.72rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: rgba(248, 239, 229, 0.54);
+}
+
+.norden_registry_manifest strong {
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 1.05rem;
+	font-weight: 600;
+	line-height: 1.4;
+	color: rgba(248, 239, 229, 0.98);
+}
+
+.norden_registry_section,
+.norden_registry_final {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: clamp(1.8rem, 3vw, 3rem);
+}
+
+.norden_registry_section--boundary {
+	--band-next: #2c140a;
+	--section-accent: #ff6800;
+	background:
+		radial-gradient(circle at 16% 78%, rgba(255, 104, 0, 0.18), transparent 0 21rem),
+		linear-gradient(180deg, #21110b 0%, #28140c 26%, #2c140a 100%);
+}
+
+.norden_registry_section--mandate {
+	--band-next: #31160b;
+	--section-accent: #ff9544;
+	background:
+		radial-gradient(circle at 88% 18%, rgba(255, 149, 68, 0.2), transparent 0 20rem),
+		linear-gradient(180deg, #2c140a 0%, #34180c 26%, #31160b 100%);
+}
+
+.norden_registry_section--chain {
+	--band-next: #26110b;
+	--section-accent: #ffc894;
+	background:
+		radial-gradient(circle at 14% 28%, rgba(255, 200, 148, 0.14), transparent 0 18rem),
+		linear-gradient(180deg, #31160b 0%, #25110c 24%, #26110b 100%);
+}
+
+.norden_registry_section--surfaces {
+	--band-next: #1c0f0a;
+	--section-accent: #ff7d24;
+	background:
+		radial-gradient(circle at 82% 22%, rgba(255, 125, 36, 0.18), transparent 0 19rem),
+		linear-gradient(180deg, #26110b 0%, #30120a 24%, #1c0f0a 100%);
+}
+
+.norden_registry_section--cohorts {
+	--band-next: #130a06;
+	--section-accent: #ffb36d;
+	background:
+		radial-gradient(circle at 18% 22%, rgba(255, 179, 109, 0.16), transparent 0 18rem),
+		linear-gradient(180deg, #1c0f0a 0%, #241109 22%, #130a06 100%);
+}
+
+.norden_registry_section--reading {
+	--band-next: #0c0807;
+	--section-accent: #ff9544;
+	background:
+		radial-gradient(circle at 86% 20%, rgba(255, 149, 68, 0.16), transparent 0 18rem),
+		linear-gradient(180deg, #130a06 0%, #1a0d08 22%, #0c0807 100%);
+}
+
+.norden_registry_final {
+	--section-accent: #ff6800;
+	background:
+		radial-gradient(circle at 48% 0, rgba(255, 104, 0, 0.12), transparent 0 18rem),
+		linear-gradient(180deg, #0c0807 0%, #0c0807 100%);
+	padding-top: clamp(3rem, 6vw, 4.2rem);
+	padding-bottom: clamp(3.5rem, 7vw, 5rem);
+}
+
+.norden_registry_section_intro,
+.norden_registry_section_head,
+.norden_registry_section_body {
+	flex: 1 1 30rem;
+	max-width: 40rem;
+}
+
+.norden_registry_section_head h2,
+.norden_registry_final h2 {
+	margin: 0;
+	/* max-width: 6.2ch; */
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(3.35rem, 6.8vw, 6.2rem);
+	font-weight: 700;
+	line-height: 0.84;
+	letter-spacing: -0.075em;
+	text-transform: uppercase;
+	color: rgba(248, 239, 229, 0.99);
+}
+
+.norden_registry_section--left .norden_registry_section_head {
+	order: 1;
+	margin-right: auto;
+}
+
+.norden_registry_section--left .norden_registry_section_intro {
+	order: 2;
+	margin-left: auto;
+}
+
+.norden_registry_section--left .norden_registry_section_body {
+	order: 3;
+	margin-left: auto;
+}
+
+.norden_registry_section--right .norden_registry_section_intro {
+	order: 1;
+}
+
+.norden_registry_section--right .norden_registry_section_head {
+	order: 2;
+	margin-left: auto;
+	text-align: right;
+	align-items: flex-end;
+}
+
+.norden_registry_section--right .norden_registry_section_body {
+	order: 3;
+}
+
+.norden_registry_final > * {
+	width: min(100%, 42rem);
+}
+
+.norden_registry_section_body {
+	gap: 1.7rem;
+	/* padding-top: clamp(1.2rem, 2vw, 1.8rem);
+	border-top: 1px solid var(--norden-rule); */
+}
+
+.norden_registry_warning,
+.norden_registry_note,
+.norden_registry_future {
+	margin: 0;
+	padding-left: 1.2rem;
+	border-left: 2px solid rgba(248, 239, 229, 0.22);
+	font-size: 1.02rem;
+	line-height: 1.72;
+	color: rgba(248, 239, 229, 0.82);
+}
+
+.norden_registry_split_columns,
+.norden_registry_reading_split,
+.norden_registry_metric_rail,
+.norden_registry_surface_rows,
+.norden_registry_window_rows,
+.norden_registry_segment_rows {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+}
+
+.norden_registry_column,
+.norden_registry_reading_lane,
+.norden_registry_metric {
+	flex: 1 1 16rem;
+	min-width: 16rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.95rem;
+	padding-top: 1rem;
+	border-top: 2px solid rgba(248, 239, 229, 0.18);
+}
+
+.norden_registry_column--accent,
+.norden_registry_reading_lane--accent,
+.norden_registry_metric--accent {
+	border-top-color: rgba(255, 104, 0, 0.56);
+}
+
+.norden_registry_column h3,
+.norden_registry_step_copy h3,
+.norden_registry_surface_row h3,
+.norden_registry_window_row h3,
+.norden_registry_reading_lane h3 {
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.1;
+	letter-spacing: -0.035em;
+	color: rgba(248, 239, 229, 0.98);
+}
+
+.norden_registry_list,
+.norden_registry_question_list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.95rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.norden_registry_list li,
+.norden_registry_question_list li {
+	position: relative;
+	padding-left: 1.45rem;
+}
+
+.norden_registry_list li::before,
+.norden_registry_question_list li::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0.78rem;
+	width: 0.58rem;
+	height: 1px;
+	background: var(--section-accent, var(--norden-accent));
+}
+
+.norden_registry_metric span,
+.norden_registry_metric small {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.73rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(248, 239, 229, 0.56);
+}
+
+.norden_registry_metric strong,
+.norden_registry_window_row strong,
+.norden_registry_segment_row strong {
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(2.05rem, 4vw, 3rem);
+	font-weight: 700;
+	line-height: 0.92;
+	letter-spacing: -0.055em;
+	color: rgba(248, 239, 229, 0.99);
+}
+
+.norden_registry_metric--accent strong {
+	color: rgba(255, 126, 49, 0.98);
+}
+
+.norden_registry_pipeline {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.norden_registry_pipeline li,
+.norden_registry_surface_row,
+.norden_registry_window_row,
+.norden_registry_segment_row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 1rem 1.3rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(248, 239, 229, 0.16);
+}
+
+.norden_registry_step_num {
+	flex: 0 0 3.8rem;
+	display: inline-flex;
+	align-items: baseline;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.86rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: rgba(255, 126, 49, 0.9);
+}
+
+.norden_registry_step_path {
+	flex: 0 1 12rem;
+	min-width: 12rem;
+}
+
+.norden_registry_step_copy {
+	flex: 1 1 17rem;
+	min-width: 17rem;
+}
+
+.norden_registry_surface_row,
+.norden_registry_window_row,
+.norden_registry_segment_row {
+	width: 100%;
+}
+
+.norden_registry_surface_row > *:nth-child(1) {
+	flex: 0 1 11rem;
+	min-width: 11rem;
+}
+
+.norden_registry_surface_row > *:nth-child(2) {
+	flex: 0 1 10rem;
+	min-width: 10rem;
+}
+
+.norden_registry_surface_row > *:nth-child(3) {
+	flex: 1 1 16rem;
+	min-width: 16rem;
+}
+
+.norden_registry_window_row > *:nth-child(1) {
+	flex: 0 1 8rem;
+	min-width: 8rem;
+}
+
+.norden_registry_window_row > *:nth-child(2) {
+	flex: 1 1 16rem;
+	min-width: 16rem;
+}
+
+.norden_registry_window_row > *:nth-child(3) {
+	flex: 0 1 auto;
+	margin-left: auto;
+}
+
+.norden_registry_segment_row > *:nth-child(1) {
+	flex: 0 1 11rem;
+	min-width: 11rem;
+}
+
+.norden_registry_segment_row > *:nth-child(2) {
+	flex: 0 1 12rem;
+	min-width: 12rem;
+}
+
+.norden_registry_segment_row > *:nth-child(3) {
+	flex: 1 1 16rem;
+	min-width: 16rem;
+}
+
+.norden_registry_segment_row span {
+	margin: 0;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.76rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: rgba(248, 239, 229, 0.6);
+}
+
+.norden_registry_claims {
+	gap: 0;
+	margin-top: 0.8rem;
+}
+
+.norden_registry_claims p {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.2rem;
+	padding-top: 1rem;
+	border-top: 1px solid rgba(248, 239, 229, 0.14);
+}
+
+.norden_registry_claims strong {
+	flex: 0 0 4rem;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+	color: rgba(255, 126, 49, 0.9);
+}
+
+.norden_registry_claims span {
+	flex: 1 1 auto;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 1.16rem;
+	line-height: 1.65;
+	color: rgba(248, 239, 229, 0.9);
+}
+
+.norden_registry_nav {
+	background: #0c0807;
+}
+
+.norden_registry_backlink:focus-visible,
+body.norden_registry_page .project_case_nav .project_case_navlink:focus-visible {
+	outline: 2px solid rgba(255, 149, 68, 0.88);
+	outline-offset: 4px;
+}
+
+@media (max-width: 1199px) {
+	.norden_registry_hero_head {
+		justify-content: flex-start;
+	}
+
+	.norden_registry_title {
+		max-width: 8.2ch;
+		text-align: left;
+	}
+
+	.norden_registry_hero_side {
+		max-width: 36rem;
+	}
+}
+
+@media (max-width: 991px) {
+	body.norden_registry_page .project_case_nav {
+		padding: 1.8rem 1.5rem 2.5rem;
+	}
+
+	.norden_registry_hero,
+	.norden_registry_section,
+	.norden_registry_final {
+		padding: 1.1rem 1.5rem 4rem;
+	}
+
+	.norden_registry_section_intro,
+	.norden_registry_section_head,
+	.norden_registry_section_body,
+	.norden_registry_final > * {
+		max-width: none;
+		width: 100%;
+	}
+
+	.norden_registry_section--right .norden_registry_section_head {
+		text-align: left;
+		align-items: flex-start;
+	}
+
+	.norden_registry_section_head h2,
+	.norden_registry_final h2 {
+		max-width: none;
+	}
+
+	.norden_registry_window_row > *:nth-child(3) {
+		margin-left: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	body.norden_registry_page {
+		background: #120804;
+	}
+
+	.norden_registry_meta_row {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.norden_registry_protocol {
+		margin-top: 2rem;
+	}
+
+	.norden_registry_title {
+		font-size: clamp(3rem, 15vw, 4.15rem);
+	}
+
+	.norden_registry_lead {
+		font-size: clamp(1.45rem, 8vw, 1.75rem);
+	}
+
+	.norden_registry_section_head h2,
+	.norden_registry_final h2 {
+		font-size: clamp(2.35rem, 12vw, 3.4rem);
+	}
+
+	.norden_registry_hero,
+	.norden_registry_section,
+	.norden_registry_final {
+		padding: 1rem 1.15rem 3.6rem;
+	}
+
+	body.norden_registry_page .project_spotlight_mockup--norden {
+		min-height: 20rem;
+		transform: rotate(0) translateY(0);
+	}
+
+	body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(1),
+	body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(2),
+	body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(3),
+	body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(4) {
+		flex: 1 1 calc(50% - 0.85rem);
+		min-height: 4.5rem;
+	}
+
+	.norden_registry_claims p {
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+
+	.norden_registry_claims strong {
+		flex-basis: auto;
+	}
+}

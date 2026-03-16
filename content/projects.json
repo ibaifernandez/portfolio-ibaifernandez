@@ -70,7 +70,6 @@
     "page": {
       "output": "norden.html",
       "template": "src/pages/project-norden.template.html",
-      "published": false,
       "shareImage": "assets/images/norden.png",
       "keywords": "Norden Intelligence System, reporting architecture, cohort logic, client reporting, decision support, Brevo, LFi"
     },
