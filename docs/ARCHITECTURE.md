@@ -89,6 +89,11 @@ npm run build:pages
 
 This must be run and the output committed any time templates, components, content JSON, or readable served CSS/JS source files change.
 
+Canonical generated outputs to review after each build are:
+- root `*.html` pages
+- `assets/css/*.min.css`
+- `assets/js/*.min.js`
+
 Media note:
 - `npm run media:avif` and `npm run media:webp` now scan all generated root HTML pages by default and finish by calling `npm run build:pages`, so the standard image-optimization workflow stays aligned with the template build.
 
@@ -171,6 +176,7 @@ Media note:
         ├── contact.spec.js
         ├── keyboard.spec.js
         ├── a11y.spec.js
+        ├── norden-translation.spec.js
         └── visual.spec.js
 ```
 
@@ -223,7 +229,7 @@ Developer push → main branch
   │   ├── npm run build:pages
   │   ├── npm run test:quality    ← shell quality gates
   │   ├── npx playwright install --with-deps chromium
-  │   ├── npm run test:e2e        ← 24 Playwright tests
+  │   ├── npm run test:e2e        ← Playwright suite (28 tests at audit time on 2026-03-16; verify with `npx playwright test --list` before quoting a count)
   │   └── npx netlify-cli deploy --prod --dir .
   │
   └── Netlify CDN

@@ -101,11 +101,13 @@ npm run media:all
 ## The Golden Rules
 
 ### 1. Never edit generated files directly
-`index.html`, `cv-print.html`, and the root-level dossier HTML pages (for example `debtracker.html` or `lfi.html`) are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
+`index.html`, `cv-print.html`, the root-level dossier HTML pages (for example `debtracker.html` or `lfi.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
 
 - To change page content → edit `src/pages/*.template.html`
 - To change component markup → edit `src/components/**/*.html`
 - To change data-driven content → edit `content/*.json`
+- To change served CSS → edit the readable source in `assets/css/*.css`
+- To change served JS → edit the readable source in `assets/js/*.js`
 
 ### 2. Run tests before committing
 Always run `npm run test:ci` or at minimum `npm run build:pages && npm run test:quality` before any commit. CI will fail on quality violations.
@@ -186,8 +188,12 @@ All detailed documentation lives in `docs/`:
 | `docs/GLOSSARY.md` | Project glossary |
 | `docs/ENGINEERING-CHANGELOG.md` | Full engineering history |
 | `docs/ENGINEERING-RUNBOOK.md` | Ops runbook |
+| `docs/PARALLEL-SAFETY-BASELINE.md` | Shared mechanical contract for safe parallel work |
+| `docs/THREAD-ORCHESTRATION.md` | 13-thread execution model + file ownership rules |
 | `docs/DEPLOY_ROADMAP.md` | Deploy plan and status |
 | `docs/CASE-STUDY-2026-02-25.md` | Technical case study narrative |
+
+Master prompts for separate execution threads live in `docs/THREAD-PROMPTS/`.
 
 ---
 

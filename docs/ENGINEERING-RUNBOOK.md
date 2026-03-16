@@ -191,6 +191,38 @@ npm run print:pdf
 
 Genera un set de PDFs consistentes en `artifacts/print-pdf/` usando Playwright + `@media print`.
 
+### Protocolo seguro de push (repositorio multi-hilo)
+
+Antes de empaquetar cambios para `main`, usar esta clasificación:
+
+1. Fuentes canónicas:
+   `src/pages/*.template.html`, `src/components/**`, `content/*.json`, `assets/css/*.css`, `assets/js/*.js`, `en.json`, `es.json`, `scripts/**`, `tests/**`, `netlify/**` y documentación shared.
+2. Derivados generados:
+   `*.html` del root, `assets/css/*.min.css`, `assets/js/*.min.js`, y los formatos de imagen generados (`*.avif`, `*.webp`) cuando aplique.
+3. Evidencia o ruido que no debe empaquetarse a la ligera:
+   workspaces externos, exports, PDFs auxiliares, `.DS_Store`, y material editorial o de rationale fuera del scope del hilo activo.
+
+Flujo recomendado:
+
+1. Ejecutar `git status --short` y separar cambios canónicos de derivados generados.
+2. Si tocaste una fuente canónica, correr `npm run build:pages`.
+3. Confirmar que solo cambiaron derivados esperables de esas fuentes.
+4. Si cambió homepage, traducciones del hero, proyectos del home o cualquier baseline visual shared, confirmar que los cambios acoplados en `tests/e2e/home.spec.js` y snapshots relevantes están realmente versionados y no viven solo en local.
+5. Ejecutar `npm run test:quality`.
+6. Ejecutar `npm run test:e2e` cuando el cambio toque runtime shared, contacto, navegación, traducción, CSS shared, routing o pruebas.
+7. Preferir `npm run test:ci` antes de push cuando estés cerrando drift shared entre homepage, tests y snapshots.
+8. Empujar solo cuando fuentes, derivados y documentación cuenten la misma historia.
+
+### Regla anti-falso-verde local
+
+Incidente de referencia: `Quality · Build · E2E` fallido en GitHub Actions el 2026-03-16.
+
+- CI evalúa el `HEAD` committeado, no tu working tree.
+- Si `en.json` / `es.json` cambian copy que el home afirma traducir, la expectativa de `tests/e2e/home.spec.js` debe seguir esos diccionarios y no literales antiguos.
+- Si una fuente canónica del home cambia la altura o composición visual de proyectos, `tests/e2e/visual.spec.js-snapshots/projects-section.png` debe viajar en el mismo lote que ese cambio intencional.
+- Un verde local apoyado en tests o snapshots shared no committeados es una señal inválida de release.
+- `npm run test:ci` levanta un servidor local para `test:smoke`; si el entorno no permite escuchar en `127.0.0.1:4173`, reejecútalo fuera de ese sandbox antes de diagnosticar un fallo de repo.
+
 ## Higiene del workspace
 
 Limpieza rápida de artefactos temporales/prototipos locales:
@@ -221,6 +253,7 @@ Notas:
   - Baseline de accesibilidad CSS (`focus-visible`, `prefers-reduced-motion`).
 - `test:e2e`
   - Flujo home, idioma, hardening links, anti-spam.
+  - El test de idioma del home toma su expectativa de `en.json` / `es.json`, no de copy hardcodeado.
   - Navegacion sidebar con anclas validas por seccion.
   - `skip-link` funcional para acceso rapido por teclado.
   - Validacion de fallback AVIF (`<picture>`) en imagen critica.
@@ -229,6 +262,7 @@ Notas:
   - Formulario de contacto (feedback accesible en errores, envio valido y timing guard del endpoint).
   - Accesibilidad automatica con axe sobre contacto y secciones primarias del home.
   - Regresion visual de `contact_section`.
+  - Baseline visual de `projects-section.png` alineada con la homepage generada actual cuando los cambios son intencionales y fuente-canónicos.
   - La ruta retirada `/blog(.html)` redirige al home tanto en Netlify como en el servidor local de pruebas.
 
 ## Presupuestos de rendimiento

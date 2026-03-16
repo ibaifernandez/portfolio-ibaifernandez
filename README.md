@@ -62,11 +62,13 @@ npm run test:ci
 ## Build de páginas
 
 ```bash
-npm run build:pages    # genera index.html, cv-print.html y los dossiers HTML públicos del root
+npm run build:pages    # genera index.html, cv-print.html, dossiers HTML públicos y assets .min derivados
 ```
 
 > Los archivos `*.html` en la raíz son GENERADOS. No los edites directamente.
+> Los assets versionados `assets/css/*.min.css` y `assets/js/*.min.js` también son GENERADOS por `npm run build:pages`.
 > Edita `src/pages/*.template.html` y `src/components/**/*.html`, luego ejecuta el build.
+> Para cambiar CSS/JS servido en producción, edita las fuentes legibles (`assets/css/*.css`, `assets/js/*.js`) y vuelve a generar.
 
 ---
 
@@ -126,6 +128,7 @@ Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas gene
 - `contact.spec.js` — Feedback accesible, validación de email, envío válido, timing guard real del endpoint.
 - `keyboard.spec.js` — Tab order para navegación crítica (skip-link, sidebar anchors, formulario, redes sociales).
 - `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home y Contact.
+- `norden-translation.spec.js` — Traducción EN/ES del dossier Norden vía `?lang=`.
 - `visual.spec.js` — Regresión visual de referencia para secciones clave.
 
 Nota de producto: el portfolio ya no tiene blog público. La ruta heredada `/blog` / `/blog.html` redirige al home y los proyectos son la única superficie editorial pública.
@@ -204,8 +207,12 @@ Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EM
 | `docs/GLOSSARY.md` | Glosario del proyecto |
 | `docs/ENGINEERING-CHANGELOG.md` | Historial técnico completo + ADRs |
 | `docs/ENGINEERING-RUNBOOK.md` | Runbook de operaciones |
+| `docs/PARALLEL-SAFETY-BASELINE.md` | Contrato mecánico compartido para trabajo paralelo seguro |
+| `docs/THREAD-ORCHESTRATION.md` | Modelo de trabajo en 13 hilos + ownership de archivos |
 | `docs/DEPLOY_ROADMAP.md` | Plan y estado de deploy |
 | `docs/CASE-STUDY-2026-02-25.md` | Narrativa técnica de caso de estudio |
+
+Los prompts maestros para trabajar cada hilo por separado viven en `docs/THREAD-PROMPTS/`.
 
 ---
 

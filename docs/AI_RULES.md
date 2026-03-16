@@ -1,6 +1,6 @@
 # AI_RULES.md — Extended AI Agent Rules
 
-> See also `AGENTS.md` at the repository root for the quick-reference summary. This file provides the reasoning behind each rule and covers edge cases.
+> See also `AGENTS.md` at the repository root for the quick-reference summary and `docs/PARALLEL-SAFETY-BASELINE.md` for the mandatory repo-wide contract used by parallel threads.
 
 ---
 
@@ -24,9 +24,9 @@ src/pages/*.template.html
   → *.html (root level, committed)
 ```
 
-**Rule:** Never edit `index.html`, `cv-print.html`, or the generated dossier HTML pages in the repo root directly. These will be overwritten.
+**Rule:** Never edit `index.html`, `cv-print.html`, the generated dossier HTML pages in the repo root, or committed generated `.min` CSS/JS assets directly. These will be overwritten.
 
-**Rule:** After any change to a template or component, run `npm run build:pages` and commit the regenerated HTML.
+**Rule:** After any change to a template, component, content JSON, or readable served CSS/JS source file, run `npm run build:pages` and commit the regenerated derivatives.
 
 ### 1.2 — Validate after every build
 
@@ -39,6 +39,12 @@ This must pass before any commit touching templates, components, or content JSON
 ### 1.3 — JSON content changes require a rebuild
 
 Editing `content/*.json` alone does not update the HTML. You must rebuild and commit the updated HTML.
+
+### 1.4 — Parallel threads inherit the shared baseline
+
+When working in a split-thread setup, treat `docs/PARALLEL-SAFETY-BASELINE.md` and `docs/THREAD-ORCHESTRATION.md` as mandatory shared context.
+
+If a change crosses thread ownership or requires shared tests, runtime, snapshots, or generated outputs outside your scope, escalate it instead of absorbing it silently.
 
 ---
 

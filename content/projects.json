@@ -6,11 +6,11 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--debtracker\" role=\"img\" aria-label=\"DebTracker preview showing a debt-control ledger and payment-flow architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--ledger\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Financial OS</span>\n<strong>Debt Ledger Control</strong>\n<span class=\"project_spotlight_mockup_metric\">Auth + relational logic</span>\n<span class=\"project_spotlight_mockup_note\">Collections UX · Payment flows · Full-stack delivery</span>\n</div>",
     "title": {
-      "text": "DebTracker: Full-Stack Financial App",
+      "text": "DebTracker: Debt Tracking App",
       "translate": "project-debtracker-title"
     },
     "description": {
-      "text": "Engineered and deployed a complete financial tracking application. Built from scratch to solve complex relational database challenges and deliver a frictionless user experience for debt management.",
+      "text": "A full-stack app for shared debt control, relational data handling, and clearer payment workflows.",
       "translate": "project-debtracker-copy"
     },
     "link": {
@@ -28,11 +28,11 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--gymtracker\" role=\"img\" aria-label=\"GymTracker preview showing backend logic and API architecture for a training system\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--stack\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Backend Showcase</span>\n<strong>Logic + API Architecture</strong>\n<span class=\"project_spotlight_mockup_metric\">Flask + SQLite</span>\n<span class=\"project_spotlight_mockup_note\">Training logic · Deterministic pipelines · Local-first build</span>\n</div>",
     "title": {
-      "text": "GymTracker: Logic & API Architecture",
+      "text": "GymTracker: Backend & API Study",
       "translate": "project-gymtracker-title"
     },
     "description": {
-      "text": "A hard-coded technical showcase demonstrating advanced backend logic, API integrations, and scalable Front-End architecture. Proof of my ability to transition from marketing concepts to robust software deployment.",
+      "text": "A backend-focused training build used to show API design, data modeling, and the transition from marketing into software delivery.",
       "translate": "project-gymtracker-copy"
     },
     "link": {
@@ -169,11 +169,11 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--researchengine\" role=\"img\" aria-label=\"The Research Engine product preview with VSL and Gumroad commerce positioning\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Digital Product</span>\n<strong>The Research Engine</strong>\n<span class=\"project_spotlight_mockup_metric\">55 Workflows</span>\n<span class=\"project_spotlight_mockup_note\">VSL live + Gumroad checkout</span>\n</div>",
     "title": {
-      "text": "The Research Engine: Productized Intelligence",
+      "text": "The Research Engine: Product Packaging & Launch",
       "translate": "project-research-engine-title"
     },
     "description": {
-      "text": "Audited and transformed a raw prompt corpus into a commercial 55-workflow intelligence product with tiered pricing, VSL narrative, and a live Gumroad sales surface.",
+      "text": "Turned a raw prompt corpus into a sellable digital product with workflow structure, offer tiers, VSL framing, and live checkout.",
       "translate": "project-research-engine-copy"
     },
     "link": {
@@ -192,11 +192,11 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--elmst\" role=\"img\" aria-label=\"Elm St preview showing a cinematic reel-first website and custom brand architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--cinema\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Cinematic Brand</span>\n<strong>Reel-First Web System</strong>\n<span class=\"project_spotlight_mockup_metric\">Custom-coded presence</span>\n<span class=\"project_spotlight_mockup_note\">YouTube embeds · Brand psychology · Audiovisual UX</span>\n</div>",
     "title": {
-      "text": "Elm St: Custom Web & Brand Architecture",
+      "text": "Elm St: Reel-First Brand Website",
       "translate": "project-elmst-title"
     },
     "description": {
-      "text": "Bypassed traditional CMS platforms to hand-code a custom digital environment. This project perfectly fuses advanced UI/UX development with deep audiovisual narrative and psychological brand positioning.",
+      "text": "A custom-coded brand site that brings reel-first storytelling, audiovisual identity, and a more deliberate web presence into one system.",
       "translate": "project-elmst-copy"
     },
     "link": {
@@ -215,11 +215,11 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--aglaya\" role=\"img\" aria-label=\"AGLAYA preview showing a remote agency operating system and conversion-focused growth architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Remote Agency</span>\n<strong>Conversion Infrastructure</strong>\n<span class=\"project_spotlight_mockup_metric\">Offer system</span>\n<span class=\"project_spotlight_mockup_note\">Assessment funnel · B2B positioning · Growth architecture</span>\n</div>",
     "title": {
-      "text": "AGLAYA: B2B Innovation Ecosystem",
+      "text": "AGLAYA: Remote Agency Operations",
       "translate": "project-aglaya-title"
     },
     "description": {
-      "text": "A comprehensive business case study. Founded and scaled a 100% remote digital agency, engineering the operational infrastructure, agile marketing intelligence, and full-funnel acquisition strategies from the ground up.",
+      "text": "The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.",
       "translate": "project-aglaya-copy"
     },
     "link": {

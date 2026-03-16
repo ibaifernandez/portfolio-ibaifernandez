@@ -1,6 +1,13 @@
 const fs = require('node:fs');
 const { test, expect } = require('@playwright/test');
 
+const enTranslations = JSON.parse(fs.readFileSync('en.json', 'utf8'));
+const esTranslations = JSON.parse(fs.readFileSync('es.json', 'utf8'));
+
+function escapeRegex(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 test('home renders critical UI blocks', async ({ page }) => {
   await page.goto('/index.html');
 
@@ -64,12 +71,13 @@ test('language toggle updates html lang and hero pre-title text', async ({ page 
   await page.goto('/index.html');
 
   const preTitle = page.locator('[translate="systemic"]').first();
-  await expect(preTitle).toContainText(/Systemic/i);
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+  await expect(preTitle).toContainText(new RegExp(escapeRegex(enTranslations.systemic), 'i'));
 
   await page.locator('#translate-button-icon').click();
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
-  await expect(preTitle).toContainText(/Sist[eé]mico/i);
+  await expect(preTitle).toContainText(new RegExp(escapeRegex(esTranslations.systemic), 'i'));
 });
 
 test('language toggle supports keyboard activation', async ({ page }) => {

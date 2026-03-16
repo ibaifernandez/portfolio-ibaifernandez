@@ -3,40 +3,40 @@
     {
       "heading": {
         "translate": "technical-strategic-creative",
-        "text": "Digital Architecture & Automation"
+        "text": "Build, automation, and delivery"
       },
       "cards": [
         {
           "iconClass": "fa fa-code",
           "title": {
             "translate": "front-end-development-responsive-web-design",
-            "text": "Full-Stack & High-Conversion Front-End"
+            "text": "Front-End & Full-Stack Implementation"
           },
           "description": {
             "translate": "crafting-attractive-functional-responsive-user-interfaces",
-            "html": "Engineering blazing-fast, data-driven <strong>Full-Stack architectures</strong> and predictive interfaces. I deploy Next.js and React ecosystems that ensure a <strong>frictionless user journey</strong> and exponential conversion rates."
+            "html": "Building public-facing sites, landing flows, dossiers, and product surfaces that are fast, maintainable, and ready to ship."
           }
         },
         {
           "iconClass": "fa fa-envelope",
           "title": {
             "translate": "mail-mkt-design-marketing-automation",
-            "text": "AI-Driven Automation & Revenue Engineering"
+            "text": "CRM Automation & Lifecycle Ops"
           },
           "description": {
             "translate": "crafting-visually-engaging-email-campaigns",
-            "html": "Orchestrating <strong>complex CRM ecosystems</strong> and autonomous agents. I design behavioral decision trees and dynamic workflows that reduce deployment cycles to hours and <strong>skyrocket direct ROI</strong>."
+            "html": "Designing email programs, segmentation logic, reporting loops, and operational workflows for teams that need consistency at scale."
           }
         },
         {
           "iconClass": "fa fa-bullseye",
           "title": {
             "translate": "digital-marketing-content-strategy",
-            "text": "Data-Driven Funnel Architecture"
+            "text": "Funnels, Measurement & Iteration"
           },
           "description": {
             "translate": "crafting-digital-marketing-strategies",
-            "html": "Architecting aggressive digital acquisition strategies to <strong>dominate market share</strong>. I leverage deep analytics and multichannel automation to turn raw traffic into a <strong>predictable revenue engine</strong>."
+            "html": "Connecting traffic, messaging, UX, and analytics so acquisition work improves through actual evidence instead of guesswork."
           }
         }
       ]
@@ -44,7 +44,7 @@
     {
       "heading": {
         "translate": "strategic-creative-executive",
-        "text": "Product & Narrative Design"
+        "text": "Narrative, UX, and positioning"
       },
       "cards": [
         {
@@ -55,29 +55,29 @@
           },
           "description": {
             "translate": "crafting-visually-captivating-intuitively-designed-user-interfaces",
-            "html": "Fusing human psychology with <strong>advanced interface design</strong>. I architect digital experiences utilizing deep semiotics and behavioral triggers to <strong>master the flow of the message</strong> and maximize user engagement."
+            "html": "Clarifying offers, journeys, and interfaces so the story, the screen, and the next action support each other."
           }
         },
         {
           "iconClass": "fa fa-comment",
           "title": {
             "translate": "multimedia-content-production",
-            "text": "Cinematic & Corporate Narrative"
+            "text": "Content Systems & Brand Storytelling"
           },
           "description": {
             "translate": "creation-of-engaging-high-quality-multimedia-content",
-            "html": "Authoring <strong>high-stakes corporate messaging</strong> and multimedia assets. Leveraging a decade of audiovisual direction to engineer narratives that <strong>bypass logic and trigger psychological action</strong>."
+            "html": "Developing copy, messaging structures, and multimedia assets that make complex work easier to understand and easier to trust."
           }
         },
         {
           "iconClass": "fa fa-lightbulb",
           "title": {
             "translate": "digital-innovation-consulting",
-            "text": "B2B Tech Innovation Consulting"
+            "text": "Product, Offer & System Audits"
           },
           "description": {
             "translate": "strategic-advisory-on-innovative-digital-technologies",
-            "html": "Strategic auditing and deployment of <strong>enterprise-grade tech stacks</strong>. I identify critical bottlenecks and engineer <strong>customized operational architectures</strong> to align digital infrastructure with aggressive business goals."
+            "html": "Reviewing current surfaces, bottlenecks, and operating gaps to define what should be improved, rebuilt, or productized next."
           }
         }
       ]
@@ -85,40 +85,40 @@
     {
       "heading": {
         "translate": "communicative-commercial-teaching",
-        "text": "Governance & Massive Scaling"
+        "text": "Leadership, rollout, and enablement"
       },
       "cards": [
         {
           "iconClass": "fa fa-tasks",
           "title": {
             "translate": "digital-project-management",
-            "text": "Systemic Project Orchestration"
+            "text": "Cross-Functional Delivery Leadership"
           },
           "description": {
             "translate": "orchestration-of-digital-projects",
-            "html": "Commanding the entire lifecycle of complex digital products, <strong>from rapid MVP deployment to massive scaling</strong>. I align cross-functional tech and creative teams to deliver <strong>bulletproof business solutions</strong>."
+            "html": "Coordinating design, development, content, and stakeholders so projects move without losing the original intent."
           }
         },
         {
           "iconClass": "fa fa-handshake",
           "title": {
             "translate": "client-management-public-relations",
-            "text": "Enterprise Account Governance"
+            "text": "Client & Stakeholder Alignment"
           },
           "description": {
             "translate": "building-and-maintaining-strong-relationships-with-clients",
-            "html": "Governing high-stakes relationships with <strong>top-tier corporate clients</strong>. I translate raw business objectives into technical realities, ensuring seamless stakeholder alignment and <strong>long-term strategic loyalty</strong>."
+            "html": "Translating business needs into execution plans, priorities, and realistic delivery decisions."
           }
         },
         {
           "iconClass": "fa fa-graduation-cap",
           "title": {
             "translate": "training-and-professional-development",
-            "text": "Tech Evangelism & Upskilling"
+            "text": "Training, Onboarding & Adoption"
           },
           "description": {
             "translate": "designing-and-delivering-professional-development-programs",
-            "html": "Deploying national-scale <strong>digital literacy and adoption programs</strong>. I coach internal teams and massive user bases, providing the <strong>hard skills and technical mindsets</strong> required to thrive in automated environments."
+            "html": "Helping teams or user bases understand new tools, workflows, and digital processes so rollout actually sticks."
           }
         }
       ]

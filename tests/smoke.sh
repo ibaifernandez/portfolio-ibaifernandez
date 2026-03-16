@@ -28,6 +28,7 @@ SERVER_LOG="${TMP_DIR}/server.log"
 cleanup() {
   if [[ -n "${SERVER_PID:-}" ]]; then
     kill "$SERVER_PID" >/dev/null 2>&1 || true
+    wait "$SERVER_PID" >/dev/null 2>&1 || true
   fi
   rm -rf "$TMP_DIR"
 }
@@ -36,12 +37,23 @@ trap cleanup EXIT
 node "$ROOT_DIR/scripts/static-server.mjs" --port "$PORT" >"$SERVER_LOG" 2>&1 &
 SERVER_PID=$!
 
+SERVER_READY=0
 for _ in {1..40}; do
   if curl -fsS "${BASE_URL}/index.html" >/dev/null 2>&1; then
+    SERVER_READY=1
     break
   fi
   sleep 0.1
 done
+
+if [[ "$SERVER_READY" -ne 1 ]]; then
+  echo "[FAIL] Static smoke server did not become ready at ${BASE_URL}" >&2
+  if [[ -s "$SERVER_LOG" ]]; then
+    echo "[INFO] static server log:" >&2
+    cat "$SERVER_LOG" >&2
+  fi
+  exit 1
+fi
 
 HOME_HTML="$(curl -fsS "${BASE_URL}/index.html")"
 HOME_HTML_FILE="${TMP_DIR}/home.html"
