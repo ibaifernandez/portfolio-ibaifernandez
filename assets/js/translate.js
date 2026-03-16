@@ -38,12 +38,34 @@ function resolveInitialLanguage() {
 
 // Función para traducir los elementos con el atributo 'translate'
 function translateElements(translations) {
-    var elements = document.querySelectorAll('[translate]');
-    elements.forEach(function(element) {
-        var key = element.getAttribute('translate');
-        if (translations[key]) {
-            element.innerText = translations[key];
+    var htmlElements = document.querySelectorAll('[translate-html]');
+    htmlElements.forEach(function(element) {
+        var htmlKey = element.getAttribute('translate-html');
+        if (Object.prototype.hasOwnProperty.call(translations, htmlKey)) {
+            element.innerHTML = translations[htmlKey];
         }
+    });
+
+    var textElements = document.querySelectorAll('[translate]');
+    textElements.forEach(function(element) {
+        var textKey = element.getAttribute('translate');
+        if (Object.prototype.hasOwnProperty.call(translations, textKey)) {
+            element.innerText = translations[textKey];
+        }
+    });
+
+    var allElements = document.querySelectorAll('*');
+    allElements.forEach(function(element) {
+        Array.prototype.forEach.call(element.attributes, function(attribute) {
+            if (attribute.name.indexOf('translate-') !== 0 || attribute.name === 'translate-html') {
+                return;
+            }
+            var targetAttribute = attribute.name.slice('translate-'.length);
+            var attributeKey = attribute.value;
+            if (Object.prototype.hasOwnProperty.call(translations, attributeKey)) {
+                element.setAttribute(targetAttribute, translations[attributeKey]);
+            }
+        });
     });
 }
 
@@ -94,6 +116,16 @@ function applyLanguage(language, source) {
         document.documentElement.setAttribute('lang', currentLanguage);
         translateElements(translations);
         toggleLanguageButton();
+        try {
+            document.dispatchEvent(new CustomEvent('portfolio:language-applied', {
+                detail: {
+                    language: currentLanguage,
+                    source: source || 'unknown'
+                }
+            }));
+        } catch (error) {
+            // CustomEvent support is optional.
+        }
         trackLanguageChange(previousLanguage, currentLanguage, source);
     });
 }
