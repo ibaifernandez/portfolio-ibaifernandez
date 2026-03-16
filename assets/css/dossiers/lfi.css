@@ -3,7 +3,7 @@ body.lfi_atlas_page {
 	--lfi-atlas-muted: rgba(246, 241, 233, 0.78);
 	--lfi-atlas-rule: rgba(246, 241, 233, 0.16);
 	--lfi-atlas-pad-left: clamp(4.4rem, 7vw, 6.8rem);
-	--lfi-atlas-pad-right: clamp(4.8rem, 7vw, 7.2rem);
+	--lfi-atlas-pad-right: clamp(1rem, 7vw, 1.2rem);
 	--lfi-atlas-float-lane: clamp(3.8rem, 4.8vw, 5rem);
 	background: #080c15;
 	color: var(--lfi-atlas-ink);
@@ -40,7 +40,8 @@ body.lfi_atlas_page .lfi_atlas_surface {
 body.lfi_atlas_page .lfi_atlas_flow {
 	position: relative;
 	z-index: 1;
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0;
 	padding: 0;
 }
@@ -94,6 +95,11 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	text-transform: uppercase;
 }
 
+.lfi_atlas_timeline_role {
+    border-left: 3px solid var(--section-accent);
+    padding-left: 1rem;
+}
+
 .lfi_atlas_meta_row {
 	display: flex;
 	align-items: baseline;
@@ -108,6 +114,17 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	margin: 0;
 	line-height: 1.15;
 	color: var(--lfi-atlas-ink);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	font-weight: 700;
+}
+
+.lfi_atlas_backlink::before {
+	content: '\2190';
+	font-size: 1rem;
+	line-height: 1;
+	color: rgba(143, 227, 255, 0.96);
 }
 
 .lfi_atlas_backlink:focus-visible {
@@ -123,6 +140,15 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	color: rgba(246, 241, 233, 0.6);
 }
 
+.lfi_atlas_timeline_year {
+    display: block;
+    width: 10%;
+}
+
+.lfi_atlas_stage_label {
+    border-bottom: 1px solid rgba(246, 241, 233, 0.6);
+}
+
 .lfi_atlas_internal,
 .lfi_atlas_protocol {
 	margin: 0;
@@ -130,48 +156,55 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_protocol {
-	margin-top: 3rem;
+    margin: 3rem 0;
 }
 
 .lfi_atlas_hero_grid {
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-start;
-	gap: clamp(2.4rem, 3.8vw, 4.4rem);
-	margin-top: clamp(1.25rem, 2.6vw, 2.1rem);
-	width: min(100%, 82rem);
-	margin-left: auto;
+    display: flex;
+    justify-content: center;
+    /* align-items: flex-start; */
+    /* gap: clamp(2.4rem, 3.8vw, 4.4rem); */
+    /* margin-top: clamp(1.25rem, 2.6vw, 2.1rem); */
+    /* width: min(100%, 82rem); */
+    /* margin-left: auto; */
 }
 
 .lfi_atlas_hero_head {
-	flex: 0 1 clamp(31rem, 38vw, 43rem);
-	display: flex;
-	justify-content: flex-end;
-	min-width: 0;
+    /* flex: 0 1 clamp(31rem, 38vw, 43rem); */
+    display: flex;
+    justify-content: flex-end;
+    min-width: 0;
+    /* text-align: left; */
+    order: 1;
+    margin-right: 15px;
 }
 
 .lfi_atlas_hero_side {
 	flex: 0 1 clamp(21rem, 24vw, 25rem);
-	display: grid;
-	gap: 1.35rem;
-	padding-top: clamp(1rem, 2vw, 1.55rem);
-	padding-bottom: 0;
-	align-self: flex-start;
-	max-width: 25rem;
-	margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    padding-left: 15px;
+
+    /* padding-top: clamp(1rem, 2vw, 1.55rem); */
+    padding-bottom: 0;
+    align-self: flex-start;
+    max-width: 25rem;
+    margin-top: 0;
+    order: 2;
 }
 
 .lfi_atlas_title {
-	margin: 0;
-	font-family: 'Inter', sans-serif;
-	font-size: clamp(4.3rem, 6.4vw, 6.2rem);
-	font-weight: 900;
-	line-height: 0.82;
-	letter-spacing: -0.08em;
-	text-transform: uppercase;
-	max-width: 5.75ch;
-	text-align: right;
-	color: rgba(246, 241, 233, 0.98);
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(4.3rem, 6.4vw, 6.2rem);
+    font-weight: 900;
+    line-height: 0.82;
+    letter-spacing: -0.08em;
+    text-transform: uppercase;
+    max-width: 6.5ch;
+    text-align: right;
+    color: rgba(246, 241, 233, 0.98);
+    /* order: 1; */
 }
 
 .lfi_atlas_lead {
@@ -185,7 +218,8 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_summary {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 }
 
@@ -206,10 +240,15 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	color: var(--lfi-atlas-muted);
 }
 
+.lfi-atlas-pocuro-context, .lfi-atlas-leben-context, .lfi-atlas-norden-context {
+    font-size: 1.3rem !important;
+}
+
+
 .lfi_atlas_section,
 .lfi_atlas_final {
-	display: grid;
-	grid-template-columns: repeat(12, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: clamp(1.6rem, 3vw, 3rem);
 	align-items: start;
 }
@@ -238,12 +277,27 @@ body.lfi_atlas_page .lfi_atlas_flow {
 		linear-gradient(180deg, #13271f 0%, #22302c 18%, #1e1c33 100%);
 }
 
+.lfi_atlas_section--norden {
+	--band-next: #221d2c;
+	--section-accent: #ff9b63;
+	background:
+		radial-gradient(circle at 86% 18%, rgba(255, 155, 99, 0.16), transparent 0 20rem),
+		linear-gradient(180deg, #1e1c33 0%, #2c2237 18%, #221d2c 100%);
+}
+
+#lfi-atlas-norden-title {
+	max-width: none;
+	font-size: clamp(3rem, 5.4vw, 5.2rem);
+	line-height: 1.175;
+}
+
 .lfi_atlas_section--timeline {
 	--band-next: #221d2c;
 	--section-accent: #97a9ff;
 	background:
 		radial-gradient(circle at 82% 20%, rgba(151, 169, 255, 0.16), transparent 0 19rem),
 		linear-gradient(180deg, #1e1c33 0%, #17223d 24%, #221d2c 100%);
+    flex-wrap: nowrap;
 }
 
 .lfi_atlas_section--proof {
@@ -252,6 +306,10 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	background:
 		radial-gradient(circle at 18% 18%, rgba(255, 209, 143, 0.16), transparent 0 18rem),
 		linear-gradient(180deg, #221d2c 0%, #2a2117 22%, #090b12 100%);
+}
+
+.lfi_atlas_chart_panel--norden {
+	gap: 1.2rem;
 }
 
 .lfi_atlas_final {
@@ -265,63 +323,99 @@ body.lfi_atlas_page .lfi_atlas_flow {
 
 .lfi_atlas_section_head,
 .lfi_atlas_section_intro {
-	display: grid;
-	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2.425rem;
+}
+
+h2#lfi-atlas-timeline-title {
+    line-height: 1.53;
+    /* letter-spacing: 0.01em; */
+    font-size: clamp(2.45rem, 4.9vw, 4.32rem);
 }
 
 .lfi_atlas_section_head h2,
 .lfi_atlas_final h2 {
 	margin: 0;
 	font-family: 'Inter', sans-serif;
-	font-size: clamp(3.35rem, 6.9vw, 6.4rem);
+	font-size: clamp(3.35rem, 6.9vw, 5.85rem);
 	font-weight: 900;
-	line-height: 0.84;
+	line-height: 0.875;
 	letter-spacing: -0.075em;
 	text-transform: uppercase;
 	max-width: 6.1ch;
 	color: rgba(246, 241, 233, 0.98);
 }
 
+#lfi-atlas-pocuro-title {
+    /* font-size: clamp(3.35rem, 6.9vw, 5.15rem); */
+    max-width: 8.1ch;
+    line-height: 0.935;
+}
+
 .lfi_atlas_section--left .lfi_atlas_section_intro {
-	grid-column: 7 / -1;
-	grid-row: 1;
+	order: 2;
+	flex: 0 1 calc(52% - 1.5rem);
+	max-width: calc(52% - 1.5rem);
+}
+
+.lfi_atlas_section_intro_testimonials {
+    gap: 1rem;
 }
 
 .lfi_atlas_section--left .lfi_atlas_section_head {
-	grid-column: 1 / span 6;
-	grid-row: 1 / span 2;
+	order: 1;
+	flex: 0 1 calc(48% - 1.5rem);
+	max-width: calc(48% - 1.5rem);
 	align-self: start;
 }
 
 .lfi_atlas_section--right .lfi_atlas_section_intro {
-	grid-column: 1 / span 6;
-	grid-row: 1;
+	order: 1;
+	flex: 0 1 calc(48% - 1.5rem);
+	max-width: calc(48% - 1.5rem);
 }
 
 .lfi_atlas_section--right .lfi_atlas_section_head {
-	grid-column: 7 / -1;
-	grid-row: 1 / span 2;
+	order: 2;
+	flex: 0 1 calc(52% - 1.5rem);
+	/* max-width: calc(52% - 1.5rem); */
 	text-align: right;
-	justify-items: end;
+	align-items: flex-end;
 	align-self: start;
-	padding-right: calc(var(--lfi-atlas-float-lane) * 0.62);
+	/* padding-right: calc(var(--lfi-atlas-float-lane) * 0.62); */
+}
+
+.lfi_atlas_section--norden .lfi_atlas_section_intro {
+	flex: 0 1 calc(54% - 1.5rem);
+	max-width: calc(54% - 1.5rem);
+}
+
+.lfi_atlas_section--norden .lfi_atlas_section_head {
+	flex: 0 1 calc(46% - 1.5rem);
+	/* max-width: calc(46% - 1.5rem); */
 }
 
 .lfi_atlas_section_body {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 1.8rem;
 	padding-top: clamp(1.2rem, 2vw, 1.8rem);
 	border-top: 1px solid var(--lfi-atlas-rule);
+	width: 100%;
 }
 
 .lfi_atlas_section--left .lfi_atlas_section_body {
-	grid-column: 7 / -1;
-	grid-row: 2;
+	order: 3;
+	flex: 0 1 calc(52% - 1.5rem);
+	max-width: calc(52% - 1.5rem);
+	margin-left: auto;
 }
 
 .lfi_atlas_section--right .lfi_atlas_section_body {
-	grid-column: 1 / span 6;
-	grid-row: 2;
+	order: 3;
+	flex: 0 1 calc(48% - 1.5rem);
+	max-width: calc(48% - 1.5rem);
 }
 
 .lfi_atlas_emphasis {
@@ -334,14 +428,15 @@ body.lfi_atlas_page .lfi_atlas_flow {
 
 .lfi_atlas_section_intro--systems .lfi_atlas_system_cells {
 	margin-top: 0.35rem;
-	grid-template-columns: 1fr;
+	flex-direction: column;
 }
 
 .lfi_atlas_signal_list {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.95rem;
 }
 
@@ -374,22 +469,24 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_system_cells {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1.25rem 1.6rem;
 }
 
 .lfi_atlas_section--systems .lfi_atlas_system_cells {
-	grid-template-columns: 1fr;
+	flex-direction: row;
 }
 
 .lfi_atlas_system_cell {
 	position: relative;
-	display: grid;
-	grid-template-columns: minmax(3rem, auto) minmax(0, 1fr);
+	display: flex;
+	align-items: flex-start;
 	gap: 0.9rem;
 	padding: 1.15rem 1.15rem 1.15rem 1.1rem;
 	background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+	flex: 0 1 calc(50% - 0.8rem);
+	max-width: calc(50% - 0.8rem);
 }
 
 .lfi_atlas_system_cell::before {
@@ -412,45 +509,69 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_case_grid {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(24rem, 1.15fr);
+	display: flex;
+	flex-wrap: wrap;
 	gap: clamp(1.6rem, 3vw, 2.8rem);
 	align-items: start;
 }
 
 .lfi_atlas_section--pocuro .lfi_atlas_section_body,
-.lfi_atlas_section--leben .lfi_atlas_section_body {
-	grid-column: 1 / -1;
+.lfi_atlas_section--leben .lfi_atlas_section_body,
+.lfi_atlas_section--norden .lfi_atlas_section_body {
+	flex: 0 1 100%;
+	max-width: 100%;
 	max-width: none;
+	margin-left: 0;
 }
 
 .lfi_atlas_section--pocuro .lfi_atlas_section_head,
-.lfi_atlas_section--leben .lfi_atlas_section_head {
-	grid-row: 1;
+.lfi_atlas_section--leben .lfi_atlas_section_head,
+.lfi_atlas_section--norden .lfi_atlas_section_head {
+	order: 2;
 }
 
 .lfi_atlas_section--pocuro .lfi_atlas_case_grid {
-	grid-template-columns: repeat(12, minmax(0, 1fr));
+	flex-direction: row;
+}
+
+.lfi_atlas_case_grid--norden {
+	align-items: stretch;
 }
 
 .lfi_atlas_section--pocuro .lfi_atlas_case_copy {
-	grid-column: 1 / span 4;
+	/* flex: 0 1 calc(34% - 1.4rem);
+	max-width: calc(34% - 1.4rem); */
+}
+
+.lfi_atlas_case_grid--norden .lfi_atlas_case_copy {
+	flex: 0 1 calc(40% - 1.4rem);
+	max-width: calc(40% - 1.4rem);
 }
 
 .lfi_atlas_section--pocuro .lfi_atlas_case_visuals {
-	grid-column: 1 / -1;
+	flex: 0 1 100%;
+	max-width: 100%;
+}
+
+.lfi_atlas_case_grid--norden .lfi_atlas_chart_panel--norden-metrics {
+	flex: 0 1 calc(60% - 1.4rem);
+	max-width: calc(60% - 1.4rem);
+	margin: 0;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
 }
 
 .lfi_atlas_case_copy,
 .lfi_atlas_case_visuals,
 .lfi_atlas_chart_panel {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 1rem;
 	width: 100%;
 }
 
 .lfi_atlas_case_intro {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.75rem;
 	padding: 1rem 1.15rem 1rem 1.15rem;
 	border-left: 3px solid var(--section-accent);
@@ -458,16 +579,19 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_case_intro_main {
-	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(15rem, 18rem);
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem 1.4rem;
 	align-items: center;
 }
 
 .lfi_atlas_case_intro_copy {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.55rem;
 	align-content: start;
+	flex: 1 1 18rem;
+	min-width: 0;
 }
 
 .lfi_atlas_case_brand {
@@ -475,6 +599,7 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	align-items: center;
 	justify-content: flex-end;
 	min-height: 100%;
+	flex: 0 1 18rem;
 }
 
 .lfi_atlas_case_brand img {
@@ -495,17 +620,20 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_case_factrail {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem;
 	width: 100%;
 }
 
 .lfi_atlas_case_fact {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.45rem;
 	padding: 1rem 1rem 1.1rem;
 	background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+	flex: 0 1 calc(33.333% - 0.7rem);
+	max-width: calc(33.333% - 0.7rem);
 }
 
 .lfi_atlas_case_fact span,
@@ -522,7 +650,7 @@ body.lfi_atlas_page .lfi_atlas_flow {
 .lfi_atlas_stat_tile strong,
 .lfi_atlas_delta_metric strong {
 	font-family: 'Inter', sans-serif;
-	font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+	font-size: clamp(1.2rem, 1.9vw, 1.35rem);
 	font-weight: 800;
 	letter-spacing: -0.04em;
 	line-height: 1.1;
@@ -533,13 +661,14 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: grid;
+	display: flex;
+	/* flex-direction: column; */
 	gap: 0.9rem;
 }
 
 .lfi_atlas_case_list li {
-	padding-top: 0.9rem;
-	border-top: 1px solid var(--lfi-atlas-rule);
+	/* padding-top: 0.9rem; */
+	/* border-top: 1px solid var(--lfi-atlas-rule); */
 }
 
 .lfi_atlas_chart_panel {
@@ -552,20 +681,22 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_sequence_intro {
-	max-width: 44rem;
+	/* max-width: 44rem; */
 }
 
 .lfi_atlas_sequence_steps {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem 1.2rem;
 }
 
 .lfi_atlas_sequence_steps .lfi_atlas_system_cell {
 	height: 100%;
+	flex: 0 1 calc(50% - 0.6rem);
+	max-width: calc(50% - 0.6rem);
 }
 
 .lfi_atlas_chart_panel--funnel {
@@ -585,7 +716,8 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_funnel {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.9rem;
 }
 
@@ -617,53 +749,71 @@ body.lfi_atlas_page .lfi_atlas_flow {
 	letter-spacing: 0.16em;
 	text-transform: uppercase;
 	color: rgba(246, 241, 233, 0.56);
+    justify-content: center;
 }
 
 .lfi_atlas_chart_grid {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1.6rem;
 }
 
 .lfi_atlas_section--leben .lfi_atlas_chart_grid {
-	grid-template-columns: repeat(12, minmax(0, 1fr));
+	flex-direction: column;
 }
 
-.lfi_atlas_section--leben .lfi_atlas_chart_grid > * {
-	grid-column: 1 / -1;
+.lfi_atlas_section--norden .lfi_atlas_chart_grid {
+	flex-direction: column;
+}
+
+.lfi_atlas_section--leben .lfi_atlas_chart_grid > *,
+.lfi_atlas_section--norden .lfi_atlas_chart_grid > * {
+	flex: 0 1 100%;
+	max-width: 100%;
+}
+
+.lfi_atlas_section--norden .lfi_atlas_sequence_steps .lfi_atlas_system_cell {
+	height: auto;
+	min-height: 0;
 }
 
 .lfi_atlas_chart_panel--wide {
-	grid-column: 1 / -1;
+	flex: 0 1 100%;
+	max-width: 100%;
 }
 
 .lfi_atlas_stat_cluster {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem 1.2rem;
 }
 
 .lfi_atlas_stat_tile,
 .lfi_atlas_delta_metric div {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.35rem;
 	padding: 0.95rem 0 0.1rem;
 	border-top: 1px solid var(--lfi-atlas-rule);
+	flex: 0 1 calc(50% - 0.6rem);
+	max-width: calc(50% - 0.6rem);
 }
 
 .lfi_atlas_delta_metric {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1rem 1.2rem;
 }
 
 .lfi_atlas_compare_rows {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 1.25rem;
 }
 
 .lfi_atlas_compare_row {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.75rem;
 }
 
@@ -684,7 +834,8 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_compare_track {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.45rem;
 }
 
@@ -703,14 +854,14 @@ body.lfi_atlas_page .lfi_atlas_flow {
 }
 
 .lfi_atlas_timeline {
-	display: grid;
-	grid-template-columns: 1fr;
+	display: flex;
+	flex-direction: column;
 	gap: 1.15rem;
 }
 
 .lfi_atlas_timeline_item {
-	display: grid;
-	grid-template-columns: minmax(7.75rem, 8.8rem) minmax(0, 1fr);
+	display: flex;
+	/* flex-wrap: wrap; */
 	gap: 1rem 1.6rem;
 	padding: 1.1rem 1.1rem 1.2rem;
 	border-top: 1px solid var(--lfi-atlas-rule);
@@ -735,12 +886,15 @@ body.lfi_atlas_page .lfi_atlas_flow {
 
 .lfi_atlas_section--timeline .lfi_atlas_section_intro,
 .lfi_atlas_section--timeline .lfi_atlas_section_body {
-	grid-column: 1 / span 7;
+	flex: 0 1 calc(58% - 1.5rem);
+	max-width: calc(58% - 1.5rem);
 }
 
 .lfi_atlas_section--timeline .lfi_atlas_section_head {
-	grid-column: 8 / -1;
-	padding-right: calc(var(--lfi-atlas-float-lane) + 0.65rem);
+	flex: 0 1 calc(42% - 1.5rem);
+	/* max-width: calc(42% - 1.5rem);
+	padding-right: calc(var(--lfi-atlas-float-lane) + 0.65rem); */
+    min-width: 100%;
 }
 
 .lfi_atlas_section--timeline .lfi_atlas_section_body {
@@ -749,7 +903,7 @@ body.lfi_atlas_page .lfi_atlas_flow {
 
 .lfi_atlas_section--timeline .lfi_atlas_section_head h2 {
 	font-size: clamp(2.45rem, 4.9vw, 4.35rem);
-	max-width: 4.1ch;
+	min-width: 100%;
 }
 
 body.lfi_atlas_page .bottom_top {
@@ -763,16 +917,16 @@ body.lfi_atlas_page .bottom_top {
 }
 
 .lfi_atlas_logo_wall {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1.15rem 1.25rem;
 	align-items: stretch;
 }
 
 .lfi_atlas_logo_card {
-	display: grid;
-	grid-template-columns: 1fr;
-	justify-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	align-content: start;
 	gap: 0.9rem;
 	min-height: 12.4rem;
@@ -782,6 +936,8 @@ body.lfi_atlas_page .bottom_top {
 	color: inherit;
 	text-decoration: none;
 	text-align: center;
+	flex: 0 1 calc(33.333% - 0.85rem);
+	max-width: calc(33.333% - 0.85rem);
 }
 
 .lfi_atlas_logo_card:hover,
@@ -807,10 +963,11 @@ body.lfi_atlas_page .bottom_top {
 }
 
 .lfi_atlas_logo_meta {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.28rem;
 	align-content: center;
-	justify-items: center;
+	align-items: center;
 }
 
 .lfi_atlas_logo_meta strong {
@@ -830,19 +987,20 @@ body.lfi_atlas_page .bottom_top {
 }
 
 .lfi_atlas_quotes {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 1.5rem 2rem;
 }
 
 .lfi_atlas_quote {
 	padding-top: 1rem;
 	border-top: 1px solid var(--lfi-atlas-rule);
+	flex: 0 1 calc(33.333% - 1.35rem);
+	max-width: calc(33.333% - 1.35rem);
 }
 
 .lfi_atlas_quote_head {
-	display: grid;
-	grid-template-columns: 5.4rem minmax(0, 1fr);
+	display: flex;
 	align-items: center;
 	gap: 0.85rem;
 	margin-bottom: 1rem;
@@ -865,7 +1023,8 @@ body.lfi_atlas_page .bottom_top {
 }
 
 .lfi_atlas_quote_identity {
-	display: grid;
+	display: flex;
+	flex-direction: column;
 	gap: 0.18rem;
 }
 
@@ -907,44 +1066,118 @@ body.lfi_atlas_page .bottom_top {
 	letter-spacing: 0.08em;
 }
 
+.lfi_atlas_final > .lfi_atlas_tag {
+	flex: 0 1 100%;
+	max-width: 100%;
+}
+
 .lfi_atlas_final h2 {
-	grid-column: 1 / span 6;
+	order: 1;
+	flex: 0 1 calc(50% - 1.5rem);
+	max-width: calc(50% - 1.5rem);
 }
 
 .lfi_atlas_final p {
-	grid-column: 1 / span 5;
+	order: 3;
+	flex: 0 1 calc(42% - 1.5rem);
+	max-width: calc(42% - 1.5rem);
 	max-width: 34rem;
 }
 
 .lfi_atlas_final_side {
-	grid-column: 7 / -1;
-	grid-row: 1 / span 3;
-	display: grid;
+	order: 2;
+	flex: 0 1 calc(50% - 1.5rem);
+	max-width: calc(50% - 1.5rem);
+	display: flex;
+	flex-direction: column;
 	gap: 1.1rem;
 	align-content: start;
 	padding-top: 0.15rem;
+	margin-left: auto;
 }
 
 body.lfi_atlas_page .project_case_nav .project_case_navlink {
 	min-width: 13rem;
+	min-height: 3.85rem;
 	text-align: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.55rem;
+	padding: 0.95rem 1.5rem;
+	border-color: rgba(246, 241, 233, 0.2);
+	background: rgba(246, 241, 233, 0.08);
+	color: rgba(246, 241, 233, 0.96);
+	font-size: 0.98rem;
+	line-height: 1.2;
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+	white-space: normal;
+}
+
+body.lfi_atlas_page .project_case_nav .project_case_navlink--prev,
+body.lfi_atlas_page .project_case_nav .project_case_navlink--next {
+	flex: 1 1 26rem;
+}
+
+body.lfi_atlas_page .project_case_nav .project_case_navlink--index {
+	flex: 0 1 auto;
+	border-color: rgba(116, 229, 255, 0.72);
+	background: rgba(116, 229, 255, 0.1);
+	color: rgba(116, 229, 255, 0.98);
+}
+
+body.lfi_atlas_page .project_case_nav .project_case_navlink--prev::before {
+	content: '\2039';
+	font-size: 1.25rem;
+	line-height: 1;
+	color: rgba(143, 227, 255, 0.92);
+}
+
+body.lfi_atlas_page .project_case_nav .project_case_navlink--next::after {
+	content: '\203A';
+	font-size: 1.25rem;
+	line-height: 1;
+	color: rgba(143, 227, 255, 0.92);
+}
+
+body.lfi_atlas_page .project_case_nav .project_case_navlink:hover,
+body.lfi_atlas_page .project_case_nav .project_case_navlink:focus {
+	color: rgba(246, 241, 233, 0.98);
+	border-color: rgba(143, 227, 255, 0.76);
+	background: rgba(143, 227, 255, 0.12);
+	text-decoration: none;
 }
 
 body.lfi_atlas_page .port_footer_setions {
 	background: #090b12;
+	border-top: 1px solid rgba(246, 241, 233, 0.12);
 }
 
 body.lfi_atlas_page .copy_right_wrapper {
 	background: transparent;
-	padding: 0.9rem 0 1.4rem;
+	padding: 1.35rem 0 1.6rem;
+	margin-top: 0;
 }
 
 body.lfi_atlas_page .copy_right {
-	color: rgba(246, 241, 233, 0.74);
+	color: rgba(246, 241, 233, 0.82);
+	font-size: 0.98rem;
+	line-height: 1.5;
 }
 
-body.lfi_atlas_page .copy_right a {
-	color: rgba(246, 241, 233, 0.96);
+body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a,
+body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:visited {
+	color: #f6f1e9;
+	font-weight: 600;
+	text-decoration: underline;
+	text-decoration-color: rgba(143, 227, 255, 0.68);
+	text-underline-offset: 0.18em;
+}
+
+body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:hover,
+body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focus {
+	color: rgba(143, 227, 255, 0.98);
+	text-decoration-color: rgba(143, 227, 255, 0.82);
 }
 
 @media (max-width: 1200px) {
@@ -958,7 +1191,8 @@ body.lfi_atlas_page .copy_right a {
 	.lfi_atlas_final h2,
 	.lfi_atlas_final p,
 	.lfi_atlas_final_side {
-		grid-column: 1 / -1;
+		flex: 0 1 100%;
+		max-width: 100%;
 	}
 
 	.lfi_atlas_section--left .lfi_atlas_section_intro,
@@ -968,7 +1202,7 @@ body.lfi_atlas_page .copy_right a {
 	.lfi_atlas_section--right .lfi_atlas_section_head,
 	.lfi_atlas_section--right .lfi_atlas_section_body,
 	.lfi_atlas_section--systems .lfi_atlas_section_body {
-		grid-row: auto;
+		margin-left: 0;
 	}
 
 	.lfi_atlas_hero_grid {
@@ -996,7 +1230,7 @@ body.lfi_atlas_page .copy_right a {
 
 	.lfi_atlas_section--right .lfi_atlas_section_head {
 		text-align: left;
-		justify-items: start;
+		align-items: flex-start;
 		padding-right: 0;
 	}
 
@@ -1006,12 +1240,29 @@ body.lfi_atlas_page .copy_right a {
 	.lfi_atlas_system_cells,
 	.lfi_atlas_case_factrail,
 	.lfi_atlas_timeline {
-		grid-template-columns: 1fr;
+		flex-direction: column;
 	}
 
 	.lfi_atlas_logo_wall,
 	.lfi_atlas_quotes {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.25rem;
+	}
+
+	.lfi_atlas_system_cell,
+	.lfi_atlas_sequence_steps .lfi_atlas_system_cell,
+	.lfi_atlas_case_fact,
+	.lfi_atlas_stat_tile,
+	.lfi_atlas_delta_metric div,
+	.lfi_atlas_logo_card,
+	.lfi_atlas_quote,
+	.lfi_atlas_section--timeline .lfi_atlas_section_intro,
+	.lfi_atlas_section--timeline .lfi_atlas_section_head,
+	.lfi_atlas_section--timeline .lfi_atlas_section_body,
+	.lfi_atlas_section--pocuro .lfi_atlas_case_copy,
+	.lfi_atlas_case_grid--norden .lfi_atlas_case_copy,
+	.lfi_atlas_case_grid--norden .lfi_atlas_chart_panel--norden-metrics {
+		flex: 0 1 100%;
+		max-width: 100%;
 	}
 }
 
@@ -1067,6 +1318,12 @@ body.lfi_atlas_page .copy_right a {
 		padding: 1.6rem 1.25rem 2.8rem;
 	}
 
+	body.lfi_atlas_page .project_case_nav .project_case_navlink--prev,
+	body.lfi_atlas_page .project_case_nav .project_case_navlink--next,
+	body.lfi_atlas_page .project_case_nav .project_case_navlink--index {
+		flex: 0 1 100%;
+	}
+
 	.lfi_atlas_case_grid,
 	.lfi_atlas_delta_metric,
 	.lfi_atlas_system_cells,
@@ -1076,7 +1333,7 @@ body.lfi_atlas_page .copy_right a {
 	.lfi_atlas_timeline,
 	.lfi_atlas_logo_wall,
 	.lfi_atlas_quotes {
-		grid-template-columns: 1fr;
+		flex-direction: column;
 	}
 
 	.lfi_atlas_funnel_step {

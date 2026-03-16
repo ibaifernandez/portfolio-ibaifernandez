@@ -20,6 +20,10 @@ This is not a generic case study. It is not a SaaS landing page. It is not a com
 - Source template: `src/pages/lfi.template.html`
 - Current page-local stylesheet in use: `assets/css/dossiers/lfi.css`
 - Dossier-local CSS convention: `assets/css/dossiers/lfi.css`
+- Mandatory shared repo baseline: `docs/PARALLEL-SAFETY-BASELINE.md`
+- The current LFi stylesheet contract is flexbox-only; do not reintroduce CSS Grid as a layout dependency for this dossier
+- The legacy `lfi_newsprint_*` block has been consolidated out of `assets/css/style.css`, but a remaining shared `.lfi_dossier_*` block still exists there; do not extend that shared residue as a back door for dossier layout
+- The current desktop composition is under freeze; use `docs/freeze-visual/260316-14-16-lfi-html.png` and `docs/freeze-visual/260316-lfi-desktop-freeze.md` as the desktop reference and do not alter that surface without explicit approval
 - Public dossier copy must remain wired to the shared EN/ES translation layer via `translate`, `translate-html`, and LFi-specific keys in `en.json` / `es.json`
 - Head metadata for LFi now also syncs per language inside `src/pages/lfi.template.html`; keep title/description/JSON-LD aligned when editorial SEO copy changes
 - Legacy LFi dossier has already been archived and must not be resurrected as the public direction
