@@ -10,8 +10,7 @@ body.lfi_atlas_page {
 }
 
 body.lfi_atlas_page .port_sec_warapper,
-body.lfi_atlas_page .lfi_atlas_wrapper,
-body.lfi_atlas_page .lfi_atlas_surface {
+body.lfi_atlas_page .lfi_atlas_wrapper {
 	background: transparent;
 }
 
@@ -31,17 +30,19 @@ body.lfi_atlas_page .project_case_nav {
 	flex-wrap: wrap;
 }
 
-.lfi_atlas_surface {
+body.lfi_atlas_page .lfi_atlas_surface {
 	position: relative;
 	overflow: hidden;
 	background: #080c15;
 }
 
-.lfi_atlas_flow {
+/* Reset the legacy shared wrapper padding so the dossier owns its own full-bleed layout. */
+body.lfi_atlas_page .lfi_atlas_flow {
 	position: relative;
 	z-index: 1;
 	display: grid;
 	gap: 0;
+	padding: 0;
 }
 
 .lfi_atlas_hero,
