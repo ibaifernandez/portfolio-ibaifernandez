@@ -15,3 +15,7 @@ config/secrets.local.php
 .env.*
 !.env.example
 stitch/
+260316-portfolio.ibaifernandez.com-lfi.png
+docs/arreglar-en-monitores-pequeños/
+docs/cv/
+ibai-brand-os.plugin

@@ -22,6 +22,41 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-03-27 - Homepage Visual Baselines Realigned After Editorial Iteration 2
+
+- Audited the single failing visual regression after the second intentional homepage editorial pass:
+  - `tests/e2e/visual.spec.js`
+  - `experience, projects and logos visual baselines`
+  - `tests/e2e/visual.spec.js-snapshots/projects-section.png`
+  - `tests/e2e/visual.spec.js-snapshots/logos-section.png`
+- Confirmed the failure was baseline drift, not a shared CSS/runtime regression:
+  - `npm run build:pages` passed
+  - `npm run test:quality` passed
+  - repeated Playwright runs rendered stable `1160x2886` and `1160x396` sections against stale `1160x2887` and `1160x397` snapshots
+- Refreshed only the homepage visual baselines that moved with the intentional March 27 source state and kept the rest of the visual surface untouched.
+- Validation executed:
+  - `npm run build:pages`
+  - `npm run test:quality`
+  - `npm run test:e2e`
+
+### 2026-03-27 - Homepage Editorial Iteration 2 Tightened Hero, About, And Operating Model
+
+- Applied a second bounded homepage editorial pass using the Brand DNA and homepage matrix as explicit review criteria.
+- Tightened the hero without changing the front-door tagline:
+  - kept `From narrative / to delivery.`
+  - replaced the vaguer rotating descriptors with clearer outcome-oriented phrases around positioning, build, CRM automation, rollout, and post-launch delivery
+- Reframed the about block away from CV-style accumulation and toward a clearer shared pattern:
+  - `What holds the dossiers together`
+  - `Different contexts, one operating pattern`
+  - reduced the long eight-point inventory to four grouped bullets explaining the common operating logic across the portfolio
+- Reframed the progress/capabilities section so it reads less like a generic skill wheel and more like an operating model:
+  - new section framing explains these are linked delivery layers rather than isolated silos
+  - several labels were renamed to sound more operational (`Front-End Delivery`, `Automation & Growth`, `Operations & Rollout`, `CRM & Revenue`)
+- Added the matching EN/ES translation keys required for the new homepage copy.
+- Validation executed:
+  - `npm run build:pages`
+  - `npm run test:quality`
+
 ### 2026-03-16 - Homepage Editorial First Pass Released As Shared Front Door
 
 - Shipped the first bounded homepage editorial pass across the canonical home surfaces:
