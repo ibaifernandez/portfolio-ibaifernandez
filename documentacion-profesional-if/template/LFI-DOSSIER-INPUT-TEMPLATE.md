@@ -447,8 +447,8 @@ Todo lo medible, aunque sea aproximado:
 
 ### 15.2 SOPs / documentos / presentaciones
 
-- `documentacion-profesional-if-1.docx` — usado ya como fuente parcial
-- `leben.pdf` — pendiente de extracción / resumen manual
+- `documentacion-profesional-if-1.docx` — usado ya como fuente parcial; mantener fuera del repo operativo
+- `leben.pdf` — pendiente de extracción / resumen manual; mantener fuera del repo operativo
 - Otros:
 
 ### 15.3 Testimonios / personas
@@ -518,4 +518,3 @@ Para cada uno:
 - [ ] Claims públicos delimitados
 - [ ] Assets localizados
 - [ ] Confidencialidad aclarada
-

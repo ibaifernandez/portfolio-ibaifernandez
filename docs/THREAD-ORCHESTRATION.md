@@ -44,7 +44,7 @@ All threads also inherit:
 | 08 | The Research Engine Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
 | 09 | Elm St Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
 | 10 | AGLAYA Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 11 | Norden Dossier | Standalone dossier for the Norden Intelligence System, distinct from LFi proof framing | Pending |
+| 11 | Brevo Intelligence Layer Dossier | Public dossier for Ibai's Brevo diagnostic/reporting solution, seeded from the Norden workspace audit and kept distinct from LFi proof framing | Active |
 | 12 | Homepage Editorial | Home narrative, section hierarchy, card messaging, directional clarity | Active |
 | 13 | Technical Consolidation | Performance, accessibility, translations, testing, sitemap, metadata global, Search Console/Bing | Pending |
 
@@ -99,17 +99,20 @@ If a dossier thread discovers that it needs a shared-file change, it should:
 2. describe the dependency,
 3. hand that request to the master coordination thread or technical consolidation thread.
 
-### 3.5 Norden Has A Split Narrative Contract
+### 3.5 Brevo Intelligence Layer Has A Split Narrative Contract
 
-Norden exists in two valid but different portfolio positions:
+The former Norden dossier now lives publicly as **Brevo Intelligence Layer**.
+
+Its narrative contract remains split:
 
 - inside the LFi dossier, Norden appears only as a client proof case under LFi
-- inside the Norden dossier, the focus shifts to the intelligence system, reporting architecture, cohort logic, and productized decision layer built around that client case
+- inside the Brevo Intelligence Layer dossier, the focus shifts to the tool itself: diagnosis, reporting architecture, cohort logic, delivery surfaces, and sovereignty-first handoff
 
 That means:
 
 - the LFi thread owns commercial, client, and career framing
-- the Norden thread owns system, tooling, reporting, and product framing
+- the Brevo Intelligence Layer thread owns solution, tooling, reporting, and product framing
+- the Norden workspace remains a read-only evidence base, not the front-stage public story
 
 Neither thread should duplicate the other's main story.
 
@@ -188,7 +191,7 @@ These are the public dossier identities that other docs and prompts should use.
 | The Research Engine | `the-research-engine` | `/the-research-engine.html` |
 | Elm St | `elm-st` | `/elm-st.html` |
 | AGLAYA | `aglaya` | `/aglaya.html` |
-| Norden | `norden` | `/norden.html` |
+| Brevo Intelligence Layer | `brevo-intelligence-layer` | `/brevo-intelligence-layer.html` |
 
 ---
 
@@ -207,7 +210,7 @@ Public slugs are canonical. Source template filenames may remain legacy-shaped u
 | The Research Engine | `src/pages/project-the-research-engine.template.html` | `assets/css/dossiers/the-research-engine.css` |
 | Elm St | `src/pages/project-elm-st.template.html` | `assets/css/dossiers/elm-st.css` |
 | AGLAYA | `src/pages/project-aglaya.template.html` | `assets/css/dossiers/aglaya.css` |
-| Norden | `src/pages/project-norden.template.html` | `assets/css/dossiers/norden.css` |
+| Brevo Intelligence Layer | `src/pages/project-brevo-intelligence-layer.template.html` | `assets/css/dossiers/brevo-intelligence-layer.css` |
 
 ### Naming Rule
 

@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated MyBoard dossier thread
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated MyBoard dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated MyBoard dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn MyBoard into a serious dossier about product ownership, zero vendor lock-in, modular architecture, and why Ibai Fernandez builds tools that stay useful without surrendering the operator to someone else's platform.
 

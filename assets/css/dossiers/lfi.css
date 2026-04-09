@@ -1181,6 +1181,19 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 }
 
 @media (max-width: 1200px) {
+	body.lfi_atlas_page {
+		--lfi-atlas-pad-left: clamp(2.1rem, 4.6vw, 3rem);
+		--lfi-atlas-pad-right: clamp(1.15rem, 3.2vw, 1.75rem);
+		--lfi-atlas-float-lane: clamp(1rem, 2.8vw, 1.6rem);
+	}
+
+	.lfi_atlas_hero,
+	.lfi_atlas_section,
+	.lfi_atlas_final {
+		padding-top: 1rem;
+		padding-bottom: clamp(3.4rem, 6.8vw, 5rem);
+	}
+
 	.lfi_atlas_section--left .lfi_atlas_section_intro,
 	.lfi_atlas_section--left .lfi_atlas_section_head,
 	.lfi_atlas_section--left .lfi_atlas_section_body,
@@ -1217,6 +1230,16 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 		width: 100%;
 	}
 
+	.lfi_atlas_title {
+		max-width: 7.7ch;
+		line-height: 0.86;
+		letter-spacing: -0.065em;
+	}
+
+	.lfi_atlas_lead {
+		max-width: 13.5ch;
+	}
+
 	.lfi_atlas_hero_head {
 		order: 1;
 		justify-content: flex-start;
@@ -1234,6 +1257,40 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 		padding-right: 0;
 	}
 
+	.lfi_atlas_section_head h2,
+	.lfi_atlas_final h2 {
+		max-width: 7.8ch;
+		line-height: 0.93;
+		letter-spacing: -0.06em;
+	}
+
+	#lfi-atlas-pocuro-title {
+		max-width: 8.8ch;
+		line-height: 0.98;
+	}
+
+	#lfi-atlas-norden-title {
+		max-width: 9.6ch;
+		font-size: clamp(2.55rem, 4.8vw, 4.15rem);
+		line-height: 1.02;
+	}
+
+	h2#lfi-atlas-timeline-title {
+		max-width: 8.8ch;
+		font-size: clamp(2.3rem, 4.4vw, 3.8rem);
+		line-height: 1.08;
+	}
+
+	.lfi_atlas_section--proof .lfi_atlas_section_head h2 {
+		max-width: 8.8ch;
+		font-size: clamp(3rem, 5.15vw, 4.55rem);
+		line-height: 0.93;
+	}
+
+	.lfi_atlas_section--timeline {
+		flex-wrap: wrap;
+	}
+
 	.lfi_atlas_case_grid,
 	.lfi_atlas_chart_grid,
 	.lfi_atlas_delta_metric,
@@ -1246,6 +1303,10 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 	.lfi_atlas_logo_wall,
 	.lfi_atlas_quotes {
 		gap: 1.25rem;
+	}
+
+	.lfi_atlas_case_intro_main {
+		align-items: flex-start;
 	}
 
 	.lfi_atlas_system_cell,
@@ -1267,47 +1328,130 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 }
 
 @media (max-width: 767px) {
+	body.lfi_atlas_page {
+		--lfi-atlas-pad-left: 1.25rem;
+		--lfi-atlas-pad-right: 0.95rem;
+		--lfi-atlas-float-lane: 0.8rem;
+	}
+
 	.lfi_atlas_hero,
 	.lfi_atlas_section,
 	.lfi_atlas_final {
-		padding: 1.15rem 4.15rem 4.2rem 3.9rem;
+		padding: 1rem calc(var(--lfi-atlas-pad-right) + var(--lfi-atlas-float-lane)) 3.1rem var(--lfi-atlas-pad-left);
+	}
+
+	body.lfi_atlas_page .project_sidebar {
+		display: none;
+	}
+
+	body.lfi_atlas_page .port_togglebox,
+	body.lfi_atlas_page.port_menu_open .project_sidebar {
+		display: none;
+	}
+
+	body.lfi_atlas_page .port_sec_warapper {
+		margin-left: 0;
 	}
 
 	body.lfi_atlas_page #translate-button-container {
-		left: 0.65rem;
-		bottom: 0.85rem;
+		left: 0.75rem;
+		bottom: 0.75rem;
 	}
 
 	body.lfi_atlas_page #translate-button-icon {
-		width: 52px;
-		height: 52px;
-	}
-
-	body.lfi_atlas_page .port_togglebox {
-		top: 0.8rem;
-		right: 0.8rem;
+		width: 48px;
+		height: 48px;
 	}
 
 	.lfi_atlas_meta_row {
 		flex-direction: column;
 		align-items: flex-start;
+		gap: 0.75rem;
+		padding-bottom: 0.45rem;
+	}
+
+	.lfi_atlas_protocol {
+		margin: 1.2rem 0 1.4rem;
+	}
+
+	.lfi_atlas_internal,
+	.lfi_atlas_protocol,
+	.lfi_atlas_tag,
+	.lfi_atlas_stage_label,
+	.lfi_atlas_timeline_year,
+	.lfi_atlas_case_fact span,
+	.lfi_atlas_stat_tile span,
+	.lfi_atlas_delta_metric span,
+	.lfi_atlas_quote footer,
+	.lfi_atlas_quote_identity span {
+		font-size: 0.68rem;
+		letter-spacing: 0.22em;
+	}
+
+	.lfi_atlas_hero_grid {
+		gap: 1.2rem;
 	}
 
 	.lfi_atlas_title {
-		font-size: clamp(3.7rem, 17vw, 5.8rem);
-		max-width: 100%;
+		font-size: clamp(2.55rem, 13.5vw, 4rem);
+		max-width: 7.4ch;
 		text-align: left;
+		line-height: 0.9;
+		letter-spacing: -0.055em;
+		word-spacing: 0.04em;
 	}
 
 	.lfi_atlas_lead {
-		font-size: clamp(1.45rem, 7vw, 1.85rem);
-		max-width: 100%;
+		font-size: clamp(1.2rem, 6vw, 1.58rem);
+		max-width: 12ch;
+		line-height: 1.05;
+	}
+
+	.lfi_atlas_summary p,
+	.lfi_atlas_section_intro p,
+	.lfi_atlas_case_intro p,
+	.lfi_atlas_case_list li,
+	.lfi_atlas_system_cell p,
+	.lfi_atlas_timeline_item p,
+	.lfi_atlas_quote p,
+	.lfi_atlas_final p,
+	.lfi_atlas_delta_metric small,
+	.lfi_atlas_compare_header small,
+	.lfi_atlas_funnel_step span {
+		font-size: 0.98rem;
+		line-height: 1.62;
 	}
 
 	.lfi_atlas_section_head h2,
 	.lfi_atlas_final h2 {
-		max-width: 100%;
-		font-size: clamp(3rem, 14vw, 4.9rem);
+		max-width: 8.8ch;
+		font-size: clamp(2.15rem, 11vw, 3.35rem);
+		line-height: 0.96;
+		letter-spacing: -0.045em;
+		word-spacing: 0.04em;
+	}
+
+	#lfi-atlas-pocuro-title {
+		max-width: 9.1ch;
+		line-height: 0.98;
+	}
+
+	#lfi-atlas-norden-title {
+		max-width: 9.4ch;
+		font-size: clamp(2rem, 10.4vw, 3.15rem);
+		line-height: 0.98;
+	}
+
+	h2#lfi-atlas-timeline-title {
+		max-width: 8.6ch;
+		font-size: clamp(2rem, 10.3vw, 3rem);
+		line-height: 1.04;
+	}
+
+	.lfi_atlas_section--proof .lfi_atlas_section_head h2 {
+		max-width: 9.2ch;
+		font-size: clamp(2.2rem, 11.2vw, 3.55rem);
+		line-height: 0.98;
 	}
 
 	body.lfi_atlas_page .bottom_top {
@@ -1334,6 +1478,52 @@ body.lfi_atlas_page .port_footer_setions .copy_right_wrapper p.copy_right a:focu
 	.lfi_atlas_logo_wall,
 	.lfi_atlas_quotes {
 		flex-direction: column;
+	}
+
+	.lfi_atlas_case_intro {
+		padding: 0.9rem 0.95rem;
+	}
+
+	.lfi_atlas_case_intro_main {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.85rem;
+	}
+
+	.lfi_atlas_case_brand {
+		justify-content: flex-start;
+		flex: 0 1 auto;
+	}
+
+	.lfi_atlas_case_brand img {
+		max-height: 5.5rem;
+	}
+
+	.lfi_atlas_case_list {
+		flex-direction: column;
+		gap: 0.85rem;
+	}
+
+	.lfi_atlas_case_fact strong,
+	.lfi_atlas_stat_tile strong,
+	.lfi_atlas_delta_metric strong {
+		font-size: clamp(1.05rem, 4.9vw, 1.24rem);
+	}
+
+	.lfi_atlas_funnel_step strong {
+		font-size: clamp(1.55rem, 9vw, 2.35rem);
+		line-height: 0.9;
+	}
+
+	.lfi_atlas_kpi_row {
+		justify-content: flex-start;
+		gap: 0.55rem 0.8rem;
+		font-size: 0.68rem;
+		letter-spacing: 0.12em;
+	}
+
+	.lfi_atlas_compare_header span {
+		font-size: clamp(1.15rem, 6vw, 1.45rem);
 	}
 
 	.lfi_atlas_funnel_step {

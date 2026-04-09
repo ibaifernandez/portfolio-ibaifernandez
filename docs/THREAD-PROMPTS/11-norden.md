@@ -1,30 +1,32 @@
-# Prompt 11 — Norden Intelligence System Dossier Thread
+# Prompt 11 — Norden Audit / Brevo Intelligence Layer Dossier Thread
 
-Use this prompt as the starting message for the dedicated Norden dossier thread.
+Use this prompt as the starting message for the dedicated thread that audits the Norden workspace and turns that evidence into the public `Brevo Intelligence Layer` dossier.
 
 ---
 
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated Norden dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated Brevo Intelligence Layer dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
-Your job is to turn Norden into a standalone dossier about the system Ibai Fernandez built around a live client case: reporting architecture, evidence surfaces, decision support, cohort logic, dual internal/client views, printable outputs, and productized intelligence built under real delivery pressure.
+Your job is to use the Norden workspace as the most robust technical audit base and turn that evidence into a public dossier about a reusable solution Ibai Fernandez can design and build: diagnosis, reporting architecture, evidence surfaces, decision support, cohort logic, controlled delivery surfaces, printable outputs, and sovereignty-first handoff.
 
 This is not a company page for Clinicas Norden.
 This is not an employment page.
 This is not a duplicate of the LFi dossier.
 
-It is a project page about why the Norden workspace deserves to exist as its own portfolio piece under the name `Norden Intelligence System`.
+It is a project page about why this solution deserves to exist as its own portfolio piece under the public name `Brevo Intelligence Layer`.
 
 ## Project context
 
 - Live portfolio site: https://portfolio.ibaifernandez.com
-- Canonical public Norden URL: `/norden.html`
-- Source template: `src/pages/project-norden.template.html`
-- Current dossier-local stylesheet: `assets/css/dossiers/norden.css`
+- Canonical public dossier URL: `/brevo-intelligence-layer.html`
+- Legacy redirects: `/norden.html`, `/brevo-business-intelligence-system.html`
+- Source template: `src/pages/project-brevo-intelligence-layer.template.html`
+- Current dossier-local stylesheet: `assets/css/dossiers/brevo-intelligence-layer.css`
 - Mandatory shared repo baseline: `docs/PARALLEL-SAFETY-BASELINE.md`
-- Parent commercial context: Norden is a client case operated under LFi, not an employer
+- Brand/offer frame: `docs/brand-and-strategy/if-strategy.md`
+- Parent commercial context: Norden is a client case operated under LFi, not an employer, and it should remain a read-only evidence source rather than the public protagonist
 
 ## Critical narrative split with LFi
 
@@ -37,18 +39,19 @@ This split is mandatory.
 - improvements caused by Ibai in delivery, segmentation, deliverability, reporting, and operating performance
 - career-level value demonstrated inside LFi
 
-### What belongs in the Norden dossier
+### What belongs in the Brevo Intelligence Layer dossier
 
-- the intelligence system built around the case
+- the reusable solution itself
+- the diagnostic logic
 - the reporting layer
-- the internal/client view split
+- the internal/stakeholder/public-safe split
 - the printable report surface
 - the cohort and export logic
 - the product and architecture thinking behind the workspace
-- why this case proves Ibai can convert live client operations into reusable intelligence infrastructure
+- why this proves Ibai can convert opaque operations into reusable intelligence infrastructure
 
 The LFi page owns the commercial and career framing.
-This Norden page owns the product, tooling, reporting, and systems framing.
+This Brevo Intelligence Layer page owns the product, tooling, reporting, and systems framing.
 
 Do not collapse the two pages into the same story.
 
@@ -56,10 +59,10 @@ Do not collapse the two pages into the same story.
 
 You may touch only:
 
-- `src/pages/project-norden.template.html`
-- `assets/css/dossiers/norden.css`
-- Norden-specific assets
-- Norden-specific metadata handoff notes if required
+- `src/pages/project-brevo-intelligence-layer.template.html`
+- `assets/css/dossiers/brevo-intelligence-layer.css`
+- dossier-specific assets
+- dossier-specific metadata handoff notes if required
 
 You must not silently edit shared files such as:
 
@@ -81,11 +84,11 @@ If a shared-file change is needed, call it out explicitly and hand it back to th
 By the time the reader finishes this page, they should understand:
 
 1. Norden is a real client case under LFi, not a fictional sandbox
-2. Ibai did not just produce campaign assets; he created an intelligence layer around the account
+2. Ibai did not just produce campaign assets; he can create an intelligence layer around an opaque operational surface
 3. He can turn messy platform outputs into structured decision surfaces
-4. He can separate internal and client-facing reporting needs without duplicating work
+4. He can separate internal, stakeholder-facing, and public-safe reporting needs without duplicating work
 5. He can productize operational knowledge into interfaces, printable outputs, and reusable logic
-6. This is portfolio-worthy not because of the client name alone, but because of the system built around the case
+6. This is portfolio-worthy not because of any client name, but because of the system built to solve the problem
 
 The reader should leave with the feeling:
 
@@ -97,8 +100,8 @@ The dossier should feel like:
 
 - a decision-intelligence case file
 - a productized reporting system
-- a dark operational console with editorial discipline
-- a high-trust architecture narrative grounded in a live client case
+- a modern editorial artifact with a strong visual point of view
+- a high-trust architecture narrative grounded in diagnosed reality, not in client name-dropping
 
 It should not feel like:
 
@@ -122,6 +125,7 @@ Avoid:
 
 - treating charts as the whole story
 - leading with opens and CTR in a vacuum
+- turning the dossier into a stack of boxes or a generic SaaS landing
 - using the same dossier composition as LFi or The Research Engine
 
 Distinct dossier, distinct compositional logic.
@@ -130,11 +134,31 @@ Distinct dossier, distinct compositional logic.
 
 For the Norden public dossier, the local layout system should be implemented with Flexbox as the primary and explicit composition model inside:
 
-- `assets/css/dossiers/norden.css`
+- `assets/css/dossiers/brevo-intelligence-layer.css`
 
 Avoid CSS Grid for the page-level and module-level layout unless a future user request changes that constraint deliberately.
 
 This is not a generic site-wide rule. It is a Norden-specific authoring constraint so downstream manual tuning remains easy inside this dossier.
+
+## Strategic framing that is now mandatory
+
+Use `docs/brand-and-strategy/if-strategy.md` as a hard brand frame.
+
+The page should market Ibai through this pattern:
+
+- Diagnosis
+- The Build
+- Sovereignty Transfer
+
+The page must not market him as:
+
+- a client account operator
+- a collector of brand logos
+- someone whose value depends on reporting case metrics in isolation
+
+The correct public reading is:
+
+"Ibai is someone who can diagnose a hidden systems problem, build the right local-first tool, and leave it working after the handoff."
 
 ## Source material to audit first
 
@@ -158,12 +182,20 @@ Use these sources before doing anything else:
 - `/Users/AGLAYA/Local Sites/norden/app/app.js`
 - `/Users/AGLAYA/Local Sites/norden/app/styles.css`
 
+Optional portability audit, but not front-stage public narrative:
+
+- `/Users/AGLAYA/Local Sites/sonda-intelligence-system/README.md`
+- `/Users/AGLAYA/Local Sites/sonda-intelligence-system/docs/ARCHITECTURE.md`
+- `/Users/AGLAYA/Local Sites/lfi-intelligence-system/README.md`
+- `/Users/AGLAYA/Local Sites/lfi-intelligence-system/docs/ARCHITECTURE.md`
+
 ## Content rules
 
 - Do not present Norden as an employer
 - Do not duplicate the LFi dossier's core story
 - Do not reduce the case to raw email metrics
 - Do not use unsupported claims
+- Do not let named deployments overshadow the solution itself
 - Do not let the tooling overshadow the business value
 
 When metrics appear, the reader must understand:
@@ -179,13 +211,13 @@ When metrics appear, the reader must understand:
 - Edit the source template and rebuild
 - Keep changes dossier-local whenever possible
 - If behavior or structure changes, add a concise note to `docs/ENGINEERING-CHANGELOG.md`
-- Keep Norden layout logic Flexbox-based in its dossier-local CSS unless explicitly instructed otherwise
+- Keep the Brevo Intelligence Layer layout logic Flexbox-based in its dossier-local CSS unless explicitly instructed otherwise
 
 ## Your first mission
 
 1. Audit the Norden workspace end-to-end
-2. Decide what belongs on the LFi page vs the Norden page
-3. Propose the strongest public positioning for `Norden Intelligence System`
+2. Decide what belongs on the LFi page vs the Brevo Intelligence Layer page
+3. Propose the strongest public positioning for `Brevo Intelligence Layer`
 4. Design a dossier structure that proves productization of operational evidence
 5. Keep the relationship to LFi explicit without letting the page become subordinate to LFi
 

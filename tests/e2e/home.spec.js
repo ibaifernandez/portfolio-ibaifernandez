@@ -115,16 +115,16 @@ test('contact CTA points to contact section anchor', async ({ page }) => {
   await expect(page).toHaveURL(/#scroll_contact$/);
 });
 
-test('published Norden dossier appears in the projects grid', async ({ page }) => {
+test('published Brevo Intelligence Layer dossier appears in the projects grid', async ({ page }) => {
   await page.goto('/index.html');
 
   const nordenCard = page.locator('.project_spotlight_project', {
-    has: page.locator('a.project_spotlight_media_link[href="norden.html"]')
+    has: page.locator('a.project_spotlight_media_link[href="brevo-intelligence-layer.html"]')
   });
 
   await expect(nordenCard).toBeVisible();
-  await expect(nordenCard.locator('.project_spotlight_title')).toContainText(/Norden Intelligence System/i);
-  await expect(nordenCard.locator('.project_spotlight_cta')).toHaveAttribute('href', 'norden.html');
+  await expect(nordenCard.locator('.project_spotlight_title')).toContainText(/Brevo Intelligence Layer/i);
+  await expect(nordenCard.locator('.project_spotlight_cta')).toHaveAttribute('href', 'brevo-intelligence-layer.html');
 });
 
 test('contact form exposes anti-spam guard fields', async ({ page }) => {
@@ -152,6 +152,8 @@ test('legacy project routes redirect to the normalized dossier slugs', async ({ 
     ['/project-debtracker.html', '/debtracker.html'],
     ['/project-gymtracker.html', '/gymtracker.html'],
     ['/project-enterprise-crm.html', '/lfi.html'],
+    ['/norden.html', '/brevo-intelligence-layer.html'],
+    ['/brevo-business-intelligence-system.html', '/brevo-intelligence-layer.html'],
     ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
     ['/project-portfolio-ibaifernandez.html', '/portfolio-ibaifernandez.html'],
     ['/project-myboard.html', '/my-board.html'],

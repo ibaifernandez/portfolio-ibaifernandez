@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated Route to Digitalizatio
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated Route to Digitalization / 2x2MKT dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated Route to Digitalization / 2x2MKT dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn this project page into a high-authority dossier about national-scale digital adoption, field operations, public-private coordination, crisis pivoting, and cloud-era execution under real demand shock.
 

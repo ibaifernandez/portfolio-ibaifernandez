@@ -26,7 +26,7 @@ The following commands were revalidated locally on 2026-03-16:
 
 Current verified notes:
 
-- `norden.html` is already a public generated route and appears in the homepage/test surface.
+- `brevo-intelligence-layer.html` is the canonical public route for the former Norden dossier; `/norden.html` and `/brevo-business-intelligence-system.html` now exist only as legacy redirects.
 - Playwright counts are mutable state, not timeless copy. Reverify with `npx playwright test --list` before quoting a number.
 - LFi already uses `assets/css/dossiers/lfi.css`, but a shared `.lfi_dossier_*` residue still exists inside `assets/css/style.css`.
 - A CI incident on 2026-03-16 confirmed that local, uncommitted shared test/snapshot fixes can create a false green. GitHub Actions evaluates committed `HEAD`, not your workspace.
@@ -62,7 +62,7 @@ Never edit them directly.
 4. Do not quote unstable counts or dated release metrics unless you reverify them in-repo.
 5. Do not package evidence/noise casually. This includes:
    - `docs/*RATIONALE*.md`
-   - `documentacion-profesional-if/`
+   - heavy archive binaries such as legacy PDFs/PNGs/DOCX kept outside the operational repo
    - external workspaces used as read-only evidence
    - exports, helper PDFs, `.DS_Store`, and other non-release artifacts
 

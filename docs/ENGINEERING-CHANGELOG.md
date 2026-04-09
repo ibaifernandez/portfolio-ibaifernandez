@@ -22,6 +22,69 @@ Single long-form technical history of the portfolio. This file consolidates the 
 
 ## Timeline Of Engineering Work
 
+### 2026-04-09 - Clean-Room Repo Hygiene Pass Started
+
+- Established `/Users/AGLAYA/Local Sites/26-04-portfolio-if` as the operational repo for the final cleanup pass, leaving the old workspace as legacy reference instead of the active work surface.
+- Removed obvious non-project local clutter from the clean-room copy (`node_modules`, reports, artifacts, plugin bundles, loose screenshots, and similar local-only noise).
+- Deleted the unused tracked `assets/mail-mkt-sample/` folder from the clean-room repo because it is not part of the portfolio runtime, build, tests, or deploy surface.
+- Tightened repo hygiene rules so heavy archive binaries stay out of the operational repo:
+  - `assets/mail-mkt-sample/`
+  - `documentacion-profesional-if/*.docx`
+  - `documentacion-profesional-if/leben/*.png`
+  - `documentacion-profesional-if/leben/*.pdf`
+  - `docs/freeze-visual/*.png`
+- Updated the shared thread prompts to point to the clean-room repo path and rewrote the LFi freeze/archive notes so the operational repo can keep lightweight markdown guidance without carrying heavyweight visual evidence blobs.
+
+### 2026-03-28 - Brevo Intelligence Layer Finalized As The Public Successor To Norden
+
+- Renamed the public dossier from the intermediate `Brevo Business Intelligence System` framing into the cleaner final identity `Brevo Intelligence Layer`.
+- Normalized the canonical public route and source paths:
+  - public URL: `brevo-intelligence-layer.html`
+  - source template: `src/pages/project-brevo-intelligence-layer.template.html`
+  - dossier-local stylesheet: `assets/css/dossiers/brevo-intelligence-layer.css`
+- Re-centered the dossier away from named deployments and toward the stronger public claim:
+  - Ibai diagnoses opaque operational problems
+  - builds local-first systems to resolve them
+  - and hands them off without creating permanent dependence
+- Tightened the bilingual dossier copy in `en.json` and `es.json` so the page now sells a way of working (`Diagnosis -> The Build -> Sovereignty Transfer`) instead of a case-family narrative.
+- Reworked the dossier-local Flexbox styling so the page relies less on stacked card boxes and more on editorial rails, ruled rows, and typographic composition.
+- Updated shared homepage card data, routing, and tests to the new canonical slug:
+  - `content/projects.json`
+  - `netlify.toml`
+  - `scripts/static-server.mjs`
+  - `tests/e2e/home.spec.js`
+  - `tests/e2e/norden-translation.spec.js`
+- Added legacy continuity for both previous public identities:
+  - `/norden.html`
+  - `/brevo-business-intelligence-system.html`
+
+### 2026-03-27 - Norden Dossier Reframed Into Brevo Business Intelligence System
+
+- Repositioned the public dossier generated at `norden.html` from a strictly Norden-scoped system page into a broader `Brevo Business Intelligence System` narrative with:
+  - Norden as flagship deployment
+  - SONDA as read-only audit variant
+  - LFi as governance/readiness baseline
+- Rewrote `src/pages/project-norden.template.html` to support the new editorial structure:
+  - umbrella-system hero
+  - deployment family section
+  - explicit LFi/system attribution split
+  - shared chassis section
+  - Norden flagship proof section
+  - output-grammar section
+- Rebuilt `assets/css/dossiers/norden.css` as a dossier-local **Flexbox-only** layout surface so downstream manual tuning can stay inside a single predictable composition model without CSS Grid dependencies.
+- Updated the shared project card contract in `content/projects.json` so homepage card title, copy, mockup text, and keywords match the new public positioning.
+- Replaced the Norden EN/ES translation block in `en.json` and `es.json` to align the dossier, card, metadata, and navigation with the new umbrella narrative.
+- Updated E2E expectations in:
+  - `tests/e2e/home.spec.js`
+  - `tests/e2e/norden-translation.spec.js`
+- Refreshed the Playwright visual baseline for the homepage projects section after the intentional card change.
+- Validation executed:
+  - `npm run build:pages`
+  - `npm run test:quality`
+  - `npx playwright test tests/e2e/home.spec.js tests/e2e/norden-translation.spec.js --project=chromium`
+  - `npx playwright test tests/e2e/visual.spec.js --project=chromium --update-snapshots`
+  - `npx playwright test tests/e2e/visual.spec.js --project=chromium`
+
 ### 2026-03-27 - Homepage Visual Baselines Realigned After Editorial Iteration 2
 
 - Audited the single failing visual regression after the second intentional homepage editorial pass:

@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated AGLAYA dossier thread.
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated AGLAYA dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated AGLAYA dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn AGLAYA into a serious dossier about conversion architecture, remote agency operating logic, qualification-first positioning, and why Ibai Fernandez can package a service business like a coherent commercial system instead of a generic list of deliverables.
 

@@ -53,6 +53,30 @@
   force  = true
 
 [[redirects]]
+  from   = "/norden.html"
+  to     = "/brevo-intelligence-layer.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/norden"
+  to     = "/brevo-intelligence-layer.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/brevo-business-intelligence-system.html"
+  to     = "/brevo-intelligence-layer.html"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/brevo-business-intelligence-system"
+  to     = "/brevo-intelligence-layer.html"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/lfi-v2.html"
   to     = "/lfi.html"
   status = 308

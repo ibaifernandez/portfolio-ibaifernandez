@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated homepage editorial thr
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated homepage editorial thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated homepage editorial thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn the homepage into a coherent editorial front door for the whole portfolio: clear, directional, credible, and aligned with the dossier system behind it.
 

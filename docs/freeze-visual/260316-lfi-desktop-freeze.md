@@ -1,6 +1,6 @@
 # LFi Desktop Freeze
 
-Reference capture: `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez/docs/freeze-visual/260316-14-16-lfi-html.png`
+Reference capture: the original full-size PNG was intentionally removed from the operational repo to keep it lean. Use this markdown freeze note as the in-repo reference and recover the image only from legacy history/archive if an exact pixel comparison is truly needed.
 
 ## Scope
 
@@ -49,7 +49,7 @@ Any future work on LFi should preserve these technical constraints:
 - the dossier layout contract is local to `assets/css/dossiers/lfi.css`
 - shared `assets/css/style.css` must not be used as a back door for LFi layout changes
 - public copy must remain wired to the EN/ES translation layer
-- desktop changes must be judged against the reference capture, not against abstract preference
+- desktop changes must be judged against this freeze note and the approved composition intent, not against abstract preference
 
 ## Intent
 

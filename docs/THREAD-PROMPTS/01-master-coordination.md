@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated coordination thread th
 ## Copy/Paste Prompt
 
 ```md
-You are the master coordination thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the master coordination thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is not to redesign individual dossiers. Your job is to keep the whole finishing system coherent while the project is split into parallel threads.
 

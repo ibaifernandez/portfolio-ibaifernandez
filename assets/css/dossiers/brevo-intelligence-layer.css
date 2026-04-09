@@ -1,0 +1,848 @@
+body.norden_registry_page {
+	--norden-bg: #180902;
+	--norden-bg-soft: #241008;
+	--norden-bg-ink: #0f0703;
+	--norden-paper: #fff4ea;
+	--norden-paper-soft: rgba(255, 244, 234, 0.76);
+	--norden-rule: rgba(255, 244, 234, 0.14);
+	--norden-rule-strong: rgba(255, 244, 234, 0.26);
+	--norden-accent: #ff6800;
+	--norden-accent-strong: #ff7f27;
+	--norden-accent-soft: #ffb57d;
+	--norden-accent-pale: #ffd7ba;
+	--norden-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
+	--norden-left: clamp(1.5rem, 6vw, 6rem);
+	--norden-right: clamp(1.5rem, 4vw, 4.4rem);
+	background:
+		radial-gradient(circle at 82% 8%, rgba(255, 104, 0, 0.22), transparent 0 22rem),
+		radial-gradient(circle at 12% 28%, rgba(255, 160, 97, 0.12), transparent 0 18rem),
+		linear-gradient(180deg, #140803 0%, #1a0a04 35%, #100602 100%);
+	color: var(--norden-paper);
+}
+
+body.norden_registry_page .port_sec_warapper,
+body.norden_registry_page .norden_registry_wrapper,
+body.norden_registry_page .norden_registry_surface {
+	background: transparent;
+}
+
+body.norden_registry_page .port_singleblog_wrapper {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+body.norden_registry_page .port_togglebox span {
+	background: var(--norden-paper);
+}
+
+body.norden_registry_page code {
+	padding: 0.15rem 0.38rem;
+	border: 1px solid rgba(255, 244, 234, 0.14);
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(255, 244, 234, 0.96);
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.92em;
+}
+
+.norden_registry_surface {
+	position: relative;
+	overflow: hidden;
+}
+
+.norden_registry_surface::before,
+.norden_registry_surface::after {
+	content: '';
+	position: absolute;
+	border-radius: 999px;
+	filter: blur(2px);
+	pointer-events: none;
+}
+
+.norden_registry_surface::before {
+	top: 6rem;
+	right: -10rem;
+	width: 28rem;
+	height: 28rem;
+	background: radial-gradient(circle, rgba(255, 104, 0, 0.3) 0%, rgba(255, 104, 0, 0) 72%);
+}
+
+.norden_registry_surface::after {
+	left: -12rem;
+	bottom: 18rem;
+	width: 26rem;
+	height: 26rem;
+	background: radial-gradient(circle, rgba(255, 184, 131, 0.18) 0%, rgba(255, 184, 131, 0) 72%);
+}
+
+.norden_registry_flow {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.norden_registry_hero,
+.norden_registry_section,
+.norden_registry_final {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: clamp(1.25rem, 2.4vw, 2rem);
+	padding: clamp(1.4rem, 2vw, 1.8rem) var(--norden-right) clamp(4rem, 7vw, 6.5rem) var(--norden-left);
+}
+
+.norden_registry_hero {
+	min-height: min(100vh, 65rem);
+	padding-top: 0.75rem;
+	background:
+		linear-gradient(160deg, rgba(255, 120, 32, 0.1), rgba(255, 120, 32, 0) 24%),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 18%),
+		linear-gradient(180deg, #160903 0%, #1d0c05 55%, #251108 100%);
+}
+
+.norden_registry_section {
+	border-top: 1px solid var(--norden-rule);
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0) 25%);
+}
+
+.norden_registry_section--family {
+	background:
+		linear-gradient(180deg, rgba(255, 147, 76, 0.09), rgba(255, 147, 76, 0) 40%),
+		linear-gradient(180deg, #1b0b04 0%, #120703 100%);
+}
+
+.norden_registry_section--boundary {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 28%),
+		linear-gradient(180deg, #120703 0%, #1a0a04 100%);
+}
+
+.norden_registry_section--chassis {
+	background:
+		radial-gradient(circle at 82% 18%, rgba(255, 104, 0, 0.12), transparent 0 18rem),
+		linear-gradient(180deg, #170903 0%, #110602 100%);
+}
+
+.norden_registry_section--proof {
+	background:
+		linear-gradient(180deg, rgba(255, 145, 70, 0.08), rgba(255, 145, 70, 0) 40%),
+		linear-gradient(180deg, #150802 0%, #210d05 100%);
+}
+
+.norden_registry_section--surfaces {
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0) 35%),
+		linear-gradient(180deg, #150802 0%, #100602 100%);
+}
+
+.norden_registry_final {
+	border-top: 1px solid var(--norden-rule);
+	background:
+		radial-gradient(circle at 20% 10%, rgba(255, 104, 0, 0.16), transparent 0 18rem),
+		linear-gradient(180deg, #120703 0%, #0d0502 100%);
+}
+
+.norden_registry_meta_row,
+.norden_registry_hero_shell,
+.norden_registry_hero_band,
+.norden_registry_section_intro,
+.norden_registry_section_head,
+.norden_registry_section_body,
+.norden_registry_intro,
+.norden_registry_title_block,
+.norden_registry_manifest,
+.norden_registry_split_columns,
+.norden_registry_pipeline,
+.norden_registry_metric_river,
+.norden_registry_proof_rows,
+.norden_registry_surface_rows,
+.norden_registry_claims,
+.norden_registry_deployment_strip,
+.norden_registry_deployment_line,
+.norden_registry_nav {
+	display: flex;
+}
+
+.norden_registry_meta_row,
+.norden_registry_hero_shell,
+.norden_registry_hero_band,
+.norden_registry_split_columns,
+.norden_registry_metric_river,
+.norden_registry_proof_rows,
+.norden_registry_surface_rows,
+.norden_registry_deployment_strip,
+.norden_registry_deployment_line,
+.norden_registry_nav {
+	flex-wrap: wrap;
+}
+
+.norden_registry_section_intro,
+.norden_registry_section_head,
+.norden_registry_section_body,
+.norden_registry_intro,
+.norden_registry_title_block,
+.norden_registry_manifest,
+.norden_registry_claims,
+.norden_registry_pipeline {
+	flex-direction: column;
+}
+
+.norden_registry_internal,
+.norden_registry_protocol,
+.norden_registry_tag,
+.norden_registry_stage_label,
+.norden_registry_step_path {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+}
+
+.norden_registry_internal,
+.norden_registry_protocol,
+.norden_registry_stage_label,
+.norden_registry_step_path {
+	color: rgba(255, 244, 234, 0.62);
+}
+
+.norden_registry_tag {
+	display: inline-flex;
+	align-self: flex-start;
+	padding: 0 0 0.45rem;
+	border: 0;
+	border-bottom: 1px solid rgba(255, 183, 134, 0.48);
+	border-radius: 0;
+	background: transparent;
+	color: rgba(255, 244, 234, 0.78);
+}
+
+.norden_registry_meta_row {
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem 1.8rem;
+	padding-top: 1.8rem;
+}
+
+.norden_registry_backlink,
+body.norden_registry_page .project_case_nav .project_case_navlink,
+body.norden_registry_page .project_case_backlink {
+	color: var(--norden-paper);
+}
+
+.norden_registry_backlink {
+	margin: 0;
+	line-height: 1.15;
+}
+
+.norden_registry_protocol,
+.norden_registry_internal {
+	margin: 0;
+	line-height: 1.25;
+}
+
+.norden_registry_protocol {
+	max-width: 56rem;
+	margin-top: 1.1rem;
+}
+
+.norden_registry_hero_shell {
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: clamp(2rem, 4vw, 4rem);
+	margin-top: clamp(0.6rem, 1.3vw, 1rem);
+}
+
+.norden_registry_hero_copy {
+	flex: 1 1 22rem;
+	max-width: 30rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.norden_registry_title_block {
+	flex: 1 1 38rem;
+	gap: 1.2rem;
+	max-width: 52rem;
+}
+
+.norden_registry_title {
+	margin: 0;
+	max-width: 11ch;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(3.8rem, 10vw, 8rem);
+	font-weight: 700;
+	line-height: 0.86;
+	letter-spacing: -0.08em;
+	text-transform: uppercase;
+	color: rgba(255, 244, 234, 0.99);
+	text-wrap: balance;
+}
+
+.norden_registry_lead {
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(1.65rem, 3.3vw, 2.5rem);
+	font-weight: 500;
+	line-height: 1.03;
+	letter-spacing: -0.05em;
+	color: rgba(255, 244, 234, 0.95);
+}
+
+.norden_registry_hero_note {
+	margin: 0;
+	max-width: 34rem;
+	font-size: 1.08rem;
+	line-height: 1.72;
+	color: var(--norden-paper-soft);
+}
+
+.norden_registry_intro {
+	gap: 1rem;
+}
+
+.norden_registry_intro p,
+.norden_registry_section_intro p,
+.norden_registry_column li,
+.norden_registry_step_copy p,
+.norden_registry_surface_row p,
+.norden_registry_deployment p,
+.norden_registry_final p,
+.norden_registry_claims span {
+	margin: 0;
+	font-size: 1.02rem;
+	line-height: 1.75;
+	color: var(--norden-paper-soft);
+}
+
+.norden_registry_deployment_line {
+	gap: 0.8rem;
+	align-items: center;
+}
+
+.norden_registry_deployment_line span {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.1rem 0 0.4rem;
+	border: 0;
+	border-bottom: 1px solid rgba(255, 244, 234, 0.18);
+	border-radius: 0;
+	background: transparent;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.76rem;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: rgba(255, 244, 234, 0.82);
+}
+
+.norden_registry_hero_band {
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: clamp(1.6rem, 4vw, 3rem);
+	margin-top: auto;
+	padding-top: 1rem;
+}
+
+.norden_registry_exhibit {
+	flex: 1 1 22rem;
+	max-width: 34rem;
+	display: flex;
+}
+
+.norden_registry_manifest {
+	flex: 1 1 30rem;
+	gap: 1rem;
+}
+
+.norden_registry_manifest_row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0.45rem 1.25rem;
+	padding: 0.9rem 0;
+	border-bottom: 1px solid var(--norden-rule);
+}
+
+.norden_registry_manifest span {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.74rem;
+	letter-spacing: 0.26em;
+	text-transform: uppercase;
+	color: rgba(255, 244, 234, 0.58);
+}
+
+.norden_registry_manifest strong {
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(1rem, 1.5vw, 1.1rem);
+	font-weight: 600;
+	letter-spacing: -0.03em;
+	color: rgba(255, 244, 234, 0.96);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden {
+	position: relative;
+	width: 100%;
+	min-height: clamp(24rem, 38vw, 31rem);
+	padding: clamp(1.2rem, 2vw, 1.8rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #1b0901;
+	background:
+		radial-gradient(circle at 78% 14%, rgba(255, 255, 255, 0.32), transparent 0 8rem),
+		linear-gradient(145deg, #ffcfab 0%, #ff6800 48%, #7d1d00 100%);
+	border: 1px solid rgba(255, 244, 234, 0.12);
+	border-radius: 1.2rem;
+	transform: rotate(-2deg);
+	box-shadow: var(--norden-shadow);
+	overflow: hidden;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden::before,
+body.norden_registry_page .project_spotlight_mockup--norden::after {
+	content: '';
+	position: absolute;
+	border-radius: 999px;
+	pointer-events: none;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden::before {
+	top: -3rem;
+	right: -3rem;
+	width: 10rem;
+	height: 10rem;
+	background: rgba(255, 246, 238, 0.22);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden::after {
+	left: -4rem;
+	bottom: -4rem;
+	width: 12rem;
+	height: 12rem;
+	background: rgba(27, 9, 1, 0.18);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid {
+	position: relative;
+	inset: auto;
+	min-height: 14rem;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.85rem;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span {
+	border: 0;
+	border-radius: 1rem;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.04)),
+		rgba(20, 8, 2, 0.22);
+	box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(1) {
+	flex: 1 1 48%;
+	min-height: 13rem;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(2),
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(3),
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_grid span:nth-child(4) {
+	flex: 1 1 calc(52% - 0.85rem);
+	min-height: 3.8rem;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_tag {
+	align-self: flex-start;
+	padding: 0.5rem 0.9rem;
+	border-radius: 999px;
+	background: rgba(27, 9, 1, 0.12);
+	color: rgba(27, 9, 1, 0.82);
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.75rem;
+	letter-spacing: 0.22em;
+	text-transform: uppercase;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden strong {
+	max-width: 9ch;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(2.6rem, 4vw, 3.6rem);
+	font-weight: 700;
+	line-height: 0.9;
+	letter-spacing: -0.06em;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_metric {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.86rem;
+	font-weight: 700;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+}
+
+body.norden_registry_page .project_spotlight_mockup--norden .project_spotlight_mockup_note {
+	max-width: 18rem;
+	color: rgba(27, 9, 1, 0.84);
+}
+
+.norden_registry_section_intro {
+	max-width: 40rem;
+	gap: 1rem;
+}
+
+.norden_registry_section_head {
+	max-width: 58rem;
+}
+
+.norden_registry_section_head h2,
+.norden_registry_final h2 {
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+	font-weight: 700;
+	line-height: 0.9;
+	letter-spacing: -0.07em;
+	text-transform: uppercase;
+	text-wrap: balance;
+	color: rgba(255, 244, 234, 0.98);
+}
+
+.norden_registry_section_body {
+	gap: 1.35rem;
+}
+
+.norden_registry_deployment_strip {
+	flex-direction: column;
+	gap: 0;
+	align-items: stretch;
+}
+
+.norden_registry_deployment,
+.norden_registry_column,
+.norden_registry_surface_row,
+.norden_registry_metric,
+.norden_registry_reading_lane {
+	position: relative;
+	border: 0;
+	background: transparent;
+	backdrop-filter: none;
+}
+
+.norden_registry_deployment {
+	flex: 1 1 auto;
+	min-height: auto;
+	padding: 1.5rem 0 1.7rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.95rem;
+	border-radius: 0;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_deployment:first-child {
+	border-top: 0;
+}
+
+.norden_registry_deployment::before,
+.norden_registry_column::before,
+.norden_registry_metric::before,
+.norden_registry_surface_row::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 1.55rem;
+	width: clamp(3rem, 8vw, 6rem);
+	height: 1px;
+	background: rgba(255, 162, 98, 0.45);
+}
+
+.norden_registry_deployment--accent::before,
+.norden_registry_column--accent::before,
+.norden_registry_metric--accent::before {
+	background: rgba(255, 104, 0, 0.82);
+}
+
+.norden_registry_deployment h3,
+.norden_registry_column h3,
+.norden_registry_surface_row h3,
+.norden_registry_step_copy h3 {
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(1.35rem, 2vw, 1.75rem);
+	font-weight: 600;
+	line-height: 1.02;
+	letter-spacing: -0.045em;
+	color: rgba(255, 244, 234, 0.98);
+}
+
+.norden_registry_deployment strong {
+	margin-top: auto;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.78rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: rgba(255, 198, 156, 0.96);
+}
+
+.norden_registry_split_columns {
+	gap: 2.6rem 2rem;
+	align-items: stretch;
+}
+
+.norden_registry_column {
+	flex: 1 1 23rem;
+	padding: 1.6rem 0 0;
+	border-radius: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_list {
+	margin: 0;
+	padding-left: 1.15rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+}
+
+.norden_registry_pipeline {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	gap: 1rem;
+}
+
+.norden_registry_step {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 1rem 1.35rem;
+	padding: 1.25rem 0 1.25rem 0;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_step:first-child {
+	border-top: 0;
+}
+
+.norden_registry_step_num {
+	flex: 0 0 auto;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: clamp(1rem, 1.4vw, 1.15rem);
+	font-weight: 700;
+	letter-spacing: 0.28em;
+	text-transform: uppercase;
+	color: rgba(255, 192, 144, 0.9);
+}
+
+.norden_registry_step_copy {
+	flex: 1 1 20rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+}
+
+.norden_registry_step_path {
+	margin: 0;
+}
+
+.norden_registry_metric_river {
+	flex-direction: column;
+	gap: 0;
+	align-items: stretch;
+}
+
+.norden_registry_metric {
+	flex: 1 1 auto;
+	min-height: auto;
+	padding: 1.45rem 0 1.5rem;
+	border-radius: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	justify-content: flex-start;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_metric:first-child {
+	border-top: 0;
+}
+
+.norden_registry_metric span,
+.norden_registry_metric small {
+	color: rgba(255, 244, 234, 0.72);
+}
+
+.norden_registry_metric span {
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.76rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.norden_registry_metric strong {
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: clamp(2rem, 3vw, 2.65rem);
+	font-weight: 700;
+	line-height: 0.95;
+	letter-spacing: -0.06em;
+	color: rgba(255, 244, 234, 0.99);
+}
+
+.norden_registry_metric small {
+	font-size: 0.94rem;
+	line-height: 1.45;
+}
+
+.norden_registry_proof_rows,
+.norden_registry_surface_rows {
+	flex-direction: column;
+	gap: 0;
+	align-items: stretch;
+}
+
+.norden_registry_surface_row {
+	flex: 1 1 auto;
+	padding: 1.45rem 0 1.55rem;
+	border-radius: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_surface_row:first-child {
+	border-top: 0;
+}
+
+.norden_registry_claims {
+	gap: 0.9rem;
+}
+
+.norden_registry_claims p {
+	margin: 0;
+	display: flex;
+	align-items: flex-start;
+	gap: 0.95rem;
+	padding: 1rem 0;
+	border-top: 1px solid var(--norden-rule);
+}
+
+.norden_registry_claims p:first-child {
+	border-top: 0;
+}
+
+.norden_registry_claims strong {
+	flex: 0 0 auto;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 0.9rem;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: rgba(255, 190, 148, 0.9);
+}
+
+.norden_registry_future {
+	max-width: 48rem;
+	font-size: 1.08rem;
+	line-height: 1.8;
+	color: var(--norden-paper-soft);
+}
+
+body.norden_registry_page .project_case_nav {
+	margin: 0;
+	padding: 2rem var(--norden-right) 3rem var(--norden-left);
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	background: #0d0502;
+}
+
+body.norden_registry_page .project_case_nav .project_case_navlink {
+	border-color: rgba(255, 244, 234, 0.16);
+	background: rgba(255, 255, 255, 0.04);
+}
+
+body.norden_registry_page .project_case_nav .project_case_navlink:hover,
+body.norden_registry_page .project_case_nav .project_case_navlink:focus {
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--norden-paper);
+}
+
+@media (max-width: 1199px) {
+	.norden_registry_title {
+		max-width: 12ch;
+	}
+}
+
+@media (max-width: 991px) {
+	body.norden_registry_page {
+		--norden-left: clamp(1.25rem, 6vw, 2rem);
+		--norden-right: clamp(1.25rem, 5vw, 2rem);
+	}
+
+	.norden_registry_hero {
+		min-height: auto;
+	}
+
+	.norden_registry_title {
+		max-width: 100%;
+		font-size: clamp(3rem, 13vw, 5rem);
+	}
+
+	.norden_registry_manifest {
+		flex: 1 1 100%;
+	}
+}
+
+@media (max-width: 767px) {
+	.norden_registry_hero,
+	.norden_registry_section,
+	.norden_registry_final {
+		padding-top: 1.2rem;
+		padding-bottom: 3.6rem;
+	}
+
+	.norden_registry_meta_row {
+		padding-top: 1.25rem;
+	}
+
+	.norden_registry_protocol,
+	.norden_registry_internal,
+	.norden_registry_tag,
+	.norden_registry_stage_label,
+	.norden_registry_step_path {
+		letter-spacing: 0.18em;
+	}
+
+	.norden_registry_deployment_line span {
+		width: 100%;
+	}
+
+	body.norden_registry_page .project_spotlight_mockup--norden {
+		transform: none;
+	}
+
+	.norden_registry_section_head h2,
+	.norden_registry_final h2 {
+		font-size: clamp(2rem, 12vw, 3.4rem);
+	}
+
+	.norden_registry_metric {
+		min-height: auto;
+	}
+
+	.norden_registry_deployment::before,
+	.norden_registry_column::before,
+	.norden_registry_metric::before,
+	.norden_registry_surface_row::before {
+		width: 2.2rem;
+	}
+}

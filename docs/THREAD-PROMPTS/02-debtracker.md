@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated DebTracker dossier thr
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated DebTracker dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated DebTracker dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn DebTracker into a high-trust dossier about zero-trust financial architecture, server-authoritative business logic, deterministic debt handling, and product thinking built for the messy reality of human behavior.
 

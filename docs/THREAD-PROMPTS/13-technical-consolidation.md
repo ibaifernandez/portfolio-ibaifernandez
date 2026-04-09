@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated technical-consolidatio
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated technical-consolidation thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated technical-consolidation thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to harden, align, and finish the shared technical surface of the portfolio: build, runtime, discovery, performance, accessibility, translation infrastructure, testing, deployment, and shared metadata contracts.
 

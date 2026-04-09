@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated The Research Engine do
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated The Research Engine dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated The Research Engine dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn The Research Engine into a serious product dossier about verified intelligence, commercial packaging, conversion-grade execution, and why Ibai Fernandez can turn raw research workflows into a product people can actually trust enough to buy.
 

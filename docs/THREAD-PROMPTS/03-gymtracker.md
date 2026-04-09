@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated GymTracker dossier thr
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated GymTracker dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated GymTracker dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn GymTracker into a serious dossier about local-first architecture, data sovereignty, deterministic workflows, offline resilience, and production discipline applied to a personal performance system.
 

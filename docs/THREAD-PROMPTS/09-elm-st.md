@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated Elm St dossier thread.
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated Elm St dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated Elm St dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn Elm St into a serious dossier about cinematic brand design, reel-first UX, custom web architecture for a creative studio, and why Ibai Fernandez can translate audiovisual identity into a digital surface that actually sells.
 

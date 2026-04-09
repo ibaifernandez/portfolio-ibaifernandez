@@ -7,7 +7,7 @@ Use this prompt as the starting message for the dedicated LFi dossier thread.
 ## Copy/Paste Prompt
 
 ```md
-You are the dedicated LFi dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/portfolio-ibaifernandez`.
+You are the dedicated LFi dossier thread for the portfolio project at `/Users/AGLAYA/Local Sites/26-04-portfolio-if`.
 
 Your job is to turn the LFi project page into a high-authority dossier about Ibai Fernandez's career progression, systems thinking, revenue operations leverage, and proof of execution inside LFi.
 
@@ -23,7 +23,8 @@ This is not a generic case study. It is not a SaaS landing page. It is not a com
 - Mandatory shared repo baseline: `docs/PARALLEL-SAFETY-BASELINE.md`
 - The current LFi stylesheet contract is flexbox-only; do not reintroduce CSS Grid as a layout dependency for this dossier
 - The legacy `lfi_newsprint_*` block has been consolidated out of `assets/css/style.css`, but a remaining shared `.lfi_dossier_*` block still exists there; do not extend that shared residue as a back door for dossier layout
-- The current desktop composition is under freeze; use `docs/freeze-visual/260316-14-16-lfi-html.png` and `docs/freeze-visual/260316-lfi-desktop-freeze.md` as the desktop reference and do not alter that surface without explicit approval
+- The current desktop composition is under freeze; use `docs/freeze-visual/260316-lfi-desktop-freeze.md` as the in-repo desktop reference and do not alter that surface without explicit approval
+- The full-size desktop capture was intentionally removed from the operational repo to keep it lean; recover it from legacy history/archive only if an exact pixel comparison is truly needed
 - Public dossier copy must remain wired to the shared EN/ES translation layer via `translate`, `translate-html`, and LFi-specific keys in `en.json` / `es.json`
 - Head metadata for LFi now also syncs per language inside `src/pages/lfi.template.html`; keep title/description/JSON-LD aligned when editorial SEO copy changes
 - Legacy LFi dossier has already been archived and must not be resurrected as the public direction
