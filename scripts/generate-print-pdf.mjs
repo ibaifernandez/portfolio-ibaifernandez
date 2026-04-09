@@ -10,13 +10,8 @@ const baseUrl = `http://127.0.0.1:${port}`;
 const outputDir = path.resolve(rootDir, 'artifacts/print-pdf');
 const targets = [
   { route: 'index.html', file: 'index.pdf' },
-  { route: 'debtracker.html', file: 'debtracker.pdf' },
-  { route: 'gymtracker.html', file: 'gymtracker.pdf' },
   { route: 'lfi.html', file: 'lfi.pdf' },
   { route: 'ruta-de-la-digitalizacion-y-2x2-mkt.html', file: 'ruta-de-la-digitalizacion-y-2x2-mkt.pdf' },
-  { route: 'portfolio-ibaifernandez.html', file: 'portfolio-ibaifernandez.pdf' },
-  { route: 'my-board.html', file: 'my-board.pdf' },
-  { route: 'the-research-engine.html', file: 'the-research-engine.pdf' },
   { route: 'elm-st.html', file: 'elm-st.pdf' },
   { route: 'aglaya.html', file: 'aglaya.pdf' }
 ];

@@ -35,14 +35,26 @@
   force  = true
 
 [[redirects]]
+  from   = "/debtracker.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/project-debtracker.html"
-  to     = "/debtracker.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/gymtracker.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/project-gymtracker.html"
-  to     = "/gymtracker.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -53,26 +65,32 @@
   force  = true
 
 [[redirects]]
+  from   = "/brevo-intelligence-layer.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/norden.html"
-  to     = "/brevo-intelligence-layer.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/norden"
-  to     = "/brevo-intelligence-layer.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/brevo-business-intelligence-system.html"
-  to     = "/brevo-intelligence-layer.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/brevo-business-intelligence-system"
-  to     = "/brevo-intelligence-layer.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -95,20 +113,38 @@
   force  = true
 
 [[redirects]]
+  from   = "/portfolio-ibaifernandez.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/project-portfolio-ibaifernandez.html"
-  to     = "/portfolio-ibaifernandez.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/my-board.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/project-myboard.html"
-  to     = "/my-board.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/the-research-engine.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/project-the-research-engine.html"
-  to     = "/the-research-engine.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 

@@ -115,16 +115,27 @@ test('contact CTA points to contact section anchor', async ({ page }) => {
   await expect(page).toHaveURL(/#scroll_contact$/);
 });
 
-test('published Brevo Intelligence Layer dossier appears in the projects grid', async ({ page }) => {
+test('projects grid only exposes the four active dossiers', async ({ page }) => {
   await page.goto('/index.html');
 
-  const nordenCard = page.locator('.project_spotlight_project', {
-    has: page.locator('a.project_spotlight_media_link[href="brevo-intelligence-layer.html"]')
-  });
+  const expectedProjects = [
+    ['LFi: Agency Operating Systems', 'lfi.html'],
+    ['The Route to Digitalization / 2x2MKT', 'ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['Elm St: Reel-First Brand Website', 'elm-st.html'],
+    ['AGLAYA: Remote Agency Operations', 'aglaya.html']
+  ];
 
-  await expect(nordenCard).toBeVisible();
-  await expect(nordenCard.locator('.project_spotlight_title')).toContainText(/Brevo Intelligence Layer/i);
-  await expect(nordenCard.locator('.project_spotlight_cta')).toHaveAttribute('href', 'brevo-intelligence-layer.html');
+  await expect(page.locator('.project_spotlight_project')).toHaveCount(expectedProjects.length);
+
+  for (const [title, href] of expectedProjects) {
+    const card = page.locator('.project_spotlight_project', {
+      has: page.locator(`a.project_spotlight_media_link[href="${href}"]`)
+    });
+
+    await expect(card).toBeVisible();
+    await expect(card.locator('.project_spotlight_title')).toContainText(new RegExp(escapeRegex(title), 'i'));
+    await expect(card.locator('.project_spotlight_cta')).toHaveAttribute('href', href);
+  }
 });
 
 test('contact form exposes anti-spam guard fields', async ({ page }) => {
@@ -148,25 +159,43 @@ test('retired blog route redirects to home', async ({ page }) => {
 });
 
 test('legacy project routes redirect to the normalized dossier slugs', async ({ page }) => {
-  const legacyRoutes = [
-    ['/project-debtracker.html', '/debtracker.html'],
-    ['/project-gymtracker.html', '/gymtracker.html'],
+  const activeLegacyRoutes = [
+    ['/project-national-tech-evangelism.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
     ['/project-enterprise-crm.html', '/lfi.html'],
-    ['/norden.html', '/brevo-intelligence-layer.html'],
-    ['/brevo-business-intelligence-system.html', '/brevo-intelligence-layer.html'],
     ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['/project-portfolio-ibaifernandez.html', '/portfolio-ibaifernandez.html'],
-    ['/project-myboard.html', '/my-board.html'],
-    ['/project-the-research-engine.html', '/the-research-engine.html'],
     ['/project-elm-st.html', '/elm-st.html'],
     ['/project-aglaya.html', '/aglaya.html']
   ];
 
-  for (const [legacyPath, normalizedPath] of legacyRoutes) {
+  const archivedRoutes = [
+    '/debtracker.html',
+    '/project-debtracker.html',
+    '/gymtracker.html',
+    '/project-gymtracker.html',
+    '/brevo-intelligence-layer.html',
+    '/norden.html',
+    '/brevo-business-intelligence-system.html',
+    '/portfolio-ibaifernandez.html',
+    '/project-portfolio-ibaifernandez.html',
+    '/my-board.html',
+    '/project-myboard.html',
+    '/the-research-engine.html',
+    '/project-the-research-engine.html'
+  ];
+
+  for (const [legacyPath, normalizedPath] of activeLegacyRoutes) {
     const response = await page.goto(legacyPath);
     expect(response).not.toBeNull();
     expect(response.status(), `${legacyPath} should resolve to ${normalizedPath}`).toBe(200);
     await expect(page).toHaveURL(new RegExp(`${normalizedPath.replace('.', '\\.')}$`));
+  }
+
+  for (const legacyPath of archivedRoutes) {
+    const response = await page.goto(legacyPath);
+    expect(response).not.toBeNull();
+    expect(response.status(), `${legacyPath} should resolve back to the active projects index`).toBe(200);
+    await expect(page).toHaveURL(/\/(?:index\.html)?#project_sec$/);
+    await expect(page.locator('h1.banner_name')).toBeVisible();
   }
 });
 

@@ -9,6 +9,7 @@ const portArgIndex = args.findIndex((value) => value === '--port');
 const port = portArgIndex >= 0 ? Number(args[portArgIndex + 1]) : 4173;
 const host = '127.0.0.1';
 const root = process.cwd();
+const projectIndexLocation = '/#project_sec';
 const minSubmitDelayMs = 1200;
 const maxFormLifetimeMs = 86400000;
 const captchaProvider = (process.env.PORTFOLIO_CAPTCHA_PROVIDER || '').toLowerCase().trim();
@@ -173,17 +174,23 @@ const server = http.createServer((req, res) => {
 
   const legacyRedirects = new Map([
     ['/project-national-tech-evangelism.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['/project-debtracker.html', '/debtracker.html'],
-    ['/project-gymtracker.html', '/gymtracker.html'],
+    ['/debtracker.html', projectIndexLocation],
+    ['/project-debtracker.html', projectIndexLocation],
+    ['/gymtracker.html', projectIndexLocation],
+    ['/project-gymtracker.html', projectIndexLocation],
     ['/project-enterprise-crm.html', '/lfi.html'],
-    ['/norden.html', '/brevo-intelligence-layer.html'],
-    ['/norden', '/brevo-intelligence-layer.html'],
-    ['/brevo-business-intelligence-system.html', '/brevo-intelligence-layer.html'],
-    ['/brevo-business-intelligence-system', '/brevo-intelligence-layer.html'],
+    ['/brevo-intelligence-layer.html', projectIndexLocation],
+    ['/norden.html', projectIndexLocation],
+    ['/norden', projectIndexLocation],
+    ['/brevo-business-intelligence-system.html', projectIndexLocation],
+    ['/brevo-business-intelligence-system', projectIndexLocation],
     ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['/project-portfolio-ibaifernandez.html', '/portfolio-ibaifernandez.html'],
-    ['/project-myboard.html', '/my-board.html'],
-    ['/project-the-research-engine.html', '/the-research-engine.html'],
+    ['/portfolio-ibaifernandez.html', projectIndexLocation],
+    ['/project-portfolio-ibaifernandez.html', projectIndexLocation],
+    ['/my-board.html', projectIndexLocation],
+    ['/project-myboard.html', projectIndexLocation],
+    ['/the-research-engine.html', projectIndexLocation],
+    ['/project-the-research-engine.html', projectIndexLocation],
     ['/project-elm-st.html', '/elm-st.html'],
     ['/project-aglaya.html', '/aglaya.html']
   ]);

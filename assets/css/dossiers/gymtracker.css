@@ -1,0 +1,289 @@
+.gymtracker_wrapper .project_case_content,
+.gymtracker_wrapper .gymtracker_section,
+.gymtracker_wrapper .gymtracker_command_center,
+.gymtracker_wrapper .gymtracker_lockin_proof,
+.gymtracker_wrapper .gymtracker_qa_wall {
+	border: 1px solid #d6e0eb;
+	border-radius: 10px;
+	background: #fff;
+}
+.gymtracker_intro_card {
+	padding: 26px;
+}
+.gymtracker_section {
+	margin-top: 22px;
+	padding: 24px;
+}
+.gymtracker_command_center {
+	margin-top: 18px;
+	padding: 16px;
+	border-color: #28353f;
+	background: linear-gradient(145deg, #101820 0%, #15212a 100%);
+	color: #d6e7f9;
+}
+.gymtracker_command_head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	margin-bottom: 14px;
+}
+.gymtracker_command_head p {
+	margin: 0;
+	font-size: 17px;
+	font-weight: 700;
+	color: #ecf8ff;
+}
+.gymtracker_command_pulse {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	color: #8fffc7;
+}
+.gymtracker_command_pulse span {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #8fffc7;
+	box-shadow: 0 0 0 0 rgba(143, 255, 199, 0.65);
+	animation: gymtrackerPulse 1.8s ease-in-out infinite;
+}
+.gymtracker_command_grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 10px;
+}
+.gymtracker_command_metric {
+	padding: 12px;
+	border: 1px solid #344757;
+	border-radius: 8px;
+	background: rgba(7, 13, 20, 0.65);
+}
+.gymtracker_metric_label {
+	margin: 0 0 6px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.35px;
+	text-transform: uppercase;
+	color: #8fa7bb;
+}
+.gymtracker_metric_value {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 700;
+	color: #ffffff;
+}
+.gymtracker_command_feed {
+	margin: 12px 0 0;
+	padding: 12px;
+	min-height: 140px;
+	max-height: 180px;
+	overflow-y: auto;
+	border: 1px solid #2f4558;
+	border-radius: 8px;
+	background: #0a1016;
+	color: #93f7bf;
+	font-size: 12px;
+	line-height: 1.55;
+	font-family: "Courier New", Courier, monospace;
+}
+.gymtracker_feed_line {
+	display: block;
+	margin-bottom: 5px;
+	white-space: pre-wrap;
+}
+.gymtracker_feed_line:last-child {
+	margin-bottom: 0;
+}
+.gymtracker_lockin_proof {
+	margin-top: 18px;
+	padding: 18px;
+}
+.gymtracker_evidence_frame {
+	margin-top: 18px;
+	padding: 10px;
+	border: 1px solid #d5e3f0;
+	border-radius: 8px;
+	background: #f7fbff;
+}
+.gymtracker_evidence_frame picture {
+	display: block;
+}
+.gymtracker_evidence_frame img {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: 6px;
+	border: 1px solid #ccdae8;
+}
+.gymtracker_evidence_caption {
+	margin: 8px 0 0;
+	font-size: 13px;
+	line-height: 1.45;
+	color: #526476;
+}
+.gymtracker_lockin_heading h3 {
+	margin: 0 0 4px;
+	font-size: 28px;
+	color: #1e2a36;
+}
+.gymtracker_lockin_heading p {
+	margin: 0;
+	font-size: 15px;
+	color: #5f6771;
+}
+.gymtracker_lockin_grid {
+	margin-top: 14px;
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+.gymtracker_lockin_card {
+	padding: 16px;
+	border: 1px solid #dde6ef;
+	border-radius: 8px;
+}
+.gymtracker_lockin_card h4 {
+	margin: 0 0 10px;
+	font-size: 20px;
+}
+.gymtracker_lockin_card ul {
+	margin: 0;
+	padding-left: 18px;
+}
+.gymtracker_lockin_card li {
+	margin-bottom: 7px;
+	font-size: 15px;
+	line-height: 1.45;
+}
+.gymtracker_lockin_card li:last-child {
+	margin-bottom: 0;
+}
+.gymtracker_lockin_card--saas {
+	background: linear-gradient(160deg, #fff4f4 0%, #ffecec 100%);
+	border-color: #ffcfcf;
+}
+.gymtracker_lockin_card--saas h4 {
+	color: #8c2c2c;
+}
+.gymtracker_lockin_card--local {
+	background: linear-gradient(160deg, #effff5 0%, #e8fff2 100%);
+	border-color: #b9eccf;
+}
+.gymtracker_lockin_card--local h4 {
+	color: #1f6b47;
+}
+.gymtracker_qa_wall {
+	margin-top: 16px;
+	padding: 18px;
+	border-color: #203244;
+	background: linear-gradient(160deg, #111f2d 0%, #172839 100%);
+	color: #ddeeff;
+}
+.gymtracker_qa_head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+.gymtracker_qa_title {
+	margin: 0;
+	font-size: 24px;
+	font-weight: 700;
+	color: #f0f7ff;
+}
+.gymtracker_qa_score {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	color: #88f4b7;
+}
+.gymtracker_qa_progress {
+	margin-top: 12px;
+	height: 9px;
+	border-radius: 999px;
+	background: #273a4f;
+	overflow: hidden;
+}
+.gymtracker_qa_progress span {
+	display: block;
+	height: 100%;
+	width: 0;
+	background: linear-gradient(120deg, #2ff2ab 0%, #1ec0ff 100%);
+}
+.gymtracker_qa_modules {
+	margin-top: 14px;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 10px;
+}
+.gymtracker_qa_module {
+	padding: 12px;
+	border: 1px solid #2f4459;
+	border-radius: 8px;
+	background: rgba(8, 17, 25, 0.5);
+}
+.gymtracker_qa_module p {
+	margin: 0 0 4px;
+	font-size: 12px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.35px;
+	color: #98b2c8;
+}
+.gymtracker_qa_module strong {
+	font-size: 22px;
+	font-weight: 700;
+	color: #ffffff;
+}
+.gymtracker_qa_note {
+	margin: 12px 0 0;
+	font-size: 14px;
+	color: #a7bed2;
+}
+
+@keyframes gymtrackerPulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(143, 255, 199, 0.65);
+	}
+	75% {
+		box-shadow: 0 0 0 10px rgba(143, 255, 199, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(143, 255, 199, 0);
+	}
+}
+
+@media (max-width: 991px) {
+	.gymtracker_command_grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.gymtracker_lockin_grid {
+		grid-template-columns: 1fr;
+	}
+	.gymtracker_qa_modules {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 767px) {
+	.gymtracker_command_grid,
+	.gymtracker_qa_modules {
+		grid-template-columns: 1fr;
+	}
+	.gymtracker_command_center,
+	.gymtracker_lockin_proof,
+	.gymtracker_qa_wall {
+		padding: 14px;
+	}
+	.gymtracker_qa_head {
+		justify-content: flex-start;
+	}
+}

@@ -3639,267 +3639,6 @@ h3.core-features:nth-of-type(3)::before {
 	color: #ff517e;
 	border-color: #ff517e;
 }
-.gymtracker_wrapper .project_case_content,
-.gymtracker_wrapper .gymtracker_section,
-.gymtracker_wrapper .gymtracker_command_center,
-.gymtracker_wrapper .gymtracker_lockin_proof,
-.gymtracker_wrapper .gymtracker_qa_wall {
-	border: 1px solid #d6e0eb;
-	border-radius: 10px;
-	background: #fff;
-}
-.gymtracker_intro_card {
-	padding: 26px;
-}
-.gymtracker_section {
-	margin-top: 22px;
-	padding: 24px;
-}
-.gymtracker_command_center {
-	margin-top: 18px;
-	padding: 16px;
-	border-color: #28353f;
-	background: linear-gradient(145deg, #101820 0%, #15212a 100%);
-	color: #d6e7f9;
-}
-.gymtracker_command_head {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: 10px;
-	margin-bottom: 14px;
-}
-.gymtracker_command_head p {
-	margin: 0;
-	font-size: 17px;
-	font-weight: 700;
-	color: #ecf8ff;
-}
-.gymtracker_command_pulse {
-	display: inline-flex;
-	align-items: center;
-	gap: 6px;
-	font-size: 11px;
-	font-weight: 700;
-	letter-spacing: 0.5px;
-	text-transform: uppercase;
-	color: #8fffc7;
-}
-.gymtracker_command_pulse span {
-	display: inline-block;
-	width: 8px;
-	height: 8px;
-	border-radius: 50%;
-	background: #8fffc7;
-	box-shadow: 0 0 0 0 rgba(143, 255, 199, 0.65);
-	animation: gymtrackerPulse 1.8s ease-in-out infinite;
-}
-.gymtracker_command_grid {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 10px;
-}
-.gymtracker_command_metric {
-	padding: 12px;
-	border: 1px solid #344757;
-	border-radius: 8px;
-	background: rgba(7, 13, 20, 0.65);
-}
-.gymtracker_metric_label {
-	margin: 0 0 6px;
-	font-size: 11px;
-	font-weight: 700;
-	letter-spacing: 0.35px;
-	text-transform: uppercase;
-	color: #8fa7bb;
-}
-.gymtracker_metric_value {
-	margin: 0;
-	font-size: 20px;
-	font-weight: 700;
-	color: #ffffff;
-}
-.gymtracker_command_feed {
-	margin: 12px 0 0;
-	padding: 12px;
-	min-height: 140px;
-	max-height: 180px;
-	overflow-y: auto;
-	border: 1px solid #2f4558;
-	border-radius: 8px;
-	background: #0a1016;
-	color: #93f7bf;
-	font-size: 12px;
-	line-height: 1.55;
-	font-family: "Courier New", Courier, monospace;
-}
-.gymtracker_feed_line {
-	display: block;
-	margin-bottom: 5px;
-	white-space: pre-wrap;
-}
-.gymtracker_feed_line:last-child {
-	margin-bottom: 0;
-}
-.gymtracker_lockin_proof {
-	margin-top: 18px;
-	padding: 18px;
-}
-.gymtracker_evidence_frame {
-	margin-top: 18px;
-	padding: 10px;
-	border: 1px solid #d5e3f0;
-	border-radius: 8px;
-	background: #f7fbff;
-}
-.gymtracker_evidence_frame picture {
-	display: block;
-}
-.gymtracker_evidence_frame img {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: 6px;
-	border: 1px solid #ccdae8;
-}
-.gymtracker_evidence_caption {
-	margin: 8px 0 0;
-	font-size: 13px;
-	line-height: 1.45;
-	color: #526476;
-}
-.gymtracker_lockin_heading h3 {
-	margin: 0 0 4px;
-	font-size: 28px;
-	color: #1e2a36;
-}
-.gymtracker_lockin_heading p {
-	margin: 0;
-	font-size: 15px;
-	color: #5f6771;
-}
-.gymtracker_lockin_grid {
-	margin-top: 14px;
-	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 12px;
-}
-.gymtracker_lockin_card {
-	padding: 16px;
-	border: 1px solid #dde6ef;
-	border-radius: 8px;
-}
-.gymtracker_lockin_card h4 {
-	margin: 0 0 10px;
-	font-size: 20px;
-}
-.gymtracker_lockin_card ul {
-	margin: 0;
-	padding-left: 18px;
-}
-.gymtracker_lockin_card li {
-	margin-bottom: 7px;
-	font-size: 15px;
-	line-height: 1.45;
-}
-.gymtracker_lockin_card li:last-child {
-	margin-bottom: 0;
-}
-.gymtracker_lockin_card--saas {
-	background: linear-gradient(160deg, #fff4f4 0%, #ffecec 100%);
-	border-color: #ffcfcf;
-}
-.gymtracker_lockin_card--saas h4 {
-	color: #8c2c2c;
-}
-.gymtracker_lockin_card--local {
-	background: linear-gradient(160deg, #effff5 0%, #e8fff2 100%);
-	border-color: #b9eccf;
-}
-.gymtracker_lockin_card--local h4 {
-	color: #1f6b47;
-}
-.gymtracker_qa_wall {
-	margin-top: 16px;
-	padding: 18px;
-	border-color: #203244;
-	background: linear-gradient(160deg, #111f2d 0%, #172839 100%);
-	color: #ddeeff;
-}
-.gymtracker_qa_head {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-	gap: 8px;
-}
-.gymtracker_qa_title {
-	margin: 0;
-	font-size: 24px;
-	font-weight: 700;
-	color: #f0f7ff;
-}
-.gymtracker_qa_score {
-	margin: 0;
-	font-size: 16px;
-	font-weight: 700;
-	color: #88f4b7;
-}
-.gymtracker_qa_progress {
-	margin-top: 12px;
-	height: 9px;
-	border-radius: 999px;
-	background: #273a4f;
-	overflow: hidden;
-}
-.gymtracker_qa_progress span {
-	display: block;
-	height: 100%;
-	width: 0;
-	background: linear-gradient(120deg, #2ff2ab 0%, #1ec0ff 100%);
-}
-.gymtracker_qa_modules {
-	margin-top: 14px;
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 10px;
-}
-.gymtracker_qa_module {
-	padding: 12px;
-	border: 1px solid #2f4459;
-	border-radius: 8px;
-	background: rgba(8, 17, 25, 0.5);
-}
-.gymtracker_qa_module p {
-	margin: 0 0 4px;
-	font-size: 12px;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.35px;
-	color: #98b2c8;
-}
-.gymtracker_qa_module strong {
-	font-size: 22px;
-	font-weight: 700;
-	color: #ffffff;
-}
-.gymtracker_qa_note {
-	margin: 12px 0 0;
-	font-size: 14px;
-	color: #a7bed2;
-}
-@keyframes gymtrackerPulse {
-	0% {
-		box-shadow: 0 0 0 0 rgba(143, 255, 199, 0.65);
-	}
-	75% {
-		box-shadow: 0 0 0 10px rgba(143, 255, 199, 0);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(143, 255, 199, 0);
-	}
-}
 .debtracker_context {
 	display: flex;
 	flex-wrap: wrap;
@@ -4476,12 +4215,12 @@ h3.core-features:nth-of-type(3)::before {
     }
 
     .port_banner_wrapper .banner_content {
-        padding-top: 255px;
+        padding-top: 250px;
         padding-bottom: 210px;
     }
 
     .banner_img {
-        top: 24px;
+        top: -40px;
     }
 }
 
@@ -4679,15 +4418,6 @@ h3.core-features:nth-of-type(3)::before {
 	.project_contact_setions .port_contact_mainbox {
 	    margin-bottom: 56px;
 	}
-	.gymtracker_command_grid {
-	    grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-    .gymtracker_lockin_grid {
-        grid-template-columns: 1fr;
-    }
-    .gymtracker_qa_modules {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
     .debtracker_demo_controls {
         grid-template-columns: 1fr;
     }
@@ -4812,18 +4542,6 @@ h3.core-features:nth-of-type(3)::before {
     .debtracker_context_switch {
         width: 100%;
         justify-content: center;
-    }
-    .gymtracker_command_grid,
-    .gymtracker_qa_modules {
-        grid-template-columns: 1fr;
-    }
-    .gymtracker_command_center,
-    .gymtracker_lockin_proof,
-    .gymtracker_qa_wall {
-        padding: 14px;
-    }
-    .gymtracker_qa_head {
-        justify-content: flex-start;
     }
     .debtracker_demo {
         padding: 14px;
@@ -5430,6 +5148,161 @@ h3.core-features:nth-of-type(3)::before {
     }
     }
     /*  ================== 20 End media query css ==================  */
+
+/*  ================== Hero layout overrides ==================  */
+
+.bannner_leftpart .hero-kicker {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.bannner_leftpart h2.stranger {
+    margin-bottom: 0;
+    padding-right: 18px;
+}
+
+.bannner_leftpart h2.stranger:after {
+    right: 0;
+    width: auto;
+    margin: 0;
+}
+
+.bannner_leftpart h2.stranger-white {
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.hero-lead-lockup {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 5px;
+    max-width: min(100%, 48rem);
+    padding-left: 12px;
+    margin-bottom: 27px;
+}
+
+.hero-lead-lockup:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 4px;
+    background: rgb(255, 81, 126);
+}
+
+.hero-lead-lockup p.banner_pera {
+    display: block;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.hero-lead-lockup p.banner_pera:after {
+    display: none;
+}
+
+.hero-lead-lockup .banner_typingtext {
+    display: inline-block;
+    flex: 1 1 18ch;
+    max-width: 22ch;
+    min-width: 16ch;
+    margin-bottom: 0;
+    padding-left: 0;
+    line-height: 1.25;
+}
+
+.hero-lead-lockup .banner_typingtext .texts {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.hero-lead-lockup .banner_typingtext .texts li {
+    margin-right: 0;
+    white-space: normal;
+}
+
+@media (max-width:991px) {
+    .bannner_leftpart .hero-kicker {
+        gap: 8px;
+    }
+
+    .bannner_leftpart h2.stranger {
+        padding: 10px 14px 2px 18px;
+    }
+
+    .hero-lead-lockup {
+        max-width: min(100%, 30rem);
+    }
+}
+
+@media (max-width:480px) {
+    .bannner_leftpart .hero-kicker {
+        gap: 6px;
+    }
+
+    .bannner_leftpart h2.stranger {
+        font-size: 16px;
+        padding: 9px 12px 2px 12px;
+        margin-left: 0;
+    }
+
+    .bannner_leftpart h2.stranger-white {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .hero-lead-lockup {
+        display: block;
+        max-width: 270px;
+        margin-bottom: 18px;
+        padding-left: 12px;
+    }
+
+    .hero-lead-lockup .banner_pera {
+        font-size: 16px;
+        line-height: 1.3;
+    }
+
+    .hero-lead-lockup .banner_typingtext {
+        display: block;
+        width: 100%;
+        max-width: 18ch;
+        min-width: 0;
+        margin-top: 6px;
+        margin-left: 0;
+        font-size: 16px;
+        line-height: 1.35;
+    }
+}
+
+@media (max-width:380px) {
+    .bannner_leftpart .hero-kicker {
+        gap: 4px;
+    }
+
+    .bannner_leftpart h2.stranger {
+        font-size: 14px;
+        padding: 8px 10px 2px 10px;
+    }
+
+    .bannner_leftpart h2.stranger-white {
+        font-size: 14px;
+    }
+
+    .hero-lead-lockup {
+        max-width: 236px;
+    }
+
+    .hero-lead-lockup .banner_pera,
+    .hero-lead-lockup .banner_typingtext {
+        font-size: 14px;
+    }
+}
 
 /*  ================== Translate Button ==================  */
 
