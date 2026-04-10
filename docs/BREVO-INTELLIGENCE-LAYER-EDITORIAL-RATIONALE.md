@@ -2,7 +2,9 @@
 
 ## Objeto De Este Documento
 
-Este documento explica el criterio editorial de la pagina publica que hoy vive en `brevo-intelligence-layer.html`.
+Este documento explica el criterio editorial de la antigua pagina publica que vivio en `brevo-intelligence-layer.html`.
+
+Hoy se conserva solo como referencia narrativa archivada. El dossier ya no forma parte de la superficie publica activa del portfolio y su slug debe redirigir al indice de proyectos.
 
 La pieza ya no se concibe como un caso publico sobre Norden. Tampoco como una familia de logos o deployments. Se concibe como una demostracion de algo mas valioso para el portfolio:
 

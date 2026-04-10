@@ -13,16 +13,16 @@ This checklist is structural and can run before final content freeze.
 Validate these public routes:
 
 1. `https://portfolio.ibaifernandez.com/`
-2. `https://portfolio.ibaifernandez.com/debtracker.html`
-3. `https://portfolio.ibaifernandez.com/gymtracker.html`
-4. `https://portfolio.ibaifernandez.com/lfi.html`
-5. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
-6. `https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html`
-7. `https://portfolio.ibaifernandez.com/my-board.html`
-8. `https://portfolio.ibaifernandez.com/the-research-engine.html`
-9. `https://portfolio.ibaifernandez.com/elm-st.html`
-10. `https://portfolio.ibaifernandez.com/aglaya.html`
-11. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
+2. `https://portfolio.ibaifernandez.com/lfi.html`
+3. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+4. `https://portfolio.ibaifernandez.com/elm-st.html`
+5. `https://portfolio.ibaifernandez.com/aglaya.html`
+6. `https://portfolio.ibaifernandez.com/cv-print.html` (visual sanity only; print action can be deferred to desktop)
+
+Redirect sanity spot-checks:
+
+7. `https://portfolio.ibaifernandez.com/gymtracker.html`
+8. `https://portfolio.ibaifernandez.com/brevo-intelligence-layer.html`
 
 ---
 
@@ -80,12 +80,14 @@ If no physical device is available, use responsive emulation as fallback, but re
 - [ ] Back-to-top button is visible when needed and tappable.
 - [ ] Social links are reachable and do not overlap.
 - [ ] Tap targets feel safe for thumbs, not tiny.
+- [ ] Archived dossier slugs bounce back to `/#project_sec` instead of loading stale public pages.
 
 ### D. Home Content Flow
 
 - [ ] Hero remains coherent on mobile.
 - [ ] Services and experience sections do not collapse awkwardly.
 - [ ] Projects section reads as a real showcase, not a broken grid.
+- [ ] Only the four active public dossiers are shown.
 - [ ] Testimonials and logos still feel controlled visually.
 - [ ] Contact block fits the viewport cleanly.
 
@@ -96,7 +98,7 @@ Run on every project page listed in Scope.
 - [ ] Hero and first content block are readable without pinch-zoom.
 - [ ] Special interactive sections still work on touch.
 - [ ] Images/media scale correctly and do not overflow.
-- [ ] Prev / next navigation remains usable on mobile.
+- [ ] Prev / next navigation remains usable and closed over the active set.
 - [ ] No clipped text, overlapping panels, or unusable controls appear.
 
 ### F. Contact Flow

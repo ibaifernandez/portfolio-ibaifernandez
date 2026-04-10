@@ -35,18 +35,18 @@ All threads also inherit:
 | # | Thread | Scope | Status |
 |---|---|---|---|
 | 01 | Master Coordination | Shared rules, naming, CSS convention, shared docs/files, conflict resolution | Active |
-| 02 | DebTracker Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 03 | GymTracker Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
+| 02 | DebTracker Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Archived reference |
+| 03 | GymTracker Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Archived reference |
 | 04 | LFi Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Active |
-| 05 | Route to Digitalization / 2x2MKT Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 06 | Portfolio Ibai Fernandez Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 07 | MyBoard Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 08 | The Research Engine Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 09 | Elm St Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 10 | AGLAYA Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Pending |
-| 11 | Brevo Intelligence Layer Dossier | Public dossier for Ibai's Brevo diagnostic/reporting solution, seeded from the Norden workspace audit and kept distinct from LFi proof framing | Active |
+| 05 | Route to Digitalization / 2x2MKT Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Active |
+| 06 | Portfolio Ibai Fernandez Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Archived reference |
+| 07 | MyBoard Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Archived reference |
+| 08 | The Research Engine Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Archived reference |
+| 09 | Elm St Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Active |
+| 10 | AGLAYA Dossier | Narrative, structure, visual identity, local CSS, assets, local metadata | Active |
+| 11 | Brevo Intelligence Layer Dossier | Former public dossier for Ibai's Brevo diagnostic/reporting solution, now retained only as archived reference | Archived reference |
 | 12 | Homepage Editorial | Home narrative, section hierarchy, card messaging, directional clarity | Active |
-| 13 | Technical Consolidation | Performance, accessibility, translations, testing, sitemap, metadata global, Search Console/Bing | Pending |
+| 13 | Technical Consolidation | Performance, accessibility, translations, testing, sitemap, metadata global, Search Console/Bing | Active |
 
 ---
 
@@ -99,22 +99,24 @@ If a dossier thread discovers that it needs a shared-file change, it should:
 2. describe the dependency,
 3. hand that request to the master coordination thread or technical consolidation thread.
 
-### 3.5 Brevo Intelligence Layer Has A Split Narrative Contract
+### 3.5 Archived Brevo / Norden Narrative Contract
 
-The former Norden dossier now lives publicly as **Brevo Intelligence Layer**.
+The former Norden dossier previously lived publicly as **Brevo Intelligence Layer**.
+
+It is no longer part of the active public portfolio surface.
 
 Its narrative contract remains split:
 
 - inside the LFi dossier, Norden appears only as a client proof case under LFi
-- inside the Brevo Intelligence Layer dossier, the focus shifts to the tool itself: diagnosis, reporting architecture, cohort logic, delivery surfaces, and sovereignty-first handoff
+- inside the archived Brevo Intelligence Layer material, the focus shifts to the tool itself: diagnosis, reporting architecture, cohort logic, delivery surfaces, and sovereignty-first handoff
 
 That means:
 
 - the LFi thread owns commercial, client, and career framing
-- the Brevo Intelligence Layer thread owns solution, tooling, reporting, and product framing
+- the archived Brevo Intelligence Layer materials own solution, tooling, reporting, and product framing
 - the Norden workspace remains a read-only evidence base, not the front-stage public story
 
-Neither thread should duplicate the other's main story.
+Do not reactivate that dossier publicly unless a future decision explicitly restores it to `content/projects.json`.
 
 ### 3.6 Homepage Editorial Owns Home-Facing Copy, Not Global Runtime
 
@@ -178,39 +180,51 @@ It must not use those files as a back door for dossier redesign, homepage editor
 
 ## 4. Canonical Public Slugs
 
-These are the public dossier identities that other docs and prompts should use.
+These are the currently active public dossier identities that other docs and prompts should use.
 
 | Dossier | Public slug | Public URL |
 |---|---|---|
-| DebTracker | `debtracker` | `/debtracker.html` |
-| GymTracker | `gymtracker` | `/gymtracker.html` |
 | LFi | `lfi` | `/lfi.html` |
 | Route to Digitalization / 2x2MKT | `ruta-de-la-digitalizacion-y-2x2-mkt` | `/ruta-de-la-digitalizacion-y-2x2-mkt.html` |
-| Portfolio Ibai Fernandez | `portfolio-ibaifernandez` | `/portfolio-ibaifernandez.html` |
-| MyBoard | `my-board` | `/my-board.html` |
-| The Research Engine | `the-research-engine` | `/the-research-engine.html` |
 | Elm St | `elm-st` | `/elm-st.html` |
 | AGLAYA | `aglaya` | `/aglaya.html` |
-| Brevo Intelligence Layer | `brevo-intelligence-layer` | `/brevo-intelligence-layer.html` |
+
+Archived dossier slugs retained in-repo but outside the active public surface:
+
+| Dossier | Archived slug | Current public behavior |
+|---|---|---|
+| DebTracker | `debtracker` | Redirects to `/#project_sec` |
+| GymTracker | `gymtracker` | Redirects to `/#project_sec` |
+| Portfolio Ibai Fernandez | `portfolio-ibaifernandez` | Redirects to `/#project_sec` |
+| MyBoard | `my-board` | Redirects to `/#project_sec` |
+| The Research Engine | `the-research-engine` | Redirects to `/#project_sec` |
+| Brevo Intelligence Layer | `brevo-intelligence-layer` | Redirects to `/#project_sec` |
 
 ---
 
 ## 5. Current Source-Of-Truth Mapping
 
-Public slugs are canonical. Source template filenames may remain legacy-shaped until a thread intentionally migrates them.
+Public slugs are canonical for the active surface. Source template filenames may remain legacy-shaped until a thread intentionally migrates them.
+
+Active public catalog:
 
 | Dossier | Current source template | Planned local CSS |
 |---|---|---|
-| DebTracker | `src/pages/project-debtracker.template.html` | `assets/css/dossiers/debtracker.css` |
-| GymTracker | `src/pages/project-gymtracker.template.html` | `assets/css/dossiers/gymtracker.css` |
 | LFi | `src/pages/lfi.template.html` | `assets/css/dossiers/lfi.css` |
 | Route to Digitalization / 2x2MKT | `src/pages/project-ruta-digitalizacion-2x2mkt.template.html` | `assets/css/dossiers/ruta-de-la-digitalizacion-y-2x2-mkt.css` |
-| Portfolio Ibai Fernandez | `src/pages/project-portfolio-ibaifernandez.template.html` | `assets/css/dossiers/portfolio-ibaifernandez.css` |
-| MyBoard | `src/pages/project-myboard.template.html` | `assets/css/dossiers/my-board.css` |
-| The Research Engine | `src/pages/project-the-research-engine.template.html` | `assets/css/dossiers/the-research-engine.css` |
 | Elm St | `src/pages/project-elm-st.template.html` | `assets/css/dossiers/elm-st.css` |
 | AGLAYA | `src/pages/project-aglaya.template.html` | `assets/css/dossiers/aglaya.css` |
-| Brevo Intelligence Layer | `src/pages/project-brevo-intelligence-layer.template.html` | `assets/css/dossiers/brevo-intelligence-layer.css` |
+
+Archived local catalog:
+
+| Dossier | Preserved source template | Local CSS / notes |
+|---|---|---|
+| DebTracker | `src/pages/project-debtracker.template.html` | `assets/css/dossiers/debtracker.css` planned; archive-only for now |
+| GymTracker | `src/pages/project-gymtracker.template.html` | `assets/css/dossiers/gymtracker.css` exists; archive-only for now |
+| Portfolio Ibai Fernandez | `src/pages/project-portfolio-ibaifernandez.template.html` | `assets/css/dossiers/portfolio-ibaifernandez.css` planned; archive-only for now |
+| MyBoard | `src/pages/project-myboard.template.html` | `assets/css/dossiers/my-board.css` planned; archive-only for now |
+| The Research Engine | `src/pages/project-the-research-engine.template.html` | `assets/css/dossiers/the-research-engine.css` planned; archive-only for now |
+| Brevo Intelligence Layer | `src/pages/project-brevo-intelligence-layer.template.html` | `assets/css/dossiers/brevo-intelligence-layer.css`; archive-only for now |
 
 ### Naming Rule
 
@@ -220,24 +234,16 @@ Public slugs are canonical. Source template filenames may remain legacy-shaped u
 
 ### Current audited exceptions and transitions
 
-- DebTracker already has dossier-specific selectors living in `assets/css/style.css` under `.debtracker_*`.
-- Its thread should treat `assets/css/dossiers/debtracker.css` as active migration work, not as an optional future cleanup.
-- GymTracker already has dossier-specific selectors living in `assets/css/style.css` under `.gymtracker_*`.
-- Its thread should treat `assets/css/dossiers/gymtracker.css` as active migration work, not as an optional future cleanup.
 - LFi already ships through `assets/css/dossiers/lfi.css`, but it still retains a shared `.lfi_dossier_*` residue inside `assets/css/style.css`.
 - Its thread should treat dossier-local CSS as the active surface while leaving the remaining shared extraction as deliberate follow-up work, not as something already complete.
 - Route to Digitalization / 2x2MKT already has page-local CSS in `assets/css/national-route.css`.
 - Its thread should treat migration toward `assets/css/dossiers/ruta-de-la-digitalizacion-y-2x2-mkt.css` as convention-alignment work, not as first-time isolation.
-- Portfolio Ibai Fernandez already has dossier-specific selectors living in `assets/css/style.css` under `.portfolio_dossier_*`.
-- Its thread should treat `assets/css/dossiers/portfolio-ibaifernandez.css` as active migration work, not as an optional future cleanup.
-- MyBoard already has dossier-specific selectors living in `assets/css/style.css` under `.myboard_dossier_*`.
-- Its thread should treat `assets/css/dossiers/my-board.css` as active migration work, not as an optional future cleanup.
-- The Research Engine already has route-specific selectors living in `assets/css/style.css` under `.researchengine_stitch_*`.
-- Its thread should treat `assets/css/dossiers/the-research-engine.css` as active migration work, not as an optional future cleanup.
 - Elm St already has dossier-specific selectors living in `assets/css/style.css` under `.elmst_dossier_*`.
 - Its thread should treat `assets/css/dossiers/elm-st.css` as active migration work, not as an optional future cleanup.
 - AGLAYA already has dossier-specific selectors living in `assets/css/style.css` under `.aglaya_dossier_*`.
 - Its thread should treat `assets/css/dossiers/aglaya.css` as active migration work, not as an optional future cleanup.
+- Archived dossiers still leave selector residue and template/assets debt in the repo.
+- That debt should be treated as archive maintenance or future reactivation work, not as part of the active public release surface.
 
 ---
 
@@ -352,16 +358,16 @@ Prompts will be generated one by one, one iteration at a time.
 | Prompt | File | Status |
 |---|---|---|
 | 01 — Master Coordination | `docs/THREAD-PROMPTS/01-master-coordination.md` | Generated |
-| 02 — DebTracker | `docs/THREAD-PROMPTS/02-debtracker.md` | Generated |
-| 03 — GymTracker | `docs/THREAD-PROMPTS/03-gymtracker.md` | Generated |
+| 02 — DebTracker | `docs/THREAD-PROMPTS/02-debtracker.md` | Archived reference |
+| 03 — GymTracker | `docs/THREAD-PROMPTS/03-gymtracker.md` | Archived reference |
 | 04 — LFi | `docs/THREAD-PROMPTS/04-lfi.md` | Generated |
 | 05 — Route to Digitalization / 2x2MKT | `docs/THREAD-PROMPTS/05-ruta-digitalizacion-2x2mkt.md` | Generated |
-| 06 — Portfolio Ibai Fernandez | `docs/THREAD-PROMPTS/06-portfolio-ibaifernandez.md` | Generated |
-| 07 — MyBoard | `docs/THREAD-PROMPTS/07-my-board.md` | Generated |
-| 08 — The Research Engine | `docs/THREAD-PROMPTS/08-the-research-engine.md` | Generated |
+| 06 — Portfolio Ibai Fernandez | `docs/THREAD-PROMPTS/06-portfolio-ibaifernandez.md` | Archived reference |
+| 07 — MyBoard | `docs/THREAD-PROMPTS/07-my-board.md` | Archived reference |
+| 08 — The Research Engine | `docs/THREAD-PROMPTS/08-the-research-engine.md` | Archived reference |
 | 09 — Elm St | `docs/THREAD-PROMPTS/09-elm-st.md` | Generated |
 | 10 — AGLAYA | `docs/THREAD-PROMPTS/10-aglaya.md` | Generated |
-| 11 — Norden | `docs/THREAD-PROMPTS/11-norden.md` | Generated |
+| 11 — Norden | `docs/THREAD-PROMPTS/11-norden.md` | Archived reference |
 | 12 — Homepage Editorial | `docs/THREAD-PROMPTS/12-homepage-editorial.md` | Generated |
 | 13 — Technical Consolidation | `docs/THREAD-PROMPTS/13-technical-consolidation.md` | Generated |
 

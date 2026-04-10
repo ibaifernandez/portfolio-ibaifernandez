@@ -44,7 +44,7 @@ A professional portfolio that communicates senior-level expertise in Front-End d
 ### Journey 2 — Project Deep Dive
 
 1. Click a project card on the home page
-2. Navigate to the dedicated dossier URL for that project (for example `debtracker.html` or `lfi.html`)
+2. Navigate to the dedicated dossier URL for that project (for example `lfi.html` or `elm-st.html`)
 3. Read the problem → solution → result narrative
 4. View screenshots or demo
 5. Click "Back" or navigate to another project

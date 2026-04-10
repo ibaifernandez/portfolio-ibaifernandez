@@ -69,7 +69,7 @@ scripts/build-pages.mjs   (Node.js build script)
                          (committed static output)
   index.html
   cv-print.html
-  dossier HTML pages (for example `debtracker.html`, `lfi.html`, `elm-st.html`)
+  dossier HTML pages (currently `lfi.html`, `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html`, `aglaya.html`)
   assets/css/*.min.css
   assets/js/*.min.js
 ```
@@ -174,9 +174,10 @@ Media note:
     └── e2e/
         ├── home.spec.js
         ├── contact.spec.js
+        ├── dossiers.spec.js
+        ├── archived-dossiers.spec.js
         ├── keyboard.spec.js
         ├── a11y.spec.js
-        ├── norden-translation.spec.js
         └── visual.spec.js
 ```
 

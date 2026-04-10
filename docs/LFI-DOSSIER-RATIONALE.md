@@ -159,9 +159,9 @@ What belongs here is the client-side shift:
 - the cleaner active-base discipline
 - the observable lift in performance and operational clarity
 
-What does not belong here is the full intelligence workspace, cohort logic, or reporting architecture as the main story. That material belongs to the dedicated Norden dossier because it sells a different kind of capability: evidence-system productization.
+What does not belong here is the full intelligence workspace, cohort logic, or reporting architecture as the main story. That material belongs to the archived Brevo / Norden dossier material because it sells a different kind of capability: evidence-system productization.
 
-Inside LFi, Norden should therefore behave as its own client proof module showing that Ibai improved the live client channel. Outside LFi, the Norden Intelligence System can later prove how that work evolved into a deeper evidence workspace.
+Inside LFi, Norden should therefore behave as its own client proof module showing that Ibai improved the live client channel. Outside LFi, that archived dossier material can still document how the work evolved into a deeper evidence workspace without re-entering the active public surface by default.
 
 ## Why the testimonials sit near the proof wall
 

@@ -78,7 +78,8 @@ npm run media:all
 │   ├── js/                ← scripts (custom.js, translate.js, etc.)
 │   └── images/            ← images (AVIF+WebP+original per image)
 ├── content/               ← data-driven content (JSON)
-│   ├── projects.json
+│   ├── projects.json      ← dossiers públicos activos
+│   ├── projects.archived.json ← dossiers preservados pero fuera de la superficie pública
 │   ├── testimonials.json
 │   ├── training.json
 │   ├── ctas.json
@@ -101,11 +102,13 @@ npm run media:all
 ## The Golden Rules
 
 ### 1. Never edit generated files directly
-`index.html`, `cv-print.html`, the root-level dossier HTML pages (for example `debtracker.html` or `lfi.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
+`index.html`, `cv-print.html`, the root-level active dossier HTML pages (for example `lfi.html` or `elm-st.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
 
 - To change page content → edit `src/pages/*.template.html`
 - To change component markup → edit `src/components/**/*.html`
-- To change data-driven content → edit `content/*.json`
+- To change active public project surface → edit `content/projects.json`
+- To preserve retired dossiers without making them public again → edit `content/projects.archived.json`
+- To change other data-driven content → edit `content/*.json`
 - To change served CSS → edit the readable source in `assets/css/*.css`
 - To change served JS → edit the readable source in `assets/js/*.js`
 

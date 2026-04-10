@@ -62,7 +62,7 @@ npm run test:ci
 ## Build de páginas
 
 ```bash
-npm run build:pages    # genera index.html, cv-print.html, dossiers HTML públicos y assets .min derivados
+npm run build:pages    # genera index.html, cv-print.html, los 4 dossiers públicos activos y assets .min derivados
 ```
 
 > Los archivos `*.html` en la raíz son GENERADOS. No los edites directamente.
@@ -77,11 +77,17 @@ npm run build:pages    # genera index.html, cv-print.html, dossiers HTML públic
 Los datos de cards, slides y timelines se gestionan en:
 
 - `content/projects.json`
+- `content/projects.archived.json`
 - `content/testimonials.json`
 - `content/training.json`
 - `content/ctas.json`
 - `content/services.json`
 - `content/experience.json`
+
+Contrato actual:
+
+- `content/projects.json` = catálogo público activo que sí entra en build, homepage y navegación entre dossiers.
+- `content/projects.archived.json` = dossiers preservados en el repo pero retirados de la superficie pública actual.
 
 ---
 
@@ -128,10 +134,12 @@ Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas gene
 - `contact.spec.js` — Feedback accesible, validación de email, envío válido, timing guard real del endpoint.
 - `keyboard.spec.js` — Tab order para navegación crítica (skip-link, sidebar anchors, formulario, redes sociales).
 - `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home y Contact.
-- `norden-translation.spec.js` — Traducción EN/ES del dossier Norden vía `?lang=`.
+- `dossiers.spec.js` — Navegación prev/next cerrada sobre el set público activo.
+- `archived-dossiers.spec.js` — Los slugs archivados rebotan al índice de proyectos en vez de resolver como dossiers públicos.
 - `visual.spec.js` — Regresión visual de referencia para secciones clave.
 
 Nota de producto: el portfolio ya no tiene blog público. La ruta heredada `/blog` / `/blog.html` redirige al home y los proyectos son la única superficie editorial pública.
+La superficie actual publicada se limita a `lfi.html`, `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html` y `aglaya.html`.
 
 ---
 

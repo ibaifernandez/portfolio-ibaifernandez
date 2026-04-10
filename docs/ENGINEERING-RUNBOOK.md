@@ -92,16 +92,19 @@ Comprobacion manual de routing canonico:
 
 - Los dossiers publicos ya no usan prefijo `project-`.
 - URLs canonicas esperadas hoy:
-  - `/debtracker.html`
-  - `/gymtracker.html`
   - `/lfi.html`
   - `/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+  - `/elm-st.html`
+  - `/aglaya.html`
+- Slugs archivados que ya no deben resolver como paginas publicas:
+  - `/debtracker.html`
+  - `/gymtracker.html`
+  - `/brevo-intelligence-layer.html`
   - `/portfolio-ibaifernandez.html`
   - `/my-board.html`
   - `/the-research-engine.html`
-  - `/elm-st.html`
-  - `/aglaya.html`
-- Las rutas heredadas `project-*.html` deben redirigir a sus equivalentes canonicos, no responder como paginas independientes.
+- Las rutas heredadas `project-*.html` activas deben redirigir a sus equivalentes canonicos.
+- Los slugs archivados y sus aliases heredados deben redirigir a `/#project_sec`, no responder como paginas independientes.
 
 ### Variables de entorno en Netlify
 
@@ -415,14 +418,14 @@ Ultimo ajuste aplicado para `Projects`:
 - Se habilita override por proyecto para plantillas secundarias:
   - `content/projects.json > page.template`
   - fallback automatico a `src/pages/project.template.html` si no hay override.
-- Caso actual: DebTracker usa plantilla dedicada `src/pages/project-debtracker.template.html` con:
+- Dossier archivado preservado: DebTracker usa plantilla dedicada `src/pages/project-debtracker.template.html` con:
   - toggle contextual (`Corporate View` / `Spite Driven`) con copy dedicado por modo,
   - tipografia `PT Sans` en modo `Spite Driven`,
   - beacon circular parpadeante sobre el toggle para discovery (persistente, sin auto-dismiss),
   - terminal de logs de seguridad (simulador backend/network Zero-Trust),
   - demo interactiva del Penny-Perfect Protocol (iteracion grafica del centavo remanente),
   - terminal de codigo con Prism.js (comentarios sincronizados con idioma EN/ES).
-- Caso actual: GymTracker usa plantilla dedicada `src/pages/project-gymtracker.template.html` con:
+- Dossier archivado preservado: GymTracker usa plantilla dedicada `src/pages/project-gymtracker.template.html` con:
   - portada especifica para card+hero (`gymtracker-cover-2.png/.webp`),
   - Data Sovereignty Command Center (metricas/local telemetry simulator),
   - QA Shield Wall animado (`97/97` + bloques por modulo),
@@ -447,7 +450,7 @@ Ultimo ajuste aplicado para `Projects`:
   - selector dedicado `.project_spotlight_img--debtracker` + `object-position: left center`.
 - Imagen GymTracker:
   - `assets/images/gymtracker-cover-2.png` optimizada a `1800x1005`,
-  - fallback moderno `assets/images/gymtracker-cover-2.webp` integrado en `content/projects.json`,
+  - fallback moderno `assets/images/gymtracker-cover-2.webp` preservado en `content/projects.archived.json`,
   - `assets/images/gymtracker.png/.webp` retenida para evidencia interna del dossier.
 - Card canonica de LFi en home:
   - ya no usa imagen fotografica como portada principal,

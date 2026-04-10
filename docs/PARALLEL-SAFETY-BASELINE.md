@@ -26,7 +26,8 @@ The following commands were revalidated locally on 2026-03-16:
 
 Current verified notes:
 
-- `brevo-intelligence-layer.html` is the canonical public route for the former Norden dossier; `/norden.html` and `/brevo-business-intelligence-system.html` now exist only as legacy redirects.
+- The public dossier surface is currently limited to `lfi.html`, `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html`, and `aglaya.html`.
+- Retired dossier slugs such as `debtracker.html`, `gymtracker.html`, and `brevo-intelligence-layer.html` now redirect to `/#project_sec` instead of resolving as public pages.
 - Playwright counts are mutable state, not timeless copy. Reverify with `npx playwright test --list` before quoting a number.
 - LFi already uses `assets/css/dossiers/lfi.css`, but a shared `.lfi_dossier_*` residue still exists inside `assets/css/style.css`.
 - A CI incident on 2026-03-16 confirmed that local, uncommitted shared test/snapshot fixes can create a false green. GitHub Actions evaluates committed `HEAD`, not your workspace.
@@ -38,7 +39,10 @@ Current verified notes:
 Treat these as canonical unless a thread-specific prompt says otherwise:
 
 - markup sources: `src/pages/*.template.html`, `src/components/**`
-- structured content: `content/*.json`, `en.json`, `es.json`
+- structured content:
+  - `content/projects.json` for the active public dossier catalog
+  - `content/projects.archived.json` for preserved but inactive dossiers
+  - `content/*.json`, `en.json`, `es.json` for the rest of the structured site state
 - readable served assets: `assets/css/*.css`, `assets/js/*.js`
 - build/runtime/test/config: `scripts/**`, `tests/**`, `netlify/**`, `.github/workflows/**`
 - shared documentation: `README.md`, `AGENTS.md`, `docs/**`

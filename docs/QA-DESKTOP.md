@@ -13,16 +13,16 @@ This checklist is safe to run before final content freeze because it focuses on 
 Validate these public routes:
 
 1. `https://portfolio.ibaifernandez.com/`
-2. `https://portfolio.ibaifernandez.com/debtracker.html`
-3. `https://portfolio.ibaifernandez.com/gymtracker.html`
-4. `https://portfolio.ibaifernandez.com/lfi.html`
-5. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
-6. `https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html`
-7. `https://portfolio.ibaifernandez.com/my-board.html`
-8. `https://portfolio.ibaifernandez.com/the-research-engine.html`
-9. `https://portfolio.ibaifernandez.com/elm-st.html`
-10. `https://portfolio.ibaifernandez.com/aglaya.html`
-11. `https://portfolio.ibaifernandez.com/cv-print.html`
+2. `https://portfolio.ibaifernandez.com/lfi.html`
+3. `https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html`
+4. `https://portfolio.ibaifernandez.com/elm-st.html`
+5. `https://portfolio.ibaifernandez.com/aglaya.html`
+6. `https://portfolio.ibaifernandez.com/cv-print.html`
+
+Redirect sanity spot-checks:
+
+7. `https://portfolio.ibaifernandez.com/debtracker.html`
+8. `https://portfolio.ibaifernandez.com/brevo-intelligence-layer.html`
 
 ---
 
@@ -77,6 +77,7 @@ Before executing the checklist:
 - [ ] Back-to-top button works.
 - [ ] External links that open in new tabs behave correctly.
 - [ ] No dead internal links on visible CTAs/cards.
+- [ ] Archived dossier slugs bounce back to `/#project_sec` instead of rendering stale public pages.
 
 ### C. Language Toggle
 
@@ -88,6 +89,7 @@ Before executing the checklist:
 ### D. Projects Grid
 
 - [ ] All visible project cards render their image, title, description, and CTA.
+- [ ] Only the four active public dossiers are shown in the grid.
 - [ ] Card spacing is visually consistent.
 - [ ] No CTA wraps awkwardly or overflows.
 - [ ] Clicking each visible project card opens the expected dossier.
@@ -97,7 +99,7 @@ Before executing the checklist:
 Run this section on every project page listed in Scope.
 
 - [ ] Page loads without missing hero media or broken sections.
-- [ ] Prev / next navigation works and remains coherent.
+- [ ] Prev / next navigation works and stays inside the active four-dossier set.
 - [ ] "Back to portfolio" works.
 - [ ] Unique visual identity of the dossier feels intentional and not broken.
 - [ ] No missing images, empty placeholders, or broken embeds.
