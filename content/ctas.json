@@ -2,22 +2,22 @@
   "hero": {
     "containerClass": "banner_btn",
     "primary": {
-      "href": "cv-print.html#print",
-      "target": "_blank",
-      "rel": "noopener noreferrer",
-      "className": "btn_yellow",
-      "firstTranslate": "download-cv",
-      "firstText": "Download CV",
-      "secondTranslate": "download",
-      "secondText": "Download"
-    },
-    "secondary": {
       "href": "#scroll_contact",
       "className": "btn_red redirect_contact",
       "firstTranslate": "contact-me",
       "firstText": "Contact me",
       "secondTranslate": "contact",
       "secondText": "Contact"
+    },
+    "secondary": {
+      "href": "https://linkedin.com/in/ibaifernandez",
+      "target": "_blank",
+      "rel": "noopener noreferrer",
+      "className": "cta_text_link",
+      "firstTranslate": "view-linkedin",
+      "firstText": "View LinkedIn",
+      "secondTranslate": "view-linkedin",
+      "secondText": "View LinkedIn"
     }
   },
   "about": {

@@ -378,38 +378,7 @@ ul {
 }
 /* --- End button css  --- */
 
-/* --- preloader section start --- */
-.preloader {
-    background-color: #fff;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    z-index: 2147483647;
-    width: 100%;
-    height: 100%;
-}
-.status{
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: auto;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    -moz-transform: translate(-50%,-50%);
-    -o-transform: translate(-50%,-50%);
-    text-align: center;
-}
-.status h1 {
-    margin-top:25px;
-}
-
-
-/* --- preloader section End --- */
+/* --- preloader removed (was 238KB loader.gif blocking first paint) --- */
 
 /* ================== 02 Reusable css End ================== */
 
@@ -794,19 +763,41 @@ ul {
 	padding:0;
 }
 
-.port_bannerbg_wrapper {
-	background-size:cover;
-    background-repeat: no-repeat;
-	/* -webkit-animation: moveup 50s linear infinite;
-    -moz-animation: moveup 50s linear infinite;
-    -ms-animation: moveup 50s linear infinite;
-    -o-animation: moveup 50s linear infinite;
-    animation: moveup 50s linear infinite;
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s; */
+/* --- Hero stage: canvas-driven interactive background --- */
+:root {
+    --hero-ease-expo-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --hero-ease-quart-out: cubic-bezier(0.25, 1, 0.5, 1);
+    --hero-color-ink: #0a0a0a;
+    --hero-color-paper: #fafaf9;
+    --hero-color-mute: rgba(10, 15, 33, 0.55);
+    --hero-color-faint: rgba(10, 15, 33, 0.32);
+    --hero-accent-yellow: #ffc455;
+    --hero-accent-pink: #ff517e;
+    --hero-accent-cyan: #00c8da;
+}
+.port_bannerbg_wrapper.hero-stage {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background-color: var(--hero-color-paper);
+}
+.hero-bg-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+}
+.port_banner_wrapper {
+    position: relative;
+    z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero-bg-canvas {
+        opacity: 0.6;
+    }
 }
 .port_banner_wrapper {
 	margin-left: 120px;
@@ -815,14 +806,19 @@ ul {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s;
-    height: 1055px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 .port_banner_wrapper .banner_content {
-    padding-left:86px;
-    padding-top: 355px;
-    padding-bottom: 309px;
+    padding-left: clamp(24px, 6vw, 86px);
+    padding-right: clamp(24px, 6vw, 86px);
+    padding-top: clamp(80px, 12vh, 120px);
+    padding-bottom: clamp(60px, 10vh, 100px);
     z-index: 1;
     position: relative;
+    width: 100%;
+    max-width: 1280px;
 }
 .port_banner_wrapper .bannner_leftpart {
 	-webkit-transition: all 1s;
@@ -860,9 +856,16 @@ ul {
     padding: 12px 0 2px 18px;
 }
 .bannner_leftpart .hero-kicker {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+.bannner_leftpart .hero-kicker h2 {
+    display: block;
+    width: max-content;
+    max-width: 100%;
 }
 .bannner_leftpart h2.stranger:after {
     content: "";
@@ -926,9 +929,14 @@ p.banner_pera:after {
     margin-bottom: 27px;
 	font-family: 'Josefin Sans';
     font-weight: 600;
-	display:inline-block;
-	padding-left:5px;
+	display: inline-block;
+	padding-left: 5px;
     text-shadow: 2px 2px #FF517E;
+    min-height: 4.2em;
+    vertical-align: top;
+}
+.banner_typingtext .home-desc {
+    margin-bottom: 0;
 }
 .port_btn:hover{
 	color:#ffffff;
@@ -978,53 +986,75 @@ p.banner_pera:after {
 	-o-box-shadow: 0px 8px 20px 0px rgba(255, 196, 85, 0.3);
 	box-shadow: 0px 8px 20px 0px rgba(255, 196, 85, 0.3);
 }
-.banner_img_wrapper {
+
+/* --- Secondary CTA: underlined text link with arrow --- */
+.portfolio_btn.cta_text_link {
+    background: var(--hero-color-paper);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    border-radius: 0;
+    padding: 12px 8px 12px 12px;
+    min-width: 0;
+    color: #0e0f21;
+    text-decoration: none;
     position: relative;
-    width: 100%;
+    overflow: visible;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
-.banner_img {
+.portfolio_btn.cta_text_link::before {
+    content: "";
     position: absolute;
-    top: 50px;
-    right: 34px;
+    left: 12px;
+    right: 24px;
+    bottom: 8px;
+    height: 2px;
+    background: currentColor;
+    transition: right 0.25s ease;
 }
-.banner_svg_box{
-	-webkit-transition: all 1s;
-    -moz-transition: all 1s;
-    -ms-transition: all 1s;
-    -o-transition: all 1s;
-    transition: all 1s;
-    -webkit-transform: scale(0);
-    -moz-transform: scale(0) ;
-    -ms-transform: scale(0);
-    -o-transform: scale(0) ;
-    transform: scale(0); 
+.portfolio_btn.cta_text_link::after {
+    content: "→";
+    display: inline-block;
+    margin-left: 4px;
+    transition: transform 0.25s ease;
+    font-weight: 700;
 }
-.banner_svg_box.mbanner_svg_box{
-    -webkit-transform: scale(1); 
-    -moz-transform: scale(1); 
-    -ms-transform: scale(1); 
-    -o-transform: scale(1); 
-    transform: scale(1) ;
+.portfolio_btn.cta_text_link:hover {
+    color: #b81e4a;
+    background: var(--hero-color-paper);
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    transform: translateX(1px);
 }
-
-@media screen and (-webkit-max-device-pixel-ratio:1) and (min-color-index:0) {
-.banner_svg_box.mbanner_svg_box{
-
-transform: scale(1)!important;
+.portfolio_btn.cta_text_link:hover::before {
+    right: 16px;
 }
-.banner_svg_box{
-transform: scale(1)!important;
+.portfolio_btn.cta_text_link:hover::after {
+    transform: translateX(2px);
 }
-
+/* Cancel pill-button hover slide-up on text link */
+.portfolio_btn.cta_text_link:hover span.first_text {
+    transform: none;
 }
-.banner_rcontent svg.move_bg {
-	-webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s;
-    max-width: 45vw;
+.portfolio_btn.cta_text_link .first_text,
+.portfolio_btn.cta_text_link .second_text {
+    color: inherit;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
+/* Hide duplicated span (template renders both first_text and second_text) */
+.portfolio_btn.cta_text_link .second_text {
+    display: none;
+}
+/* --- hero photo removed: banner_img_wrapper, banner_img, banner_svg_box, banner_rcontent svg.move_bg --- */
 
 .brc_hirebtn .portfolio_btn.btn_orange {
     background-color: rgb(255, 117, 74);
@@ -4209,26 +4239,7 @@ h3.core-features:nth-of-type(3)::before {
 
 /*================== 20 start media query css ==================  */
 
-@media (min-width:1200px) and (max-height:940px) {
-    .port_banner_wrapper {
-        height: 940px;
-    }
-
-    .port_banner_wrapper .banner_content {
-        padding-top: 250px;
-        padding-bottom: 210px;
-    }
-
-    .banner_img {
-        top: -40px;
-    }
-}
-
 @media (max-width:1199px) {
-    .banner_img_wrapper {
-        position:absolute;
-    }
-
     .selfintro_section .about_leftsection {
         width: auto;
         margin:0 auto;
@@ -4258,22 +4269,6 @@ h3.core-features:nth-of-type(3)::before {
     .port_testimonial_setions .testimonial_top_box .testimonial_img {
         height: auto;
     }
-    .banner_rcontent svg.move_bg{
-        width: 100%;
-        vertical-align: top;
-        max-height: 400px;
-    }
-    .port_banner_wrapper {
-        max-height: 600px;
-    }
-
-    .port_banner_wrapper .banner_content {
-        padding-top: 125px;
-        padding-bottom: 50px;
-    }
-    .banner_img {
-        position: inherit;
-    }
     .progressbar {
         margin-bottom: 50px;
     }
@@ -4294,30 +4289,17 @@ h3.core-features:nth-of-type(3)::before {
 }
 
 @media (max-width:991px) {
-    .banner_img_wrapper {
-        width:45%;
-        margin-bottom:25px;
-        position:relative;
-        min-height: 400px;
-    }
-    .banner_img {
-        right: 0;
-        top: 20px;
-    }
-    .banner_content {
-        margin-top: -500px;
-    }
     .bannner_leftpart h2.stranger {
         font-size:18px;
         margin-left:-5px;
-    } 
+    }
     .bannner_leftpart h2.stranger-white {
         font-size: 18px;
     }
     .bannner_leftpart h2.stranger:after {
         width: 325px;
         margin: 0 0 -5px -2px;
-    } 
+    }
     .port_about_setions {
         padding-bottom: 40px;
     }
@@ -4372,22 +4354,18 @@ h3.core-features:nth-of-type(3)::before {
         display:block;
         margin:auto;
     }
-    .banner_rcontent svg.move_bg {
-        height: auto;
-        max-width: 30vw;
-        margin-left: 115px;
-    }
     .port_banner_wrapper {
         margin-left: 0;
-        height: 100%;
+        min-height: auto;
     }
     .port_banner_wrapper .banner_content {
-        padding-left: 160px;
+        padding-left: clamp(20px, 5vw, 60px);
+        padding-right: clamp(20px, 5vw, 60px);
+        padding-top: clamp(100px, 14vh, 140px);
+        padding-bottom: clamp(60px, 8vh, 100px);
     }
     .bannner_leftpart .banner_name {
-        font-size: 54px;
-    }
-    .bannner_leftpart .banner_name {
+        font-size: clamp(40px, 9vw, 64px);
         margin-left: -7px;
     }
     p.banner_pera {
@@ -4475,22 +4453,12 @@ h3.core-features:nth-of-type(3)::before {
 
 @media (max-width:767px) {
     .port_bannerbg_wrapper {
-        margin-top:50px;
-    }
-    .banner_img_wrapper {
-        width: 100%;
-        margin-bottom: 25px;
-        display: flex;
-        justify-content: end;
+        margin-top: 50px;
     }
     .port_banner_wrapper {
-        max-height: 300px;
+        min-height: auto;
     }
-    .banner_img {
-        width: 50%;
-        margin: 50px 0 25px 0;
-    }
-    .bannner_leftpart h2.stranger-white { 
+    .bannner_leftpart h2.stranger-white {
         font-size:24px;
     }
     .port_about_setions {
@@ -5149,41 +5117,74 @@ h3.core-features:nth-of-type(3)::before {
     }
     /*  ================== 20 End media query css ==================  */
 
-/*  ================== Hero layout overrides ==================  */
+/*  ================== Hero layout — top-design tier ==================  */
 
-.bannner_leftpart .hero-kicker {
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    gap: 12px;
-}
-
-.bannner_leftpart h2.stranger {
-    margin-bottom: 0;
-    padding-right: 18px;
-}
-
-.bannner_leftpart h2.stranger:after {
-    right: 0;
-    width: auto;
-    margin: 0;
-}
-
-.bannner_leftpart h2.stranger-white {
-    margin-bottom: 0;
+/* Eyebrow: micro uppercase, wide tracking, low contrast */
+.bannner_leftpart .hero-eyebrow {
+    display: inline-block;
+    font-family: var(--font-family-base);
+    font-size: clamp(11px, 0.85vw, 13px);
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--hero-color-mute);
+    margin: 0 0 clamp(18px, 2.5vh, 28px) 0;
     padding: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: heroFadeUp 0.9s var(--hero-ease-expo-out) 0.1s forwards;
 }
 
+/* Name: display scale, asymmetric, pink accent block kept but refined */
+.bannner_leftpart .banner_name {
+    font-family: 'Josefin Sans';
+    font-weight: 800;
+    font-size: clamp(56px, 9vw, 132px);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--hero-color-ink);
+    background: var(--hero-accent-pink);
+    max-width: fit-content;
+    margin: 0 0 clamp(14px, 2vh, 22px) -6px;
+    padding: 35px 0.16em 0.05em;
+    text-transform: none;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroFadeUp 1.0s var(--hero-ease-expo-out) 0.25s forwards;
+}
+
+.bannner_leftpart .banner_name .family-name {
+    color: var(--hero-color-paper);
+}
+
+/* Role: subtitle below name */
+.bannner_leftpart .hero-role {
+    font-family: var(--font-family-base);
+    font-size: clamp(15px, 1.15vw, 18px);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    color: var(--hero-color-ink);
+    margin: 0 0 clamp(28px, 4vh, 44px) 0;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: heroFadeUp 0.9s var(--hero-ease-expo-out) 0.42s forwards;
+}
+
+/* Lead lockup: intro + animated items */
 .hero-lead-lockup {
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0 5px;
-    max-width: min(100%, 48rem);
-    padding-left: 12px;
-    margin-bottom: 27px;
+    display: block;
+    align-self: flex-start;
+    max-width: min(100%, 56rem);
+    padding: 12px 12px 6px 16px;
+    margin-bottom: clamp(28px, 4vh, 40px);
+    background: var(--hero-color-paper);
+    opacity: 0;
+    transform: translateY(10px);
+    animation: heroFadeUp 0.9s var(--hero-ease-expo-out) 0.58s forwards;
 }
 
 .hero-lead-lockup:after {
@@ -5192,14 +5193,21 @@ h3.core-features:nth-of-type(3)::before {
     left: 0;
     top: 2px;
     bottom: 2px;
-    width: 4px;
-    background: rgb(255, 81, 126);
+    width: 3px;
+    background: var(--hero-accent-pink);
 }
 
 .hero-lead-lockup p.banner_pera {
     display: block;
+    font-family: var(--font-family-base);
+    font-size: clamp(14px, 1vw, 16px);
+    font-weight: 500;
+    color: var(--hero-color-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
     padding-left: 0;
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    line-height: 1.3;
 }
 
 .hero-lead-lockup p.banner_pera:after {
@@ -5207,13 +5215,18 @@ h3.core-features:nth-of-type(3)::before {
 }
 
 .hero-lead-lockup .banner_typingtext {
-    display: inline-block;
-    flex: 1 1 18ch;
-    max-width: 22ch;
-    min-width: 16ch;
+    display: block;
+    width: 100%;
     margin-bottom: 0;
     padding-left: 0;
+    font-family: var(--font-family-base);
+    font-size: clamp(15px, 1.4vw, 22px);
+    font-weight: 600;
     line-height: 1.25;
+    color: var(--hero-accent-cyan);
+    text-shadow: none;
+    min-height: 1.6em;
+    letter-spacing: -0.005em;
 }
 
 .hero-lead-lockup .banner_typingtext .texts {
@@ -5226,81 +5239,153 @@ h3.core-features:nth-of-type(3)::before {
     white-space: normal;
 }
 
+/* CTAs: side by side, baseline aligned, choreographed */
+.banner_content .banner_btn {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: heroFadeUp 0.9s var(--hero-ease-expo-out) 0.74s forwards;
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+/* Page-load keyframe */
+@keyframes heroFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Reduced motion: skip animations */
+@media (prefers-reduced-motion: reduce) {
+    .bannner_leftpart .hero-eyebrow,
+    .bannner_leftpart .banner_name,
+    .bannner_leftpart .hero-role,
+    .hero-lead-lockup,
+    .banner_content .banner_btn {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Branded selection */
+::selection {
+    background: var(--hero-accent-yellow);
+    color: var(--hero-color-ink);
+}
+
+/* Designed focus rings (visible + on-brand) */
+.bannner_leftpart a:focus-visible,
+.banner_content .portfolio_btn:focus-visible,
+.banner_content .cta_text_link:focus-visible {
+    outline: 2px solid var(--hero-accent-cyan);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Responsive */
 @media (max-width:991px) {
-    .bannner_leftpart .hero-kicker {
-        gap: 8px;
+    .bannner_leftpart .hero-eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.28em;
     }
-
-    .bannner_leftpart h2.stranger {
-        padding: 10px 14px 2px 18px;
-    }
-
     .hero-lead-lockup {
-        max-width: min(100%, 30rem);
+        max-width: 100%;
     }
 }
 
 @media (max-width:480px) {
-    .bannner_leftpart .hero-kicker {
-        gap: 6px;
+    .bannner_leftpart .banner_name {
+        font-size: clamp(40px, 12vw, 64px);
     }
-
-    .bannner_leftpart h2.stranger {
-        font-size: 16px;
-        padding: 9px 12px 2px 12px;
-        margin-left: 0;
+    .bannner_leftpart .hero-role {
+        font-size: 14px;
     }
-
-    .bannner_leftpart h2.stranger-white {
-        font-size: 16px;
-        margin: 0;
+    .hero-lead-lockup p.banner_pera {
+        font-size: 12px;
+        letter-spacing: 0.16em;
     }
-
-    .hero-lead-lockup {
-        display: block;
-        max-width: 270px;
-        margin-bottom: 18px;
-        padding-left: 12px;
-    }
-
-    .hero-lead-lockup .banner_pera {
-        font-size: 16px;
+    .hero-lead-lockup .banner_typingtext {
+        font-size: 13px;
         line-height: 1.3;
     }
-
-    .hero-lead-lockup .banner_typingtext {
-        display: block;
-        width: 100%;
-        max-width: 18ch;
-        min-width: 0;
-        margin-top: 6px;
-        margin-left: 0;
-        font-size: 16px;
-        line-height: 1.35;
+    .banner_content .banner_btn {
+        gap: 18px;
     }
 }
 
 @media (max-width:380px) {
-    .bannner_leftpart .hero-kicker {
-        gap: 4px;
+    .bannner_leftpart .banner_name {
+        font-size: clamp(36px, 11vw, 48px);
     }
+}
 
-    .bannner_leftpart h2.stranger {
-        font-size: 14px;
-        padding: 8px 10px 2px 10px;
+/* ---- Hero mobile fixes (override legacy constraints) ---- */
+
+/* Eyebrow segments: inline on desktop, block on mobile */
+.hero-eyebrow .eyebrow-seg { display: inline; }
+.hero-eyebrow .eyebrow-sep { display: inline; }
+
+/* 767px — kill legacy -570px margin + bannerbg top gap, stack CTAs, eyebrow → 3 lines */
+@media (max-width: 767px) {
+    .port_bannerbg_wrapper {
+        margin-top: 0;
+        padding-top: 100px;
     }
-
-    .bannner_leftpart h2.stranger-white {
-        font-size: 14px;
+    .port_banner_wrapper .banner_content {
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 40px;
     }
+    .bannner_leftpart .hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        line-height: 1.9;
+    }
+    .hero-eyebrow .eyebrow-sep {
+        display: none;
+    }
+    .hero-eyebrow .eyebrow-seg {
+        display: block;
+    }
+    .banner_content .banner_btn {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+    /* Remove clipped shadow on mobile */
+    .portfolio_btn.btn_red {
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+    }
+}
 
+/* 575px — remove max-height 300px that hard-clips the hero */
+@media (max-width: 575px) {
+    .port_banner_wrapper {
+        max-height: none !important;
+    }
+    .bannner_leftpart .banner_name {
+        font-size: clamp(32px, 10vw, 48px);
+        padding-top: 15px;
+    }
     .hero-lead-lockup {
-        max-width: 236px;
+        padding: 8px 10px 6px 14px;
     }
+}
 
-    .hero-lead-lockup .banner_pera,
-    .hero-lead-lockup .banner_typingtext {
-        font-size: 14px;
+/* 480px — remove max-height 250px, restore left padding */
+@media (max-width: 480px) {
+    .port_banner_wrapper {
+        max-height: none !important;
+    }
+    .port_banner_wrapper .banner_content {
+        padding-left: clamp(16px, 4vw, 24px);
+        padding-top: 0;
     }
 }
 
