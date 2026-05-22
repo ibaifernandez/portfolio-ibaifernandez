@@ -700,13 +700,24 @@
         <img id="translate-button-icon" src="assets/images/spain.svg" width="64" height="64" alt="Translate Button" loading="eager" decoding="sync" fetchpriority="high">
     </div>
 	
-	<!-- Google tag (gtag.js) -->
+	<!-- Google tag (gtag.js) - loads but only fires once consent is granted -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3"></script>
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
-	gtag('config', 'G-T8FTTWBQS3');
+
+	// Default consent state — denied until user opts in via consent banner.
+	// (Google Consent Mode v2: requires explicit denial for EU compliance.)
+	gtag('consent', 'default', {
+		ad_storage: 'denied',
+		analytics_storage: 'denied',
+		ad_user_data: 'denied',
+		ad_personalization: 'denied',
+		wait_for_update: 500
+	});
+
+	gtag('config', 'G-T8FTTWBQS3', { anonymize_ip: true });
 
 	// Runtime toggles. Keep captcha fields empty until rollout is approved.
 	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
@@ -716,6 +727,19 @@
 		provider: isLocalPreview ? '' : 'turnstile',
 		siteKey: isLocalPreview ? '' : '0x4AAAAAACjZQ2Ce6kH-DpQo'
 	};
+
+	// Apply persisted consent (if any).
+	try {
+		var stored = window.localStorage.getItem('portfolio_consent');
+		if (stored === 'granted') {
+			gtag('consent', 'update', {
+				analytics_storage: 'granted',
+				ad_storage: 'denied',
+				ad_user_data: 'denied',
+				ad_personalization: 'denied'
+			});
+		}
+	} catch (err) { /* localStorage unavailable */ }
 </script>
 
 	<script defer src="assets/js/jquery.min.js"></script>

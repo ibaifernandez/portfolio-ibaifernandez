@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Privacy policy for portfolio.ibaifernandez.com — what data is collected, by whom, and how to opt out.">
+	<meta name="robots" content="noindex,follow">
+	<meta name="theme-color" content="#f0ede7">
+	<title>Privacy Policy | Ibai Fernández</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<link rel="stylesheet" href="assets/css/font.min.css">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=20260522">
+	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="https://portfolio.ibaifernandez.com/privacy.html">
+</head>
+
+<body class="privacy_page">
+	<a class="skip-link" href="#privacy_main">Skip to main content</a>
+
+	<main id="privacy_main" class="privacy_document">
+		<header class="privacy_header">
+			<a class="privacy_back" href="index.html">← Back to portfolio</a>
+			<h1>Privacy Policy</h1>
+			<p class="privacy_meta">Last updated: 2026-05-22</p>
+		</header>
+
+		<section>
+			<h2>Plain English</h2>
+			<p>This site is a personal portfolio. It collects the minimum necessary to function and to understand how visitors arrive. Nothing is sold, nothing is shared with advertisers.</p>
+		</section>
+
+		<section>
+			<h2>1. Data collected directly by the site</h2>
+			<ul>
+				<li><strong>Contact form submissions.</strong> When you submit the contact form, the data you provide (first name, last name, email, subject, message) is sent via the Resend email API to <code>info@ibaifernandez.com</code>. It is not stored on this site or in any database. Resend's privacy policy applies to its handling: <a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">resend.com/legal/privacy-policy</a>.</li>
+				<li><strong>Anti-spam telemetry.</strong> To detect bots, the contact form records a timestamp when the page is loaded and includes it in the submission. It also uses Cloudflare Turnstile, which may load a small token from <code>challenges.cloudflare.com</code>. Turnstile's data handling: <a href="https://developers.cloudflare.com/turnstile/" target="_blank" rel="noopener noreferrer">developers.cloudflare.com/turnstile</a>.</li>
+				<li><strong>Language preference.</strong> If you toggle the language, your choice is saved in <code>localStorage</code> on your device under the key <code>portfolio_language</code>. It never leaves your browser.</li>
+				<li><strong>Consent decision.</strong> If you respond to the cookie banner, your choice is saved in <code>localStorage</code> under the key <code>portfolio_consent</code>. It never leaves your browser.</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>2. Analytics (Google Analytics 4)</h2>
+			<p>This site uses Google Analytics 4 (property <code>G-T8FTTWBQS3</code>) to understand how visitors arrive and what they read. Analytics is loaded with <strong>consent denied by default</strong> using <a href="https://developers.google.com/tag-platform/security/guides/consent" target="_blank" rel="noopener noreferrer">Google Consent Mode v2</a>. Nothing is sent to Google until you accept analytics via the consent banner.</p>
+			<p>If you accept:</p>
+			<ul>
+				<li>GA4 sets cookies <code>_ga</code> and <code>_ga_T8FTTWBQS3</code>.</li>
+				<li>Your IP is anonymized before processing (<code>anonymize_ip: true</code>).</li>
+				<li>Ad personalization, ad storage, and ad user data remain denied.</li>
+			</ul>
+			<p>If you decline (or never respond): GA4 is loaded but never fires. No cookies are set. No data is sent.</p>
+			<p>Change your mind: clear site data in your browser, or open the page in a private window. The consent banner re-appears.</p>
+		</section>
+
+		<section>
+			<h2>3. Third parties</h2>
+			<ul>
+				<li><strong>Netlify</strong> — hosting CDN and the contact serverless function. Standard server logs (IP, user-agent, requested path) are retained per Netlify's policy: <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com/privacy</a>.</li>
+				<li><strong>Resend</strong> — email delivery for contact form messages.</li>
+				<li><strong>Cloudflare Turnstile</strong> — bot detection on the contact form.</li>
+				<li><strong>Google Fonts</strong> — Roboto webfont, loaded from <code>fonts.googleapis.com</code>. Google may log the request. Loaded only when needed by the page.</li>
+				<li><strong>Google Analytics 4</strong> — see section 2.</li>
+				<li><strong>YouTube</strong> — embedded only on the Elm St dossier page, in privacy-enhanced mode (<code>youtube-nocookie.com</code>). YouTube cookies fire only after you press play.</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2>4. Your rights (GDPR / Chile Ley 21.719)</h2>
+			<p>You have the right to:</p>
+			<ul>
+				<li>Know what data is processed about you (this page).</li>
+				<li>Request access to or correction of your contact form submissions.</li>
+				<li>Request deletion of your contact form data.</li>
+				<li>Withdraw consent for analytics at any time.</li>
+				<li>Lodge a complaint with your national data-protection authority.</li>
+			</ul>
+			<p>Contact: <a href="mailto:info@ibaifernandez.com">info@ibaifernandez.com</a>.</p>
+		</section>
+
+		<section>
+			<h2>5. Data controller</h2>
+			<p>The data controller is Ibai Fernández, the site owner. Contact via <a href="mailto:info@ibaifernandez.com">info@ibaifernandez.com</a>.</p>
+		</section>
+
+		<section>
+			<h2>6. Changes to this policy</h2>
+			<p>Material changes will be reflected in the "Last updated" date at the top of this page. The full version history is in this repository's git log.</p>
+		</section>
+	</main>
+</body>
+
+</html>

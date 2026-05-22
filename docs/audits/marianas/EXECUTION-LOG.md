@@ -43,18 +43,24 @@
 - `[x]` Rewrite `docs/ROADMAP.md` to reflect actual current state (hero shipped, Marianas in flight, 4 active dossiers)
 - `[x]` Build + quality green
 
-## Batch 3 — CSP enforce + privacy posture
+## Batch 3 — CSP enforce + privacy posture ✅
 
-- `[ ]` Nonce all inline scripts in templates (3 in index.html)
-- `[ ]` Move `PORTFOLIO_RUNTIME` to external file `assets/js/runtime-config.js`
-- `[ ]` Promote CSP from `Content-Security-Policy-Report-Only` to `Content-Security-Policy`
-- `[ ]` Tighten `img-src` from `https:` to `'self' data:`
-- `[ ]` Create `/privacy.html` page
-- `[ ]` Create cookie consent banner component
-- `[ ]` Wire consent flag to `window.PORTFOLIO_RUNTIME.analytics.enabled`
-- `[ ]` Default GA4 off until consent
-- `[ ]` Add link to /privacy from footer
-- `[ ]` Build, test, commit, push
+- `[~]` Nonce inline scripts: DEFERRED. Decision: keep `'unsafe-inline'` for script-src for now; refactor to nonces in a future batch. Reason: JSON-LD per-page hashing is brittle for content under active change; nonces require build-pipeline rework. Tracked for follow-up.
+- `[-]` Move `PORTFOLIO_RUNTIME` to external: DEFERRED with above. The inline init now includes Consent Mode v2 logic which is content-stable, so hash-pinning is feasible later.
+- `[x]` Promote CSP from `Content-Security-Policy-Report-Only` to `Content-Security-Policy` (enforce). Quality guard updated.
+- `[x]` Tighten `img-src`: was `https:` (any HTTPS host), now `'self' data: https://www.google-analytics.com https://www.googletagmanager.com`. Reduced data-leak surface.
+- `[x]` Tighten `style-src`: added explicit `https://fonts.googleapis.com` for Google Fonts CSS, kept `'unsafe-inline'` (95 inline styles).
+- `[x]` Tighten `font-src`: added explicit `https://fonts.gstatic.com` for Google Fonts webfont.
+- `[x]` Create `privacy.html` — full GDPR / Chile Ley 21.719 disclosure, sober design, robots: noindex, follow.
+- `[x]` Create cookie consent banner component (`src/components/shared/cookie-consent.html`).
+- `[x]` Create `assets/js/cookie-consent.js` — Consent Mode v2 wire-up, localStorage persistence.
+- `[x]` Google Consent Mode v2 default: ALL ads + analytics DENIED until explicit accept.
+- `[x]` `anonymize_ip: true` on GA4 config.
+- `[x]` Add cookie consent CSS + privacy page CSS (~150 lines added to style.css).
+- `[x]` Add `Privacy` link in footer next to copyright (translated EN/ES).
+- `[x]` Add i18n keys: `cookie-consent-{title,body,accept,decline,policy}`, `privacy-policy` (EN + ES).
+- `[x]` Cookie consent injected on all 5 public public pages (index + 4 dossiers via shared template includes).
+- `[x]` Build + quality green; 29/29 e2e green.
 
 ## Batch 4 — i18n hygiene
 

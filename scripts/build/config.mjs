@@ -13,7 +13,8 @@ export const projectShareImageMap = {
 
 export const basePageEntries = [
   { template: 'src/pages/index.template.html', output: 'index.html' },
-  { template: 'src/pages/cv-print.template.html', output: 'cv-print.html' }
+  { template: 'src/pages/cv-print.template.html', output: 'cv-print.html' },
+  { template: 'src/pages/privacy.template.html', output: 'privacy.html' }
 ];
 
 export const legacyPageEntries = [
@@ -49,6 +50,7 @@ export const generatedAssetEntries = [
   { source: 'assets/css/national-route.css', output: 'assets/css/national-route.min.css', type: 'css' },
   { source: 'assets/js/custom.js', output: 'assets/js/custom.min.js', type: 'js' },
   { source: 'assets/js/translate.js', output: 'assets/js/translate.min.js', type: 'js' },
+  { source: 'assets/js/cookie-consent.js', output: 'assets/js/cookie-consent.min.js', type: 'js' },
   { source: 'assets/js/cv-print.js', output: 'assets/js/cv-print.min.js', type: 'js' },
   { source: 'assets/js/scrollbar.js', output: 'assets/js/scrollbar.min.js', type: 'js' },
   { source: 'assets/js/cvtext1.js', output: 'assets/js/cvtext1.min.js', type: 'js' },

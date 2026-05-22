@@ -36,7 +36,8 @@ for header in \
   "X-Content-Type-Options" \
   "Referrer-Policy" \
   "X-Frame-Options" \
-  "Content-Security-Policy-Report-Only"; do
+  "Strict-Transport-Security" \
+  "Content-Security-Policy"; do
   if ! rg -n "$header" netlify.toml >/dev/null; then
     fail "Missing expected security header directive in netlify.toml: $header"
   fi
