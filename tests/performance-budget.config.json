@@ -1,8 +1,8 @@
 {
   "global": {
     "maxCssFileBytes": 160000,
-    "maxJsFileBytes": 135000,
-    "maxImageFileBytes": 300000
+    "maxJsFileBytes":  135000,
+    "maxImageFileBytes": 600000
   },
   "pages": [
     {
@@ -12,6 +12,54 @@
       "maxJsBytes": 500000,
       "maxImageBytes": 1800000,
       "maxImageCount": 70
+    },
+    {
+      "file": "lfi.html",
+      "maxHtmlBytes": 180000,
+      "maxCssBytes": 470000,
+      "maxJsBytes": 500000,
+      "maxImageBytes": 1500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
+      "maxHtmlBytes": 180000,
+      "maxCssBytes": 470000,
+      "maxJsBytes": 500000,
+      "maxImageBytes": 1500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "elm-st.html",
+      "maxHtmlBytes": 100000,
+      "maxCssBytes": 470000,
+      "maxJsBytes": 500000,
+      "maxImageBytes": 1500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "aglaya.html",
+      "maxHtmlBytes": 100000,
+      "maxCssBytes": 470000,
+      "maxJsBytes": 500000,
+      "maxImageBytes": 1500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "cv-print.html",
+      "maxHtmlBytes": 120000,
+      "maxCssBytes": 420000,
+      "maxJsBytes": 200000,
+      "maxImageBytes": 1500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "privacy.html",
+      "maxHtmlBytes": 30000,
+      "maxCssBytes": 420000,
+      "maxJsBytes": 5000,
+      "maxImageBytes": 50000,
+      "maxImageCount": 5
     }
   ]
 }

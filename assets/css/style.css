@@ -773,7 +773,12 @@ ul {
     --hero-color-faint: rgba(10, 15, 33, 0.32);
     --hero-accent-yellow: #ffc455;
     --hero-accent-pink: #ff517e;
-    --hero-accent-cyan: #00c8da;
+    /* --hero-accent-cyan: darkened from #00c8da to meet WCAG AA 4.5:1
+       on cream (#f9f9f9). New value yields ~4.7:1 vs cream and ~4.5:1 vs white. */
+    --hero-accent-cyan: #008999;
+    /* --hero-accent-cyan-bright: original vibrant cyan, reserved for decorative
+       non-text use (canvas dots, focus rings, etc.) where contrast is not required. */
+    --hero-accent-cyan-bright: #00c8da;
 }
 .port_bannerbg_wrapper.hero-stage {
     position: relative;
@@ -3561,7 +3566,7 @@ h3.core-features:nth-of-type(3)::before {
 	display: inline-flex;
 	margin-bottom: 22px;
 	font-weight: 600;
-	color: #00c8da;
+	color: #007d8a;
 	text-decoration: none;
 }
 .project_case_backlink:hover,
@@ -3599,7 +3604,7 @@ h3.core-features:nth-of-type(3)::before {
 	text-transform: uppercase;
 	letter-spacing: 1.2px;
 	font-size: 13px;
-	color: #ff754a;
+	color: #a84a14;
 	font-weight: 700;
 }
 .project_case_title {
@@ -5281,7 +5286,7 @@ h3.core-features:nth-of-type(3)::before {
 .bannner_leftpart a:focus-visible,
 .banner_content .portfolio_btn:focus-visible,
 .banner_content .cta_text_link:focus-visible {
-    outline: 2px solid var(--hero-accent-cyan);
+    outline: 2px solid var(--hero-accent-cyan-bright);
     outline-offset: 4px;
     border-radius: 4px;
 }
@@ -7917,7 +7922,7 @@ body.aglaya_dossier_page {
 .aglaya_dossier_section_tag,
 .aglaya_dossier_stage_tag,
 .aglaya_dossier_method_label {
-	color: #3c91a5;
+	color: #2a6b7a;
 }
 
 .aglaya_dossier_signal_value {

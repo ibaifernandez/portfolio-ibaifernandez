@@ -115,19 +115,19 @@ test('contact CTA points to contact section anchor', async ({ page }) => {
   await expect(page).toHaveURL(/#scroll_contact$/);
 });
 
-test('projects grid only exposes the four active dossiers', async ({ page }) => {
+test('projects grid only exposes active dossiers (sourced from content/projects.json)', async ({ page }) => {
+  // Single source of truth: content/projects.json. Tests survive copy changes.
+  const projectsPath = require('node:path').resolve(process.cwd(), 'content/projects.json');
+  const projects = JSON.parse(fs.readFileSync(projectsPath, 'utf8'))
+    .filter((p) => p?.page?.published !== false);
+
   await page.goto('/index.html');
 
-  const expectedProjects = [
-    ['LFi: Agency Operating Systems', 'lfi.html'],
-    ['The Route to Digitalization / 2x2MKT', 'ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['Elm St: Reel-First Brand Website', 'elm-st.html'],
-    ['AGLAYA: Remote Agency Operations', 'aglaya.html']
-  ];
+  await expect(page.locator('.project_spotlight_project')).toHaveCount(projects.length);
 
-  await expect(page.locator('.project_spotlight_project')).toHaveCount(expectedProjects.length);
-
-  for (const [title, href] of expectedProjects) {
+  for (const project of projects) {
+    const href = project.page.output;
+    const title = project.title.text;
     const card = page.locator('.project_spotlight_project', {
       has: page.locator(`a.project_spotlight_media_link[href="${href}"]`)
     });

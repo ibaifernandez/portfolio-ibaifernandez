@@ -18,6 +18,12 @@ on:
     branches: ["**"]
   pull_request:
 
+# Cancel any in-flight CI on the same branch when a new push arrives.
+# Saves minutes; current-state-only gating.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality-build-e2e:
     name: Quality · Build · E2E
@@ -46,6 +52,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # ── npm audit (non-blocking warn) ─────────────────────────────────────
+      # Flags transitive CVEs (mostly Resend's tree). Does not gate merge.
+      - name: npm audit (warn only)
+        run: npm audit --audit-level=high || true
+
       # ── Build ─────────────────────────────────────────────────────────────
       # Genera los HTML finales desde src/ + content/ antes de cualquier test.
       # Los E2E sirven estos ficheros ya compilados.
@@ -54,9 +65,20 @@ jobs:
 
       # ── Quality guards ────────────────────────────────────────────────────
       # Incluye: estructura, seguridad, a11y baseline, performance budget,
-      # cobertura AVIF/WebP y checker de links internos.
+      # cobertura AVIF/WebP, checker de links internos, parity i18n.
       - name: Quality guards
         run: npm run test:quality
+
+      # ── Playwright browser cache ──────────────────────────────────────────
+      # Avoid re-downloading chromium (~150 MB) on every run.
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
 
       # ── Playwright ────────────────────────────────────────────────────────
       - name: Install Playwright browser
