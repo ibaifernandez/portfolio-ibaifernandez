@@ -197,22 +197,14 @@ Variables de entorno necesarias en Netlify Dashboard: `RESEND_API_KEY`, `FROM_EM
 
 | Documento | Contenido |
 |---|---|
-| `AGENTS.md` | Guía para agentes de IA (Claude Code, Copilot, etc.) |
-| `docs/ARCHITECTURE.md` | Arquitectura técnica completa |
-| `docs/PRD.md` | Requisitos de producto |
-| `docs/ROADMAP.md` | Roadmap estratégico |
-| `docs/BACKLOG.md` | Backlog detallado con epics y tareas |
-| `docs/AI_RULES.md` | Reglas extendidas para agentes IA |
-| `docs/SECURITY.md` | Política de seguridad |
-| `docs/GLOSSARY.md` | Glosario del proyecto |
-| `docs/ENGINEERING-CHANGELOG.md` | Historial técnico completo + ADRs |
-| `docs/ENGINEERING-RUNBOOK.md` | Runbook de operaciones |
-| `docs/PARALLEL-SAFETY-BASELINE.md` | Contrato mecánico compartido para trabajo paralelo seguro |
-| `docs/THREAD-ORCHESTRATION.md` | Modelo de trabajo en 13 hilos + ownership de archivos |
-| `docs/DEPLOY_ROADMAP.md` | Plan y estado de deploy |
-| `docs/CASE-STUDY-2026-02-25.md` | Narrativa técnica de caso de estudio |
-
-Los prompts maestros para trabajar cada hilo por separado viven en `docs/THREAD-PROMPTS/`.
+| `AGENTS.md` (root) | Guía para agentes de IA. Punto de entrada operativo. |
+| `docs/README.md` | Mapa de navegación de `docs/`. |
+| `docs/ROADMAP.md` | Estado actual, etapa, pendientes. SSOT operativo. |
+| `docs/ARCHITECTURE.md` | Arquitectura técnica + build pipeline. |
+| `docs/SECURITY.md` | Política de seguridad: CSP, headers, form defense. |
+| `docs/AI_RULES.md` | Reglas extendidas para agentes IA. |
+| `docs/brand-audit-narrative-b.md` | Brand reference activo (Narrative B). |
+| `docs/audits/marianas/` | Auditoría profunda 2026-05-22 + log de ejecución. |
 
 ---
 

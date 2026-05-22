@@ -1,6 +1,6 @@
 # AI_RULES.md — Extended AI Agent Rules
 
-> See also `AGENTS.md` at the repository root for the quick-reference summary and `docs/PARALLEL-SAFETY-BASELINE.md` for the mandatory repo-wide contract used by parallel threads.
+> See also `AGENTS.md` at the repository root for the quick-reference summary.
 
 ---
 
@@ -40,11 +40,9 @@ This must pass before any commit touching templates, components, or content JSON
 
 Editing `content/*.json` alone does not update the HTML. You must rebuild and commit the updated HTML.
 
-### 1.4 — Parallel threads inherit the shared baseline
+### 1.4 — Parallel agent work
 
-When working in a split-thread setup, treat `docs/PARALLEL-SAFETY-BASELINE.md` and `docs/THREAD-ORCHESTRATION.md` as mandatory shared context.
-
-If a change crosses thread ownership or requires shared tests, runtime, snapshots, or generated outputs outside your scope, escalate it instead of absorbing it silently.
+When spawning sub-agents in parallel worktrees, always rebase onto origin/main before pushing. Strictly do NOT manually patch generated artifacts (`*.min.css`, root `*.html`) — edit the source and let the build regenerate.
 
 ---
 
@@ -179,7 +177,7 @@ Form fields `website` (honeypot), `form_started_at`, `captcha_provider`, and `ca
 - **Do not** introduce inline `style=""` attributes (use CSS classes)
 - **Do not** change `netlify.toml` redirects without testing locally with `netlify dev`
 - **Do not** add new npm dependencies without checking budget impact
-- **Do not** edit `BACKLOG.md` at root — it has been superseded by `docs/BACKLOG.md`
+- **Do not** scatter pending tasks across multiple files — `docs/ROADMAP.md` is the SSOT.
 - **Do not** leave `href="#"` or placeholder `src=""` in committed templates
 
 ---

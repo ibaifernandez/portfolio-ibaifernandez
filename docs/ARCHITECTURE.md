@@ -332,18 +332,18 @@ Pages support EN/ES language toggle via:
 
 ---
 
-## ADR Index
+## Key architectural decisions
 
-Detailed rationale for major architectural decisions:
+The current shape was selected over alternatives:
 
-| ADR | Decision | File |
-|---|---|---|
-| ADR-001 | Componentization strategy (Nunjucks/partials over Astro) | `docs/ENGINEERING-CHANGELOG.md` |
-| ADR-002 | Design tokens and CSS governance | `docs/ENGINEERING-CHANGELOG.md` |
-| ADR-003 | Platform: Netlify over cPanel | `docs/ENGINEERING-CHANGELOG.md` |
-| ADR-004 | Contact form: Resend over SMTP/PHPMailer | `docs/ENGINEERING-CHANGELOG.md` |
-| ADR-005 | CSS loading: `rel="preload"` defer pattern | `docs/ENGINEERING-CHANGELOG.md` |
+- Custom Node.js template build over Astro / Next.js — keeps output static, no framework runtime, full control over output.
+- Netlify CDN + Functions over cPanel/PHP — atomic deploys, serverless contact form, no shared-hosting friction.
+- Resend over SMTP/PHPMailer — REST-based, no SMTP credential management.
+- Non-blocking CSS via `rel="preload"` + `onload="this.rel='stylesheet'"` for above-fold critical-path reduction.
+- CSS-variable design tokens (`--hero-*`, `--color-*`) for theme cohesion.
+
+For rationale-by-decision detail, `git log --grep` against the historical changelog.
 
 ---
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-05-22*

@@ -147,7 +147,7 @@ If a security issue is discovered:
 1. **Assess impact:** Is data being exfiltrated? Is the form being abused?
 2. **Contain:** If form abuse → activate captcha and/or add edge-layer throttling
 3. **Fix:** Patch in a feature branch, run full CI (`npm run test:ci`), deploy
-4. **Document:** Add entry to `docs/ENGINEERING-CHANGELOG.md` with incident timeline and resolution
+4. **Document:** Note incident summary in `docs/ROADMAP.md` and let the git log carry the timeline
 5. **Post-mortem:** Update this document if the issue reveals a gap in the security model
 
 ### Emergency contacts

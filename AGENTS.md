@@ -178,25 +178,16 @@ Every push to `main` runs one GitHub Actions workflow:
 
 ## Documentation Index
 
-All detailed documentation lives in `docs/`:
+Documentation footprint is intentionally minimal. See `docs/README.md` for the map.
 
 | File | Contents |
 |---|---|
-| `docs/ARCHITECTURE.md` | Full technical architecture |
-| `docs/PRD.md` | Product requirements |
-| `docs/ROADMAP.md` | Strategic roadmap |
-| `docs/BACKLOG.md` | Detailed backlog with epics + tasks |
-| `docs/AI_RULES.md` | Extended AI agent rules |
-| `docs/SECURITY.md` | Security policy |
-| `docs/GLOSSARY.md` | Project glossary |
-| `docs/ENGINEERING-CHANGELOG.md` | Full engineering history |
-| `docs/ENGINEERING-RUNBOOK.md` | Ops runbook |
-| `docs/PARALLEL-SAFETY-BASELINE.md` | Shared mechanical contract for safe parallel work |
-| `docs/THREAD-ORCHESTRATION.md` | 13-thread execution model + file ownership rules |
-| `docs/DEPLOY_ROADMAP.md` | Deploy plan and status |
-| `docs/CASE-STUDY-2026-02-25.md` | Technical case study narrative |
-
-Master prompts for separate execution threads live in `docs/THREAD-PROMPTS/`.
+| `docs/ROADMAP.md` | Current state, what's done, what's next. SSOT for plan tracking. |
+| `docs/ARCHITECTURE.md` | System architecture + build pipeline. |
+| `docs/SECURITY.md` | Security posture: CSP, headers, contact form defense. |
+| `docs/AI_RULES.md` | Extended AI agent rules. |
+| `docs/brand-audit-narrative-b.md` | Active brand reference (Narrative B). |
+| `docs/audits/marianas/` | Deep audit + execution log. Source of recent improvement work. |
 
 ---
 
