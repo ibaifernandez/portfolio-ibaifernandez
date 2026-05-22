@@ -160,7 +160,26 @@ The wrapper `port_sec_warapper` must remain a `<main>` element (not a `<div>`) f
 Every push to `main` runs one GitHub Actions workflow:
 
 1. **`ci.yml`** — install + build + `npm run test:quality` + `npm run test:e2e` + Netlify deploy
-   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, and any Playwright suite failure.
+   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, i18n parity drift, and any Playwright suite failure.
+
+---
+
+## Operating Contract
+
+Workflow agreements between owner and AI agents. **Binding for all sessions.**
+Extended rationale + examples: `docs/AI_RULES.md`. State of plan: `docs/ROADMAP.md`.
+
+1. **Roadmap SSOT.** `docs/ROADMAP.md` is the single source of truth for plan state — current step, what's done, what's next. Update it in the same commit as any meaningful work.
+
+2. **One thread at a time.** Owner interacts with exactly one Claude Code session for this repo at a time. End a thread via `/session-handoff` before opening another. No parallel agent sessions.
+
+3. **Subagent ownership.** When the main agent spawns sub-agents for complex tasks, the main agent absorbs all sub-agent decisions. Sub-agent questions never bubble up to the owner. Owner sees only final outcome ("done" / "failed, here is the path forward").
+
+4. **Branch SSOT.** One local `main`, one `origin/main`. Worktrees are fine as session sandboxes — they all push to `main`. No long-lived parallel branches.
+
+5. **Production gate.** Auto-allowed: Read/Edit/Write/Glob/Grep + routine Bash (npm, git read+local ops, sed/grep/find, file ops, curl). Ask before run: `git push:*`, `gh pr create/merge/close`, `gh release create`, `npm publish`. Anything that hits production or remote state requires explicit owner approval in chat. Codified in `.claude/settings.json` (committed; new worktrees inherit).
+
+6. **Doc hygiene.** `docs/` only holds the currently vigent (see `docs/README.md`). Anything obsolete is deleted, not archived — git log retains history. If a doc no longer reflects reality, fix it in the same commit as the change.
 
 ---
 

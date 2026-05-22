@@ -10,6 +10,79 @@ These rules apply to any AI agent (Claude Code, GitHub Copilot, Cursor, GPT-base
 
 ---
 
+## 0. Operating Contract (extended rationale)
+
+The headline rules live in `AGENTS.md` "Operating Contract". This section explains the WHY and the edge cases.
+
+### 0.1 — Roadmap SSOT (`docs/ROADMAP.md`)
+
+**Why:** the owner reads exactly one file to know where the project stands. If multiple docs claim state, drift is inevitable.
+
+**Implication:** when you close a step, finish a task, defer something, or discover a new pending item, update `docs/ROADMAP.md` in the same commit. Never let `ROADMAP.md` lag behind reality.
+
+**What goes in it:** the live plan table (1-N steps with status), parallel pending items (non-blocking), and a tail of recent commits. Nothing else.
+
+### 0.2 — One thread at a time
+
+**Why:** sequential narrative. Parallel sessions on the same repo create merge conflicts, ambiguous ROADMAP state, and confusion for the owner who can only talk to one agent at a time anyway.
+
+**Implication:**
+- Do not propose "let me spawn another Claude Code session in parallel."
+- Sub-agents (spawned from inside one session, like the `Agent` tool) are allowed for complex sub-tasks — see 0.3.
+- When this session is done, the owner runs `/session-handoff` and the next session takes over with full context.
+
+**Exception that proves the rule:** the 2026-05-22 dossier color-contrast fix was done by a parallel Claude Code session. It introduced rebase friction and a duplicated "Batch 6" commit label. Documented here as the pattern NOT to repeat.
+
+### 0.3 — Subagent ownership
+
+**Why:** the owner's mental contract is "I'm talking to one agent." Forcing the owner to read sub-agent reports and resolve their open questions breaks that contract.
+
+**Implication:**
+- The main agent decides ALL trade-offs raised by sub-agents.
+- If a sub-agent asks "PR or direct merge?", the main agent answers based on the operating contract (direct merge to main, per 0.4).
+- The main agent only escalates to the owner if the situation is genuinely outside its mandate or violates an operating rule.
+- Sub-agent failures are absorbed and surfaced as "task failed, here is path forward," not as forwarded errors.
+
+### 0.4 — Branch SSOT
+
+**Why:** one writable timeline. Branches, forks, and parallel worktrees create state confusion.
+
+**Implication:**
+- Every commit goes to `origin/main`.
+- Worktrees push via `git push origin HEAD:main` — same destination.
+- No long-lived feature branches. No release branches. No hotfix branches.
+- If a CI run goes red on `main`, fix-forward with the next commit. Don't revert unless the bad commit broke production (the deploy gate prevents that automatically).
+
+### 0.5 — Production gate
+
+**Why:** the owner needs ONE thing in his hands — control of what becomes public. Everything else should be friction-free.
+
+**Implementation (`.claude/settings.json`):**
+
+```
+permissions.allow  →  Read/Edit/Write/Glob/Grep/WebFetch + routine Bash
+permissions.ask    →  git push:*, gh pr create/merge/close,
+                       gh release create, npm publish
+permissions.deny   →  (empty; whitelist handles it)
+```
+
+**Implication:**
+- Build, test, edit, commit locally — no questions asked.
+- Before any `git push`, the owner sees a single confirmation prompt with the commit message and target ref.
+- Confirmation is per-push, not per-session. Owner stays in control without ceremony.
+
+### 0.6 — Doc hygiene
+
+**Why:** owner does NOT read docs except `ROADMAP.md`. Stale docs misinform anyone (human or AI) doing future work. Git log is the historical record.
+
+**Implication:**
+- A new doc earns its place only by serving live work.
+- When a doc is outdated by a change, fix or delete it in the same commit.
+- Archive folders (`.archived/`) are forbidden — delete cleanly; git remembers.
+- The audit folder `docs/audits/marianas/` is the exception: it documents the work of fixing audit findings, kept as a historical reference until the next major audit replaces it.
+
+---
+
 ## 1. Build System Rules
 
 ### 1.1 — Understand the build pipeline before editing HTML
