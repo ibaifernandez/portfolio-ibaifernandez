@@ -146,6 +146,7 @@ node tests/check-performance-budget.mjs
 node tests/check-avif-coverage.mjs
 node tests/check-webp-coverage.mjs
 node tests/check-links.mjs
+node tests/check-i18n.mjs
 
 for file in index.html; do
   total_imgs="$(rg -n "<img " "$file" | wc -l | tr -d ' ')"

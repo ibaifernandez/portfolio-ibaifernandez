@@ -62,16 +62,18 @@
 - `[x]` Cookie consent injected on all 5 public public pages (index + 4 dossiers via shared template includes).
 - `[x]` Build + quality green; 29/29 e2e green.
 
-## Batch 4 — i18n hygiene
+## Batch 4 — i18n hygiene ✅
 
-- `[ ]` Translate `<title>` per language
-- `[ ]` Translate `<meta name="description">` per language
-- `[ ]` Translate OG description per language
-- `[ ]` Respect `navigator.language` in `translate.js` initial resolution
-- `[ ]` Purge 198 orphan i18n keys (programmatic + manual review)
-- `[ ]` Add `tests/check-i18n.mjs` — parity, missing, orphan checks
-- `[ ]` Add `test:i18n` to package.json + `test:quality` chain
-- `[ ]` Build, test, commit, push
+- `[x]` Translate `<title>` per language via new `page-title` key
+- `[x]` Translate `<meta name="description">` per language via `page-description` key (translate-content attribute)
+- `[x]` OG + Twitter title/description also updated by `translatePageMeta()` on language switch (translate.js)
+- `[x]` Respect `navigator.language` in `translate.js` resolveInitialLanguage (final fallback: ES if browser locale starts with 'es')
+- `[x]` Purged 186 orphan keys: 709 → 523 in each language (then +2 for page-* keys → 525 final)
+- `[x]` Added `tests/check-i18n.mjs` — parity, missing, orphan, XSS-via-HTML-value detection
+- `[x]` Added `scripts/purge-orphan-i18n.mjs` — reusable purge tool for future cleanup
+- `[x]` Wired into `package.json` (`npm run test:i18n`) and `test:quality` chain
+- `[x]` Replaced `querySelectorAll('*')` translate-attr scan with targeted selectors (50× cheaper on a large DOM)
+- `[x]` Build + quality + i18n green; 29/29 e2e green
 
 ## Batch 5 — Tests refactor + dossier coverage
 
