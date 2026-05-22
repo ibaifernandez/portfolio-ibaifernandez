@@ -31,6 +31,8 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.1",
-    "@playwright/test": "^1.49.0"
+    "@playwright/test": "^1.49.0",
+    "csso": "^5.0.5",
+    "terser": "^5.48.0"
   }
 }

@@ -7,6 +7,7 @@ import { createBuildContext } from './build/context.mjs';
 import { generatedAssetEntries } from './build/config.mjs';
 import { createBuildRuntime } from './build/renderers.mjs';
 import { renderSitemap, renderLlmsTxt, renderLlmsFullTxt } from './build/sitemap.mjs';
+import { fingerprintGeneratedHtml } from './build/fingerprint.mjs';
 
 const rootDir = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -72,7 +73,7 @@ for (const output of runtime.getManagedProjectOutputs()) {
 
 for (const entry of generatedAssetEntries) {
   try {
-    const rendered = renderMinifiedAsset(rootDir, entry);
+    const rendered = await renderMinifiedAsset(rootDir, entry);
     const outputPath = path.resolve(rootDir, entry.output);
 
     if (checkOnly) {
@@ -124,6 +125,15 @@ for (const entry of discoveryEntries) {
     hasErrors = true;
     console.error(`[FAIL] ${entry.output}: ${error.message}`);
   }
+}
+
+// Fingerprint asset references inside generated HTML files. Replaces the manual
+// ?v=20260522 cache-bust with content-hash. Auto-invalidates on any CSS/JS change.
+if (!checkOnly && !hasErrors) {
+  const htmlOutputs = [...runtime.getPageEntries(), ...runtime.getManagedProjectOutputs().map((o) => ({ output: o }))]
+    .map((entry) => entry.output);
+  const hashes = fingerprintGeneratedHtml(rootDir, htmlOutputs);
+  console.log(`[OK] Fingerprinted ${Object.keys(hashes).length} asset references in ${htmlOutputs.length} HTML files`);
 }
 
 if (hasErrors) {
