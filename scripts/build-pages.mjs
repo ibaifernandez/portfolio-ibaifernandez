@@ -19,6 +19,13 @@ const expectedPageOutputs = new Set(runtime.getPageEntries().map((entry) => entr
 
 let hasErrors = false;
 
+// In --check mode, the on-disk HTML has content-hash fingerprints (?v=abc123)
+// applied by fingerprint.mjs at the end of every build. The freshly rendered
+// template does NOT have them. Strip ?v=... from both sides before comparing.
+function stripFingerprints(html) {
+  return html.replace(/(\.(?:css|js))\?v=[a-f0-9]+/g, '$1');
+}
+
 for (const entry of runtime.getPageEntries()) {
   const templatePath = path.resolve(rootDir, entry.template);
   if (!fs.existsSync(templatePath)) {
@@ -34,7 +41,7 @@ for (const entry of runtime.getPageEntries()) {
 
     if (checkOnly) {
       const current = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : '';
-      if (current !== rendered) {
+      if (stripFingerprints(current) !== stripFingerprints(rendered)) {
         hasErrors = true;
         console.error(`[FAIL] Outdated generated page: ${entry.output} (run: npm run build:pages)`);
       } else {

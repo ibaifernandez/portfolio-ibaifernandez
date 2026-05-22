@@ -15,11 +15,9 @@ const FINGERPRINT_ASSETS = [
   'assets/css/font.min.css',
   'assets/css/animate.min.css',
   'assets/css/print.min.css',
-  'assets/css/cv-print.min.css',
   'assets/js/custom.min.js',
   'assets/js/translate.min.js',
-  'assets/js/cookie-consent.min.js',
-  'assets/js/cv-print.min.js'
+  'assets/js/cookie-consent.min.js'
 ];
 
 function computeHash(absolutePath) {

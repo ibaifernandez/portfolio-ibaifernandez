@@ -36,7 +36,7 @@ for (const dir of ['src', 'content']) {
   const full = path.resolve(rootDir, dir);
   if (fs.existsSync(full)) walk(full, filesToScan);
 }
-for (const file of ['index.html', 'cv-print.html', 'privacy.html', 'lfi.html', 'aglaya.html', 'elm-st.html', 'ruta-de-la-digitalizacion-y-2x2-mkt.html', 'lfi-legacy.html']) {
+for (const file of ['index.html', 'privacy.html', 'lfi.html', 'aglaya.html', 'elm-st.html', 'ruta-de-la-digitalizacion-y-2x2-mkt.html', 'lfi-legacy.html']) {
   const full = path.resolve(rootDir, file);
   if (fs.existsSync(full)) filesToScan.push(full);
 }

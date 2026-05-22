@@ -62,7 +62,7 @@ npm run test:ci
 ## Build de páginas
 
 ```bash
-npm run build:pages    # genera index.html, cv-print.html, los 4 dossiers públicos activos y assets .min derivados
+npm run build:pages    # genera index.html, privacy.html, los 4 dossiers públicos activos y assets .min derivados
 ```
 
 > Los archivos `*.html` en la raíz son GENERADOS. No los edites directamente.
@@ -99,7 +99,7 @@ npm run test:avif      # valida cobertura AVIF
 npm run test:webp      # valida cobertura WebP
 ```
 
-Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas generadas del root (`index`, `cv-print` y dossiers públicos) y no quedan faltantes de WebP en los quality guards.
+Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas generadas del root (`index`, `privacy` y dossiers públicos) y no quedan faltantes de WebP en los quality guards.
 
 ---
 
@@ -159,14 +159,6 @@ El formulario mantiene flujo actual por defecto y permite activar captcha sin ca
 Contrato actual de producción: honeypot + timing check + captcha opcional. El mock local usado por `scripts/static-server.mjs` replica ese mismo contrato para E2E.
 
 Ver rotación de claves y procedimiento completo en `docs/ENGINEERING-RUNBOOK.md`.
-
----
-
-## CV imprimible
-
-- Página dedicada: `cv-print.html`.
-- Los CTAs de CV en home/about abren `cv-print.html#print`.
-- Incluye toolbar de pantalla (`Back`, `EN/ES`, `Print CV`) y layout A4 optimizado.
 
 ---
 

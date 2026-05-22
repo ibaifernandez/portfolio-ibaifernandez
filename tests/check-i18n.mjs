@@ -51,7 +51,7 @@ for (const [k, v] of [...Object.entries(en), ...Object.entries(es)]) {
 // Walk HTML/template files and collect every `translate(-<attr>)="<key>"` usage.
 const used = new Set();
 const TEMPLATE_DIRS = ['src'];
-const HTML_AT_ROOT = ['index.html', 'cv-print.html', 'privacy.html', 'lfi.html', 'aglaya.html', 'elm-st.html', 'ruta-de-la-digitalizacion-y-2x2-mkt.html', 'lfi-legacy.html'];
+const HTML_AT_ROOT = ['index.html', 'privacy.html', 'lfi.html', 'aglaya.html', 'elm-st.html', 'ruta-de-la-digitalizacion-y-2x2-mkt.html', 'lfi-legacy.html'];
 
 function walk(dir, files) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

@@ -46,14 +46,6 @@
       "maxImageCount": 30
     },
     {
-      "file": "cv-print.html",
-      "maxHtmlBytes": 120000,
-      "maxCssBytes": 420000,
-      "maxJsBytes": 200000,
-      "maxImageBytes": 1500000,
-      "maxImageCount": 30
-    },
-    {
       "file": "privacy.html",
       "maxHtmlBytes": 30000,
       "maxCssBytes": 420000,

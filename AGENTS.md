@@ -72,7 +72,7 @@ npm run media:all
 ├── AGENTS.md              ← you are here
 ├── README.md              ← human-facing project summary
 ├── index.html             ← GENERATED (do not edit directly)
-├── cv-print.html          ← GENERATED (do not edit directly)
+├── privacy.html           ← GENERATED (do not edit directly)
 ├── assets/
 │   ├── css/               ← stylesheets (font.css, style.css, etc.)
 │   ├── js/                ← scripts (custom.js, translate.js, etc.)
@@ -102,7 +102,7 @@ npm run media:all
 ## The Golden Rules
 
 ### 1. Never edit generated files directly
-`index.html`, `cv-print.html`, the root-level active dossier HTML pages (for example `lfi.html` or `elm-st.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
+`index.html`, `privacy.html`, the root-level active dossier HTML pages (for example `lfi.html` or `elm-st.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
 
 - To change page content → edit `src/pages/*.template.html`
 - To change component markup → edit `src/components/**/*.html`

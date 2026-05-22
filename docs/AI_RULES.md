@@ -24,7 +24,7 @@ src/pages/*.template.html
   → *.html (root level, committed)
 ```
 
-**Rule:** Never edit `index.html`, `cv-print.html`, the generated dossier HTML pages in the repo root, or committed generated `.min` CSS/JS assets directly. These will be overwritten.
+**Rule:** Never edit `index.html`, `privacy.html`, the generated dossier HTML pages in the repo root, or committed generated `.min` CSS/JS assets directly. These will be overwritten.
 
 **Rule:** After any change to a template, component, content JSON, or readable served CSS/JS source file, run `npm run build:pages` and commit the regenerated derivatives.
 
