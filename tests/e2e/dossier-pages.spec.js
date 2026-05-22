@@ -58,22 +58,15 @@ for (const dossier of dossiers) {
       expect(unsafe).toEqual([]);
     });
 
-    test('no critical axe violations on dossier (WCAG 2.1 Level A baseline)', async ({ page }) => {
-      // Dossier-specific color contrast (WCAG AA) is tracked separately as
-      // Batch 6 follow-up work; the Marianas audit P1 (04-accessibility.md)
-      // catalogs them. This test enforces WCAG Level A as a floor and excludes
-      // color-contrast (AA) so dossier visual identity work can proceed
-      // without churning this gate.
+    test('no axe violations on dossier (WCAG 2.1 A + AA, color-contrast enforced)', async ({ page }) => {
       await page.goto(`/${dossier.output}`);
       const results = await new AxeBuilder({ page })
-        .withTags(['wcag2a'])
-        .disableRules(['color-contrast'])
+        .withTags(['wcag2a', 'wcag2aa'])
         .analyze();
-      const hard = results.violations.filter((v) => v.impact === 'critical');
-      const formatted = hard
-        .map((v) => `${v.id} (${v.impact}): ${v.nodes.slice(0, 3).map((n) => n.target.join(' ')).join(', ')}`)
+      const formatted = results.violations
+        .map((v) => `${v.id} (${v.impact}): ${v.nodes.slice(0, 6).map((n) => `${n.target.join(' ')} :: ${(n.failureSummary || '').replace(/\s+/g, ' ')}`).join(' | ')}`)
         .join('\n');
-      expect(hard, formatted).toEqual([]);
+      expect(results.violations, formatted).toEqual([]);
     });
   });
 }

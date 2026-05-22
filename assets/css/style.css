@@ -32,7 +32,7 @@ Assigned to: ThemeForest
     --font-family-base: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     --font-family-heading: 'Josefin Sans';
     --color-text-primary: #222222;
-    --color-text-muted: #747474;
+    --color-text-muted: #6a6a6a;
     --color-white: #fff;
     --color-contrast-on-accent: #0e0f21;
     --color-heading-primary: #556d91;
@@ -3667,7 +3667,7 @@ h3.core-features:nth-of-type(3)::before {
 }
 .project_case_navlink--index {
 	border-color: #00c8da;
-	color: #00c8da;
+	color: #007a89;
 }
 .project_case_navlink:hover,
 .project_case_navlink:focus {
@@ -8070,7 +8070,7 @@ body.aglaya_dossier_page {
 	font-size: 42px;
 	font-weight: 700;
 	line-height: 1;
-	color: rgba(36, 49, 58, 0.08);
+	color: rgba(36, 49, 58, 0.7);
 }
 
 .aglaya_dossier_phase_intro {
