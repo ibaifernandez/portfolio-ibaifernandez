@@ -1,0 +1,31 @@
+﻿2026-05-22T11:31:37.5875885Z ##[group]Run npm run build:pages
+2026-05-22T11:31:37.5876221Z [36;1mnpm run build:pages[0m
+2026-05-22T11:31:37.5913448Z shell: /usr/bin/bash -e {0}
+2026-05-22T11:31:37.5913735Z ##[endgroup]
+2026-05-22T11:31:37.7048292Z 
+2026-05-22T11:31:37.7049017Z > portfolio-ibaifernandez@1.0.0 build:pages
+2026-05-22T11:31:37.7049648Z > node scripts/build-pages.mjs
+2026-05-22T11:31:37.7049928Z 
+2026-05-22T11:31:37.7509899Z [OK] Built index.html from src/pages/index.template.html
+2026-05-22T11:31:37.7521327Z [OK] Built cv-print.html from src/pages/cv-print.template.html
+2026-05-22T11:31:37.7528794Z [OK] Built lfi-legacy.html from src/pages/lfi-legacy.template.html
+2026-05-22T11:31:37.7541406Z [OK] Built lfi.html from src/pages/lfi.template.html
+2026-05-22T11:31:37.7549318Z [OK] Built ruta-de-la-digitalizacion-y-2x2-mkt.html from src/pages/project-ruta-digitalizacion-2x2mkt.template.html
+2026-05-22T11:31:37.7556434Z [OK] Built elm-st.html from src/pages/project-elm-st.template.html
+2026-05-22T11:31:37.7563601Z [OK] Built aglaya.html from src/pages/project-aglaya.template.html
+2026-05-22T11:31:37.7580756Z [OK] Built assets/css/font.min.css from assets/css/font.css
+2026-05-22T11:31:37.7611441Z [OK] Built assets/css/animate.min.css from assets/css/animate.css
+2026-05-22T11:31:37.7713247Z [OK] Built assets/css/style.min.css from assets/css/style.css
+2026-05-22T11:31:37.7717889Z [OK] Built assets/css/print.min.css from assets/css/print.css
+2026-05-22T11:31:37.7721591Z [OK] Built assets/css/cv-print.min.css from assets/css/cv-print.css
+2026-05-22T11:31:37.7729442Z [OK] Built assets/css/scrollbar.min.css from assets/css/scrollbar.css
+2026-05-22T11:31:37.7733100Z [OK] Built assets/css/jquery-jvectormap-2.0.3.min.css from assets/css/jquery-jvectormap-2.0.3.css
+2026-05-22T11:31:37.7738861Z [OK] Built assets/css/national-route.min.css from assets/css/national-route.css
+2026-05-22T11:31:37.7754094Z [OK] Built assets/js/custom.min.js from assets/js/custom.js
+2026-05-22T11:31:37.7758256Z [OK] Built assets/js/translate.min.js from assets/js/translate.js
+2026-05-22T11:31:37.7760080Z [OK] Built assets/js/cv-print.min.js from assets/js/cv-print.js
+2026-05-22T11:31:37.7764241Z [OK] Built assets/js/scrollbar.min.js from assets/js/scrollbar.js
+2026-05-22T11:31:37.7767643Z [OK] Built assets/js/cvtext1.min.js from assets/js/cvtext1.js
+2026-05-22T11:31:37.7770340Z [OK] Built assets/js/cvtext2.min.js from assets/js/cvtext2.js
+2026-05-22T11:31:37.7774644Z [OK] Built assets/js/circle-progress.min.js from assets/js/circle-progress.js
+2026-05-22T11:31:37.7780238Z [OK] Built assets/js/jquery-jvectormap-world-mill.min.js from assets/js/jquery-jvectormap-world-mill.js

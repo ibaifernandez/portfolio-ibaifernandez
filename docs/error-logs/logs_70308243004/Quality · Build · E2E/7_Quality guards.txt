@@ -1,0 +1,40 @@
+﻿2026-05-22T11:31:37.7912992Z ##[group]Run npm run test:quality
+2026-05-22T11:31:37.7913311Z [36;1mnpm run test:quality[0m
+2026-05-22T11:31:37.7949937Z shell: /usr/bin/bash -e {0}
+2026-05-22T11:31:37.7950200Z ##[endgroup]
+2026-05-22T11:31:37.9187728Z 
+2026-05-22T11:31:37.9188425Z > portfolio-ibaifernandez@1.0.0 test:quality
+2026-05-22T11:31:37.9189075Z > bash tests/quality-guards.sh
+2026-05-22T11:31:37.9189353Z 
+2026-05-22T11:31:38.0986588Z [OK] target=_blank links are hardened
+2026-05-22T11:31:38.1461560Z [OK] index.html is in sync with templates
+2026-05-22T11:31:38.1473610Z [OK] cv-print.html is in sync with templates
+2026-05-22T11:31:38.1484956Z [OK] lfi-legacy.html is in sync with templates
+2026-05-22T11:31:38.1493126Z [OK] lfi.html is in sync with templates
+2026-05-22T11:31:38.1501747Z [OK] ruta-de-la-digitalizacion-y-2x2-mkt.html is in sync with templates
+2026-05-22T11:31:38.1507683Z [OK] elm-st.html is in sync with templates
+2026-05-22T11:31:38.1513082Z [OK] aglaya.html is in sync with templates
+2026-05-22T11:31:38.1528549Z [OK] assets/css/font.min.css is in sync with source
+2026-05-22T11:31:38.1556533Z [OK] assets/css/animate.min.css is in sync with source
+2026-05-22T11:31:38.1656697Z [OK] assets/css/style.min.css is in sync with source
+2026-05-22T11:31:38.1660103Z [OK] assets/css/print.min.css is in sync with source
+2026-05-22T11:31:38.1662596Z [OK] assets/css/cv-print.min.css is in sync with source
+2026-05-22T11:31:38.1668969Z [OK] assets/css/scrollbar.min.css is in sync with source
+2026-05-22T11:31:38.1670945Z [OK] assets/css/jquery-jvectormap-2.0.3.min.css is in sync with source
+2026-05-22T11:31:38.1675000Z [OK] assets/css/national-route.min.css is in sync with source
+2026-05-22T11:31:38.1689080Z [OK] assets/js/custom.min.js is in sync with source
+2026-05-22T11:31:38.1692440Z [OK] assets/js/translate.min.js is in sync with source
+2026-05-22T11:31:38.1693546Z [OK] assets/js/cv-print.min.js is in sync with source
+2026-05-22T11:31:38.1696558Z [OK] assets/js/scrollbar.min.js is in sync with source
+2026-05-22T11:31:38.1698898Z [OK] assets/js/cvtext1.min.js is in sync with source
+2026-05-22T11:31:38.1699997Z [OK] assets/js/cvtext2.min.js is in sync with source
+2026-05-22T11:31:38.1703233Z [OK] assets/js/circle-progress.min.js is in sync with source
+2026-05-22T11:31:38.1708275Z [OK] assets/js/jquery-jvectormap-world-mill.min.js is in sync with source
+2026-05-22T11:31:38.2119811Z [BUDGET] index.html | HTML 187.9 KB | CSS 416.5 KB (6) | JS 142.1 KB (3) | IMG 708.5 KB (34)
+2026-05-22T11:31:38.2124106Z [OK] performance budgets passed
+2026-05-22T11:31:38.2556698Z [OK] AVIF coverage passed | checked=32 skipped_small=83 skipped_alpha_png=3
+2026-05-22T11:31:38.2995191Z [OK] WebP coverage passed | checked=35 skipped_small=83 skipped_missing_asset=0 require_asset=false
+2026-05-22T11:31:38.3573073Z [LINKS] checked 79 internal links
+2026-05-22T11:31:38.3577620Z [LINKS] found 27 unique external links
+2026-05-22T11:31:38.3578181Z [OK] link checks passed
+2026-05-22T11:31:38.3819870Z [OK] quality guards passed

@@ -1,0 +1,655 @@
+﻿2026-05-22T11:31:54.0938225Z ##[group]Run npm run test:e2e
+2026-05-22T11:31:54.0938542Z [36;1mnpm run test:e2e[0m
+2026-05-22T11:31:54.0975381Z shell: /usr/bin/bash -e {0}
+2026-05-22T11:31:54.0975658Z ##[endgroup]
+2026-05-22T11:31:54.2490734Z 
+2026-05-22T11:31:54.2491345Z > portfolio-ibaifernandez@1.0.0 test:e2e
+2026-05-22T11:31:54.2491742Z > playwright test
+2026-05-22T11:31:54.2491893Z 
+2026-05-22T11:31:55.6621774Z 
+2026-05-22T11:31:55.6622673Z Running 29 tests using 1 worker
+2026-05-22T11:31:55.6623062Z 
+2026-05-22T11:31:59.5922622Z   ✓   1 [chromium] › tests/e2e/a11y.spec.js:22:1 › contact section has no serious/critical WCAG violations (1.4s)
+2026-05-22T11:32:01.4470359Z   ✓   2 [chromium] › tests/e2e/a11y.spec.js:35:1 › home primary sections have no serious/critical WCAG violations (1.8s)
+2026-05-22T11:32:03.9853008Z   ✓   3 [chromium] › tests/e2e/archived-dossiers.spec.js:3:1 › archived dossier slugs bounce back to the home projects anchor (2.5s)
+2026-05-22T11:32:12.5956989Z   ✘   4 [chromium] › tests/e2e/contact.spec.js:11:1 › contact form exposes accessible validation feedback when empty (8.6s)
+2026-05-22T11:32:22.6372388Z   ✘   5 [chromium] › tests/e2e/contact.spec.js:11:1 › contact form exposes accessible validation feedback when empty (retry #1) (8.7s)
+2026-05-22T11:32:32.6227714Z   ✘   6 [chromium] › tests/e2e/contact.spec.js:11:1 › contact form exposes accessible validation feedback when empty (retry #2) (8.9s)
+2026-05-22T11:32:35.8227326Z   ✓   7 [chromium] › tests/e2e/contact.spec.js:24:1 › contact form validates invalid email format accessibly (2.1s)
+2026-05-22T11:32:37.8543484Z   ✓   8 [chromium] › tests/e2e/contact.spec.js:41:1 › contact form accepts a valid submission (2.0s)
+2026-05-22T11:32:37.8791571Z   ✓   9 [chromium] › tests/e2e/contact.spec.js:51:1 › contact function rejects too-fast payloads (15ms)
+2026-05-22T11:32:38.9721754Z   ✓  10 [chromium] › tests/e2e/dossiers.spec.js:3:1 › active dossier navigation stays inside the four-page public set (1.1s)
+2026-05-22T11:32:47.1232453Z   ✘  11 [chromium] › tests/e2e/home.spec.js:11:1 › home renders critical UI blocks (8.1s)
+2026-05-22T11:32:56.9240268Z   ✘  12 [chromium] › tests/e2e/home.spec.js:11:1 › home renders critical UI blocks (retry #1) (8.5s)
+2026-05-22T11:33:06.2577824Z   ✘  13 [chromium] › tests/e2e/home.spec.js:11:1 › home renders critical UI blocks (retry #2) (8.2s)
+2026-05-22T11:33:08.0233569Z   ✓  14 [chromium] › tests/e2e/home.spec.js:22:1 › sidebar navigation points to existing section anchors (663ms)
+2026-05-22T11:33:08.6260281Z   ✓  15 [chromium] › tests/e2e/home.spec.js:35:1 › skip link targets main content section (591ms)
+2026-05-22T11:33:09.1981081Z   ✓  16 [chromium] › tests/e2e/home.spec.js:46:1 › first keyboard tab lands on skip link (563ms)
+2026-05-22T11:33:17.3766885Z   ✘  17 [chromium] › tests/e2e/home.spec.js:54:1 › profile image uses AVIF/WebP sources with fallback (8.1s)
+2026-05-22T11:33:27.1902538Z   ✘  18 [chromium] › tests/e2e/home.spec.js:54:1 › profile image uses AVIF/WebP sources with fallback (retry #1) (8.5s)
+2026-05-22T11:33:36.5121214Z   ✘  19 [chromium] › tests/e2e/home.spec.js:54:1 › profile image uses AVIF/WebP sources with fallback (retry #2) (8.2s)
+2026-05-22T11:33:45.8372567Z   ✘  20 [chromium] › tests/e2e/home.spec.js:70:1 › language toggle updates html lang and hero pre-title text (8.2s)
+2026-05-22T11:33:55.6173169Z   ✘  21 [chromium] › tests/e2e/home.spec.js:70:1 › language toggle updates html lang and hero pre-title text (retry #1) (8.5s)
+2026-05-22T11:34:04.9301961Z   ✘  22 [chromium] › tests/e2e/home.spec.js:70:1 › language toggle updates html lang and hero pre-title text (retry #2) (8.2s)
+2026-05-22T11:34:06.7901047Z   ✓  23 [chromium] › tests/e2e/home.spec.js:83:1 › language toggle supports keyboard activation (757ms)
+2026-05-22T11:34:07.3850629Z   ✓  24 [chromium] › tests/e2e/home.spec.js:93:1 › external links with target blank are hardened (585ms)
+2026-05-22T11:34:09.4470733Z   ✓  25 [chromium] › tests/e2e/home.spec.js:108:1 › contact CTA points to contact section anchor (2.0s)
+2026-05-22T11:34:10.0748860Z   ✓  26 [chromium] › tests/e2e/home.spec.js:118:1 › projects grid only exposes the four active dossiers (618ms)
+2026-05-22T11:34:10.6560848Z   ✓  27 [chromium] › tests/e2e/home.spec.js:141:1 › contact form exposes anti-spam guard fields (572ms)
+2026-05-22T11:34:11.2546646Z   ✓  28 [chromium] › tests/e2e/home.spec.js:152:1 › retired blog route redirects to home (588ms)
+2026-05-22T11:34:15.9978019Z   ✓  29 [chromium] › tests/e2e/home.spec.js:161:1 › legacy project routes redirect to the normalized dossier slugs (4.7s)
+2026-05-22T11:34:16.0083599Z   ✓  30 [chromium] › tests/e2e/home.spec.js:202:1 › legacy LFi draft alias remains redirected in routing config (2ms)
+2026-05-22T11:34:16.5662817Z   ✓  31 [chromium] › tests/e2e/home.spec.js:212:1 › main content wrapper is not nested in hero and aligns after sidebar (548ms)
+2026-05-22T11:34:17.1462507Z   ✓  32 [chromium] › tests/e2e/keyboard.spec.js:34:1 › keyboard tab order reaches primary sidebar navigation in logical sequence (568ms)
+2026-05-22T11:34:18.0773833Z   ✓  33 [chromium] › tests/e2e/keyboard.spec.js:65:1 › sidebar anchors and language toggle are keyboard reachable and activatable (921ms)
+2026-05-22T11:34:18.8094050Z   ✓  34 [chromium] › tests/e2e/keyboard.spec.js:93:1 › contact form tab order is logical and complete (723ms)
+2026-05-22T11:34:19.4101394Z   ✓  35 [chromium] › tests/e2e/keyboard.spec.js:108:1 › sidebar social links are keyboard reachable and named for assistive tech (592ms)
+2026-05-22T11:34:20.3339611Z   ✓  36 [chromium] › tests/e2e/visual.spec.js:49:1 › contact section visual baseline (910ms)
+2026-05-22T11:34:23.6563918Z   ✘  37 [chromium] › tests/e2e/visual.spec.js:73:1 › experience, projects and logos visual baselines (3.3s)
+2026-05-22T11:34:28.8248349Z   ✘  38 [chromium] › tests/e2e/visual.spec.js:73:1 › experience, projects and logos visual baselines (retry #1) (3.8s)
+2026-05-22T11:34:33.3637982Z   ✘  39 [chromium] › tests/e2e/visual.spec.js:73:1 › experience, projects and logos visual baselines (retry #2) (3.4s)
+2026-05-22T11:34:33.3967419Z 
+2026-05-22T11:34:33.3972991Z 
+2026-05-22T11:34:33.3986709Z   1) [chromium] › tests/e2e/contact.spec.js:11:1 › contact form exposes accessible validation feedback when empty 
+2026-05-22T11:34:33.3987775Z 
+2026-05-22T11:34:33.3988628Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.3989298Z 
+2026-05-22T11:34:33.3989501Z     Locator: locator('.response')
+2026-05-22T11:34:33.3990222Z     Expected pattern: [32m/Please complete the required fields\./i[39m
+2026-05-22T11:34:33.3990965Z     Received string:  [31m"Please wait a moment and try again."[39m
+2026-05-22T11:34:33.3991515Z     Timeout: 7500ms
+2026-05-22T11:34:33.3991721Z 
+2026-05-22T11:34:33.3991838Z     Call log:
+2026-05-22T11:34:33.3992380Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.3993017Z     [2m  - waiting for locator('.response')[22m
+2026-05-22T11:34:33.3994615Z     [2m    11 × locator resolved to <div role="alert" aria-live="polite" aria-atomic="true" id="contact-response" class="response is-error">Please wait a moment and try again.</div>[22m
+2026-05-22T11:34:33.3996387Z     [2m       - unexpected value "Please wait a moment and try again."[22m
+2026-05-22T11:34:33.3996841Z 
+2026-05-22T11:34:33.3996853Z 
+2026-05-22T11:34:33.3997357Z       16 |   const response = page.locator('.response');
+2026-05-22T11:34:33.3998108Z       17 |   await expect(response).toHaveAttribute('role', 'alert');
+2026-05-22T11:34:33.3999000Z     > 18 |   await expect(response).toContainText(/Please complete the required fields\./i);
+2026-05-22T11:34:33.3999729Z          |                          ^
+2026-05-22T11:34:33.4000089Z       19 |
+2026-05-22T11:34:33.4000588Z       20 |   const firstName = page.locator('input[name="first_name"]');
+2026-05-22T11:34:33.4001411Z       21 |   await expect(firstName).toHaveAttribute('aria-invalid', 'true');
+2026-05-22T11:34:33.4002533Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/contact.spec.js:18:26
+2026-05-22T11:34:33.4003811Z 
+2026-05-22T11:34:33.4004551Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4005805Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium/test-failed-1.png
+2026-05-22T11:34:33.4007380Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4007876Z 
+2026-05-22T11:34:33.4008540Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4009678Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium/video.webm
+2026-05-22T11:34:33.4010968Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4011789Z 
+2026-05-22T11:34:33.4012572Z     Error Context: test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium/error-context.md
+2026-05-22T11:34:33.4013430Z 
+2026-05-22T11:34:33.4014054Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4014533Z 
+2026-05-22T11:34:33.4015258Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4015895Z 
+2026-05-22T11:34:33.4016084Z     Locator: locator('.response')
+2026-05-22T11:34:33.4016864Z     Expected pattern: [32m/Please complete the required fields\./i[39m
+2026-05-22T11:34:33.4018153Z     Received string:  [31m"Please wait a moment and try again."[39m
+2026-05-22T11:34:33.4018698Z     Timeout: 7500ms
+2026-05-22T11:34:33.4018894Z 
+2026-05-22T11:34:33.4019015Z     Call log:
+2026-05-22T11:34:33.4019595Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.4020285Z     [2m  - waiting for locator('.response')[22m
+2026-05-22T11:34:33.4021778Z     [2m    11 × locator resolved to <div role="alert" aria-live="polite" aria-atomic="true" id="contact-response" class="response is-error">Please wait a moment and try again.</div>[22m
+2026-05-22T11:34:33.4023374Z     [2m       - unexpected value "Please wait a moment and try again."[22m
+2026-05-22T11:34:33.4023830Z 
+2026-05-22T11:34:33.4023841Z 
+2026-05-22T11:34:33.4024108Z       16 |   const response = page.locator('.response');
+2026-05-22T11:34:33.4024776Z       17 |   await expect(response).toHaveAttribute('role', 'alert');
+2026-05-22T11:34:33.4025616Z     > 18 |   await expect(response).toContainText(/Please complete the required fields\./i);
+2026-05-22T11:34:33.4026328Z          |                          ^
+2026-05-22T11:34:33.4026705Z       19 |
+2026-05-22T11:34:33.4027753Z       20 |   const firstName = page.locator('input[name="first_name"]');
+2026-05-22T11:34:33.4028623Z       21 |   await expect(firstName).toHaveAttribute('aria-invalid', 'true');
+2026-05-22T11:34:33.4029637Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/contact.spec.js:18:26
+2026-05-22T11:34:33.4030691Z 
+2026-05-22T11:34:33.4031424Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4032709Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry1/test-failed-1.png
+2026-05-22T11:34:33.4034002Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4034421Z 
+2026-05-22T11:34:33.4035046Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4036252Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry1/video.webm
+2026-05-22T11:34:33.4038184Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4038672Z 
+2026-05-22T11:34:33.4039540Z     Error Context: test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry1/error-context.md
+2026-05-22T11:34:33.4040489Z 
+2026-05-22T11:34:33.4041197Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4042428Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4043312Z     Usage:
+2026-05-22T11:34:33.4043486Z 
+2026-05-22T11:34:33.4044327Z         npx playwright show-trace test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4045238Z 
+2026-05-22T11:34:33.4045874Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4046341Z 
+2026-05-22T11:34:33.4046955Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4047634Z 
+2026-05-22T11:34:33.4048335Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4048989Z 
+2026-05-22T11:34:33.4049181Z     Locator: locator('.response')
+2026-05-22T11:34:33.4049938Z     Expected pattern: [32m/Please complete the required fields\./i[39m
+2026-05-22T11:34:33.4050832Z     Received string:  [31m"Please wait a moment and try again."[39m
+2026-05-22T11:34:33.4051393Z     Timeout: 7500ms
+2026-05-22T11:34:33.4051587Z 
+2026-05-22T11:34:33.4051709Z     Call log:
+2026-05-22T11:34:33.4052367Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.4053087Z     [2m  - waiting for locator('.response')[22m
+2026-05-22T11:34:33.4054681Z     [2m    11 × locator resolved to <div role="alert" aria-live="polite" aria-atomic="true" id="contact-response" class="response is-error">Please wait a moment and try again.</div>[22m
+2026-05-22T11:34:33.4056248Z     [2m       - unexpected value "Please wait a moment and try again."[22m
+2026-05-22T11:34:33.4056708Z 
+2026-05-22T11:34:33.4056718Z 
+2026-05-22T11:34:33.4057481Z       16 |   const response = page.locator('.response');
+2026-05-22T11:34:33.4058148Z       17 |   await expect(response).toHaveAttribute('role', 'alert');
+2026-05-22T11:34:33.4058996Z     > 18 |   await expect(response).toContainText(/Please complete the required fields\./i);
+2026-05-22T11:34:33.4059723Z          |                          ^
+2026-05-22T11:34:33.4060092Z       19 |
+2026-05-22T11:34:33.4060598Z       20 |   const firstName = page.locator('input[name="first_name"]');
+2026-05-22T11:34:33.4061365Z       21 |   await expect(firstName).toHaveAttribute('aria-invalid', 'true');
+2026-05-22T11:34:33.4062427Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/contact.spec.js:18:26
+2026-05-22T11:34:33.4063377Z 
+2026-05-22T11:34:33.4064108Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4065411Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry2/test-failed-1.png
+2026-05-22T11:34:33.4066839Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4067551Z 
+2026-05-22T11:34:33.4068202Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4069415Z     test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry2/video.webm
+2026-05-22T11:34:33.4070758Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4071219Z 
+2026-05-22T11:34:33.4072050Z     Error Context: test-results/contact-contact-form-expos-d984c-idation-feedback-when-empty-chromium-retry2/error-context.md
+2026-05-22T11:34:33.4072961Z 
+2026-05-22T11:34:33.4073756Z   2) [chromium] › tests/e2e/home.spec.js:11:1 › home renders critical UI blocks ────────────────────
+2026-05-22T11:34:33.4074343Z 
+2026-05-22T11:34:33.4075046Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4075678Z 
+2026-05-22T11:34:33.4076130Z     Expected pattern: [32m/Ibai Fernández - Portfolio/i[39m
+2026-05-22T11:34:33.4077371Z     Received string:  [31m"Ibai Fernández — Founder-Operator. AI Product Engineer."[39m
+2026-05-22T11:34:33.4078047Z     Timeout: 7500ms
+2026-05-22T11:34:33.4078260Z 
+2026-05-22T11:34:33.4078379Z     Call log:
+2026-05-22T11:34:33.4078924Z     [2m  - Expect "toHaveTitle" with timeout 7500ms[22m
+2026-05-22T11:34:33.4079886Z     [2m    11 × unexpected value "Ibai Fernández — Founder-Operator. AI Product Engineer."[22m
+2026-05-22T11:34:33.4080476Z 
+2026-05-22T11:34:33.4080488Z 
+2026-05-22T11:34:33.4080702Z       12 |   await page.goto('/index.html');
+2026-05-22T11:34:33.4081134Z       13 |
+2026-05-22T11:34:33.4081774Z     > 14 |   await expect(page).toHaveTitle(/Ibai Fernández - Portfolio/i);
+2026-05-22T11:34:33.4082369Z          |                      ^
+2026-05-22T11:34:33.4082903Z       15 |   await expect(page.locator('h1.banner_name')).toBeVisible();
+2026-05-22T11:34:33.4083723Z       16 |   await expect(page.locator('#translate-button-icon')).toBeVisible();
+2026-05-22T11:34:33.4085032Z       17 |   await expect(page.locator('#translate-button-icon')).toHaveAttribute('role', 'button');
+2026-05-22T11:34:33.4086227Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:14:22
+2026-05-22T11:34:33.4086890Z 
+2026-05-22T11:34:33.4087954Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4088992Z     test-results/home-home-renders-critical-UI-blocks-chromium/test-failed-1.png
+2026-05-22T11:34:33.4090157Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4090858Z 
+2026-05-22T11:34:33.4091734Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4092647Z     test-results/home-home-renders-critical-UI-blocks-chromium/video.webm
+2026-05-22T11:34:33.4093863Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4094332Z 
+2026-05-22T11:34:33.4094880Z     Error Context: test-results/home-home-renders-critical-UI-blocks-chromium/error-context.md
+2026-05-22T11:34:33.4095493Z 
+2026-05-22T11:34:33.4096071Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4096538Z 
+2026-05-22T11:34:33.4097431Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4098030Z 
+2026-05-22T11:34:33.4098448Z     Expected pattern: [32m/Ibai Fernández - Portfolio/i[39m
+2026-05-22T11:34:33.4099480Z     Received string:  [31m"Ibai Fernández — Founder-Operator. AI Product Engineer."[39m
+2026-05-22T11:34:33.4100132Z     Timeout: 7500ms
+2026-05-22T11:34:33.4100319Z 
+2026-05-22T11:34:33.4100438Z     Call log:
+2026-05-22T11:34:33.4100958Z     [2m  - Expect "toHaveTitle" with timeout 7500ms[22m
+2026-05-22T11:34:33.4101882Z     [2m    11 × unexpected value "Ibai Fernández — Founder-Operator. AI Product Engineer."[22m
+2026-05-22T11:34:33.4102422Z 
+2026-05-22T11:34:33.4102431Z 
+2026-05-22T11:34:33.4102634Z       12 |   await page.goto('/index.html');
+2026-05-22T11:34:33.4103032Z       13 |
+2026-05-22T11:34:33.4103631Z     > 14 |   await expect(page).toHaveTitle(/Ibai Fernández - Portfolio/i);
+2026-05-22T11:34:33.4104227Z          |                      ^
+2026-05-22T11:34:33.4104788Z       15 |   await expect(page.locator('h1.banner_name')).toBeVisible();
+2026-05-22T11:34:33.4105575Z       16 |   await expect(page.locator('#translate-button-icon')).toBeVisible();
+2026-05-22T11:34:33.4106575Z       17 |   await expect(page.locator('#translate-button-icon')).toHaveAttribute('role', 'button');
+2026-05-22T11:34:33.4107971Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:14:22
+2026-05-22T11:34:33.4108651Z 
+2026-05-22T11:34:33.4109340Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4110409Z     test-results/home-home-renders-critical-UI-blocks-chromium-retry1/test-failed-1.png
+2026-05-22T11:34:33.4111581Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4112038Z 
+2026-05-22T11:34:33.4112657Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4113644Z     test-results/home-home-renders-critical-UI-blocks-chromium-retry1/video.webm
+2026-05-22T11:34:33.4114760Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4115434Z 
+2026-05-22T11:34:33.4116038Z     Error Context: test-results/home-home-renders-critical-UI-blocks-chromium-retry1/error-context.md
+2026-05-22T11:34:33.4116698Z 
+2026-05-22T11:34:33.4117848Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4119078Z     test-results/home-home-renders-critical-UI-blocks-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4119751Z     Usage:
+2026-05-22T11:34:33.4119911Z 
+2026-05-22T11:34:33.4120550Z         npx playwright show-trace test-results/home-home-renders-critical-UI-blocks-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4121230Z 
+2026-05-22T11:34:33.4121932Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4122377Z 
+2026-05-22T11:34:33.4122983Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4123467Z 
+2026-05-22T11:34:33.4124349Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4124939Z 
+2026-05-22T11:34:33.4125391Z     Expected pattern: [32m/Ibai Fernández - Portfolio/i[39m
+2026-05-22T11:34:33.4126425Z     Received string:  [31m"Ibai Fernández — Founder-Operator. AI Product Engineer."[39m
+2026-05-22T11:34:33.4127359Z     Timeout: 7500ms
+2026-05-22T11:34:33.4127558Z 
+2026-05-22T11:34:33.4127681Z     Call log:
+2026-05-22T11:34:33.4128037Z     [2m  - Expect "toHaveTitle" with timeout 7500ms[22m
+2026-05-22T11:34:33.4128630Z     [2m    11 × unexpected value "Ibai Fernández — Founder-Operator. AI Product Engineer."[22m
+2026-05-22T11:34:33.4128962Z 
+2026-05-22T11:34:33.4128968Z 
+2026-05-22T11:34:33.4129104Z       12 |   await page.goto('/index.html');
+2026-05-22T11:34:33.4129367Z       13 |
+2026-05-22T11:34:33.4129755Z     > 14 |   await expect(page).toHaveTitle(/Ibai Fernández - Portfolio/i);
+2026-05-22T11:34:33.4130145Z          |                      ^
+2026-05-22T11:34:33.4130499Z       15 |   await expect(page.locator('h1.banner_name')).toBeVisible();
+2026-05-22T11:34:33.4130974Z       16 |   await expect(page.locator('#translate-button-icon')).toBeVisible();
+2026-05-22T11:34:33.4131553Z       17 |   await expect(page.locator('#translate-button-icon')).toHaveAttribute('role', 'button');
+2026-05-22T11:34:33.4132265Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:14:22
+2026-05-22T11:34:33.4132649Z 
+2026-05-22T11:34:33.4133039Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4133669Z     test-results/home-home-renders-critical-UI-blocks-chromium-retry2/test-failed-1.png
+2026-05-22T11:34:33.4134357Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4134611Z 
+2026-05-22T11:34:33.4134977Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4135801Z     test-results/home-home-renders-critical-UI-blocks-chromium-retry2/video.webm
+2026-05-22T11:34:33.4136458Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4136870Z 
+2026-05-22T11:34:33.4137531Z     Error Context: test-results/home-home-renders-critical-UI-blocks-chromium-retry2/error-context.md
+2026-05-22T11:34:33.4137963Z 
+2026-05-22T11:34:33.4138430Z   3) [chromium] › tests/e2e/home.spec.js:54:1 › profile image uses AVIF/WebP sources with fallback ─
+2026-05-22T11:34:33.4138807Z 
+2026-05-22T11:34:33.4139259Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4139634Z 
+2026-05-22T11:34:33.4139933Z     Locator: locator('.profile_circle picture').first().locator('source[type="image/avif"]')
+2026-05-22T11:34:33.4140549Z     Expected pattern: [32m/assets\/images\/ibai-fernandez-1\.avif/[39m
+2026-05-22T11:34:33.4141149Z     Received string:  [31m"assets/images/ibai-fernandez-1x1-sidebar.avif"[39m
+2026-05-22T11:34:33.4141516Z     Timeout: 7500ms
+2026-05-22T11:34:33.4141649Z 
+2026-05-22T11:34:33.4141739Z     Call log:
+2026-05-22T11:34:33.4142081Z     [2m  - Expect "toHaveAttribute" with timeout 7500ms[22m
+2026-05-22T11:34:33.4142708Z     [2m  - waiting for locator('.profile_circle picture').first().locator('source[type="image/avif"]')[22m
+2026-05-22T11:34:33.4143540Z     [2m    11 × locator resolved to <source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar.avif"/>[22m
+2026-05-22T11:34:33.4144264Z     [2m       - unexpected value "assets/images/ibai-fernandez-1x1-sidebar.avif"[22m
+2026-05-22T11:34:33.4144563Z 
+2026-05-22T11:34:33.4144568Z 
+2026-05-22T11:34:33.4144820Z       57 |   const profilePicture = page.locator('.profile_circle picture').first();
+2026-05-22T11:34:33.4145273Z       58 |   await expect(profilePicture).toBeVisible();
+2026-05-22T11:34:33.4145773Z     > 59 |   await expect(profilePicture.locator('source[type="image/avif"]')).toHaveAttribute(
+2026-05-22T11:34:33.4146264Z          |                                                                     ^
+2026-05-22T11:34:33.4146569Z       60 |     'srcset',
+2026-05-22T11:34:33.4146849Z       61 |     /assets\/images\/ibai-fernandez-1\.avif/
+2026-05-22T11:34:33.4147331Z       62 |   );
+2026-05-22T11:34:33.4147799Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:59:69
+2026-05-22T11:34:33.4148182Z 
+2026-05-22T11:34:33.4148581Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4149283Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium/test-failed-1.png
+2026-05-22T11:34:33.4150020Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4150283Z 
+2026-05-22T11:34:33.4150808Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4151434Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium/video.webm
+2026-05-22T11:34:33.4152288Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4152561Z 
+2026-05-22T11:34:33.4152971Z     Error Context: test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium/error-context.md
+2026-05-22T11:34:33.4153434Z 
+2026-05-22T11:34:33.4153774Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4154053Z 
+2026-05-22T11:34:33.4154484Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4154863Z 
+2026-05-22T11:34:33.4155152Z     Locator: locator('.profile_circle picture').first().locator('source[type="image/avif"]')
+2026-05-22T11:34:33.4155771Z     Expected pattern: [32m/assets\/images\/ibai-fernandez-1\.avif/[39m
+2026-05-22T11:34:33.4156331Z     Received string:  [31m"assets/images/ibai-fernandez-1x1-sidebar.avif"[39m
+2026-05-22T11:34:33.4156694Z     Timeout: 7500ms
+2026-05-22T11:34:33.4156837Z 
+2026-05-22T11:34:33.4156915Z     Call log:
+2026-05-22T11:34:33.4157466Z     [2m  - Expect "toHaveAttribute" with timeout 7500ms[22m
+2026-05-22T11:34:33.4158092Z     [2m  - waiting for locator('.profile_circle picture').first().locator('source[type="image/avif"]')[22m
+2026-05-22T11:34:33.4158971Z     [2m    11 × locator resolved to <source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar.avif"/>[22m
+2026-05-22T11:34:33.4159704Z     [2m       - unexpected value "assets/images/ibai-fernandez-1x1-sidebar.avif"[22m
+2026-05-22T11:34:33.4160005Z 
+2026-05-22T11:34:33.4160012Z 
+2026-05-22T11:34:33.4160261Z       57 |   const profilePicture = page.locator('.profile_circle picture').first();
+2026-05-22T11:34:33.4160721Z       58 |   await expect(profilePicture).toBeVisible();
+2026-05-22T11:34:33.4161213Z     > 59 |   await expect(profilePicture.locator('source[type="image/avif"]')).toHaveAttribute(
+2026-05-22T11:34:33.4161700Z          |                                                                     ^
+2026-05-22T11:34:33.4161999Z       60 |     'srcset',
+2026-05-22T11:34:33.4162281Z       61 |     /assets\/images\/ibai-fernandez-1\.avif/
+2026-05-22T11:34:33.4162556Z       62 |   );
+2026-05-22T11:34:33.4163021Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:59:69
+2026-05-22T11:34:33.4163399Z 
+2026-05-22T11:34:33.4163785Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4164503Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry1/test-failed-1.png
+2026-05-22T11:34:33.4165272Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4165536Z 
+2026-05-22T11:34:33.4165896Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4166553Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry1/video.webm
+2026-05-22T11:34:33.4167744Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4168005Z 
+2026-05-22T11:34:33.4168457Z     Error Context: test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry1/error-context.md
+2026-05-22T11:34:33.4168929Z 
+2026-05-22T11:34:33.4169308Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4169977Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4170450Z     Usage:
+2026-05-22T11:34:33.4170555Z 
+2026-05-22T11:34:33.4171025Z         npx playwright show-trace test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4171682Z 
+2026-05-22T11:34:33.4172025Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4172306Z 
+2026-05-22T11:34:33.4172648Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4172913Z 
+2026-05-22T11:34:33.4173347Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoHaveAttribute[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4173715Z 
+2026-05-22T11:34:33.4174007Z     Locator: locator('.profile_circle picture').first().locator('source[type="image/avif"]')
+2026-05-22T11:34:33.4174610Z     Expected pattern: [32m/assets\/images\/ibai-fernandez-1\.avif/[39m
+2026-05-22T11:34:33.4175169Z     Received string:  [31m"assets/images/ibai-fernandez-1x1-sidebar.avif"[39m
+2026-05-22T11:34:33.4175530Z     Timeout: 7500ms
+2026-05-22T11:34:33.4175671Z 
+2026-05-22T11:34:33.4175745Z     Call log:
+2026-05-22T11:34:33.4176079Z     [2m  - Expect "toHaveAttribute" with timeout 7500ms[22m
+2026-05-22T11:34:33.4176699Z     [2m  - waiting for locator('.profile_circle picture').first().locator('source[type="image/avif"]')[22m
+2026-05-22T11:34:33.4177725Z     [2m    11 × locator resolved to <source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar.avif"/>[22m
+2026-05-22T11:34:33.4178445Z     [2m       - unexpected value "assets/images/ibai-fernandez-1x1-sidebar.avif"[22m
+2026-05-22T11:34:33.4178741Z 
+2026-05-22T11:34:33.4178748Z 
+2026-05-22T11:34:33.4178995Z       57 |   const profilePicture = page.locator('.profile_circle picture').first();
+2026-05-22T11:34:33.4179439Z       58 |   await expect(profilePicture).toBeVisible();
+2026-05-22T11:34:33.4179932Z     > 59 |   await expect(profilePicture.locator('source[type="image/avif"]')).toHaveAttribute(
+2026-05-22T11:34:33.4180418Z          |                                                                     ^
+2026-05-22T11:34:33.4180725Z       60 |     'srcset',
+2026-05-22T11:34:33.4181009Z       61 |     /assets\/images\/ibai-fernandez-1\.avif/
+2026-05-22T11:34:33.4181284Z       62 |   );
+2026-05-22T11:34:33.4181895Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:59:69
+2026-05-22T11:34:33.4182274Z 
+2026-05-22T11:34:33.4182664Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4183380Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry2/test-failed-1.png
+2026-05-22T11:34:33.4184144Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4184406Z 
+2026-05-22T11:34:33.4184767Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4185417Z     test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry2/video.webm
+2026-05-22T11:34:33.4186288Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4186547Z 
+2026-05-22T11:34:33.4186995Z     Error Context: test-results/home-profile-image-uses-AVIF-WebP-sources-with-fallback-chromium-retry2/error-context.md
+2026-05-22T11:34:33.4187715Z 
+2026-05-22T11:34:33.4188121Z   4) [chromium] › tests/e2e/home.spec.js:70:1 › language toggle updates html lang and hero pre-title text 
+2026-05-22T11:34:33.4188480Z 
+2026-05-22T11:34:33.4188912Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4189279Z 
+2026-05-22T11:34:33.4189440Z     Locator: locator('[translate="systemic"]').first()
+2026-05-22T11:34:33.4189857Z     Expected pattern: [32m/Design the machine\./i[39m
+2026-05-22T11:34:33.4190149Z     Timeout: 7500ms
+2026-05-22T11:34:33.4190374Z     Error: element(s) not found
+2026-05-22T11:34:33.4190546Z 
+2026-05-22T11:34:33.4190621Z     Call log:
+2026-05-22T11:34:33.4190940Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.4191407Z     [2m  - waiting for locator('[translate="systemic"]').first()[22m
+2026-05-22T11:34:33.4191659Z 
+2026-05-22T11:34:33.4191664Z 
+2026-05-22T11:34:33.4191887Z       73 |   const preTitle = page.locator('[translate="systemic"]').first();
+2026-05-22T11:34:33.4192367Z       74 |   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+2026-05-22T11:34:33.4193306Z     > 75 |   await expect(preTitle).toContainText(new RegExp(escapeRegex(enTranslations.systemic), 'i'));
+2026-05-22T11:34:33.4193789Z          |                          ^
+2026-05-22T11:34:33.4194025Z       76 |
+2026-05-22T11:34:33.4194316Z       77 |   await page.locator('#translate-button-icon').click();
+2026-05-22T11:34:33.4194617Z       78 |
+2026-05-22T11:34:33.4195067Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:75:26
+2026-05-22T11:34:33.4195456Z 
+2026-05-22T11:34:33.4195853Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4196574Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium/test-failed-1.png
+2026-05-22T11:34:33.4197766Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4198049Z 
+2026-05-22T11:34:33.4198432Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4199119Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium/video.webm
+2026-05-22T11:34:33.4199856Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4200122Z 
+2026-05-22T11:34:33.4200555Z     Error Context: test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium/error-context.md
+2026-05-22T11:34:33.4201228Z 
+2026-05-22T11:34:33.4201563Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4201833Z 
+2026-05-22T11:34:33.4202260Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4202773Z 
+2026-05-22T11:34:33.4202933Z     Locator: locator('[translate="systemic"]').first()
+2026-05-22T11:34:33.4203357Z     Expected pattern: [32m/Design the machine\./i[39m
+2026-05-22T11:34:33.4203650Z     Timeout: 7500ms
+2026-05-22T11:34:33.4203880Z     Error: element(s) not found
+2026-05-22T11:34:33.4204034Z 
+2026-05-22T11:34:33.4204114Z     Call log:
+2026-05-22T11:34:33.4204443Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.4204913Z     [2m  - waiting for locator('[translate="systemic"]').first()[22m
+2026-05-22T11:34:33.4205153Z 
+2026-05-22T11:34:33.4205158Z 
+2026-05-22T11:34:33.4205382Z       73 |   const preTitle = page.locator('[translate="systemic"]').first();
+2026-05-22T11:34:33.4205880Z       74 |   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+2026-05-22T11:34:33.4206469Z     > 75 |   await expect(preTitle).toContainText(new RegExp(escapeRegex(enTranslations.systemic), 'i'));
+2026-05-22T11:34:33.4206936Z          |                          ^
+2026-05-22T11:34:33.4207487Z       76 |
+2026-05-22T11:34:33.4207890Z       77 |   await page.locator('#translate-button-icon').click();
+2026-05-22T11:34:33.4208295Z       78 |
+2026-05-22T11:34:33.4209021Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:75:26
+2026-05-22T11:34:33.4209491Z 
+2026-05-22T11:34:33.4209887Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4210646Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry1/test-failed-1.png
+2026-05-22T11:34:33.4211438Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4211716Z 
+2026-05-22T11:34:33.4212074Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4212760Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry1/video.webm
+2026-05-22T11:34:33.4213523Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4214042Z 
+2026-05-22T11:34:33.4214615Z     Error Context: test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry1/error-context.md
+2026-05-22T11:34:33.4215225Z 
+2026-05-22T11:34:33.4215684Z     attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4216803Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4217842Z     Usage:
+2026-05-22T11:34:33.4218241Z 
+2026-05-22T11:34:33.4218847Z         npx playwright show-trace test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4219500Z 
+2026-05-22T11:34:33.4220011Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4220492Z 
+2026-05-22T11:34:33.4220923Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4221230Z 
+2026-05-22T11:34:33.4221768Z     Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4222259Z 
+2026-05-22T11:34:33.4222484Z     Locator: locator('[translate="systemic"]').first()
+2026-05-22T11:34:33.4235009Z     Expected pattern: [32m/Design the machine\./i[39m
+2026-05-22T11:34:33.4235529Z     Timeout: 7500ms
+2026-05-22T11:34:33.4235877Z     Error: element(s) not found
+2026-05-22T11:34:33.4236136Z 
+2026-05-22T11:34:33.4236240Z     Call log:
+2026-05-22T11:34:33.4236771Z     [2m  - Expect "toContainText" with timeout 7500ms[22m
+2026-05-22T11:34:33.4237654Z     [2m  - waiting for locator('[translate="systemic"]').first()[22m
+2026-05-22T11:34:33.4237995Z 
+2026-05-22T11:34:33.4238010Z 
+2026-05-22T11:34:33.4238237Z       73 |   const preTitle = page.locator('[translate="systemic"]').first();
+2026-05-22T11:34:33.4238739Z       74 |   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+2026-05-22T11:34:33.4239367Z     > 75 |   await expect(preTitle).toContainText(new RegExp(escapeRegex(enTranslations.systemic), 'i'));
+2026-05-22T11:34:33.4239854Z          |                          ^
+2026-05-22T11:34:33.4240103Z       76 |
+2026-05-22T11:34:33.4240422Z       77 |   await page.locator('#translate-button-icon').click();
+2026-05-22T11:34:33.4240733Z       78 |
+2026-05-22T11:34:33.4241182Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/home.spec.js:75:26
+2026-05-22T11:34:33.4241577Z 
+2026-05-22T11:34:33.4241991Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4242779Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry2/test-failed-1.png
+2026-05-22T11:34:33.4243600Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4243879Z 
+2026-05-22T11:34:33.4244245Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4244941Z     test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry2/video.webm
+2026-05-22T11:34:33.4245705Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4245966Z 
+2026-05-22T11:34:33.4246435Z     Error Context: test-results/home-language-toggle-updat-7c8d9-ang-and-hero-pre-title-text-chromium-retry2/error-context.md
+2026-05-22T11:34:33.4247469Z 
+2026-05-22T11:34:33.4247876Z   5) [chromium] › tests/e2e/visual.spec.js:73:1 › experience, projects and logos visual baselines ──
+2026-05-22T11:34:33.4248235Z 
+2026-05-22T11:34:33.4248664Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4249196Z 
+2026-05-22T11:34:33.4249408Z       317159 pixels (ratio 0.20 of all image pixels) are different.
+2026-05-22T11:34:33.4249668Z 
+2026-05-22T11:34:33.4249809Z       Snapshot: experience-section.png
+2026-05-22T11:34:33.4250005Z 
+2026-05-22T11:34:33.4250086Z     Call log:
+2026-05-22T11:34:33.4250552Z     [2m  - Expect "toHaveScreenshot(experience-section.png)" with timeout 7500ms[22m
+2026-05-22T11:34:33.4251091Z     [2m    - verifying given screenshot expectation[22m
+2026-05-22T11:34:33.4251468Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4251819Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4252178Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4252480Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4252905Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4253370Z     [2m  - waiting 100ms before taking screenshot[22m
+2026-05-22T11:34:33.4253735Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4254081Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4254428Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4254725Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4255038Z     [2m  - captured a stable screenshot[22m
+2026-05-22T11:34:33.4255481Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4255743Z 
+2026-05-22T11:34:33.4255750Z 
+2026-05-22T11:34:33.4255838Z       109 |       };
+2026-05-22T11:34:33.4256040Z       110 |
+2026-05-22T11:34:33.4256354Z     > 111 |       await expect(page).toHaveScreenshot(section.snapshot, {
+2026-05-22T11:34:33.4256725Z           |                          ^
+2026-05-22T11:34:33.4256970Z       112 |         clip,
+2026-05-22T11:34:33.4257428Z       113 |         animations: 'disabled',
+2026-05-22T11:34:33.4257711Z       114 |         caret: 'hide',
+2026-05-22T11:34:33.4258251Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/visual.spec.js:111:26
+2026-05-22T11:34:33.4258662Z 
+2026-05-22T11:34:33.4259079Z     attachment #1: experience-section (image/png) ──────────────────────────────────────────────────
+2026-05-22T11:34:33.4259661Z     Expected: tests/e2e/visual.spec.js-snapshots/experience-section.png
+2026-05-22T11:34:33.4260396Z     Received: test-results/visual-experience-projects-and-logos-visual-baselines-chromium/experience-section-actual.png
+2026-05-22T11:34:33.4261310Z     Diff:     test-results/visual-experience-projects-and-logos-visual-baselines-chromium/experience-section-diff.png
+2026-05-22T11:34:33.4262102Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4262385Z 
+2026-05-22T11:34:33.4262755Z     attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4263430Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium/test-failed-1.png
+2026-05-22T11:34:33.4264309Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4264568Z 
+2026-05-22T11:34:33.4264930Z     attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4265554Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium/video.webm
+2026-05-22T11:34:33.4266265Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4266520Z 
+2026-05-22T11:34:33.4266935Z     Error Context: test-results/visual-experience-projects-and-logos-visual-baselines-chromium/error-context.md
+2026-05-22T11:34:33.4267781Z 
+2026-05-22T11:34:33.4268123Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4268387Z 
+2026-05-22T11:34:33.4268817Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4269202Z 
+2026-05-22T11:34:33.4269412Z       317159 pixels (ratio 0.20 of all image pixels) are different.
+2026-05-22T11:34:33.4269656Z 
+2026-05-22T11:34:33.4269789Z       Snapshot: experience-section.png
+2026-05-22T11:34:33.4269969Z 
+2026-05-22T11:34:33.4270056Z     Call log:
+2026-05-22T11:34:33.4270510Z     [2m  - Expect "toHaveScreenshot(experience-section.png)" with timeout 7500ms[22m
+2026-05-22T11:34:33.4271045Z     [2m    - verifying given screenshot expectation[22m
+2026-05-22T11:34:33.4271416Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4271753Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4272117Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4272423Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4272837Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4273301Z     [2m  - waiting 100ms before taking screenshot[22m
+2026-05-22T11:34:33.4273957Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4274294Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4274630Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4274921Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4275228Z     [2m  - captured a stable screenshot[22m
+2026-05-22T11:34:33.4275656Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4275920Z 
+2026-05-22T11:34:33.4275927Z 
+2026-05-22T11:34:33.4276006Z       109 |       };
+2026-05-22T11:34:33.4276208Z       110 |
+2026-05-22T11:34:33.4276516Z     > 111 |       await expect(page).toHaveScreenshot(section.snapshot, {
+2026-05-22T11:34:33.4276883Z           |                          ^
+2026-05-22T11:34:33.4277353Z       112 |         clip,
+2026-05-22T11:34:33.4277614Z       113 |         animations: 'disabled',
+2026-05-22T11:34:33.4277892Z       114 |         caret: 'hide',
+2026-05-22T11:34:33.4278578Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/visual.spec.js:111:26
+2026-05-22T11:34:33.4278979Z 
+2026-05-22T11:34:33.4279402Z     attachment #1: experience-section (image/png) ──────────────────────────────────────────────────
+2026-05-22T11:34:33.4279976Z     Expected: tests/e2e/visual.spec.js-snapshots/experience-section.png
+2026-05-22T11:34:33.4280864Z     Received: test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/experience-section-actual.png
+2026-05-22T11:34:33.4281956Z     Diff:     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/experience-section-diff.png
+2026-05-22T11:34:33.4282821Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4283511Z 
+2026-05-22T11:34:33.4284236Z     attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4285276Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/test-failed-1.png
+2026-05-22T11:34:33.4286052Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4286329Z 
+2026-05-22T11:34:33.4286699Z     attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4287736Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/video.webm
+2026-05-22T11:34:33.4288497Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4288761Z 
+2026-05-22T11:34:33.4289215Z     Error Context: test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/error-context.md
+2026-05-22T11:34:33.4289717Z 
+2026-05-22T11:34:33.4290091Z     attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4290773Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4291251Z     Usage:
+2026-05-22T11:34:33.4291367Z 
+2026-05-22T11:34:33.4292112Z         npx playwright show-trace test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry1/trace.zip
+2026-05-22T11:34:33.4292635Z 
+2026-05-22T11:34:33.4292975Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4293242Z 
+2026-05-22T11:34:33.4293577Z     Retry #2 ───────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4293846Z 
+2026-05-22T11:34:33.4294274Z     Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveScreenshot[2m([22m[32mexpected[39m[2m)[22m failed
+2026-05-22T11:34:33.4294828Z 
+2026-05-22T11:34:33.4295030Z       317159 pixels (ratio 0.20 of all image pixels) are different.
+2026-05-22T11:34:33.4295282Z 
+2026-05-22T11:34:33.4295410Z       Snapshot: experience-section.png
+2026-05-22T11:34:33.4295719Z 
+2026-05-22T11:34:33.4295797Z     Call log:
+2026-05-22T11:34:33.4296263Z     [2m  - Expect "toHaveScreenshot(experience-section.png)" with timeout 7500ms[22m
+2026-05-22T11:34:33.4296798Z     [2m    - verifying given screenshot expectation[22m
+2026-05-22T11:34:33.4297653Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4298038Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4298405Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4298722Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4299150Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4299615Z     [2m  - waiting 100ms before taking screenshot[22m
+2026-05-22T11:34:33.4299977Z     [2m  - taking page screenshot[22m
+2026-05-22T11:34:33.4300312Z     [2m    - disabled all CSS animations[22m
+2026-05-22T11:34:33.4300650Z     [2m  - waiting for fonts to load...[22m
+2026-05-22T11:34:33.4300941Z     [2m  - fonts loaded[22m
+2026-05-22T11:34:33.4301249Z     [2m  - captured a stable screenshot[22m
+2026-05-22T11:34:33.4301690Z     [2m  - 317159 pixels (ratio 0.20 of all image pixels) are different.[22m
+2026-05-22T11:34:33.4301946Z 
+2026-05-22T11:34:33.4301952Z 
+2026-05-22T11:34:33.4302187Z       109 |       };
+2026-05-22T11:34:33.4302474Z       110 |
+2026-05-22T11:34:33.4302791Z     > 111 |       await expect(page).toHaveScreenshot(section.snapshot, {
+2026-05-22T11:34:33.4303155Z           |                          ^
+2026-05-22T11:34:33.4303401Z       112 |         clip,
+2026-05-22T11:34:33.4303660Z       113 |         animations: 'disabled',
+2026-05-22T11:34:33.4303935Z       114 |         caret: 'hide',
+2026-05-22T11:34:33.4304462Z         at /home/runner/work/portfolio-ibaifernandez/portfolio-ibaifernandez/tests/e2e/visual.spec.js:111:26
+2026-05-22T11:34:33.4304863Z 
+2026-05-22T11:34:33.4305282Z     attachment #1: experience-section (image/png) ──────────────────────────────────────────────────
+2026-05-22T11:34:33.4305855Z     Expected: tests/e2e/visual.spec.js-snapshots/experience-section.png
+2026-05-22T11:34:33.4306621Z     Received: test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry2/experience-section-actual.png
+2026-05-22T11:34:33.4307868Z     Diff:     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry2/experience-section-diff.png
+2026-05-22T11:34:33.4308715Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4308981Z 
+2026-05-22T11:34:33.4309354Z     attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4310071Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry2/test-failed-1.png
+2026-05-22T11:34:33.4310853Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4311109Z 
+2026-05-22T11:34:33.4311471Z     attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4312308Z     test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry2/video.webm
+2026-05-22T11:34:33.4313051Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+2026-05-22T11:34:33.4313312Z 
+2026-05-22T11:34:33.4313757Z     Error Context: test-results/visual-experience-projects-and-logos-visual-baselines-chromium-retry2/error-context.md
+2026-05-22T11:34:33.4314226Z 
+2026-05-22T11:34:33.4314308Z   5 failed
+2026-05-22T11:34:33.4314870Z     [chromium] › tests/e2e/contact.spec.js:11:1 › contact form exposes accessible validation feedback when empty 
+2026-05-22T11:34:33.4315783Z     [chromium] › tests/e2e/home.spec.js:11:1 › home renders critical UI blocks ─────────────────────
+2026-05-22T11:34:33.4316462Z     [chromium] › tests/e2e/home.spec.js:54:1 › profile image uses AVIF/WebP sources with fallback ──
+2026-05-22T11:34:33.4317306Z     [chromium] › tests/e2e/home.spec.js:70:1 › language toggle updates html lang and hero pre-title text 
+2026-05-22T11:34:33.4318031Z     [chromium] › tests/e2e/visual.spec.js:73:1 › experience, projects and logos visual baselines ───
+2026-05-22T11:34:33.4318454Z   24 passed (2.6m)
+2026-05-22T11:34:33.5028371Z ##[error]Process completed with exit code 1.
