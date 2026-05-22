@@ -40,7 +40,7 @@ function createProjectStructuredData({
         '@id': personSchemaId,
         name: personSchemaName,
         url: `${siteBaseUrl}/`,
-        image: `${siteBaseUrl}/assets/images/ibai-fernandez-1.jpg`,
+        image: `${siteBaseUrl}/assets/images/ibai-fernandez-1x1-sidebar.jpeg`,
         email: 'mailto:info@ibaifernandez.com',
         telephone: '+57 322 428 8532',
         sameAs: [
