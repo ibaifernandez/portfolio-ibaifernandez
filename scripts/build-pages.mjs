@@ -6,6 +6,7 @@ import { renderMinifiedAsset } from './build/assets.mjs';
 import { createBuildContext } from './build/context.mjs';
 import { generatedAssetEntries } from './build/config.mjs';
 import { createBuildRuntime } from './build/renderers.mjs';
+import { renderSitemap, renderLlmsTxt, renderLlmsFullTxt } from './build/sitemap.mjs';
 
 const rootDir = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -87,6 +88,38 @@ for (const entry of generatedAssetEntries) {
 
     fs.writeFileSync(outputPath, rendered);
     console.log(`[OK] Built ${entry.output} from ${entry.source}`);
+  } catch (error) {
+    hasErrors = true;
+    console.error(`[FAIL] ${entry.output}: ${error.message}`);
+  }
+}
+
+// Discovery surface: sitemap.xml, llms.txt, llms-full.txt
+// Single source of truth = content/projects.json (active dossiers) + scripts/build/sitemap.mjs
+const discoveryEntries = [
+  { output: 'sitemap.xml',   render: () => renderSitemap(rootDir) },
+  { output: 'llms.txt',      render: () => renderLlmsTxt(rootDir) },
+  { output: 'llms-full.txt', render: () => renderLlmsFullTxt(rootDir) }
+];
+
+for (const entry of discoveryEntries) {
+  try {
+    const rendered = entry.render();
+    const outputPath = path.resolve(rootDir, entry.output);
+
+    if (checkOnly) {
+      const current = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, 'utf8') : '';
+      if (current !== rendered) {
+        hasErrors = true;
+        console.error(`[FAIL] Outdated discovery file: ${entry.output} (run: npm run build:pages)`);
+      } else {
+        console.log(`[OK] ${entry.output} is in sync with content/projects.json`);
+      }
+      continue;
+    }
+
+    fs.writeFileSync(outputPath, rendered);
+    console.log(`[OK] Built ${entry.output} from content/projects.json`);
   } catch (error) {
     hasErrors = true;
     console.error(`[FAIL] ${entry.output}: ${error.message}`);

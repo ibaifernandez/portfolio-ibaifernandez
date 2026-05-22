@@ -1,172 +1,107 @@
 # ROADMAP.md — Current State, Release Path, and Next Work
 
-**Last updated:** 2026-03-13
-**Purpose:** This is the single source of truth for where the project came from, where it is now, and what still remains.
+**Last updated:** 2026-05-22
+**Purpose:** Single source of truth for where the project is now and what remains.
 
 ---
 
 ## 1. Current State
 
-The portfolio is in a late pre-release state.
+The portfolio is **shipped and in active iteration** under Narrative B.
 
-What is already true:
+What is true today:
 
-- The platform migration is complete: Netlify CDN + GitHub Actions + Netlify Function + Resend.
-- `main` is aligned with `origin/main`.
-- The production contact flow is validated end to end.
-- GA4 Realtime already confirms `page_view`, `contact_submit_attempt`, and `contact_submit_success`.
-- Playwright is green.
-- Desktop PageSpeed is in a strong release band.
-- Mobile is usable and materially improved, but still has LCP headroom.
-- The public project roster is already live as 9 dossiers:
-  - DebTracker
-  - GymTracker
-  - LFi
-  - The Route to Digitalization / 2x2MKT
-  - Portfolio Ibai Fernandez
-  - MyBoard
-  - The Research Engine
-  - Elm St
-  - AGLAYA
+- Platform: Netlify CDN + GitHub Actions + Netlify Function + Resend. Stable.
+- `main` is the deploy branch; CI gates deploy on green tests.
+- Production contact flow validated end to end with Turnstile.
+- GA4 Realtime confirms `page_view`, `contact_submit_attempt`, `contact_submit_success`, `language_change`.
+- Playwright suite: 29/29 green.
+- Quality guards (`tests/quality-guards.sh`) green.
+- **Hero rebuilt (Paso 2 of 8-step plan):** Narrative B locked.
+  - "AI Product Engineer · Founder-Operator"
+  - Eyebrow: "Product Design & Development · AI Orchestration · Deploy & Deliver" (EN)
+  - 5-item typing rotation: Scanner 21.179 / Kanban Desk / Outreach / Pulse / Web / open-source AI tooling.
+- **Marianas audit run (2026-05-22):** 152 findings across 8 dimensions in `docs/audits/marianas/`. Batches 1-N being executed.
+- **Public dossier surface trimmed to 4:** LFi, Ruta, Elm St, AGLAYA. Others archived (308-redirect to `/#project_sec`).
+- **Discovery surface aligned (Batch 2 of Marianas):** sitemap.xml, llms.txt, llms-full.txt auto-generated from `content/projects.json`. No more stale URLs.
+- **Brand docs aligned:** `brand-audit-march-2026.md` archived as Narrative A; new `brand-audit-narrative-b-2026-05.md` is the active reference.
 
-Current measured snapshot:
+PageSpeed snapshot (last full capture; needs re-capture post-hero-rebuild):
 
-| Area | Current state |
+| Area | Last measured |
 |---|---|
-| Desktop PageSpeed | `93 / 95 / 96 / 92` |
-| Mobile PageSpeed | `62 / 95 / 92 / 92` |
-| Mobile bottleneck | `FCP 4.7s`, `LCP 7.6s` |
-| CLS | `0.004` |
-| Automated release gate | Playwright + `test:quality` green |
-| Contact form | Validated in production |
-| Turnstile | Configured and validated in production |
-| GA4 Realtime | Validated in production |
+| Desktop PageSpeed | `93 / 95 / 96 / 92` (Mar 2026) |
+| Mobile PageSpeed  | `62 / 95 / 92 / 92` (Mar 2026) |
+| Mobile LCP        | `7.6s` — hero rebuild added animation; needs re-measurement |
+| CLS               | `0.004` |
 
 ---
 
-## 2. Where We Came From
+## 2. What Just Shipped (May 2026)
 
-The technical foundation is already closed.
+### Paso 2 — Hero rebuild
+- Hero section rebuilt end-to-end. New copy, CSS tokens, paper-style CTA lockup, canvas dot-grid background.
+- Mobile responsive fixes for 4 legacy CSS bombs.
+- Eyebrow split into i18n-aware spans for clean mobile line-breaks.
+- Josefin Sans applied to `banner_name` for typographic unity.
 
-### Closed foundation work
+### Marianas audit — Batch 1
+- JSON-LD person `image` fixed (was 404).
+- HSTS header added (`max-age=63072000; includeSubDomains; preload`).
+- Permissions-Policy extended (`interest-cohort`, `payment`, `usb` opted out).
+- hreflang annotations added across all public templates.
+- Missing i18n keys added (`contactar`, `read-more`).
+- Orphan typo keys removed (4 keys + 3 comment markers).
+- cPanel legacy artifacts deleted (`.cpanel.yml`, `.htaccess`, `config/secrets.example.php`).
+- `docs/error-logs/` gitignored + untracked.
 
-- **Phase 0-4:** quality/security base, performance/media pipeline, componentization, CI/CD, accessibility hardening.
-- **Phase 5:** migration from cPanel/PHP to Netlify/Node.
-- **Phase 5.2:** heading hierarchy + color contrast.
-- **Phase 5.3:** CSS/JS minification.
-- **Phase 5.4:** AVIF/WebP coverage across all generated pages.
-- **Phase 5.5:** production verification and PageSpeed re-capture.
-
-### Closed content-system work
-
-- The old generic project stubs have been replaced by real dossiers for:
-  - LFi
-  - Portfolio
-  - MyBoard
-  - The Research Engine
-  - Elm St
-  - AGLAYA
-- The 2x2 route already has a normalized public slug.
-- The obsolete LFi newspaper presentation is retired.
-
-This means the project is no longer waiting on foundational engineering. The remaining work is release hygiene, documentation clarity, and final content polish.
+### Marianas audit — Batch 2
+- `sitemap.xml`, `llms.txt`, `llms-full.txt` regenerated with current narrative + active dossier set only.
+- `scripts/build/sitemap.mjs` added: discovery files derive from `content/projects.json` on every build.
+- Old `brand-audit-march-2026.md` archived to `docs/brand-and-strategy/.archived/`.
+- New `brand-audit-narrative-b-2026-05.md` written as active brand reference.
 
 ---
 
-## 3. What Still Remains
+## 3. What Remains (in priority order)
 
-Only open work belongs here. Historical detail lives in `docs/ENGINEERING-CHANGELOG.md`.
+### Marianas — pending batches
 
-### A. Release-adjacent work
+- **Batch 3 — CSP enforce + privacy posture:** nonce inline scripts, promote CSP to enforce, cookie consent banner, /privacy page.
+- **Batch 4 — i18n hygiene:** localize `<title>` + meta tags; respect `navigator.language`; purge 198 orphan keys; CI guard for parity.
+- **Batch 5 — Tests refactor + dossier coverage:** dossier page specs (axe + language + CTA), refactor brittle assertions, perf budget for dossiers, pre-commit hook.
+- **Batch 6 — Performance pass:** terser+csso minifier, content-hash fingerprinting, preload LCP image, inline critical CSS, drop Font Awesome.
 
-- **Manual QA (recommended, currently deferred by owner):**
-  - Desktop checklist
-  - Mobile checklist
-- **Search visibility (manual external actions):**
-  - Google Search Console property verification
-  - Bing Webmaster Tools property verification
-  - `sitemap.xml` submission
-- **Release administration (explicitly deferred for now):**
-  - release tag `v2.0.0.0`
+See `docs/audits/marianas/EXECUTION-LOG.md` for live status.
 
-### B. Content work that still matters for launch
+### 8-step Narrative B plan — remaining steps
 
-- Final polish of project dossiers where placeholders remain:
-  - Portfolio
-  - MyBoard
-  - Elm St
-  - AGLAYA
-- Public slug normalization beyond `2x2MKT`
-- SEO metadata pass (titles, descriptions, OG refinement where needed)
+- **Paso 3:** 6 new product case pages (aglaya-kanban-desk, aglaya-outreach, legal-reg-tech / Scanner 21.179, solos, notebooklm-skill, Massiva Pulse). One dossier per Currently Shipping item.
+- **Paso 4:** Employment section → rename to "Career path" secondary section.
+- **Paso 5:** Testimonials cleanup (keep 3 LFi, archive 5 bootcamp).
+- **Paso 6:** Add PMI-ACP 2024 to training.json.
+- **Paso 7:** Services section decision — eliminate or rename to "Capabilities".
+- **Paso 8:** Full QA pass (Lighthouse, Playwright, smoke, links).
 
-### C. Security / hardening still open
+### Off-portfolio channel alignment
 
-- **CSP stays in report-only for v2.0.0.0.**
-  - Decision: do **not** promote to enforce yet.
-  - Reason: the site is stable, but there is no audited clean observation window and no value in risking a late-stage break for this release.
-  - Next: promote after a short monitored production window and a targeted policy audit.
-- Add SRI hashes to CDN-served scripts
-- Validate or intentionally defer DNSSEC
-
-### D. Post-v2 work (not blocking this release)
-
-- Frontend error tracking (Sentry or equivalent)
-- Lightweight health dashboard (Core Web Vitals + key funnel view)
-- Server-side purchase tracking (Gumroad webhook -> GA4 Measurement Protocol) once secrets are available
-- Formal post-release checklist / ops cadence
-- Larger copy overhaul (hero and overall narrative refinement) can move to a later content-focused release
+- LinkedIn headline + About → Narrative B (see `docs/brand-and-strategy/brand-audit-narrative-b-2026-05.md`).
+- GitHub README opener → Narrative B.
 
 ---
 
-## 4. Release Decision Notes
+## 4. Document Roles
 
-These are current project decisions, not open debates.
+To avoid drift, use each document for one job only:
 
-- **Manual QA is recommended, but not required to continue current content work.**
-- **Search Console and Bing property verification can happen now.**
-- **`sitemap.xml` submission is better after content freeze, but not technically blocked by QA.**
-- **CSP enforce mode is intentionally deferred past v2.0.0.0.**
-- **Hero copy rewrite is not a blocker for v2.0.0.0.**
-- **The blog is already retired from the public product surface. Legacy `/blog` traffic should resolve to home.**
-
----
-
-## 5. Canonical Document Roles
-
-To avoid documentation drift, use each document for one job only:
-
-- `docs/ROADMAP.md`
-  - Current state
-  - What remains
-  - Release direction
-- `docs/BACKLOG.md`
-  - Active work only
-  - No historical narrative
-- `docs/ENGINEERING-RUNBOOK.md`
-  - Operational procedures
-  - Deploy / QA / environment steps
-- `docs/ENGINEERING-CHANGELOG.md`
-  - Historical technical record
-- `docs/PRD.md`
-  - Product specification
-  - Not a live task board
-
-`docs/DEPLOY_ROADMAP.md` is now a bridge document only and should not be treated as the source of truth for project status.
+- `docs/ROADMAP.md` — current state + what remains (this file).
+- `docs/BACKLOG.md` — active work only.
+- `docs/ENGINEERING-RUNBOOK.md` — operational procedures.
+- `docs/ENGINEERING-CHANGELOG.md` — historical technical record.
+- `docs/PRD.md` — product specification.
+- `docs/audits/marianas/` — current deep audit + execution log.
+- `docs/brand-and-strategy/brand-audit-narrative-b-2026-05.md` — current brand reference.
 
 ---
 
-## 6. Practical Next Sequence
-
-If the goal is to simplify the path to release, the recommended order is:
-
-1. Finish the remaining project-page content/assets that matter.
-2. Perform Search Console / Bing property verification.
-3. Freeze visible content.
-4. Submit `sitemap.xml`.
-5. Run manual QA when the owner chooses to do so.
-6. Apply any fixes found.
-7. Tag the release when the owner is ready.
-
----
-
-*Status summary:* the project is technically strong, publicly credible, and close to release. The remaining work is mostly release hygiene and content finish, not systems engineering.
+*End of ROADMAP. Status: shipped, iterating under Narrative B, Marianas execution in flight.*

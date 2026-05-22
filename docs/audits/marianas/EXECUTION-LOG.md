@@ -31,17 +31,17 @@
 - `[x]` `.gitignore` `docs/error-logs/` + `git rm -r --cached docs/error-logs/`
 - `[x]` Build OK; quality guards OK; 29/29 e2e passed
 
-## Batch 2 — Discovery surface regeneration
+## Batch 2 — Discovery surface regeneration ✅
 
-- `[ ]` Rewrite `llms.txt` with Narrative B + correct active dossier set
-- `[ ]` Rewrite `llms-full.txt` with Narrative B product descriptions
-- `[ ]` Regenerate `sitemap.xml` (manual fix first, then build script)
-- `[ ]` Write `scripts/build/sitemap.mjs` — generate sitemap from `content/projects.json`
-- `[ ]` Wire sitemap build into `build-pages.mjs`
-- `[ ]` Archive `brand-audit-march-2026.md` → `docs/brand-and-strategy/.archived/`
-- `[ ]` Write `docs/brand-and-strategy/brand-audit-narrative-b-2026-05.md`
-- `[ ]` Update `docs/ROADMAP.md` to reflect actual current state
-- `[ ]` Build, test, commit, push
+- `[x]` Rewrite `llms.txt` with Narrative B + active dossier set (5 URLs only)
+- `[x]` Rewrite `llms-full.txt` with Narrative B Currently Shipping rotation + active dossier blurbs
+- `[x]` Regenerate `sitemap.xml` (5 active URLs, hreflang alternates per URL)
+- `[x]` Write `scripts/build/sitemap.mjs` — generates all 3 discovery files from `content/projects.json`
+- `[x]` Wire into `build-pages.mjs` with `--check` mode parity
+- `[x]` Archive `brand-audit-march-2026.md` → `docs/brand-and-strategy/.archived/brand-audit-march-2026-NARRATIVE-A-DEPRECATED.md`
+- `[x]` Write `docs/brand-and-strategy/brand-audit-narrative-b-2026-05.md`
+- `[x]` Rewrite `docs/ROADMAP.md` to reflect actual current state (hero shipped, Marianas in flight, 4 active dossiers)
+- `[x]` Build + quality green
 
 ## Batch 3 — CSP enforce + privacy posture
 

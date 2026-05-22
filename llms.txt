@@ -4,16 +4,12 @@ Site: https://portfolio.ibaifernandez.com/
 Owner: Ibai Fernandez
 Contact: mailto:info@ibaifernandez.com
 Languages: en, es
+Positioning: AI Product Engineer · Founder-Operator
 
 Primary pages:
 - https://portfolio.ibaifernandez.com/
-- https://portfolio.ibaifernandez.com/debtracker.html
-- https://portfolio.ibaifernandez.com/gymtracker.html
 - https://portfolio.ibaifernandez.com/lfi.html
 - https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html
-- https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html
-- https://portfolio.ibaifernandez.com/my-board.html
-- https://portfolio.ibaifernandez.com/the-research-engine.html
 - https://portfolio.ibaifernandez.com/elm-st.html
 - https://portfolio.ibaifernandez.com/aglaya.html
 

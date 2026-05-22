@@ -1,36 +1,36 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-03-15
+Last-Updated: 2026-05-22
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
-Portfolio focused on Full-Stack architecture, AI automation, UX/UI systems, and enterprise-scale marketing operations.
+Founder-operator who codes. AI Product Engineer with two decades connecting narrative, systems, and delivery. Builds production systems end-to-end: RegTech compliance pipelines, multi-tenant SaaS, email infrastructure, IRL discovery products, open-source AI tooling. EU citizen, remote, building right now.
+
+## Currently Shipping
+- Scanner 21.179 — automated RegTech audit pipeline against Chile's Ley 21.719 data privacy regulation. Give it a URL, get a compliance report.
+- Kanban Desk — project management for teams that want to own their stack. Multi-tenant SaaS.
+- Outreach — a whole email marketing department compressed into a single app. Email infrastructure built for scale.
+- Pulse — email engagement turned into a prioritized call list. Sales intelligence layer on top of any ESP.
+- Web — websites built right, fully owned, zero-dependent. Custom architecture, no vendor lock-in.
+- Open-source AI tooling — Claude, Cursor, Codex agent orchestration patterns.
 
 ## Canonical Pages
 - Home: https://portfolio.ibaifernandez.com/
   - Purpose: profile, capabilities, work history, project index, testimonials, contact.
-- DebTracker: https://portfolio.ibaifernandez.com/debtracker.html
-  - Purpose: zero-trust financial ledger case (Next.js, Server Actions, Firestore patterns, PWA integration).
-- GymTracker: https://portfolio.ibaifernandez.com/gymtracker.html
-  - Purpose: local-first architecture case (Python/Flask, SQLite, deterministic AI pipelines, QA automation).
 - LFi: Agency Operating Systems: https://portfolio.ibaifernandez.com/lfi.html
-  - Purpose: agency operating-systems case proving CRM routing, qualification logic, launch governance, and commercial reliability through the POCURO and Leben proof modules.
+  - Purpose: Agency operating-systems case proving CRM routing, qualification logic, launch governance, and commercial reliability across 18+ enterprise accounts through the POCURO and Leben proof modules.
 - The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html
-  - Purpose: nationwide upskilling, field operations, and crisis-proof digital adoption program impact.
-- Portfolio Ibai Fernandez: https://portfolio.ibaifernandez.com/portfolio-ibaifernandez.html
-  - Purpose: living proof of delivery capability through CI/CD, performance hardening, accessibility, and production validation.
-- MyBoard: https://portfolio.ibaifernandez.com/my-board.html
-  - Purpose: local-first Kanban product proving zero vendor lock-in, modular architecture, and a clear runway toward enterprise and AI-assisted use.
-- The Research Engine: https://portfolio.ibaifernandez.com/the-research-engine.html
-  - Purpose: productized intelligence workflow pack sold through a VSL + Gumroad funnel, proving end-to-end digital product and GTM execution.
-- Elm St: https://portfolio.ibaifernandez.com/elm-st.html
-  - Purpose: cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case.
-- AGLAYA: https://portfolio.ibaifernandez.com/aglaya.html
-  - Purpose: conversion-first remote agency operating system, staged growth services, and brand-evaluation-driven acquisition case.
+  - Purpose: Nationwide upskilling, field operations, and crisis-proof digital adoption program onboarding 10,600+ users into digital conversion funnels.
+- Elm St: Reel-First Brand Website: https://portfolio.ibaifernandez.com/elm-st.html
+  - Purpose: Cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case. YouTube embeds, brand psychology, audiovisual UX.
+- AGLAYA: Remote Agency Operations: https://portfolio.ibaifernandez.com/aglaya.html
+  - Purpose: Conversion-first remote agency operating system, staged growth services, and brand-evaluation-driven acquisition case.
+
 ## Contact
 - Email: info@ibaifernandez.com
 - WhatsApp: +57 322 428 8532
 - LinkedIn: https://linkedin.com/in/ibaifernandez
+- GitHub: https://github.com/ibaifernandez
 
 ## Discovery Endpoints
 - robots: https://portfolio.ibaifernandez.com/robots.txt
