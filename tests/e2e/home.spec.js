@@ -11,7 +11,7 @@ function escapeRegex(value) {
 test('home renders critical UI blocks', async ({ page }) => {
   await page.goto('/index.html');
 
-  await expect(page).toHaveTitle(/Ibai Fernández - Portfolio/i);
+  await expect(page).toHaveTitle(/Ibai Fernández/i);
   await expect(page.locator('h1.banner_name')).toBeVisible();
   await expect(page.locator('#translate-button-icon')).toBeVisible();
   await expect(page.locator('#translate-button-icon')).toHaveAttribute('role', 'button');
@@ -58,26 +58,26 @@ test('profile image uses AVIF/WebP sources with fallback', async ({ page }) => {
   await expect(profilePicture).toBeVisible();
   await expect(profilePicture.locator('source[type="image/avif"]')).toHaveAttribute(
     'srcset',
-    /assets\/images\/ibai-fernandez-1\.avif/
+    /assets\/images\/ibai-fernandez-1x1-sidebar\.avif/
   );
   await expect(profilePicture.locator('source[type="image/webp"]')).toHaveAttribute(
     'srcset',
-    /assets\/images\/ibai-fernandez-1\.webp/
+    /assets\/images\/ibai-fernandez-1x1-sidebar\.webp/
   );
-  await expect(profilePicture.locator('img')).toHaveAttribute('src', /assets\/images\/ibai-fernandez-1\.jpg/);
+  await expect(profilePicture.locator('img')).toHaveAttribute('src', /assets\/images\/ibai-fernandez-1x1-sidebar\.jpeg/);
 });
 
 test('language toggle updates html lang and hero pre-title text', async ({ page }) => {
   await page.goto('/index.html');
 
-  const preTitle = page.locator('[translate="systemic"]').first();
+  const eyebrow = page.locator('[translate="hero-eyebrow-1"]').first();
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-  await expect(preTitle).toContainText(new RegExp(escapeRegex(enTranslations.systemic), 'i'));
+  await expect(eyebrow).toContainText(new RegExp(escapeRegex(enTranslations['hero-eyebrow-1']), 'i'));
 
   await page.locator('#translate-button-icon').click();
 
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
-  await expect(preTitle).toContainText(new RegExp(escapeRegex(esTranslations.systemic), 'i'));
+  await expect(eyebrow).toContainText(new RegExp(escapeRegex(esTranslations['hero-eyebrow-1']), 'i'));
 });
 
 test('language toggle supports keyboard activation', async ({ page }) => {

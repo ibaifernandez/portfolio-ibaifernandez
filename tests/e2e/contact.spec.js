@@ -11,6 +11,7 @@ async function fillContactForm(page, suffix = '') {
 test('contact form exposes accessible validation feedback when empty', async ({ page }) => {
   await page.goto('/index.html');
 
+  await page.waitForTimeout(1300);
   await page.locator('button.submitForm').click();
 
   const response = page.locator('.response');
