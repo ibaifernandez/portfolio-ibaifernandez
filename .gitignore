@@ -9,7 +9,8 @@ sandbox/
 artifacts/
 assets/webfonts/chomsky/README.md
 config/secrets.local.php
-/.claude/
+/.claude/*
+!/.claude/settings.json
 /.netlify/
 .env
 .env.*
