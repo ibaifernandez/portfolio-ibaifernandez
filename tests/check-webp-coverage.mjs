@@ -76,11 +76,16 @@ function isInsidePicture(html, index) {
   };
 }
 
+function parseSrcsetUrls(value) {
+  if (!value) return [];
+  return value
+    .split(',')
+    .map((entry) => normalizeUrl(entry.trim().split(/\s+/)[0]))
+    .filter(Boolean);
+}
+
 function parseFirstSrcsetEntry(value) {
-  if (!value) return '';
-  const first = value.split(',')[0]?.trim();
-  if (!first) return '';
-  return normalizeUrl(first.split(/\s+/)[0]);
+  return parseSrcsetUrls(value)[0] || '';
 }
 
 const failures = [];
@@ -141,8 +146,8 @@ for (const file of targets) {
     let sourceMatch;
     let foundMatch = false;
     while ((sourceMatch = sourceRegex.exec(pictureBlock))) {
-      const firstSrc = parseFirstSrcsetEntry(sourceMatch[1]);
-      if (firstSrc === expectedWebp) {
+      const urls = parseSrcsetUrls(sourceMatch[1]);
+      if (urls.includes(expectedWebp)) {
         foundMatch = true;
         break;
       }

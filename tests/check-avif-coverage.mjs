@@ -73,11 +73,16 @@ function isInsidePicture(html, index) {
   };
 }
 
+function parseSrcsetUrls(value) {
+  if (!value) return [];
+  return value
+    .split(',')
+    .map((entry) => normalizeUrl(entry.trim().split(/\s+/)[0]))
+    .filter(Boolean);
+}
+
 function parseFirstSrcsetEntry(value) {
-  if (!value) return '';
-  const first = value.split(',')[0]?.trim();
-  if (!first) return '';
-  return normalizeUrl(first.split(/\s+/)[0]);
+  return parseSrcsetUrls(value)[0] || '';
 }
 
 const PNG_SIGNATURE = Buffer.from([0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A]);
@@ -190,8 +195,8 @@ for (const file of targets) {
     let sourceMatch;
     let foundMatch = false;
     while ((sourceMatch = sourceRegex.exec(pictureBlock))) {
-      const firstSrc = parseFirstSrcsetEntry(sourceMatch[1]);
-      if (firstSrc === expectedAvif) {
+      const urls = parseSrcsetUrls(sourceMatch[1]);
+      if (urls.includes(expectedAvif)) {
         foundMatch = true;
         break;
       }

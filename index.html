@@ -26,8 +26,8 @@
     <meta property="twitter:description" content="Founder-operator who codes. Six live systems shipped — RegTech compliance pipelines, multi-tenant SaaS, email infrastructure, IRL discovery, open-source AI tooling. EU citizen, remote, building right now.">
     <meta property="twitter:image" content="https://portfolio.ibaifernandez.com/assets/images/240610-featured-image.jpeg">
 
-	<!-- Preload the LCP image (sidebar profile picture, AVIF) for fastest LCP -->
-	<link rel="preload" as="image" type="image/avif" href="assets/images/ibai-fernandez-1x1-sidebar.avif" fetchpriority="high">
+	<!-- Preload the LCP image (sidebar profile picture, AVIF). Imagesrcset lets browser pick 160w or 1024w. -->
+	<link rel="preload" as="image" type="image/avif" imagesrcset="assets/images/ibai-fernandez-1x1-sidebar-160.avif 160w, assets/images/ibai-fernandez-1x1-sidebar.avif 1024w" imagesizes="80px" fetchpriority="high">
 
 	<!--Start Style -->
 	<!-- Google Fonts: preconnect reduces DNS + TLS latency -->
@@ -109,9 +109,9 @@
         <div class="port_sidebar_profile">
 				<div class="profile_circle ">
 					<picture>
-<source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar.avif">
-<source type="image/webp" srcset="assets/images/ibai-fernandez-1x1-sidebar.webp">
-<img src="assets/images/ibai-fernandez-1x1-sidebar.jpeg" alt="Ibai Fernández" class="img-fluid" loading="eager" decoding="sync" fetchpriority="high" width="1024" height="1024" data-avif-fallback="true">
+<source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.avif 160w, assets/images/ibai-fernandez-1x1-sidebar.avif 1024w" sizes="80px">
+<source type="image/webp" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.webp 160w, assets/images/ibai-fernandez-1x1-sidebar.webp 1024w" sizes="80px">
+<img src="assets/images/ibai-fernandez-1x1-sidebar.jpeg" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.jpeg 160w, assets/images/ibai-fernandez-1x1-sidebar.jpeg 1024w" sizes="80px" alt="Ibai Fernández" class="img-fluid" loading="eager" decoding="sync" fetchpriority="high" width="1024" height="1024" data-avif-fallback="true">
 					</picture>
 				</div>
 
