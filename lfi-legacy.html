@@ -700,15 +700,15 @@
         <img id="translate-button-icon" src="assets/images/spain.svg" width="64" height="64" alt="Translate Button" loading="eager" decoding="sync" fetchpriority="high">
     </div>
 	
-	<!-- Google tag (gtag.js) - loads but only fires once consent is granted -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3"></script>
+	<!-- Google tag (gtag.js) — Consent Mode v2.
+     Sync portion: dataLayer + consent defaults + runtime flags (read by custom.js).
+     Idle portion: gtag.js fetch, config, stored-consent restore. -->
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
 
-	// Default consent state — denied until user opts in via consent banner.
-	// (Google Consent Mode v2: requires explicit denial for EU compliance.)
+	// Default consent — must register before gtag.js executes any event.
 	gtag('consent', 'default', {
 		ad_storage: 'denied',
 		analytics_storage: 'denied',
@@ -717,9 +717,7 @@
 		wait_for_update: 500
 	});
 
-	gtag('config', 'G-T8FTTWBQS3', { anonymize_ip: true });
-
-	// Runtime toggles. Keep captcha fields empty until rollout is approved.
+	// Runtime toggles. Kept sync because custom.js reads them during init.
 	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
 	window.PORTFOLIO_RUNTIME.analytics = window.PORTFOLIO_RUNTIME.analytics || { enabled: true };
 	var isLocalPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
@@ -728,18 +726,34 @@
 		siteKey: isLocalPreview ? '' : '0x4AAAAAACjZQ2Ce6kH-DpQo'
 	};
 
-	// Apply persisted consent (if any).
-	try {
-		var stored = window.localStorage.getItem('portfolio_consent');
-		if (stored === 'granted') {
-			gtag('consent', 'update', {
-				analytics_storage: 'granted',
-				ad_storage: 'denied',
-				ad_user_data: 'denied',
-				ad_personalization: 'denied'
-			});
-		}
-	} catch (err) { /* localStorage unavailable */ }
+	// Defer gtag.js fetch + config + stored-consent restore until browser idle.
+	// gtag() calls in the meantime queue into dataLayer and process on load.
+	function __initGA4() {
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3';
+		document.head.appendChild(script);
+
+		gtag('config', 'G-T8FTTWBQS3', { anonymize_ip: true });
+
+		try {
+			var stored = window.localStorage.getItem('portfolio_consent');
+			if (stored === 'granted') {
+				gtag('consent', 'update', {
+					analytics_storage: 'granted',
+					ad_storage: 'denied',
+					ad_user_data: 'denied',
+					ad_personalization: 'denied'
+				});
+			}
+		} catch (err) { /* localStorage unavailable */ }
+	}
+
+	if ('requestIdleCallback' in window) {
+		window.requestIdleCallback(__initGA4, { timeout: 4000 });
+	} else {
+		window.setTimeout(__initGA4, 2500);
+	}
 </script>
 
 	<script defer src="assets/js/jquery.min.js"></script>
