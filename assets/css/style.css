@@ -352,6 +352,15 @@ ul {
 	transform: translateY(-100%);
 }
 
+/* Inline SVG icons replace Font Awesome. .icon scales with font-size, inherits color. */
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: -0.125em;
+}
+
 .fa-big {
     font-size:36px;
 }
@@ -1375,13 +1384,13 @@ p.banner_pera:after {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.about_leftsection .iconbox i.icon_minus {
+.about_leftsection .iconbox .icon_minus {
     opacity: 0;
 }
-.about_leftsection.open_details .iconbox i.icon_minus {
+.about_leftsection.open_details .iconbox .icon_minus {
     opacity: 1;
 }
-.about_leftsection.open_details .iconbox i.icon_plus {
+.about_leftsection.open_details .iconbox .icon_plus {
     opacity: 0;
 }
 .about_leftsection.open_details .icon {

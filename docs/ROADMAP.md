@@ -41,16 +41,17 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 
 ## Parallel pending (non-blocking)
 
-Deferred during Marianas execution. Pick up when bandwidth allows.
+- Inline critical above-fold CSS (~10 KB) — deferred post-About. Needs critical CSS extractor (penthouse/critical) to avoid FOUC. Reassess after Font Awesome drop frees 54 KB from critical path.
+- LinkedIn headline + About → Narrative B (off-portfolio)
+- GitHub README opener → Narrative B (off-portfolio)
 
-- Re-encode `assets/images/rdld-press-el-mercurio-2020.avif` (571 KB → ~200 KB)
-- Drop Font Awesome; inline SVG for ~12-15 icons used
-- Inline critical above-fold CSS (~10 KB)
-- Defer GA4 to `requestIdleCallback`
-- Generate 160×160 sidebar profile variant + srcset retrofit
-- Nonce inline scripts (remove `'unsafe-inline'` from CSP)
-- LinkedIn headline + About → Narrative B
-- GitHub README opener → Narrative B
+### Recently shipped (parallel pendings batch, 2026-05-23)
+
+- ✅ Re-encoded `rdld-press-el-mercurio-2020.avif` 571 KB → 240 KB
+- ✅ Sidebar profile 160×160 variant + srcset
+- ✅ Defer GA4 init to `requestIdleCallback`
+- ⏭ Drop Font Awesome (in progress)
+- ⏭ Nonce inline scripts → drop `'unsafe-inline'` from CSP (queued)
 
 ---
 
