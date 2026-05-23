@@ -7,9 +7,10 @@
 
 ## Current state
 
-Production live at https://portfolio.ibaifernandez.com — latest deployed `a4886c3` (Batch 7).
-Local `main` is 6 commits ahead — parallel-pendings cleanup batch pending push.
-CI green. Tests: 45/45 e2e + quality + i18n parity.
+Production live at https://portfolio.ibaifernandez.com.
+Last push to `origin/main`: `7506050` (`Retire documentacion-profesional-if/`).
+Subsequent local commits awaiting next push when the post-audit cleanup batch lands.
+CI green on the most recent push. Tests: 45/45 e2e + quality + i18n parity + new CSP enforcement spec (7 pages) + coverage parser regression test.
 
 Narrative B locked: **AI Product Engineer · Founder-Operator**.
 
@@ -46,38 +47,45 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - LinkedIn headline + About → Narrative B (off-portfolio)
 - GitHub README opener → Narrative B (off-portfolio)
 
-### Recently committed locally (parallel-pendings batch, 2026-05-23, awaiting push)
+### Shipped on 2026-05-23 (`origin/main` up to `7506050`)
 
 - ✅ Re-encoded `rdld-press-el-mercurio-2020.avif` 571 KB → 240 KB
-- ✅ Sidebar profile 160×160 variant + srcset
+- ✅ Sidebar profile 160×160 variant + srcset (with parser fix in `tests/check-{avif,webp}-coverage.mjs` for multi-resolution srcset)
 - ✅ Defer GA4 init to `requestIdleCallback`
-- ✅ Drop Font Awesome → inline SVG sprite (19 icons / 53 occurrences)
-- ✅ CSP script-src: `'unsafe-inline'` replaced by 9 SHA256 hashes + `'unsafe-hashes'` for the preload onload handler. Auto-synced by `scripts/build/csp-hashes.mjs` (build hook + CI check).
+- ✅ Drop Font Awesome → inline SVG sprite (originally 19 icons / 53 occurrences; sprite later grew to 27 symbols when archived templates were refactored)
+- ✅ CSP script-src: `'unsafe-inline'` replaced by SHA256 hashes auto-synced by `scripts/build/csp-hashes.mjs` (build hook + CI check)
 - ✅ Deleted unused FA assets (`all.min.css` + `assets/webfonts/`, −2.65 MB)
-- ✅ Pruned dead worktrees (`claude/funny-dhawan-43bcd3`, `claude/nostalgic-babbage-f81e16`, two stale `/private/tmp` entries)
+- ✅ Pruned dead worktrees + dead branches (`claude/funny-dhawan-43bcd3`, `claude/nostalgic-babbage-f81e16`, two stale `/private/tmp` entries)
+- ✅ Retired `documentacion-profesional-if/` (52 KB LFi drafts) + added entry to `.netlifyignore`
+
+### Awaiting next push (post-audit hardening batch, 2026-05-23)
+
+- ✅ Refactor 7 archived project templates to drop Font Awesome (sprite grew from 19 → 27 symbols)
+- ✅ Refactor preload-swap from inline `onload=` to a hashed `<script>` (`src/components/shared/preload-swap.html`) → `'unsafe-hashes'` removed from CSP (Safari 14–15.3 compatibility restored)
+- ✅ GA4 `visibilitychange` bounce-capture in `analytics-ga4.html`
+- ✅ Sync `docs/SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/AI_RULES.md` with post-2026-05-23 reality (CSP, SVG sprite, csp-hashes hook, retire cv-print + all.min.css refs)
+- ✅ `scripts/build/fingerprint.mjs` now fingerprints `assets/svg/icons.svg` and preserves URL fragments when re-running over already-processed HTML
+- ✅ Empty JSON-LD removed from `lfi-legacy.html`
+- ✅ Performance budget tightened (CSS 470 → 400 KB, JS 500 → 160 KB, HTML 285 → 230 KB on index)
+- ✅ CSS helpers renamed: `.fa-big → .icon-big`, `.fa-mb-3 → .icon-mb-3`, `.fa-yellow → .icon-yellow`; orphan `.fa-mt-3` deleted
+- ✅ Inline coverage parser regression test (`tests/check-coverage-tests.mjs`)
+- ✅ CSP enforcement e2e spec (`tests/e2e/csp.spec.js`) — fails on any console-reported CSP violation across the 7 served pages
 
 ---
 
-## What just shipped (recent commits, newest first)
+## What just shipped (last 10 commits on `origin/main`, newest first)
 
 ```
-431f025  Delete unused Font Awesome assets (-2.65 MB)             [local, unpushed]
-a6f815d  Replace CSP script-src 'unsafe-inline' with SHA256 hashes [local, unpushed]
-3e23371  Drop Font Awesome: inline SVG sprite for 19 icons used    [local, unpushed]
-22e8e2d  Defer GA4 init to requestIdleCallback                     [local, unpushed]
-62730e0  Add sidebar 160×160 srcset for sub-2x DPR displays        [local, unpushed]
-18d61b9  Compress rdld-press 2020 image: 1830×2048 → 915×1024      [local, unpushed]
+7506050  Retire `documentacion-profesional-if/`: working drafts no longer in service
+9c1d651  ROADMAP: log parallel-pendings batch (2026-05-23), 6 commits awaiting push
+431f025  Delete unused Font Awesome assets (-2.65 MB)
+a6f815d  Replace CSP script-src 'unsafe-inline' with SHA256 hashes
+3e23371  Drop Font Awesome: inline SVG sprite for 19 icons used
+22e8e2d  Defer GA4 init to requestIdleCallback
+62730e0  Add sidebar 160×160 srcset for sub-2x DPR displays
+18d61b9  Compress rdld-press 2020 image: 1830×2048 → 915×1024
 4f4dd9d  Document operating contract: AGENTS.md summary, AI_RULES.md detail
 939e5a7  Commit .claude/settings.json: project-level permission policy
-23af2b1  Docs cleanup: delete obsolete, single SSOT, lean structure
-a4886c3  Batch 7: dossier color-contrast AA — enforce strict axe gate
-c72a970  Retire cv-print: portfolio replaces the CV
-121b3eb  Batch 6: terser+csso minifier, content-hash fingerprinting, LCP preload
-6375d99  Batch 5: dossier test coverage + brittle tests refactored + CI polish
-493055c  Batch 4: i18n hygiene — purge orphans, localize meta, CI guard
-104fe92  Batch 3: CSP enforce + cookie consent + privacy page
-1701212  Batch 2: discovery surface aligned with Narrative B
-e8e66cd  Batch 1: brand alignment, security headers, i18n hygiene quick wins
 ```
 
 ---

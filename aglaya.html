@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font.min.css?v=ac7f44527f">
 	<link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e">
-	<link rel="stylesheet" href="assets/css/style.min.css?v=e4c99eb917">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=eef74ac78d">
 	<link rel="stylesheet" href="assets/css/print.min.css?v=e4177cf91f" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 	<link rel="canonical" href="https://portfolio.ibaifernandez.com/aglaya.html">
@@ -390,32 +390,32 @@
 				<ul class="social_list">
 					<li>
 						<a href="https://facebook.com/ibaifernandezec" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="Facebook">
-							<span class="first_icon"><svg class="icon icon-facebook-f nav_fb"><use href="assets/svg/icons.svg#icon-facebook-f"/></svg></span>
-							<span class="second_icon"><svg class="icon icon-facebook-f nav_fb"><use href="assets/svg/icons.svg#icon-facebook-f"/></svg></span>
+							<span class="first_icon"><svg class="icon icon-facebook-f nav_fb"><use href="assets/svg/icons.svg?v=2478e2193f#icon-facebook-f"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-facebook-f nav_fb"><use href="assets/svg/icons.svg?v=2478e2193f#icon-facebook-f"/></svg></span>
 						</a>
 					</li>
 					<li>
 						<a href="https://linkedin.com/in/ibaifernandez" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="LinkedIn">
-							<span class="first_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg#icon-linkedin-in"/></svg></span>
-							<span class="second_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg#icon-linkedin-in"/></svg></span>
+							<span class="first_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg?v=2478e2193f#icon-linkedin-in"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg?v=2478e2193f#icon-linkedin-in"/></svg></span>
 						</a>
 					</li>
 					<li>
 						<a href="https://wa.me/573224288532" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="WhatsApp">
-							<span class="first_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg#icon-whatsapp"/></svg></span>
-							<span class="second_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg#icon-whatsapp"/></svg></span>
+							<span class="first_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg?v=2478e2193f#icon-whatsapp"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg?v=2478e2193f#icon-whatsapp"/></svg></span>
 						</a>
 					</li>
 					<li>
 						<a href="https://github.com/ibaifernandez" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="GitHub">
-							<span class="first_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg#icon-github"/></svg></span>
-							<span class="second_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg#icon-github"/></svg></span>
+							<span class="first_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg?v=2478e2193f#icon-github"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg?v=2478e2193f#icon-github"/></svg></span>
 						</a>
 					</li>
 					<li>
 						<a href="https://instagram.com/ibaifernandezec" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="Instagram">
-							<span class="first_icon"><svg class="icon icon-instagram nav_insta"><use href="assets/svg/icons.svg#icon-instagram"/></svg></span>
-							<span class="second_icon"><svg class="icon icon-instagram nav_insta"><use href="assets/svg/icons.svg#icon-instagram"/></svg></span>
+							<span class="first_icon"><svg class="icon icon-instagram nav_insta"><use href="assets/svg/icons.svg?v=2478e2193f#icon-instagram"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-instagram nav_insta"><use href="assets/svg/icons.svg?v=2478e2193f#icon-instagram"/></svg></span>
 						</a>
 					</li>
 
@@ -732,7 +732,7 @@
 	</div>
 
 	<div class="bottom_top">
-		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg>
 	</div>
 
 	<!-- =================== Translate Button ================== -->
@@ -742,7 +742,11 @@
 	
 	<!-- Google tag (gtag.js) — Consent Mode v2.
      Sync portion: dataLayer + consent defaults + runtime flags (read by custom.js).
-     Idle portion: gtag.js fetch, config, stored-consent restore. -->
+     Deferred portion: gtag.js fetch, config, stored-consent restore.
+     The deferred portion fires whichever happens first:
+       1. requestIdleCallback (or setTimeout 2.5s on Safari pre-15.4 / Firefox <55)
+       2. document visibilitychange → 'hidden' (bounce capture — user navigates away
+          before the idle window opens, e.g. mobile back-button under 2 s). -->
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
@@ -766,9 +770,14 @@
 		siteKey: isLocalPreview ? '' : '0x4AAAAAACjZQ2Ce6kH-DpQo'
 	};
 
-	// Defer gtag.js fetch + config + stored-consent restore until browser idle.
-	// gtag() calls in the meantime queue into dataLayer and process on load.
+	// Defer gtag.js fetch + config + stored-consent restore until browser idle
+	// OR the user navigates away (whichever fires first). gtag() calls in the
+	// meantime queue into dataLayer and process when gtag.js loads.
+	var __ga4Initialized = false;
 	function __initGA4() {
+		if (__ga4Initialized) return;
+		__ga4Initialized = true;
+
 		var script = document.createElement('script');
 		script.async = true;
 		script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3';
@@ -794,6 +803,15 @@
 	} else {
 		window.setTimeout(__initGA4, 2500);
 	}
+
+	// Bounce capture: if the user navigates away before idle fires, initialise
+	// immediately on visibility change. Queued gtag() calls still process when
+	// gtag.js eventually loads, so denied-default pageviews remain compliant.
+	document.addEventListener('visibilitychange', function () {
+		if (document.visibilityState === 'hidden') {
+			__initGA4();
+		}
+	});
 </script>
 
 	<!-- Cookie consent banner — GDPR / Chile Ley 21.719 -->

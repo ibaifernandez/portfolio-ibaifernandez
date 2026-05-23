@@ -17,7 +17,8 @@ const FINGERPRINT_ASSETS = [
   'assets/css/print.min.css',
   'assets/js/custom.min.js',
   'assets/js/translate.min.js',
-  'assets/js/cookie-consent.min.js'
+  'assets/js/cookie-consent.min.js',
+  'assets/svg/icons.svg'
 ];
 
 function computeHash(absolutePath) {
@@ -44,14 +45,17 @@ export function fingerprintGeneratedHtml(rootDir, htmlOutputs) {
     let changed = false;
 
     for (const [asset, hash] of Object.entries(hashes)) {
-      // Match: href="asset" OR href="asset?v=<anything>", same for src=
+      // Match `href="asset"` / `href="asset?v=…"` / `href="asset?v=…#frag"` /
+      // `href="asset#frag"` — and the same for `src="…"`. The `?v=` portion
+      // stops at `#` so that the fragment is preserved (otherwise re-running
+      // fingerprint over already-processed HTML drops the fragment).
       const pattern = new RegExp(
-        `(href|src)=("|')(${escapeRegex(asset)})(\\?v=[^"']*)?\\2`,
+        `(href|src)=("|')(${escapeRegex(asset)})(\\?v=[^"'#]*)?(#[^"']+)?\\2`,
         'g'
       );
-      const replaced = html.replace(pattern, `$1=$2$3?v=${hash}$2`);
-      if (replaced !== html) {
-        html = replaced;
+      const afterReplace = html.replace(pattern, (_full, attr, q, p, _v, frag = '') => `${attr}=${q}${p}?v=${hash}${frag}${q}`);
+      if (afterReplace !== html) {
+        html = afterReplace;
         changed = true;
       }
     }

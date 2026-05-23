@@ -151,6 +151,10 @@ node tests/check-i18n.mjs
 # CSP script-src hashes must stay in sync with inline scripts in generated HTML.
 node scripts/build/csp-hashes.mjs --check
 
+# AVIF/WebP coverage guards must accept multi-resolution srcset (sidebar + future
+# responsive images). Belt-and-suspenders test for the parser-tightening regression.
+node tests/check-coverage-tests.mjs
+
 for file in index.html; do
   total_imgs="$(rg -n "<img " "$file" | wc -l | tr -d ' ')"
   with_loading="$(rg -n '<img [^>]*loading="' "$file" | wc -l | tr -d ' ')"

@@ -21,16 +21,16 @@
 	<meta property="twitter:image" content="{{pageShareImage}}">
 	<title>{{pageTitle}}</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/all.min.css">
 	<link rel="stylesheet" href="assets/css/font.min.css">
 	<link rel="stylesheet" href="assets/css/animate.min.css">
 	<link rel="stylesheet" href="assets/css/style.min.css">
 	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+<!-- @include ../components/shared/preload-swap.html -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preload" as="style"
 		href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap"
-		onload="this.onload=null;this.rel='stylesheet'">
+		data-preload-swap>
 	<noscript>
 		<link rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap">
@@ -59,7 +59,7 @@
 					<a href="{{projectBackHref}}" class="project_case_backlink researchengine_stitch_backlink">Back to portfolio</a>
 
 					<header class="researchengine_stitch_header" aria-labelledby="researchengine-stitch-title">
-						<p class="researchengine_stitch_protocol"><i class="fas fa-shield-alt"></i> Classified protocol // Ver. 4.0.1</p>
+						<p class="researchengine_stitch_protocol"><svg class="icon icon-shield-alt"><use href="assets/svg/icons.svg#icon-shield-alt"/></svg> Classified protocol // Ver. 4.0.1</p>
 						<h1 id="researchengine-stitch-title" class="researchengine_stitch_title">Relying on naked AI is executive negligence.</h1>
 						<p class="researchengine_stitch_subtitle">
 							Transform standard AI models into a <span>mathematically verified</span> intelligence engine.
@@ -104,7 +104,7 @@
 								data-video-id="N0sUEMesXYM">
 							</iframe>
 							<div class="researchengine_stitch_video_overlay" aria-hidden="true">
-								<div class="researchengine_stitch_play"><i class="fas fa-play"></i></div>
+								<div class="researchengine_stitch_play"><svg class="icon icon-play"><use href="assets/svg/icons.svg#icon-play"/></svg></div>
 							</div>
 							<div class="researchengine_stitch_video_progress" aria-hidden="true"><span></span></div>
 						</div>
@@ -403,7 +403,7 @@
 	</div>
 
 	<div class="bottom_top">
-		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
 	</div>
 
 	<!-- @include ../components/shared/translate-button.html -->

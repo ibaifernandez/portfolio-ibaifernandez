@@ -1,6 +1,10 @@
 <!-- Google tag (gtag.js) — Consent Mode v2.
      Sync portion: dataLayer + consent defaults + runtime flags (read by custom.js).
-     Idle portion: gtag.js fetch, config, stored-consent restore. -->
+     Deferred portion: gtag.js fetch, config, stored-consent restore.
+     The deferred portion fires whichever happens first:
+       1. requestIdleCallback (or setTimeout 2.5s on Safari pre-15.4 / Firefox <55)
+       2. document visibilitychange → 'hidden' (bounce capture — user navigates away
+          before the idle window opens, e.g. mobile back-button under 2 s). -->
 <script>
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
@@ -24,9 +28,14 @@
 		siteKey: isLocalPreview ? '' : '0x4AAAAAACjZQ2Ce6kH-DpQo'
 	};
 
-	// Defer gtag.js fetch + config + stored-consent restore until browser idle.
-	// gtag() calls in the meantime queue into dataLayer and process on load.
+	// Defer gtag.js fetch + config + stored-consent restore until browser idle
+	// OR the user navigates away (whichever fires first). gtag() calls in the
+	// meantime queue into dataLayer and process when gtag.js loads.
+	var __ga4Initialized = false;
 	function __initGA4() {
+		if (__ga4Initialized) return;
+		__ga4Initialized = true;
+
 		var script = document.createElement('script');
 		script.async = true;
 		script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3';
@@ -52,4 +61,13 @@
 	} else {
 		window.setTimeout(__initGA4, 2500);
 	}
+
+	// Bounce capture: if the user navigates away before idle fires, initialise
+	// immediately on visibility change. Queued gtag() calls still process when
+	// gtag.js eventually loads, so denied-default pageviews remain compliant.
+	document.addEventListener('visibilitychange', function () {
+		if (document.visibilityState === 'hidden') {
+			__initGA4();
+		}
+	});
 </script>

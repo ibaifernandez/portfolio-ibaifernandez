@@ -1,6 +1,6 @@
 # SECURITY.md — Security Policy
 
-**Last updated:** 2026-03-03
+**Last updated:** 2026-05-23
 
 ---
 
@@ -26,13 +26,27 @@ All responses include the following headers, set in `netlify.toml` and validated
 
 ### Content Security Policy
 
-Currently in **report-only mode**:
+**Enforced** (since 2026-05-22, Marianas Batch 3). Hardened on 2026-05-23 to hash-based `script-src` with no `'unsafe-inline'`.
 
-```
-Content-Security-Policy-Report-Only: default-src 'self'; ...
-```
+Current directives (`netlify.toml` line ~204):
 
-**Pending action:** Promote to enforce mode (`Content-Security-Policy`) after validating zero violations in report-only mode for a minimum of 2 weeks. See `docs/ROADMAP.md` Phase 6.
+| Directive | Value | Notes |
+|---|---|---|
+| `default-src` | `'self'` | |
+| `script-src` | `'self' 'sha256-…' ×N + googletagmanager + google-analytics + challenges.cloudflare.com` | Hashes auto-synced by `scripts/build/csp-hashes.mjs` (build hook + CI guard in `tests/quality-guards.sh`). No `'unsafe-inline'`, no `'unsafe-hashes'`. |
+| `style-src` | `'self' 'unsafe-inline' fonts.googleapis.com` | `'unsafe-inline'` retained because templates still ship ~95 inline `style="..."` attributes (mostly custom-property assignments on layout primitives). Migration to CSS classes is backlog. |
+| `connect-src` | `'self' + google-analytics + region1.google-analytics + stats.g.doubleclick + challenges.cloudflare.com` | `'self'` covers `/.netlify/functions/contact`. |
+| `img-src` | `'self' data: + google-analytics + googletagmanager` | |
+| `font-src` | `'self' data: fonts.gstatic.com` | |
+| `frame-src` | `youtube + youtube-nocookie + challenges.cloudflare.com` | Turnstile widget + embeds. |
+| `object-src` | `'none'` | |
+| `base-uri` / `form-action` / `frame-ancestors` | `'self'` | |
+
+**Hash sync workflow.** Every `npm run build:pages` invokes `scripts/build/csp-hashes.mjs`, which scans inline `<script>` content in every generated HTML page, computes SHA256 of each unique body, and rewrites the `script-src` directive in `netlify.toml`. Adding/editing an inline script and forgetting to rebuild is caught by `csp-hashes.mjs --check` inside `tests/quality-guards.sh` (CI gate).
+
+**Inline event handlers.** None remain. The previous `onload="this.onload=null;this.rel='stylesheet'"` on non-blocking CSS preloads was refactored on 2026-05-23 into `src/components/shared/preload-swap.html` (a single hashed `<script>` that hooks `[data-preload-swap]` links). This avoids the `'unsafe-hashes'` directive (unsupported in Safari pre-15.4).
+
+**Style hashing — deliberate gap.** ~95 inline `style="…"` attributes (mostly `--x: 43%; --y: 14%` custom-property assignments on crisis-route stops, hero spans, etc.) keep `'unsafe-inline'` alive in `style-src`. A migration to CSS classes / data-attributes is the cleanest fix but high-churn. Tracked in backlog.
 
 ---
 
@@ -54,7 +68,7 @@ The contact form is protected by multiple layers:
 - Backend: token verified via Turnstile API before processing
 - Production state (2026-03-03): `PORTFOLIO_CAPTCHA_PROVIDER` and `PORTFOLIO_CAPTCHA_SECRET` are present in Netlify environment variables
 - Status: real production submission already validated on 2026-03-03
-- See `docs/ENGINEERING-RUNBOOK.md` for Turnstile key rotation procedure
+- For Turnstile key rotation: rotate in Cloudflare dashboard → update `PORTFOLIO_CAPTCHA_SECRET` (Netlify env vars) → update site key in `src/components/shared/analytics-ga4.html` (line ~24) → rebuild + deploy → verify form submission → revoke old secret.
 
 ### Layer 4 — Input validation
 - All fields validated server-side (type, length, format)
@@ -105,7 +119,7 @@ Recommended: `.env` file (gitignored) loaded by `netlify dev`
 |---|---|
 | No `eval()` in `assets/js/custom.js` | ✅ Enforced by quality guard |
 | All `target="_blank"` have `rel="noopener noreferrer"` | ✅ Enforced by quality guard |
-| No inline event handlers (`onclick=`) | ✅ Not present |
+| No inline event handlers (`onclick=`, `onload=`, …) | ✅ Enforced — none remain after preload-swap refactor (2026-05-23) |
 | No mixed content (HTTP resources on HTTPS page) | ✅ All resources HTTPS |
 | No CDN-hosted scripts without SRI | ⚠️ Pending (some plugins loaded from CDN without integrity hash) |
 
@@ -161,12 +175,11 @@ If a security issue is discovered:
 
 | Item | Risk | Status |
 |---|---|---|
-| CSP in report-only mode | Medium — CSP not enforced, XSS possible if inline scripts introduced | Deferred until post-v2 hardening |
-| Turnstile production flow not yet manually validated | Resolved — the real flow was validated in production on 2026-03-03 | Closed |
+| `style-src 'unsafe-inline'` still allowed | Low–Medium — ~95 inline `style="…"` attrs (mostly CSS custom properties on layout primitives). XSS surface contained to attribute injection in template substitutions, which is bounded. | Backlog — migrate to CSS classes / data-attrs |
 | No explicit CORS check in production function | Low — cross-origin POSTs are possible, but abuse still depends on anti-spam controls | Accepted for now |
 | Some CDN scripts without SRI | Low | Backlog |
 | DNSSEC not validated | Low | Backlog |
-| `color-contrast` axe rule not yet blocker in CI | Resolved — blocking again in Playwright | Closed |
+| GA4 bounce attribution gap | Low — pageviews fire at `requestIdleCallback` (timeout 4 s) or `setTimeout(2500ms)` fallback, plus `visibilitychange→hidden`. Sub-second bounces with no tab-hide event may still miss the hit. | Accepted for performance trade-off |
 
 ---
 
@@ -181,4 +194,4 @@ GDPR/privacy note: If analytics (Epic G) are added, a cookie consent banner and 
 
 ---
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-05-23*

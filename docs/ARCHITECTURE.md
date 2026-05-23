@@ -68,11 +68,19 @@ scripts/build-pages.mjs   (Node.js build script)
 *.html (root) + *.min assets
                          (committed static output)
   index.html
-  cv-print.html
-  dossier HTML pages (currently `lfi.html`, `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html`, `aglaya.html`)
+  privacy.html
+  dossier HTML pages (currently `lfi.html`, `lfi-legacy.html`,
+    `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html`, `aglaya.html`)
   assets/css/*.min.css
   assets/js/*.min.js
 ```
+
+Post-render hooks (run inside `build-pages.mjs` after all HTML is emitted):
+
+| Hook | Purpose |
+|---|---|
+| `scripts/build/fingerprint.mjs` | Append `?v=<content-hash>` to every CSS/JS reference in generated HTML. Auto-invalidates browser cache on any change. |
+| `scripts/build/csp-hashes.mjs`  | Scan inline `<script>` blocks across generated HTML, compute SHA256 hashes, rewrite `netlify.toml` so `script-src` lists those hashes (no `'unsafe-inline'`, no `'unsafe-hashes'`). |
 
 ### Build Directives
 
@@ -109,8 +117,8 @@ Media note:
 ├── package.json                 ← NPM scripts and dev deps
 │
 ├── index.html                   ← GENERATED — do not edit
-├── cv-print.html                ← GENERATED — do not edit
-├── *.html dossier pages         ← GENERATED — do not edit
+├── privacy.html                 ← GENERATED — do not edit
+├── *.html dossier pages         ← GENERATED — do not edit (lfi, lfi-legacy, aglaya, elm-st, ruta-…)
 │
 ├── assets/
 │   ├── css/
@@ -119,15 +127,17 @@ Media note:
 │   │   ├── font.css             ← readable font-face source (no @import)
 │   │   ├── font.min.css         ← GENERATED, served in production HTML
 │   │   ├── bootstrap.min.css
-│   │   ├── all.min.css          ← Font Awesome
-│   │   ├── animate.css          ← readable source, loaded non-blocking
+│   │   ├── animate.css          ← readable source, loaded non-blocking via preload-swap
 │   │   ├── animate.min.css      ← GENERATED, loaded non-blocking in production HTML
 │   │   └── print.min.css        ← GENERATED print media stylesheet
 │   ├── js/
 │   │   ├── custom.js            ← readable source (page behavior + contact form)
 │   │   ├── custom.min.js        ← GENERATED, served in production HTML
 │   │   ├── translate.min.js     ← GENERATED runtime i18n script
+│   │   ├── cookie-consent.min.js← GENERATED cookie banner controller
 │   │   └── *.js                 ← plugin files
+│   ├── svg/
+│   │   └── icons.svg            ← inline SVG sprite (27 symbols, MIT/CC-BY Font Awesome 5)
 │   └── images/
 │       ├── *.jpg / *.png        ← source images
 │       ├── *.avif               ← AVIF variants (generated)
@@ -149,19 +159,27 @@ Media note:
 │
 ├── scripts/
 │   ├── build-pages.mjs          ← main build script
+│   ├── build/
+│   │   ├── csp-hashes.mjs       ← compute SHA256 of inline scripts → sync into netlify.toml
+│   │   ├── fingerprint.mjs      ← content-hash CSS/JS asset references
+│   │   ├── sitemap.mjs          ← regenerate sitemap.xml + llms.txt + llms-full.txt
+│   │   ├── assets.mjs           ← terser + csso minifier driver
+│   │   ├── config.mjs           ← active + archived page entries
+│   │   ├── context.mjs          ← build context shared across renderers
+│   │   └── renderers.mjs        ← @include / @render directive expansion
 │   ├── generate-avif-assets.mjs ← AVIF conversion
 │   ├── generate-webp-assets.mjs ← WebP conversion
-│   ├── wrap-images-with-avif-picture.mjs
 │   └── static-server.mjs        ← local server for E2E tests
 │
 ├── src/
 │   ├── pages/
 │   │   ├── index.template.html
-│   │   ├── cv-print.template.html
-│   │   └── project-*.template.html
+│   │   ├── privacy.template.html
+│   │   └── project-*.template.html (active + archived)
 │   └── components/
-│       ├── shared/              ← header, footer, nav, analytics
-│       └── index/               ← home-specific components
+│       ├── shared/              ← analytics-ga4, cookie-consent, preload-swap, translate-button
+│       ├── index/               ← home-specific components (sidebar, hero, dual-cta-buttons, …)
+│       └── project/             ← dossier-specific components (sidebar)
 │
 └── tests/
     ├── quality-guards.sh        ← shell-based quality gate
@@ -264,12 +282,17 @@ The build script reads `content/projects.json`, iterates over items, renders `sr
 The stylesheet stack (load order in `<head>`):
 
 1. `bootstrap.min.css` — grid + resets
-2. `all.min.css` — Font Awesome icons
-3. `font.css` — local font-face declarations (Josefin Sans, Poppins)
-4. *(Google Fonts Roboto)* — loaded non-blocking via `<link rel="preload">`
-5. `animate.css` — deferred non-blocking via `<link rel="preload">`
-6. `style.css` — main custom styles (`:root` design tokens + all layout)
-7. `print.css` — print media (`media="print"`)
+2. `font.css` — local font-face declarations (Josefin Sans, Poppins)
+3. *(Google Fonts Roboto)* — loaded non-blocking via `<link rel="preload" data-preload-swap>` + `src/components/shared/preload-swap.html`
+4. `animate.css` — deferred non-blocking via the same preload-swap pattern
+5. `style.css` — main custom styles (`:root` design tokens + all layout)
+6. `print.css` — print media (`media="print"`)
+
+Font Awesome (`all.min.css` + `assets/webfonts/`) was retired on 2026-05-23. Iconography
+is now an inline `<use href="assets/svg/icons.svg#icon-X"/>` sprite reference under
+`assets/svg/icons.svg`. The `.icon` base class (1em square, `fill: currentColor`) lives
+in `style.css` next to its sizing/colour helpers `.icon-big` (36 px), `.icon-mb-3`
+(12 px margin-bottom), `.icon-yellow` (accent text colour).
 
 Design tokens in `style.css` `:root`:
 - `--color-primary`, `--color-accent-*`
@@ -346,4 +369,4 @@ For rationale-by-decision detail, `git log --grep` against the historical change
 
 ---
 
-*Last updated: 2026-05-22*
+*Last updated: 2026-05-23*

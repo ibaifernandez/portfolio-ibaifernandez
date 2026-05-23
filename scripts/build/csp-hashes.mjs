@@ -11,6 +11,14 @@
 //   import { syncCspHashes } from './build/csp-hashes.mjs';
 //   syncCspHashes(rootDir);                     // returns { updated, scriptCount, handlerCount }
 //   syncCspHashes(rootDir, { checkOnly: true }); // throws on stale
+//
+// LIMITATION — single Content-Security-Policy header.
+// The regex below matches the FIRST `Content-Security-Policy = "…"` line in
+// netlify.toml. If the config ever evolves to ship multiple CSP headers
+// (e.g. one for `/admin/*`, one for `/api/*`), this script will only update
+// the first occurrence and the rest will silently drift. Either generalise
+// the match (loop over all hits) or refactor netlify.toml to a single shared
+// CSP token resolved at edge-function time before adding more headers.
 
 import fs from 'node:fs';
 import path from 'node:path';

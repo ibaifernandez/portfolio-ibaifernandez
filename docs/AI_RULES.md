@@ -188,7 +188,7 @@ The main content wrapper `port_sec_warapper` must be a `<main>` element, not a `
 Section headings must follow a valid hierarchy. The `port_sub_heading` element above section `h2`s must be a `<p>` (or `<span>`), not an `<h2>`. Avoid `h2 → h1` inversions.
 
 ### 5.3 — Icon-only controls need `aria-label`
-Any `<a>` or `<button>` containing only an icon (Font Awesome `<i>`) must have an `aria-label` describing its action.
+Any `<a>` or `<button>` containing only an icon (inline `<svg class="icon">` referencing `assets/svg/icons.svg`) must have an `aria-label` describing its action. The SVG itself should carry `aria-hidden="true"` so screen readers announce the surrounding control via its label, not the decorative glyph.
 
 ### 5.4 — All images need `alt`, `width`, `height`, and `loading`
 In `index.html`:

@@ -21,17 +21,17 @@
 	<meta property="twitter:image" content="{{pageShareImage}}">
 	<title translate="project-norden-title">{{pageTitle}}</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/all.min.css">
 	<link rel="stylesheet" href="assets/css/font.min.css">
 	<link rel="stylesheet" href="assets/css/animate.min.css">
 	<link rel="stylesheet" href="assets/css/style.min.css">
 	<link rel="stylesheet" href="assets/css/dossiers/brevo-intelligence-layer.css">
 	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+<!-- @include ../components/shared/preload-swap.html -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="preload" as="style"
 		href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
-		onload="this.onload=null;this.rel='stylesheet'">
+		data-preload-swap>
 	<noscript>
 		<link rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap">
@@ -388,7 +388,7 @@
 	</div>
 
 	<div class="bottom_top">
-		<i class="fas fa-arrow-up"></i><i class="fas fa-arrow-up"></i>
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
 	</div>
 
 	<!-- @include ../components/shared/translate-button.html -->

@@ -24,7 +24,7 @@ let hasErrors = false;
 // applied by fingerprint.mjs at the end of every build. The freshly rendered
 // template does NOT have them. Strip ?v=... from both sides before comparing.
 function stripFingerprints(html) {
-  return html.replace(/(\.(?:css|js))\?v=[a-f0-9]+/g, '$1');
+  return html.replace(/(\.(?:css|js|svg))\?v=[a-f0-9]+/g, '$1');
 }
 
 for (const entry of runtime.getPageEntries()) {

@@ -28,7 +28,6 @@ export const legacyPageEntries = [
       pageKeywords: 'LFi legacy dossier, archived case study, agency systems history',
       pageAuthor: 'Ibai Fernández',
       pageOgType: 'article',
-      pageStructuredDataJson: '{}',
       projectBackHref: 'index.html#project_sec',
       projectIndexHref: 'index.html#project_sec',
       previousProjectNavHtml: '',

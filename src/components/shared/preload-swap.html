@@ -1,0 +1,18 @@
+<!-- Swap <link rel="preload" as="style" data-preload-swap> to rel="stylesheet" once the
+     stylesheet is fetched. Replaces the inline onload= handler (which CSP3 hash-based
+     enforcement could only allow via 'unsafe-hashes', unsupported in Safari pre-15.4). -->
+<script>
+	(function () {
+		var links = document.querySelectorAll('link[data-preload-swap]');
+		for (var i = 0; i < links.length; i++) {
+			var link = links[i];
+			if (link.sheet) {
+				link.rel = 'stylesheet';
+				continue;
+			}
+			link.addEventListener('load', function () {
+				this.rel = 'stylesheet';
+			}, { once: true });
+		}
+	})();
+</script>
