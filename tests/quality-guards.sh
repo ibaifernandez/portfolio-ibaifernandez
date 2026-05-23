@@ -148,6 +148,9 @@ node tests/check-webp-coverage.mjs
 node tests/check-links.mjs
 node tests/check-i18n.mjs
 
+# CSP script-src hashes must stay in sync with inline scripts in generated HTML.
+node scripts/build/csp-hashes.mjs --check
+
 for file in index.html; do
   total_imgs="$(rg -n "<img " "$file" | wc -l | tr -d ' ')"
   with_loading="$(rg -n '<img [^>]*loading="' "$file" | wc -l | tr -d ' ')"

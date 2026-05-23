@@ -8,6 +8,7 @@ import { generatedAssetEntries } from './build/config.mjs';
 import { createBuildRuntime } from './build/renderers.mjs';
 import { renderSitemap, renderLlmsTxt, renderLlmsFullTxt } from './build/sitemap.mjs';
 import { fingerprintGeneratedHtml } from './build/fingerprint.mjs';
+import { syncCspHashes } from './build/csp-hashes.mjs';
 
 const rootDir = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -141,6 +142,18 @@ if (!checkOnly && !hasErrors) {
     .map((entry) => entry.output);
   const hashes = fingerprintGeneratedHtml(rootDir, htmlOutputs);
   console.log(`[OK] Fingerprinted ${Object.keys(hashes).length} asset references in ${htmlOutputs.length} HTML files`);
+
+  // CSP hashes: keep netlify.toml script-src in sync with inline scripts.
+  try {
+    const csp = syncCspHashes(rootDir);
+    const summary = `${csp.scriptHashes.length} script hash(es), ${csp.handlerHashes.length} handler hash(es)`;
+    console.log(csp.updated
+      ? `[OK] netlify.toml CSP script-src updated: ${summary}`
+      : `[OK] CSP script-src in sync (${summary})`);
+  } catch (err) {
+    hasErrors = true;
+    console.error(`[FAIL] CSP hash sync: ${err.message}`);
+  }
 }
 
 if (hasErrors) {
