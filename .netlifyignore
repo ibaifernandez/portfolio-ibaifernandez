@@ -17,6 +17,7 @@ test-results/
 # Docs internos
 docs/
 BACKLOG.md
+documentacion-profesional-if/
 
 # Config con secrets de ejemplo
 config/
