@@ -72,9 +72,12 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 
 Outstanding from the same audit, not in repo:
 
-- M4 — verify Google Search Console doesn't show indexed pages from the now-deleted `documentacion-profesional-if/` path; request removal if any appear
 - L7 (~95 inline `style="…"` attrs migration to CSS classes / `data-*` attrs, so `style-src 'unsafe-inline'` can finally drop) — large, backlog
 - GitHub Actions Node 20 → 24 migration (deprecation notice, deadline June 2026) — pre-existing, surfaced by audit
+
+Closed since the audit:
+
+- ✅ M4 — `site:portfolio.ibaifernandez.com documentacion-profesional-if` returns zero hits on Google (2026-05-23); folder was never indexed. No removal request needed.
 
 ---
 
