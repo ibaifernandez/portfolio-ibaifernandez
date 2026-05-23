@@ -1,13 +1,14 @@
 # ROADMAP
 
-**Last updated:** 2026-05-22
+**Last updated:** 2026-05-23
 **Single source of truth** for project state. If this drifts from reality, fix this file first.
 
 ---
 
 ## Current state
 
-Production live at https://portfolio.ibaifernandez.com — latest deploy `a4886c3` (Batch 7).
+Production live at https://portfolio.ibaifernandez.com — latest deployed `a4886c3` (Batch 7).
+Local `main` is 6 commits ahead — parallel-pendings cleanup batch pending push.
 CI green. Tests: 45/45 e2e + quality + i18n parity.
 
 Narrative B locked: **AI Product Engineer · Founder-Operator**.
@@ -45,19 +46,30 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - LinkedIn headline + About → Narrative B (off-portfolio)
 - GitHub README opener → Narrative B (off-portfolio)
 
-### Recently shipped (parallel pendings batch, 2026-05-23)
+### Recently committed locally (parallel-pendings batch, 2026-05-23, awaiting push)
 
 - ✅ Re-encoded `rdld-press-el-mercurio-2020.avif` 571 KB → 240 KB
 - ✅ Sidebar profile 160×160 variant + srcset
 - ✅ Defer GA4 init to `requestIdleCallback`
-- ⏭ Drop Font Awesome (in progress)
-- ⏭ Nonce inline scripts → drop `'unsafe-inline'` from CSP (queued)
+- ✅ Drop Font Awesome → inline SVG sprite (19 icons / 53 occurrences)
+- ✅ CSP script-src: `'unsafe-inline'` replaced by 9 SHA256 hashes + `'unsafe-hashes'` for the preload onload handler. Auto-synced by `scripts/build/csp-hashes.mjs` (build hook + CI check).
+- ✅ Deleted unused FA assets (`all.min.css` + `assets/webfonts/`, −2.65 MB)
+- ✅ Pruned dead worktrees (`claude/funny-dhawan-43bcd3`, `claude/nostalgic-babbage-f81e16`, two stale `/private/tmp` entries)
 
 ---
 
 ## What just shipped (recent commits, newest first)
 
 ```
+431f025  Delete unused Font Awesome assets (-2.65 MB)             [local, unpushed]
+a6f815d  Replace CSP script-src 'unsafe-inline' with SHA256 hashes [local, unpushed]
+3e23371  Drop Font Awesome: inline SVG sprite for 19 icons used    [local, unpushed]
+22e8e2d  Defer GA4 init to requestIdleCallback                     [local, unpushed]
+62730e0  Add sidebar 160×160 srcset for sub-2x DPR displays        [local, unpushed]
+18d61b9  Compress rdld-press 2020 image: 1830×2048 → 915×1024      [local, unpushed]
+4f4dd9d  Document operating contract: AGENTS.md summary, AI_RULES.md detail
+939e5a7  Commit .claude/settings.json: project-level permission policy
+23af2b1  Docs cleanup: delete obsolete, single SSOT, lean structure
 a4886c3  Batch 7: dossier color-contrast AA — enforce strict axe gate
 c72a970  Retire cv-print: portfolio replaces the CV
 121b3eb  Batch 6: terser+csso minifier, content-hash fingerprinting, LCP preload
