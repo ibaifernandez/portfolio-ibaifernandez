@@ -8,9 +8,8 @@
 ## Current state
 
 Production live at https://portfolio.ibaifernandez.com.
-Last push to `origin/main`: `7506050` (`Retire documentacion-profesional-if/`).
-Subsequent local commits awaiting next push when the post-audit cleanup batch lands.
-CI green on the most recent push. Tests: 45/45 e2e + quality + i18n parity + new CSP enforcement spec (7 pages) + coverage parser regression test.
+Last push to `origin/main`: `148a1b9` (`Post-audit hardening: close every finding from the 2026-05-23 audit`).
+CI green. Tests: 52/52 e2e (45 prior + 7 new CSP enforcement specs) + quality + i18n parity + coverage parser regression test.
 
 Narrative B locked: **AI Product Engineer · Founder-Operator**.
 
@@ -58,12 +57,12 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - ✅ Pruned dead worktrees + dead branches (`claude/funny-dhawan-43bcd3`, `claude/nostalgic-babbage-f81e16`, two stale `/private/tmp` entries)
 - ✅ Retired `documentacion-profesional-if/` (52 KB LFi drafts) + added entry to `.netlifyignore`
 
-### Awaiting next push (post-audit hardening batch, 2026-05-23)
+### Shipped on 2026-05-23 (post-audit hardening, `origin/main` at `148a1b9`)
 
-- ✅ Refactor 7 archived project templates to drop Font Awesome (sprite grew from 19 → 27 symbols)
-- ✅ Refactor preload-swap from inline `onload=` to a hashed `<script>` (`src/components/shared/preload-swap.html`) → `'unsafe-hashes'` removed from CSP (Safari 14–15.3 compatibility restored)
+- ✅ Refactored 7 archived project templates to drop Font Awesome (sprite 19 → 27 symbols)
+- ✅ Refactored preload-swap from inline `onload=` to a hashed `<script>` (`src/components/shared/preload-swap.html`) → `'unsafe-hashes'` removed from CSP (Safari 14–15.3 compatibility restored)
 - ✅ GA4 `visibilitychange` bounce-capture in `analytics-ga4.html`
-- ✅ Sync `docs/SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/AI_RULES.md` with post-2026-05-23 reality (CSP, SVG sprite, csp-hashes hook, retire cv-print + all.min.css refs)
+- ✅ Synced `docs/SECURITY.md`, `docs/ARCHITECTURE.md`, `docs/AI_RULES.md` with post-2026-05-23 reality (CSP, SVG sprite, csp-hashes hook, retire cv-print + all.min.css refs)
 - ✅ `scripts/build/fingerprint.mjs` now fingerprints `assets/svg/icons.svg` and preserves URL fragments when re-running over already-processed HTML
 - ✅ Empty JSON-LD removed from `lfi-legacy.html`
 - ✅ Performance budget tightened (CSS 470 → 400 KB, JS 500 → 160 KB, HTML 285 → 230 KB on index)
@@ -71,13 +70,20 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - ✅ Inline coverage parser regression test (`tests/check-coverage-tests.mjs`)
 - ✅ CSP enforcement e2e spec (`tests/e2e/csp.spec.js`) — fails on any console-reported CSP violation across the 7 served pages
 
+Outstanding from the same audit, not in repo:
+
+- M4 — verify Google Search Console doesn't show indexed pages from the now-deleted `documentacion-profesional-if/` path; request removal if any appear
+- L7 (~95 inline `style="…"` attrs migration to CSS classes / `data-*` attrs, so `style-src 'unsafe-inline'` can finally drop) — large, backlog
+- GitHub Actions Node 20 → 24 migration (deprecation notice, deadline June 2026) — pre-existing, surfaced by audit
+
 ---
 
 ## What just shipped (last 10 commits on `origin/main`, newest first)
 
 ```
+148a1b9  Post-audit hardening: close every finding from the 2026-05-23 audit
 7506050  Retire `documentacion-profesional-if/`: working drafts no longer in service
-9c1d651  ROADMAP: log parallel-pendings batch (2026-05-23), 6 commits awaiting push
+9c1d651  ROADMAP: log parallel-pendings batch (2026-05-23)
 431f025  Delete unused Font Awesome assets (-2.65 MB)
 a6f815d  Replace CSP script-src 'unsafe-inline' with SHA256 hashes
 3e23371  Drop Font Awesome: inline SVG sprite for 19 icons used
@@ -85,7 +91,6 @@ a6f815d  Replace CSP script-src 'unsafe-inline' with SHA256 hashes
 62730e0  Add sidebar 160×160 srcset for sub-2x DPR displays
 18d61b9  Compress rdld-press 2020 image: 1830×2048 → 915×1024
 4f4dd9d  Document operating contract: AGENTS.md summary, AI_RULES.md detail
-939e5a7  Commit .claude/settings.json: project-level permission policy
 ```
 
 ---
