@@ -8,7 +8,7 @@
 ## Current state
 
 Production live at https://portfolio.ibaifernandez.com.
-Last push to `origin/main`: `148a1b9` (`Post-audit hardening: close every finding from the 2026-05-23 audit`).
+Last push to `origin/main`: `196d7ac` (`ROADMAP: close M4 (documentacion-profesional-if never indexed by Google)`).
 CI green. Tests: 52/52 e2e (45 prior + 7 new CSP enforcement specs) + quality + i18n parity + coverage parser regression test.
 
 Narrative B locked: **AI Product Engineer · Founder-Operator**.
@@ -24,8 +24,8 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 | ★ | Marianas audit (8 dimensions, 152 findings) | ✅ Done |
 | ★ | Marianas execution (Batches 1-7) | ✅ Done |
 | ★ | Retire cv-print | ✅ Done |
-| ★ | **About section** | ← **CURRENTLY WORKING ON** |
-| 3 | Six product dossier pages | Pending |
+| ★ | About section (Narrative B) | ✅ Done |
+| 3 | Six product dossier pages | ← **next (owner picks order)** |
 |   | · Scanner 21.179 (RegTech / Ley 21.719) | Pending |
 |   | · Kanban Desk | Pending |
 |   | · Outreach | Pending |
@@ -78,6 +78,20 @@ Outstanding from the same audit, not in repo:
 Closed since the audit:
 
 - ✅ M4 — `site:portfolio.ibaifernandez.com documentacion-profesional-if` returns zero hits on Google (2026-05-23); folder was never indexed. No removal request needed.
+
+### Shipped on 2026-05-23 (About section rebuild, post-`196d7ac`)
+
+- ✅ About section rewritten in Narrative B prose: 4 blocks (Who I Am / What I Do / How I Work / How I Build), SEO-oriented but user-friendly, EN + ES lockstep
+- ✅ Identity card refactored from passport-frame to operator signals: dropped YOB, Phone, Personal Website fields; updated to `Remote from · Belo Horizonte, Minas Gerais, Brazil 🇧🇷` + `E-mail` + `Nationality · Spanish (EU citizen)` + `Open to · AI Product Engineer & Founding Engineer roles · 100% remote`
+- ✅ `ps_designation` simplified to "AI Product Engineer" (mirrors hero), translate attribute dropped (technical term, no i18n needed)
+- ✅ Section sub-heading + H2 + closing reframed:
+   - `About Ibai Fernández` / `Sobre Ibai Fernández`
+   - `More than two decades shipping narrative, marketing, and code.` / `Más de dos décadas entregando narrativa, marketing y código.`
+   - `Want to know more about me? Keep reading or let's talk.` / `¿Quieres saber más sobre mí? Sigue leyendo o hablemos.`
+- ✅ i18n cleanup: deleted 21 orphan Narrative-A keys (`global-experience`, `a-whole-new-kind-of-monster`, `genuinely-digital`, `knowledge-seeker`, `4geeks-alumnus`, `communication-maven`, `tech-savvy-people-centric`, `entrepreneurial-spirit`, their descriptors, `craftsman-of-digital-experiences`, `yob`, `current-location`, `personal-website`, `front-end-mkt-comms-creativity`); added 13 new keys (`remote-from`, `location-value`, `open-to`, `open-to-value`, `about-{who-i-am,what-i-do,how-i-work,how-i-build}-{heading,body}`, `about-closing-cta`); kept `phone` (still used by `src/components/index/footer.html`). Final state: 515 keys EN + ES, parity green
+- ✅ Added 3 minimal CSS rules (`.about_block`, `.about_block_heading`, `.about_block_body`) — no inline styles introduced, design tokens reused
+- ✅ Regenerated visual baseline `tests/e2e/visual.spec.js-snapshots/logos-section.png` (1px height shift downstream of the new About content; content unchanged)
+- ✅ Full test pass: build + quality + smoke + 52/52 e2e
 
 ---
 
