@@ -20,27 +20,6 @@
       "secondText": "View LinkedIn"
     }
   },
-  "about": {
-    "containerClass": "anout_section_btn",
-    "primary": {
-      "href": "#scroll_contact",
-      "className": "btn_red redirect_contact",
-      "firstTranslate": "contact-me",
-      "firstText": "Contact Me",
-      "secondTranslate": "contactar",
-      "secondText": "Contact"
-    },
-    "secondary": {
-      "href": "https://linkedin.com/in/ibaifernandez",
-      "target": "_blank",
-      "rel": "noopener noreferrer",
-      "className": "cta_text_link",
-      "firstTranslate": "view-linkedin",
-      "firstText": "View LinkedIn",
-      "secondTranslate": "view-linkedin",
-      "secondText": "View LinkedIn"
-    }
-  },
   "trainingLinkedin": {
     "columnClass": "col-md-12",
     "containerClass": "linkedin-button banner_btn",

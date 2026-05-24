@@ -369,7 +369,6 @@ export function createBuildRuntime(context) {
     'services-grid': renderServicesGrid,
     'experience-rows': renderExperienceRows,
     'hero-cta-buttons': () => renderDualCtaButtons('hero'),
-    'about-cta-buttons': () => renderDualCtaButtons('about'),
     'training-linkedin-cta': () => renderSingleCtaButton('trainingLinkedin')
   };
 

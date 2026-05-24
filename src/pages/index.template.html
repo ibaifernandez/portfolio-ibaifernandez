@@ -130,12 +130,12 @@
 											<source type="image/webp" srcset="./assets/images/ibai-fernandez-2.webp">
 											<img class="img-fluid" src="./assets/images/ibai-fernandez-2.jpg" alt="About" title="more information click + icon" loading="lazy" decoding="async" width="445" height="980">
 										</picture>
-									<div class="icon" title="more information click + icon">
+									<button type="button" class="about_icon_toggle" title="more information click + icon" aria-label="Show more information about Ibai">
 										<div class="iconbox">
 											<span class="icon-plus icon_plus" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="assets/svg/icons.svg#icon-plus"/></svg><span class="read-more-text" translate="read-more">Read more</span></span>
 											<svg class="icon icon-minus icon_minus" aria-hidden="true"><use href="assets/svg/icons.svg#icon-minus"/></svg>
 										</div>
-									</div>
+									</button>
 								</div>
 								<div class="left_deatils">
 									<div class="personal_details">
@@ -176,27 +176,32 @@
 
 								<div class="about_block">
 									<h3 class="about_block_heading" translate="about-who-i-am-heading">Who I Am</h3>
-									<p class="about_block_body" translate="about-who-i-am-body">Ibai Fernández. AI Product Engineer. Born in Spain, EU citizen, operating remote from Belo Horizonte. I run AGLAYA, a small operation shipping production systems end-to-end — from the first technical decision to the running deployment. I move between narrative, design, and engineering, and I've stopped pretending those are separate jobs. They're the same job seen from different angles, and most of the work I take on today requires holding all three at once.</p>
+									<p class="about_block_body" translate-html="about-who-i-am-body">Ibai Fernández. AI Product Engineer. Spaniard, EU citizen, remote from Belo Horizonte. I run <a href="https://aglaya.biz/" target="_blank" rel="noopener noreferrer">AGLAYA — The Uncomfortable Agenc·AI</a>, where I craft systems that free entrepreneurs from traditional SaaS lock-in and turn their investments into long-lasting assets. I move between narrative, marketing, and engineering; most of what I take on today demands all three at once.</p>
 								</div>
 								<div class="about_block">
 									<h3 class="about_block_heading" translate="about-what-i-do-heading">What I Do</h3>
-									<p class="about_block_body" translate="about-what-i-do-body">I ship production systems. Right now: RegTech compliance pipelines that audit live websites against Chile's Ley 21.719 and against GDPR; multi-tenant SaaS for teams that want to own their stack; email infrastructure built for scale; IRL discovery products that push back against the dating-app pattern; and open-source AI tooling built around Claude, Cursor, and Codex orchestration. The dossiers below carry the long-form proof. The hero rotation above carries the live status.</p>
+									<p class="about_block_body" translate-html="about-what-i-do-body">I ship <a href="https://project-atlas.ibaifernandez.com/" target="_blank" rel="noopener noreferrer">systems to production</a>. Right now: <a href="https://ley-21719-chile.aglaya.biz/" target="_blank" rel="noopener noreferrer">Scanner 21.719</a>, which audits Chilean websites against Ley 21.719; multi-tenant SaaS like <a href="https://kanban.aglaya.biz" target="_blank" rel="noopener noreferrer">AGLAYA Kanban Desk</a>; <a href="https://outreach.aglaya.biz" target="_blank" rel="noopener noreferrer">AI-driven email marketing automation</a> infrastructure built to scale; and websites with the most solid architecture.</p>
 								</div>
 								<div class="about_block">
 									<h3 class="about_block_heading" translate="about-how-i-work-heading">How I Work</h3>
-									<p class="about_block_body" translate="about-how-i-work-body">Remote, async-friendly, end-to-end ownership. No throw-it-over-the-wall handoffs, no half-built scopes, no specs that die on contact with production. I prefer small surfaces I can defend over large ones I can only describe. Documentation, tests, CI, and deploy gates are part of the work, not a separate phase. The same discipline that keeps a contact form from leaking PII keeps an AI orchestration loop from drifting in production.</p>
+									<p class="about_block_body" translate-html="about-how-i-work-body">Remote, async, end-to-end ownership. No throw-it-over-the-wall handoffs, no half-built scopes, no specs that die in production. Surfaces sometimes small, sometimes not so small, but always defensible, documented, tested, with CI deploy gates as a recurring part of the work.</p>
 								</div>
 								<div class="about_block">
 									<h3 class="about_block_heading" translate="about-how-i-build-heading">How I Build</h3>
-									<p class="about_block_body" translate="about-how-i-build-body">AI-assisted from the first prompt, never AI-decided. Claude / Cursor / Codex orchestration on top of Node, Python, and whatever the deployment honestly needs — usually less than the frameworks suggest. Vanilla-first, static-where-possible, serverless-when-warranted. CSP-hardened, content-driven builds, hash-pinned assets, performance budgets enforced in CI. The stack stays boring on purpose so the work above it can stay interesting.</p>
+									<p class="about_block_body" translate-html="about-how-i-build-body">I architect, design, and develop the product. AI assists me in stacking the bricks. Orchestration through Claude and Codex on Node, Python… or whatever framework each deploy needs: vanilla, Astro, Flask, React; static or serverless as required. CSP-enforced, hash-pinned, with high-performance budgets in CI. The stack stays boring on purpose; the work above it… most interesting.</p>
 								</div>
 
 								<div class="signature_box">
 									<div class="name">
-										<p translate="about-closing-cta">Want to know more about me? Keep reading or let's talk.</p>
+										<p translate-html="about-closing-cta">Want to know more about me? Keep reading or <a href="#scroll_contact">let's talk</a>.</p>
 									</div>
 								</div>
-								<!-- @render about-cta-buttons -->
+								<div class="anout_section_btn">
+									<a href="#scroll_contact" class="portfolio_btn btn_red redirect_contact">
+										<span translate="contact-me" class="first_text">Contact me</span>
+										<span translate="contactar" class="second_text">Contact</span>
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -887,7 +892,7 @@
 
 	<!-- go to top button -->
 	<div class="bottom_top">
-		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
 	</div>
 	    <!-- @include ../components/shared/translate-button.html -->
 	<!-- @include ../components/shared/analytics-ga4.html -->

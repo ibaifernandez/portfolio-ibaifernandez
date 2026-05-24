@@ -629,67 +629,40 @@ Assigned to: ThemeForest
 	
 	// animated banner text
 	banner_typingtext: function() {
-		if(this.reduceMotion){
+		var target = document.querySelector('.banner_typingtext .texts');
+		if(!target){
 			return;
 		}
-		var _this = this;
-		var typingTarget = $('.banner_typingtext');
-		if(typingTarget.length > 0){
-			var initTyping = function() {
-				if(typingTarget.data('textillate-ready') || typeof $.fn.textillate !== 'function'){
-					return;
-				}
-				typingTarget.textillate({
-					loop: true,
-					minDisplayTime: 2e3,
-					initialDelay: 0,
-					autoStart: true,
-					"in": {
-						effect: "bounceIn",
-						// effect: "bounceInDown",
-						delayScale: 2.5,
-						delay: 50,
-						sync: false,
-						shuffle: false,
-						reverse: false
-					},
-					out: {
-						effect: "bounceOut",
-						// effect: "bounceOut",
-						delayScale: 2.5,
-						delay: 0,
-						sync: false,
-						shuffle: false,
-						reverse: false
-					}
-				});
-				typingTarget.data('textillate-ready', true);
-			};
-			var bootTyping = function() {
-				if(typeof $.fn.textillate === 'function'){
-					initTyping();
-					return;
-				}
-				var loadTextillate = typeof $.fn.lettering === 'function'
-					? _this.load_script('assets/js/cvtext1.min.js')
-					: _this.load_script('assets/js/cvtext2.min.js').then(function() {
-						return _this.load_script('assets/js/cvtext1.min.js');
-					});
-				loadTextillate
-					.then(initTyping)
-					.catch(function() {
-						typingTarget.data('textillate-failed', true);
-					});
-			};
-			_this.when_in_view(typingTarget.get(0), bootTyping, { rootMargin: '150px 0px' });
+		var items = Array.prototype.slice.call(target.querySelectorAll('li'));
+		if(items.length === 0){
+			return;
 		}
+		// Honor prefers-reduced-motion: show first item only, no cycling.
+		if(this.reduceMotion){
+			items[0].classList.add('is-active');
+			return;
+		}
+		var idx = 0;
+		var DISPLAY_MS = 1800;
+		var EXIT_MS = 220;
+		items[0].classList.add('is-active');
+		setInterval(function() {
+			var current = items[idx];
+			current.classList.remove('is-active');
+			current.classList.add('is-leaving');
+			setTimeout(function() {
+				current.classList.remove('is-leaving');
+				idx = (idx + 1) % items.length;
+				items[idx].classList.add('is-active');
+			}, EXIT_MS);
+		}, DISPLAY_MS);
 	},
 	/*------------------------------------------------------------------*/ 
 	
-	//about open details 
+	//about open details
 	about_opendetails: function() {
-		if($('.icon').length > 0){
-			$('.icon').on('click', function() {
+		if($('.about_icon_toggle').length > 0){
+			$('.about_icon_toggle').on('click', function() {
 				$('.about_leftsection').toggleClass('open_details');
 			});
 		}

@@ -30,7 +30,7 @@
 	.port_tooglebox_container,
 	.bottom_top,
 	#translate-button-container,
-	.about_leftsection .icon,
+	.about_leftsection .about_icon_toggle,
 	.ex_btn,
 	.project_case_nav {
 		display: none !important;
