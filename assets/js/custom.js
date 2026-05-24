@@ -43,6 +43,7 @@ Assigned to: ThemeForest
 				this.banner_typingtext();
 				this.typed_js();
 				this.about_opendetails();
+				this.training_arrows();
 				this.circle_progressbar();
 				this.testimonial_slider();
 			this.popup_video();			
@@ -666,6 +667,41 @@ Assigned to: ThemeForest
 				$('.about_leftsection').toggleClass('open_details');
 			});
 		}
+	},
+	// Training timeline: prev/next arrows scroll the horizontal track by one node width.
+	training_arrows: function() {
+		var container = document.querySelector('.training_timeline');
+		if(!container){
+			return;
+		}
+		var prev = document.querySelector('.training_arrow--prev');
+		var next = document.querySelector('.training_arrow--next');
+		if(!prev || !next){
+			return;
+		}
+		function getStep() {
+			var node = container.querySelector('.training_node');
+			if(!node){
+				return 240;
+			}
+			var track = node.parentNode;
+			var gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap) || 0;
+			return node.getBoundingClientRect().width + gap;
+		}
+		function updateArrows() {
+			var max = container.scrollWidth - container.clientWidth;
+			prev.disabled = container.scrollLeft <= 4;
+			next.disabled = container.scrollLeft >= max - 4;
+		}
+		prev.addEventListener('click', function() {
+			container.scrollBy({ left: -getStep(), behavior: 'smooth' });
+		});
+		next.addEventListener('click', function() {
+			container.scrollBy({ left: getStep(), behavior: 'smooth' });
+		});
+		container.addEventListener('scroll', updateArrows, { passive: true });
+		window.addEventListener('resize', updateArrows);
+		updateArrows();
 	},
 	
 		/*------------------------------------------------------------------*/ 

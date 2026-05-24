@@ -1,228 +1,124 @@
 [
   {
-    "boxClass": "education_firsrtbox firstbox",
-    "contentSideClass": "education_right",
-    "titleOrder": "year-location",
+    "year": "2024",
+    "flag": "🇧🇷",
+    "institution": "Udemy",
+    "logo": "assets/images/udemy.png",
+    "degree": {
+      "text": "Agile Project Management, PMI-ACP 2024 certification",
+      "translate": "training-degree-pmi-acp"
+    },
+    "description": {
+      "text": "PMI (PMI-ACP) certification focused on applying agile methodologies — Scrum, Kanban, and Lean — for effective project management.",
+      "translate": "training-desc-pmi-acp"
+    },
+    "accentClass": "training_node--cyan"
+  },
+  {
     "year": "2023",
-    "location": {
-      "badgeClass": "bg-pink",
-      "translate": "united-states",
-      "text": "United States"
-    },
+    "flag": "🇺🇸",
+    "institution": "4Geeks Academy",
+    "logo": "assets/images/4geeks.png",
     "degree": {
-      "translate": "full-stack-bootcamp",
-      "prefixHover": "Program",
-      "prefixText": "Full-Stack ",
-      "suffixText": "Software Engineering"
-    },
-    "institution": {
-      "className": "pink",
-      "translate": null,
-      "text": "4Geeks Academy"
+      "text": "Full-Stack Software Engineering",
+      "translate": "full-stack-bootcamp"
     },
     "description": {
-      "translate": "successfully-completed",
-      "text": "Formalized the engineering toolkit behind the later full-stack and automation work: React, Python, Node.js, APIs, and production-oriented builds."
+      "text": "Formalized the engineering toolkit behind the later full-stack and AI orchestration work: React, Node.js, Python, APIs.",
+      "translate": "successfully-completed"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
-      "html": "<img src=\"assets/images/4geeks.png\" alt=\"4Geeks Logo\" loading=\"lazy\" decoding=\"async\" width=\"80\" height=\"80\">"
-    },
-    "imageSecondary": null
+    "accentClass": "training_node--pink"
   },
   {
-    "boxClass": "education_secondbox secondbox",
-    "contentSideClass": "education_left",
-    "titleOrder": "location-year",
     "year": "2019",
-    "location": {
-      "badgeClass": "bg-yellow",
-      "translate": "united-states",
-      "text": "United States"
-    },
+    "flag": "🇺🇸",
+    "institution": "MIT",
+    "logo": "assets/images/mit.png",
     "degree": {
-      "translate": "diploma-in-design-thinking",
-      "prefixHover": "Certification",
-      "prefixText": "Certification ",
-      "suffixText": "in Design Thinking: Strategy for Innovation"
-    },
-    "institution": {
-      "className": "yellow",
-      "translate": "mit",
-      "text": "Massachusetts Institute of Technology (MIT)"
+      "text": "Diploma in Design Thinking",
+      "translate": "diploma-in-design-thinking"
     },
     "description": {
-      "translate": "acquire-expertise",
-      "text": "Added a structured product and problem-framing layer through design thinking and human-centered innovation methods."
+      "text": "Added a structured product and problem-framing layer through design thinking and human-centered innovation methods.",
+      "translate": "acquire-expertise"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 newyork-desktop-screennone",
-      "html": "<img style=\"max-width:85px;\" src=\"assets/images/mit.png\" alt=\"MIT Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    },
-    "imageSecondary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center newyork-responsive-screennone",
-      "html": "<img style=\"max-width:85px;\" src=\"assets/images/mit.png\" alt=\"MIT Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    }
+    "accentClass": "training_node--yellow"
   },
   {
-    "boxClass": "education_firsrtbox thirdbox",
-    "contentSideClass": "education_right",
-    "titleOrder": "year-location",
     "year": "2018",
-    "location": {
-      "badgeClass": "bg-orange",
-      "translate": null,
-      "text": "Ecuador"
-    },
+    "flag": "🇪🇨",
+    "institution": "UEES",
+    "logo": "assets/images/uees.png",
     "degree": {
-      "translate": "diploma-in-digital-marketing",
-      "prefixHover": "Diploma",
-      "prefixText": "Diploma ",
-      "suffixText": "in Digital Marketing"
-    },
-    "institution": {
-      "className": "orange",
-      "translate": null,
-      "text": "Universidad de Especialidades Espíritu Santo (UEES)"
+      "text": "Diploma in Digital Marketing",
+      "translate": "diploma-in-digital-marketing"
     },
     "description": {
-      "translate": "focused-on-seo",
-      "text": "Deepened hands-on work in SEO, SEM, paid media, and acquisition strategy for measurable digital growth."
+      "text": "Deepened hands-on work in SEO, SEM, paid media, and acquisition strategy for measurable digital growth.",
+      "translate": "focused-on-seo"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
-      "html": "<img style=\"max-width:85px;\" src=\"assets/images/uees.png\" alt=\"UEES Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    },
-    "imageSecondary": null
+    "accentClass": "training_node--orange"
   },
   {
-    "boxClass": "education_secondbox fourthbox",
-    "contentSideClass": "education_left",
-    "titleOrder": "location-year",
-    "year": "2016-2017",
-    "location": {
-      "badgeClass": "bg-cyan",
-      "translate": "Spain",
-      "text": "Spain"
-    },
+    "year": "2016–17",
+    "flag": "🇪🇸",
+    "institution": "Universidad de Salamanca",
+    "logo": "assets/images/usal.png",
     "degree": {
-      "translate": "master-at-salamanca",
-      "prefixHover": "Master's",
-      "prefixText": "Master's",
-      "suffixText": " in Psychopedagogy of Language & Literature"
-    },
-    "institution": {
-      "className": "cyan",
-      "translate": "university-of-salamanca",
-      "text": "University of Salamanca"
+      "text": "Master's in Psychopedagogy of Language & Literature",
+      "translate": "master-at-salamanca"
     },
     "description": {
-      "translate": "advanced-expertise",
-      "text": "Advanced work in language, pedagogy, and cognition that later informed UX writing, messaging, and narrative framing."
+      "text": "Advanced work in language, pedagogy, and cognition that later informed UX writing, messaging, and narrative framing.",
+      "translate": "advanced-expertise"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center DesktopNone",
-      "html": "<img class=\"usal\" src=\"assets/images/usal.png\" alt=\"University of Salamanca Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    },
-    "imageSecondary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center resNone",
-      "html": "<img style=\"max-width:85px\" src=\"assets/images/usal.png\" alt=\"University of Salamanca Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    }
+    "accentClass": "training_node--cyan"
   },
   {
-    "boxClass": "education_firsrtbox thirdbox",
-    "contentSideClass": "education_right",
-    "titleOrder": "year-location",
-    "year": "2007-2008",
-    "location": {
-      "badgeClass": "bg-orange",
-      "translate": "united-states",
-      "text": "United States"
-    },
+    "year": "2007–08",
+    "flag": "🇺🇸",
+    "institution": "Missouri State University",
+    "logo": "assets/images/msu.png",
     "degree": {
-      "translate": "diploma-at-msu",
-      "prefixHover": "Diploma",
-      "prefixText": "Diploma ",
-      "suffixText": "in Media Management & Production (ISEP Scholar)"
-    },
-    "institution": {
-      "className": "orange",
-      "translate": null,
-      "text": "Missouri State University"
+      "text": "Diploma in Media Management & Production (ISEP)",
+      "translate": "diploma-at-msu"
     },
     "description": {
-      "translate": "mastered-esential",
-      "text": "Training in media management and production that later translated into delivery discipline, team coordination, and cross-format production."
+      "text": "Training in media management and production that later translated into delivery discipline, team coordination, and cross-format production.",
+      "translate": "mastered-esential"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
-      "html": "<img src=\"assets/images/msu.png\" alt=\"Missouri State University Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    },
-    "imageSecondary": null
+    "accentClass": "training_node--orange"
   },
   {
-    "boxClass": "education_secondbox secondbox",
-    "contentSideClass": "education_left",
-    "titleOrder": "location-year",
-    "year": "2006-2007",
-    "location": {
-      "badgeClass": "bg-yellow",
-      "translate": "The Netherlands",
-      "text": "The Netherlands"
-    },
+    "year": "2006–07",
+    "flag": "🇳🇱",
+    "institution": "De Haagse Hogeschool",
+    "logo": "assets/images/haagse-hogeschool.png",
     "degree": {
-      "translate": "diploma-at-the-hague",
-      "prefixHover": "Diploma",
-      "prefixText": "Diploma ",
-      "suffixText": "in Intercultural Communication (Socrates-Erasmus)"
-    },
-    "institution": {
-      "className": "yellow",
-      "translate": "de-haagse-hogeschool-den-haag",
-      "text": "De Haagse Hogeschool - Den Haag"
+      "text": "Diploma in Intercultural Communication (Erasmus)",
+      "translate": "diploma-at-the-hague"
     },
     "description": {
-      "translate": "acquired-valuable",
-      "text": "Cross-cultural communication training that strengthened international collaboration and market adaptation."
+      "text": "Cross-cultural communication training that strengthened international collaboration and market adaptation.",
+      "translate": "acquired-valuable"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 newyork-desktop-screennone",
-      "html": "<img style=\"max-width:85px;\" src=\"assets/images/haagse-hogeschool.png\" alt=\"Haagse Hogeschool Logo\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    },
-    "imageSecondary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center newyork-responsive-screennone",
-      "html": "<img style=\"max-width:85px;\" src=\"assets/images/haagse-hogeschool.png\" alt=\"Haagse Hogeschool\" loading=\"lazy\" decoding=\"async\" width=\"200\" height=\"200\">"
-    }
+    "accentClass": "training_node--yellow"
   },
   {
-    "boxClass": "education_firsrtbox firstbox",
-    "contentSideClass": "education_right",
-    "titleOrder": "year-location",
-    "year": "2003-2009",
-    "location": {
-      "badgeClass": "bg-pink",
-      "translate": null,
-      "text": "Spain"
-    },
+    "year": "2003–09",
+    "flag": "🇪🇸",
+    "institution": "Universidad de Málaga",
+    "logo": "assets/images/uma.png",
+    "logoAvif": "assets/images/uma.avif",
+    "logoWebp": "assets/images/uma.webp",
     "degree": {
-      "translate": "ba-in-av-comm",
-      "prefixHover": "Diploma",
-      "prefixText": "BA",
-      "suffixText": " in Audiovisual Communication"
-    },
-    "institution": {
-      "className": "pink",
-      "translate": "university-of-malaga",
-      "text": "University of Malaga"
+      "text": "BA in Audiovisual Communication",
+      "translate": "ba-in-av-comm"
     },
     "description": {
-      "translate": "gained-comprehensive",
-      "text": "This is where the narrative base was built: audiovisual storytelling, semiotics, and media production before those skills were translated into digital systems."
+      "text": "Where the narrative base was built: audiovisual storytelling, semiotics, and media production before those skills translated into digital systems.",
+      "translate": "gained-comprehensive"
     },
-    "imagePrimary": {
-      "columnClass": "col-lg-6 col-md-4 col-sm-12 col-12 align-self-center",
-      "html": "<picture>\n<source type=\"image/avif\" srcset=\"assets/images/uma.avif\">\n<source type=\"image/webp\" srcset=\"assets/images/uma.webp\">\n<img src=\"assets/images/uma.png\" width=\"80\" alt=\"University of Málaga Logo\" loading=\"lazy\" decoding=\"async\" height=\"80\" data-avif-fallback=\"true\">\n</picture>"
-    },
-    "imageSecondary": null
+    "accentClass": "training_node--pink"
   }
 ]

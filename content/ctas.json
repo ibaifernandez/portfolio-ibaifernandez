@@ -19,16 +19,5 @@
       "secondTranslate": "view-linkedin",
       "secondText": "View LinkedIn"
     }
-  },
-  "trainingLinkedin": {
-    "columnClass": "col-md-12",
-    "containerClass": "linkedin-button banner_btn",
-    "href": "https://linkedin.com/in/ibaifernandez",
-    "target": "_blank",
-    "rel": "noopener noreferrer",
-    "buttonClass": "btn_yellow",
-    "firstTranslate": "go-to-my-linkedin",
-    "firstText": "Go to my LinkedIn",
-    "secondHtml": "<i class=\"fab fa-linkedin fa-big fa-mt-3\"></i>"
   }
 }

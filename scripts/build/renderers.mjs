@@ -198,80 +198,41 @@ export function createBuildRuntime(context) {
     }).join('\n');
   }
 
-  function renderTrainingTitleRow(item, labelPrefix) {
-    const yearHtml = [
-      '\t\t\t\t\t\t\t\t<div class="left_title">',
-      `\t\t\t\t\t\t\t\t\t<h4>${escapeHtml(assertRequired(item.year, `${labelPrefix}.year`))}</h4>`,
-      '\t\t\t\t\t\t\t\t</div>'
-    ].join('\n');
-
-    const location = item.location || {};
-    const locationTranslateAttr = buildAttr('translate', location.translate);
-    const locationBadgeClass = assertRequired(location.badgeClass, `${labelPrefix}.location.badgeClass`);
-    const locationText = assertRequired(location.text, `${labelPrefix}.location.text`);
-    const locationHtml = [
-      `\t\t\t\t\t\t\t\t<div class="right_title ${escapeHtml(locationBadgeClass)}">`,
-      `\t\t\t\t\t\t\t\t\t<h4${locationTranslateAttr}>${escapeHtml(locationText)}</h4>`,
-      '\t\t\t\t\t\t\t\t</div>'
-    ].join('\n');
-
-    const titleOrder = assertRequired(item.titleOrder, `${labelPrefix}.titleOrder`);
-    if (titleOrder === 'year-location') {
-      return `${yearHtml}\n${locationHtml}`;
-    }
-    if (titleOrder === 'location-year') {
-      return `${locationHtml}\n${yearHtml}`;
-    }
-
-    throw new Error(`Invalid content data: unsupported ${labelPrefix}.titleOrder (${titleOrder})`);
-  }
-
-  function renderTrainingImageColumn(image, labelPrefix) {
-    if (!image) {
-      return '';
-    }
-
-    const columnClass = assertRequired(image.columnClass, `${labelPrefix}.columnClass`);
-    const imageHtml = normalizeMultilineHtml(assertRequired(image.html, `${labelPrefix}.html`));
-
-    return [
-      `\t\t\t\t\t\t\t\t\t<div class="${escapeHtml(columnClass)}">`,
-      '\t\t\t\t\t\t\t\t\t\t<div class="education_mleft education_left ">',
-      '\t\t\t\t\t\t\t\t\t\t\t<div class="edu_mainyear edu_leftyear">',
-      '\t\t\t\t\t\t\t\t\t\t\t\t<h1>',
-      `${imageHtml}`,
-      '\t\t\t\t\t\t\t\t\t\t\t\t</h1>',
-      '\t\t\t\t\t\t\t\t\t\t\t</div>',
-      '\t\t\t\t\t\t\t\t\t\t</div>',
-      '\t\t\t\t\t\t\t\t\t</div>'
-    ].join('\n');
-  }
-
   function renderTrainingTimeline() {
     const items = readJson('content/training.json');
-    const itemTemplate = readComponent('src/components/index/training-item.html');
+    const nodeTemplate = readComponent('src/components/index/training-node.html');
 
     return items.map((item, index) => {
       const labelPrefix = `training[${index}]`;
       const degree = item.degree || {};
-      const institution = item.institution || {};
       const description = item.description || {};
+      const institution = assertRequired(item.institution, `${labelPrefix}.institution`);
+      let logoHtml;
+      if (item.logo) {
+        const alt = escapeHtml(`${institution} logo`);
+        const src = escapeHtml(item.logo);
+        const sources = [];
+        if (item.logoAvif) sources.push(`<source type="image/avif" srcset="${escapeHtml(item.logoAvif)}">`);
+        if (item.logoWebp) sources.push(`<source type="image/webp" srcset="${escapeHtml(item.logoWebp)}">`);
+        const fallbackHint = sources.length > 0 ? ' data-avif-fallback="true"' : '';
+        const imgTag = `<img src="${src}" alt="${alt}" loading="lazy" decoding="async" width="48" height="48"${fallbackHint}>`;
+        logoHtml = sources.length > 0
+          ? `<picture>${sources.join('')}${imgTag}</picture>`
+          : imgTag;
+      } else {
+        logoHtml = `<span class="training_node_logo_fallback" aria-hidden="true">${escapeHtml(institution)}</span>`;
+      }
 
-      return renderTemplate(itemTemplate, {
-        boxClass: assertRequired(item.boxClass, `${labelPrefix}.boxClass`),
-        contentSideClass: assertRequired(item.contentSideClass, `${labelPrefix}.contentSideClass`),
-        primaryImageColumnHtml: renderTrainingImageColumn(item.imagePrimary, `${labelPrefix}.imagePrimary`),
-        secondaryImageColumnHtml: renderTrainingImageColumn(item.imageSecondary, `${labelPrefix}.imageSecondary`),
-        titleRowHtml: renderTrainingTitleRow(item, labelPrefix),
+      return renderTemplate(nodeTemplate, {
+        accentClass: assertRequired(item.accentClass, `${labelPrefix}.accentClass`),
+        year: assertRequired(item.year, `${labelPrefix}.year`),
+        flag: assertRequired(item.flag, `${labelPrefix}.flag`),
+        institution,
+        logoHtml,
+        degreeText: assertRequired(degree.text, `${labelPrefix}.degree.text`),
         degreeTranslateAttr: buildAttr('translate', degree.translate),
-        degreePrefixHover: assertRequired(degree.prefixHover, `${labelPrefix}.degree.prefixHover`),
-        degreePrefixText: assertRequired(degree.prefixText, `${labelPrefix}.degree.prefixText`),
-        degreeSuffixText: assertRequired(degree.suffixText, `${labelPrefix}.degree.suffixText`),
-        institutionClass: assertRequired(institution.className, `${labelPrefix}.institution.className`),
-        institutionTranslateAttr: buildAttr('translate', institution.translate),
-        institutionText: assertRequired(institution.text, `${labelPrefix}.institution.text`),
-        descriptionTranslateAttr: buildAttr('translate', description.translate),
-        descriptionText: assertRequired(description.text, `${labelPrefix}.description.text`)
+        descriptionText: assertRequired(description.text, `${labelPrefix}.description.text`),
+        descriptionTranslateAttr: buildAttr('translate', description.translate)
       });
     }).join('\n');
   }
@@ -368,8 +329,7 @@ export function createBuildRuntime(context) {
     'testimonials-slides': renderTestimonialsSlides,
     'services-grid': renderServicesGrid,
     'experience-rows': renderExperienceRows,
-    'hero-cta-buttons': () => renderDualCtaButtons('hero'),
-    'training-linkedin-cta': () => renderSingleCtaButton('trainingLinkedin')
+    'hero-cta-buttons': () => renderDualCtaButtons('hero')
   };
 
   function renderDirective(renderName) {
