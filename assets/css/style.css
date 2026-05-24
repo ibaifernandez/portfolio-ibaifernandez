@@ -1246,6 +1246,193 @@ p.banner_pera:after {
     overflow: hidden;
 }
 
+/* ---------- Experience / Career path (nested accordion) ---------- */
+.career_timeline {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto 0;
+    max-width: 920px;
+    position: relative;
+}
+.career_timeline::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 18px;
+    bottom: 18px;
+    width: 2px;
+    background: var(--color-accent-pink);
+    opacity: 0.35;
+}
+.career_company {
+    margin-bottom: 14px;
+    position: relative;
+    padding-left: 36px;
+}
+.career_company::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-accent-pink);
+    border: 3px solid var(--color-white);
+    box-shadow: 0 0 0 2px var(--color-accent-pink);
+    z-index: 1;
+}
+.career_company > summary,
+.career_role > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 18px;
+    background: var(--color-white);
+    border: 1px solid #e9e9e9;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 16px;
+    user-select: none;
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+.career_company > summary::-webkit-details-marker,
+.career_role > summary::-webkit-details-marker {
+    display: none;
+}
+.career_company > summary::after {
+    content: "⌄";
+    margin-left: auto;
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.25s ease;
+    opacity: 0.7;
+}
+.career_company[open] > summary::after {
+    transform: rotate(180deg);
+}
+.career_company > summary:hover {
+    background: #fafafa;
+    border-color: var(--color-accent-pink);
+}
+.career_company[open] > summary {
+    background: var(--color-accent-pink);
+    color: var(--color-white);
+    border-color: var(--color-accent-pink);
+    border-radius: 10px 10px 0 0;
+}
+.career_year {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    flex: 0 0 auto;
+}
+.career_company_name {
+    font-family: var(--font-family-heading);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.1;
+}
+.career_company_meta {
+    font-size: 13px;
+    color: var(--color-text-muted);
+    flex: 1;
+}
+.career_company[open] .career_company_meta {
+    color: rgba(255, 255, 255, 0.9);
+}
+.career_roles {
+    list-style: none;
+    padding: 14px;
+    margin: 0;
+    border: 1px solid #e9e9e9;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    background: var(--color-white);
+}
+.career_roles > li + li {
+    margin-top: 10px;
+}
+.career_role > summary {
+    background: #f6f6f6;
+    padding: 10px 14px;
+    font-size: 16px;
+}
+.career_role > summary::after {
+    content: "+";
+    margin-left: auto;
+    font-size: 18px;
+    line-height: 1;
+    opacity: 0.7;
+}
+.career_role[open] > summary::after {
+    content: "−";
+}
+.career_role > summary:hover {
+    background: #efefef;
+}
+.career_role[open] > summary {
+    background: var(--color-accent-yellow);
+    color: var(--color-text-primary);
+    border-radius: 8px 8px 0 0;
+}
+.career_role_name {
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.2;
+}
+.career_role_meta {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    flex: 1;
+}
+.career_role[open] .career_role_meta {
+    color: rgba(34, 34, 34, 0.7);
+}
+.career_role > .career_role_content {
+    padding: 16px 16px 14px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    background: var(--color-white);
+    border: 1px solid var(--color-accent-yellow);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+}
+.career_company > .career_role_content {
+    padding: 18px 20px 16px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    background: var(--color-white);
+    border: 1px solid #e9e9e9;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+.career_role_content > p {
+    margin: 0 0 10px;
+}
+.career_role_content h4 {
+    margin: 14px 0 6px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-heading);
+}
+.career_role_content ul {
+    margin: 0 0 12px;
+    padding-left: 20px;
+}
+.career_role_content li {
+    margin-bottom: 4px;
+}
+
 /* Career pillars — scannable chip cards (replaces .progressbar circles) */
 .pillars_grid {
     gap: 22px 18px;

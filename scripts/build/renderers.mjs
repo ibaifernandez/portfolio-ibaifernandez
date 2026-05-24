@@ -296,30 +296,86 @@ export function createBuildRuntime(context) {
     }).join('\n');
   }
 
-  function renderExperienceRows() {
-    const section = readJson('content/experience.json');
-    const rows = section?.rows;
-
-    if (!Array.isArray(rows) || rows.length === 0) {
-      throw new Error('Invalid content data: experience.rows must be a non-empty array');
+  function renderExperienceTimeline() {
+    const data = readJson('content/experience.json');
+    const companies = data?.companies;
+    if (!Array.isArray(companies) || companies.length === 0) {
+      throw new Error('Invalid content data: experience.companies must be a non-empty array');
     }
 
-    return rows.map((row, rowIndex) => {
-      const labelPrefix = `experience.rows[${rowIndex}]`;
-      const rowClass = assertRequired(row.rowClass, `${labelPrefix}.rowClass`);
-      const cards = row.cards;
+    const flatTpl = readComponent('src/components/index/experience-company-flat.html');
+    const nestedCompanyTpl = readComponent('src/components/index/experience-company-nested.html');
+    const nestedRoleTpl = readComponent('src/components/index/experience-role-nested.html');
 
-      if (!Array.isArray(cards) || cards.length === 0) {
-        throw new Error(`Invalid content data: ${labelPrefix}.cards must be a non-empty array`);
+    function renderResponsibilityList(role, prefix) {
+      return role.responsibilities.map((r, i) => {
+        const key = assertRequired(r.key, `${prefix}.responsibilities[${i}].key`);
+        const text = assertRequired(r.text, `${prefix}.responsibilities[${i}].text`);
+        return `\t\t\t\t<li translate-html="${escapeHtml(key)}">${text}</li>`;
+      }).join('\n');
+    }
+
+    function renderRoleContent(role, prefix) {
+      const introKey = assertRequired(role.introKey, `${prefix}.introKey`);
+      const introText = assertRequired(role.introText, `${prefix}.introText`);
+      const respHeadingKey = assertRequired(role.respHeadingKey, `${prefix}.respHeadingKey`);
+      const respHeadingText = assertRequired(role.respHeadingText, `${prefix}.respHeadingText`);
+      const closingBlock = role.closingText
+        ? `\n\t\t\t<p translate-html="${escapeHtml(role.closingKey)}">${role.closingText}</p>`
+        : '';
+      return [
+        `\t\t\t<p translate-html="${escapeHtml(introKey)}">${introText}</p>`,
+        `\t\t\t<h4 translate="${escapeHtml(respHeadingKey)}">${escapeHtml(respHeadingText)}</h4>`,
+        `\t\t\t<ul>`,
+        renderResponsibilityList(role, prefix),
+        `\t\t\t</ul>${closingBlock}`
+      ].join('\n');
+    }
+
+    return companies.map((company, ci) => {
+      const cPrefix = `experience.companies[${ci}]`;
+      const year = assertRequired(company.year, `${cPrefix}.year`);
+      const name = assertRequired(company.name, `${cPrefix}.name`);
+      const metaText = assertRequired(company.metaText, `${cPrefix}.metaText`);
+      const metaKey = assertRequired(company.metaKey, `${cPrefix}.metaKey`);
+      const openAttr = company.open ? ' open' : '';
+      const roles = company.roles;
+      if (!Array.isArray(roles) || roles.length === 0) {
+        throw new Error(`Invalid content data: ${cPrefix}.roles must be a non-empty array`);
       }
 
-      const cardsHtml = cards.map((card, cardIndex) => {
-        const cardLabelPrefix = `${labelPrefix}.cards[${cardIndex}]`;
-        const componentPath = assertRequired(card.component, `${cardLabelPrefix}.component`);
-        return readComponent(componentPath).trimEnd();
+      if (company.singleRole) {
+        const role0 = roles[0];
+        return renderTemplate(flatTpl, {
+          openAttr,
+          year: escapeHtml(year),
+          name: escapeHtml(name),
+          metaText,
+          metaTranslateAttr: buildAttr('translate', metaKey),
+          roleContent: renderRoleContent(role0, `${cPrefix}.roles[0]`)
+        });
+      }
+
+      const rolesHtml = roles.map((role, ri) => {
+        const rPrefix = `${cPrefix}.roles[${ri}]`;
+        return renderTemplate(nestedRoleTpl, {
+          roleYear: escapeHtml(assertRequired(role.year, `${rPrefix}.year`)),
+          roleName: assertRequired(role.roleName, `${rPrefix}.roleName`),
+          roleNameTranslateAttr: buildAttr('translate', role.roleNameKey),
+          roleMeta: assertRequired(role.roleMeta, `${rPrefix}.roleMeta`),
+          roleMetaTranslateAttr: buildAttr('translate', role.roleMetaKey),
+          roleContent: renderRoleContent(role, rPrefix)
+        });
       }).join('\n');
 
-      return `<div class="${escapeHtml(rowClass)}">\n${cardsHtml}\n</div>`;
+      return renderTemplate(nestedCompanyTpl, {
+        openAttr,
+        year: escapeHtml(year),
+        name: escapeHtml(name),
+        metaText,
+        metaTranslateAttr: buildAttr('translate', metaKey),
+        rolesHtml
+      });
     }).join('\n');
   }
 
@@ -328,7 +384,7 @@ export function createBuildRuntime(context) {
     'projects-grid': renderProjectsGrid,
     'testimonials-slides': renderTestimonialsSlides,
     'services-grid': renderServicesGrid,
-    'experience-rows': renderExperienceRows,
+    'experience-timeline': renderExperienceTimeline,
     'hero-cta-buttons': () => renderDualCtaButtons('hero')
   };
 

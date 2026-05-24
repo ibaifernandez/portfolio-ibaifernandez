@@ -1,43 +1,207 @@
 {
-  "rows": [
+  "companies": [
     {
-      "rowClass": "row d-flex justify-content-betweeen",
-      "cards": [
+      "id": "elm-st",
+      "year": "May 2008 – Jan 2016",
+      "name": "Elm St",
+      "metaText": "Audiovisual Production · Spain · Ecuador · Founder & Narrative Architect",
+      "metaKey": "exp-elm-st-meta",
+      "singleRole": true,
+      "roles": [
         {
-          "component": "src/components/index/experience-cards/lfi-mail-mkt-auto-director.html"
-        },
-        {
-          "component": "src/components/index/experience-cards/lfi-marketing-coordinator.html"
+          "year": "May 2008 – Jan 2016",
+          "roleName": "Founder & Narrative Architect",
+          "roleNameKey": "exp-elm-st-r1-name",
+          "roleMeta": "Spain · Ecuador",
+          "roleMetaKey": "exp-elm-st-r1-meta",
+          "introText": "Founded an audiovisual production company at the intersection of cinematic craft and brand storytelling. Built the narrative foundation that informed much of the digital work that followed from 2016 onwards. It allowed me to start my next professional step as Creative Director at NIC.ec, where I later moved into Marketing.",
+          "introKey": "exp-elm-st-r1-intro",
+          "respHeadingText": "Highlights",
+          "respHeadingKey": "exp-elm-st-r1-resp-h",
+          "responsibilities": [
+            { "text": "Operated the studio end-to-end: pre-production, shoot, post, delivery.", "key": "exp-elm-st-r1-resp-1" },
+            { "text": "Brand films, music videos, corporate documentaries for SMB + agency clients.", "key": "exp-elm-st-r1-resp-2" },
+            { "text": "Cross-border operation: seeded in Springfield, Missouri; founded in Málaga (Spain); expanded into Ecuador after moving there in 2014.", "key": "exp-elm-st-r1-resp-3" }
+          ],
+          "closingText": "Storytelling, semiotics, and media production — capabilities that later translated directly into digital systems.",
+          "closingKey": "exp-elm-st-r1-closing"
         }
       ]
     },
     {
-      "rowClass": "row",
-      "cards": [
+      "id": "nic-ec",
+      "year": "Feb 2016 – Jun 2019",
+      "name": "NIC.ec",
+      "metaText": "National Domain Registry · Ecuador · 3 Roles in 3.5 Years",
+      "metaKey": "exp-nic-ec-meta",
+      "singleRole": false,
+      "roles": [
         {
-          "component": "src/components/index/experience-cards/lfi-front-end-developer.html"
+          "year": "Feb 2016 – Jun 2016",
+          "roleName": "Creative Director",
+          "roleNameKey": "exp-nic-ec-r1-name",
+          "roleMeta": "Ecuador",
+          "roleMetaKey": "exp-nic-ec-r1-meta",
+          "introText": "Joined as Creative Director to redesign the registry's brand surface, product packaging, and customer-facing communication. Built the in-house creative team and laid the foundation that anchored the next three years of growth.",
+          "introKey": "exp-nic-ec-r1-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-nic-ec-r1-resp-h",
+          "responsibilities": [
+            { "text": "Brand identity redesign and visual system.", "key": "exp-nic-ec-r1-resp-1" },
+            { "text": "Brand storytelling.", "key": "exp-nic-ec-r1-resp-2" },
+            { "text": "Creative direction across web, print, traditional and digital AV media, and event surfaces.", "key": "exp-nic-ec-r1-resp-3" },
+            { "text": "Hired and led a small in-house design team.", "key": "exp-nic-ec-r1-resp-4" }
+          ]
         },
         {
-          "component": "src/components/index/experience-cards/aglaya-ops-director.html"
+          "year": "Jun 2016 – Jun 2018",
+          "roleName": "Marketing & Communications Director",
+          "roleNameKey": "exp-nic-ec-r2-name",
+          "roleMeta": "Ecuador",
+          "roleMetaKey": "exp-nic-ec-r2-meta",
+          "introText": "Promoted to Marketing & Communications Director. Owned the full demand-generation funnel, brand voice, PR, and content programs.",
+          "introKey": "exp-nic-ec-r2-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-nic-ec-r2-resp-h",
+          "responsibilities": [
+            { "text": "Acquisition campaigns across digital, print, and events.", "key": "exp-nic-ec-r2-resp-1" },
+            { "text": "External communications, PR, crisis messaging.", "key": "exp-nic-ec-r2-resp-2" },
+            { "text": "Coordinated creative, marketing, and sales as one go-to-market unit.", "key": "exp-nic-ec-r2-resp-3" }
+          ]
+        },
+        {
+          "year": "Jun 2018 – Jun 2019",
+          "roleName": "Head of Marketing",
+          "roleNameKey": "exp-nic-ec-r3-name",
+          "roleMeta": "Ecuador",
+          "roleMetaKey": "exp-nic-ec-r3-meta",
+          "introText": "Final role at NIC.ec, with P&L responsibility for the marketing function and direct reporting to the General Manager and the CEO.",
+          "introKey": "exp-nic-ec-r3-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-nic-ec-r3-resp-h",
+          "responsibilities": [
+            { "text": "Annual budget, quarterly planning, and reporting to GM and CEO.", "key": "exp-nic-ec-r3-resp-1" },
+            { "text": "Channel mix optimization, attribution model, CAC/LTV reporting.", "key": "exp-nic-ec-r3-resp-2" },
+            { "text": "Stakeholder coordination across legal, ops, and IT.", "key": "exp-nic-ec-r3-resp-3" }
+          ]
         }
       ]
     },
     {
-      "rowClass": "row",
-      "cards": [
+      "id": "aglaya-1",
+      "year": "Jul 2019 – Jul 2023",
+      "name": "AGLAYA 1.0",
+      "metaText": "Remote Digital Agency · Founder · Ecuador → Colombia",
+      "metaKey": "exp-aglaya-1-meta",
+      "singleRole": true,
+      "roles": [
         {
-          "component": "src/components/index/experience-cards/nic-ec-mkt-comms-manager.html"
-        },
-        {
-          "component": "src/components/index/experience-cards/nic-ec-mkt-comms-director.html"
+          "year": "Jul 2019 – Jul 2023",
+          "roleName": "Founder",
+          "roleNameKey": "exp-aglaya-1-r1-name",
+          "roleMeta": "Remote · LatAm + US",
+          "roleMetaKey": "exp-aglaya-1-r1-meta",
+          "introText": "Founded AGLAYA to operate as a remote digital agency combining marketing intelligence, lean business design, and design-thinking practices into delivery for B2B clients.",
+          "introKey": "exp-aglaya-1-r1-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-aglaya-1-r1-resp-h",
+          "responsibilities": [
+            { "text": "Defined the offer, the pricing, and the delivery playbook.", "key": "exp-aglaya-1-r1-resp-1" },
+            { "text": "Closed and led engagements across LatAm and US-facing accounts.", "key": "exp-aglaya-1-r1-resp-2" },
+            { "text": "Ran proof-of-concept eCommerce and retail builds to validate UX, paid acquisition, and retention hypotheses on real traffic.", "key": "exp-aglaya-1-r1-resp-3" }
+          ],
+          "closingText": "Closed this chapter in mid-2023 to focus on a single client engagement: LFi.",
+          "closingKey": "exp-aglaya-1-r1-closing"
         }
       ]
     },
     {
-      "rowClass": "row d-flex justify-content-center",
-      "cards": [
+      "id": "lfi",
+      "year": "Aug 2023 – Currently",
+      "name": "LFi",
+      "metaText": "Enterprise CRM & Marketing Automation · Chilean Company, Remote from Colombia · 3 Roles in 3 Years… and Counting",
+      "metaKey": "exp-lfi-meta",
+      "singleRole": false,
+      "roles": [
         {
-          "component": "src/components/index/experience-cards/elm-st-founder-narrative-architect.html"
+          "year": "Aug 2023 – Apr 2024",
+          "roleName": "Mail Marketing & Automation Specialist",
+          "roleNameKey": "exp-lfi-r1-name",
+          "roleMeta": "Chilean Company, Remote from Colombia",
+          "roleMetaKey": "exp-lfi-r1-meta",
+          "introText": "Joined LFi as Mail Marketing and Automation Specialist for enterprise CRM campaigns. Shipped responsive email templates and customer-facing surfaces against deliverability and accessibility constraints.",
+          "introKey": "exp-lfi-r1-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-lfi-r1-resp-h",
+          "responsibilities": [
+            { "text": "HTML/CSS templates for transactional and commercial email at enterprise scale.", "key": "exp-lfi-r1-resp-1" },
+            { "text": "QA and cross-client rendering against the major MTAs and webmail clients.", "key": "exp-lfi-r1-resp-2" },
+            { "text": "Pair-programmed with the automation team on dynamic content blocks.", "key": "exp-lfi-r1-resp-3" }
+          ]
+        },
+        {
+          "year": "May 2024 – Dec 2024",
+          "roleName": "Marketing Coordinator",
+          "roleNameKey": "exp-lfi-r2-name",
+          "roleMeta": "Chilean Company, Remote from Colombia",
+          "roleMetaKey": "exp-lfi-r2-meta",
+          "introText": "Moved into the Marketing Coordinator role. Coordinated the content, design, and automation tracks across multiple enterprise accounts.",
+          "introKey": "exp-lfi-r2-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-lfi-r2-resp-h",
+          "responsibilities": [
+            { "text": "Account briefing, creative kickoffs, and delivery oversight.", "key": "exp-lfi-r2-resp-1" },
+            { "text": "QA gate before client preview and sign-off cycles.", "key": "exp-lfi-r2-resp-2" },
+            { "text": "Onboarded new accounts into the LFi operating playbook.", "key": "exp-lfi-r2-resp-3" }
+          ]
+        },
+        {
+          "year": "Dec 2024 – Currently",
+          "roleName": "Mail Marketing & Automation Director",
+          "roleNameKey": "exp-lfi-r3-name",
+          "roleMeta": "Chilean Company, Remote from Colombia",
+          "roleMetaKey": "exp-lfi-r3-meta",
+          "introText": "I don't just manage lists or campaigns; I design data architectures that automate the relationship between enterprise brands and users at a global scale. As Director of Automation, I'm building the traditional email-marketing function into a strict discipline of revenue engineering.",
+          "introKey": "exp-lfi-r3-intro",
+          "respHeadingText": "Key Responsibilities",
+          "respHeadingKey": "exp-lfi-r3-resp-h",
+          "responsibilities": [
+            { "text": "<strong>AI-Driven Orchestration:</strong> LLMs and autonomous agents generating dynamic, hyper-personalized content in real time, cutting deployment cycles from days to a couple of hours.", "key": "exp-lfi-r3-resp-1" },
+            { "text": "<strong>Full-Stack Architecture:</strong> Custom integrations with Next.js, TypeScript, and Python bridging complex CRMs and high-volume delivery engines.", "key": "exp-lfi-r3-resp-2" },
+            { "text": "<strong>Predictive Behavioral Logic:</strong> Parametric user journeys, decision trees, and behavioral triggers for 18+ enterprise accounts across Banking, Energy, and Retail.", "key": "exp-lfi-r3-resp-3" },
+            { "text": "<strong>Data-Driven Deliverability:</strong> Dynamic content injected at scale plus relentless audit of server deliverability and CTR/ROI optimization.", "key": "exp-lfi-r3-resp-4" }
+          ],
+          "closingText": "My mandate: apply a product mindset to email — building automation MVPs to validate marketing hypotheses fast, then promoting them to hard code for scalable execution.",
+          "closingKey": "exp-lfi-r3-closing"
+        }
+      ]
+    },
+    {
+      "id": "aglaya-2",
+      "year": "May 2026 – Currently",
+      "name": "AGLAYA 2.0",
+      "metaText": "The Uncomfortable AI·gency · Founder · Remote from Belo Horizonte, Brazil",
+      "metaKey": "exp-aglaya-2-meta",
+      "singleRole": true,
+      "open": true,
+      "roles": [
+        {
+          "year": "May 2026 – Currently",
+          "roleName": "Founder",
+          "roleNameKey": "exp-aglaya-2-r1-name",
+          "roleMeta": "Remote · EU-Aligned, LatAm-Shipping",
+          "roleMetaKey": "exp-aglaya-2-r1-meta",
+          "introText": "Returned to AGLAYA — now as <em>The Uncomfortable AI·gency</em>. We build high-performance AI systems that replace manual chaos with automated certainty, so businesses recover their operational sovereignty instead of renting it from generic SaaS vendors.",
+          "introKey": "exp-aglaya-2-r1-intro",
+          "respHeadingText": "Operating Principles",
+          "respHeadingKey": "exp-aglaya-2-r1-resp-h",
+          "responsibilities": [
+            { "text": "<strong>Algorithmic Sovereignty</strong> — autonomous corporate cognition, owned by the client, not the vendor.", "key": "exp-aglaya-2-r1-resp-1" },
+            { "text": "<strong>Inevitable Logical Systems</strong> — design systems whose progression is logical, not reactive, so growth compounds rather than rebuilds.", "key": "exp-aglaya-2-r1-resp-2" },
+            { "text": "<strong>Zero-Filter Diagnostics</strong> — eliminate the market noise and the operational fog so the command picture is honest.", "key": "exp-aglaya-2-r1-resp-3" }
+          ],
+          "closingText": "This is what we ship — under regulation, end-to-end.",
+          "closingKey": "exp-aglaya-2-r1-closing"
         }
       ]
     }
