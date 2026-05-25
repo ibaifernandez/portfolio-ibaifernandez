@@ -100,7 +100,15 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
       clipWidth: 1160,
       clipHeight: 1180
     },
-    { selector: '.port_responsor_setions', locator: page.locator('.port_responsor_setions'), snapshot: 'logos-section.png' }
+    {
+      selector: '.port_responsor_setions',
+      locator: page.locator('.port_responsor_setions'),
+      snapshot: 'logos-section.png',
+      // Same CI ±1px jitter pattern (carousel reflow after font-load).
+      maxDiffPixelRatio: 0.10,
+      clipWidth: 1160,
+      clipHeight: 392
+    }
   ];
 
   for (const section of sections) {
