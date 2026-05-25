@@ -46,6 +46,70 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - LinkedIn headline + About → Narrative B (off-portfolio)
 - GitHub README opener → Narrative B (off-portfolio)
 
+---
+
+## Disabled (preserved, not rendered)
+
+Sections currently kept in the codebase but excluded from the public render so we
+can revive them without rebuilding from scratch. New agents: do NOT treat these
+as orphan code — they are deliberate, paused, and may be re-enabled later.
+
+### Services section — paused 2026-05-25
+
+- **Why:** the 9-card services grid duplicated what Pillars (capability tags) +
+  About (prose) + Dossiers (examples) already say. Plus the icons had been
+  visually broken since the Font Awesome retirement.
+- **Render flip:** `src/pages/index.template.html` (around line 442) has a
+  disabled directive `<!-- @include-DISABLED ../components/index/services-section.html -->`.
+  The build pipeline's `includePattern` (`<!--\s*@include\s+([^\s]+)\s*-->`)
+  does not match `@include-DISABLED`, so the partial is skipped.
+- **Re-enable:** change `@include-DISABLED` back to `@include` and rebuild.
+- **Preserved assets (do not delete):**
+  - `src/components/index/services-section.html` (wrapper)
+  - `src/components/index/services-group.html`
+  - `src/components/index/service-card.html`
+  - `content/services.json` (3 groups × 3 cards)
+  - `renderServicesGrid()` in `scripts/build/renderers.mjs` + the
+    `'services-grid'` render directive registration
+  - `.port_services_setions` CSS rules in `assets/css/style.css`
+  - All `services.*` and `service-card.*` related i18n keys in `en.json` / `es.json`
+    (currently orphan, intentionally retained)
+- **If re-enabled, also revisit:** icon classes still reference `fa fa-…`
+  (Font Awesome is retired) → swap to `assets/svg/icons.svg` sprite references,
+  or migrate to the chip-card pattern used by Pillars before going live.
+
+### Testimonials section — paused 2026-05-25
+
+- **Why:** sidebar nav already had Testimonials commented out so the section
+  had no anchor link, and the existing 8-entry set was mixed (3 recent LFi
+  + 5 four-year-old 4Geeks bootcamp). Removing it makes the page lighter
+  and less noisy until a curated rewrite (likely 3 LFi only per ROADMAP
+  step 5) is ready.
+- **Render flip:** `src/pages/index.template.html` (around line 471) has
+  `<!-- @include-DISABLED ../components/index/testimonial-section.html -->`.
+  Same pattern as Services — the build's `includePattern` does not match
+  the suffixed token so the partial is skipped.
+- **Re-enable:** change `@include-DISABLED` back to `@include` and rebuild.
+- **Preserved assets (do not delete):**
+  - `src/components/index/testimonial-section.html` (full section wrapper —
+    extracted from the inline block at the time of pause)
+  - `src/components/index/testimonial-slide.html` (per-entry slide template)
+  - `content/testimonials.json` (8 entries)
+  - `renderTestimonialsSlides()` in `scripts/build/renderers.mjs` + the
+    `'testimonials-slides'` render directive registration
+  - `.port_testimonial_setions` / `.testimonial_section` CSS rules in
+    `assets/css/style.css`
+  - All testimonial-related i18n keys (recommendation copies per person)
+  - Swiper plugin lazy-load remains wired in `assets/js/custom.js` for
+    `.swiper-container` so the carousel works on re-enable without extra
+    work (other Swiper consumers — responsors slider — keep the plugin
+    pulled in regardless).
+- **If re-enabled, also revisit:** ROADMAP step 5 — curate down to the 3
+  LFi entries (Franco Ogaz Palma, Fernanda Muñoz Onetto, Bani Barranco),
+  archive the 5 4Geeks bootcamp entries, and consider replacing the
+  Swiper carousel with a static 3-column grid (drops a jQuery plugin and
+  reads faster on mobile).
+
 ### Shipped on 2026-05-23 (`origin/main` up to `7506050`)
 
 - ✅ Re-encoded `rdld-press-el-mercurio-2020.avif` 571 KB → 240 KB

@@ -140,7 +140,7 @@ function toggleLanguageButton() {
         return;
     }
     var isEnglish = currentLanguage === 'en';
-    var iconPath = isEnglish ? 'assets/images/spain.svg' : 'assets/images/english.svg';
+    var iconPath = isEnglish ? 'assets/images/flags/spain.svg' : 'assets/images/flags/uk.svg';
     var nextLanguageLabel = isEnglish ? 'Switch to Spanish' : 'Switch to English';
     buttonIcon.setAttribute('src', iconPath);
     buttonIcon.setAttribute('alt', nextLanguageLabel);

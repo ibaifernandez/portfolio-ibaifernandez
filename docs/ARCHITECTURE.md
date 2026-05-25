@@ -89,6 +89,18 @@ Post-render hooks (run inside `build-pages.mjs` after all HTML is emitted):
 | `@include` | `<!-- @include path/to/partial.html -->` | Inlines a component partial |
 | `@render` | `<!-- @render component-name -->` | Loops over JSON and renders a component per item |
 
+> **Disabling a directive without deleting the markup.** The matching regexes
+> (`<!--\s*@include\s+([^\s]+)\s*-->` and `<!--\s*@render\s+([^\s]+)\s*-->`,
+> see `scripts/build/template-utils.mjs`) require the literal `@include` or
+> `@render` token. To temporarily exclude a partial from the render surface
+> while keeping the component intact, append a `-DISABLED` suffix to the
+> directive — e.g. `@include-DISABLED path/to/partial.html`. The build
+> pipeline will skip it and the partial / renderer / data / CSS / i18n
+> remain available for future re-enable. Current example in the codebase:
+> the **Services section** in `src/pages/index.template.html` (see
+> `docs/ROADMAP.md` → "Disabled (preserved, not rendered)" for the full
+> inventory of preserved assets).
+
 ### Running the Build
 
 ```bash

@@ -1287,6 +1287,10 @@ Assigned to: ThemeForest
                         {
                             latLng: [3.2174, -75.1744],
                             name: "Villavieja"
+                        },
+                        {
+                            latLng: [-19.92083, -43.93778],
+                            name: 'Belo Horizonte'
                         }
 					]
 				  });
