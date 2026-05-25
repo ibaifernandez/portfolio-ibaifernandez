@@ -112,7 +112,7 @@ test('sidebar social links are keyboard reachable and named for assistive tech',
   await page.locator(contactMenuAnchor).focus();
   await expectActiveElementMatches(page, contactMenuAnchor);
 
-  const firstSocialSelector = '.port_sidebar_social .social_list a.siderbar_icon[href="https://facebook.com/ibaifernandezec"]';
+  const firstSocialSelector = '.port_sidebar_social .social_list a.siderbar_icon[href="https://linkedin.com/in/ibaifernandez"]';
   const reachedFirstSocial = await tabUntilFocus(page, firstSocialSelector, 12);
   expect(reachedFirstSocial).toBe(true);
 
@@ -120,7 +120,7 @@ test('sidebar social links are keyboard reachable and named for assistive tech',
   const count = await socialLinks.count();
   expect(count).toBeGreaterThan(0);
 
-  const expectedLabels = ['Facebook', 'LinkedIn', 'WhatsApp', 'GitHub', 'Instagram'];
+  const expectedLabels = ['LinkedIn', 'WhatsApp', 'GitHub'];
   for (let index = 0; index < count; index += 1) {
     const socialLink = socialLinks.nth(index);
     await expect(socialLink).toHaveAttribute('aria-label', expectedLabels[index]);
