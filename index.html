@@ -30,14 +30,9 @@
 	<link rel="preload" as="image" type="image/avif" imagesrcset="assets/images/ibai-fernandez-1x1-sidebar-160.avif 160w, assets/images/ibai-fernandez-1x1-sidebar.avif 1024w" imagesizes="80px" fetchpriority="high">
 
 	<!--Start Style -->
-	<!-- Google Fonts: preconnect reduces DNS + TLS latency -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<!-- Roboto: non-blocking (replaces @import that was in font.css) -->
-	<link rel="preload" as="style" data-preload-swap href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
-	<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"></noscript>
+	<!-- Webfonts self-hosted (Roboto + Inter + Josefin Sans + Roboto Mono) — no third-party requests. -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="assets/css/font.min.css?v=ac7f44527f">
+	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
 	<!-- animate.css: non-blocking (not needed above-the-fold) -->
 	<link rel="preload" as="style" data-preload-swap href="assets/css/animate.min.css?v=f208dc149e">
 	<noscript><link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e"></noscript>
@@ -1709,7 +1704,7 @@
 					</div>
 					<div class="copy_right_wrapper ">
 						<div class="col-12 text-center">
-							<p class="copy_right" ><span translate="all-rights-reserved">All Rights Reserved</span> &copy; 2024 <a href="https://ibaifernandez.com" target="_blank" rel="noopener noreferrer">Ibai Fernández</a> &middot; <a href="privacy.html" translate="privacy-policy">Privacy</a></p>
+							<p class="copy_right" ><span translate="all-rights-reserved">All Rights Reserved</span> &copy; 2024 <a href="https://ibaifernandez.com" target="_blank" rel="noopener noreferrer">Ibai Fernández</a> &middot; <a href="privacy.html" translate="privacy-policy">Privacy</a> &middot; <a href="#cookie-consent-banner" id="cookie-preferences-link" translate="cookie-preferences-link">Cookie preferences</a></p>
 						</div>
 					</div>
 				</div>
@@ -1811,16 +1806,16 @@
 	<div class="cookie-consent_inner">
 		<div class="cookie-consent_copy">
 			<h2 id="cookie-consent-title" class="cookie-consent_title" translate="cookie-consent-title">Cookies, briefly</h2>
-			<p class="cookie-consent_body" translate="cookie-consent-body">This site uses Google Analytics to understand how visitors arrive and what they read. Nothing is sold or shared. Decide what you prefer.</p>
+			<p class="cookie-consent_body" translate="cookie-consent-body">This site uses Google Analytics 4 to understand how visitors arrive and what they read — nothing else, nothing sold, nothing shared. Decide what you prefer. Either way, you'll still see the site; only your analytics signal differs.</p>
 		</div>
 		<div class="cookie-consent_actions">
-			<button type="button" id="cookie-consent-decline" class="cookie-consent_btn cookie-consent_btn--ghost" translate="cookie-consent-decline">Decline</button>
+			<button type="button" id="cookie-consent-decline" class="cookie-consent_btn cookie-consent_btn--ghost" translate="cookie-consent-decline">Only essential</button>
 			<button type="button" id="cookie-consent-accept" class="cookie-consent_btn cookie-consent_btn--primary" translate="cookie-consent-accept">Accept analytics</button>
 		</div>
 		<a class="cookie-consent_link" href="privacy.html" translate="cookie-consent-policy">Privacy policy</a>
 	</div>
 </div>
-<script src="assets/js/cookie-consent.min.js?v=c00eb508ab" defer></script>
+<script src="assets/js/cookie-consent.min.js?v=893d31b11b" defer></script>
 
 <!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

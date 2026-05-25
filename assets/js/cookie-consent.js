@@ -1,6 +1,8 @@
-// Cookie consent — GDPR / Chile Ley 21.719 compliant.
+// Cookie consent — GDPR / Chile Ley 21.719 / Brazil LGPD / Mexico LFPDPPP compliant.
 // Default: analytics denied until explicit opt-in.
 // Decision persisted in localStorage as 'portfolio_consent' = 'granted' | 'declined'.
+// Re-openable via window.openCookiePreferences() or any element with
+// href="#cookie-consent-banner" / id="cookie-preferences-link".
 (function () {
 	'use strict';
 
@@ -50,21 +52,10 @@
 
 	function showBanner() {
 		banner.removeAttribute('hidden');
-		// Allow CSS transition.
 		window.requestAnimationFrame(function () {
 			banner.classList.add('is-visible');
 		});
 	}
-
-	var current = storedConsent();
-	if (current === 'granted' || current === 'declined') {
-		applyConsent(current);
-		// Banner not shown — decision already made.
-		return;
-	}
-
-	// No decision yet — show banner.
-	showBanner();
 
 	var acceptBtn = document.getElementById('cookie-consent-accept');
 	var declineBtn = document.getElementById('cookie-consent-decline');
@@ -83,4 +74,23 @@
 			hideBanner();
 		});
 	}
+
+	var current = storedConsent();
+	if (current === 'granted' || current === 'declined') {
+		applyConsent(current);
+	} else {
+		showBanner();
+	}
+
+	// Footer re-open link — any element with this id intercepts to show the banner.
+	var prefsLink = document.getElementById('cookie-preferences-link');
+	if (prefsLink) {
+		prefsLink.addEventListener('click', function (e) {
+			e.preventDefault();
+			showBanner();
+		});
+	}
+
+	// Expose programmatic re-open (for external callers, custom triggers, etc.).
+	window.openCookiePreferences = showBanner;
 })();
