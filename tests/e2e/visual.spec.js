@@ -94,11 +94,11 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
       locator: page.locator('.port_projects_setions01'),
       snapshot: 'projects-section.png',
       // Text-heavy cards: Ubuntu CI and macOS rasterize Inter/Roboto differently
-      // (line-wrap divergence on last card → 31px height delta). Fixed clip +
-      // tolerance keeps baseline stable across platforms.
+      // (line-wrap divergence on last card → ~31px height delta). CI also has
+      // ±1px element-height jitter between runs. Clip well under both renders.
       maxDiffPixelRatio: 0.10,
       clipWidth: 1160,
-      clipHeight: 1184
+      clipHeight: 1180
     },
     { selector: '.port_responsor_setions', locator: page.locator('.port_responsor_setions'), snapshot: 'logos-section.png' }
   ];
