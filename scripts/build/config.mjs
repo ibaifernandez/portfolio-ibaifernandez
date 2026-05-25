@@ -1,5 +1,5 @@
 export const siteBaseUrl = 'https://portfolio.ibaifernandez.com';
-export const defaultShareImage = `${siteBaseUrl}/assets/images/240610-featured-image.jpeg`;
+export const defaultShareImage = `${siteBaseUrl}/assets/images/260525-featured-image.jpeg`;
 export const personSchemaId = `${siteBaseUrl}/#ibai-fernandez`;
 export const websiteSchemaId = `${siteBaseUrl}/#website`;
 export const personSchemaName = 'Ibai Fernández';
