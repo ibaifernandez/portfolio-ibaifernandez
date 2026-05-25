@@ -37,7 +37,7 @@ test('keyboard tab order reaches primary sidebar navigation in logical sequence'
   await page.keyboard.press('Tab');
   await expectActiveElementMatches(page, 'a.skip-link');
 
-  const expectedAnchors = ['#about_sec', '#training_sec', '#project_sec', '#contact_sec'];
+  const expectedAnchors = ['#about_sec', '#training_sec', '#project_sec', '#contact_form'];
   const observedAnchors = [];
 
   for (let attempt = 0; attempt < 30 && observedAnchors.length < expectedAnchors.length; attempt += 1) {
@@ -70,7 +70,7 @@ test('sidebar anchors and language toggle are keyboard reachable and activatable
   await expect(projectAnchor).toBeFocused();
   await page.keyboard.press('Enter');
 
-  const contactAnchor = page.locator('.port_navigation.index_navigation a.siderbar_menuicon[href="#contact_sec"]');
+  const contactAnchor = page.locator('.port_navigation.index_navigation a.siderbar_menuicon[href="#contact_form"]');
   await contactAnchor.focus();
   await expect(contactAnchor).toBeFocused();
   await page.keyboard.press('Enter');
@@ -108,7 +108,7 @@ test('contact form tab order is logical and complete', async ({ page }) => {
 test('sidebar social links are keyboard reachable and named for assistive tech', async ({ page }) => {
   await page.goto('/index.html');
 
-  const contactMenuAnchor = '.port_navigation.index_navigation a.siderbar_menuicon[href="#contact_sec"]';
+  const contactMenuAnchor = '.port_navigation.index_navigation a.siderbar_menuicon[href="#contact_form"]';
   await page.locator(contactMenuAnchor).focus();
   await expectActiveElementMatches(page, contactMenuAnchor);
 

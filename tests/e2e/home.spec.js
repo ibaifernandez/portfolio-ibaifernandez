@@ -25,7 +25,7 @@ test('sidebar navigation points to existing section anchors', async ({ page }) =
   const hrefs = await page.locator('.port_navigation.index_navigation .nav_list li a.siderbar_menuicon')
     .evaluateAll((anchors) => anchors.map((anchor) => anchor.getAttribute('href') || ''));
 
-  expect(hrefs).toEqual(['#about_sec', '#training_sec', '#project_sec', '#contact_sec']);
+  expect(hrefs).toEqual(['#about_sec', '#training_sec', '#project_sec', '#contact_form']);
 
   for (const href of hrefs) {
     await expect(page.locator(href)).toHaveCount(1);

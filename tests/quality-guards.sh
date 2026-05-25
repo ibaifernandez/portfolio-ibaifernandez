@@ -72,7 +72,7 @@ if rg -n '<a href="#" class="siderbar_menuicon">' index.html >/dev/null; then
   fail "Found placeholder sidebar navigation links in index.html"
 fi
 
-for anchor in about_sec training_sec project_sec contact_sec; do
+for anchor in about_sec training_sec project_sec contact_form; do
   if ! rg -n "href=\"#${anchor}\" class=\"siderbar_menuicon\"" index.html >/dev/null; then
     fail "Missing expected sidebar anchor link in index.html: #${anchor}"
   fi

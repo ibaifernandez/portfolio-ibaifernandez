@@ -230,7 +230,7 @@
 
                     <li data-number="4">
 						<div class="tooltip_box">
-							<a href="index.html#contact_sec" class="siderbar_menuicon">
+							<a href="index.html#contact_form" class="siderbar_menuicon">
 								<span class="first_micon">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.56 480.56"
 										class="nav_contact_svg" width="20px" height="20px">
@@ -642,7 +642,7 @@
 	<div class="footer_section">
 		<div class="copy_right_wrapper">
 			<div class="col-12 text-center">
-				<p class="copy_right"><span translate="all-rights-reserved">All Rights Reserved</span> &copy; 2024 <a href="https://ibaifernandez.com" target="_blank" rel="noopener noreferrer">Ibai Fernández</a></p>
+				<p class="copy_right"><span translate="all-rights-reserved">All Rights Reserved</span> &copy; 2024 <a href="https://ibaifernandez.com" target="_blank" rel="noopener noreferrer">Ibai Fernández</a> &middot; <a href="privacy.html" translate="privacy-policy">Privacy</a> &middot; <a href="#cookie-consent-banner" id="cookie-preferences-link" translate="cookie-preferences-link">Cookie preferences</a></p>
 			</div>
 		</div>
 	</div>
@@ -732,6 +732,22 @@
 		}
 	});
 </script>
+
+	<!-- Cookie consent banner — GDPR / Chile Ley 21.719 -->
+<div id="cookie-consent-banner" class="cookie-consent" role="dialog" aria-modal="false" aria-live="polite" aria-labelledby="cookie-consent-title" hidden>
+	<div class="cookie-consent_inner">
+		<div class="cookie-consent_copy">
+			<h2 id="cookie-consent-title" class="cookie-consent_title" translate="cookie-consent-title">Cookies, briefly</h2>
+			<p class="cookie-consent_body" translate="cookie-consent-body">This site uses Google Analytics 4 to understand how visitors arrive and what they read — nothing else, nothing sold, nothing shared. Decide what you prefer. Either way, you'll still see the site; only your analytics signal differs.</p>
+		</div>
+		<div class="cookie-consent_actions">
+			<button type="button" id="cookie-consent-decline" class="cookie-consent_btn cookie-consent_btn--ghost" translate="cookie-consent-decline">Reject</button>
+			<button type="button" id="cookie-consent-accept" class="cookie-consent_btn cookie-consent_btn--primary" translate="cookie-consent-accept">Accept analytics</button>
+		</div>
+		<a class="cookie-consent_link" href="privacy.html" translate="cookie-consent-policy">Privacy policy</a>
+	</div>
+</div>
+<script src="assets/js/cookie-consent.min.js?v=893d31b11b" defer></script>
 
 	<script defer src="assets/js/jquery.min.js"></script>
 	<script defer src="assets/js/custom.min.js?v=3e267b54b8"></script>
