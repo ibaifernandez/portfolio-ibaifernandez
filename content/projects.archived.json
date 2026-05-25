@@ -71,7 +71,7 @@
     "page": {
       "output": "portfolio-ibaifernandez.html",
       "template": "src/pages/project-portfolio-ibaifernandez.template.html",
-      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "Ibai Fernandez, portfolio case study, Netlify, Playwright, accessibility, performance, CI/CD"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--portfolio\" role=\"img\" aria-label=\"Portfolio production hardening preview\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Live Build</span>\n<strong>CI/CD + A11y + Performance</strong>\n<span class=\"project_spotlight_mockup_metric\">Regression suite green</span>\n<span class=\"project_spotlight_mockup_note\">Desktop 93 · A11y 95 · Contact live</span>\n</div>",
@@ -95,7 +95,7 @@
     "page": {
       "output": "my-board.html",
       "template": "src/pages/project-myboard.template.html",
-      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "MyBoard, Kanban, React, Express, dnd-kit, Tailwind, zero vendor lock-in, task management"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--myboard\" role=\"img\" aria-label=\"MyBoard product preview showing a kanban board concept with local-first ownership\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--board\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Kanban OS</span>\n<strong>Local-First Task Control</strong>\n<span class=\"project_spotlight_mockup_metric\">React + Express</span>\n<span class=\"project_spotlight_mockup_note\">Drag & drop · JSON persistence · Zero lock-in</span>\n</div>",
@@ -119,7 +119,7 @@
     "page": {
       "output": "the-research-engine.html",
       "template": "src/pages/project-the-research-engine.template.html",
-      "shareImage": "assets/images/240610-featured-image.jpeg",
+      "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "The Research Engine, AI prompt pack, digital product, VSL, Gumroad, product marketing, research workflows"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--researchengine\" role=\"img\" aria-label=\"The Research Engine product preview with VSL and Gumroad commerce positioning\">\n<div class=\"project_spotlight_mockup_grid\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Digital Product</span>\n<strong>The Research Engine</strong>\n<span class=\"project_spotlight_mockup_metric\">55 Workflows</span>\n<span class=\"project_spotlight_mockup_note\">VSL live + Gumroad checkout</span>\n</div>",
