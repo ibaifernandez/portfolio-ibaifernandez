@@ -46,7 +46,23 @@ async function freezeSwipers(page) {
   });
 }
 
+// Suppress the cookie banner on visual tests. Fresh CI browsers have no
+// `portfolio_consent` in localStorage, so the banner overlays mid- and
+// bottom-of-page sections (logos, projects) and corrupts visual diffs.
+// Local browsers usually carry a prior decision and rendered without it,
+// which is why baselines captured locally pass locally but fail on CI.
+async function suppressCookieBanner(page) {
+  await page.addInitScript(() => {
+    try {
+      window.localStorage.setItem('portfolio_consent', 'declined');
+    } catch (err) {
+      // localStorage may be blocked in strict privacy modes.
+    }
+  });
+}
+
 test('contact section visual baseline', async ({ page }) => {
+  await suppressCookieBanner(page);
   await page.setViewportSize({ width: 1280, height: 1600 });
   await page.goto('/index.html');
 
@@ -71,6 +87,7 @@ test('contact section visual baseline', async ({ page }) => {
 });
 
 test('experience, projects and logos visual baselines', async ({ page }) => {
+  await suppressCookieBanner(page);
   await page.setViewportSize({ width: 1280, height: 2600 });
   await page.goto('/index.html');
   await page.waitForLoadState('networkidle');
