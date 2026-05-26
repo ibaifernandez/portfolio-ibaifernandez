@@ -110,12 +110,12 @@ test('experience, projects and logos visual baselines', async ({ page }) => {
       selector: '.port_projects_setions01',
       locator: page.locator('.port_projects_setions01'),
       snapshot: 'projects-section.png',
-      // Text-heavy cards: Ubuntu CI and macOS rasterize Inter/Roboto differently
-      // (line-wrap divergence on last card → ~31px height delta). CI also has
-      // ±1px element-height jitter between runs. Clip well under both renders.
+      // Single-card grid: macOS renders ~754px, Ubuntu CI ~725px.
+      // Clip to 700px — safely under both — so both platforms produce
+      // the same fixed-dimension screenshot for reliable comparison.
       maxDiffPixelRatio: 0.10,
       clipWidth: 1160,
-      clipHeight: 1180
+      clipHeight: 700
     },
     {
       selector: '.port_responsor_setions',
