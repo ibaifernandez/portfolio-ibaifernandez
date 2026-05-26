@@ -655,5 +655,12 @@
   "sidebar-tooltip-about": "About",
   "sidebar-tooltip-training": "Training",
   "sidebar-tooltip-portfolio": "Portfolio",
-  "sidebar-tooltip-contact": "Contact"
+  "sidebar-tooltip-contact": "Contact",
+  "notfound-eyebrow": "Error 404",
+  "notfound-h1": "Page not found",
+  "notfound-lede": "Either you followed a broken link or that URL doesn't exist on this portfolio.",
+  "notfound-meta": "If you reached this page from somewhere you'd expect to work — a saved bookmark, an external article, a referral — let me know. I'll fix it.",
+  "notfound-cta-home": "Back to portfolio",
+  "notfound-cta-projects": "See active projects",
+  "notfound-cta-contact": "Get in touch"
 }

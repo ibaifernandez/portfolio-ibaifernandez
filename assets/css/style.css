@@ -9786,3 +9786,101 @@ picture.lightbox-trigger {
 		font-size: 10px;
 	}
 }
+
+/* ───────── 404 / Page not found ─────────
+   Reuses dossier shell + sidebar; light, focused, three CTAs out. */
+.notfound_document {
+	min-height: 70vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 64px 32px;
+	background: var(--color-white);
+}
+.notfound_hero {
+	max-width: 620px;
+	text-align: center;
+}
+.notfound_eyebrow {
+	display: inline-block;
+	margin: 0 0 16px;
+	padding: 4px 12px;
+	background: rgba(10, 15, 33, 0.06);
+	color: #005a64;
+	font-family: 'Roboto Mono', ui-monospace, monospace;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	border-radius: 3px;
+}
+.notfound_title {
+	margin: 0 0 18px;
+	font-family: var(--font-family-heading);
+	font-size: 56px;
+	font-weight: 700;
+	line-height: 1.05;
+	color: var(--color-text-primary);
+	letter-spacing: -0.02em;
+}
+.notfound_lede {
+	margin: 0 0 14px;
+	font-size: 19px;
+	line-height: 1.5;
+	color: var(--color-text-primary);
+}
+.notfound_meta {
+	margin: 0 0 32px;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--color-text-muted);
+}
+.notfound_ctas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	justify-content: center;
+}
+.notfound_cta {
+	display: inline-block;
+	padding: 10px 22px;
+	border-radius: 999px;
+	font-size: 15px;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.notfound_cta--primary {
+	background: #c4315a;
+	color: var(--color-white);
+	border: 1px solid #c4315a;
+}
+.notfound_cta--primary:hover,
+.notfound_cta--primary:focus {
+	background: #ab2a4d;
+	border-color: #ab2a4d;
+	color: var(--color-white);
+	transform: translateY(-1px);
+}
+.notfound_cta--ghost {
+	background: transparent;
+	color: var(--color-text-primary);
+	border: 1px solid rgba(10, 15, 33, 0.2);
+}
+.notfound_cta--ghost:hover,
+.notfound_cta--ghost:focus {
+	border-color: var(--color-text-primary);
+	color: var(--color-text-primary);
+}
+@media (max-width: 640px) {
+	.notfound_document {
+		padding: 48px 20px;
+	}
+	.notfound_title {
+		font-size: 40px;
+	}
+	.notfound_lede {
+		font-size: 17px;
+	}
+}
+

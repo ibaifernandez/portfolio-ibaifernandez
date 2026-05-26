@@ -14,7 +14,8 @@ export const projectShareImageMap = {
 export const basePageEntries = [
   { template: 'src/pages/index.template.html', output: 'index.html' },
   { template: 'src/pages/privacy.template.html', output: 'privacy.html' },
-  { template: 'src/pages/dossier-scanner-21179.template.html', output: 'scanner-21179.html' }
+  { template: 'src/pages/dossier-scanner-21179.template.html', output: 'scanner-21179.html' },
+  { template: 'src/pages/404.template.html', output: '404.html' }
 ];
 
 export const legacyPageEntries = [
