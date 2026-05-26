@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-05-25
+Last-Updated: 2026-05-26
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
@@ -17,14 +17,8 @@ Founder-operator who codes. AI Product Engineer with two decades connecting narr
 ## Canonical Pages
 - Home: https://portfolio.ibaifernandez.com/
   - Purpose: profile, capabilities, work history, project index, testimonials, contact.
-- LFi: Agency Operating Systems: https://portfolio.ibaifernandez.com/lfi.html
-  - Purpose: Agency operating-systems case proving CRM routing, qualification logic, launch governance, and commercial reliability across 18+ enterprise accounts through the POCURO and Leben proof modules.
-- The Route to Digitalization / 2x2MKT: https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html
-  - Purpose: Nationwide upskilling, field operations, and crisis-proof digital adoption program onboarding 10,600+ users into digital conversion funnels.
-- Elm St: Reel-First Brand Website: https://portfolio.ibaifernandez.com/elm-st.html
-  - Purpose: Cinematic brand system, reel-first UX, and custom audiovisual portfolio architecture case. YouTube embeds, brand psychology, audiovisual UX.
-- AGLAYA: Remote Agency Operations: https://portfolio.ibaifernandez.com/aglaya.html
-  - Purpose: Conversion-first remote agency operating system, staged growth services, and brand-evaluation-driven acquisition case.
+- scanner-21179.html: https://portfolio.ibaifernandez.com/scanner-21179.html
+  - Purpose: see dossier page.
 
 ## Contact
 - Email: info@ibaifernandez.com

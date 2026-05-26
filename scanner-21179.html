@@ -1,103 +1,36 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.">
-	<meta name="keywords" content="AGLAYA, remote agency, brand evaluation, growth strategy, conversion-focused UX, marketing systems">
+	<meta name="description" content="Scanner Ley 21.719 — RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Stack: Python, Playwright, Redis+RQ, Railway. Producto en producción operado por AGLAYA.">
+	<meta name="keywords" content="Scanner Ley 21.719, RegTech Chile, auditoría regulatoria, Ley de Protección de Datos Chile, AGLAYA, Ibai Fernández, AI Product Engineer, full-stack Python">
 	<meta name="author" content="Ibai Fernández">
 	<meta name="robots" content="index,follow,max-image-preview:large">
-	<meta name="theme-color" content="#f7f1e7">
+	<meta name="theme-color" content="#121217">
 	<meta property="og:type" content="article">
-	<meta property="og:url" content="https://portfolio.ibaifernandez.com/aglaya.html">
-	<meta property="og:title" content="AGLAYA: Remote Agency Operations | Project Dossier">
-	<meta property="og:description" content="The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.">
-	<meta property="og:image" content="https://portfolio.ibaifernandez.com/assets/images/aglaya-web.png">
+	<meta property="og:url" content="https://portfolio.ibaifernandez.com/scanner-21179.html">
+	<meta property="og:title" content="Scanner Ley 21.719 — Dossier | Ibai Fernández">
+	<meta property="og:description" content="Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, 273 tests, auditoría de seguridad cerrada.">
+	<meta property="og:image" content="https://portfolio.ibaifernandez.com/assets/images/dossiers/scanner-21179/og-image.png">
 	<meta property="twitter:card" content="summary_large_image">
-	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/aglaya.html">
-	<meta property="twitter:title" content="AGLAYA: Remote Agency Operations | Project Dossier">
-	<meta property="twitter:description" content="The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.">
-	<meta property="twitter:image" content="https://portfolio.ibaifernandez.com/assets/images/aglaya-web.png">
-	<title>AGLAYA: Remote Agency Operations | Project Dossier</title>
+	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/scanner-21179.html">
+	<meta property="twitter:title" content="Scanner Ley 21.719 — Dossier | Ibai Fernández">
+	<meta property="twitter:description" content="Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719.">
+	<meta property="twitter:image" content="https://portfolio.ibaifernandez.com/assets/images/dossiers/scanner-21179/og-image.png">
+	<title>Scanner Ley 21.719 — Dossier | Ibai Fernández</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
 	<link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e">
-	<link rel="stylesheet" href="assets/css/style.min.css?v=551a32c2bf">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=2bd043f474">
 	<link rel="stylesheet" href="assets/css/print.min.css?v=37e763be91" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-	<link rel="canonical" href="https://portfolio.ibaifernandez.com/aglaya.html">
-	<link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/aglaya.html?lang=en">
-	<link rel="alternate" hreflang="es" href="https://portfolio.ibaifernandez.com/aglaya.html?lang=es">
-	<link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/aglaya.html">
-	<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://portfolio.ibaifernandez.com/#website",
-      "url": "https://portfolio.ibaifernandez.com/",
-      "name": "Ibai Fernández Portfolio",
-      "inLanguage": [
-        "en",
-        "es"
-      ]
-    },
-    {
-      "@type": "Person",
-      "@id": "https://portfolio.ibaifernandez.com/#ibai-fernandez",
-      "name": "Ibai Fernández",
-      "url": "https://portfolio.ibaifernandez.com/",
-      "image": "https://portfolio.ibaifernandez.com/assets/images/ibai-fernandez-1x1-sidebar.jpeg",
-      "email": "mailto:info@ibaifernandez.com",
-      "telephone": "+57 322 428 8532",
-      "sameAs": [
-        "https://linkedin.com/in/ibaifernandez",
-        "https://github.com/ibaifernandez",
-        "https://instagram.com/ibaifernandezec",
-        "https://facebook.com/ibaifernandezec"
-      ]
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://portfolio.ibaifernandez.com/aglaya.html#webpage",
-      "url": "https://portfolio.ibaifernandez.com/aglaya.html",
-      "name": "AGLAYA: Remote Agency Operations | Project Dossier",
-      "description": "The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.",
-      "isPartOf": {
-        "@id": "https://portfolio.ibaifernandez.com/#website"
-      },
-      "about": {
-        "@id": "https://portfolio.ibaifernandez.com/#ibai-fernandez"
-      },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "CreativeWork",
-      "@id": "https://portfolio.ibaifernandez.com/aglaya.html#case-study",
-      "name": "AGLAYA: Remote Agency Operations",
-      "description": "The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.",
-      "url": "https://portfolio.ibaifernandez.com/aglaya.html",
-      "image": "https://portfolio.ibaifernandez.com/assets/images/aglaya-web.png",
-      "author": {
-        "@id": "https://portfolio.ibaifernandez.com/#ibai-fernandez"
-      },
-      "creator": {
-        "@id": "https://portfolio.ibaifernandez.com/#ibai-fernandez"
-      },
-      "mainEntityOfPage": {
-        "@id": "https://portfolio.ibaifernandez.com/aglaya.html#webpage"
-      },
-      "inLanguage": "en"
-    }
-  ]
-}
-	</script>
+	<link rel="canonical" href="https://portfolio.ibaifernandez.com/scanner-21179.html">
 </head>
 
-<body class="aglaya_dossier_page project_dossier_page">
-	<a class="skip-link" href="#project_main">Skip to main content</a>
+<body class="dossier_ai_page project_dossier_page scanner_dossier">
+	<a class="skip-link" href="#dossier_main">Saltar al contenido principal</a>
 <!-- Start Sidebar -->
 
     <div class="port_sidebar_wrapper mport_sidebar_wrapper project_sidebar">
@@ -161,7 +94,7 @@
 									</svg>
 								</span>
 							</a>
-							<span class="menu_tooltip">About</span>
+							<span class="menu_tooltip" translate="sidebar-tooltip-about">About</span>
 						</div>
 					</li>
 
@@ -247,7 +180,7 @@
 									</svg>
 								</span>
 							</a>
-							<span class="menu_tooltip">Training</span>
+							<span class="menu_tooltip" translate="sidebar-tooltip-training">Training</span>
 						</div>
 					</li>
 					
@@ -290,7 +223,7 @@
 									</svg>
 								</span>
 							</a>
-							<span class="menu_tooltip">Portfolio</span>
+							<span class="menu_tooltip" translate="sidebar-tooltip-portfolio">Portfolio</span>
 						</div>
 					</li>
 
@@ -336,7 +269,7 @@
 									</svg>
 								</span>
 							</a>
-							<span class="menu_tooltip">Contact</span>
+							<span class="menu_tooltip" translate="sidebar-tooltip-contact">Contact</span>
 						</div>
 					</li>
 
@@ -384,289 +317,210 @@
 		<span></span>
 	</div>
 
-	<div class="port_sec_warapper" id="project_main">
-		<div class="port_singleblog_wrapper prt_toppadder80 prt_bottompadder80 project_case_wrapper aglaya_dossier_wrapper">
-			<div class="container-fluid project_case_container aglaya_dossier_surface">
-				<div class="row g-4">
-					<div class="col-12">
-						<a href="index.html#project_sec" class="project_case_backlink">Back to portfolio</a>
+	<div class="port_sec_warapper" id="dossier_main">
+		<main class="dossier_ai">
+
+			<header class="dossier_hero">
+				<a class="dossier_back" href="index.html">← Volver al portafolio</a>
+				<div class="dossier_hero_meta">
+					<span class="dossier_status_chip dossier_status_chip--live">En producción</span>
+					<span class="dossier_status_chip">v0.1.1</span>
+					<span class="dossier_status_chip">Público</span>
+				</div>
+				<h1 class="dossier_hero_title">Scanner Ley <span class="accent">21.719</span></h1>
+				<p class="dossier_hero_tagline">RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Operado por AGLAYA.</p>
+				<div class="dossier_hero_stack">
+					<span class="dossier_stack_chip">Python</span>
+					<span class="dossier_stack_chip">Playwright</span>
+					<span class="dossier_stack_chip">Redis + RQ</span>
+					<span class="dossier_stack_chip">SQLite</span>
+					<span class="dossier_stack_chip">Railway</span>
+					<span class="dossier_stack_chip">Netlify</span>
+					<span class="dossier_stack_chip">Lemon Squeezy</span>
+				</div>
+				<div class="dossier_hero_ctas">
+					<a class="dossier_cta dossier_cta--primary" href="https://aglaya.biz/auditoria-ley-21719/" target="_blank" rel="noopener noreferrer">Ver producto en vivo →</a>
+					<a class="dossier_cta dossier_cta--ghost" href="#dossier_inside">Detalles técnicos ↓</a>
+				</div>
+			</header>
+
+			<figure class="dossier_visual_hero">
+				<picture class="lightbox-trigger">
+					<source media="(max-width: 640px)" type="image/avif" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.avif">
+					<source media="(max-width: 640px)" type="image/webp" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.webp">
+					<source media="(max-width: 640px)" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.png">
+					<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/pipeline.avif">
+					<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/pipeline.webp">
+					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 escaneos, reglas primero LLM después, benchmark de estabilidad con métricas (finalización 49% → 95%, evidencia 88% → 99%, alcance 96% → 99%) y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
+				</picture>
+				<figcaption>Arquitectura del pipeline + validación de impacto de mercado (release v0.1.1).</figcaption>
+			</figure>
+
+			<section class="dossier_section dossier_problem">
+				<span class="dossier_eyebrow dossier_eyebrow--pink">● El dolor</span>
+				<h2>El problema</h2>
+				<p>Las empresas chilenas necesitan auditar su exposición pública bajo la nueva Ley 21.719 sin contratar consultoría artesanal cara ni esperar tres semanas a un humano. Las opciones reales hoy son cuatro:</p>
+				<ol>
+					<li>Revisar todo a mano — lento, costoso en tiempo interno y propenso a errores.</li>
+					<li>No revisar nada y afrontar las multas cuando lleguen.</li>
+					<li>Pagar abogados, generalmente por hora y a tarifas que pocas pymes se pueden permitir.</li>
+					<li>Usar herramientas genéricas que no entienden el marco regulatorio chileno y no generan evidencia trazable.</li>
+				</ol>
+				<p>El Scanner 21.719 se lo pone mucho más fácil.</p>
+			</section>
+
+			<section class="dossier_section dossier_system">
+				<span class="dossier_eyebrow">● Arquitectura</span>
+				<h2>Cómo funciona</h2>
+				<p>El producto recibe una URL pública. Antes de ejecutar el escaneo completo, un módulo de preflight verifica automáticamente que el dominio sea accesible desde Chile, que no esté bloqueando automatización, que resuelva a una IP pública válida y que tenga contenido web relevante bajo el ámbito de la Ley 21.719. Si no pasa, el cliente es notificado de inmediato y sin coste. Si pasa, arranca el motor real.</p>
+				<div class="dossier_pipeline" aria-label="Pipeline del Scanner 21.719">
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">01</span>
+						<span class="dossier_pipeline_label">URL<br>Input</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_hero" aria-labelledby="aglaya-dossier-title">
-							<div class="aglaya_dossier_intro">
-								<p class="project_case_eyebrow">Agency System Case Study / AGLAYA</p>
-								<h1 id="aglaya-dossier-title" class="project_case_title">AGLAYA: The Remote Growth Engine Built To Challenge Conformist Brands</h1>
-								<p class="project_case_intro">
-									AGLAYA was never meant to be "just another agency website". The live brand positions itself
-									as the uncomfortable choice for companies that have already outgrown safe marketing and still
-									need better positioning, sharper perception, and clearer sales motion.
-								</p>
-								<p class="project_case_paragraph">
-									That is why this case is framed around the commercial machine, not the educational branch. The
-									real leverage is a fully remote agency model that starts with a free brand evaluation,
-									translates diagnosis into a stage-based service architecture, and turns strategy, design, and
-									acquisition into one conversion-first operating system.
-								</p>
-
-								<div class="aglaya_dossier_signal_grid" aria-label="AGLAYA operating signals">
-									<article class="aglaya_dossier_signal">
-										<span class="aglaya_dossier_signal_label">Operating Model</span>
-										<strong class="aglaya_dossier_signal_value">100% Remote</strong>
-										<span class="aglaya_dossier_signal_note">built for distributed delivery</span>
-									</article>
-									<article class="aglaya_dossier_signal">
-										<span class="aglaya_dossier_signal_label">Entry Offer</span>
-										<strong class="aglaya_dossier_signal_value">Identity Test</strong>
-										<span class="aglaya_dossier_signal_note">free diagnostic CTA</span>
-									</article>
-									<article class="aglaya_dossier_signal">
-										<span class="aglaya_dossier_signal_label">Growth Stages</span>
-										<strong class="aglaya_dossier_signal_value">3</strong>
-										<span class="aglaya_dossier_signal_note">birth, traction, expansion</span>
-									</article>
-									<article class="aglaya_dossier_signal">
-										<span class="aglaya_dossier_signal_label">Core Methods</span>
-										<strong class="aglaya_dossier_signal_value">4</strong>
-										<span class="aglaya_dossier_signal_note">strategy, validation, journey, iteration</span>
-									</article>
-								</div>
-
-								<div class="aglaya_dossier_actions">
-									<a class="aglaya_dossier_cta" href="https://aglaya.biz/" target="_blank" rel="noopener noreferrer">Visit live agency</a>
-								</div>
-							</div>
-
-							<div class="aglaya_dossier_stage">
-								<div class="aglaya_dossier_stage_media">
-			<div class="project_spotlight_mockup project_spotlight_mockup--aglaya" role="img" aria-label="AGLAYA preview showing a remote agency operating system and conversion-focused growth architecture">
-			<div class="project_spotlight_mockup_grid project_spotlight_mockup_grid--signals" aria-hidden="true">
-			<span></span><span></span><span></span><span></span>
-			</div>
-			<span class="project_spotlight_mockup_tag">Remote Agency</span>
-			<strong>Conversion Infrastructure</strong>
-			<span class="project_spotlight_mockup_metric">Offer system</span>
-			<span class="project_spotlight_mockup_note">Assessment funnel · B2B positioning · Growth architecture</span>
-			</div>
-								</div>
-								<div class="aglaya_dossier_stage_callout">
-									<p class="aglaya_dossier_stage_tag">Positioning Filter</p>
-									<h2 class="project_case_heading">A business architecture disguised as a brand site</h2>
-									<p>
-										The public interface does three jobs at once: filters for serious prospects, reframes the
-										brand away from commodity agencies, and makes the diagnostic entry point feel like a
-										strategic conversation instead of a weak "contact us" form.
-									</p>
-								</div>
-							</div>
-						</section>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">02</span>
+						<span class="dossier_pipeline_label">Preflight<br>elegibilidad</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_section" aria-labelledby="aglaya-positioning-title">
-							<div class="aglaya_dossier_section_header">
-								<p class="aglaya_dossier_section_tag">Commercial Positioning</p>
-								<h2 id="aglaya-positioning-title" class="project_case_heading">Why The Message Works</h2>
-							</div>
-
-							<div class="aglaya_dossier_positioning_grid">
-								<article class="aglaya_dossier_card aglaya_dossier_card--accent">
-									<h3>It rejects bland agency language</h3>
-									<p>
-										"The uncomfortable agency for conformist brands" is not a decorative slogan. It is a
-										filter. It turns the first screen into a positioning device that attracts operators who
-										actually want change and repels the kind of client who only wants surface-level content.
-									</p>
-								</article>
-								<article class="aglaya_dossier_card">
-									<h3>It ties brand to revenue, not aesthetics alone</h3>
-									<p>
-										The live promise is explicit: better positioning, stronger image, and more sales. That is
-										why the brand language, UX, and offer architecture are all working toward commercial
-										outcomes instead of vanity engagement.
-									</p>
-								</article>
-								<article class="aglaya_dossier_card">
-									<h3>It makes diagnosis the entry point</h3>
-									<p>
-										The free evaluation CTA lowers friction while preserving strategic authority. Prospects are
-										not being pushed into a generic consultation; they are being invited into a structured
-										brand review that already implies method and standards.
-									</p>
-								</article>
-							</div>
-						</section>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
+						<span class="dossier_pipeline_num">03</span>
+						<span class="dossier_pipeline_label">5 scans<br>paralelos</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_section" aria-labelledby="aglaya-method-title">
-							<div class="aglaya_dossier_section_header">
-								<p class="aglaya_dossier_section_tag">Method Stack</p>
-								<h2 id="aglaya-method-title" class="project_case_heading">The Strategic Tools Behind The Offer</h2>
-							</div>
-
-							<div class="aglaya_dossier_method_grid">
-								<article class="aglaya_dossier_method">
-									<span class="aglaya_dossier_method_label">01</span>
-									<h3>Marketing Intelligence</h3>
-									<p>Used to ground the commercial diagnosis in actual market signals instead of internal guesswork or pure brand intuition.</p>
-								</article>
-								<article class="aglaya_dossier_method">
-									<span class="aglaya_dossier_method_label">02</span>
-									<h3>Lean Canvas</h3>
-									<p>Clarifies offer, audience, and monetization logic before the brand starts spending energy on channels or campaigns.</p>
-								</article>
-								<article class="aglaya_dossier_method">
-									<span class="aglaya_dossier_method_label">03</span>
-									<h3>Design Thinking</h3>
-									<p>Turns iteration into a practical delivery habit so the agency can test and refine instead of locking clients into premature assumptions.</p>
-								</article>
-								<article class="aglaya_dossier_method">
-									<span class="aglaya_dossier_method_label">04</span>
-									<h3>User's Holistic Journey</h3>
-									<p>Extends the work beyond isolated campaigns and into the full perception-to-conversion path that shapes real buying behavior.</p>
-								</article>
-							</div>
-						</section>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
+						<span class="dossier_pipeline_num">04</span>
+						<span class="dossier_pipeline_label">Motor de<br>consenso</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_section" aria-labelledby="aglaya-growth-title">
-							<div class="aglaya_dossier_section_header">
-								<p class="aglaya_dossier_section_tag">Growth Architecture</p>
-								<h2 id="aglaya-growth-title" class="project_case_heading">Three Business Moments, One Cohesive Service System</h2>
-							</div>
-
-							<div class="aglaya_dossier_phase_grid" aria-label="AGLAYA commercial phases">
-								<article class="aglaya_dossier_phase">
-									<span class="aglaya_dossier_phase_id">I</span>
-									<h3>Birth</h3>
-									<p class="aglaya_dossier_phase_intro">For early-stage brands that still need structural clarity before they scale attention.</p>
-									<ul>
-										<li>Foundational values and positioning alignment</li>
-										<li>Branding, UX/UI, and web presence launch</li>
-										<li>Advisory support for market fit decisions</li>
-									</ul>
-								</article>
-								<article class="aglaya_dossier_phase">
-									<span class="aglaya_dossier_phase_id">II</span>
-									<h3>Consolidation</h3>
-									<p class="aglaya_dossier_phase_intro">For brands that already exist, but need repeatable acquisition instead of fragmented channel activity.</p>
-									<ul>
-										<li>SEO and SEM visibility work</li>
-										<li>Social and content marketing orchestration</li>
-										<li>Lead acquisition strategy with advisory support</li>
-									</ul>
-								</article>
-								<article class="aglaya_dossier_phase">
-									<span class="aglaya_dossier_phase_id">III</span>
-									<h3>Expansion</h3>
-									<p class="aglaya_dossier_phase_intro">For operators who need tighter feedback loops, more automation, and better scaling intelligence.</p>
-									<ul>
-										<li>Big-data-informed decision support</li>
-										<li>Automation, email, and integrated campaign systems</li>
-										<li>Digital analytics and AI as performance amplifiers</li>
-									</ul>
-								</article>
-							</div>
-
-							<div class="aglaya_dossier_note">
-								<p>
-									The education branch exists in the wider AGLAYA universe, but this portfolio documents that
-									track separately in <a href="ruta-de-la-digitalizacion-y-2x2-mkt.html">The Route to Digitalization / 2x2MKT</a>
-									so this case can stay focused on the agency's commercial operating engine.
-								</p>
-							</div>
-						</section>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">05</span>
+						<span class="dossier_pipeline_label">Reglas<br>deterministas</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_section" aria-labelledby="aglaya-proof-title">
-							<div class="aglaya_dossier_section_header">
-								<p class="aglaya_dossier_section_tag">Proof Surface</p>
-								<h2 id="aglaya-proof-title" class="project_case_heading">How The Site Builds Trust Before The Call</h2>
-							</div>
-
-							<div class="aglaya_dossier_proof_grid">
-								<article class="aglaya_dossier_proof_card aglaya_dossier_proof_card--dark">
-									<h3>Diagnostic-led acquisition</h3>
-									<p>
-										The strongest UX move is the evaluation-first CTA. It frames the relationship around
-										analysis, not around selling services blind. That gives the agency authority before a
-										contract exists and turns the site into a qualification surface.
-									</p>
-									<div class="aglaya_dossier_placeholder" role="img" aria-label="Suggested visual proof of AGLAYA's brand evaluation intake or audit deliverable.">
-										<span class="aglaya_dossier_placeholder_tag">Suggested proof asset</span>
-										<strong>Visual identity intake</strong>
-										<p>Use the identity-test flow, intake form, or strategic scorecard that proves the diagnostic entry motion.</p>
-									</div>
-								</article>
-
-								<div class="aglaya_dossier_proof_stack">
-									<article class="aglaya_dossier_card">
-										<h3>Testimonials and brand reassurance</h3>
-										<p>
-											The live site backs the positioning with client testimonials and cross-brand proof so
-											the message does not feel like posture. The agency earns the right to sound demanding
-											because the interface also shows social confirmation.
-										</p>
-									</article>
-									<article class="aglaya_dossier_card">
-										<h3>Portfolio visibility without clutter</h3>
-										<p>
-											Service architecture, social proof, and featured work are sequenced as a persuasive
-											narrative. The visitor can understand what AGLAYA does, how it thinks, and why it is
-											different before ever reaching the contact block.
-										</p>
-									</article>
-									<div class="aglaya_dossier_placeholder aglaya_dossier_placeholder--light" role="img" aria-label="Suggested visual proof of AGLAYA's portfolio montage showing web, branding, and campaign work.">
-										<span class="aglaya_dossier_placeholder_tag">Suggested proof asset</span>
-										<strong>Portfolio montage</strong>
-										<p>A curated capture here should show the strongest visual proof blocks from the live agency site.</p>
-									</div>
-								</div>
-							</div>
-						</section>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--ai">
+						<span class="dossier_pipeline_num">06</span>
+						<span class="dossier_pipeline_label">Claude<br>API</span>
 					</div>
-
-					<div class="col-12">
-						<section class="aglaya_dossier_section" aria-labelledby="aglaya-capability-title">
-							<div class="aglaya_dossier_section_header">
-								<p class="aglaya_dossier_section_tag">Capability Signal</p>
-								<h2 id="aglaya-capability-title" class="project_case_heading">What This Case Proves About My Work</h2>
-							</div>
-
-							<div class="aglaya_dossier_capability_grid">
-								<article class="aglaya_dossier_capability">
-									<h3>Business architecture</h3>
-									<p>Packaging a service business by maturity stage, not by a flat menu of disconnected deliverables.</p>
-								</article>
-								<article class="aglaya_dossier_capability">
-									<h3>Conversion-oriented UX</h3>
-									<p>Designing the interface so positioning, trust, and the next commercial action reinforce one another.</p>
-								</article>
-								<article class="aglaya_dossier_capability">
-									<h3>Remote operating logic</h3>
-									<p>Turning distribution, diagnostics, and advisory work into a delivery model that does not depend on physical proximity.</p>
-								</article>
-								<article class="aglaya_dossier_capability">
-									<h3>Strategic coherence</h3>
-									<p>Making branding, acquisition, automation, and analytics read like one system instead of separate services fighting each other.</p>
-								</article>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-12">
-						<nav class="project_case_nav" aria-label="Project navigation">
-<a class="project_case_navlink project_case_navlink--prev" href="elm-st.html">Prev: Elm St: Reel-First Brand Website</a>
-							<a class="project_case_navlink project_case_navlink--index" href="index.html#project_sec">All Projects</a>
-
-						</nav>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--cta">
+						<span class="dossier_pipeline_num">07</span>
+						<span class="dossier_pipeline_label">Informe<br>PDF</span>
 					</div>
 				</div>
-			</div>
-		</div>
+				<p>El motor de escaneo lanza <strong>cinco workers Playwright completamente independientes</strong> sobre el mismo dominio — <strong>aislados por proceso, no por thread</strong> — desde cero cada uno. Cada worker visita el sitio, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza de forma independiente con el <strong>motor de reglas regulatorias deterministas</strong>: aproximadamente 30 checks sobre los vectores de exposición más relevantes de la Ley 21.719.</p>
+				<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
+				<h3 class="dossier_subheading">Reglas primero, LLM después</h3>
+				<p>La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, archivado en un JSON técnico (<code>scan_v1.json</code>) que el operador puede leer, citar o disputar. Trazabilidad sobre elocuencia.</p>
+			</section>
+
+			<section class="dossier_section dossier_state">
+				<span class="dossier_eyebrow">● Hoy</span>
+				<h2>Estado real</h2>
+				<ul class="dossier_state_grid">
+					<li><strong>v0.1.1</strong><span>Release controlada, abierta a tráfico externo desde el 18 de mayo de 2026.</span></li>
+					<li><strong>273 tests</strong><span>Pasando en CI. Cero fallos.</span></li>
+					<li><strong>Sin deuda de seguridad</strong><span>Revisión externa completa: vulnerabilidades críticas, altas, medias y bajas — todas cerradas antes del lanzamiento.</span></li>
+					<li><strong>96% / 100%</strong><span>Tasa de alcance en dominios aptos / evidencia trazable por alerta.</span></li>
+					<li><strong>49% → 95%</strong><span>Tasa de finalización del escaneo (línea base → motor optimizado).</span></li>
+					<li><strong>5 workers</strong><span>Playwright paralelos por auditoría, aislados por proceso. Consenso ≥ 4/5 para publicar alerta.</span></li>
+					<li><strong>&lt; 10 min</strong><span>De checkout a informe editorial PDF en el correo del cliente.</span></li>
+					<li><strong>Railway + Netlify</strong><span>Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
+				</ul>
+				<figure class="dossier_state_figure">
+					<a href="assets/downloads/informe-muestra-scanner-21719.pdf" download aria-label="Descargar informe de muestra en PDF">
+						<picture>
+							<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/informe-portada.avif">
+							<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/informe-portada.webp">
+							<img src="assets/images/dossiers/scanner-21179/informe-portada.jpg" alt="Portada del informe de auditoría preparatoria entregado al cliente, branded AGLAYA, marco legal Ley 21.719 Chile, audit ID trazable, fecha de informe 18 de mayo de 2026" loading="lazy" decoding="async" width="600" height="825" data-avif-fallback="true">
+						</picture>
+					</a>
+					<figcaption>Entregable real: PDF editorial con audit ID trazable, marca limpia, frontera legal explícita.</figcaption>
+				</figure>
+				<a class="dossier_pdf_download" href="assets/downloads/informe-muestra-scanner-21719.pdf" download>↓ Descargar informe de muestra (PDF)</a>
+			</section>
+
+			<section class="dossier_section dossier_frontier">
+				<span class="dossier_eyebrow">● Lo que NO hace</span>
+				<h2>Frontera honesta</h2>
+				<p>Lo que el producto <em>no</em> hace, explícito en cada superficie comercial:</p>
+				<ul class="dossier_frontier_list">
+					<li><strong>No</strong> certifica cumplimiento automático.</li>
+					<li><strong>No</strong> emite opinión jurídica definitiva.</li>
+					<li><strong>No</strong> promete cumplimiento integral.</li>
+				</ul>
+				<p>Lo que sí entrega: una primera auditoría preparatoria repetible, vendible y defendible. La primera capa de debida diligencia que toda empresa chilena debería tener antes de hablar con su abogado.</p>
+				<p>La frontera no es marketing defensivo. Es activo competitivo: las herramientas que <em>sí</em> prometen certificación quedan expuestas el día que falla un caso.</p>
+			</section>
+
+			<section class="dossier_section dossier_proves">
+				<span class="dossier_eyebrow dossier_eyebrow--pink">● Skills evidenciados</span>
+				<h2>Lo que este proyecto demuestra</h2>
+				<ul class="dossier_proves_grid">
+					<li>
+						<strong>Full-stack senior</strong>
+						<p>Backend Python, frontend HTML/JS plano, Playwright headless aislado por proceso, Redis+RQ para job queue persistente, SQLite operacional, pagos Lemon Squeezy con webhook idempotente, edge Netlify, CI continuo en Railway.</p>
+					</li>
+					<li>
+						<strong>De panel nocturno a producto en semanas</strong>
+						<p>El proyecto arrancó como un <strong>panel de investigación nocturno</strong>: <strong>1.000 dominios</strong> escaneándose cada noche para afinar el motor de reglas. El punto de inflexión fue una decisión de arquitectura no obvia — <strong>comprimir ese bucle de validación</strong> hasta ejecutar <strong>5 pasadas independientes</strong> sobre cada dominio en cada auditoría individual y añadir un <strong>motor de consenso</strong> sobre los resultados.</p>
+						<p>Lo que podían haber sido <strong>meses de iteración</strong> hasta alcanzar robustez estadística pasó a <strong>semanas de desarrollo</strong> — y a un producto comercialmente lanzable con estadísticas más sólidas que cualquier pasada nocturna.</p>
+					</li>
+					<li>
+						<strong>Decisiones de arquitectura defendibles</strong>
+						<p>«Reglas primero, LLM después» — trazabilidad gana a generación. Single <code>main</code> branch — velocidad gana a workflow ceremonioso. Consenso de 5 ejecuciones por escaneo — confianza gana a velocidad cruda.</p>
+					</li>
+					<li>
+						<strong>Seguridad como capa, no afterthought</strong>
+						<p>Auditoría externa cerrada (P0–P3 + PL1–PL5). SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). Webhooks protegidos contra replay. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
+					</li>
+					<li>
+						<strong>RegTech vertical real</strong>
+						<p>Dominio Ley 21.719 + producto + go-to-market. No es un PoC: posicionamiento aplicado con framework Obviously Awesome, pricing definido, frontera comercial honesta, embudo público controlado <code>landing → preflight → checkout → consenso → entrega</code>.</p>
+					</li>
+					<li>
+						<strong>Operación end-to-end de founder</strong>
+						<p>Producto + landing + blog técnico + Meta Ads + video promocional con avatar IA + checkout + entrega editorial + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="dossier_section dossier_inside" id="dossier_inside">
+				<span class="dossier_eyebrow">● Detalles técnicos</span>
+				<h2>Por dentro</h2>
+				<details>
+					<summary>Flujo público completo</summary>
+					<p>La URL del cliente entra por la landing pública. El primer paso es siempre el <strong>preflight</strong>: el sistema comprueba automáticamente que el dominio existe, que es accesible desde Chile, que no está bloqueando automatización y que tiene contenido web relevante bajo el ámbito de la Ley 21.719. Si el dominio no pasa, el cliente recibe notificación inmediata y <strong>sin coste alguno</strong>.</p>
+					<p>Si pasa, se solicita el email de contacto y arranca el motor de escaneo. <strong>Cinco workers Playwright independientes</strong> visitan el dominio simultáneamente en <strong>contextos de navegador completamente aislados</strong>. Cada worker captura la capa pública visible: HTML, cookies emitidas, formularios, banners de consentimiento, políticas publicadas, recursos externos cargados. La captura de cada worker se analiza por separado con el <strong>motor de reglas regulatorias deterministas</strong> — aproximadamente <strong>30 checks</strong> sobre los vectores de exposición más relevantes de la Ley 21.719.</p>
+					<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados. Solo consolida como alerta lo que aparece en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico, cookies bajo condiciones de carrera, artefactos de timing.</p>
+					<p>Alcanzado el consenso, el cliente recibe el enlace de <strong>checkout vía Lemon Squeezy</strong>. El pago activa la generación del informe: la evidencia consolidada en <code>scan_v1.json</code> entra a Claude, que la transforma en un <strong>informe editorial PDF</strong> con marca AGLAYA, <strong>audit ID trazable</strong>, fecha y versión del motor. El informe llega por email en minutos.</p>
+					<p>Caso excepcional: si el consenso no se alcanza — menos de cuatro de cinco workers coinciden en un resultado — el caso entra en <strong>revisión manual</strong> antes de emitir ninguna factura ni entregar ningún informe.</p>
+				</details>
+				<details>
+					<summary>Stack y decisiones técnicas</summary>
+					<p>Backend Python con <strong>Playwright workers aislados por proceso</strong> (no por thread — Playwright no es thread-safe). <strong>Job queue Redis + RQ</strong> con <strong>TTL de 90 días</strong> para consensus jobs — sobrevive a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega). Migración desde JSON legacy hecha <strong>sin downtime</strong>.</p>
+					<p>Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente.</p>
+					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong> (<code>claim_webhook_event</code> con idempotency key). El sistema <strong>nunca cobra dos veces</strong>.</p>
+				</details>
+				<details>
+					<summary>Seguridad — qué se auditó</summary>
+					<p><strong>Auditoría externa Opus completa.</strong> Cerrados: <strong>P0, P1, P2, P3</strong> y post-launch <strong>PL1–PL5</strong>. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
+					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>273 tests pasando</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
+				</details>
+				<details>
+					<summary>Operación comercial</summary>
+					<p><strong>v0.1.1</strong> sostiene <code>preflight</code> gratuito + checkout para sitios aptos + <strong>5 scans por consenso</strong> + entrega editorial PDF. <strong>Embudo controlado</strong>, no autoservicio masivo. Posicionamiento basado en framework <strong>Obviously Awesome</strong> (puntuación interna 6.9/10 — el cap está en validación comercial repetida, no en producto). Competencia identificada: revisión manual, no-consumo, consultoría artesanal, herramientas parciales sin marco chileno. Marketing operativo: <strong>Meta Ads</strong> + landing + blog técnico + <strong>video promocional con avatar IA</strong>.</p>
+				</details>
+			</section>
+
+			<footer class="dossier_footer">
+				<a class="dossier_cta dossier_cta--primary" href="https://aglaya.biz/auditoria-ley-21719/" target="_blank" rel="noopener noreferrer">Ver producto en vivo →</a>
+				<a class="dossier_cta dossier_cta--ghost" href="index.html#contact_form">Hablar conmigo →</a>
+				<p class="dossier_footer_meta">Última actualización del dossier: 2026-05-25 · Producto operado por AGLAYA · Versión vigente v0.1.1.</p>
+			</footer>
+
+		</main>
 
 		<div class="port_footer_setions">
 	<div class="footer_section">
@@ -681,7 +535,7 @@
 	</div>
 
 	<div class="bottom_top">
-		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg><svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg>
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg>
 	</div>
 
 	<!-- =================== Translate Button ================== -->
@@ -779,9 +633,54 @@
 </div>
 <script src="assets/js/cookie-consent.min.js?v=893d31b11b" defer></script>
 
+	<div class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Vista ampliada">
+		<button class="lightbox-close" aria-label="Cerrar">&times;</button>
+		<figure>
+			<img alt="">
+			<figcaption></figcaption>
+		</figure>
+	</div>
+
 	<script defer src="assets/js/jquery.min.js"></script>
 	<script defer src="assets/js/custom.min.js?v=3e267b54b8"></script>
 	<script defer src="assets/js/translate.min.js?v=6a289682e5"></script>
+	<script>
+(function () {
+	var overlay = document.querySelector('.lightbox-overlay');
+	var lbImg = overlay.querySelector('img');
+	var lbCap = overlay.querySelector('figcaption');
+
+	function openLightbox(trigger) {
+		var img = trigger.querySelector('img');
+		var figure = trigger.closest('figure');
+		var cap = figure ? figure.querySelector('figcaption') : null;
+		lbImg.src = img.currentSrc || img.src;
+		lbImg.alt = img.alt;
+		lbCap.textContent = cap ? cap.textContent : '';
+		overlay.classList.add('is-open');
+		document.body.style.overflow = 'hidden';
+		overlay.querySelector('.lightbox-close').focus();
+	}
+
+	function closeLightbox() {
+		overlay.classList.remove('is-open');
+		document.body.style.overflow = '';
+		lbImg.src = '';
+	}
+
+	document.querySelectorAll('picture.lightbox-trigger').forEach(function (el) {
+		el.addEventListener('click', function () { openLightbox(el); });
+	});
+
+	overlay.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+	overlay.addEventListener('click', function (e) {
+		if (e.target === overlay) { closeLightbox(); }
+	});
+	document.addEventListener('keydown', function (e) {
+		if (e.key === 'Escape' && overlay.classList.contains('is-open')) { closeLightbox(); }
+	});
+}());
+</script>
 </body>
 
 </html>

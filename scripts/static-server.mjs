@@ -173,26 +173,30 @@ const server = http.createServer((req, res) => {
   }
 
   const legacyRedirects = new Map([
-    ['/project-national-tech-evangelism.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['/project-national-tech-evangelism.html', projectIndexLocation],
     ['/debtracker.html', projectIndexLocation],
     ['/project-debtracker.html', projectIndexLocation],
     ['/gymtracker.html', projectIndexLocation],
     ['/project-gymtracker.html', projectIndexLocation],
-    ['/project-enterprise-crm.html', '/lfi.html'],
+    ['/project-enterprise-crm.html', projectIndexLocation],
+    ['/lfi.html', projectIndexLocation],
+    ['/ruta-de-la-digitalizacion-y-2x2-mkt.html', projectIndexLocation],
+    ['/elm-st.html', projectIndexLocation],
+    ['/aglaya.html', projectIndexLocation],
     ['/brevo-intelligence-layer.html', projectIndexLocation],
     ['/norden.html', projectIndexLocation],
     ['/norden', projectIndexLocation],
     ['/brevo-business-intelligence-system.html', projectIndexLocation],
     ['/brevo-business-intelligence-system', projectIndexLocation],
-    ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
+    ['/project-ruta-digitalizacion-2x2mkt.html', projectIndexLocation],
     ['/portfolio-ibaifernandez.html', projectIndexLocation],
     ['/project-portfolio-ibaifernandez.html', projectIndexLocation],
     ['/my-board.html', projectIndexLocation],
     ['/project-myboard.html', projectIndexLocation],
     ['/the-research-engine.html', projectIndexLocation],
     ['/project-the-research-engine.html', projectIndexLocation],
-    ['/project-elm-st.html', '/elm-st.html'],
-    ['/project-aglaya.html', '/aglaya.html']
+    ['/project-elm-st.html', projectIndexLocation],
+    ['/project-aglaya.html', projectIndexLocation]
   ]);
 
   if (legacyRedirects.has(pathname)) {
@@ -203,7 +207,7 @@ const server = http.createServer((req, res) => {
 
   if (pathname === '/lfi-v2' || pathname === '/lfi-v2.html' || pathname === '/lfi-v2.html/') {
     return send(res, 308, '', 'text/plain; charset=utf-8', {
-      Location: '/lfi.html'
+      Location: projectIndexLocation
     });
   }
 

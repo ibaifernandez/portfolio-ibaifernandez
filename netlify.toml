@@ -30,7 +30,7 @@
 # The frontend already calls /.netlify/functions/contact directly.
 [[redirects]]
   from   = "/project-national-tech-evangelism.html"
-  to     = "/ruta-de-la-digitalizacion-y-2x2-mkt.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -60,7 +60,7 @@
 
 [[redirects]]
   from   = "/project-enterprise-crm.html"
-  to     = "/lfi.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -96,19 +96,19 @@
 
 [[redirects]]
   from   = "/lfi-v2.html"
-  to     = "/lfi.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/lfi-v2"
-  to     = "/lfi.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/project-ruta-digitalizacion-2x2mkt.html"
-  to     = "/ruta-de-la-digitalizacion-y-2x2-mkt.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -149,14 +149,38 @@
   force  = true
 
 [[redirects]]
+  from   = "/lfi.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/ruta-de-la-digitalizacion-y-2x2-mkt.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/elm-st.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
+  from   = "/aglaya.html"
+  to     = "/#project_sec"
+  status = 308
+  force  = true
+
+[[redirects]]
   from   = "/project-elm-st.html"
-  to     = "/elm-st.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
 [[redirects]]
   from   = "/project-aglaya.html"
-  to     = "/aglaya.html"
+  to     = "/#project_sec"
   status = 308
   force  = true
 
@@ -202,7 +226,7 @@
     # img-src tightened from https: to 'self' data:.
     # connect-src includes 'self' which covers /.netlify/functions/contact.
     # Webfonts self-hosted (assets/fonts/) — no fonts.googleapis.com / fonts.gstatic.com.
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'sha256-BxDF5COZR+0Mcs+Bh8CEWsxT5HrKvhA0i+nqDtyS2SI=' 'sha256-GtFQDiNI4XPv+VRK3ecfAsK4D08clKMLlMFqzJrw2io=' 'sha256-H5yJMJqGXpON+ejy2DLpofkoEobKovwbN+1LiwDSrcY=' 'sha256-PLzs+h4u0EJQWxpctP4vulI9jwmWfdSewkMSGx340Vc=' 'sha256-QPdS8ns39ADLvrRHCFH3yYXSJ68Y4m57r36FkyOk/Xk=' 'sha256-cZuFglxUoe1Um9cWo4pBB9/Irk5tF0GLfQMJtxohhNI=' 'sha256-eDCM1ROugzO2wIdGzWamqMtet5bLjt9AFi+h9B9ckCY=' 'sha256-flffT04HhBk3vgJVzM8mp8lr7KBdG2ix3CYuXfEGNsI=' 'sha256-kzvWhhBXd5G/u/46sBlTSPxUksh73VawEoewPD/8rTw=' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://challenges.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com;"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'sha256-Ai+1ECklifoE0HXzH8oAbuZaiUd40kDhRwmB7HcNAKY=' 'sha256-cZuFglxUoe1Um9cWo4pBB9/Irk5tF0GLfQMJtxohhNI=' 'sha256-eDCM1ROugzO2wIdGzWamqMtet5bLjt9AFi+h9B9ckCY=' 'sha256-flffT04HhBk3vgJVzM8mp8lr7KBdG2ix3CYuXfEGNsI=' https://www.googletagmanager.com https://www.google-analytics.com https://challenges.cloudflare.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://stats.g.doubleclick.net https://challenges.cloudflare.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://challenges.cloudflare.com;"
 
 # HTML — no cache (cada deploy genera HTML nuevo)
 [[headers]]

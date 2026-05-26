@@ -8,10 +8,7 @@ Positioning: AI Product Engineer · Founder-Operator
 
 Primary pages:
 - https://portfolio.ibaifernandez.com/
-- https://portfolio.ibaifernandez.com/lfi.html
-- https://portfolio.ibaifernandez.com/ruta-de-la-digitalizacion-y-2x2-mkt.html
-- https://portfolio.ibaifernandez.com/elm-st.html
-- https://portfolio.ibaifernandez.com/aglaya.html
+- https://portfolio.ibaifernandez.com/scanner-21179.html
 
 Discovery:
 - robots: https://portfolio.ibaifernandez.com/robots.txt

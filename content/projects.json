@@ -1,89 +1,22 @@
 [
   {
     "page": {
-      "output": "lfi.html",
-      "template": "src/pages/lfi.template.html",
-      "keywords": "LFi, revenue operations, agency automation, CRM systems, Salesforce, HubSpot, enterprise campaign delivery"
+      "output": "scanner-21179.html",
+      "template": "src/pages/dossier-scanner-21179.template.html",
+      "shareImage": "assets/images/dossiers/scanner-21179/og-image.png",
+      "keywords": "Scanner Ley 21.719, RegTech Chile, auditoría regulatoria, Ley de Protección de Datos Chile, AGLAYA, Python, Playwright, Redis"
     },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--lfi\" role=\"img\" aria-label=\"LFi preview showing agency operating systems, enterprise accounts, and revenue operations governance\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Agency OS</span>\n<strong>Revenue Operations</strong>\n<span class=\"project_spotlight_mockup_metric\">18+ enterprise accounts</span>\n<span class=\"project_spotlight_mockup_note\">POCURO · Leben · CRM routing · QA systems</span>\n</div>",
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--scanner\" role=\"img\" aria-label=\"Scanner 21.719: RegTech pipeline para auditoría de superficie pública bajo Ley 21.719 — Python, Playwright, Redis+RQ, motor de consenso\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">RegTech · En producción</span>\n<strong>Scanner Ley 21.719</strong>\n<span class=\"project_spotlight_mockup_metric\">49% → 95% finalización</span>\n<span class=\"project_spotlight_mockup_note\">Python · Playwright · Redis+RQ · Consenso 5 scans</span>\n</div>",
     "title": {
-      "text": "LFi: Agency Operating Systems",
-      "translate": "project-enterprise-crm-title"
+      "text": "Scanner Ley 21.719: Regulatory Audit Tool",
+      "translate": "project-scanner-title"
     },
     "description": {
-      "text": "Rebuilt agency delivery into a governed operating layer across 18+ enterprise accounts, with POCURO and Leben proving the model under real revenue pressure.",
-      "translate": "project-enterprise-crm-copy"
+      "text": "Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, 273 tests, sin deuda de seguridad.",
+      "translate": "project-scanner-copy"
     },
     "link": {
-      "href": "lfi.html",
-      "label": {
-        "text": "Open Project Page",
-        "translate": "open-project-page"
-      }
-    }
-  },
-  {
-    "page": {
-      "output": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
-      "template": "src/pages/project-ruta-digitalizacion-2x2mkt.template.html"
-    },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--ruta\" role=\"img\" aria-label=\"Route to Digitalization preview showing a national field program turned into a remote conversion engine\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--route\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Field Program</span>\n<strong>National Adoption Pivot</strong>\n<span class=\"project_spotlight_mockup_metric\">10,600+ users</span>\n<span class=\"project_spotlight_mockup_note\">On-site rollout · Remote conversion engine · Crisis pivot</span>\n</div>",
-    "title": {
-      "text": "The Route to Digitalization / 2x2MKT",
-      "translate": "project-national-scale-title"
-    },
-    "description": {
-      "text": "Led a national-scale digital literacy tour and re-engineered it into a crisis-proof remote operation during the pandemic, onboarding more than 10,600 users into digital conversion funnels.",
-      "translate": "project-national-scale-copy"
-    },
-    "link": {
-      "href": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
-      "label": {
-        "text": "Open Project Page",
-        "translate": "open-project-page"
-      }
-    }
-  },
-  {
-    "page": {
-      "output": "elm-st.html",
-      "template": "src/pages/project-elm-st.template.html",
-      "keywords": "Elm St, audiovisual production, cinematic web design, YouTube reel, custom brand website, Ibai Fernandez"
-    },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--elmst\" role=\"img\" aria-label=\"Elm St preview showing a cinematic reel-first website and custom brand architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--cinema\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Cinematic Brand</span>\n<strong>Reel-First Web System</strong>\n<span class=\"project_spotlight_mockup_metric\">Custom-coded presence</span>\n<span class=\"project_spotlight_mockup_note\">YouTube embeds · Brand psychology · Audiovisual UX</span>\n</div>",
-    "title": {
-      "text": "Elm St: Reel-First Brand Website",
-      "translate": "project-elmst-title"
-    },
-    "description": {
-      "text": "A custom-coded brand site that brings reel-first storytelling, audiovisual identity, and a more deliberate web presence into one system.",
-      "translate": "project-elmst-copy"
-    },
-    "link": {
-      "href": "elm-st.html",
-      "label": {
-        "text": "Open Project Page",
-        "translate": "open-project-page"
-      }
-    }
-  },
-  {
-    "page": {
-      "output": "aglaya.html",
-      "template": "src/pages/project-aglaya.template.html",
-      "keywords": "AGLAYA, remote agency, brand evaluation, growth strategy, conversion-focused UX, marketing systems"
-    },
-    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--aglaya\" role=\"img\" aria-label=\"AGLAYA preview showing a remote agency operating system and conversion-focused growth architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Remote Agency</span>\n<strong>Conversion Infrastructure</strong>\n<span class=\"project_spotlight_mockup_metric\">Offer system</span>\n<span class=\"project_spotlight_mockup_note\">Assessment funnel · B2B positioning · Growth architecture</span>\n</div>",
-    "title": {
-      "text": "AGLAYA: Remote Agency Operations",
-      "translate": "project-aglaya-title"
-    },
-    "description": {
-      "text": "The case behind a remote digital agency: offer design, client operations, growth experiments, and the systems used to run it.",
-      "translate": "project-aglaya-copy"
-    },
-    "link": {
-      "href": "aglaya.html",
+      "href": "scanner-21179.html",
       "label": {
         "text": "Open Project Page",
         "translate": "open-project-page"

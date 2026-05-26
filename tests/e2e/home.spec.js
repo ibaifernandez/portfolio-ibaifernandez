@@ -159,14 +159,6 @@ test('retired blog route redirects to home', async ({ page }) => {
 });
 
 test('legacy project routes redirect to the normalized dossier slugs', async ({ page }) => {
-  const activeLegacyRoutes = [
-    ['/project-national-tech-evangelism.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['/project-enterprise-crm.html', '/lfi.html'],
-    ['/project-ruta-digitalizacion-2x2mkt.html', '/ruta-de-la-digitalizacion-y-2x2-mkt.html'],
-    ['/project-elm-st.html', '/elm-st.html'],
-    ['/project-aglaya.html', '/aglaya.html']
-  ];
-
   const archivedRoutes = [
     '/debtracker.html',
     '/project-debtracker.html',
@@ -180,15 +172,18 @@ test('legacy project routes redirect to the normalized dossier slugs', async ({ 
     '/my-board.html',
     '/project-myboard.html',
     '/the-research-engine.html',
-    '/project-the-research-engine.html'
+    '/project-the-research-engine.html',
+    // retired dossiers (archived May 2026)
+    '/lfi.html',
+    '/project-enterprise-crm.html',
+    '/ruta-de-la-digitalizacion-y-2x2-mkt.html',
+    '/project-national-tech-evangelism.html',
+    '/project-ruta-digitalizacion-2x2mkt.html',
+    '/elm-st.html',
+    '/project-elm-st.html',
+    '/aglaya.html',
+    '/project-aglaya.html'
   ];
-
-  for (const [legacyPath, normalizedPath] of activeLegacyRoutes) {
-    const response = await page.goto(legacyPath);
-    expect(response).not.toBeNull();
-    expect(response.status(), `${legacyPath} should resolve to ${normalizedPath}`).toBe(200);
-    await expect(page).toHaveURL(new RegExp(`${normalizedPath.replace('.', '\\.')}$`));
-  }
 
   for (const legacyPath of archivedRoutes) {
     const response = await page.goto(legacyPath);
