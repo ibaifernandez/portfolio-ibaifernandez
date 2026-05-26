@@ -26,3 +26,8 @@ documentacion-profesional-if/*.docx
 documentacion-profesional-if/leben/*.png
 documentacion-profesional-if/leben/*.pdf
 docs/freeze-visual/*.png
+
+# graphify artifacts: keep essential outputs, ignore the rest
+graphify-out/*
+!graphify-out/graph.json
+!graphify-out/manifest.json

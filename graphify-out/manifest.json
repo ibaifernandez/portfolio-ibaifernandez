@@ -1,0 +1,257 @@
+{
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/en.json": {
+    "mtime": 1779839037.7117507,
+    "ast_hash": "0e45e13f2b78ec5dc94a2e751a0be31c",
+    "semantic_hash": "0e45e13f2b78ec5dc94a2e751a0be31c"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/playwright.config.js": {
+    "mtime": 1775743275.621256,
+    "ast_hash": "8e60c8c192cce75aa5ed66f47f859a71",
+    "semantic_hash": "8e60c8c192cce75aa5ed66f47f859a71"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/package.json": {
+    "mtime": 1779486376.3118124,
+    "ast_hash": "8275ec0b32d0716514c28c0c465f807d",
+    "semantic_hash": "8275ec0b32d0716514c28c0c465f807d"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/es.json": {
+    "mtime": 1779839052.1864364,
+    "ast_hash": "7115e22ce0196e5ce024280dcdd59c21",
+    "semantic_hash": "7115e22ce0196e5ce024280dcdd59c21"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-links.mjs": {
+    "mtime": 1775743275.604251,
+    "ast_hash": "b5e7da984ab7b28d9ce3710da650ac2c",
+    "semantic_hash": "b5e7da984ab7b28d9ce3710da650ac2c"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-coverage-tests.mjs": {
+    "mtime": 1779528989.2220178,
+    "ast_hash": "ccfe882f3d4bcfa21b4b70586dafcb7c",
+    "semantic_hash": "ccfe882f3d4bcfa21b4b70586dafcb7c"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/quality-guards.sh": {
+    "mtime": 1779740907.848783,
+    "ast_hash": "cf5072bad22f4cb039f505dc121ecf54",
+    "semantic_hash": "cf5072bad22f4cb039f505dc121ecf54"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-target-blank.mjs": {
+    "mtime": 1775743275.6054347,
+    "ast_hash": "6edecdfb5d92a36a5345e57d5df2b16e",
+    "semantic_hash": "6edecdfb5d92a36a5345e57d5df2b16e"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/smoke.sh": {
+    "mtime": 1775743275.6058702,
+    "ast_hash": "5f71c4f172557ee42e6dbcbe4f0cca77",
+    "semantic_hash": "5f71c4f172557ee42e6dbcbe4f0cca77"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-i18n.mjs": {
+    "mtime": 1779486383.1382027,
+    "ast_hash": "9b94c859091f2ef64afe2c55c6f2c8d4",
+    "semantic_hash": "9b94c859091f2ef64afe2c55c6f2c8d4"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/performance-budget.config.json": {
+    "mtime": 1779803003.937931,
+    "ast_hash": "d0df7d0c2e74a552dd1c21c97bf97438",
+    "semantic_hash": "d0df7d0c2e74a552dd1c21c97bf97438"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-performance-budget.mjs": {
+    "mtime": 1775743275.6068468,
+    "ast_hash": "a7b58067b419bcdb3f940702a26e21e6",
+    "semantic_hash": "a7b58067b419bcdb3f940702a26e21e6"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-webp-coverage.mjs": {
+    "mtime": 1779522769.5871665,
+    "ast_hash": "214fea79166fe6c5864af818328d883f",
+    "semantic_hash": "214fea79166fe6c5864af818328d883f"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-avif-coverage.mjs": {
+    "mtime": 1779522978.6912584,
+    "ast_hash": "2dbb6b5566a8e6a62ba649a6f20cbf35",
+    "semantic_hash": "2dbb6b5566a8e6a62ba649a6f20cbf35"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/home.spec.js": {
+    "mtime": 1779803233.3353055,
+    "ast_hash": "4f1abbb873ee702e18126d6000c0e521",
+    "semantic_hash": "4f1abbb873ee702e18126d6000c0e521"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/keyboard.spec.js": {
+    "mtime": 1779745376.3943694,
+    "ast_hash": "5cb77c48b0b405dd1692fd17b938a1f9",
+    "semantic_hash": "5cb77c48b0b405dd1692fd17b938a1f9"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/dossier-pages.spec.js": {
+    "mtime": 1779487635.912021,
+    "ast_hash": "57e82ef002e4d8ab5bfa540502c09969",
+    "semantic_hash": "57e82ef002e4d8ab5bfa540502c09969"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/visual.spec.js": {
+    "mtime": 1779807867.4174664,
+    "ast_hash": "7461fbcb5343b192c074bbb4c0b6a4b5",
+    "semantic_hash": "7461fbcb5343b192c074bbb4c0b6a4b5"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/contact.spec.js": {
+    "mtime": 1779450547.4574437,
+    "ast_hash": "43ee6ff8aad30bff51342ccd0a825c0a",
+    "semantic_hash": "43ee6ff8aad30bff51342ccd0a825c0a"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/csp.spec.js": {
+    "mtime": 1779528963.627193,
+    "ast_hash": "3e469f2958b3cb246c324e6d14f45657",
+    "semantic_hash": "3e469f2958b3cb246c324e6d14f45657"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/archived-dossiers.spec.js": {
+    "mtime": 1775755803.593069,
+    "ast_hash": "c5aa33460f9d4b8a31c4b4e5eca9ba2c",
+    "semantic_hash": "c5aa33460f9d4b8a31c4b4e5eca9ba2c"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/a11y.spec.js": {
+    "mtime": 1775743275.6168456,
+    "ast_hash": "07094da0c4290d74978afcda4a31f876",
+    "semantic_hash": "07094da0c4290d74978afcda4a31f876"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/dossiers.spec.js": {
+    "mtime": 1779803239.3021827,
+    "ast_hash": "1f33aebd8d4bf26a32d1e033cb398ace",
+    "semantic_hash": "1f33aebd8d4bf26a32d1e033cb398ace"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/ctas.json": {
+    "mtime": 1779639240.4013917,
+    "ast_hash": "49dbf24117dfb704e2a254569cb3513f",
+    "semantic_hash": "49dbf24117dfb704e2a254569cb3513f"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/training.json": {
+    "mtime": 1779637804.939306,
+    "ast_hash": "2c7117baf20c3460232045d9e71a6a5f",
+    "semantic_hash": "2c7117baf20c3460232045d9e71a6a5f"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/projects.archived.json": {
+    "mtime": 1779802772.7197158,
+    "ast_hash": "452656fd27d48e9fd6828ed562d940a7",
+    "semantic_hash": "452656fd27d48e9fd6828ed562d940a7"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/services.json": {
+    "mtime": 1775743275.6195486,
+    "ast_hash": "5505d3e9230d97290095a98cce01ff1b",
+    "semantic_hash": "5505d3e9230d97290095a98cce01ff1b"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/experience.json": {
+    "mtime": 1779656116.812407,
+    "ast_hash": "34c5c3adf64b1ebaacd0a9404ccfa6e0",
+    "semantic_hash": "34c5c3adf64b1ebaacd0a9404ccfa6e0"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/projects.json": {
+    "mtime": 1779803138.330508,
+    "ast_hash": "f488e1824caa934763983b23c0cf20fc",
+    "semantic_hash": "f488e1824caa934763983b23c0cf20fc"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/testimonials.json": {
+    "mtime": 1775743275.620769,
+    "ast_hash": "850bfd81960a8f97992d1e21762f6f88",
+    "semantic_hash": "850bfd81960a8f97992d1e21762f6f88"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/netlify/functions/contact.js": {
+    "mtime": 1775743275.673554,
+    "ast_hash": "d9d6e41fd3ad27455f8fcc8a745edb49",
+    "semantic_hash": "d9d6e41fd3ad27455f8fcc8a745edb49"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/static-server.mjs": {
+    "mtime": 1779803220.6363528,
+    "ast_hash": "4c3092e1255c1aa592d2589bc6e81f65",
+    "semantic_hash": "4c3092e1255c1aa592d2589bc6e81f65"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/wrap-images-with-avif-picture.mjs": {
+    "mtime": 1775743275.6788337,
+    "ast_hash": "f06381964abe0d722adbba12161fd498",
+    "semantic_hash": "f06381964abe0d722adbba12161fd498"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/generate-avif-assets.mjs": {
+    "mtime": 1775743275.6793122,
+    "ast_hash": "67fd6af246d848115115ecbb74df3158",
+    "semantic_hash": "67fd6af246d848115115ecbb74df3158"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/enrich-image-tags.mjs": {
+    "mtime": 1775743275.6797602,
+    "ast_hash": "36c64dbc457c105d4e5cc68981278875",
+    "semantic_hash": "36c64dbc457c105d4e5cc68981278875"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/run-e2e-with-cleanup.sh": {
+    "mtime": 1775743275.6803126,
+    "ast_hash": "483476bd74d20d820095766b3cc23221",
+    "semantic_hash": "483476bd74d20d820095766b3cc23221"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/generate-webp-assets.mjs": {
+    "mtime": 1775743275.6808577,
+    "ast_hash": "302d049d1c6e4ab0c890b12fc09af51e",
+    "semantic_hash": "302d049d1c6e4ab0c890b12fc09af51e"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/self-host-fonts.mjs": {
+    "mtime": 1779719537.0283432,
+    "ast_hash": "cd11c4a6071b31d0c55adcce0e87ddfd",
+    "semantic_hash": "cd11c4a6071b31d0c55adcce0e87ddfd"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/pre-commit.sh": {
+    "mtime": 1779480372.3835082,
+    "ast_hash": "2faf481f6257a2545349a3c3a37349e7",
+    "semantic_hash": "2faf481f6257a2545349a3c3a37349e7"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/purge-orphan-i18n.mjs": {
+    "mtime": 1779486386.4519181,
+    "ast_hash": "370040c31fb36e4892cc13c893b260ad",
+    "semantic_hash": "370040c31fb36e4892cc13c893b260ad"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/build-pages.mjs": {
+    "mtime": 1779526900.732256,
+    "ast_hash": "ac15cf518bce741b36348eb12c523c44",
+    "semantic_hash": "ac15cf518bce741b36348eb12c523c44"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/playwright-orphans.sh": {
+    "mtime": 1775743275.6816962,
+    "ast_hash": "84d452b9aa4e542211fd0477ed70f117",
+    "semantic_hash": "84d452b9aa4e542211fd0477ed70f117"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/jquery-jvectormap-world-mill.js": {
+    "mtime": 1775743277.4790976,
+    "ast_hash": "19b9535d8ea820f06364434467358180",
+    "semantic_hash": "19b9535d8ea820f06364434467358180"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/cvtext2.js": {
+    "mtime": 1775743277.4807007,
+    "ast_hash": "a2d5ce006f24e93e297e4c9ec9e78031",
+    "semantic_hash": "a2d5ce006f24e93e297e4c9ec9e78031"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/circle-progress.js": {
+    "mtime": 1775743277.4812818,
+    "ast_hash": "3fb461c1b082f494c9e0eaaafcf8bd72",
+    "semantic_hash": "3fb461c1b082f494c9e0eaaafcf8bd72"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/translate.js": {
+    "mtime": 1779693702.8013854,
+    "ast_hash": "74c5cbf78f87e8d2ac500e1c114dc24a",
+    "semantic_hash": "74c5cbf78f87e8d2ac500e1c114dc24a"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/jquery.zoom.js": {
+    "mtime": 1775743277.4849439,
+    "ast_hash": "145856ba206b56dc4ff89c2f04ab1c0f",
+    "semantic_hash": "145856ba206b56dc4ff89c2f04ab1c0f"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/custom.js": {
+    "mtime": 1779698809.7028852,
+    "ast_hash": "383966de78e911751677cabb2dded520",
+    "semantic_hash": "383966de78e911751677cabb2dded520"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/scrollbar.js": {
+    "mtime": 1775743277.487577,
+    "ast_hash": "94b16419f0fb065dd1b301d666a1c974",
+    "semantic_hash": "94b16419f0fb065dd1b301d666a1c974"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/cookie-consent.js": {
+    "mtime": 1779718918.0205839,
+    "ast_hash": "a0f655eebdf8bfdf9a7f3370a30e039c",
+    "semantic_hash": "a0f655eebdf8bfdf9a7f3370a30e039c"
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/assets/js/cvtext1.js": {
+    "mtime": 1775743277.4904401,
+    "ast_hash": "94dced52c8c83114292413bc42549ee3",
+    "semantic_hash": "94dced52c8c83114292413bc42549ee3"
+  }
+}

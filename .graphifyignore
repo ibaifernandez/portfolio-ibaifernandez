@@ -1,0 +1,64 @@
+# ─── graphify ignore: keep corpus focused on source-of-truth ─────────────
+# Heavy or redundant; the source templates + sources tell the same story.
+
+# OS / git
+.DS_Store
+**/.DS_Store
+.git/
+.github/
+
+# Node + Netlify
+node_modules/
+.netlify/
+.cache/
+package-lock.json
+
+# Test artifacts
+playwright-report/
+test-results/
+
+# Built HTML at root (redundant with src/pages/*.template.html)
+404.html
+index.html
+privacy.html
+scanner-21179.html
+lfi-legacy.html
+
+# Generated llms/sitemap (regenerated from content/projects.json)
+llms.txt
+llms-full.txt
+sitemap.xml
+
+# Minified assets (redundant with sources in same dir)
+assets/css/*.min.css
+assets/js/*.min.js
+
+# Binary asset folders (images, fonts, downloads)
+assets/images/
+assets/fonts/
+assets/downloads/
+assets/svg/
+
+# Visual baselines + tests snapshots (binary PNGs)
+tests/e2e/**/*-snapshots/**
+
+# Local dev sandbox + secrets
+sandbox/
+artifacts/
+stitch/
+.env
+.env.*
+
+# Plugin packs
+ibai-brand-os.plugin/
+
+# Doc binaries
+documentacion-profesional-if/
+docs/cv/
+docs/error-logs/
+docs/freeze-visual/
+docs/arreglar-en-monitores-pequeños/
+docs/audits/
+
+# Brand-personal local config
+/.claude/
