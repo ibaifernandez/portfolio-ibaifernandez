@@ -133,8 +133,9 @@
 				</div>
 				<p>El motor de escaneo lanza <strong>cinco workers Playwright completamente independientes</strong> sobre el mismo dominio — <strong>aislados por proceso, no por thread</strong> — desde cero cada uno. Cada worker visita el sitio, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza de forma independiente con el <strong>motor de reglas regulatorias deterministas</strong>: aproximadamente 30 checks sobre los vectores de exposición más relevantes de la Ley 21.719.</p>
 				<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
+				<p>El motor de reglas se compone de dos servicios separados: <strong>Rules Engine</strong> (interpreta cada captura contra el catálogo regulatorio) y <strong>Control Matrix</strong> (mapea hallazgos a controles auditables). Ambos consumen la <strong>Matriz Normativa v1</strong> — el catálogo de checks deterministas mantenido como dato versionado, no como código incrustado. Sobre ese mismo modelo opera la capa de <em>scoring</em> y semántica de cada alerta.</p>
 				<h3 class="dossier_subheading">Reglas primero, LLM después</h3>
-				<p>La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, archivado en un JSON técnico (<code>scan_v1.json</code>) que el operador puede leer, citar o disputar. Trazabilidad sobre elocuencia.</p>
+				<p>La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, <strong>serializada contra el contrato versionado <code>scan_v1.schema.json</code></strong> y archivada como <code>scan_v1.json</code>. El informe final cumple <code>report_v1.schema.json</code>. Schema-first, no improvisación. El operador puede leer, citar o disputar cada nodo de evidencia.</p>
 			</section>
 
 			<section class="dossier_section dossier_state">
@@ -149,6 +150,8 @@
 					<li><strong>5 workers</strong><span>Playwright paralelos por auditoría, aislados por proceso. Consenso ≥ 4/5 para publicar alerta.</span></li>
 					<li><strong>&lt; 10 min</strong><span>De checkout a informe editorial PDF en el correo del cliente.</span></li>
 					<li><strong>Railway + Netlify</strong><span>Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
+					<li><strong>17 audits</strong><span>Revisión cruzada Sistema → CRM (mayo 2026). Cada caso trazable, cada handoff documentado.</span></li>
+					<li><strong>4 postmortems</strong><span>Casos reales cerrados con clientes nombrados. Cultura de fix + aprendizaje, no de ocultar.</span></li>
 				</ul>
 				<figure class="dossier_state_figure">
 					<a href="assets/downloads/informe-muestra-scanner-21719.pdf" download aria-label="Descargar informe de muestra en PDF">
@@ -174,6 +177,35 @@
 				</ul>
 				<p>Lo que sí entrega: una primera auditoría preparatoria repetible, vendible y defendible. La primera capa de debida diligencia que toda empresa chilena debería tener antes de hablar con su abogado.</p>
 				<p>La frontera no es marketing defensivo. Es activo competitivo: las herramientas que <em>sí</em> prometen certificación quedan expuestas el día que falla un caso.</p>
+			</section>
+
+			<section class="dossier_section dossier_distribution">
+				<span class="dossier_eyebrow">● Distribución</span>
+				<h2>Autoridad temática + contenido publicado</h2>
+				<p>El producto no se sostiene solo en el código. Tiene una capa editorial pública que construye autoridad temática sobre Ley 21.719 y precede al checkout:</p>
+				<ul class="dossier_distribution_list">
+					<li>
+						<a href="https://aglaya.biz/blog/" target="_blank" rel="noopener noreferrer"><strong>Blog técnico Ley 21.719</strong></a>
+						<span>Línea editorial sostenida en español sobre cumplimiento, preparación y diagnóstico bajo la nueva ley chilena.</span>
+					</li>
+					<li>
+						<a href="https://aglaya.biz/blog/estudio-cumplimiento-ley-21719-mayo-2026/" target="_blank" rel="noopener noreferrer"><strong>Estudio: 7 brechas en 17 webs chilenas</strong></a>
+						<span>Análisis de campo con datos reales del propio motor del Scanner. Proof social cuantitativa.</span>
+					</li>
+					<li>
+						<a href="https://aglaya.biz/blog/cuanto-cuesta-prepararse-ley-21719/" target="_blank" rel="noopener noreferrer"><strong>¿Cuánto cuesta prepararse para la Ley 21.719?</strong></a>
+						<span>Pieza de educación de mercado conectada al embudo de pricing.</span>
+					</li>
+					<li>
+						<a href="https://aglaya.biz/blog/diagnostico-gratuito-vs-informe-tecnico/" target="_blank" rel="noopener noreferrer"><strong>Diagnóstico gratuito vs. informe técnico</strong></a>
+						<span>Frontera entre <em>preflight</em> sin coste y producto pagado, explicada para no-técnicos.</span>
+					</li>
+					<li>
+						<a href="https://aglaya.biz/auditoria-ley-21719/" target="_blank" rel="noopener noreferrer"><strong>Landing Meta Ads → Auditoría Ley 21.719</strong></a>
+						<span>Pieza de captación activa, conectada al motor de preflight + checkout en producción.</span>
+					</li>
+				</ul>
+				<p>El playbook Paid Ads (Meta mayo + Google junio 2026) opera sobre esta capa editorial. No es funnel ciego — es funnel respaldado por contenido publicado.</p>
 			</section>
 
 			<section class="dossier_section dossier_proves">
@@ -205,6 +237,14 @@
 						<strong>Operación end-to-end de founder</strong>
 						<p>Producto + landing + blog técnico + Meta Ads + video promocional con avatar IA + checkout + entrega editorial + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
 					</li>
+					<li>
+						<strong>Disciplina contractual + schema-first</strong>
+						<p>Contratos JSON Schema versionados (<code>scan_v1.schema.json</code>, <code>report_v1.schema.json</code>) como interfaz formal entre captura, motor de consenso, motor de reglas y generación de informe. <strong>Invariantes críticas del sistema</strong> enumeradas en documentación operativa. <strong>Protocolo post-deploy</strong> formalizado por release. <strong>Postmortems documentados</strong> por caso. No es código que funciona — es código que se puede defender.</p>
+					</li>
+					<li>
+						<strong>Feedback loop D+7 con clientes reales</strong>
+						<p>Plan de proof social activo: panel de feedback a 7 días desde la entrega (PR37), revisión cruzada Sistema → CRM sobre los audits emitidos, iteración del motor con datos reales del campo. No es build-and-pray.</p>
+					</li>
 				</ul>
 			</section>
 
@@ -231,8 +271,23 @@
 					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>273 tests pasando</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
 				</details>
 				<details>
+					<summary>Postmortems en producción</summary>
+					<p>El proyecto opera con <strong>disciplina formal de postmortem</strong>. Cada incidente con cliente real queda documentado: causa raíz, fix aplicado, aprendizaje arquitectónico, prevención. Casos cerrados a la fecha:</p>
+					<ul>
+						<li><strong>2hermanos.cl</strong> — dependencia de browser context; fix en aislamiento del worker.</li>
+						<li><strong>latinbugs.com</strong> — bug de template path en pipeline de informe.</li>
+						<li><strong>bakdesign.cl</strong> — worker OOM / stuck job; fix en gestión de memoria + timeout duro.</li>
+						<li><strong>PR38 (Sentry)</strong> — TypeError UTF-8 en capa de auth; fix con normalización de input.</li>
+					</ul>
+					<p>Los postmortems alimentan las <strong>invariantes críticas del sistema</strong>, lista de propiedades que no pueden romperse en ningún deploy.</p>
+				</details>
+				<details>
+					<summary>Panel admin + observabilidad operativa</summary>
+					<p>Backoffice administrativo con endpoints operativos para revisión de audits, manejo de excepciones y gestión de feedback. El <strong>panel de feedback D+7</strong> (PR37) captura señales de clientes a 7 días desde la entrega y alimenta el plan de proof social. Cada release pasa por <strong>protocolo post-deploy</strong> formalizado. Observabilidad continua sobre workers, jobs Redis, latencia de pipeline y entrega final.</p>
+				</details>
+				<details>
 					<summary>Operación comercial</summary>
-					<p><strong>v0.1.1</strong> sostiene <code>preflight</code> gratuito + checkout para sitios aptos + <strong>5 scans por consenso</strong> + entrega editorial PDF. <strong>Embudo controlado</strong>, no autoservicio masivo. Posicionamiento basado en framework <strong>Obviously Awesome</strong> (puntuación interna 6.9/10 — el cap está en validación comercial repetida, no en producto). Competencia identificada: revisión manual, no-consumo, consultoría artesanal, herramientas parciales sin marco chileno. Marketing operativo: <strong>Meta Ads</strong> + landing + blog técnico + <strong>video promocional con avatar IA</strong>.</p>
+					<p><strong>v0.1.1</strong> sostiene <code>preflight</code> gratuito + checkout para sitios aptos + <strong>5 scans por consenso</strong> + entrega editorial PDF. <strong>Embudo controlado</strong>, no autoservicio masivo. Posicionamiento basado en framework <strong>Obviously Awesome</strong> (puntuación interna 6.9/10 — el cap está en validación comercial repetida, no en producto). Competencia identificada: revisión manual, no-consumo, consultoría artesanal, herramientas parciales sin marco chileno. <strong>Playbook Paid Ads</strong> documentado (Meta mayo + Google junio 2026). Marketing operativo: Meta Ads + landing + blog técnico + <strong>video promocional con avatar IA</strong>.</p>
 				</details>
 			</section>
 

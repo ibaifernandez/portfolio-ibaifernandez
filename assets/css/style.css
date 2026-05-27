@@ -9379,8 +9379,11 @@ body.aglaya_dossier_page {
 	font-weight: 600;
 }
 .dossier_section em {
-	color: var(--hero-accent-pink);
+	color: #b8003e;
 	font-style: italic;
+}
+.dossier_section.dossier_frontier em {
+	color: var(--hero-accent-pink);
 }
 
 /* State grid (cards de números) */
@@ -9484,6 +9487,50 @@ body.aglaya_dossier_page {
 	width: 18px;
 	height: 1px;
 	background: var(--hero-accent-pink);
+}
+
+/* Distribution list (autoridad temática + contenido publicado) */
+.dossier_distribution_list {
+	margin: 24px 0;
+	padding: 0;
+	list-style: none;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 12px;
+}
+.dossier_distribution_list li {
+	padding: 14px 16px;
+	border: 1px solid rgba(10, 15, 33, 0.1);
+	border-radius: 6px;
+	background: var(--color-white);
+	transition: border-color 0.15s ease, background 0.15s ease;
+}
+.dossier_distribution_list li:hover,
+.dossier_distribution_list li:focus-within {
+	border-color: rgba(10, 15, 33, 0.25);
+	background: rgba(10, 15, 33, 0.02);
+}
+.dossier_distribution_list li a {
+	display: block;
+	color: var(--color-text-primary);
+	text-decoration: none;
+	margin-bottom: 4px;
+}
+.dossier_distribution_list li a:hover,
+.dossier_distribution_list li a:focus {
+	text-decoration: underline;
+	text-decoration-color: #005a64;
+	text-underline-offset: 3px;
+}
+.dossier_distribution_list li a strong {
+	color: var(--color-text-primary);
+	font-weight: 600;
+}
+.dossier_distribution_list li span {
+	display: block;
+	color: var(--color-text-muted);
+	font-size: 14px;
+	line-height: 1.5;
 }
 
 /* Proves grid (lo que demuestra) */
