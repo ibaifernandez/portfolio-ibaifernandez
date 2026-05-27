@@ -651,7 +651,7 @@
   "view-linkedin": "View LinkedIn",
   "words-that-warm-the-heart": "What people say after working with me",
   "project-scanner-title": "Scanner Ley 21.719: Regulatory Audit Tool",
-  "project-scanner-copy": "RegTech product in production for preparatory public surface audit under Ley 21.719. Rules first, LLM after. v0.1.1, 273 tests, zero security debt.",
+  "project-scanner-copy": "RegTech product in production for preparatory public surface audit under Ley 21.719. Rules first, LLM after. v0.1.1, extensive test suite, zero security debt.",
   "sidebar-tooltip-about": "About",
   "sidebar-tooltip-training": "Training",
   "sidebar-tooltip-portfolio": "Portfolio",

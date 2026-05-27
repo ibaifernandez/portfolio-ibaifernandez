@@ -12,7 +12,7 @@
       "translate": "project-scanner-title"
     },
     "description": {
-      "text": "Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, 273 tests, sin deuda de seguridad.",
+      "text": "Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, suite extensa de tests, sin deuda de seguridad.",
       "translate": "project-scanner-copy"
     },
     "link": {

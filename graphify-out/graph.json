@@ -8,18 +8,18 @@
       "file_type": "document",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
-      "id": "claude_md",
       "community": 60,
-      "norm_label": "claude.md"
+      "norm_label": "claude.md",
+      "id": "claude_md"
     },
     {
       "label": "graphify",
       "file_type": "document",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
-      "id": "26_04_portfolio_if_claude_graphify",
       "community": 60,
-      "norm_label": "graphify"
+      "norm_label": "graphify",
+      "id": "26_04_portfolio_if_claude_graphify"
     },
     {
       "label": "en.json",
@@ -12566,19 +12566,6 @@
       "id": "debtracker_template_page"
     },
     {
-      "label": "Scanner Ley 21.719 Dossier",
-      "file_type": "code",
-      "source_file": "src/pages/dossier-scanner-21179.template.html",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 2,
-      "norm_label": "scanner ley 21.719 dossier",
-      "id": "scanner_21179_template_page"
-    },
-    {
       "label": "AGLAYA Agency Dossier",
       "file_type": "code",
       "source_file": "src/pages/project-aglaya.template.html",
@@ -12833,9 +12820,9 @@
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "claude_md",
-      "target": "26_04_portfolio_if_claude_graphify",
-      "confidence_score": 1.0
+      "target": "26_04_portfolio_if_claude_graphify"
     },
     {
       "relation": "contains",
@@ -27732,26 +27719,6 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "src/pages/dossier-scanner-21179.template.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "scanner_21179_template_page",
-      "target": "sidebar_project_component"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "src/pages/dossier-scanner-21179.template.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "scanner_21179_template_page",
-      "target": "aglaya_concept"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
       "source_file": "src/pages/project-aglaya.template.html",
       "source_location": null,
       "weight": 1.0,
@@ -27950,5 +27917,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ce0b53f4172faa2a0d579df57474c7d561ca2549"
+  "built_at_commit": "514cc0884da16009390fc67e7e5263e7ee2d48a5"
 }

@@ -651,7 +651,7 @@
   "view-linkedin": "Ver LinkedIn",
   "words-that-warm-the-heart": "Lo que dicen después de trabajar conmigo",
   "project-scanner-title": "Scanner Ley 21.719: Auditoría Regulatoria",
-  "project-scanner-copy": "Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, 273 tests, sin deuda de seguridad.",
+  "project-scanner-copy": "Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, suite extensa de tests, sin deuda de seguridad.",
   "sidebar-tooltip-about": "Sobre mí",
   "sidebar-tooltip-training": "Formación",
   "sidebar-tooltip-portfolio": "Portafolio",

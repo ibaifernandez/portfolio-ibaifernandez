@@ -12,7 +12,7 @@
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://portfolio.ibaifernandez.com/scanner-21179.html">
 	<meta property="og:title" content="Scanner Ley 21.719 — Dossier | Ibai Fernández">
-	<meta property="og:description" content="Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, 273 tests, auditoría de seguridad cerrada.">
+	<meta property="og:description" content="Producto RegTech en producción para auditoría preparatoria de superficie pública bajo Ley 21.719. Reglas primero, LLM después. v0.1.1, suite de tests extensa, auditoría de seguridad cerrada.">
 	<meta property="og:image" content="https://portfolio.ibaifernandez.com/assets/images/dossiers/scanner-21179/og-image.png">
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/scanner-21179.html">
@@ -351,7 +351,7 @@
 					<source media="(max-width: 640px)" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.png">
 					<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/pipeline.avif">
 					<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/pipeline.webp">
-					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 escaneos, reglas primero LLM después, benchmark de estabilidad con métricas (finalización 49% → 95%, evidencia 88% → 99%, alcance 96% → 99%) y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
+					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 pasadas independientes, reglas primero LLM después, benchmark de estabilidad con métricas (finalización 49% → 95%, evidencia 88% → 99%, alcance 96% → 99%) y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
 				</picture>
 				<figcaption>Arquitectura del pipeline + validación de impacto de mercado (release v0.1.1).</figcaption>
 			</figure>
@@ -386,7 +386,7 @@
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
 						<span class="dossier_pipeline_num">03</span>
-						<span class="dossier_pipeline_label">5 scans<br>paralelos</span>
+						<span class="dossier_pipeline_label">5 pasadas<br>de consenso</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
@@ -409,7 +409,7 @@
 						<span class="dossier_pipeline_label">Informe<br>PDF</span>
 					</div>
 				</div>
-				<p>El motor de escaneo lanza <strong>cinco workers Playwright completamente independientes</strong> sobre el mismo dominio — <strong>aislados por proceso, no por thread</strong> — desde cero cada uno. Cada worker visita el sitio, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza de forma independiente con el <strong>motor de reglas regulatorias deterministas</strong>: aproximadamente 30 checks sobre los vectores de exposición más relevantes de la Ley 21.719.</p>
+				<p>El motor de escaneo ejecuta <strong>cinco pasadas de consenso independientes</strong> sobre el mismo dominio en <strong>contextos Playwright aislados</strong>, orquestadas desde el async loop del worker RQ. Cada pasada visita el sitio desde cero, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code> (con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code>, <code>severidad_inicial</code>) sobre los vectores de exposición de la Ley 21.719.</p>
 				<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
 				<p>El motor de reglas se compone de dos servicios separados: <strong>Rules Engine</strong> (interpreta cada captura contra el catálogo regulatorio) y <strong>Control Matrix</strong> (mapea hallazgos a controles auditables). Ambos consumen la <strong>Matriz Normativa v1</strong> — el catálogo de checks deterministas mantenido como dato versionado, no como código incrustado. Sobre ese mismo modelo opera la capa de <em>scoring</em> y semántica de cada alerta.</p>
 				<h3 class="dossier_subheading">Reglas primero, LLM después</h3>
@@ -421,11 +421,11 @@
 				<h2>Estado real</h2>
 				<ul class="dossier_state_grid">
 					<li><strong>v0.1.1</strong><span>Release controlada, abierta a tráfico externo desde el 18 de mayo de 2026.</span></li>
-					<li><strong>273 tests</strong><span>Pasando en CI. Cero fallos.</span></li>
+					<li><strong>~760 tests</strong><span>Suite de pytest extensa pasando localmente. Cero fallos en último run.</span></li>
 					<li><strong>Sin deuda de seguridad</strong><span>Revisión externa completa: vulnerabilidades críticas, altas, medias y bajas — todas cerradas antes del lanzamiento.</span></li>
 					<li><strong>96% / 100%</strong><span>Tasa de alcance en dominios aptos / evidencia trazable por alerta.</span></li>
 					<li><strong>49% → 95%</strong><span>Tasa de finalización del escaneo (línea base → motor optimizado).</span></li>
-					<li><strong>5 workers</strong><span>Playwright paralelos por auditoría, aislados por proceso. Consenso ≥ 4/5 para publicar alerta.</span></li>
+					<li><strong>Consenso 4/5</strong><span>Cinco pasadas independientes en contextos Playwright aislados; alerta solo si concuerdan al menos cuatro.</span></li>
 					<li><strong>&lt; 10 min</strong><span>De checkout a informe editorial PDF en el correo del cliente.</span></li>
 					<li><strong>Railway + Netlify</strong><span>Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
 					<li><strong>17 audits</strong><span>Revisión cruzada Sistema → CRM (mayo 2026). Cada caso trazable, cada handoff documentado.</span></li>
@@ -492,7 +492,7 @@
 				<ul class="dossier_proves_grid">
 					<li>
 						<strong>Full-stack senior</strong>
-						<p>Backend Python, frontend HTML/JS plano, Playwright headless aislado por proceso, Redis+RQ para job queue persistente, SQLite operacional, pagos Lemon Squeezy con webhook idempotente, edge Netlify, CI continuo en Railway.</p>
+						<p>Backend Python, frontend HTML/JS plano, Playwright headless en async loop del worker RQ aislado del API vía <code>worker.py</code>, Redis+RQ para job queue persistente, SQLite operacional, pagos Lemon Squeezy con webhook idempotente (<code>claim_webhook_event</code>), edge Netlify, despliegue continuo en Railway.</p>
 					</li>
 					<li>
 						<strong>De panel nocturno a producto en semanas</strong>
@@ -532,21 +532,21 @@
 				<details>
 					<summary>Flujo público completo</summary>
 					<p>La URL del cliente entra por la landing pública. El primer paso es siempre el <strong>preflight</strong>: el sistema comprueba automáticamente que el dominio existe, que es accesible desde Chile, que no está bloqueando automatización y que tiene contenido web relevante bajo el ámbito de la Ley 21.719. Si el dominio no pasa, el cliente recibe notificación inmediata y <strong>sin coste alguno</strong>.</p>
-					<p>Si pasa, se solicita el email de contacto y arranca el motor de escaneo. <strong>Cinco workers Playwright independientes</strong> visitan el dominio simultáneamente en <strong>contextos de navegador completamente aislados</strong>. Cada worker captura la capa pública visible: HTML, cookies emitidas, formularios, banners de consentimiento, políticas publicadas, recursos externos cargados. La captura de cada worker se analiza por separado con el <strong>motor de reglas regulatorias deterministas</strong> — aproximadamente <strong>30 checks</strong> sobre los vectores de exposición más relevantes de la Ley 21.719.</p>
+					<p>Si pasa, se solicita el email de contacto y arranca el motor de escaneo. El worker RQ ejecuta <strong>cinco pasadas de consenso</strong> sobre el dominio, cada una en su propio <strong>contexto Playwright aislado</strong> dentro del async loop del worker. Cada pasada captura la capa pública visible: HTML, cookies emitidas, formularios, banners de consentimiento, políticas publicadas, recursos externos cargados. La captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code>, cada uno con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code> y <code>severidad_inicial</code>. Sobre los hallazgos deterministas opera una <strong>capa semántica LLM</strong> para enriquecer evidencia y redactar.</p>
 					<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados. Solo consolida como alerta lo que aparece en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico, cookies bajo condiciones de carrera, artefactos de timing.</p>
 					<p>Alcanzado el consenso, el cliente recibe el enlace de <strong>checkout vía Lemon Squeezy</strong>. El pago activa la generación del informe: la evidencia consolidada en <code>scan_v1.json</code> entra a Claude, que la transforma en un <strong>informe editorial PDF</strong> con marca AGLAYA, <strong>audit ID trazable</strong>, fecha y versión del motor. El informe llega por email en minutos.</p>
 					<p>Caso excepcional: si el consenso no se alcanza — menos de cuatro de cinco workers coinciden en un resultado — el caso entra en <strong>revisión manual</strong> antes de emitir ninguna factura ni entregar ningún informe.</p>
 				</details>
 				<details>
 					<summary>Stack y decisiones técnicas</summary>
-					<p>Backend Python con <strong>Playwright workers aislados por proceso</strong> (no por thread — Playwright no es thread-safe). <strong>Job queue Redis + RQ</strong> con <strong>TTL de 90 días</strong> para consensus jobs — sobrevive a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega). Migración desde JSON legacy hecha <strong>sin downtime</strong>.</p>
+					<p>Backend Python con <strong>worker RQ aislado en proceso separado del API</strong> (vía <code>backend/worker.py</code>). <strong>Playwright corre en el async loop del worker</strong>, con <code>_lock = Lock()</code> per-process documentado como invariante crítica del sistema. <strong>Job queue Redis + RQ</strong>; los <strong>resultados de consensus jobs</strong> quedan cacheados en Redis con <strong>TTL de 90 días</strong> — sobreviven a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega).</p>
 					<p>Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente.</p>
-					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong> (<code>claim_webhook_event</code> con idempotency key). El sistema <strong>nunca cobra dos veces</strong>.</p>
+					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong>: <code>claim_webhook_event(event_key)</code> en <code>backend/app/services/webhook_security.py</code> devuelve <code>False</code> si el evento ya fue procesado (idempotency vía PK constraint). El sistema <strong>nunca cobra dos veces</strong>.</p>
 				</details>
 				<details>
 					<summary>Seguridad — qué se auditó</summary>
 					<p><strong>Auditoría externa Opus completa.</strong> Cerrados: <strong>P0, P1, P2, P3</strong> y post-launch <strong>PL1–PL5</strong>. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
-					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>273 tests pasando</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
+					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>~760 tests funcionales pasando localmente</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
 				</details>
 				<details>
 					<summary>Postmortems en producción</summary>
