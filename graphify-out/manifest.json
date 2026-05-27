@@ -190,9 +190,9 @@
     "semantic_hash": "cd11c4a6071b31d0c55adcce0e87ddfd"
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/pre-commit.sh": {
-    "mtime": 1779480372.3835082,
-    "ast_hash": "2faf481f6257a2545349a3c3a37349e7",
-    "semantic_hash": "2faf481f6257a2545349a3c3a37349e7"
+    "mtime": 1779879695.4287593,
+    "ast_hash": "b82e7aa8162c38118fa35aaff50a343e",
+    "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/purge-orphan-i18n.mjs": {
     "mtime": 1779486386.4519181,
@@ -290,8 +290,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/docs/ROADMAP.md": {
-    "mtime": 1779694752.3019004,
-    "ast_hash": "69446f1b4ef1ef767dc73b76a2d47aec",
+    "mtime": 1779869981.6060631,
+    "ast_hash": "15c016d0cf36b318ea332f4b7d14ad8a",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/docs/brand-audit-narrative-b.md": {
@@ -475,8 +475,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/dossier-scanner-21179.template.html": {
-    "mtime": 1779869098.7938268,
-    "ast_hash": "814b02ba2873f97af71db71383f1741e",
+    "mtime": 1779877488.0689821,
+    "ast_hash": "a9c3ee42d0b95b6e246934bcd98e4f5a",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/project-aglaya.template.html": {
@@ -512,6 +512,16 @@
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/visual.spec.js-snapshots/experience-section.png": {
     "mtime": 1779729201.177626,
     "ast_hash": "e6696e18a2885c6e4ee811abfa352469",
+    "semantic_hash": ""
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/scripts/dossier-claim-check.py": {
+    "mtime": 1779871689.6755207,
+    "ast_hash": "daceb69ec2627e18ad0adfc7cc967c01",
+    "semantic_hash": ""
+  },
+  "/Users/AGLAYA/Local Sites/26-04-portfolio-if/.dossier-approved-claims.yml": {
+    "mtime": 1779871721.901043,
+    "ast_hash": "e700ae21f82ec82b946eea4746ee3723",
     "semantic_hash": ""
   }
 }

@@ -31,3 +31,7 @@ docs/freeze-visual/*.png
 graphify-out/*
 !graphify-out/graph.json
 !graphify-out/manifest.json
+
+# Python bytecode cache
+__pycache__/
+*.pyc

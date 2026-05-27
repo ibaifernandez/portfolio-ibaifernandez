@@ -5,7 +5,7 @@
 #   chmod +x .git/hooks/pre-commit
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(git rev-parse --show-toplevel)"
 cd "$ROOT_DIR"
 
 echo "[pre-commit] build:pages --check..."
@@ -17,6 +17,13 @@ fi
 echo "[pre-commit] i18n parity..."
 if ! node tests/check-i18n.mjs >/dev/null 2>&1; then
   echo "[pre-commit] FAIL: i18n drift. Run: npm run test:i18n" >&2
+  exit 1
+fi
+
+echo "[pre-commit] dossier claim allowlist..."
+if ! python3 scripts/dossier-claim-check.py; then
+  echo "[pre-commit] FAIL: dossier claim(s) not in allowlist. See above." >&2
+  echo "[pre-commit]   Bypass (emergency only): DOSSIER_CHECK_SKIP=1 git commit ..." >&2
   exit 1
 fi
 
