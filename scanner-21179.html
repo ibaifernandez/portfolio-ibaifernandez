@@ -355,7 +355,7 @@
 					<source media="(max-width: 640px)" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.png">
 					<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/pipeline.avif">
 					<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/pipeline.webp">
-					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 pasadas independientes, reglas primero LLM después, benchmark de estabilidad con métricas (finalización 49% → 95%, evidencia 88% → 99%, alcance 96% → 99%) y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
+					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 pasadas independientes, reglas primero LLM después, finalización 90.2% en dominios preflight-filtered (n=716), evidencia trazable 100% (n=1562 scans con findings), y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
 				</picture>
 				<figcaption>Arquitectura del pipeline + validación de impacto de mercado (release v0.1.1).</figcaption>
 			</figure>
@@ -427,13 +427,13 @@
 					<li><strong>v0.1.1</strong><span>Release controlada, abierta a tráfico externo desde el 18 de mayo de 2026.</span></li>
 					<li><strong>~760 tests</strong><span>Suite de pytest extensa pasando localmente. Cero fallos en último run.</span></li>
 					<li><strong>Sin deuda de seguridad</strong><span>Revisión externa completa: vulnerabilidades críticas, altas, medias y bajas — todas cerradas antes del lanzamiento.</span></li>
-					<li><strong>96% / 100%</strong><span>Tasa de alcance en dominios aptos / evidencia trazable por alerta.</span></li>
-					<li><strong>49% → 95%</strong><span>Tasa de finalización del escaneo (línea base → motor optimizado).</span></li>
+					<li><strong>72.8% / 100%</strong><span>Preflight scan-ready / evidencia trazable por alerta (todo finding viene anclado a uno o más control_id de matrix_v1.json).</span></li>
+					<li><strong>90.2% / 99.0%</strong><span>Tasa de finalización del escaneo en dominios pre-filtrados por preflight (n=716, sin partials / incluyendo partials).</span></li>
 					<li><strong>Consenso 4/5</strong><span>Cinco pasadas independientes en contextos Playwright aislados; alerta solo si concuerdan al menos cuatro.</span></li>
-					<li><strong>&lt; 10 min</strong><span>De checkout a informe editorial PDF en el correo del cliente.</span></li>
+					<li><strong>&lt; 3 min</strong><span>De checkout a informe editorial PDF en el correo (estimado conservador; scan p95 75s, n=1868).</span></li>
 					<li><strong>Railway + Netlify</strong><span>Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
 					<li><strong>17 audits</strong><span>Revisión cruzada Sistema → CRM (mayo 2026). Cada caso trazable, cada handoff documentado.</span></li>
-					<li><strong>4 postmortems</strong><span>Casos reales cerrados con clientes nombrados. Cultura de fix + aprendizaje, no de ocultar.</span></li>
+					<li><strong>5 postmortems</strong><span>Casos reales cerrados (3 con cliente nombrado, 2 internos PR37/PR38). Cultura de fix + aprendizaje, no de ocultar.</span></li>
 				</ul>
 				<figure class="dossier_state_figure">
 					<a href="assets/downloads/informe-muestra-scanner-21719.pdf" download aria-label="Descargar informe de muestra en PDF">
@@ -552,7 +552,7 @@
 				</details>
 				<details>
 					<summary>Seguridad — qué se auditó</summary>
-					<p><strong>Auditoría externa de seguridad completa.</strong> Cerrados: todos los hallazgos <strong>críticos, altos, medios y bajos</strong> detectados antes del lanzamiento, más <strong>cinco hallazgos adicionales</strong> detectados tras la apertura a tráfico externo. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
+					<p><strong>Auditoría externa de seguridad completa.</strong> Cerrados: todos los hallazgos <strong>críticos, altos, medios y bajos</strong> detectados antes del lanzamiento. Hotfixes operacionales adicionales aplicados tras la apertura a tráfico externo (Sentry reaper, observabilidad de panel, regresiones de MailerLite) — todos cerrados y documentados como postmortems. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
 					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>~760 tests funcionales pasando localmente</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
 				</details>
 				<details>
@@ -563,6 +563,7 @@
 						<li><strong>latinbugs.com</strong> — bug de template path en pipeline de informe.</li>
 						<li><strong>bakdesign.cl</strong> — worker OOM / stuck job; fix en gestión de memoria + timeout duro.</li>
 						<li><strong>PR38 (Sentry)</strong> — TypeError UTF-8 en capa de auth; fix con normalización de input.</li>
+						<li><strong>PR37 (Panel admin)</strong> — bloque Feedback D+7 colapsado vertical; fix de layout + invariante de observabilidad del panel.</li>
 					</ul>
 					<p>Los postmortems alimentan las <strong>invariantes críticas del sistema</strong>, lista de propiedades que no pueden romperse en ningún deploy.</p>
 				</details>
