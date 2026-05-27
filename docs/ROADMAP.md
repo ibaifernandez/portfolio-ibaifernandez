@@ -1,6 +1,6 @@
 # ROADMAP
 
-**Last updated:** 2026-05-23
+**Last updated:** 2026-05-27
 **Single source of truth** for project state. If this drifts from reality, fix this file first.
 
 ---
@@ -45,6 +45,62 @@ Narrative B locked: **AI Product Engineer · Founder-Operator**.
 - Inline critical above-fold CSS (~10 KB) — deferred post-About. Needs critical CSS extractor (penthouse/critical) to avoid FOUC. Reassess after Font Awesome drop frees 54 KB from critical path.
 - LinkedIn headline + About → Narrative B (off-portfolio)
 - GitHub README opener → Narrative B (off-portfolio)
+
+---
+
+## Projects grid scaling strategy (decision 2026-05-27)
+
+The portfolio's projects section lives inside the single-page index. We do **not**
+need a separate `/proyectos.html` listing page. Growth happens inside the existing
+section.
+
+### First-load layout (≤ 5 projects)
+
+- **1 featured card** — full width / two columns. Reserved for the current
+  flagship dossier (today: Scanner Ley 21.719).
+- **4 regular cards** — one column each, in a 2×2 grid below the featured card.
+  Populates with the remaining active dossiers (planned next: Kanban Desk,
+  Outreach, CRM AGLAYA, Pulse).
+
+Total visible above the fold of the projects section: **5 cards**.
+
+### Second batch (projects 6–9)
+
+Once a sixth active dossier exists, append a **"Cargar más proyectos"** button
+below the 5 first-load cards. Clicking reveals the next batch of up to 4
+additional cards, progressively rendered in the same projects section. No page
+navigation, no route change — the section grows in place.
+
+The button MUST be:
+- Keyboard accessible
+- Announce loaded count to assistive tech (aria-live)
+- Disappear once all available cards are rendered
+
+### Threshold for auxiliary page (> 9 projects)
+
+When the active portfolio exceeds **9 projects total**, the single-page
+"Cargar más" pattern becomes friction. At that point — and only then —
+implement an auxiliary listing page (likely `/proyectos.html`) with filters
+and sorting. Until that threshold is crossed, the inline pattern is enough.
+
+### Implementation notes (for whenever this gets built)
+
+- Source of truth stays `content/projects.json`.
+- First-load 5 cards = first 5 entries in `projects.json` (order = priority).
+- Featured card detection: first entry gets `featured: true` flag or implicit
+  position-zero treatment in the renderer.
+- "Cargar más" reveals entries 6→9 in batches of 4.
+- CSS Grid handles featured (col-span-2) vs regular (col-span-1) layout.
+- Renderer in `scripts/build/projects-grid.mjs` (or wherever `@render
+  projects-grid` is processed) decides what ships server-rendered vs hidden
+  behind the button.
+
+### When to revisit this decision
+
+- After Kanban Desk + Outreach + CRM AGLAYA + Pulse land (4 new dossiers).
+- At that point the layout will be tested with real content (5 cards live).
+- If the visual cap of 5 holds up, ship the "Cargar más" mechanic before
+  publishing dossier #6.
 
 ---
 
