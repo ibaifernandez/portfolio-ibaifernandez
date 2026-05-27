@@ -509,7 +509,7 @@
 					</li>
 					<li>
 						<strong>Seguridad como capa, no afterthought</strong>
-						<p>Auditoría externa cerrada (P0–P3 + PL1–PL5). SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). <strong>Atomicidad como patrón</strong>: tres operaciones críticas (<code>claim_webhook_event</code>, <code>save_initial_record</code>, <code>validate_and_use</code>) implementadas como atómicas con PK constraints o scripts Lua. <strong>IP allowlist</strong> sobre webhooks de Lemon Squeezy con test dedicado. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
+						<p>Auditoría externa de seguridad completa: todos los hallazgos críticos, altos, medios y bajos cerrados antes del lanzamiento, más cinco hallazgos detectados tras la apertura a tráfico externo. SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). <strong>Atomicidad como patrón</strong>: tres operaciones críticas (<code>claim_webhook_event</code>, <code>save_initial_record</code>, <code>validate_and_use</code>) implementadas como atómicas con PK constraints o scripts Lua. <strong>IP allowlist</strong> sobre webhooks de Lemon Squeezy con test dedicado. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
 					</li>
 					<li>
 						<strong>RegTech vertical real</strong>
@@ -552,7 +552,7 @@
 				</details>
 				<details>
 					<summary>Seguridad — qué se auditó</summary>
-					<p><strong>Auditoría externa Opus completa.</strong> Cerrados: <strong>P0, P1, P2, P3</strong> y post-launch <strong>PL1–PL5</strong>. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
+					<p><strong>Auditoría externa de seguridad completa.</strong> Cerrados: todos los hallazgos <strong>críticos, altos, medios y bajos</strong> detectados antes del lanzamiento, más <strong>cinco hallazgos adicionales</strong> detectados tras la apertura a tráfico externo. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
 					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>~760 tests funcionales pasando localmente</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
 				</details>
 				<details>
