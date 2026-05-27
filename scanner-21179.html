@@ -330,13 +330,17 @@
 				<h1 class="dossier_hero_title">Scanner Ley <span class="accent">21.719</span></h1>
 				<p class="dossier_hero_tagline">RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Operado por AGLAYA.</p>
 				<div class="dossier_hero_stack">
-					<span class="dossier_stack_chip">Python</span>
+					<span class="dossier_stack_chip">Python · FastAPI</span>
 					<span class="dossier_stack_chip">Playwright</span>
 					<span class="dossier_stack_chip">Redis + RQ</span>
 					<span class="dossier_stack_chip">SQLite</span>
 					<span class="dossier_stack_chip">Railway</span>
 					<span class="dossier_stack_chip">Netlify</span>
 					<span class="dossier_stack_chip">Lemon Squeezy</span>
+					<span class="dossier_stack_chip">Sentry</span>
+					<span class="dossier_stack_chip">Cloudflare Turnstile</span>
+					<span class="dossier_stack_chip">Cal.com</span>
+					<span class="dossier_stack_chip">Meta CAPI</span>
 				</div>
 				<div class="dossier_hero_ctas">
 					<a class="dossier_cta dossier_cta--primary" href="https://aglaya.biz/auditoria-ley-21719/" target="_blank" rel="noopener noreferrer">Ver producto en vivo →</a>
@@ -505,15 +509,15 @@
 					</li>
 					<li>
 						<strong>Seguridad como capa, no afterthought</strong>
-						<p>Auditoría externa cerrada (P0–P3 + PL1–PL5). SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). Webhooks protegidos contra replay. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
+						<p>Auditoría externa cerrada (P0–P3 + PL1–PL5). SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). <strong>Atomicidad como patrón</strong>: tres operaciones críticas (<code>claim_webhook_event</code>, <code>save_initial_record</code>, <code>validate_and_use</code>) implementadas como atómicas con PK constraints o scripts Lua. <strong>IP allowlist</strong> sobre webhooks de Lemon Squeezy con test dedicado. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
 					</li>
 					<li>
 						<strong>RegTech vertical real</strong>
-						<p>Dominio Ley 21.719 + producto + go-to-market. No es un PoC: posicionamiento aplicado con framework Obviously Awesome, pricing definido, frontera comercial honesta, embudo público controlado <code>landing → preflight → checkout → consenso → entrega</code>.</p>
+						<p>Dominio Ley 21.719 + producto + go-to-market. No es un PoC: <strong>posicionamiento Obviously Awesome documentado</strong> (puntuación 6.9/10), <strong>mensajería StoryBrand</strong> aplicada, <strong>Jobs-To-Be-Done</strong> formalizados, <strong>pricing vigente</strong> y oferta comercial separados como documentos, <strong>análisis competitivo</strong> nombrado (C-ONLINE) y referencias de categoría/adyacencia. Embudo público controlado <code>landing → preflight → checkout → consenso → entrega</code>. <strong>Privacy Policy versionada con changelog</strong> (v1.2 → v1.3) — compliance tratada como producto, no como afterthought.</p>
 					</li>
 					<li>
 						<strong>Operación end-to-end de founder</strong>
-						<p>Producto + landing + blog técnico + Meta Ads + video promocional con avatar IA + checkout + entrega editorial + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
+						<p>Producto + landing comercial + landing para agencias + documentación pública + blog técnico + Meta Ads (Pixel + CAPI server-side) + video promocional con avatar IA + checkout Lemon Squeezy + entrega editorial + booking comercial (Cal.com con webhook propio) + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
 					</li>
 					<li>
 						<strong>Disciplina contractual + schema-first</strong>
@@ -539,9 +543,12 @@
 				</details>
 				<details>
 					<summary>Stack y decisiones técnicas</summary>
-					<p>Backend Python con <strong>worker RQ aislado en proceso separado del API</strong> (vía <code>backend/worker.py</code>). <strong>Playwright corre en el async loop del worker</strong>, con <code>_lock = Lock()</code> per-process documentado como invariante crítica del sistema. <strong>Job queue Redis + RQ</strong>; los <strong>resultados de consensus jobs</strong> quedan cacheados en Redis con <strong>TTL de 90 días</strong> — sobreviven a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega).</p>
-					<p>Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente.</p>
-					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong>: <code>claim_webhook_event(event_key)</code> en <code>backend/app/services/webhook_security.py</code> devuelve <code>False</code> si el evento ya fue procesado (idempotency vía PK constraint). El sistema <strong>nunca cobra dos veces</strong>.</p>
+					<p>Backend <strong>Python + FastAPI</strong>; routers separados para <code>admin</code>, <code>audits</code>, <code>payments</code>, <code>feedback</code>, <code>contact</code>, <code>crm</code>, <code>health</code>. <strong>Worker RQ aislado en proceso separado del API</strong> (vía <code>backend/worker.py</code>) con <strong>Sentry inicializado</strong> en arranque. <strong>Playwright corre en el async loop del worker</strong>, con <code>_lock = Lock()</code> per-process documentado como invariante crítica.</p>
+					<p><strong>Job queue Redis + RQ</strong>; los <strong>resultados de consensus jobs</strong> quedan cacheados en Redis con <strong>TTL de 90 días</strong> — sobreviven a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega), con guardrail explícito (<code>_warn_if_sqlite_with_multi_worker</code>) que advierte si la configuración no es compatible con escalado.</p>
+					<p><strong>Endpoint <code>/health</code> con dependency check real</strong>: devuelve HTTP 503 si DB o Redis caen, no un 200 cosmético.</p>
+					<p>Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente. <strong>Cloudflare Turnstile</strong> para bot detection sin fricción.</p>
+					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong>: <code>claim_webhook_event(event_key)</code> en <code>backend/app/services/webhook_security.py</code> devuelve <code>False</code> si el evento ya fue procesado (idempotency vía PK constraint). El sistema <strong>nunca cobra dos veces</strong>. <strong>IP allowlist</strong> sobre el webhook de Lemon Squeezy, verificada por test.</p>
+					<p>Integraciones server-side: <strong>Meta CAPI</strong> (<code>meta_capi.py:send_event</code>) para conversiones de Ads sin depender del pixel cliente; <strong>Cal.com</strong> (<code>cal_bookings.py</code> + <code>cal_webhook</code>) para gestión de reservas comerciales con su propio webhook idempotente.</p>
 				</details>
 				<details>
 					<summary>Seguridad — qué se auditó</summary>
@@ -561,7 +568,8 @@
 				</details>
 				<details>
 					<summary>Panel admin + observabilidad operativa</summary>
-					<p>Backoffice administrativo con endpoints operativos para revisión de audits, manejo de excepciones y gestión de feedback. El <strong>panel de feedback D+7</strong> (PR37) captura señales de clientes a 7 días desde la entrega y alimenta el plan de proof social. Cada release pasa por <strong>protocolo post-deploy</strong> formalizado. Observabilidad continua sobre workers, jobs Redis, latencia de pipeline y entrega final.</p>
+					<p>Backoffice administrativo con endpoints operativos para revisión de audits, manejo de excepciones y gestión de feedback. El <strong>panel de feedback D+7</strong> (PR37) captura señales de clientes a 7 días desde la entrega y alimenta el plan de proof social. Cada release pasa por <strong>protocolo post-deploy</strong> formalizado.</p>
+					<p>Observabilidad: <strong>Sentry</strong> inicializado en el worker RQ (<code>_init_sentry_worker</code> en <code>backend/worker.py</code>), captura de errores y trazabilidad de jobs. Healthcheck <code>/health</code> con verificación real de dependencias (devuelve HTTP 503 si DB o Redis fallan). Suite de tests dedicada (<code>test_health.py</code>) garantiza que la observabilidad no se rompe en silencio.</p>
 				</details>
 				<details>
 					<summary>Operación comercial</summary>
