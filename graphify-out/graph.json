@@ -4,193 +4,363 @@
   "graph": {},
   "nodes": [
     {
+      "label": "dossier-claim-check.py",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L1",
+      "id": "scripts_dossier_claim_check_py",
+      "community": 62,
+      "norm_label": "dossier-claim-check.py"
+    },
+    {
+      "label": "load_allowlist()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L81",
+      "id": "scripts_dossier_claim_check_load_allowlist",
+      "community": 62,
+      "norm_label": "load_allowlist()"
+    },
+    {
+      "label": "load_allowlist_file()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L88",
+      "id": "scripts_dossier_claim_check_load_allowlist_file",
+      "community": 62,
+      "norm_label": "load_allowlist_file()"
+    },
+    {
+      "label": "Path",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L88",
+      "id": "path",
+      "community": 62,
+      "norm_label": "path"
+    },
+    {
+      "label": "parse_simple_yaml()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L96",
+      "id": "scripts_dossier_claim_check_parse_simple_yaml",
+      "community": 62,
+      "norm_label": "parse_simple_yaml()"
+    },
+    {
+      "label": "str",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L96",
+      "id": "str",
+      "community": 62,
+      "norm_label": "str"
+    },
+    {
+      "label": "_strip_quotes()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L137",
+      "id": "scripts_dossier_claim_check_strip_quotes",
+      "community": 62,
+      "norm_label": "_strip_quotes()"
+    },
+    {
+      "label": "staged_dossier_files()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L143",
+      "id": "scripts_dossier_claim_check_staged_dossier_files",
+      "community": 62,
+      "norm_label": "staged_dossier_files()"
+    },
+    {
+      "label": "extract_claims()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L160",
+      "id": "scripts_dossier_claim_check_extract_claims",
+      "community": 62,
+      "norm_label": "extract_claims()"
+    },
+    {
+      "label": "claim_is_allowed()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L177",
+      "id": "scripts_dossier_claim_check_claim_is_allowed",
+      "community": 62,
+      "norm_label": "claim_is_allowed()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L195",
+      "id": "scripts_dossier_claim_check_main",
+      "community": 62,
+      "norm_label": "main()"
+    },
+    {
+      "label": "int",
+      "file_type": "code",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L195",
+      "id": "int",
+      "community": 62,
+      "norm_label": "int"
+    },
+    {
+      "label": "Tiny YAML subset parser for the allowlist file.      Expected shape:         app",
+      "file_type": "rationale",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L97",
+      "id": "scripts_dossier_claim_check_rationale_97",
+      "community": 62,
+      "norm_label": "tiny yaml subset parser for the allowlist file.      expected shape:         app"
+    },
+    {
+      "label": "List staged files (against HEAD) that match dossier patterns.",
+      "file_type": "rationale",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L144",
+      "id": "scripts_dossier_claim_check_rationale_144",
+      "community": 62,
+      "norm_label": "list staged files (against head) that match dossier patterns."
+    },
+    {
+      "label": "Return a list of (pattern_label, matched_substring) for each claim found.      D",
+      "file_type": "rationale",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L161",
+      "id": "scripts_dossier_claim_check_rationale_161",
+      "community": 62,
+      "norm_label": "return a list of (pattern_label, matched_substring) for each claim found.      d"
+    },
+    {
+      "label": "Return the matching allowlist entry if the claim is approved, else None.",
+      "file_type": "rationale",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L178",
+      "id": "scripts_dossier_claim_check_rationale_178",
+      "community": 62,
+      "norm_label": "return the matching allowlist entry if the claim is approved, else none."
+    },
+    {
+      "label": "pre-commit.sh",
+      "file_type": "code",
+      "source_file": "scripts/pre-commit.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "id": "scripts_pre_commit_sh",
+      "community": 49,
+      "norm_label": "pre-commit.sh"
+    },
+    {
+      "label": "pre-commit.sh script",
+      "file_type": "code",
+      "source_file": "scripts/pre-commit.sh",
+      "source_location": "L1",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "id": "users_aglaya_local_sites_26_04_portfolio_if_scripts_pre_commit_sh__entry",
+      "community": 49,
+      "norm_label": "pre-commit.sh script"
+    },
+    {
       "label": "ROADMAP.md",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L1",
-      "id": "docs_roadmap_md",
       "community": 61,
-      "norm_label": "roadmap.md"
+      "norm_label": "roadmap.md",
+      "id": "docs_roadmap_md"
     },
     {
       "label": "ROADMAP",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L1",
-      "id": "docs_roadmap_roadmap",
       "community": 61,
-      "norm_label": "roadmap"
+      "norm_label": "roadmap",
+      "id": "docs_roadmap_roadmap"
     },
     {
       "label": "Current state",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L8",
-      "id": "docs_roadmap_current_state",
       "community": 61,
-      "norm_label": "current state"
+      "norm_label": "current state",
+      "id": "docs_roadmap_current_state"
     },
     {
       "label": "Plan progress",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L18",
-      "id": "docs_roadmap_plan_progress",
       "community": 61,
-      "norm_label": "plan progress"
+      "norm_label": "plan progress",
+      "id": "docs_roadmap_plan_progress"
     },
     {
       "label": "Parallel pending (non-blocking)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L43",
-      "id": "docs_roadmap_parallel_pending_non_blocking",
       "community": 61,
-      "norm_label": "parallel pending (non-blocking)"
+      "norm_label": "parallel pending (non-blocking)",
+      "id": "docs_roadmap_parallel_pending_non_blocking"
     },
     {
       "label": "Projects grid scaling strategy (decision 2026-05-27)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L51",
-      "id": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
       "community": 61,
-      "norm_label": "projects grid scaling strategy (decision 2026-05-27)"
+      "norm_label": "projects grid scaling strategy (decision 2026-05-27)",
+      "id": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27"
     },
     {
       "label": "First-load layout (\u2264 5 projects)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L57",
-      "id": "docs_roadmap_first_load_layout_5_projects",
       "community": 61,
-      "norm_label": "first-load layout (\u2264 5 projects)"
+      "norm_label": "first-load layout (\u2264 5 projects)",
+      "id": "docs_roadmap_first_load_layout_5_projects"
     },
     {
       "label": "Second batch (projects 6\u20139)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L67",
-      "id": "docs_roadmap_second_batch_projects_6_9",
       "community": 61,
-      "norm_label": "second batch (projects 6\u20139)"
+      "norm_label": "second batch (projects 6\u20139)",
+      "id": "docs_roadmap_second_batch_projects_6_9"
     },
     {
       "label": "Threshold for auxiliary page (> 9 projects)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L79",
-      "id": "docs_roadmap_threshold_for_auxiliary_page_9_projects",
       "community": 61,
-      "norm_label": "threshold for auxiliary page (> 9 projects)"
+      "norm_label": "threshold for auxiliary page (> 9 projects)",
+      "id": "docs_roadmap_threshold_for_auxiliary_page_9_projects"
     },
     {
       "label": "Implementation notes (for whenever this gets built)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L86",
-      "id": "docs_roadmap_implementation_notes_for_whenever_this_gets_built",
       "community": 61,
-      "norm_label": "implementation notes (for whenever this gets built)"
+      "norm_label": "implementation notes (for whenever this gets built)",
+      "id": "docs_roadmap_implementation_notes_for_whenever_this_gets_built"
     },
     {
       "label": "When to revisit this decision",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L98",
-      "id": "docs_roadmap_when_to_revisit_this_decision",
       "community": 61,
-      "norm_label": "when to revisit this decision"
+      "norm_label": "when to revisit this decision",
+      "id": "docs_roadmap_when_to_revisit_this_decision"
     },
     {
       "label": "Disabled (preserved, not rendered)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L107",
-      "id": "docs_roadmap_disabled_preserved_not_rendered",
       "community": 61,
-      "norm_label": "disabled (preserved, not rendered)"
+      "norm_label": "disabled (preserved, not rendered)",
+      "id": "docs_roadmap_disabled_preserved_not_rendered"
     },
     {
       "label": "Services section \u2014 paused 2026-05-25",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L113",
-      "id": "docs_roadmap_services_section_paused_2026_05_25",
       "community": 61,
-      "norm_label": "services section \u2014 paused 2026-05-25"
+      "norm_label": "services section \u2014 paused 2026-05-25",
+      "id": "docs_roadmap_services_section_paused_2026_05_25"
     },
     {
       "label": "Testimonials section \u2014 paused 2026-05-25",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L137",
-      "id": "docs_roadmap_testimonials_section_paused_2026_05_25",
       "community": 61,
-      "norm_label": "testimonials section \u2014 paused 2026-05-25"
+      "norm_label": "testimonials section \u2014 paused 2026-05-25",
+      "id": "docs_roadmap_testimonials_section_paused_2026_05_25"
     },
     {
       "label": "Shipped on 2026-05-23 (`origin/main` up to `7506050`)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L169",
-      "id": "docs_roadmap_shipped_on_2026_05_23_origin_main_up_to_7506050",
       "community": 61,
-      "norm_label": "shipped on 2026-05-23 (`origin/main` up to `7506050`)"
+      "norm_label": "shipped on 2026-05-23 (`origin/main` up to `7506050`)",
+      "id": "docs_roadmap_shipped_on_2026_05_23_origin_main_up_to_7506050"
     },
     {
       "label": "Shipped on 2026-05-23 (post-audit hardening, `origin/main` at `148a1b9`)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L180",
-      "id": "docs_roadmap_shipped_on_2026_05_23_post_audit_hardening_origin_main_at_148a1b9",
       "community": 61,
-      "norm_label": "shipped on 2026-05-23 (post-audit hardening, `origin/main` at `148a1b9`)"
+      "norm_label": "shipped on 2026-05-23 (post-audit hardening, `origin/main` at `148a1b9`)",
+      "id": "docs_roadmap_shipped_on_2026_05_23_post_audit_hardening_origin_main_at_148a1b9"
     },
     {
       "label": "Shipped on 2026-05-23 (About section rebuild, post-`196d7ac`)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L202",
-      "id": "docs_roadmap_shipped_on_2026_05_23_about_section_rebuild_post_196d7ac",
       "community": 61,
-      "norm_label": "shipped on 2026-05-23 (about section rebuild, post-`196d7ac`)"
+      "norm_label": "shipped on 2026-05-23 (about section rebuild, post-`196d7ac`)",
+      "id": "docs_roadmap_shipped_on_2026_05_23_about_section_rebuild_post_196d7ac"
     },
     {
       "label": "What just shipped (last 10 commits on `origin/main`, newest first)",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L218",
-      "id": "docs_roadmap_what_just_shipped_last_10_commits_on_origin_main_newest_first",
       "community": 61,
-      "norm_label": "what just shipped (last 10 commits on `origin/main`, newest first)"
+      "norm_label": "what just shipped (last 10 commits on `origin/main`, newest first)",
+      "id": "docs_roadmap_what_just_shipped_last_10_commits_on_origin_main_newest_first"
     },
     {
       "label": "code:block1 (148a1b9  Post-audit hardening: close every finding from the )",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L220",
-      "id": "docs_roadmap_codeblock_1",
       "community": 61,
-      "norm_label": "code:block1 (148a1b9  post-audit hardening: close every finding from the )"
+      "norm_label": "code:block1 (148a1b9  post-audit hardening: close every finding from the )",
+      "id": "docs_roadmap_codeblock_1"
     },
     {
       "label": "Where to look for detail",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L235",
-      "id": "docs_roadmap_where_to_look_for_detail",
       "community": 61,
-      "norm_label": "where to look for detail"
+      "norm_label": "where to look for detail",
+      "id": "docs_roadmap_where_to_look_for_detail"
     },
     {
       "label": "Rule",
       "file_type": "document",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L249",
-      "id": "docs_roadmap_rule",
       "community": 61,
-      "norm_label": "rule"
+      "norm_label": "rule",
+      "id": "docs_roadmap_rule"
     },
     {
       "label": "projects.json",
@@ -12919,32 +13089,6 @@
       "id": "scripts_self_host_fonts_main"
     },
     {
-      "label": "pre-commit.sh",
-      "file_type": "code",
-      "source_file": "scripts/pre-commit.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "file"
-      },
-      "community": 49,
-      "norm_label": "pre-commit.sh",
-      "id": "scripts_pre_commit_sh"
-    },
-    {
-      "label": "pre-commit.sh script",
-      "file_type": "code",
-      "source_file": "scripts/pre-commit.sh",
-      "source_location": "L1",
-      "metadata": {
-        "language": "bash",
-        "kind": "bash_entrypoint"
-      },
-      "community": 49,
-      "norm_label": "pre-commit.sh script",
-      "id": "users_aglaya_local_sites_26_04_portfolio_if_scripts_pre_commit_sh__entry"
-    },
-    {
       "label": "purge-orphan-i18n.mjs",
       "file_type": "code",
       "source_file": "scripts/purge-orphan-i18n.mjs",
@@ -14748,12 +14892,296 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_load_allowlist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_load_allowlist_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_parse_simple_yaml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_strip_quotes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L143",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_staged_dossier_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_extract_claims",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_claim_is_allowed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_py",
+      "target": "scripts_dossier_claim_check_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_load_allowlist",
+      "target": "scripts_dossier_claim_check_load_allowlist_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L206",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_main",
+      "target": "scripts_dossier_claim_check_load_allowlist",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_load_allowlist_file",
+      "target": "path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_load_allowlist_file",
+      "target": "scripts_dossier_claim_check_parse_simple_yaml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L156",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_staged_dossier_files",
+      "target": "path",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_parse_simple_yaml",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_parse_simple_yaml",
+      "target": "scripts_dossier_claim_check_strip_quotes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_rationale_97",
+      "target": "scripts_dossier_claim_check_parse_simple_yaml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_strip_quotes",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L160",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_extract_claims",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_claim_is_allowed",
+      "target": "str",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L202",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_main",
+      "target": "scripts_dossier_claim_check_staged_dossier_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_rationale_144",
+      "target": "scripts_dossier_claim_check_staged_dossier_files",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_main",
+      "target": "scripts_dossier_claim_check_extract_claims",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L161",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_rationale_161",
+      "target": "scripts_dossier_claim_check_extract_claims",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L231",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_main",
+      "target": "scripts_dossier_claim_check_claim_is_allowed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_rationale_178",
+      "target": "scripts_dossier_claim_check_claim_is_allowed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "return_type",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/dossier-claim-check.py",
+      "source_location": "L195",
+      "weight": 1.0,
+      "source": "scripts_dossier_claim_check_main",
+      "target": "int",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/pre-commit.sh",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_pre_commit_sh",
+      "target": "users_aglaya_local_sites_26_04_portfolio_if_scripts_pre_commit_sh__entry"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "docs/ROADMAP.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_md",
-      "target": "docs_roadmap_roadmap",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_roadmap"
     },
     {
       "relation": "contains",
@@ -14761,9 +15189,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_current_state",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_current_state"
     },
     {
       "relation": "contains",
@@ -14771,9 +15199,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_plan_progress",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_plan_progress"
     },
     {
       "relation": "contains",
@@ -14781,9 +15209,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_parallel_pending_non_blocking",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_parallel_pending_non_blocking"
     },
     {
       "relation": "contains",
@@ -14791,9 +15219,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L51",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27"
     },
     {
       "relation": "contains",
@@ -14801,9 +15229,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L107",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_disabled_preserved_not_rendered",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_disabled_preserved_not_rendered"
     },
     {
       "relation": "contains",
@@ -14811,9 +15239,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L218",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_what_just_shipped_last_10_commits_on_origin_main_newest_first",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_what_just_shipped_last_10_commits_on_origin_main_newest_first"
     },
     {
       "relation": "contains",
@@ -14821,9 +15249,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L235",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_where_to_look_for_detail",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_where_to_look_for_detail"
     },
     {
       "relation": "contains",
@@ -14831,9 +15259,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L249",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_roadmap",
-      "target": "docs_roadmap_rule",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_rule"
     },
     {
       "relation": "contains",
@@ -14841,9 +15269,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "target": "docs_roadmap_first_load_layout_5_projects",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_first_load_layout_5_projects"
     },
     {
       "relation": "contains",
@@ -14851,9 +15279,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "target": "docs_roadmap_second_batch_projects_6_9",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_second_batch_projects_6_9"
     },
     {
       "relation": "contains",
@@ -14861,9 +15289,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L79",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "target": "docs_roadmap_threshold_for_auxiliary_page_9_projects",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_threshold_for_auxiliary_page_9_projects"
     },
     {
       "relation": "contains",
@@ -14871,9 +15299,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "target": "docs_roadmap_implementation_notes_for_whenever_this_gets_built",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_implementation_notes_for_whenever_this_gets_built"
     },
     {
       "relation": "contains",
@@ -14881,9 +15309,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_projects_grid_scaling_strategy_decision_2026_05_27",
-      "target": "docs_roadmap_when_to_revisit_this_decision",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_when_to_revisit_this_decision"
     },
     {
       "relation": "contains",
@@ -14891,9 +15319,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L113",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_disabled_preserved_not_rendered",
-      "target": "docs_roadmap_services_section_paused_2026_05_25",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_services_section_paused_2026_05_25"
     },
     {
       "relation": "contains",
@@ -14901,9 +15329,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_disabled_preserved_not_rendered",
-      "target": "docs_roadmap_testimonials_section_paused_2026_05_25",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_testimonials_section_paused_2026_05_25"
     },
     {
       "relation": "contains",
@@ -14911,9 +15339,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_disabled_preserved_not_rendered",
-      "target": "docs_roadmap_shipped_on_2026_05_23_origin_main_up_to_7506050",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_shipped_on_2026_05_23_origin_main_up_to_7506050"
     },
     {
       "relation": "contains",
@@ -14921,9 +15349,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L180",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_disabled_preserved_not_rendered",
-      "target": "docs_roadmap_shipped_on_2026_05_23_post_audit_hardening_origin_main_at_148a1b9",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_shipped_on_2026_05_23_post_audit_hardening_origin_main_at_148a1b9"
     },
     {
       "relation": "contains",
@@ -14931,9 +15359,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L202",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_disabled_preserved_not_rendered",
-      "target": "docs_roadmap_shipped_on_2026_05_23_about_section_rebuild_post_196d7ac",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_shipped_on_2026_05_23_about_section_rebuild_post_196d7ac"
     },
     {
       "relation": "contains",
@@ -14941,9 +15369,9 @@
       "source_file": "docs/ROADMAP.md",
       "source_location": "L220",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_roadmap_what_just_shipped_last_10_commits_on_origin_main_newest_first",
-      "target": "docs_roadmap_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_roadmap_codeblock_1"
     },
     {
       "relation": "contains",
@@ -29439,16 +29867,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "scripts/pre-commit.sh",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_pre_commit_sh",
-      "target": "users_aglaya_local_sites_26_04_portfolio_if_scripts_pre_commit_sh__entry"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "scripts/purge-orphan-i18n.mjs",
       "source_location": "L14",
       "weight": 1.0,
@@ -31928,5 +32346,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "607248bbbd8dbfc9878e1489e619fd9cca937539"
+  "built_at_commit": "0829f190bab36064e616fb8c1be0b61ee791550b"
 }
