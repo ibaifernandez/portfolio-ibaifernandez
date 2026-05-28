@@ -9389,10 +9389,6 @@ body.aglaya_dossier_page {
 	color: #b8003e;
 	font-style: italic;
 }
-.dossier_section.dossier_frontier em {
-	color: var(--hero-accent-pink);
-}
-
 /* State grid (cards de números) */
 .dossier_state_grid {
 	display: grid;
@@ -9468,7 +9464,8 @@ body.aglaya_dossier_page {
 	color: rgba(255, 255, 255, 0.92);
 }
 .dossier_section.dossier_frontier em {
-	color: var(--hero-accent-pink);
+	color: #ff8aa5;
+	font-weight: 500;
 }
 .dossier_section.dossier_frontier strong {
 	color: var(--color-white);
