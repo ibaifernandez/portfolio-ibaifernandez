@@ -652,6 +652,8 @@
   "words-that-warm-the-heart": "What people say after working with me",
   "project-scanner-title": "Scanner Ley 21.719: Regulatory Audit Tool",
   "project-scanner-copy": "RegTech product in production for preparatory public surface audit under Ley 21.719. Rules first, LLM after. v0.1.1, extensive test suite, zero security debt.",
+  "project-kanban-title": "AGLAYA Kanban Desk: Multi-tenant Workspaces",
+  "project-kanban-copy": "Self-hosted multi-tenant Kanban for teams that work with clients. Three workspace types (personal/internal/external), Postgres-native isolation (RLS), own email digest, Mariana Trench audit closed with 30 findings remediated.",
   "sidebar-tooltip-about": "About",
   "sidebar-tooltip-training": "Training",
   "sidebar-tooltip-portfolio": "Portfolio",

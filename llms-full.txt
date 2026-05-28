@@ -19,6 +19,8 @@ Founder-operator who codes. AI Product Engineer with two decades connecting narr
   - Purpose: profile, capabilities, work history, project index, testimonials, contact.
 - scanner-21179.html: https://portfolio.ibaifernandez.com/scanner-21179.html
   - Purpose: see dossier page.
+- kanban-desk.html: https://portfolio.ibaifernandez.com/kanban-desk.html
+  - Purpose: see dossier page.
 
 ## Contact
 - Email: info@ibaifernandez.com

@@ -3299,6 +3299,9 @@ h3.core-features:nth-of-type(3)::before {
 .project_spotlight_mockup--scanner {
 	background: linear-gradient(145deg, #0e0f21, #008999 44%, #ff517e);
 }
+.project_spotlight_mockup--kanban {
+	background: linear-gradient(145deg, #1a1a2e, #6366f1 50%, #14b8a6);
+}
 @media (max-width: 1499px) {
 	.project_spotlight_title {
 		font-size: 30px;
