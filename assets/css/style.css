@@ -9464,8 +9464,11 @@ body.aglaya_dossier_page {
 	color: rgba(255, 255, 255, 0.92);
 }
 .dossier_section.dossier_frontier em {
-	color: #ff8aa5;
-	font-weight: 500;
+	color: inherit;
+	font-style: normal;
+	text-transform: uppercase;
+	font-weight: 600;
+	letter-spacing: 0.04em;
 }
 .dossier_section.dossier_frontier strong {
 	color: var(--color-white);
