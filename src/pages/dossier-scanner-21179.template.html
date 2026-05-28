@@ -137,9 +137,51 @@
 				</div>
 				<p translate-html="scanner-dossier-system-p2">El motor de escaneo ejecuta <strong>cinco pasadas de consenso independientes</strong> sobre el mismo dominio en <strong>contextos Playwright aislados</strong>, orquestadas desde el async loop del worker RQ. Cada pasada visita el sitio desde cero, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code> (con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code>, <code>severidad_inicial</code>) sobre los vectores de exposición de la Ley 21.719.</p>
 				<p translate-html="scanner-dossier-system-p3">Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
+				<div class="dossier_chain" role="img" aria-label="Motor de consenso: URL pasa por 5 contextos Playwright aislados, el umbral 4/5 consolida alertas y descarta variabilidad" translate-aria-label="scanner-dossier-chain-aria">
+					<div class="dossier_chain_step dossier_chain_step--request">
+						<span class="dossier_chain_label" translate-html="scanner-dossier-chain-1">URL<br>Input</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label" translate="scanner-dossier-chain-2">×5 contextos Playwright</span>
+						<span class="dossier_chain_sub" translate="scanner-dossier-chain-2-sub">Aislados — captura independiente por pasada</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--rls">
+						<span class="dossier_chain_label" translate="scanner-dossier-chain-3">Motor de consenso</span>
+						<span class="dossier_chain_sub" translate="scanner-dossier-chain-3-sub">Umbral 4/5 — alerta consolidada</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--db">
+						<span class="dossier_chain_label" translate="scanner-dossier-chain-4">Evidencia trazable · 100%</span>
+						<span class="dossier_chain_sub" translate-html="scanner-dossier-chain-4-sub">Finding anclado a <code>control_id</code> · variabilidad descartada</span>
+					</div>
+				</div>
 				<p translate-html="scanner-dossier-system-p4">El motor de reglas se compone de dos servicios separados: <strong>Rules Engine</strong> (interpreta cada captura contra el catálogo regulatorio) y <strong>Control Matrix</strong> (mapea hallazgos a controles auditables). Ambos consumen la <strong>Matriz Normativa v1</strong> — el catálogo de checks deterministas mantenido como dato versionado, no como código incrustado. Sobre ese mismo modelo opera la capa de <em>scoring</em> y semántica de cada alerta.</p>
 				<h3 class="dossier_subheading" translate="scanner-dossier-system-subheading">Reglas primero, LLM después</h3>
 				<p translate-html="scanner-dossier-system-p5">La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, <strong>serializada contra el contrato versionado <code>scan_v1.schema.json</code></strong> y archivada como <code>scan_v1.json</code>. El informe final cumple <code>report_v1.schema.json</code>. Schema-first, no improvisación. El operador puede leer, citar o disputar cada nodo de evidencia.</p>
+				<div class="dossier_timeline" role="img" aria-label="Pipeline schema-first: 4 etapas de validación desde captura hasta informe PDF" translate-aria-label="scanner-dossier-schema-aria">
+					<div class="dossier_timeline_phase">
+						<span class="dossier_timeline_id">1</span>
+						<strong class="dossier_timeline_title" translate="scanner-dossier-schema-1-title">Captura</strong>
+						<span class="dossier_timeline_meta" translate-html="scanner-dossier-schema-1-meta"><code>scan_v1.schema.json</code> · 5 pasadas · HTML + cookies + formularios</span>
+					</div>
+					<div class="dossier_timeline_phase">
+						<span class="dossier_timeline_id">2</span>
+						<strong class="dossier_timeline_title" translate="scanner-dossier-schema-2-title">Reglas</strong>
+						<span class="dossier_timeline_meta" translate-html="scanner-dossier-schema-2-meta"><code>matrix_v1.json</code> · 12 controles · severidad por <code>control_id</code></span>
+					</div>
+					<div class="dossier_timeline_phase">
+						<span class="dossier_timeline_id">3</span>
+						<strong class="dossier_timeline_title" translate="scanner-dossier-schema-3-title">Consenso</strong>
+						<span class="dossier_timeline_meta" translate-html="scanner-dossier-schema-3-meta">Umbral 4/5 · evidencia 100% trazable · variabilidad descartada</span>
+					</div>
+					<div class="dossier_timeline_phase">
+						<span class="dossier_timeline_id">4</span>
+						<strong class="dossier_timeline_title" translate="scanner-dossier-schema-4-title">Informe</strong>
+						<span class="dossier_timeline_meta" translate-html="scanner-dossier-schema-4-meta"><code>report_v1.schema.json</code> · Claude API · PDF editorial trazable</span>
+					</div>
+				</div>
 			</section>
 
 			<section class="dossier_section dossier_state">
