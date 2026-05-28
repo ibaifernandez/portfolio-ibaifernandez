@@ -9465,13 +9465,21 @@ body.aglaya_dossier_page {
 	color: var(--color-accent-yellow);
 }
 .dossier_section.dossier_frontier p {
-	color: rgba(255, 255, 255, 0.82);
+	color: rgba(255, 255, 255, 0.92);
 }
 .dossier_section.dossier_frontier em {
 	color: var(--hero-accent-pink);
 }
 .dossier_section.dossier_frontier strong {
 	color: var(--color-white);
+}
+.dossier_section.dossier_frontier code {
+	background: rgba(255, 255, 255, 0.08);
+	color: #7fdde6;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.dossier_section.dossier_frontier .dossier_frontier_list li {
+	color: rgba(255, 255, 255, 0.92);
 }
 .dossier_frontier_list {
 	margin: 24px 0;
