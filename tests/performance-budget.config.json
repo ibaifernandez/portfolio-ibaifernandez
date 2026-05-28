@@ -23,10 +23,18 @@
     },
     {
       "file": "scanner-21179.html",
-      "maxHtmlBytes": 60000,
+      "maxHtmlBytes": 75000,
       "maxCssBytes": 400000,
       "maxJsBytes": 160000,
       "maxImageBytes": 500000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "kanban-desk.html",
+      "maxHtmlBytes": 75000,
+      "maxCssBytes": 400000,
+      "maxJsBytes": 160000,
+      "maxImageBytes": 100000,
       "maxImageCount": 30
     }
   ]

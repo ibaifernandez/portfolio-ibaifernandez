@@ -30,7 +30,7 @@
 </head>
 
 <body class="dossier_ai_page project_dossier_page scanner_dossier">
-	<a class="skip-link" href="#dossier_main">Saltar al contenido principal</a>
+	<a class="skip-link" href="#dossier_main" translate="skip-to-main">Saltar al contenido principal</a>
 <!-- Start Sidebar -->
 
     <div class="port_sidebar_wrapper mport_sidebar_wrapper project_sidebar">
@@ -321,14 +321,14 @@
 		<main class="dossier_ai">
 
 			<header class="dossier_hero">
-				<a class="dossier_back" href="index.html">← Volver al portafolio</a>
+				<a class="dossier_back" href="index.html" translate="scanner-dossier-back">← Volver al portafolio</a>
 				<div class="dossier_hero_meta">
-					<span class="dossier_status_chip dossier_status_chip--live">En producción</span>
-					<span class="dossier_status_chip">v0.1.1</span>
-					<span class="dossier_status_chip">Público</span>
+					<span class="dossier_status_chip dossier_status_chip--live" translate="scanner-dossier-status-live">En producción</span>
+					<span class="dossier_status_chip" translate="scanner-dossier-status-version">v0.1.1</span>
+					<span class="dossier_status_chip" translate="scanner-dossier-status-public">Público</span>
 				</div>
-				<h1 class="dossier_hero_title">Scanner Ley <span class="accent">21.719</span></h1>
-				<p class="dossier_hero_tagline">RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Operado por AGLAYA.</p>
+				<h1 class="dossier_hero_title" translate-html="scanner-dossier-h1">Scanner Ley <span class="accent">21.719</span></h1>
+				<p class="dossier_hero_tagline" translate="scanner-dossier-tagline">RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Operado por AGLAYA.</p>
 				<div class="dossier_hero_stack">
 					<span class="dossier_stack_chip">Python · FastAPI</span>
 					<span class="dossier_stack_chip">Playwright</span>
@@ -343,8 +343,8 @@
 					<span class="dossier_stack_chip">Meta CAPI</span>
 				</div>
 				<div class="dossier_hero_ctas">
-					<a class="dossier_cta dossier_cta--primary" href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer">Ver producto en vivo →</a>
-					<a class="dossier_cta dossier_cta--ghost" href="#dossier_inside">Detalles técnicos ↓</a>
+					<a class="dossier_cta dossier_cta--primary" href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer" translate-html="scanner-dossier-cta-primary">Ver producto en vivo →</a>
+					<a class="dossier_cta dossier_cta--ghost" href="#dossier_inside" translate-html="scanner-dossier-cta-ghost">Detalles técnicos ↓</a>
 				</div>
 			</header>
 
@@ -355,233 +355,233 @@
 					<source media="(max-width: 640px)" srcset="assets/images/dossiers/scanner-21179/pipeline-vertical.png">
 					<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/pipeline.avif">
 					<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/pipeline.webp">
-					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 pasadas independientes, reglas primero LLM después, finalización 90.2% en dominios preflight-filtered (n=716), evidencia trazable 100% (n=1562 scans con findings), y entrega de auditoría preparatoria con frontera legal explícita" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
+					<img src="assets/images/dossiers/scanner-21179/pipeline.jpg" alt="Pipeline del Scanner: filtro previo y de elegibilidad, motor de consenso de 5 pasadas independientes, reglas primero LLM después, finalización 90.2% en dominios preflight-filtered (n=716), evidencia trazable 100% (n=1562 scans con findings), y entrega de auditoría preparatoria con frontera legal explícita" translate-alt="scanner-dossier-pipeline-alt" loading="lazy" decoding="async" width="1200" height="690" data-avif-fallback="true">
 				</picture>
-				<figcaption>Arquitectura del pipeline + validación de impacto de mercado (release v0.1.1).</figcaption>
+				<figcaption translate="scanner-dossier-pipeline-figcaption">Arquitectura del pipeline + validación de impacto de mercado (release v0.1.1).</figcaption>
 			</figure>
 
 			<section class="dossier_section dossier_problem">
-				<span class="dossier_eyebrow dossier_eyebrow--pink">● El dolor</span>
-				<h2>El problema</h2>
-				<p>Las empresas chilenas necesitan auditar su exposición pública bajo la nueva Ley 21.719 sin contratar consultoría artesanal cara ni esperar tres semanas a un humano. Las opciones reales hoy son cuatro:</p>
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="scanner-dossier-problem-eyebrow">● El dolor</span>
+				<h2 translate="scanner-dossier-problem-h2">El problema</h2>
+				<p translate="scanner-dossier-problem-intro">Las empresas chilenas necesitan auditar su exposición pública bajo la nueva Ley 21.719 sin contratar consultoría artesanal cara ni esperar tres semanas a un humano. Las opciones reales hoy son cuatro:</p>
 				<ol>
-					<li>Revisar todo a mano — lento, costoso en tiempo interno y propenso a errores.</li>
-					<li>No revisar nada y afrontar las multas cuando lleguen.</li>
-					<li>Pagar abogados, generalmente por hora y a tarifas que pocas pymes se pueden permitir.</li>
-					<li>Usar herramientas genéricas que no entienden el marco regulatorio chileno y no generan evidencia trazable.</li>
+					<li translate="scanner-dossier-problem-list-1">Revisar todo a mano — lento, costoso en tiempo interno y propenso a errores.</li>
+					<li translate="scanner-dossier-problem-list-2">No revisar nada y afrontar las multas cuando lleguen.</li>
+					<li translate="scanner-dossier-problem-list-3">Pagar abogados, generalmente por hora y a tarifas que pocas pymes se pueden permitir.</li>
+					<li translate="scanner-dossier-problem-list-4">Usar herramientas genéricas que no entienden el marco regulatorio chileno y no generan evidencia trazable.</li>
 				</ol>
-				<p>El Scanner 21.719 se lo pone mucho más fácil.</p>
+				<p translate="scanner-dossier-problem-outro">El Scanner 21.719 se lo pone mucho más fácil.</p>
 			</section>
 
 			<section class="dossier_section dossier_system">
-				<span class="dossier_eyebrow">● Arquitectura</span>
-				<h2>Cómo funciona</h2>
-				<p>El producto recibe una URL pública. Antes de ejecutar el escaneo completo, un módulo de preflight verifica automáticamente que el dominio sea accesible desde Chile, que no esté bloqueando automatización, que resuelva a una IP pública válida y que tenga contenido web relevante bajo el ámbito de la Ley 21.719. Si no pasa, el cliente es notificado de inmediato y sin coste. Si pasa, arranca el motor real.</p>
-				<div class="dossier_pipeline" aria-label="Pipeline del Scanner 21.719">
+				<span class="dossier_eyebrow" translate="scanner-dossier-system-eyebrow">● Arquitectura</span>
+				<h2 translate="scanner-dossier-system-h2">Cómo funciona</h2>
+				<p translate="scanner-dossier-system-p1">El producto recibe una URL pública. Antes de ejecutar el escaneo completo, un módulo de preflight verifica automáticamente que el dominio sea accesible desde Chile, que no esté bloqueando automatización, que resuelva a una IP pública válida y que tenga contenido web relevante bajo el ámbito de la Ley 21.719. Si no pasa, el cliente es notificado de inmediato y sin coste. Si pasa, arranca el motor real.</p>
+				<div class="dossier_pipeline" aria-label="Pipeline del Scanner 21.719" translate-aria-label="scanner-dossier-pipeline-aria">
 					<div class="dossier_pipeline_step">
 						<span class="dossier_pipeline_num">01</span>
-						<span class="dossier_pipeline_label">URL<br>Input</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-1">URL<br>Input</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step">
 						<span class="dossier_pipeline_num">02</span>
-						<span class="dossier_pipeline_label">Preflight<br>elegibilidad</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-2">Preflight<br>elegibilidad</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
 						<span class="dossier_pipeline_num">03</span>
-						<span class="dossier_pipeline_label">5 pasadas<br>de consenso</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-3">5 pasadas<br>de consenso</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
 						<span class="dossier_pipeline_num">04</span>
-						<span class="dossier_pipeline_label">Motor de<br>consenso</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-4">Motor de<br>consenso</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step">
 						<span class="dossier_pipeline_num">05</span>
-						<span class="dossier_pipeline_label">Reglas<br>deterministas</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-5">Reglas<br>deterministas</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--ai">
 						<span class="dossier_pipeline_num">06</span>
-						<span class="dossier_pipeline_label">Claude<br>API</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-6">Claude<br>API</span>
 					</div>
 					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
 					<div class="dossier_pipeline_step dossier_pipeline_step--cta">
 						<span class="dossier_pipeline_num">07</span>
-						<span class="dossier_pipeline_label">Informe<br>PDF</span>
+						<span class="dossier_pipeline_label" translate-html="scanner-dossier-pipeline-7">Informe<br>PDF</span>
 					</div>
 				</div>
-				<p>El motor de escaneo ejecuta <strong>cinco pasadas de consenso independientes</strong> sobre el mismo dominio en <strong>contextos Playwright aislados</strong>, orquestadas desde el async loop del worker RQ. Cada pasada visita el sitio desde cero, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code> (con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code>, <code>severidad_inicial</code>) sobre los vectores de exposición de la Ley 21.719.</p>
-				<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
-				<p>El motor de reglas se compone de dos servicios separados: <strong>Rules Engine</strong> (interpreta cada captura contra el catálogo regulatorio) y <strong>Control Matrix</strong> (mapea hallazgos a controles auditables). Ambos consumen la <strong>Matriz Normativa v1</strong> — el catálogo de checks deterministas mantenido como dato versionado, no como código incrustado. Sobre ese mismo modelo opera la capa de <em>scoring</em> y semántica de cada alerta.</p>
-				<h3 class="dossier_subheading">Reglas primero, LLM después</h3>
-				<p>La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, <strong>serializada contra el contrato versionado <code>scan_v1.schema.json</code></strong> y archivada como <code>scan_v1.json</code>. El informe final cumple <code>report_v1.schema.json</code>. Schema-first, no improvisación. El operador puede leer, citar o disputar cada nodo de evidencia.</p>
+				<p translate-html="scanner-dossier-system-p2">El motor de escaneo ejecuta <strong>cinco pasadas de consenso independientes</strong> sobre el mismo dominio en <strong>contextos Playwright aislados</strong>, orquestadas desde el async loop del worker RQ. Cada pasada visita el sitio desde cero, captura el HTML completo de la página principal y las páginas de política, detecta las cookies emitidas antes y después de interacción, e identifica formularios, banners de consentimiento y cualquier carga de recursos externos. Esa captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code> (con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code>, <code>severidad_inicial</code>) sobre los vectores de exposición de la Ley 21.719.</p>
+				<p translate-html="scanner-dossier-system-p3">Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados ejecución por ejecución. Solo pasan al informe las alertas que aparecen en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico o artefactos de timing quedan fuera. Sin consenso, no hay alerta.</p>
+				<p translate-html="scanner-dossier-system-p4">El motor de reglas se compone de dos servicios separados: <strong>Rules Engine</strong> (interpreta cada captura contra el catálogo regulatorio) y <strong>Control Matrix</strong> (mapea hallazgos a controles auditables). Ambos consumen la <strong>Matriz Normativa v1</strong> — el catálogo de checks deterministas mantenido como dato versionado, no como código incrustado. Sobre ese mismo modelo opera la capa de <em>scoring</em> y semántica de cada alerta.</p>
+				<h3 class="dossier_subheading" translate="scanner-dossier-system-subheading">Reglas primero, LLM después</h3>
+				<p translate-html="scanner-dossier-system-p5">La IA no decide qué es alerta. Eso lo hacen las reglas regulatorias deterministas — trazables, auditables, repetibles. Claude entra únicamente al final, para compilar la evidencia recopilada y redactar el informe en lenguaje comprensible. Cada alerta queda anclada a un fragmento HTML capturado del sitio real, <strong>serializada contra el contrato versionado <code>scan_v1.schema.json</code></strong> y archivada como <code>scan_v1.json</code>. El informe final cumple <code>report_v1.schema.json</code>. Schema-first, no improvisación. El operador puede leer, citar o disputar cada nodo de evidencia.</p>
 			</section>
 
 			<section class="dossier_section dossier_state">
-				<span class="dossier_eyebrow">● Hoy</span>
-				<h2>Estado real</h2>
+				<span class="dossier_eyebrow" translate="scanner-dossier-state-eyebrow">● Hoy</span>
+				<h2 translate="scanner-dossier-state-h2">Estado real</h2>
 				<ul class="dossier_state_grid">
-					<li><strong>v0.1.1</strong><span>Release controlada, abierta a tráfico externo desde el 18 de mayo de 2026.</span></li>
-					<li><strong>~760 tests</strong><span>Suite de pytest extensa pasando localmente. Cero fallos en último run.</span></li>
-					<li><strong>Sin deuda de seguridad</strong><span>Revisión externa completa: vulnerabilidades críticas, altas, medias y bajas — todas cerradas antes del lanzamiento.</span></li>
-					<li><strong>72.8% / 100%</strong><span>Preflight scan-ready / evidencia trazable por alerta (todo finding viene anclado a uno o más control_id de matrix_v1.json).</span></li>
-					<li><strong>90.2% / 99.0%</strong><span>Tasa de finalización del escaneo en dominios pre-filtrados por preflight (n=716, sin partials / incluyendo partials).</span></li>
-					<li><strong>Consenso 4/5</strong><span>Cinco pasadas independientes en contextos Playwright aislados; alerta solo si concuerdan al menos cuatro.</span></li>
-					<li><strong>&lt; 3 min</strong><span>De checkout a informe editorial PDF en el correo (estimado conservador; scan p95 75s, n=1868).</span></li>
-					<li><strong>Railway + Netlify</strong><span>Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
-					<li><strong>17 audits</strong><span>Revisión cruzada Sistema → CRM (mayo 2026). Cada caso trazable, cada handoff documentado.</span></li>
-					<li><strong>5 postmortems</strong><span>Casos reales cerrados (3 con cliente nombrado, 2 internos PR37/PR38). Cultura de fix + aprendizaje, no de ocultar.</span></li>
+					<li><strong>v0.1.1</strong><span translate="scanner-dossier-state-version">Release controlada, abierta a tráfico externo desde el 18 de mayo de 2026.</span></li>
+					<li><strong>~760 tests</strong><span translate="scanner-dossier-state-tests">Suite de pytest extensa pasando localmente. Cero fallos en último run.</span></li>
+					<li><strong translate="scanner-dossier-state-secdebt-label">Sin deuda de seguridad</strong><span translate="scanner-dossier-state-secdebt">Revisión externa completa: vulnerabilidades críticas, altas, medias y bajas — todas cerradas antes del lanzamiento.</span></li>
+					<li><strong>72.8% / 100%</strong><span translate-html="scanner-dossier-state-reach">Preflight scan-ready / evidencia trazable por alerta (todo finding viene anclado a uno o más control_id de matrix_v1.json).</span></li>
+					<li><strong>90.2% / 99.0%</strong><span translate="scanner-dossier-state-completion">Tasa de finalización del escaneo en dominios pre-filtrados por preflight (n=716, sin partials / incluyendo partials).</span></li>
+					<li><strong translate="scanner-dossier-state-consensus-label">Consenso 4/5</strong><span translate="scanner-dossier-state-consensus">Cinco pasadas independientes en contextos Playwright aislados; alerta solo si concuerdan al menos cuatro.</span></li>
+					<li><strong>&lt; 3 min</strong><span translate="scanner-dossier-state-delivery">De checkout a informe editorial PDF en el correo (estimado conservador; scan p95 75s, n=1868).</span></li>
+					<li><strong>Railway + Netlify</strong><span translate="scanner-dossier-state-infra">Backend con workers Redis / frontend edge / pagos Lemon Squeezy.</span></li>
+					<li><strong>17 audits</strong><span translate="scanner-dossier-state-audits">Revisión cruzada Sistema → CRM (mayo 2026). Cada caso trazable, cada handoff documentado.</span></li>
+					<li><strong>5 postmortems</strong><span translate="scanner-dossier-state-postmortems">Casos reales cerrados (3 con cliente nombrado, 2 internos PR37/PR38). Cultura de fix + aprendizaje, no de ocultar.</span></li>
 				</ul>
 				<figure class="dossier_state_figure">
-					<a href="assets/downloads/informe-muestra-scanner-21719.pdf" download aria-label="Descargar informe de muestra en PDF">
+					<a href="assets/downloads/informe-muestra-scanner-21719.pdf" download aria-label="Descargar informe de muestra en PDF" translate-aria-label="scanner-dossier-pdf-download-aria">
 						<picture>
 							<source type="image/avif" srcset="assets/images/dossiers/scanner-21179/informe-portada.avif">
 							<source type="image/webp" srcset="assets/images/dossiers/scanner-21179/informe-portada.webp">
-							<img src="assets/images/dossiers/scanner-21179/informe-portada.jpg" alt="Portada del informe de auditoría preparatoria entregado al cliente, branded AGLAYA, marco legal Ley 21.719 Chile, audit ID trazable, fecha de informe 18 de mayo de 2026" loading="lazy" decoding="async" width="600" height="825" data-avif-fallback="true">
+							<img src="assets/images/dossiers/scanner-21179/informe-portada.jpg" alt="Portada del informe de auditoría preparatoria entregado al cliente, branded AGLAYA, marco legal Ley 21.719 Chile, audit ID trazable, fecha de informe 18 de mayo de 2026" translate-alt="scanner-dossier-informe-alt" loading="lazy" decoding="async" width="600" height="825" data-avif-fallback="true">
 						</picture>
 					</a>
-					<figcaption>Entregable real: PDF editorial con audit ID trazable, marca limpia, frontera legal explícita.</figcaption>
+					<figcaption translate="scanner-dossier-informe-figcaption">Entregable real: PDF editorial con audit ID trazable, marca limpia, frontera legal explícita.</figcaption>
 				</figure>
-				<a class="dossier_pdf_download" href="assets/downloads/informe-muestra-scanner-21719.pdf" download>↓ Descargar informe de muestra (PDF)</a>
+				<a class="dossier_pdf_download" href="assets/downloads/informe-muestra-scanner-21719.pdf" download translate="scanner-dossier-pdf-download-cta">↓ Descargar informe de muestra (PDF)</a>
 			</section>
 
 			<section class="dossier_section dossier_frontier">
-				<span class="dossier_eyebrow">● Lo que NO hace</span>
-				<h2>Frontera honesta</h2>
-				<p>Lo que el producto <em>no</em> hace, explícito en cada superficie comercial:</p>
+				<span class="dossier_eyebrow" translate="scanner-dossier-frontier-eyebrow">● Lo que NO hace</span>
+				<h2 translate="scanner-dossier-frontier-h2">Frontera honesta</h2>
+				<p translate-html="scanner-dossier-frontier-intro">Lo que el producto <em>no</em> hace, explícito en cada superficie comercial:</p>
 				<ul class="dossier_frontier_list">
-					<li><strong>No</strong> certifica cumplimiento automático.</li>
-					<li><strong>No</strong> emite opinión jurídica definitiva.</li>
-					<li><strong>No</strong> promete cumplimiento integral.</li>
+					<li translate-html="scanner-dossier-frontier-not-1"><strong>No</strong> certifica cumplimiento automático.</li>
+					<li translate-html="scanner-dossier-frontier-not-2"><strong>No</strong> emite opinión jurídica definitiva.</li>
+					<li translate-html="scanner-dossier-frontier-not-3"><strong>No</strong> promete cumplimiento integral.</li>
 				</ul>
-				<p>Lo que sí entrega: una primera auditoría preparatoria repetible, vendible y defendible. La primera capa de debida diligencia que toda empresa chilena debería tener antes de hablar con su abogado.</p>
-				<p>La frontera no es marketing defensivo. Es activo competitivo: las herramientas que <em>sí</em> prometen certificación quedan expuestas el día que falla un caso.</p>
+				<p translate="scanner-dossier-frontier-p1">Lo que sí entrega: una primera auditoría preparatoria repetible, vendible y defendible. La primera capa de debida diligencia que toda empresa chilena debería tener antes de hablar con su abogado.</p>
+				<p translate-html="scanner-dossier-frontier-p2">La frontera no es marketing defensivo. Es activo competitivo: las herramientas que <em>sí</em> prometen certificación quedan expuestas el día que falla un caso.</p>
 			</section>
 
 			<section class="dossier_section dossier_distribution">
-				<span class="dossier_eyebrow">● Distribución</span>
-				<h2>Autoridad temática + contenido publicado</h2>
-				<p>El producto no se sostiene solo en el código. Tiene una capa editorial pública que construye autoridad temática sobre Ley 21.719 y precede al checkout:</p>
+				<span class="dossier_eyebrow" translate="scanner-dossier-distribution-eyebrow">● Distribución</span>
+				<h2 translate="scanner-dossier-distribution-h2">Autoridad temática + contenido publicado</h2>
+				<p translate="scanner-dossier-distribution-intro">El producto no se sostiene solo en el código. Tiene una capa editorial pública que construye autoridad temática sobre Ley 21.719 y precede al checkout:</p>
 				<ul class="dossier_distribution_list">
 					<li>
-						<a href="https://ley-21719-chile.aglaya.biz/blog/" target="_blank" rel="noopener noreferrer"><strong>Blog técnico Ley 21.719</strong></a>
-						<span>Línea editorial sostenida en español sobre cumplimiento, preparación y diagnóstico bajo la nueva ley chilena.</span>
+						<a href="https://ley-21719-chile.aglaya.biz/blog/" target="_blank" rel="noopener noreferrer"><strong translate="scanner-dossier-distribution-1-title">Blog técnico Ley 21.719</strong></a>
+						<span translate="scanner-dossier-distribution-1-body">Línea editorial sostenida en español sobre cumplimiento, preparación y diagnóstico bajo la nueva ley chilena.</span>
 					</li>
 					<li>
-						<a href="https://ley-21719-chile.aglaya.biz/blog/estudio-cumplimiento-ley-21719-mayo-2026/" target="_blank" rel="noopener noreferrer"><strong>Estudio: 7 brechas en 17 webs chilenas</strong></a>
-						<span>Análisis de campo con datos reales del propio motor del Scanner. Proof social cuantitativa.</span>
+						<a href="https://ley-21719-chile.aglaya.biz/blog/estudio-cumplimiento-ley-21719-mayo-2026/" target="_blank" rel="noopener noreferrer"><strong translate="scanner-dossier-distribution-2-title">Estudio: 7 brechas en 17 webs chilenas</strong></a>
+						<span translate="scanner-dossier-distribution-2-body">Análisis de campo con datos reales del propio motor del Scanner. Proof social cuantitativa.</span>
 					</li>
 					<li>
-						<a href="https://ley-21719-chile.aglaya.biz/blog/cuanto-cuesta-prepararse-ley-21719/" target="_blank" rel="noopener noreferrer"><strong>¿Cuánto cuesta prepararse para la Ley 21.719?</strong></a>
-						<span>Pieza de educación de mercado conectada al embudo de pricing.</span>
+						<a href="https://ley-21719-chile.aglaya.biz/blog/cuanto-cuesta-prepararse-ley-21719/" target="_blank" rel="noopener noreferrer"><strong translate="scanner-dossier-distribution-3-title">¿Cuánto cuesta prepararse para la Ley 21.719?</strong></a>
+						<span translate="scanner-dossier-distribution-3-body">Pieza de educación de mercado conectada al embudo de pricing.</span>
 					</li>
 					<li>
-						<a href="https://ley-21719-chile.aglaya.biz/blog/diagnostico-gratuito-vs-informe-tecnico/" target="_blank" rel="noopener noreferrer"><strong>Diagnóstico gratuito vs. informe técnico</strong></a>
-						<span>Frontera entre <em>preflight</em> sin coste y producto pagado, explicada para no-técnicos.</span>
+						<a href="https://ley-21719-chile.aglaya.biz/blog/diagnostico-gratuito-vs-informe-tecnico/" target="_blank" rel="noopener noreferrer"><strong translate="scanner-dossier-distribution-4-title">Diagnóstico gratuito vs. informe técnico</strong></a>
+						<span translate-html="scanner-dossier-distribution-4-body">Frontera entre <em>preflight</em> sin coste y producto pagado, explicada para no-técnicos.</span>
 					</li>
 					<li>
-						<a href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer"><strong>Landing Meta Ads → Auditoría Ley 21.719</strong></a>
-						<span>Pieza de captación activa, conectada al motor de preflight + checkout en producción.</span>
+						<a href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer"><strong translate="scanner-dossier-distribution-5-title">Landing Meta Ads → Auditoría Ley 21.719</strong></a>
+						<span translate="scanner-dossier-distribution-5-body">Pieza de captación activa, conectada al motor de preflight + checkout en producción.</span>
 					</li>
 				</ul>
-				<p>El playbook Paid Ads (Meta mayo + Google junio 2026) opera sobre esta capa editorial. No es funnel ciego — es funnel respaldado por contenido publicado.</p>
+				<p translate="scanner-dossier-distribution-outro">El playbook Paid Ads (Meta mayo + Google junio 2026) opera sobre esta capa editorial. No es funnel ciego — es funnel respaldado por contenido publicado.</p>
 			</section>
 
 			<section class="dossier_section dossier_proves">
-				<span class="dossier_eyebrow dossier_eyebrow--pink">● Skills evidenciados</span>
-				<h2>Lo que este proyecto demuestra</h2>
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="scanner-dossier-proves-eyebrow">● Skills evidenciados</span>
+				<h2 translate="scanner-dossier-proves-h2">Lo que este proyecto demuestra</h2>
 				<ul class="dossier_proves_grid">
 					<li>
-						<strong>Full-stack senior</strong>
-						<p>Backend Python, frontend HTML/JS plano, Playwright headless en async loop del worker RQ aislado del API vía <code>worker.py</code>, Redis+RQ para job queue persistente, SQLite operacional, pagos Lemon Squeezy con webhook idempotente (<code>claim_webhook_event</code>), edge Netlify, despliegue continuo en Railway.</p>
+						<strong translate="scanner-dossier-proves-1-title">Full-stack senior</strong>
+						<p translate-html="scanner-dossier-proves-1-body">Backend Python, frontend HTML/JS plano, Playwright headless en async loop del worker RQ aislado del API vía <code>worker.py</code>, Redis+RQ para job queue persistente, SQLite operacional, pagos Lemon Squeezy con webhook idempotente (<code>claim_webhook_event</code>), edge Netlify, despliegue continuo en Railway.</p>
 					</li>
 					<li>
-						<strong>De panel nocturno a producto en semanas</strong>
-						<p>El proyecto arrancó como un <strong>panel de investigación nocturno</strong>: <strong>1.000 dominios</strong> escaneándose cada noche para afinar el motor de reglas. El punto de inflexión fue una decisión de arquitectura no obvia — <strong>comprimir ese bucle de validación</strong> hasta ejecutar <strong>5 pasadas independientes</strong> sobre cada dominio en cada auditoría individual y añadir un <strong>motor de consenso</strong> sobre los resultados.</p>
-						<p>Lo que podían haber sido <strong>meses de iteración</strong> hasta alcanzar robustez estadística pasó a <strong>semanas de desarrollo</strong> — y a un producto comercialmente lanzable con estadísticas más sólidas que cualquier pasada nocturna.</p>
+						<strong translate="scanner-dossier-proves-2-title">De panel nocturno a producto en semanas</strong>
+						<p translate-html="scanner-dossier-proves-2-body-1">El proyecto arrancó como un <strong>panel de investigación nocturno</strong>: <strong>1.000 dominios</strong> escaneándose cada noche para afinar el motor de reglas. El punto de inflexión fue una decisión de arquitectura no obvia — <strong>comprimir ese bucle de validación</strong> hasta ejecutar <strong>5 pasadas independientes</strong> sobre cada dominio en cada auditoría individual y añadir un <strong>motor de consenso</strong> sobre los resultados.</p>
+						<p translate-html="scanner-dossier-proves-2-body-2">Lo que podían haber sido <strong>meses de iteración</strong> hasta alcanzar robustez estadística pasó a <strong>semanas de desarrollo</strong> — y a un producto comercialmente lanzable con estadísticas más sólidas que cualquier pasada nocturna.</p>
 					</li>
 					<li>
-						<strong>Decisiones de arquitectura defendibles</strong>
-						<p>«Reglas primero, LLM después» — trazabilidad gana a generación. Single <code>main</code> branch — velocidad gana a workflow ceremonioso. Consenso de 5 ejecuciones por escaneo — confianza gana a velocidad cruda.</p>
+						<strong translate="scanner-dossier-proves-3-title">Decisiones de arquitectura defendibles</strong>
+						<p translate-html="scanner-dossier-proves-3-body">«Reglas primero, LLM después» — trazabilidad gana a generación. Single <code>main</code> branch — velocidad gana a workflow ceremonioso. Consenso de 5 ejecuciones por escaneo — confianza gana a velocidad cruda.</p>
 					</li>
 					<li>
-						<strong>Seguridad como capa, no afterthought</strong>
-						<p>Auditoría externa de seguridad completa: todos los hallazgos críticos, altos, medios y bajos cerrados antes del lanzamiento, más cinco hallazgos detectados tras la apertura a tráfico externo. SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). <strong>Atomicidad como patrón</strong>: tres operaciones críticas (<code>claim_webhook_event</code>, <code>save_initial_record</code>, <code>validate_and_use</code>) implementadas como atómicas con PK constraints o scripts Lua. <strong>IP allowlist</strong> sobre webhooks de Lemon Squeezy con test dedicado. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
+						<strong translate="scanner-dossier-proves-4-title">Seguridad como capa, no afterthought</strong>
+						<p translate-html="scanner-dossier-proves-4-body">Auditoría externa de seguridad completa: todos los hallazgos críticos, altos, medios y bajos cerrados antes del lanzamiento, más cinco hallazgos detectados tras la apertura a tráfico externo. SSRF hardening con denylist + IDN normalization + reverificación de redirects. Rate limiting Redis con script Lua atómico (correcto multi-worker). <strong>Atomicidad como patrón</strong>: tres operaciones críticas (<code>claim_webhook_event</code>, <code>save_initial_record</code>, <code>validate_and_use</code>) implementadas como atómicas con PK constraints o scripts Lua. <strong>IP allowlist</strong> sobre webhooks de Lemon Squeezy con test dedicado. Headers HTTP completos (HSTS, CSP, X-Frame-Options, Permissions-Policy).</p>
 					</li>
 					<li>
-						<strong>RegTech vertical real</strong>
-						<p>Dominio Ley 21.719 + producto + go-to-market. No es un PoC: <strong>posicionamiento Obviously Awesome documentado</strong> (puntuación 6.9/10), <strong>mensajería StoryBrand</strong> aplicada, <strong>Jobs-To-Be-Done</strong> formalizados, <strong>pricing vigente</strong> y oferta comercial separados como documentos, <strong>análisis competitivo</strong> nombrado (C-ONLINE) y referencias de categoría/adyacencia. Embudo público controlado <code>landing → preflight → checkout → consenso → entrega</code>. <strong>Privacy Policy versionada con changelog</strong> (v1.2 → v1.3) — compliance tratada como producto, no como afterthought.</p>
+						<strong translate="scanner-dossier-proves-5-title">RegTech vertical real</strong>
+						<p translate-html="scanner-dossier-proves-5-body">Dominio Ley 21.719 + producto + go-to-market. No es un PoC: <strong>posicionamiento Obviously Awesome documentado</strong> (puntuación 6.9/10), <strong>mensajería StoryBrand</strong> aplicada, <strong>Jobs-To-Be-Done</strong> formalizados, <strong>pricing vigente</strong> y oferta comercial separados como documentos, <strong>análisis competitivo</strong> nombrado (C-ONLINE) y referencias de categoría/adyacencia. Embudo público controlado <code>landing → preflight → checkout → consenso → entrega</code>. <strong>Privacy Policy versionada con changelog</strong> (v1.2 → v1.3) — compliance tratada como producto, no como afterthought.</p>
 					</li>
 					<li>
-						<strong>Operación end-to-end de founder</strong>
-						<p>Producto + landing comercial + landing para agencias + documentación pública + blog técnico + Meta Ads (Pixel + CAPI server-side) + video promocional con avatar IA + checkout Lemon Squeezy + entrega editorial + booking comercial (Cal.com con webhook propio) + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
+						<strong translate="scanner-dossier-proves-6-title">Operación end-to-end de founder</strong>
+						<p translate-html="scanner-dossier-proves-6-body">Producto + landing comercial + landing para agencias + documentación pública + blog técnico + Meta Ads (Pixel + CAPI server-side) + video promocional con avatar IA + checkout Lemon Squeezy + entrega editorial + booking comercial (Cal.com con webhook propio) + soporte. Una persona, un repo, un <code>main</code>. AGLAYA como operador comercial.</p>
 					</li>
 					<li>
-						<strong>Disciplina contractual + schema-first</strong>
-						<p>Contratos JSON Schema versionados (<code>scan_v1.schema.json</code>, <code>report_v1.schema.json</code>) como interfaz formal entre captura, motor de consenso, motor de reglas y generación de informe. <strong>Invariantes críticas del sistema</strong> enumeradas en documentación operativa. <strong>Protocolo post-deploy</strong> formalizado por release. <strong>Postmortems documentados</strong> por caso. No es código que funciona — es código que se puede defender.</p>
+						<strong translate="scanner-dossier-proves-7-title">Disciplina contractual + schema-first</strong>
+						<p translate-html="scanner-dossier-proves-7-body">Contratos JSON Schema versionados (<code>scan_v1.schema.json</code>, <code>report_v1.schema.json</code>) como interfaz formal entre captura, motor de consenso, motor de reglas y generación de informe. <strong>Invariantes críticas del sistema</strong> enumeradas en documentación operativa. <strong>Protocolo post-deploy</strong> formalizado por release. <strong>Postmortems documentados</strong> por caso. No es código que funciona — es código que se puede defender.</p>
 					</li>
 					<li>
-						<strong>Feedback loop D+7 con clientes reales</strong>
-						<p>Plan de proof social activo: panel de feedback a 7 días desde la entrega (PR37), revisión cruzada Sistema → CRM sobre los audits emitidos, iteración del motor con datos reales del campo. No es build-and-pray.</p>
+						<strong translate="scanner-dossier-proves-8-title">Feedback loop D+7 con clientes reales</strong>
+						<p translate-html="scanner-dossier-proves-8-body">Plan de proof social activo: panel de feedback a 7 días desde la entrega (PR37), revisión cruzada Sistema → CRM sobre los audits emitidos, iteración del motor con datos reales del campo. No es build-and-pray.</p>
 					</li>
 				</ul>
 			</section>
 
 			<section class="dossier_section dossier_inside" id="dossier_inside">
-				<span class="dossier_eyebrow">● Detalles técnicos</span>
-				<h2>Por dentro</h2>
+				<span class="dossier_eyebrow" translate="scanner-dossier-inside-eyebrow">● Detalles técnicos</span>
+				<h2 translate="scanner-dossier-inside-h2">Por dentro</h2>
 				<details>
-					<summary>Flujo público completo</summary>
-					<p>La URL del cliente entra por la landing pública. El primer paso es siempre el <strong>preflight</strong>: el sistema comprueba automáticamente que el dominio existe, que es accesible desde Chile, que no está bloqueando automatización y que tiene contenido web relevante bajo el ámbito de la Ley 21.719. Si el dominio no pasa, el cliente recibe notificación inmediata y <strong>sin coste alguno</strong>.</p>
-					<p>Si pasa, se solicita el email de contacto y arranca el motor de escaneo. El worker RQ ejecuta <strong>cinco pasadas de consenso</strong> sobre el dominio, cada una en su propio <strong>contexto Playwright aislado</strong> dentro del async loop del worker. Cada pasada captura la capa pública visible: HTML, cookies emitidas, formularios, banners de consentimiento, políticas publicadas, recursos externos cargados. La captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code>, cada uno con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code> y <code>severidad_inicial</code>. Sobre los hallazgos deterministas opera una <strong>capa semántica LLM</strong> para enriquecer evidencia y redactar.</p>
-					<p>Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados. Solo consolida como alerta lo que aparece en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico, cookies bajo condiciones de carrera, artefactos de timing.</p>
-					<p>Alcanzado el consenso, el cliente recibe el enlace de <strong>checkout vía Lemon Squeezy</strong>. El pago activa la generación del informe: la evidencia consolidada en <code>scan_v1.json</code> entra a Claude, que la transforma en un <strong>informe editorial PDF</strong> con marca AGLAYA, <strong>audit ID trazable</strong>, fecha y versión del motor. El informe llega por email en minutos.</p>
-					<p>Caso excepcional: si el consenso no se alcanza — menos de cuatro de cinco workers coinciden en un resultado — el caso entra en <strong>revisión manual</strong> antes de emitir ninguna factura ni entregar ningún informe.</p>
+					<summary translate="scanner-dossier-detail-1-summary">Flujo público completo</summary>
+					<p translate-html="scanner-dossier-detail-1-p1">La URL del cliente entra por la landing pública. El primer paso es siempre el <strong>preflight</strong>: el sistema comprueba automáticamente que el dominio existe, que es accesible desde Chile, que no está bloqueando automatización y que tiene contenido web relevante bajo el ámbito de la Ley 21.719. Si el dominio no pasa, el cliente recibe notificación inmediata y <strong>sin coste alguno</strong>.</p>
+					<p translate-html="scanner-dossier-detail-1-p2">Si pasa, se solicita el email de contacto y arranca el motor de escaneo. El worker RQ ejecuta <strong>cinco pasadas de consenso</strong> sobre el dominio, cada una en su propio <strong>contexto Playwright aislado</strong> dentro del async loop del worker. Cada pasada captura la capa pública visible: HTML, cookies emitidas, formularios, banners de consentimiento, políticas publicadas, recursos externos cargados. La captura se analiza con el <strong>motor de reglas regulatorias deterministas</strong>: <strong>12 controles versionados</strong> en <code>matrix_v1.json</code>, cada uno con <code>control_id</code>, <code>base_legal</code>, <code>obligacion</code> y <code>severidad_inicial</code>. Sobre los hallazgos deterministas opera una <strong>capa semántica LLM</strong> para enriquecer evidencia y redactar.</p>
+					<p translate-html="scanner-dossier-detail-1-p3">Con los cinco análisis completados, el <strong>motor de consenso</strong> compara resultados. Solo consolida como alerta lo que aparece en <strong>cuatro o cinco de las cinco ejecuciones</strong>. Lo que no alcanza ese umbral se descarta — variabilidad de red, contenido dinámico, cookies bajo condiciones de carrera, artefactos de timing.</p>
+					<p translate-html="scanner-dossier-detail-1-p4">Alcanzado el consenso, el cliente recibe el enlace de <strong>checkout vía Lemon Squeezy</strong>. El pago activa la generación del informe: la evidencia consolidada en <code>scan_v1.json</code> entra a Claude, que la transforma en un <strong>informe editorial PDF</strong> con marca AGLAYA, <strong>audit ID trazable</strong>, fecha y versión del motor. El informe llega por email en minutos.</p>
+					<p translate-html="scanner-dossier-detail-1-p5">Caso excepcional: si el consenso no se alcanza — menos de cuatro de cinco workers coinciden en un resultado — el caso entra en <strong>revisión manual</strong> antes de emitir ninguna factura ni entregar ningún informe.</p>
 				</details>
 				<details>
-					<summary>Stack y decisiones técnicas</summary>
-					<p>Backend <strong>Python + FastAPI</strong>; routers separados para <code>admin</code>, <code>audits</code>, <code>payments</code>, <code>feedback</code>, <code>contact</code>, <code>crm</code>, <code>health</code>. <strong>Worker RQ aislado en proceso separado del API</strong> (vía <code>backend/worker.py</code>) con <strong>Sentry inicializado</strong> en arranque. <strong>Playwright corre en el async loop del worker</strong>, con <code>_lock = Lock()</code> per-process documentado como invariante crítica.</p>
-					<p><strong>Job queue Redis + RQ</strong>; los <strong>resultados de consensus jobs</strong> quedan cacheados en Redis con <strong>TTL de 90 días</strong> — sobreviven a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega), con guardrail explícito (<code>_warn_if_sqlite_with_multi_worker</code>) que advierte si la configuración no es compatible con escalado.</p>
-					<p><strong>Endpoint <code>/health</code> con dependency check real</strong>: devuelve HTTP 503 si DB o Redis caen, no un 200 cosmético.</p>
-					<p>Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente. <strong>Cloudflare Turnstile</strong> para bot detection sin fricción.</p>
-					<p>Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong>: <code>claim_webhook_event(event_key)</code> en <code>backend/app/services/webhook_security.py</code> devuelve <code>False</code> si el evento ya fue procesado (idempotency vía PK constraint). El sistema <strong>nunca cobra dos veces</strong>. <strong>IP allowlist</strong> sobre el webhook de Lemon Squeezy, verificada por test.</p>
-					<p>Integraciones server-side: <strong>Meta CAPI</strong> (<code>meta_capi.py:send_event</code>) para conversiones de Ads sin depender del pixel cliente; <strong>Cal.com</strong> (<code>cal_bookings.py</code> + <code>cal_webhook</code>) para gestión de reservas comerciales con su propio webhook idempotente.</p>
+					<summary translate="scanner-dossier-detail-2-summary">Stack y decisiones técnicas</summary>
+					<p translate-html="scanner-dossier-detail-2-p1">Backend <strong>Python + FastAPI</strong>; routers separados para <code>admin</code>, <code>audits</code>, <code>payments</code>, <code>feedback</code>, <code>contact</code>, <code>crm</code>, <code>health</code>. <strong>Worker RQ aislado en proceso separado del API</strong> (vía <code>backend/worker.py</code>) con <strong>Sentry inicializado</strong> en arranque. <strong>Playwright corre en el async loop del worker</strong>, con <code>_lock = Lock()</code> per-process documentado como invariante crítica.</p>
+					<p translate-html="scanner-dossier-detail-2-p2"><strong>Job queue Redis + RQ</strong>; los <strong>resultados de consensus jobs</strong> quedan cacheados en Redis con <strong>TTL de 90 días</strong> — sobreviven a reinicios y redespliegues. <strong>SQLite</strong> para datos operacionales (checkout, pago, entrega), con guardrail explícito (<code>_warn_if_sqlite_with_multi_worker</code>) que advierte si la configuración no es compatible con escalado.</p>
+					<p translate-html="scanner-dossier-detail-2-p3"><strong>Endpoint <code>/health</code> con dependency check real</strong>: devuelve HTTP 503 si DB o Redis caen, no un 200 cosmético.</p>
+					<p translate-html="scanner-dossier-detail-2-p4">Frontend <strong>HTML/JS plano</strong> sobre <strong>Netlify edge</strong>. Sin framework JS — el formulario de captura son <strong>50 líneas</strong>, no necesita React. <strong>Consent Mode v2</strong> cargado antes que GA4. Cookies solo si el usuario consiente. <strong>Cloudflare Turnstile</strong> para bot detection sin fricción.</p>
+					<p translate-html="scanner-dossier-detail-2-p5">Pagos vía <strong>Lemon Squeezy</strong> con <strong>webhook protegido contra replay</strong>: <code>claim_webhook_event(event_key)</code> en <code>backend/app/services/webhook_security.py</code> devuelve <code>False</code> si el evento ya fue procesado (idempotency vía PK constraint). El sistema <strong>nunca cobra dos veces</strong>. <strong>IP allowlist</strong> sobre el webhook de Lemon Squeezy, verificada por test.</p>
+					<p translate-html="scanner-dossier-detail-2-p6">Integraciones server-side: <strong>Meta CAPI</strong> (<code>meta_capi.py:send_event</code>) para conversiones de Ads sin depender del pixel cliente; <strong>Cal.com</strong> (<code>cal_bookings.py</code> + <code>cal_webhook</code>) para gestión de reservas comerciales con su propio webhook idempotente.</p>
 				</details>
 				<details>
-					<summary>Seguridad — qué se auditó</summary>
-					<p><strong>Auditoría externa de seguridad completa.</strong> Cerrados: todos los hallazgos <strong>críticos, altos, medios y bajos</strong> detectados antes del lanzamiento. Hotfixes operacionales adicionales aplicados tras la apertura a tráfico externo (Sentry reaper, observabilidad de panel, regresiones de MailerLite) — todos cerrados y documentados como postmortems. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
-					<p>Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>~760 tests funcionales pasando localmente</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
+					<summary translate="scanner-dossier-detail-3-summary">Seguridad — qué se auditó</summary>
+					<p translate-html="scanner-dossier-detail-3-p1"><strong>Auditoría externa de seguridad completa.</strong> Cerrados: todos los hallazgos <strong>críticos, altos, medios y bajos</strong> detectados antes del lanzamiento. Hotfixes operacionales adicionales aplicados tras la apertura a tráfico externo (Sentry reaper, observabilidad de panel, regresiones de MailerLite) — todos cerrados y documentados como postmortems. <strong>SSRF hardening</strong> (denylist de IPs privadas, normalización IDN/punycode, reverificación de redirects, variantes de hostname). <code>RedisRateLimiter</code> con <strong>script Lua atómico</strong> sustituye <code>InMemoryRateLimiter</code> — <strong>rate limiting correcto en multi-worker</strong>. Healthcheck real <code>/health</code> valida DB + Redis y devuelve <strong>HTTP 503</strong> si algún crítico falla.</p>
+					<p translate-html="scanner-dossier-detail-3-p2">Único item abierto al cierre de auditoría: L2 (copy de correos con promo mayo — acción manual antes del 1 de junio). <strong>~760 tests funcionales pasando localmente</strong>, <strong>cero deuda de seguridad abierta</strong>.</p>
 				</details>
 				<details>
-					<summary>Postmortems en producción</summary>
-					<p>El proyecto opera con <strong>disciplina formal de postmortem</strong>. Cada incidente con cliente real queda documentado: causa raíz, fix aplicado, aprendizaje arquitectónico, prevención. Casos cerrados a la fecha:</p>
+					<summary translate="scanner-dossier-detail-4-summary">Postmortems en producción</summary>
+					<p translate-html="scanner-dossier-detail-4-p1">El proyecto opera con <strong>disciplina formal de postmortem</strong>. Cada incidente con cliente real queda documentado: causa raíz, fix aplicado, aprendizaje arquitectónico, prevención. Casos cerrados a la fecha:</p>
 					<ul>
-						<li><strong>2hermanos.cl</strong> — dependencia de browser context; fix en aislamiento del worker.</li>
-						<li><strong>latinbugs.com</strong> — bug de template path en pipeline de informe.</li>
-						<li><strong>bakdesign.cl</strong> — worker OOM / stuck job; fix en gestión de memoria + timeout duro.</li>
-						<li><strong>PR38 (Sentry)</strong> — TypeError UTF-8 en capa de auth; fix con normalización de input.</li>
-						<li><strong>PR37 (Panel admin)</strong> — bloque Feedback D+7 colapsado vertical; fix de layout + invariante de observabilidad del panel.</li>
+						<li translate-html="scanner-dossier-detail-4-li1"><strong>2hermanos.cl</strong> — dependencia de browser context; fix en aislamiento del worker.</li>
+						<li translate-html="scanner-dossier-detail-4-li2"><strong>latinbugs.com</strong> — bug de template path en pipeline de informe.</li>
+						<li translate-html="scanner-dossier-detail-4-li3"><strong>bakdesign.cl</strong> — worker OOM / stuck job; fix en gestión de memoria + timeout duro.</li>
+						<li translate-html="scanner-dossier-detail-4-li4"><strong>PR38 (Sentry)</strong> — TypeError UTF-8 en capa de auth; fix con normalización de input.</li>
+						<li translate-html="scanner-dossier-detail-4-li5"><strong>PR37 (Panel admin)</strong> — bloque Feedback D+7 colapsado vertical; fix de layout + invariante de observabilidad del panel.</li>
 					</ul>
-					<p>Los postmortems alimentan las <strong>invariantes críticas del sistema</strong>, lista de propiedades que no pueden romperse en ningún deploy.</p>
+					<p translate-html="scanner-dossier-detail-4-p2">Los postmortems alimentan las <strong>invariantes críticas del sistema</strong>, lista de propiedades que no pueden romperse en ningún deploy.</p>
 				</details>
 				<details>
-					<summary>Panel admin + observabilidad operativa</summary>
-					<p>Backoffice administrativo con endpoints operativos para revisión de audits, manejo de excepciones y gestión de feedback. El <strong>panel de feedback D+7</strong> (PR37) captura señales de clientes a 7 días desde la entrega y alimenta el plan de proof social. Cada release pasa por <strong>protocolo post-deploy</strong> formalizado.</p>
-					<p>Observabilidad: <strong>Sentry</strong> inicializado en el worker RQ (<code>_init_sentry_worker</code> en <code>backend/worker.py</code>), captura de errores y trazabilidad de jobs. Healthcheck <code>/health</code> con verificación real de dependencias (devuelve HTTP 503 si DB o Redis fallan). Suite de tests dedicada (<code>test_health.py</code>) garantiza que la observabilidad no se rompe en silencio.</p>
+					<summary translate="scanner-dossier-detail-5-summary">Panel admin + observabilidad operativa</summary>
+					<p translate-html="scanner-dossier-detail-5-p1">Backoffice administrativo con endpoints operativos para revisión de audits, manejo de excepciones y gestión de feedback. El <strong>panel de feedback D+7</strong> (PR37) captura señales de clientes a 7 días desde la entrega y alimenta el plan de proof social. Cada release pasa por <strong>protocolo post-deploy</strong> formalizado.</p>
+					<p translate-html="scanner-dossier-detail-5-p2">Observabilidad: <strong>Sentry</strong> inicializado en el worker RQ (<code>_init_sentry_worker</code> en <code>backend/worker.py</code>), captura de errores y trazabilidad de jobs. Healthcheck <code>/health</code> con verificación real de dependencias (devuelve HTTP 503 si DB o Redis fallan). Suite de tests dedicada (<code>test_health.py</code>) garantiza que la observabilidad no se rompe en silencio.</p>
 				</details>
 				<details>
-					<summary>Operación comercial</summary>
-					<p><strong>v0.1.1</strong> sostiene <code>preflight</code> gratuito + checkout para sitios aptos + <strong>5 scans por consenso</strong> + entrega editorial PDF. <strong>Embudo controlado</strong>, no autoservicio masivo. Posicionamiento basado en framework <strong>Obviously Awesome</strong> (puntuación interna 6.9/10 — el cap está en validación comercial repetida, no en producto). Competencia identificada: revisión manual, no-consumo, consultoría artesanal, herramientas parciales sin marco chileno. <strong>Playbook Paid Ads</strong> documentado (Meta mayo + Google junio 2026). Marketing operativo: Meta Ads + landing + blog técnico + <strong>video promocional con avatar IA</strong>.</p>
+					<summary translate="scanner-dossier-detail-6-summary">Operación comercial</summary>
+					<p translate-html="scanner-dossier-detail-6-p1"><strong>v0.1.1</strong> sostiene <code>preflight</code> gratuito + checkout para sitios aptos + <strong>5 scans por consenso</strong> + entrega editorial PDF. <strong>Embudo controlado</strong>, no autoservicio masivo. Posicionamiento basado en framework <strong>Obviously Awesome</strong> (puntuación interna 6.9/10 — el cap está en validación comercial repetida, no en producto). Competencia identificada: revisión manual, no-consumo, consultoría artesanal, herramientas parciales sin marco chileno. <strong>Playbook Paid Ads</strong> documentado (Meta mayo + Google junio 2026). Marketing operativo: Meta Ads + landing + blog técnico + <strong>video promocional con avatar IA</strong>.</p>
 				</details>
 			</section>
 
 			<footer class="dossier_footer">
-				<a class="dossier_cta dossier_cta--primary" href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer">Ver producto en vivo →</a>
-				<a class="dossier_cta dossier_cta--ghost" href="index.html#contact_form">Hablar conmigo →</a>
-				<p class="dossier_footer_meta">Última actualización del dossier: 2026-05-25 · Producto operado por AGLAYA · Versión vigente v0.1.1.</p>
+				<a class="dossier_cta dossier_cta--primary" href="https://ley-21719-chile.aglaya.biz/auditoria-ley-21719" target="_blank" rel="noopener noreferrer" translate-html="scanner-dossier-footer-cta-1">Ver producto en vivo →</a>
+				<a class="dossier_cta dossier_cta--ghost" href="index.html#contact_form" translate-html="scanner-dossier-footer-cta-2">Hablar conmigo →</a>
+				<p class="dossier_footer_meta" translate="scanner-dossier-footer-meta">Última actualización del dossier: 2026-05-25 · Producto operado por AGLAYA · Versión vigente v0.1.1.</p>
 			</footer>
 
 		</main>
@@ -697,8 +697,8 @@
 </div>
 <script src="assets/js/cookie-consent.min.js?v=893d31b11b" defer></script>
 
-	<div class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Vista ampliada">
-		<button class="lightbox-close" aria-label="Cerrar">&times;</button>
+	<div class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Vista ampliada" translate-aria-label="scanner-dossier-lightbox-overlay-aria">
+		<button class="lightbox-close" aria-label="Cerrar" translate-aria-label="scanner-dossier-lightbox-close-aria">&times;</button>
 		<figure>
 			<img alt="">
 			<figcaption></figcaption>
