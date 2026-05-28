@@ -9362,9 +9362,16 @@ body.aglaya_dossier_page {
 }
 .dossier_section p {
 	margin: 0 0 14px;
+	color: #1a1a1a;
+	font-size: 16px;
+	line-height: 1.65;
 }
 .dossier_section p:last-child {
 	margin-bottom: 0;
+}
+.dossier_section ol li,
+.dossier_section ul:not(.dossier_state_grid):not(.dossier_proves_grid):not(.dossier_frontier_list):not(.dossier_distribution_list) li {
+	color: #1a1a1a;
 }
 .dossier_section code {
 	background: rgba(10, 15, 33, 0.05);
@@ -9389,7 +9396,7 @@ body.aglaya_dossier_page {
 /* State grid (cards de números) */
 .dossier_state_grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	gap: 16px;
 	margin: 0 0 32px;
 	padding: 0;
@@ -9400,6 +9407,7 @@ body.aglaya_dossier_page {
 	background: var(--hero-color-paper);
 	border-radius: 8px;
 	border: 1px solid rgba(10, 15, 33, 0.06);
+	min-width: 0;
 }
 .dossier_state_grid li strong {
 	display: block;
@@ -9409,12 +9417,18 @@ body.aglaya_dossier_page {
 	color: var(--color-heading-primary);
 	margin-bottom: 6px;
 	letter-spacing: -0.01em;
+	overflow-wrap: anywhere;
 }
 .dossier_state_grid li span {
 	display: block;
-	font-size: 13px;
-	color: var(--color-text-muted);
-	line-height: 1.45;
+	font-size: 14px;
+	color: #4a4a4a;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+.dossier_state_grid li code {
+	white-space: nowrap;
+	font-size: 0.85em;
 }
 
 /* State figure (informe portada) */
@@ -9547,20 +9561,23 @@ body.aglaya_dossier_page {
 	background: var(--hero-color-paper);
 	border-left: 3px solid var(--hero-accent-cyan);
 	border-radius: 0 8px 8px 0;
+	min-width: 0;
 }
 .dossier_proves_grid > li > strong {
 	display: block;
 	font-family: var(--font-family-heading);
-	font-size: 18px;
+	font-size: 19px;
 	font-weight: 700;
 	color: var(--color-heading-primary);
 	margin-bottom: 8px;
+	overflow-wrap: anywhere;
 }
 .dossier_proves_grid li p {
 	margin: 0 0 10px;
 	font-size: 15px;
-	color: var(--color-text-primary);
-	line-height: 1.55;
+	color: #1a1a1a;
+	line-height: 1.6;
+	overflow-wrap: anywhere;
 }
 .dossier_proves_grid li p:last-child {
 	margin-bottom: 0;
@@ -9570,7 +9587,7 @@ body.aglaya_dossier_page {
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: 600;
-	color: var(--color-text-primary);
+	color: #1a1a1a;
 	margin: 0;
 }
 
@@ -9616,8 +9633,21 @@ body.aglaya_dossier_page {
 .dossier_inside details p {
 	margin: 12px 0 4px;
 	font-size: 15px;
-	color: var(--color-text-primary);
+	color: #1a1a1a;
 	line-height: 1.6;
+	overflow-wrap: anywhere;
+}
+.dossier_inside details ul,
+.dossier_inside details ol {
+	margin: 8px 0 12px;
+	padding-left: 22px;
+}
+.dossier_inside details li {
+	margin-bottom: 8px;
+	font-size: 15px;
+	color: #1a1a1a;
+	line-height: 1.6;
+	overflow-wrap: anywhere;
 }
 
 /* Dossier footer (CTAs finales) */
