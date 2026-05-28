@@ -399,13 +399,13 @@
 				<h2 translate="kanban-dossier-state-h2">Estado real</h2>
 				<ul class="dossier_state_grid">
 					<li><strong>v1.3.1</strong><span translate-html="kanban-dossier-state-version">Release vigente. Producción diaria del equipo AGLAYA en <code>kanban.aglaya.biz</code>.</span></li>
-					<li><strong>102 tests verde</strong><span translate="kanban-dossier-state-tests">Jest + Supertest, suite full-stack server + client. 4 tests preexistentes en skip con razón documentada.</span></li>
-					<li><strong>Mariana Trench cerrado</strong><span translate="kanban-dossier-state-mariana">Auditoría propia de cuatro frentes — UX, Seguridad, Legal multi-jurisdicción, DevOps. 30 hallazgos remediados.</span></li>
-					<li><strong>16 críticos cerrados</strong><span translate="kanban-dossier-state-critical">Incluye dos críticos mitigados en vuelo durante el propio audit (XSS via upload, backup ausente).</span></li>
-					<li><strong>8/9 tablas con RLS</strong><span translate-html="kanban-dossier-state-rls">Row Level Security activo con funciones <code>SECURITY DEFINER</code>. 37 policies en producción.</span></li>
+					<li><strong>~100 tests verde</strong><span translate="kanban-dossier-state-tests">Jest + Supertest, suite full-stack server + client (101 passing, 4 skipped preexistentes con razón documentada).</span></li>
+					<li><strong>Mariana Trench cerrado</strong><span translate="kanban-dossier-state-mariana">Auditoría propia de cuatro frentes — UX, Seguridad, Legal multi-jurisdicción, DevOps. 38 hallazgos remediados post-Sprint 1.</span></li>
+					<li><strong>18 críticos cerrados</strong><span translate="kanban-dossier-state-critical">Incluye dos críticos mitigados en vuelo durante el propio audit (XSS via upload, backup ausente). Todos los críticos del cierre del audit, resueltos.</span></li>
+					<li><strong>9/9 tablas con RLS</strong><span translate-html="kanban-dossier-state-rls">Row Level Security activo con funciones <code>SECURITY DEFINER</code>. 37 policies verificadas en smoke test de backup-restore.</span></li>
 					<li><strong>Backup diario en Cloudflare R2</strong><span translate="kanban-dossier-state-backup">Retention 30 días. Smoke test verde: 10 de 10 tablas restauradas correctamente.</span></li>
 					<li><strong>6/6 DPAs archivados</strong><span translate="kanban-dossier-state-dpas">Supabase (con TIA), Resend, Railway, Netlify, Cloudflare, Microsoft — RGPD Art. 28.</span></li>
-					<li><strong>Sentry activo</strong><span translate-html="kanban-dossier-state-sentry"><code>@sentry/node</code> + <code>@sentry/react</code>. <code>SENTRY_RELEASE</code> taggeado por deploy.</span></li>
+					<li><strong>Sentry activo</strong><span translate-html="kanban-dossier-state-sentry"><code>@sentry/node</code> server-side con <code>SENTRY_RELEASE</code> taggeado por deploy. Captura 5xx + bypass intentado del proxy Netlify.</span></li>
 				</ul>
 			</section>
 
@@ -417,7 +417,7 @@
 					<li translate-html="kanban-dossier-frontier-not-1"><strong>No</strong> está multi-organización todavía — single-tenant intencional, Phase 5 sin fecha (ADR-020).</li>
 					<li translate-html="kanban-dossier-frontier-not-2"><strong>No</strong> tiene SSO ni MFA — auth por JWT clásico con refresh token, suficiente para uso interno actual.</li>
 					<li translate-html="kanban-dossier-frontier-not-3"><strong>No</strong> ofrece versión auto-hospedada turn-key para terceros — código MIT y repo público, pero opera como instancia única en <code>kanban.aglaya.biz</code>.</li>
-					<li translate-html="kanban-dossier-frontier-not-4"><strong>No</strong> está libre de deuda — 49 hallazgos pendientes en backlog post-Mariana Trench (medio + bajo + info), todos catalogados.</li>
+					<li translate-html="kanban-dossier-frontier-not-4"><strong>No</strong> está libre de deuda — ~35 hallazgos abiertos + 3 parciales en backlog post-Mariana Trench (mayoría medios y bajos), todos catalogados.</li>
 				</ul>
 				<p translate-html="kanban-dossier-frontier-outro">La frontera no es marketing defensivo: es decisión de arquitectura. El producto sirve un caso de uso concreto (AGLAYA + clientes) y crece según evidencia de uso real, no según roadmap aspiracional.</p>
 			</section>
@@ -428,7 +428,7 @@
 				<ul class="dossier_proves_grid">
 					<li>
 						<strong translate="kanban-dossier-proves-1-title">Multi-tenant Postgres-nativo</strong>
-						<p translate-html="kanban-dossier-proves-1-body">Aislamiento de datos garantizado por dos capas: middlewares Express concéntricos (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) y <strong>RLS</strong> en Postgres con funciones <code>SECURITY DEFINER</code>. Aunque la capa de aplicación falle, la base de datos rechaza la consulta. <strong>8 de 9 tablas con RLS activo</strong>, 37 policies en producción, 17 foreign keys y 17 cláusulas <code>ON DELETE</code> para integridad referencial.</p>
+						<p translate-html="kanban-dossier-proves-1-body">Aislamiento de datos garantizado por dos capas: middlewares Express concéntricos (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) y <strong>RLS</strong> en Postgres con funciones <code>SECURITY DEFINER</code>. Aunque la capa de aplicación falle, la base de datos rechaza la consulta. <strong>Las 9 tablas con RLS activo</strong>, 37 policies verificadas en smoke test de producción, 17 foreign keys y 17 cláusulas <code>ON DELETE</code> para integridad referencial.</p>
 					</li>
 					<li>
 						<strong translate="kanban-dossier-proves-2-title">Disciplina de ADRs</strong>
@@ -436,7 +436,7 @@
 					</li>
 					<li>
 						<strong translate="kanban-dossier-proves-3-title">Auditoría de cuatro frentes</strong>
-						<p translate-html="kanban-dossier-proves-3-body">Auditoría propia <em>Mariana Trench</em> en cuatro dimensiones: UX y accesibilidad, seguridad y base de datos, legal multi-jurisdicción, DevOps y observabilidad. <strong>79 hallazgos formales</strong>, 30 cerrados durante el ciclo (16 críticos + 9 altos + 5 medios), 49 backlog. Cada hallazgo lleva ID, severidad, evidencia, mitigación y commit SHA. <strong>Dos críticos mitigados en vuelo</strong> durante el propio audit.</p>
+						<p translate-html="kanban-dossier-proves-3-body">Auditoría propia <em>Mariana Trench</em> en cuatro dimensiones: UX y accesibilidad, seguridad y base de datos, legal multi-jurisdicción, DevOps y observabilidad. <strong>79 hallazgos formales</strong>, 38 cerrados post-Sprint 1 (18 críticos + 15 altos + 5 medios), ~35 en backlog catalogado. Cada hallazgo lleva ID, severidad, evidencia, mitigación y commit SHA. <strong>Dos críticos mitigados en vuelo</strong> durante el propio audit.</p>
 					</li>
 					<li>
 						<strong translate="kanban-dossier-proves-4-title">Compliance multi-jurisdiccional</strong>
@@ -444,7 +444,7 @@
 					</li>
 					<li>
 						<strong translate="kanban-dossier-proves-5-title">Observabilidad post-audit</strong>
-						<p translate-html="kanban-dossier-proves-5-body">Sentry inicializado en server y cliente (<code>@sentry/node</code> + <code>@sentry/react</code>) con <code>SENTRY_RELEASE</code> taggeado por deploy. CI workflow en GitHub Actions corre <code>npm test</code> en cada PR. Healthcheck <code>/api/health</code> con verificación real de dependencias. <strong>Backup diario</strong> en Cloudflare R2 vía GitHub Actions cron, retention 30 días, smoke test verde (10 de 10 tablas restauradas).</p>
+						<p translate-html="kanban-dossier-proves-5-body">Sentry inicializado en server (<code>@sentry/node</code>) con <code>SENTRY_RELEASE</code> taggeado por deploy. Captura de 5xx y de bypass intentado del proxy Netlify (B-03). CI workflow en GitHub Actions corre <code>npm test</code> en cada PR. Healthcheck <code>/api/health</code> con skip de rate-limit para uptime monitors. <strong>Backup diario</strong> en Cloudflare R2 vía GitHub Actions cron, retention 30 días, smoke test verde (10 de 10 tablas restauradas).</p>
 					</li>
 					<li>
 						<strong translate="kanban-dossier-proves-6-title">Zero vendor lock-in operativo</strong>
@@ -467,18 +467,18 @@
 					<p translate-html="kanban-dossier-detail-2-p1">Backend <strong>Node.js + Express 4</strong> con separación canónica <code>app.js</code> (configuración + rutas + middlewares) / <code>index.js</code> (entry point TCP) — ADR-024. <strong>JWT con refresh token</strong> + access de 15 minutos (B-02 post-audit). Helmet con CSP en producción. Rate limiting global + específico por endpoint sensible.</p>
 					<p translate-html="kanban-dossier-detail-2-p2">Frontend <strong>React 18 + Vite + TailwindCSS</strong>. <code>@dnd-kit</code> para drag-and-drop con <code>KeyboardSensor</code> (A-02 post-audit, WCAG 2.1.1). Avatar con crop integrado. Mini-kanban decorativo determinista en cards de workspace para identidad visual sin assets externos.</p>
 					<p translate-html="kanban-dossier-detail-2-p3">Email vía <strong>Resend</strong>. Admin digest + user digest diarios. <code>node-cron</code> del servidor reemplazado por GitHub Actions cron (mejor SLA, sin proceso vivo en el server, ADR no formal — decisión operacional documentada en INCIDENTS.md).</p>
-					<p translate-html="kanban-dossier-detail-2-p4">Base de datos Supabase: nueve tablas, ocho con RLS activa, 17 foreign keys, 37 RLS policies en producción, 7 índices de rendimiento en columnas de alta frecuencia (workspace_id, board_id, user_id, read, due_date).</p>
+					<p translate-html="kanban-dossier-detail-2-p4">Base de datos Supabase: nueve tablas, las nueve con RLS activa post-audit (B-04 cerró el caso de <code>organizations</code>), 17 foreign keys, 37 policies verificadas en smoke test de producción, 7 índices de rendimiento en columnas de alta frecuencia (workspace_members.user_id, notifications.user_id parcial WHERE read=false, cards.board_id, columns.board_id, boards.workspace_id, users.organization_id).</p>
 				</details>
 				<details>
 					<summary translate="kanban-dossier-detail-3-summary">Auditoría Mariana Trench</summary>
 					<p translate-html="kanban-dossier-detail-3-p1">Auditoría propia en cuatro fases entre 2026-05-27 y 2026-05-28. Cuatro dimensiones: <strong>Fase A</strong> (UX, accesibilidad, performance, SEO), <strong>Fase B</strong> (seguridad, base de datos, arquitectura), <strong>Fase C</strong> (legal — RGPD, Ley 21.719 chilena, LGPD brasilera, DPAs, cookies, retention), <strong>Fase D</strong> (DevOps, observabilidad, documentación, mantenibilidad).</p>
-					<p translate-html="kanban-dossier-detail-3-p2">Resultado: <strong>79 hallazgos formales</strong>, 30 cerrados durante el ciclo (16 críticos + 9 altos + 5 medios), 49 en backlog catalogado. Cada hallazgo lleva ID, dimensión, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
+					<p translate-html="kanban-dossier-detail-3-p2">Resultado: <strong>79 hallazgos formales</strong>, 38 cerrados post-Sprint 1 (18 críticos + 15 altos + 5 medios), ~35 en backlog catalogado + 3 parciales en cierre. Cada hallazgo lleva ID, dimensión, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
 					<p translate-html="kanban-dossier-detail-3-p3"><strong>Dos críticos mitigados en vuelo</strong> durante el propio audit:</p>
 					<ul>
 						<li translate-html="kanban-dossier-detail-3-li1"><strong>B-CRIT-01 · CVSS 8.0</strong>: XSS explotable vía upload de SVG. <code>Multer</code> sin <code>fileFilter</code> aceptaba MIMEs arbitrarios, el proxy <code>/uploads/*</code> de Netlify daba mismo origen, y el JWT en <code>localStorage</code> era robable. Mitigación cuádruple: extension blocklist + MIME allowlist + validación de magic-bytes vía <code>file-type@16.5.4</code> + cinco tests de regresión. Commit <code>402b0d7</code>.</li>
 						<li translate-html="kanban-dossier-detail-3-li2"><strong>B-CRIT-02</strong>: Backup ausente sobre plan Supabase Free (sin daily backups, sin PITR). Un solo <code>DROP</code> o migración mal aplicada significaba pérdida total. Mitigación: GitHub Actions cron diario, <code>pg_dump</code> con PG17 client, upload a Cloudflare R2 vía API nativa (R2 rechaza <code>cfut_</code> tokens en el endpoint S3-compat), retention 30 días, runbook completo en <code>docs/runbooks/db-restore.md</code>. Commit final <code>3ae6541</code>.</li>
 					</ul>
-					<p translate-html="kanban-dossier-detail-3-p4">Tras el cierre, los 16 críticos abiertos se cerraron en cuatro batches de Sprint 1: 8 accesibilidad (labels, KeyboardSensor, role=dialog, focus-trap, skip-link, aria-labels), 5 legales (política de privacidad propia, <code>docs/legal/</code>, endpoints self-delete y self-export), 3 operacionales (Sentry, CI, sincronización de SECURITY.md con la realidad post-audit).</p>
+					<p translate-html="kanban-dossier-detail-3-p4">Tras el cierre, los 16 críticos abiertos del audit se cerraron en cuatro batches de Sprint 1: 8 accesibilidad (labels, KeyboardSensor, role=dialog, focus-trap, skip-link, aria-labels), 5 legales (política de privacidad propia, <code>docs/legal/</code>, endpoints self-delete y self-export), 3 operacionales (Sentry, CI, sincronización de SECURITY.md con la realidad post-audit). Sumados a los dos críticos mitigados en vuelo: <strong>18 críticos remediados en total</strong>.</p>
 				</details>
 				<details>
 					<summary translate="kanban-dossier-detail-4-summary">Compliance multi-jurisdiccional</summary>
@@ -489,14 +489,14 @@
 				</details>
 				<details>
 					<summary translate="kanban-dossier-detail-5-summary">Observabilidad y operación</summary>
-					<p translate-html="kanban-dossier-detail-5-p1"><strong>Sentry</strong> inicializado en server (<code>@sentry/node</code> en <code>server/index.js</code>) y cliente (<code>@sentry/react</code>). Variables de entorno <code>SENTRY_DSN</code>, <code>SENTRY_ENVIRONMENT</code> y <code>SENTRY_RELEASE</code> configuradas en Railway. Captura de errores con release tagging por deploy.</p>
+					<p translate-html="kanban-dossier-detail-5-p1"><strong>Sentry</strong> inicializado server-side (<code>@sentry/node</code> requerido ANTES que cualquier otro <code>require</code> en <code>server/index.js</code>). Variables de entorno <code>SENTRY_DSN</code>, <code>SENTRY_ENVIRONMENT</code> y <code>SENTRY_RELEASE</code> configuradas en Railway. El error middleware en <code>server/app.js</code> captura 5xx (<code>Sentry.captureException</code>) y los intentos de bypass del proxy Netlify (B-03 monitor). Sentry cliente aún no añadido.</p>
 					<p translate-html="kanban-dossier-detail-5-p2"><strong>Backup workflow</strong> en GitHub Actions: cron <code>17 3 * * *</code> UTC, <code>pg_dump</code> con PG17 client, upload a Cloudflare R2 vía API nativa (<code>/accounts/{id}/r2/buckets/{b}/objects/{key}</code> con bearer <code>cfut_</code>; R2 rechaza esos tokens en el endpoint S3-compat, por eso fue necesario migrar de <code>rclone</code> y <code>aws-cli</code> a <code>boto3</code> y finalmente a la API nativa). Retention 30 días automática.</p>
-					<p translate-html="kanban-dossier-detail-5-p3"><strong>CI</strong> workflow GitHub Actions corre <code>npm test</code> en cada PR. Estado actual: 102 tests verde / 4 skipped (preexistentes de auth/admin/security con mocks legacy que requieren refactor mayor; skip documentado con razón).</p>
+					<p translate-html="kanban-dossier-detail-5-p3"><strong>CI</strong> workflow GitHub Actions corre <code>npm test</code> en cada PR. Estado actual: 101 tests verde / 4 skipped (preexistentes de auth/admin/security con mocks legacy que requieren refactor mayor; skip documentado con razón). El 4 skipped es deliberado; cualquier rojo nuevo bloquea merge.</p>
 					<p translate-html="kanban-dossier-detail-5-p4"><strong>Healthcheck</strong> <code>/api/health</code> con verificación real de dependencias — devuelve no-200 si Supabase o secrets críticos no responden. Cobertura por test dedicado.</p>
 				</details>
 				<details>
 					<summary translate="kanban-dossier-detail-6-summary">Frontera honesta y backlog</summary>
-					<p translate-html="kanban-dossier-detail-6-p1"><strong>49 hallazgos pendientes</strong> post-Mariana Trench, todos catalogados por ID, severidad y esfuerzo en <code>docs/backlog/audit-mariana-roadmap.md</code>. Sprint 2 cubre P1 (accesibilidad alta + seguridad alta): A-01 inputs labels (6h), A-02 KeyboardSensor (3h), A-17 focus-lock (4h), B-02 JWT refresh (8h), B-03 Railway custom domain (4h). Sprints 3+ cubren P2 y P3.</p>
+					<p translate-html="kanban-dossier-detail-6-p1"><strong>~35 hallazgos abiertos + 3 parciales</strong> post-Sprint 1, todos catalogados por ID, severidad y esfuerzo en <code>docs/backlog/audit-mariana-roadmap.md</code>. Sprint 2 cubre los altos remanentes: a11y restantes, B-03 Railway custom domain + Cloudflare WAF, refactor de tests legacy preexistentes. Sprints 3+ cubren medios y bajos.</p>
 					<p translate-html="kanban-dossier-detail-6-p2"><strong>Hallazgos parciales</strong> con cierre pendiente al 100%: <code>A-20</code> (h1 añadido en LoginPage, falta en WorkspaceDashboard / AdminPage / Toolbar / ResetPasswordPage), <code>B-03</code> (monitor activo, falta custom domain Railway + Cloudflare WAF/Tunnel — runbook <code>docs/runbooks/railway-custom-domain.md</code> listo), <code>C-09</code> (template DPIA creada; formal pendiente hasta crecimiento de usuarios o exigencia de cliente externo).</p>
 					<p translate-html="kanban-dossier-detail-6-p3"><strong>Drift conocido</strong>: <code>package.json</code> declara versión 1.1.5 mientras el README y el producto en producción declaran v1.3.1. Actualizar en el próximo release.</p>
 				</details>
