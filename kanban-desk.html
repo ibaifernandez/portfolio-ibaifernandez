@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
 	<link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e">
-	<link rel="stylesheet" href="assets/css/style.min.css?v=b1341525a7">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=c85f60c66c">
 	<link rel="stylesheet" href="assets/css/print.min.css?v=37e763be91" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
 	<link rel="canonical" href="https://portfolio.ibaifernandez.com/kanban-desk.html">
@@ -391,6 +391,35 @@
 				</div>
 				<p translate-html="kanban-dossier-system-p2">Tres tipos de workspace cubren los tres mundos: <strong>personal</strong> para tu trabajo individual, <strong>interno</strong> para proyectos de equipo, <strong>externo</strong> para espacios compartidos con clientes. Los clientes ven únicamente los workspaces externos que les hayas asignado. El equipo ve todo lo interno. Tú ves todo. Cambiar un workspace a tipo <code>externo</code> dispara un aviso explícito porque su visibilidad cambia.</p>
 				<h3 class="dossier_subheading" translate="kanban-dossier-system-subheading">Defense in depth</h3>
+				<div class="dossier_chain" role="img" aria-label="Cadena de aislamiento: petición pasa por middlewares concéntricos y RLS antes de tocar la base de datos" translate-aria-label="kanban-dossier-chain-aria">
+					<div class="dossier_chain_step dossier_chain_step--request">
+						<span class="dossier_chain_label" translate-html="kanban-dossier-chain-1">Cliente<br>HTTP request</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label"><code>requireAuth</code></span>
+						<span class="dossier_chain_sub" translate="kanban-dossier-chain-2-sub">JWT válido + DB lookup</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label"><code>requireRole</code></span>
+						<span class="dossier_chain_sub" translate="kanban-dossier-chain-3-sub">superadmin / admin / colaborador / cliente</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label"><code>requireWorkspaceMember</code></span>
+						<span class="dossier_chain_sub" translate="kanban-dossier-chain-4-sub">membresía explícita en workspace</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--rls">
+						<span class="dossier_chain_label" translate="kanban-dossier-chain-5">RLS · SECURITY DEFINER</span>
+						<span class="dossier_chain_sub" translate="kanban-dossier-chain-5-sub">37 policies Postgres, rechaza si app layer falla</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--db">
+						<span class="dossier_chain_label" translate="kanban-dossier-chain-6">Postgres row</span>
+					</div>
+				</div>
 				<p translate-html="kanban-dossier-system-p3">El aislamiento no descansa sobre una sola capa. Cada petición pasa por <strong>middlewares concéntricos</strong> (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) en la API Express, y la base de datos refuerza el aislamiento con <strong>Row Level Security</strong> sobre Postgres usando funciones <code>SECURITY DEFINER</code>. Aunque la capa de aplicación fallara, la base de datos rechaza la consulta. El cliente nunca toca tablas Supabase directamente — solo usa <code>supabase.auth.*</code> para autenticación; todos los datos pasan por el backend.</p>
 			</section>
 
@@ -472,6 +501,28 @@
 				<details>
 					<summary translate="kanban-dossier-detail-3-summary">Auditoría Mariana Trench</summary>
 					<p translate-html="kanban-dossier-detail-3-p1">Auditoría propia en cuatro fases entre 2026-05-27 y 2026-05-28. Cuatro dimensiones: <strong>Fase A</strong> (UX, accesibilidad, performance, SEO), <strong>Fase B</strong> (seguridad, base de datos, arquitectura), <strong>Fase C</strong> (legal — RGPD, Ley 21.719 chilena, LGPD brasilera, DPAs, cookies, retention), <strong>Fase D</strong> (DevOps, observabilidad, documentación, mantenibilidad).</p>
+					<div class="dossier_timeline" role="img" aria-label="Timeline auditoría Mariana Trench: 4 fases entre 27 y 28 de mayo de 2026" translate-aria-label="kanban-dossier-timeline-aria">
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">A</span>
+							<strong class="dossier_timeline_title" translate="kanban-dossier-timeline-a-title">UX · A11y · Perf · SEO</strong>
+							<span class="dossier_timeline_meta" translate-html="kanban-dossier-timeline-a-meta">24 hallazgos · 5 críticos · WCAG 2.1 AA</span>
+						</div>
+						<div class="dossier_timeline_phase dossier_timeline_phase--critical">
+							<span class="dossier_timeline_id">B</span>
+							<strong class="dossier_timeline_title" translate="kanban-dossier-timeline-b-title">Seguridad · DB · Arquitectura</strong>
+							<span class="dossier_timeline_meta" translate-html="kanban-dossier-timeline-b-meta">19 hallazgos · 2 críticos mitigados <em>en vuelo</em> (XSS upload, backup ausente)</span>
+						</div>
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">C</span>
+							<strong class="dossier_timeline_title" translate="kanban-dossier-timeline-c-title">Legal multi-jurisdicción</strong>
+							<span class="dossier_timeline_meta" translate-html="kanban-dossier-timeline-c-meta">18 hallazgos · RGPD + Ley 21.719 + LGPD · 6 DPAs archivados</span>
+						</div>
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">D</span>
+							<strong class="dossier_timeline_title" translate="kanban-dossier-timeline-d-title">DevOps · Observabilidad · Docs</strong>
+							<span class="dossier_timeline_meta" translate-html="kanban-dossier-timeline-d-meta">18 hallazgos · Sentry + CI workflow + R2 backup diario</span>
+						</div>
+					</div>
 					<p translate-html="kanban-dossier-detail-3-p2">Resultado: <strong>79 hallazgos formales</strong>, 38 cerrados post-Sprint 1 (18 críticos + 15 altos + 5 medios), ~35 en backlog catalogado + 3 parciales en cierre. Cada hallazgo lleva ID, dimensión, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
 					<p translate-html="kanban-dossier-detail-3-p3"><strong>Dos críticos mitigados en vuelo</strong> durante el propio audit:</p>
 					<ul>

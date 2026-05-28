@@ -1,7 +1,7 @@
 {
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/en.json": {
-    "mtime": 1779959683.691008,
-    "ast_hash": "61d25e5860c034ed822aef35be406034",
+    "mtime": 1779960237.1719117,
+    "ast_hash": "ec128785514b3b1389e3bdbda3aa6208",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/playwright.config.js": {
@@ -15,8 +15,8 @@
     "semantic_hash": "8275ec0b32d0716514c28c0c465f807d"
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/es.json": {
-    "mtime": 1779959575.0905704,
-    "ast_hash": "ab1860fb5d7db634cc6620fe0462df8d",
+    "mtime": 1779960134.8652802,
+    "ast_hash": "0704a4d623555c032d57344da0a65aad",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-links.mjs": {
@@ -50,9 +50,9 @@
     "semantic_hash": "9b94c859091f2ef64afe2c55c6f2c8d4"
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/performance-budget.config.json": {
-    "mtime": 1779803003.937931,
-    "ast_hash": "d0df7d0c2e74a552dd1c21c97bf97438",
-    "semantic_hash": "d0df7d0c2e74a552dd1c21c97bf97438"
+    "mtime": 1779960264.339174,
+    "ast_hash": "469472189f3d0f600c3d6da517cf29bb",
+    "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-performance-budget.mjs": {
     "mtime": 1775743275.6068468,
@@ -475,8 +475,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/dossier-scanner-21179.template.html": {
-    "mtime": 1779877488.0689821,
-    "ast_hash": "a9c3ee42d0b95b6e246934bcd98e4f5a",
+    "mtime": 1779960010.9570742,
+    "ast_hash": "48838b5bb73554b75dec36a4417d48f4",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/project-aglaya.template.html": {
@@ -525,7 +525,7 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/kanban-desk.html": {
-    "mtime": 1779959691.4706025,
+    "mtime": 1779960251.7601714,
     "ast_hash": "bf2a60ddd004782a6df9b311fc3e1acb",
     "semantic_hash": ""
   },
