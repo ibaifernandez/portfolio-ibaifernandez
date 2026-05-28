@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="AGLAYA Kanban Desk — Kanban multi-tenant auto-hospedado para equipos que trabajan con clientes. React 18, Node.js, Supabase con RLS, auditoría Mariana Trench cerrada. Producto en producción operado por AGLAYA.">
+	<meta name="keywords" content="AGLAYA Kanban Desk, Kanban multi-tenant, RLS Postgres, Supabase, auto-hospedado, agencias, Ibai Fernández, AI Product Engineer, full-stack JavaScript">
+	<meta name="author" content="Ibai Fernández">
+	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="theme-color" content="#121217">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://portfolio.ibaifernandez.com/kanban-desk.html">
+	<meta property="og:title" content="AGLAYA Kanban Desk — Dossier | Ibai Fernández">
+	<meta property="og:description" content="Kanban multi-tenant para equipos que trabajan con clientes. Aislamiento Postgres-nativo (RLS), tres tipos de workspace (personal/interno/externo), email digest propio, auditoría Mariana Trench cerrada con 30 hallazgos remediados.">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/kanban-desk.html">
+	<meta property="twitter:title" content="AGLAYA Kanban Desk — Dossier | Ibai Fernández">
+	<meta property="twitter:description" content="Kanban multi-tenant auto-hospedado para equipos que trabajan con clientes. Auditoría Mariana Trench cerrada.">
+	<title>AGLAYA Kanban Desk — Dossier | Ibai Fernández</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
+	<link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=6f7dd74982">
+	<link rel="stylesheet" href="assets/css/print.min.css?v=37e763be91" media="print">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="https://portfolio.ibaifernandez.com/kanban-desk.html">
+</head>
+
+<body class="dossier_ai_page project_dossier_page kanban_dossier">
+	<a class="skip-link" href="#dossier_main" translate="skip-to-main">Saltar al contenido principal</a>
+<!-- Start Sidebar -->
+
+    <div class="port_sidebar_wrapper mport_sidebar_wrapper project_sidebar">
+		<div class="port_sidebar_profile">
+			<a href="index.html" class="port_sidebar_position active" aria-label="Go to home page">
+				<div class="profile_circle ">
+										<picture>
+<source type="image/avif" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.avif 160w, assets/images/ibai-fernandez-1x1-sidebar.avif 1024w" sizes="80px">
+<source type="image/webp" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.webp 160w, assets/images/ibai-fernandez-1x1-sidebar.webp 1024w" sizes="80px">
+<img src="assets/images/ibai-fernandez-1x1-sidebar.jpeg" srcset="assets/images/ibai-fernandez-1x1-sidebar-160.jpeg 160w, assets/images/ibai-fernandez-1x1-sidebar.jpeg 1024w" sizes="80px" alt="Ibai Fernández" class="img-fluid" loading="eager" decoding="sync" fetchpriority="high" width="1024" height="1024" data-avif-fallback="true">
+					</picture>
+				</div>
+			</a>
+
+        </div>
+
+        <div class="port_sidebar_nav">
+			<div class="port_navigation index_navigation">
+				<ul class="nav_list">
+					
+                    <li data-number="0">
+						<div class="tooltip_box">
+							<a href="index.html#about_sec" class="siderbar_menuicon">
+								<span class="first_micon">
+									<svg class="nav_about_svg" xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" width="26px" height="26px">
+										<defs>
+											<filter id="Filter_0">
+												<feFlood flood-color="rgb(255, 74, 74)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+
+										</defs>
+										<g filter="url(#Filter_0)">
+											<path fill-rule="evenodd" fill="rgb(14, 15, 33)"
+												d="M21.937,13.863 L4.063,13.863 L4.063,7.776 L21.937,7.776 L21.937,13.863 ZM6.094,11.832 L19.906,11.832 L19.906,9.807 L6.094,9.807 L6.094,11.832 ZM21.937,3.866 L4.063,3.866 L4.063,5.897 L21.937,5.897 L21.937,3.866 ZM21.937,17.767 L12.188,17.767 L12.188,19.799 L21.937,19.799 L21.937,17.767 ZM10.156,21.830 L4.063,21.830 L4.063,15.742 L10.156,15.742 L10.156,21.830 ZM6.094,19.799 L8.125,19.799 L8.125,17.773 L6.094,17.773 L6.094,19.799 ZM22.953,26.000 L3.047,26.000 C1.367,26.000 0.000,24.633 0.000,22.953 L0.000,3.047 C0.000,1.367 1.367,0.000 3.047,0.000 L22.953,0.000 C24.633,0.000 26.000,1.367 26.000,3.047 L26.000,22.953 C26.000,24.633 24.633,26.000 22.953,26.000 L22.953,26.000 ZM3.047,2.031 C2.487,2.031 2.031,2.487 2.031,3.047 L2.031,22.953 C2.031,23.513 2.487,23.969 3.047,23.969 L22.953,23.969 C23.513,23.969 23.969,23.513 23.969,22.953 L23.969,3.047 C23.969,2.487 23.513,2.031 22.953,2.031 L3.047,2.031 Z" />
+										</g>
+									</svg>
+								</span>
+								<span class="second_micon">
+
+									<svg class="nav_about_svg" xmlns="http://www.w3.org/2000/svg"
+										xmlns:xlink="http://www.w3.org/1999/xlink" width="26px" height="26px">
+										<defs>
+											<filter>
+												<feFlood flood-color="rgb(255, 74, 74)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+
+										</defs>
+										<g filter="url(#Filter_0)">
+											<path fill-rule="evenodd" fill="rgb(14, 15, 33)"
+												d="M21.937,13.863 L4.063,13.863 L4.063,7.776 L21.937,7.776 L21.937,13.863 ZM6.094,11.832 L19.906,11.832 L19.906,9.807 L6.094,9.807 L6.094,11.832 ZM21.937,3.866 L4.063,3.866 L4.063,5.897 L21.937,5.897 L21.937,3.866 ZM21.937,17.767 L12.188,17.767 L12.188,19.799 L21.937,19.799 L21.937,17.767 ZM10.156,21.830 L4.063,21.830 L4.063,15.742 L10.156,15.742 L10.156,21.830 ZM6.094,19.799 L8.125,19.799 L8.125,17.773 L6.094,17.773 L6.094,19.799 ZM22.953,26.000 L3.047,26.000 C1.367,26.000 0.000,24.633 0.000,22.953 L0.000,3.047 C0.000,1.367 1.367,0.000 3.047,0.000 L22.953,0.000 C24.633,0.000 26.000,1.367 26.000,3.047 L26.000,22.953 C26.000,24.633 24.633,26.000 22.953,26.000 L22.953,26.000 ZM3.047,2.031 C2.487,2.031 2.031,2.487 2.031,3.047 L2.031,22.953 C2.031,23.513 2.487,23.969 3.047,23.969 L22.953,23.969 C23.513,23.969 23.969,23.513 23.969,22.953 L23.969,3.047 C23.969,2.487 23.513,2.031 22.953,2.031 L3.047,2.031 Z" />
+										</g>
+									</svg>
+								</span>
+							</a>
+							<span class="menu_tooltip" translate="sidebar-tooltip-about">About</span>
+						</div>
+					</li>
+
+                    <li data-number="1">
+						<div class="tooltip_box">
+							<a href="index.html#training_sec" class="siderbar_menuicon">
+								<span class="first_micon">
+									<svg  height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                    viewBox="0 0 355.438 355.438" xml:space="preserve">
+										<defs>
+											<filter id="Filter_1">
+												<feFlood flood-color="rgb(0, 200, 218)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+
+										</defs>
+										<g filter="url(#Filter_1)">
+											<path d="M7.999,339.806c-1.001,0-2.02-0.189-3.005-0.589c-4.094-1.661-6.066-6.327-4.405-10.421l22.068-54.39
+                                                    c9.5-23.403,26.342-54.327,63.335-55.823c0.313-0.038,0.63-0.057,0.949-0.057h33.005c0.319,0,0.636,0.019,0.949,0.057
+                                                    c36.996,1.496,53.838,32.42,63.337,55.822l2.846,7.015l59.311-54.812c3.245-2.999,8.308-2.799,11.305,0.445
+                                                    c2.999,3.245,2.8,8.306-0.445,11.305l-67.805,62.663c-1.929,1.783-4.612,2.506-7.173,1.932c-2.563-0.572-4.683-2.366-5.67-4.8
+                                                    l-7.194-17.731c-11.43-28.16-24.617-42.187-43.098-45.247l-4.704,22.456l6.293,56.622c0.302,2.72-0.807,5.406-2.94,7.12
+                                                    l-14.015,11.26c-1.421,1.142-3.188,1.764-5.011,1.764h-4.974c-1.822,0-3.59-0.622-5.01-1.763l-14.016-11.26
+                                                    c-2.134-1.714-3.243-4.4-2.941-7.121l6.295-56.622l-4.705-22.455c-18.48,3.061-31.667,17.088-43.098,45.247l-22.068,54.389
+                                                    C14.154,337.921,11.16,339.806,7.999,339.806z M95.379,311.653l8.066,6.48l8.065-6.48l-5.158-46.409h-5.815L95.379,311.653z
+                                                    M99.876,249.244h7.139l3.083-14.717H96.792L99.876,249.244z M347.438,314.278H225.832c-4.418,0-8-3.582-8-8s3.582-8,8-8h113.605
+                                                    V67.943H22.341v168.339c0,4.418-3.582,8-8,8s-8-3.582-8-8V59.943c0-4.418,3.582-8,8-8h333.097c4.418,0,8,3.582,8,8v246.335
+                                                    C355.438,310.696,351.856,314.278,347.438,314.278z M143.05,276.41c-4.418,0-8-3.582-8-8v-1.089c0-4.418,3.582-8,8-8s8,3.582,8,8
+                                                    v1.089C151.05,272.828,147.468,276.41,143.05,276.41z M103.445,203.87c-24.271,0-44.018-19.747-44.018-44.018
+                                                    s19.746-44.018,44.018-44.018c2.914,0,5.764,0.285,8.521,0.828c0.161,0.027,0.321,0.06,0.48,0.098
+                                                    c19.969,4.166,35.016,21.905,35.016,43.092C147.462,184.124,127.716,203.87,103.445,203.87z M89.161,135.756
+                                                    c-8.217,4.89-13.734,13.861-13.734,24.096c0,15.449,12.569,28.018,28.018,28.018s28.018-12.569,28.018-28.018
+                                                    c0-11.692-7.199-21.735-17.398-25.927c-3.65,4.823-8.263,8.855-13.586,11.843c-3.854,2.163-8.73,0.792-10.892-3.061
+                                                    C88.343,140.492,88.267,137.938,89.161,135.756z M304.059,150.392h-41.058c-4.418,0-8-3.582-8-8s3.582-8,8-8h41.058
+                                                    c4.418,0,8,3.582,8,8S308.477,150.392,304.059,150.392z M225.831,150.392h-15.25c-4.418,0-8-3.582-8-8s3.582-8,8-8h15.25
+                                                    c4.418,0,8,3.582,8,8S230.249,150.392,225.831,150.392z M304.059,117.016h-82.116c-4.418,0-8-3.582-8-8s3.582-8,8-8h82.116
+                                                    c4.418,0,8,3.582,8,8S308.477,117.016,304.059,117.016z M221.949,31.631h-82.12c-4.418,0-8-3.582-8-8s3.582-8,8-8h82.12
+                                                    c4.418,0,8,3.582,8,8S226.367,31.631,221.949,31.631z"/>
+                                        </g>
+									</svg>
+								</span>
+								<span class="second_micon">
+
+                                    <svg version="1.1" id="Capa_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                                    viewBox="0 0 355.438 355.438" xml:space="preserve">
+										<defs>
+											<filter>
+												<feFlood flood-color="rgb(0, 200, 218)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+
+										</defs>
+										<g filter="url(#Filter_0)">
+											<path fill-rule="evenodd" fill="rgb(14, 15, 33)"
+                                            d="M7.999,339.806c-1.001,0-2.02-0.189-3.005-0.589c-4.094-1.661-6.066-6.327-4.405-10.421l22.068-54.39
+                                            c9.5-23.403,26.342-54.327,63.335-55.823c0.313-0.038,0.63-0.057,0.949-0.057h33.005c0.319,0,0.636,0.019,0.949,0.057
+                                            c36.996,1.496,53.838,32.42,63.337,55.822l2.846,7.015l59.311-54.812c3.245-2.999,8.308-2.799,11.305,0.445
+                                            c2.999,3.245,2.8,8.306-0.445,11.305l-67.805,62.663c-1.929,1.783-4.612,2.506-7.173,1.932c-2.563-0.572-4.683-2.366-5.67-4.8
+                                            l-7.194-17.731c-11.43-28.16-24.617-42.187-43.098-45.247l-4.704,22.456l6.293,56.622c0.302,2.72-0.807,5.406-2.94,7.12
+                                            l-14.015,11.26c-1.421,1.142-3.188,1.764-5.011,1.764h-4.974c-1.822,0-3.59-0.622-5.01-1.763l-14.016-11.26
+                                            c-2.134-1.714-3.243-4.4-2.941-7.121l6.295-56.622l-4.705-22.455c-18.48,3.061-31.667,17.088-43.098,45.247l-22.068,54.389
+                                            C14.154,337.921,11.16,339.806,7.999,339.806z M95.379,311.653l8.066,6.48l8.065-6.48l-5.158-46.409h-5.815L95.379,311.653z
+                                             M99.876,249.244h7.139l3.083-14.717H96.792L99.876,249.244z M347.438,314.278H225.832c-4.418,0-8-3.582-8-8s3.582-8,8-8h113.605
+                                            V67.943H22.341v168.339c0,4.418-3.582,8-8,8s-8-3.582-8-8V59.943c0-4.418,3.582-8,8-8h333.097c4.418,0,8,3.582,8,8v246.335
+                                            C355.438,310.696,351.856,314.278,347.438,314.278z M143.05,276.41c-4.418,0-8-3.582-8-8v-1.089c0-4.418,3.582-8,8-8s8,3.582,8,8
+                                            v1.089C151.05,272.828,147.468,276.41,143.05,276.41z M103.445,203.87c-24.271,0-44.018-19.747-44.018-44.018
+                                            s19.746-44.018,44.018-44.018c2.914,0,5.764,0.285,8.521,0.828c0.161,0.027,0.321,0.06,0.48,0.098
+                                            c19.969,4.166,35.016,21.905,35.016,43.092C147.462,184.124,127.716,203.87,103.445,203.87z M89.161,135.756
+                                            c-8.217,4.89-13.734,13.861-13.734,24.096c0,15.449,12.569,28.018,28.018,28.018s28.018-12.569,28.018-28.018
+                                            c0-11.692-7.199-21.735-17.398-25.927c-3.65,4.823-8.263,8.855-13.586,11.843c-3.854,2.163-8.73,0.792-10.892-3.061
+                                            C88.343,140.492,88.267,137.938,89.161,135.756z M304.059,150.392h-41.058c-4.418,0-8-3.582-8-8s3.582-8,8-8h41.058
+                                            c4.418,0,8,3.582,8,8S308.477,150.392,304.059,150.392z M225.831,150.392h-15.25c-4.418,0-8-3.582-8-8s3.582-8,8-8h15.25
+                                            c4.418,0,8,3.582,8,8S230.249,150.392,225.831,150.392z M304.059,117.016h-82.116c-4.418,0-8-3.582-8-8s3.582-8,8-8h82.116
+                                            c4.418,0,8,3.582,8,8S308.477,117.016,304.059,117.016z M221.949,31.631h-82.12c-4.418,0-8-3.582-8-8s3.582-8,8-8h82.12
+                                            c4.418,0,8,3.582,8,8S226.367,31.631,221.949,31.631z" stroke-width="12"/>
+										</g>
+									</svg>
+								</span>
+							</a>
+							<span class="menu_tooltip" translate="sidebar-tooltip-training">Training</span>
+						</div>
+					</li>
+					
+                    <li data-number="2">
+						<div class="tooltip_box">
+							<a href="index.html#project_sec" class="siderbar_menuicon">
+								<span class="first_micon">
+                                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
+                                        <!-- <defs>
+											<filter id="Filter_1">
+												<feFlood flood-color="rgb(0, 200, 218)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+										</defs> -->
+										<g>
+                                            <polygon points="59.4 52.8 11 52.8 8.8 24.2 61.6 24.2 59.4 52.8" style="stroke:#ffc455; stroke-width:5;"/>
+                                            <polyline points="13.2 24.2 13.2 13.2 24.2 13.2 28.6 17.6 57.2 17.6 57.2 24.2" style="stroke:#ffc455;stroke-width:5;"/>                                            
+                                        </g>
+									</svg>
+								</span>
+								<span class="second_micon">
+
+                                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
+										<!-- <defs>
+											<filter>
+												<feFlood flood-color="rgb(0, 200, 218)" flood-opacity="1"
+													result="floodOut" />
+												<feComposite operator="atop" in="floodOut" in2="SourceGraphic"
+													result="compOut" />
+												<feBlend mode="normal" in="compOut" in2="SourceGraphic" />
+											</filter>
+										</defs> -->
+										<g>
+											<polygon points="59.4 52.8 11 52.8 8.8 24.2 61.6 24.2 59.4 52.8" style="stroke:#ffc455; stroke-width:5;"/>
+                                            <polyline points="13.2 24.2 13.2 13.2 24.2 13.2 28.6 17.6 57.2 17.6 57.2 24.2" style="stroke:#ffc455;stroke-width:5;"/>    
+										</g>
+									</svg>
+								</span>
+							</a>
+							<span class="menu_tooltip" translate="sidebar-tooltip-portfolio">Portfolio</span>
+						</div>
+					</li>
+
+                    <li data-number="4">
+						<div class="tooltip_box">
+							<a href="index.html#contact_form" class="siderbar_menuicon">
+								<span class="first_micon">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.56 480.56"
+										class="nav_contact_svg" width="20px" height="20px">
+										<g>
+											<g>
+												<path d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8
+														c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4
+														c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8
+														c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3
+														c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9
+														c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z" />
+												<path d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1
+														c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z" />
+												<path d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5
+														l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z" />
+											</g>
+										</g>
+									</svg>
+								</span>
+								<span class="second_micon">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.56 480.56"
+										class="nav_contact_svg" width="20px" height="20px">
+										<g>
+											<g>
+												<path d="M365.354,317.9c-15.7-15.5-35.3-15.5-50.9,0c-11.9,11.8-23.8,23.6-35.5,35.6c-3.2,3.3-5.9,4-9.8,1.8
+														c-7.7-4.2-15.9-7.6-23.3-12.2c-34.5-21.7-63.4-49.6-89-81c-12.7-15.6-24-32.3-31.9-51.1c-1.6-3.8-1.3-6.3,1.8-9.4
+														c11.9-11.5,23.5-23.3,35.2-35.1c16.3-16.4,16.3-35.6-0.1-52.1c-9.3-9.4-18.6-18.6-27.9-28c-9.6-9.6-19.1-19.3-28.8-28.8
+														c-15.7-15.3-35.3-15.3-50.9,0.1c-12,11.8-23.5,23.9-35.7,35.5c-11.3,10.7-17,23.8-18.2,39.1c-1.9,24.9,4.2,48.4,12.8,71.3
+														c17.6,47.4,44.4,89.5,76.9,128.1c43.9,52.2,96.3,93.5,157.6,123.3c27.6,13.4,56.2,23.7,87.3,25.4c21.4,1.2,40-4.2,54.9-20.9
+														c10.2-11.4,21.7-21.8,32.5-32.7c16-16.2,16.1-35.8,0.2-51.8C403.554,355.9,384.454,336.9,365.354,317.9z" />
+												<path d="M346.254,238.2l36.9-6.3c-5.8-33.9-21.8-64.6-46.1-89c-25.7-25.7-58.2-41.9-94-46.9l-5.2,37.1
+														c27.7,3.9,52.9,16.4,72.8,36.3C329.454,188.2,341.754,212,346.254,238.2z" />
+												<path d="M403.954,77.8c-42.6-42.6-96.5-69.5-156-77.8l-5.2,37.1c51.4,7.2,98,30.5,134.8,67.2c34.9,34.9,57.8,79,66.1,127.5
+														l36.9-6.3C470.854,169.3,444.354,118.3,403.954,77.8z" />
+											</g>
+										</g>
+									</svg>
+								</span>
+							</a>
+							<span class="menu_tooltip" translate="sidebar-tooltip-contact">Contact</span>
+						</div>
+					</li>
+
+				</ul>
+			</div>
+		</div>
+
+        <div class="port_sidebar_social">
+			<div class="port__social_box">
+				<div class="port__followus">
+					<p translate="lets-get-social">Let's connect</p>
+				</div>
+				<ul class="social_list">
+					<li>
+						<a href="https://linkedin.com/in/ibaifernandez" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="LinkedIn">
+							<span class="first_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg?v=2478e2193f#icon-linkedin-in"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-linkedin-in nav_in"><use href="assets/svg/icons.svg?v=2478e2193f#icon-linkedin-in"/></svg></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://wa.me/573224288532" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="WhatsApp">
+							<span class="first_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg?v=2478e2193f#icon-whatsapp"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-whatsapp nav_whats"><use href="assets/svg/icons.svg?v=2478e2193f#icon-whatsapp"/></svg></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/ibaifernandez" target="_blank" rel="noopener noreferrer" class="siderbar_icon" aria-label="GitHub">
+							<span class="first_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg?v=2478e2193f#icon-github"/></svg></span>
+							<span class="second_icon"><svg class="icon icon-github nav_github"><use href="assets/svg/icons.svg?v=2478e2193f#icon-github"/></svg></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+    <!-- End Sidebar -->
+
+	
+
+
+	<div class="port_togglebox">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<div class="port_sec_warapper" id="dossier_main">
+		<main class="dossier_ai">
+
+			<header class="dossier_hero">
+				<a class="dossier_back" href="index.html" translate="kanban-dossier-back">← Volver al portafolio</a>
+				<div class="dossier_hero_meta">
+					<span class="dossier_status_chip dossier_status_chip--live" translate="kanban-dossier-status-live">En producción</span>
+					<span class="dossier_status_chip" translate="kanban-dossier-status-version">v1.3.1</span>
+					<span class="dossier_status_chip" translate="kanban-dossier-status-audit">Auditoría cerrada</span>
+				</div>
+				<h1 class="dossier_hero_title" translate-html="kanban-dossier-h1">AGLAYA <span class="accent">Kanban Desk</span></h1>
+				<p class="dossier_hero_tagline" translate="kanban-dossier-tagline">Kanban multi-tenant para equipos que trabajan con clientes. Separa lo que es tuyo, lo que es del equipo y lo que es del cliente — y decide en cada momento quién ve qué.</p>
+				<div class="dossier_hero_stack">
+					<span class="dossier_stack_chip">React 18 · Vite</span>
+					<span class="dossier_stack_chip">TailwindCSS</span>
+					<span class="dossier_stack_chip">@dnd-kit</span>
+					<span class="dossier_stack_chip">Node.js · Express 4</span>
+					<span class="dossier_stack_chip">Supabase</span>
+					<span class="dossier_stack_chip">PostgreSQL · RLS</span>
+					<span class="dossier_stack_chip">Railway</span>
+					<span class="dossier_stack_chip">Netlify</span>
+					<span class="dossier_stack_chip">Resend</span>
+					<span class="dossier_stack_chip">Cloudflare R2</span>
+					<span class="dossier_stack_chip">Sentry</span>
+					<span class="dossier_stack_chip">Jest · Supertest</span>
+				</div>
+				<div class="dossier_hero_ctas">
+					<a class="dossier_cta dossier_cta--primary" href="https://kanban.aglaya.biz" target="_blank" rel="noopener noreferrer" translate-html="kanban-dossier-cta-primary">Ver producto en vivo →</a>
+					<a class="dossier_cta dossier_cta--ghost" href="#dossier_inside" translate-html="kanban-dossier-cta-ghost">Detalles técnicos ↓</a>
+				</div>
+			</header>
+
+			<section class="dossier_section dossier_problem">
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="kanban-dossier-problem-eyebrow">● El dolor</span>
+				<h2 translate="kanban-dossier-problem-h2">El problema</h2>
+				<p translate="kanban-dossier-problem-intro">Las herramientas Kanban del mercado te obligan a elegir entre dos mundos. O gestionas tu trabajo personal en una app. O gestionas proyectos de equipo en otra. Y cuando entran clientes, multiplica eso por las cuentas y permisos que tienes que sostener.</p>
+				<ol>
+					<li translate="kanban-dossier-problem-list-1">Mezclar todo en una sola app SaaS — pierdes control sobre los datos, te atan al vendor, y los clientes ven cosas que no deberían.</li>
+					<li translate="kanban-dossier-problem-list-2">Tener una herramienta por tipo de trabajo — fricción permanente, cuentas duplicadas, contexto perdido entre saltos.</li>
+					<li translate="kanban-dossier-problem-list-3">Auto-hospedar algo open source genérico — funciona pero te quedas sin UX, sin notificaciones, sin email digest, sin la separación cliente/equipo que necesitas.</li>
+				</ol>
+				<p translate="kanban-dossier-problem-outro">AGLAYA Kanban Desk no te obliga a elegir. Tres tipos de espacio de trabajo en una sola UI, soberanía total sobre los datos, mecánica Kanban moderna con drag-and-drop accesible.</p>
+			</section>
+
+			<section class="dossier_section dossier_system">
+				<span class="dossier_eyebrow" translate="kanban-dossier-system-eyebrow">● Arquitectura</span>
+				<h2 translate="kanban-dossier-system-h2">Cómo funciona</h2>
+				<p translate-html="kanban-dossier-system-p1">El producto opera sobre una jerarquía estricta de <strong>cinco niveles</strong>. Cada nivel hereda las restricciones de visibilidad del nivel superior, y el aislamiento se garantiza tanto en código como en base de datos.</p>
+				<div class="dossier_pipeline" aria-label="Jerarquía de cinco niveles del producto" translate-aria-label="kanban-dossier-pipeline-aria">
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">01</span>
+						<span class="dossier_pipeline_label" translate-html="kanban-dossier-pipeline-1">Organization</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
+						<span class="dossier_pipeline_num">02</span>
+						<span class="dossier_pipeline_label" translate-html="kanban-dossier-pipeline-2">Workspace<br>personal · interno · externo</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">03</span>
+						<span class="dossier_pipeline_label" translate-html="kanban-dossier-pipeline-3">Board</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">04</span>
+						<span class="dossier_pipeline_label" translate-html="kanban-dossier-pipeline-4">Column</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--cta">
+						<span class="dossier_pipeline_num">05</span>
+						<span class="dossier_pipeline_label" translate-html="kanban-dossier-pipeline-5">Card</span>
+					</div>
+				</div>
+				<p translate-html="kanban-dossier-system-p2">Tres tipos de workspace cubren los tres mundos: <strong>personal</strong> para tu trabajo individual, <strong>interno</strong> para proyectos de equipo, <strong>externo</strong> para espacios compartidos con clientes. Los clientes ven únicamente los workspaces externos que les hayas asignado. El equipo ve todo lo interno. Tú ves todo. Cambiar un workspace a tipo <code>externo</code> dispara un aviso explícito porque su visibilidad cambia.</p>
+				<h3 class="dossier_subheading" translate="kanban-dossier-system-subheading">Defense in depth</h3>
+				<p translate-html="kanban-dossier-system-p3">El aislamiento no descansa sobre una sola capa. Cada petición pasa por <strong>middlewares concéntricos</strong> (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) en la API Express, y la base de datos refuerza el aislamiento con <strong>Row Level Security</strong> sobre Postgres usando funciones <code>SECURITY DEFINER</code>. Aunque la capa de aplicación fallara, la base de datos rechaza la consulta. El cliente nunca toca tablas Supabase directamente — solo usa <code>supabase.auth.*</code> para autenticación; todos los datos pasan por el backend.</p>
+			</section>
+
+			<section class="dossier_section dossier_state">
+				<span class="dossier_eyebrow" translate="kanban-dossier-state-eyebrow">● Hoy</span>
+				<h2 translate="kanban-dossier-state-h2">Estado real</h2>
+				<ul class="dossier_state_grid">
+					<li><strong>v1.3.1</strong><span translate="kanban-dossier-state-version">Release vigente. Producción diaria del equipo AGLAYA en <code>kanban.aglaya.biz</code>.</span></li>
+					<li><strong>102 tests verde</strong><span translate="kanban-dossier-state-tests">Jest + Supertest, suite full-stack server + client. 4 tests preexistentes en skip con razón documentada.</span></li>
+					<li><strong>Mariana Trench cerrado</strong><span translate="kanban-dossier-state-mariana">Auditoría propia de cuatro frentes — UX, Seguridad, Legal multi-jurisdicción, DevOps. 30 hallazgos remediados.</span></li>
+					<li><strong>16 críticos cerrados</strong><span translate="kanban-dossier-state-critical">Incluye dos críticos mitigados en vuelo durante el propio audit (XSS via upload, backup ausente).</span></li>
+					<li><strong>8/9 tablas con RLS</strong><span translate="kanban-dossier-state-rls">Row Level Security activo con funciones <code>SECURITY DEFINER</code>. 37 policies en producción.</span></li>
+					<li><strong>Backup diario en Cloudflare R2</strong><span translate="kanban-dossier-state-backup">Retention 30 días. Smoke test verde: 10 de 10 tablas restauradas correctamente.</span></li>
+					<li><strong>6/6 DPAs archivados</strong><span translate="kanban-dossier-state-dpas">Supabase (con TIA), Resend, Railway, Netlify, Cloudflare, Microsoft — RGPD Art. 28.</span></li>
+					<li><strong>Sentry activo</strong><span translate="kanban-dossier-state-sentry"><code>@sentry/node</code> + <code>@sentry/react</code>. <code>SENTRY_RELEASE</code> taggeado por deploy.</span></li>
+				</ul>
+			</section>
+
+			<section class="dossier_section dossier_frontier">
+				<span class="dossier_eyebrow" translate="kanban-dossier-frontier-eyebrow">● Frontera honesta</span>
+				<h2 translate="kanban-dossier-frontier-h2">Lo que NO hace</h2>
+				<p translate-html="kanban-dossier-frontier-intro">Lo que el producto <em>no</em> hace o todavía no ofrece, explícito:</p>
+				<ul class="dossier_frontier_list">
+					<li translate-html="kanban-dossier-frontier-not-1"><strong>No</strong> está multi-organización todavía — single-tenant intencional, Phase 5 sin fecha (ADR-020).</li>
+					<li translate-html="kanban-dossier-frontier-not-2"><strong>No</strong> tiene SSO ni MFA — auth por JWT clásico con refresh token, suficiente para uso interno actual.</li>
+					<li translate-html="kanban-dossier-frontier-not-3"><strong>No</strong> ofrece versión auto-hospedada turn-key para terceros — código MIT y repo público, pero opera como instancia única en <code>kanban.aglaya.biz</code>.</li>
+					<li translate-html="kanban-dossier-frontier-not-4"><strong>No</strong> está libre de deuda — 49 hallazgos pendientes en backlog post-Mariana Trench (medio + bajo + info), todos catalogados.</li>
+				</ul>
+				<p translate-html="kanban-dossier-frontier-outro">La frontera no es marketing defensivo: es decisión de arquitectura. El producto sirve un caso de uso concreto (AGLAYA + clientes) y crece según evidencia de uso real, no según roadmap aspiracional.</p>
+			</section>
+
+			<section class="dossier_section dossier_proves">
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="kanban-dossier-proves-eyebrow">● Skills evidenciados</span>
+				<h2 translate="kanban-dossier-proves-h2">Lo que este proyecto demuestra</h2>
+				<ul class="dossier_proves_grid">
+					<li>
+						<strong translate="kanban-dossier-proves-1-title">Multi-tenant Postgres-nativo</strong>
+						<p translate-html="kanban-dossier-proves-1-body">Aislamiento de datos garantizado por dos capas: middlewares Express concéntricos (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) y <strong>RLS</strong> en Postgres con funciones <code>SECURITY DEFINER</code>. Aunque la capa de aplicación falle, la base de datos rechaza la consulta. <strong>8 de 9 tablas con RLS activo</strong>, 37 policies en producción, 17 foreign keys y 17 cláusulas <code>ON DELETE</code> para integridad referencial.</p>
+					</li>
+					<li>
+						<strong translate="kanban-dossier-proves-2-title">Disciplina de ADRs</strong>
+						<p translate-html="kanban-dossier-proves-2-body">Quince ADRs documentan cada decisión de arquitectura no-obvia (<code>ADR-011</code> a <code>ADR-025</code>). Migración <code>cards.category</code> de <code>TEXT</code> a <code>UUID FK</code> con <code>ON DELETE SET NULL</code>. Separación canónica <code>app.js</code> (configuración Express) / <code>index.js</code> (entry point TCP). Siete índices de rendimiento en columnas de alta frecuencia. State management diferido hasta que aparezca fricción real (ADR-025).</p>
+					</li>
+					<li>
+						<strong translate="kanban-dossier-proves-3-title">Auditoría de cuatro frentes</strong>
+						<p translate-html="kanban-dossier-proves-3-body">Auditoría propia <em>Mariana Trench</em> en cuatro dimensiones: UX y accesibilidad, seguridad y base de datos, legal multi-jurisdicción, DevOps y observabilidad. <strong>79 hallazgos formales</strong>, 30 cerrados durante el ciclo (16 críticos + 9 altos + 5 medios), 49 backlog. Cada hallazgo lleva ID, severidad, evidencia, mitigación y commit SHA. <strong>Dos críticos mitigados en vuelo</strong> durante el propio audit.</p>
+					</li>
+					<li>
+						<strong translate="kanban-dossier-proves-4-title">Compliance multi-jurisdiccional</strong>
+						<p translate-html="kanban-dossier-proves-4-body">Política de privacidad propia publicada en <code>/privacidad</code>, distinta de la corporativa. Endpoints <strong>self-delete</strong> (<code>DELETE /api/auth/me</code>) y <strong>self-export</strong> (<code>GET /api/auth/me/export</code>) — RGPD Art. 17 + 20 cubiertos. <strong>Seis DPAs archivados</strong> en <code>docs/legal/dpas/</code>. Cobertura cruzada de RGPD (Europa) + Ley 21.719 (Chile) + LGPD (Brasil).</p>
+					</li>
+					<li>
+						<strong translate="kanban-dossier-proves-5-title">Observabilidad post-audit</strong>
+						<p translate-html="kanban-dossier-proves-5-body">Sentry inicializado en server y cliente (<code>@sentry/node</code> + <code>@sentry/react</code>) con <code>SENTRY_RELEASE</code> taggeado por deploy. CI workflow en GitHub Actions corre <code>npm test</code> en cada PR. Healthcheck <code>/api/health</code> con verificación real de dependencias. <strong>Backup diario</strong> en Cloudflare R2 vía GitHub Actions cron, retention 30 días, smoke test verde (10 de 10 tablas restauradas).</p>
+					</li>
+					<li>
+						<strong translate="kanban-dossier-proves-6-title">Zero vendor lock-in operativo</strong>
+						<p translate-html="kanban-dossier-proves-6-body">Infraestructura soberana: Postgres en Supabase pero datos exportables vía <code>pg_dump</code> en cualquier momento. Backup en Cloudflare R2 (cuenta propia). Email vía Resend pero cron en GitHub Actions (no propietario del proveedor de email). Frontend en Netlify, backend en Railway, ambos contractualizados sin lock-in. Código MIT en repositorio público.</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="dossier_section dossier_inside" id="dossier_inside">
+				<span class="dossier_eyebrow" translate="kanban-dossier-inside-eyebrow">● Detalles técnicos</span>
+				<h2 translate="kanban-dossier-inside-h2">Por dentro</h2>
+				<details>
+					<summary translate="kanban-dossier-detail-1-summary">Modelo de datos y permisos</summary>
+					<p translate-html="kanban-dossier-detail-1-p1">Jerarquía estricta: <code>Organization</code> → <code>Workspace</code> → <code>Board</code> → <code>Column</code> → <code>Card</code>. Cinco niveles, cada uno hereda restricciones del superior. Los workspaces son tipados (<code>personal</code> / <code>interno</code> / <code>externo</code>) y ese tipo determina la visibilidad del contenido.</p>
+					<p translate-html="kanban-dossier-detail-1-p2"><strong>Cinco roles</strong> conviven en el sistema: superadmin (auditabilidad universal), admin (gestión macro), owner del workspace, member del workspace, cliente (solo workspaces externos asignados). Cada acción tiene matriz de permisos explícita documentada en <code>docs/PERMISSIONS.md</code>.</p>
+					<p translate-html="kanban-dossier-detail-1-p3">Aislamiento de datos en dos capas: middlewares Express concéntricos (<code>requireAuth</code> → <code>requireRole</code> → <code>requireWorkspaceMember</code>) más <strong>RLS</strong> en Postgres con políticas <code>SECURITY DEFINER</code>. El cliente nunca toca tablas Supabase directamente — solo el endpoint <code>supabase.auth.*</code> para autenticación; el resto de datos pasa siempre por el backend.</p>
+				</details>
+				<details>
+					<summary translate="kanban-dossier-detail-2-summary">Stack y decisiones técnicas</summary>
+					<p translate-html="kanban-dossier-detail-2-p1">Backend <strong>Node.js + Express 4</strong> con separación canónica <code>app.js</code> (configuración + rutas + middlewares) / <code>index.js</code> (entry point TCP) — ADR-024. <strong>JWT con refresh token</strong> + access de 15 minutos (B-02 post-audit). Helmet con CSP en producción. Rate limiting global + específico por endpoint sensible.</p>
+					<p translate-html="kanban-dossier-detail-2-p2">Frontend <strong>React 18 + Vite + TailwindCSS</strong>. <code>@dnd-kit</code> para drag-and-drop con <code>KeyboardSensor</code> (A-02 post-audit, WCAG 2.1.1). Avatar con crop integrado. Mini-kanban decorativo determinista en cards de workspace para identidad visual sin assets externos.</p>
+					<p translate-html="kanban-dossier-detail-2-p3">Email vía <strong>Resend</strong>. Admin digest + user digest diarios. <code>node-cron</code> del servidor reemplazado por GitHub Actions cron (mejor SLA, sin proceso vivo en el server, ADR no formal — decisión operacional documentada en INCIDENTS.md).</p>
+					<p translate-html="kanban-dossier-detail-2-p4">Base de datos Supabase: nueve tablas, ocho con RLS activa, 17 foreign keys, 37 RLS policies en producción, 7 índices de rendimiento en columnas de alta frecuencia (workspace_id, board_id, user_id, read, due_date).</p>
+				</details>
+				<details>
+					<summary translate="kanban-dossier-detail-3-summary">Auditoría Mariana Trench</summary>
+					<p translate-html="kanban-dossier-detail-3-p1">Auditoría propia en cuatro fases entre 2026-05-27 y 2026-05-28. Cuatro dimensiones: <strong>Fase A</strong> (UX, accesibilidad, performance, SEO), <strong>Fase B</strong> (seguridad, base de datos, arquitectura), <strong>Fase C</strong> (legal — RGPD, Ley 21.719 chilena, LGPD brasilera, DPAs, cookies, retention), <strong>Fase D</strong> (DevOps, observabilidad, documentación, mantenibilidad).</p>
+					<p translate-html="kanban-dossier-detail-3-p2">Resultado: <strong>79 hallazgos formales</strong>, 30 cerrados durante el ciclo (16 críticos + 9 altos + 5 medios), 49 en backlog catalogado. Cada hallazgo lleva ID, dimensión, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
+					<p translate-html="kanban-dossier-detail-3-p3"><strong>Dos críticos mitigados en vuelo</strong> durante el propio audit:</p>
+					<ul>
+						<li translate-html="kanban-dossier-detail-3-li1"><strong>B-CRIT-01 · CVSS 8.0</strong>: XSS explotable vía upload de SVG. <code>Multer</code> sin <code>fileFilter</code> aceptaba MIMEs arbitrarios, el proxy <code>/uploads/*</code> de Netlify daba mismo origen, y el JWT en <code>localStorage</code> era robable. Mitigación cuádruple: extension blocklist + MIME allowlist + validación de magic-bytes vía <code>file-type@16.5.4</code> + cinco tests de regresión. Commit <code>402b0d7</code>.</li>
+						<li translate-html="kanban-dossier-detail-3-li2"><strong>B-CRIT-02</strong>: Backup ausente sobre plan Supabase Free (sin daily backups, sin PITR). Un solo <code>DROP</code> o migración mal aplicada significaba pérdida total. Mitigación: GitHub Actions cron diario, <code>pg_dump</code> con PG17 client, upload a Cloudflare R2 vía API nativa (R2 rechaza <code>cfut_</code> tokens en el endpoint S3-compat), retention 30 días, runbook completo en <code>docs/runbooks/db-restore.md</code>. Commit final <code>3ae6541</code>.</li>
+					</ul>
+					<p translate-html="kanban-dossier-detail-3-p4">Tras el cierre, los 16 críticos abiertos se cerraron en cuatro batches de Sprint 1: 8 accesibilidad (labels, KeyboardSensor, role=dialog, focus-trap, skip-link, aria-labels), 5 legales (política de privacidad propia, <code>docs/legal/</code>, endpoints self-delete y self-export), 3 operacionales (Sentry, CI, sincronización de SECURITY.md con la realidad post-audit).</p>
+				</details>
+				<details>
+					<summary translate="kanban-dossier-detail-4-summary">Compliance multi-jurisdiccional</summary>
+					<p translate-html="kanban-dossier-detail-4-p1">Cobertura cruzada de tres marcos de protección de datos. Decisiones documentadas y declinadas formalmente cuando aplica — auditabilidad sobre todas las decisiones.</p>
+					<p translate-html="kanban-dossier-detail-4-p2"><strong>RGPD (Europa)</strong>: Art. 13/14 cubiertos por política de privacidad propia publicada en <code>/privacidad</code> (distinta de la corporativa de <code>aglaya.biz</code>). Art. 17 (supresión) cubierto por <code>DELETE /api/auth/me</code>. Art. 20 (portabilidad) cubierto por <code>GET /api/auth/me/export</code>. Art. 28 (encargados) cubierto por <strong>6 DPAs archivados</strong> en <code>docs/legal/dpas/</code>: Supabase con TIA, Resend, Railway, Netlify, Cloudflare, Microsoft.</p>
+					<p translate-html="kanban-dossier-detail-4-p3"><strong>Ley 21.719 (Chile)</strong>: Art. 14 ter (información al titular) cubierto por la política y los endpoints self-service. <strong>LGPD (Brasil)</strong>: Art. 9 (información) y Art. 50 (gobernanza) cubiertos por política + DPO designado (<code>privacidad@aglaya.biz</code>).</p>
+					<p translate-html="kanban-dossier-detail-4-p4">Decisiones declinadas formalmente: revisión legal externa de €500-1500 declinada (política aprobada in-house por audit, re-evaluable si volumen UE supera 5000 únicos/año), representante UE Art. 27 no requerido obligatoriamente al volumen actual, versión trilingüe de la política pospuesta hasta tracción real.</p>
+				</details>
+				<details>
+					<summary translate="kanban-dossier-detail-5-summary">Observabilidad y operación</summary>
+					<p translate-html="kanban-dossier-detail-5-p1"><strong>Sentry</strong> inicializado en server (<code>@sentry/node</code> en <code>server/index.js</code>) y cliente (<code>@sentry/react</code>). Variables de entorno <code>SENTRY_DSN</code>, <code>SENTRY_ENVIRONMENT</code> y <code>SENTRY_RELEASE</code> configuradas en Railway. Captura de errores con release tagging por deploy.</p>
+					<p translate-html="kanban-dossier-detail-5-p2"><strong>Backup workflow</strong> en GitHub Actions: cron <code>17 3 * * *</code> UTC, <code>pg_dump</code> con PG17 client, upload a Cloudflare R2 vía API nativa (<code>/accounts/{id}/r2/buckets/{b}/objects/{key}</code> con bearer <code>cfut_</code>; R2 rechaza esos tokens en el endpoint S3-compat, por eso fue necesario migrar de <code>rclone</code> y <code>aws-cli</code> a <code>boto3</code> y finalmente a la API nativa). Retention 30 días automática.</p>
+					<p translate-html="kanban-dossier-detail-5-p3"><strong>CI</strong> workflow GitHub Actions corre <code>npm test</code> en cada PR. Estado actual: 102 tests verde / 4 skipped (preexistentes de auth/admin/security con mocks legacy que requieren refactor mayor; skip documentado con razón).</p>
+					<p translate-html="kanban-dossier-detail-5-p4"><strong>Healthcheck</strong> <code>/api/health</code> con verificación real de dependencias — devuelve no-200 si Supabase o secrets críticos no responden. Cobertura por test dedicado.</p>
+				</details>
+				<details>
+					<summary translate="kanban-dossier-detail-6-summary">Frontera honesta y backlog</summary>
+					<p translate-html="kanban-dossier-detail-6-p1"><strong>49 hallazgos pendientes</strong> post-Mariana Trench, todos catalogados por ID, severidad y esfuerzo en <code>docs/backlog/audit-mariana-roadmap.md</code>. Sprint 2 cubre P1 (accesibilidad alta + seguridad alta): A-01 inputs labels (6h), A-02 KeyboardSensor (3h), A-17 focus-lock (4h), B-02 JWT refresh (8h), B-03 Railway custom domain (4h). Sprints 3+ cubren P2 y P3.</p>
+					<p translate-html="kanban-dossier-detail-6-p2"><strong>Hallazgos parciales</strong> con cierre pendiente al 100%: <code>A-20</code> (h1 añadido en LoginPage, falta en WorkspaceDashboard / AdminPage / Toolbar / ResetPasswordPage), <code>B-03</code> (monitor activo, falta custom domain Railway + Cloudflare WAF/Tunnel — runbook <code>docs/runbooks/railway-custom-domain.md</code> listo), <code>C-09</code> (template DPIA creada; formal pendiente hasta crecimiento de usuarios o exigencia de cliente externo).</p>
+					<p translate-html="kanban-dossier-detail-6-p3"><strong>Drift conocido</strong>: <code>package.json</code> declara versión 1.1.5 mientras el README y el producto en producción declaran v1.3.1. Actualizar en el próximo release.</p>
+				</details>
+			</section>
+
+			<footer class="dossier_footer">
+				<a class="dossier_cta dossier_cta--primary" href="https://kanban.aglaya.biz" target="_blank" rel="noopener noreferrer" translate-html="kanban-dossier-footer-cta-1">Ver producto en vivo →</a>
+				<a class="dossier_cta dossier_cta--ghost" href="index.html#contact_form" translate-html="kanban-dossier-footer-cta-2">Hablar conmigo →</a>
+				<p class="dossier_footer_meta" translate-html="kanban-dossier-footer-meta">Última actualización del dossier: 2026-05-28 · Producto operado por AGLAYA · Versión vigente v1.3.1 · Auditoría Mariana Trench cerrada el 2026-05-28.</p>
+			</footer>
+
+		</main>
+
+		<div class="port_footer_setions">
+	<div class="footer_section">
+		<div class="copy_right_wrapper">
+			<div class="col-12 text-center">
+				<p class="copy_right"><span translate="all-rights-reserved">All Rights Reserved</span> &copy; 2024 <a href="https://ibaifernandez.com" target="_blank" rel="noopener noreferrer">Ibai Fernández</a> &middot; <a href="privacy.html" translate="privacy-policy">Privacy</a> &middot; <a href="#cookie-consent-banner" id="cookie-preferences-link" translate="cookie-preferences-link">Cookie preferences</a></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+	</div>
+
+	<div class="bottom_top">
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg?v=2478e2193f#icon-arrow-up"/></svg>
+	</div>
+
+	<!-- =================== Translate Button ================== -->
+    <div id="translate-button-container">
+        <img id="translate-button-icon" src="assets/images/flags/spain.svg" width="64" height="64" alt="Translate Button" loading="eager" decoding="sync" fetchpriority="high">
+    </div>
+	
+	<!-- Google tag (gtag.js) — Consent Mode v2.
+     Sync portion: dataLayer + consent defaults + runtime flags (read by custom.js).
+     Deferred portion: gtag.js fetch, config, stored-consent restore.
+     The deferred portion fires whichever happens first:
+       1. requestIdleCallback (or setTimeout 2.5s on Safari pre-15.4 / Firefox <55)
+       2. document visibilitychange → 'hidden' (bounce capture — user navigates away
+          before the idle window opens, e.g. mobile back-button under 2 s). -->
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag('js', new Date());
+
+	// Default consent — must register before gtag.js executes any event.
+	gtag('consent', 'default', {
+		ad_storage: 'denied',
+		analytics_storage: 'denied',
+		ad_user_data: 'denied',
+		ad_personalization: 'denied',
+		wait_for_update: 500
+	});
+
+	// Runtime toggles. Kept sync because custom.js reads them during init.
+	window.PORTFOLIO_RUNTIME = window.PORTFOLIO_RUNTIME || {};
+	window.PORTFOLIO_RUNTIME.analytics = window.PORTFOLIO_RUNTIME.analytics || { enabled: true };
+	var isLocalPreview = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+	window.PORTFOLIO_RUNTIME.captcha = window.PORTFOLIO_RUNTIME.captcha || {
+		provider: isLocalPreview ? '' : 'turnstile',
+		siteKey: isLocalPreview ? '' : '0x4AAAAAACjZQ2Ce6kH-DpQo'
+	};
+
+	// Defer gtag.js fetch + config + stored-consent restore until browser idle
+	// OR the user navigates away (whichever fires first). gtag() calls in the
+	// meantime queue into dataLayer and process when gtag.js loads.
+	var __ga4Initialized = false;
+	function __initGA4() {
+		if (__ga4Initialized) return;
+		__ga4Initialized = true;
+
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = 'https://www.googletagmanager.com/gtag/js?id=G-T8FTTWBQS3';
+		document.head.appendChild(script);
+
+		gtag('config', 'G-T8FTTWBQS3', { anonymize_ip: true });
+
+		try {
+			var stored = window.localStorage.getItem('portfolio_consent');
+			if (stored === 'granted') {
+				gtag('consent', 'update', {
+					analytics_storage: 'granted',
+					ad_storage: 'denied',
+					ad_user_data: 'denied',
+					ad_personalization: 'denied'
+				});
+			}
+		} catch (err) { /* localStorage unavailable */ }
+	}
+
+	if ('requestIdleCallback' in window) {
+		window.requestIdleCallback(__initGA4, { timeout: 4000 });
+	} else {
+		window.setTimeout(__initGA4, 2500);
+	}
+
+	// Bounce capture: if the user navigates away before idle fires, initialise
+	// immediately on visibility change. Queued gtag() calls still process when
+	// gtag.js eventually loads, so denied-default pageviews remain compliant.
+	document.addEventListener('visibilitychange', function () {
+		if (document.visibilityState === 'hidden') {
+			__initGA4();
+		}
+	});
+</script>
+
+	<!-- Cookie consent banner — GDPR / Chile Ley 21.719 -->
+<div id="cookie-consent-banner" class="cookie-consent" role="dialog" aria-modal="false" aria-live="polite" aria-labelledby="cookie-consent-title" hidden>
+	<div class="cookie-consent_inner">
+		<div class="cookie-consent_copy">
+			<h2 id="cookie-consent-title" class="cookie-consent_title" translate="cookie-consent-title">Cookies, briefly</h2>
+			<p class="cookie-consent_body" translate="cookie-consent-body">This site uses Google Analytics 4 to understand how visitors arrive and what they read — nothing else, nothing sold, nothing shared. Decide what you prefer. Either way, you'll still see the site; only your analytics signal differs.</p>
+		</div>
+		<div class="cookie-consent_actions">
+			<button type="button" id="cookie-consent-decline" class="cookie-consent_btn cookie-consent_btn--ghost" translate="cookie-consent-decline">Reject</button>
+			<button type="button" id="cookie-consent-accept" class="cookie-consent_btn cookie-consent_btn--primary" translate="cookie-consent-accept">Accept analytics</button>
+		</div>
+		<a class="cookie-consent_link" href="privacy.html" translate="cookie-consent-policy">Privacy policy</a>
+	</div>
+</div>
+<script src="assets/js/cookie-consent.min.js?v=893d31b11b" defer></script>
+
+
+	<script defer src="assets/js/jquery.min.js"></script>
+	<script defer src="assets/js/custom.min.js?v=3e267b54b8"></script>
+	<script defer src="assets/js/translate.min.js?v=6a289682e5"></script>
+</body>
+
+</html>
