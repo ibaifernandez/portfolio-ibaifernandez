@@ -25,6 +25,29 @@
   },
   {
     "page": {
+      "output": "crm-aglaya.html",
+      "template": "src/pages/dossier-crm-aglaya.template.html",
+      "keywords": "CRM AGLAYA, CRM operativo propio, Python, FastAPI, SQLAlchemy, PostgreSQL, Railway, Cloudflare R2, lead scoring, Ley 21.719, auditoría Mariana Trench"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--crm\" role=\"img\" aria-label=\"CRM AGLAYA: CRM operativo propio extraído del monorepo legal-reg-tech — Python, FastAPI, SQLAlchemy, PostgreSQL, auditoría Mariana Trench cerrada\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">CRM propio · En producción</span>\n<strong>CRM AGLAYA</strong>\n<span class=\"project_spotlight_mockup_metric\">v0.1.0 · 220 tests verde</span>\n<span class=\"project_spotlight_mockup_note\">Python · FastAPI · SQLAlchemy · Mariana Trench cerrado</span>\n</div>",
+    "title": {
+      "text": "CRM AGLAYA: CRM Operativo Propio",
+      "translate": "project-crm-title"
+    },
+    "description": {
+      "text": "CRM operativo propio extraído del monorepo legal-reg-tech. Pipeline de deals tipado, scoring doble, log de actividad append-only. Cero inyección SQL, cero SSRF, cero RCE — auditoría Mariana Trench cerrada con 28 hallazgos mitigados.",
+      "translate": "project-crm-copy"
+    },
+    "link": {
+      "href": "crm-aglaya.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
+  },
+  {
+    "page": {
       "output": "kanban-desk.html",
       "template": "src/pages/dossier-kanban-desk.template.html",
       "keywords": "AGLAYA Kanban Desk, Kanban multi-tenant, React, Node.js, Express, Supabase, PostgreSQL, RLS, auto-hospedado, agencias"

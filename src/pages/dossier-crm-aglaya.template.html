@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="CRM AGLAYA — CRM operativo propio extraído del monorepo legal-reg-tech. Python, FastAPI, SQLAlchemy, PostgreSQL. Cero inyección SQL, cero SSRF, cero RCE. Auditoría Mariana Trench cerrada 2026-05-29.">
+	<meta name="keywords" content="CRM AGLAYA, Python, FastAPI, SQLAlchemy, PostgreSQL, Railway, Cloudflare R2, Resend, Sentry, lead scoring, Ley 21.719, Ibai Fernández">
+	<meta name="author" content="Ibai Fernández">
+	<meta name="robots" content="index,follow,max-image-preview:large">
+	<meta name="theme-color" content="#121217">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://portfolio.ibaifernandez.com/crm-aglaya.html">
+	<meta property="og:title" content="CRM AGLAYA — Dossier | Ibai Fernández">
+	<meta property="og:description" content="CRM operativo propio para captura de leads y seguimiento de deals. Python, FastAPI, SQLAlchemy. Auditoría Mariana Trench cerrada.">
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/crm-aglaya.html">
+	<meta property="twitter:title" content="CRM AGLAYA — Dossier | Ibai Fernández">
+	<meta property="twitter:description" content="CRM operativo propio extraído del monorepo legal-reg-tech. Auditoría Mariana Trench cerrada.">
+	<title>CRM AGLAYA — Dossier | Ibai Fernández</title>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font.min.css">
+	<link rel="stylesheet" href="assets/css/animate.min.css">
+	<link rel="stylesheet" href="assets/css/style.min.css">
+	<link rel="stylesheet" href="assets/css/print.min.css" media="print">
+	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+	<link rel="canonical" href="https://portfolio.ibaifernandez.com/crm-aglaya.html">
+</head>
+
+<body class="dossier_ai_page project_dossier_page crm_dossier">
+	<a class="skip-link" href="#dossier_main" translate="skip-to-main">Saltar al contenido principal</a>
+<!-- @include ../components/project/sidebar.html -->
+
+	<div class="port_togglebox">
+		<span></span>
+		<span></span>
+		<span></span>
+	</div>
+
+	<div class="port_sec_warapper" id="dossier_main">
+		<main class="dossier_ai">
+
+			<header class="dossier_hero">
+				<a class="dossier_back" href="index.html" translate="crm-dossier-back">← Volver al portafolio</a>
+				<div class="dossier_hero_meta">
+					<span class="dossier_status_chip dossier_status_chip--live" translate="crm-dossier-status-live">En producción</span>
+					<span class="dossier_status_chip" translate="crm-dossier-status-version">v0.1.0</span>
+					<span class="dossier_status_chip" translate="crm-dossier-status-audit">Auditoría cerrada</span>
+				</div>
+				<h1 class="dossier_hero_title" translate-html="crm-dossier-h1">CRM <span class="accent">AGLAYA</span></h1>
+				<p class="dossier_hero_tagline" translate="crm-dossier-tagline">CRM operativo propio, extraído del monorepo legal-reg-tech. Captura de leads, pipeline de deals y trazabilidad total de interacciones. Cero inyección SQL, cero SSRF, cero RCE — verificado en auditoría Mariana Trench.</p>
+				<div class="dossier_hero_stack">
+					<span class="dossier_stack_chip">Python · FastAPI</span>
+					<span class="dossier_stack_chip">SQLAlchemy</span>
+					<span class="dossier_stack_chip">PostgreSQL · SQLite</span>
+					<span class="dossier_stack_chip">Railway</span>
+					<span class="dossier_stack_chip">Cloudflare R2</span>
+					<span class="dossier_stack_chip">Resend</span>
+					<span class="dossier_stack_chip">Sentry</span>
+					<span class="dossier_stack_chip">pytest</span>
+				</div>
+				<div class="dossier_hero_ctas">
+					<a class="dossier_cta dossier_cta--primary" href="index.html#contact_form" translate-html="crm-dossier-cta-primary">Hablar conmigo →</a>
+					<a class="dossier_cta dossier_cta--ghost" href="#dossier_inside" translate-html="crm-dossier-cta-ghost">Detalles técnicos ↓</a>
+				</div>
+			</header>
+
+			<section class="dossier_section dossier_problem">
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="crm-dossier-problem-eyebrow">● El dolor</span>
+				<h2 translate="crm-dossier-problem-h2">El problema</h2>
+				<p translate="crm-dossier-problem-p1">Cuando vendes auditorías de compliance a empresas, cada lead es un cliente B2B potencial cuya identidad y estado de negociación no puede quedar registrada en un CRM de terceros. La presión regulatoria es el producto: exponerla a un SaaS externo es una contradicción estructural.</p>
+				<ol>
+					<li translate="crm-dossier-problem-list-1">CRM SaaS externo — tus leads viven en servidores ajenos, sin control sobre retención ni portabilidad.</li>
+					<li translate="crm-dossier-problem-list-2">Hoja de cálculo compartida — sin pipeline tipado, sin scoring, sin trazabilidad de interacciones, sin integración con email.</li>
+					<li translate="crm-dossier-problem-list-3">CRM open source genérico — funciona pero requiere customización y seguridad que ningún producto genérico garantiza alineado con tu stack.</li>
+				</ol>
+				<p translate="crm-dossier-problem-outro">CRM AGLAYA resuelve esto con soberanía total: datos en Postgres propio, pipeline tipado, scoring doble, log de actividad append-only y trazabilidad plena sin vendor intermedio.</p>
+			</section>
+
+			<section class="dossier_section dossier_system">
+				<span class="dossier_eyebrow" translate="crm-dossier-system-eyebrow">● Arquitectura</span>
+				<h2 translate="crm-dossier-system-h2">Cómo funciona</h2>
+				<p translate-html="crm-dossier-system-p1">El pipeline de deals sigue <strong>seis etapas tipadas</strong>. Cada etapa tiene semántica precisa: los leads entran como Nuevo, avanzan por contacto y sesión, llegan a propuesta y cierran como activo, ganado o perdido. Sin estados libres.</p>
+				<div class="dossier_pipeline" aria-label="Pipeline de deals: seis etapas tipadas desde Nuevo hasta Ganado o Perdido" translate-aria-label="crm-dossier-pipeline-aria">
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">01</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-1">Nuevo</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step">
+						<span class="dossier_pipeline_num">02</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-2">Contactado</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
+						<span class="dossier_pipeline_num">03</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-3">Sesión<br>agendada</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--accent">
+						<span class="dossier_pipeline_num">04</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-4">Propuesta<br>enviada</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--cta">
+						<span class="dossier_pipeline_num">05</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-5">Cliente<br>activo</span>
+					</div>
+					<span class="dossier_pipeline_arrow" aria-hidden="true">→</span>
+					<div class="dossier_pipeline_step dossier_pipeline_step--cta">
+						<span class="dossier_pipeline_num">06</span>
+						<span class="dossier_pipeline_label" translate-html="crm-dossier-pipeline-6">Ganado ·<br>Perdido</span>
+					</div>
+				</div>
+				<p translate-html="crm-dossier-system-p2">Cada contacto lleva dos columnas de scoring independientes: <strong>scanner_score</strong> (0–50) mide adherencia regulatoria de la superficie pública; <strong>lead_score</strong> (0–100) mide potencial comercial. Dimensiones ortogonales — alta puntuación regulatoria no implica alto potencial de compra.</p>
+				<h3 class="dossier_subheading" translate="crm-dossier-system-subheading">Defense in depth</h3>
+				<div class="dossier_chain" role="img" aria-label="Cadena de seguridad: HTTP request pasa por autenticación timing-safe, roster loop sin break, ORM-only y cero superficie de SSRF y RCE" translate-aria-label="crm-dossier-chain-aria">
+					<div class="dossier_chain_step dossier_chain_step--request">
+						<span class="dossier_chain_label" translate-html="crm-dossier-chain-1">Cliente<br>HTTP request</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label"><code>safe_constant_time_compare()</code></span>
+						<span class="dossier_chain_sub" translate="crm-dossier-chain-2-sub">timing-safe · None-safe · non-ASCII safe</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step">
+						<span class="dossier_chain_label" translate="crm-dossier-chain-3">Roster loop sin break</span>
+						<span class="dossier_chain_sub" translate="crm-dossier-chain-3-sub">tiempo uniforme · sin enumeración de usuarios</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--rls">
+						<span class="dossier_chain_label" translate="crm-dossier-chain-4">ORM-only · Zero SQL injection</span>
+						<span class="dossier_chain_sub" translate="crm-dossier-chain-4-sub">SQLAlchemy · sin raw SQL strings</span>
+					</div>
+					<span class="dossier_chain_arrow" aria-hidden="true">↓</span>
+					<div class="dossier_chain_step dossier_chain_step--db">
+						<span class="dossier_chain_label" translate="crm-dossier-chain-5">Zero SSRF · Zero RCE</span>
+						<span class="dossier_chain_sub" translate="crm-dossier-chain-5-sub">sin httpx outbound · sin eval/exec/subprocess</span>
+					</div>
+				</div>
+				<p translate-html="crm-dossier-system-p3">La autenticación del panel admin usa <strong>comparación en tiempo constante</strong> (<code>safe_constant_time_compare()</code> en <code>auth_utils.py</code>) que maneja correctamente <code>None</code> y caracteres non-ASCII sin elevar excepciones. El roster loop no tiene <code>break</code> — tiempo uniforme sin importar el resultado, impidiendo enumeración de usuarios por timing. <strong>Acceso a datos 100% vía ORM</strong> — sin strings SQL raw en todo el repositorio.</p>
+			</section>
+
+			<section class="dossier_section dossier_state">
+				<span class="dossier_eyebrow" translate="crm-dossier-state-eyebrow">● Hoy</span>
+				<h2 translate="crm-dossier-state-h2">Estado real</h2>
+				<ul class="dossier_state_grid">
+					<li><strong>v0.1.0</strong><span translate-html="crm-dossier-state-version">Versión vigente. Panel <code>/admin/crm/</code> en producción diaria del equipo AGLAYA.</span></li>
+					<li><strong>220 tests verde</strong><span translate="crm-dossier-state-tests">pytest, suite completa de rutas + store. 3 skipped por dependencias de entorno de observabilidad, con razón documentada.</span></li>
+					<li><strong>Mariana Trench cerrado</strong><span translate="crm-dossier-state-mariana">Auditoría propia de cuatro frentes — UX, Seguridad, Legal, DevOps. 28 hallazgos mitigados durante el ciclo.</span></li>
+					<li><strong>pip-audit: 0 CVEs</strong><span translate="crm-dossier-state-pipaudit">Verificado 2026-05-29. Zero vulnerabilidades conocidas en el árbol de dependencias.</span></li>
+					<li><strong>Backup diario en Cloudflare R2</strong><span translate="crm-dossier-state-backup">Cron Railway → pg_dump → R2. Runbook de restore documentado. Smoke test pendiente operador.</span></li>
+					<li><strong>FK constraints activos</strong><span translate-html="crm-dossier-state-fk">Foreign keys en <code>contact_id</code> y <code>deal_id</code>. Cascade en activities al borrar deal. Restrict en contacto con deals existentes.</span></li>
+					<li><strong>Idempotencia de webhooks</strong><span translate="crm-dossier-state-webhooks">Tabla de claim + método claim_webhook_event. Reintentos de Resend sin duplicar filas de actividad.</span></li>
+					<li><strong>Endpoints ARCO</strong><span translate="crm-dossier-state-arco">Export JSON completo + erasure walk (contacto → deals → actividades). Gated con Basic Auth.</span></li>
+				</ul>
+			</section>
+
+			<section class="dossier_section dossier_frontier">
+				<span class="dossier_eyebrow" translate="crm-dossier-frontier-eyebrow">● Frontera honesta</span>
+				<h2 translate="crm-dossier-frontier-h2">Lo que NO hace</h2>
+				<p translate-html="crm-dossier-frontier-intro">Lo que el producto <em>no</em> hace o todavía no ofrece, explícito:</p>
+				<ul class="dossier_frontier_list">
+					<li translate-html="crm-dossier-frontier-not-1"><strong>No</strong> está completamente extraído del monorepo — fases 4, 6 y 7 del plan de spinoff pendientes (migración de DB, dominio propio, pipeline CI independiente).</li>
+					<li translate-html="crm-dossier-frontier-not-2"><strong>No</strong> es multi-operador — panel de administración de un solo tenant, sin registro de usuarios externos ni roles.</li>
+					<li translate-html="crm-dossier-frontier-not-3"><strong>No</strong> tiene API pública — captura de leads vía endpoint interno; sin SDK ni webhooks de salida documentados para terceros.</li>
+					<li translate-html="crm-dossier-frontier-not-4"><strong>No</strong> está libre de deuda — 33 hallazgos en backlog post-Mariana Trench (mayoría medios y bajos), todos catalogados con ID, severidad y esfuerzo.</li>
+				</ul>
+				<p translate-html="crm-dossier-frontier-outro">La frontera es decisión de diseño, no limitación oculta. El CRM sirve un caso de uso concreto (AGLAYA + leads propios) y crece según evidencia de uso real.</p>
+			</section>
+
+			<section class="dossier_section dossier_proves">
+				<span class="dossier_eyebrow dossier_eyebrow--pink" translate="crm-dossier-proves-eyebrow">● Skills evidenciados</span>
+				<h2 translate="crm-dossier-proves-h2">Lo que este proyecto demuestra</h2>
+				<ul class="dossier_proves_grid">
+					<li>
+						<strong translate="crm-dossier-proves-1-title">Extracción de monorepo disciplinada</strong>
+						<p translate-html="crm-dossier-proves-1-body">Plan de siete fases documentado: inventario de activos Tier 1–4, separación de código, Postgres Railway propio, auditoría, domain cutover, deprecación. Fases 1–3.5 y 5 completadas. La extracción no rompe el monorepo origen ni crea deuda oculta — cada fase tiene criterios de done explícitos y rollback documentado.</p>
+					</li>
+					<li>
+						<strong translate="crm-dossier-proves-2-title">Seguridad de autenticación sin librerías de terceros</strong>
+						<p translate-html="crm-dossier-proves-2-body"><code>safe_constant_time_compare()</code> en <code>auth_utils.py</code>: maneja correctamente <code>None</code>, strings vacíos y caracteres non-ASCII sin elevar excepciones. Roster loop sin <code>break</code> — tiempo de ejecución uniforme, eliminando timing side-channel para enumeración de usuarios. pip-audit limpio: zero CVEs en el árbol de dependencias.</p>
+					</li>
+					<li>
+						<strong translate="crm-dossier-proves-3-title">Zero SQL injection surface</strong>
+						<p translate-html="crm-dossier-proves-3-body">Acceso a datos 100% vía SQLAlchemy ORM — sin raw SQL strings en todo el repositorio. HMAC Svix v1 en webhook de Resend, verificación correcta, falla cerrado: 503 si secret no configurado, 401 si firma incorrecta. Pydantic en captura de leads con validación de email shape, max-length y score range.</p>
+					</li>
+					<li>
+						<strong translate="crm-dossier-proves-4-title">Compliance Ley 21.719 + RGPD</strong>
+						<p translate-html="crm-dossier-proves-4-body">Endpoints ARCO operativos: export JSON completo y erasure walk con conteo de filas. Baseline legal con inventario de procesadores, base legal por actividad, runbook de breach, clasificación de datos y decisión DPIA. Cobertura cruzada Ley 21.719 (Chile) + RGPD (Europa) + LGPD (Brasil).</p>
+					</li>
+					<li>
+						<strong translate="crm-dossier-proves-5-title">Auditoría Mariana Trench cerrada</strong>
+						<p translate-html="crm-dossier-proves-5-body">61 hallazgos formales en cuatro frentes (UX, Seguridad, Legal, DevOps). 28 hallazgos mitigados durante el ciclo (9 críticos + 13 altos + 6 medios), 33 en backlog catalogado. Cada hallazgo lleva ID, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
+					</li>
+					<li>
+						<strong translate="crm-dossier-proves-6-title">Diseño de producto con scoring doble</strong>
+						<p translate-html="crm-dossier-proves-6-body">Dos dimensiones de scoring ortogonales: scanner_score (adherencia regulatoria 0–50) y lead_score (potencial comercial 0–100). Pipeline de seis etapas tipadas con semántica precisa. Log de actividad append-only garantiza trazabilidad completa. Concurrencia optimista con token expected_updated_at para prevenir ediciones simultáneas.</p>
+					</li>
+				</ul>
+			</section>
+
+			<section class="dossier_section dossier_inside" id="dossier_inside">
+				<span class="dossier_eyebrow" translate="crm-dossier-inside-eyebrow">● Detalles técnicos</span>
+				<h2 translate="crm-dossier-inside-h2">Por dentro</h2>
+				<details>
+					<summary translate="crm-dossier-detail-1-summary">Modelo de datos y scoring</summary>
+					<p translate-html="crm-dossier-detail-1-p1">Tres entidades principales: <strong>Contact</strong> (leads capturados), <strong>Deal</strong> (oportunidades comerciales ligadas a un contacto), <strong>Activity</strong> (log append-only de interacciones — email abierto, sesión agendada, propuesta enviada, nota). El log de actividad no se edita ni se borra: solo se añade.</p>
+					<p translate-html="crm-dossier-detail-1-p2">Dos columnas de scoring por contacto: <strong>scanner_score</strong> (0–50) captura el resultado del Scanner Ley 21.719 sobre la superficie pública del lead; <strong>lead_score</strong> (0–100) captura el potencial comercial según criterios del operador. Dimensiones independientes porque el cumplimiento regulatorio y el potencial de compra no siempre correlacionan.</p>
+					<p translate-html="crm-dossier-detail-1-p3">Foreign keys activas en <code>contact_id</code> y <code>deal_id</code> con cascade semántico preciso: borrar un deal elimina en cascada sus actividades; borrar un contacto está restringido mientras tenga deals asociados. Partial UNIQUE INDEX en <code>audit_id WHERE NOT NULL</code> — previene duplicados de audits vinculados sin afectar contactos sin audit. Esquema definido en <code>database.py</code>.</p>
+				</details>
+				<details>
+					<summary translate="crm-dossier-detail-2-summary">Stack y decisiones técnicas</summary>
+					<p translate-html="crm-dossier-detail-2-p1">Backend <strong>Python · FastAPI</strong> con <strong>SQLAlchemy</strong> ORM. Base de datos <strong>PostgreSQL</strong> en Railway (SQLite en desarrollo). Sin raw SQL strings en ningún punto del repositorio — acceso 100% vía ORM. Validación de payload de captura con <strong>Pydantic</strong>: email shape, max-length y score range.</p>
+					<p translate-html="crm-dossier-detail-2-p2">Webhook de Resend con verificación HMAC Svix v1 correcta. Idempotencia garantizada por tabla de eventos procesados + método <code>claim_webhook_event</code> en <code>crm.py</code> — reintentos del proveedor de email no duplican filas de actividad. Concurrencia optimista vía token <code>expected_updated_at</code>.</p>
+					<p translate-html="crm-dossier-detail-2-p3">Observabilidad: Sentry SDK inicializado. Logs JSON estructurados. Email PII enmascarado en logs. Rate limiting en endpoints expuestos. Security headers HTTP completos: HSTS, CSP, X-Frame-Options, Permissions-Policy. TrustedHost middleware. Meta robots noindex,nofollow en el panel admin.</p>
+					<p translate-html="crm-dossier-detail-2-p4">Backup diario: cron Railway dispara pg_dump → Cloudflare R2. Runbook de restore documentado. Dependabot activo. CI con pytest + ruff en cada PR. pre-commit configurado.</p>
+				</details>
+				<details>
+					<summary translate="crm-dossier-detail-3-summary">Auditoría Mariana Trench</summary>
+					<p translate-html="crm-dossier-detail-3-p1">Auditoría propia completada el 2026-05-29. Cuatro dimensiones: <strong>Fase A</strong> (UX y accesibilidad — panel operador-only), <strong>Fase B</strong> (seguridad, datos, arquitectura), <strong>Fase C</strong> (legal — Ley 21.719, RGPD, LGPD), <strong>Fase D</strong> (DevOps, observabilidad, mantenibilidad).</p>
+					<div class="dossier_timeline" role="img" aria-label="Timeline auditoría Mariana Trench CRM AGLAYA: cuatro fases, 2026-05-29" translate-aria-label="crm-dossier-timeline-aria">
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">A</span>
+							<strong class="dossier_timeline_title" translate="crm-dossier-timeline-a-title">UX · A11y · SEO</strong>
+							<span class="dossier_timeline_meta" translate-html="crm-dossier-timeline-a-meta">15 hallazgos · panel operador-only · a11y diferido post-lanzamiento</span>
+						</div>
+						<div class="dossier_timeline_phase dossier_timeline_phase--critical">
+							<span class="dossier_timeline_id">B</span>
+							<strong class="dossier_timeline_title" translate="crm-dossier-timeline-b-title">Seguridad · DB · Arquitectura</strong>
+							<span class="dossier_timeline_meta" translate-html="crm-dossier-timeline-b-meta">16 hallazgos · backup + idempotencia + FK constraints · mitigados en vuelo</span>
+						</div>
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">C</span>
+							<strong class="dossier_timeline_title" translate="crm-dossier-timeline-c-title">Legal · Ley 21.719 · RGPD</strong>
+							<span class="dossier_timeline_meta" translate-html="crm-dossier-timeline-c-meta">14 hallazgos · endpoints ARCO + baseline docs/legal/ cerrados</span>
+						</div>
+						<div class="dossier_timeline_phase">
+							<span class="dossier_timeline_id">D</span>
+							<strong class="dossier_timeline_title" translate="crm-dossier-timeline-d-title">DevOps · Observabilidad · Docs</strong>
+							<span class="dossier_timeline_meta" translate-html="crm-dossier-timeline-d-meta">16 hallazgos · Sentry + CI + backup + JSON logs cerrados</span>
+						</div>
+					</div>
+					<p translate-html="crm-dossier-detail-3-p2">Resultado: <strong>61 hallazgos formales</strong>, <strong>28 hallazgos mitigados</strong> durante el ciclo (9 críticos + 13 altos + 6 medios), 33 en backlog catalogado. Cada hallazgo lleva ID, severidad, evidencia, mitigación y commit SHA en <code>findings.json</code>.</p>
+					<p translate-html="crm-dossier-detail-3-p3">Mitigaciones en vuelo durante el audit: backup diario R2 (<code>8dfd03e</code>), idempotencia de webhooks (<code>e0d5d1c</code>), FK constraints con cascade semántico (<code>ebfc226</code>), bloqueo Railway default host (<code>11a9060</code>), endpoints ARCO (<code>065988b</code>), security headers HTTP (<code>912aec8</code>), baseline legal docs (<code>f45e90a</code>), stack de observabilidad (<code>acc2e60</code>), CI y pre-commit (<code>0577934</code>).</p>
+				</details>
+				<details>
+					<summary translate="crm-dossier-detail-4-summary">Seguridad en profundidad</summary>
+					<p translate-html="crm-dossier-detail-4-p1"><strong>Autenticación</strong>: comparación en tiempo constante en <code>auth_utils.py</code>. Maneja correctamente entradas <code>None</code>, strings vacíos y caracteres non-ASCII sin propagar excepciones. El roster loop no tiene <code>break</code> — tiempo uniforme para cualquier nombre de usuario, eliminando el timing side-channel para enumerar usuarios válidos.</p>
+					<p translate-html="crm-dossier-detail-4-p2"><strong>Webhook</strong>: HMAC Svix v1 verificado correctamente en cada entrega de Resend. El endpoint falla cerrado: 503 si el secret no está configurado, 401 si la firma es incorrecta. Sin ruta de ejecución sin verificación. Idempotencia por tabla de claim — múltiples entregas del mismo evento no duplican actividades.</p>
+					<p translate-html="crm-dossier-detail-4-p3"><strong>Surface de ataque</strong>: cero SSRF (sin httpx ni requests como clientes HTTP salientes), cero RCE (sin eval/exec/subprocess en ningún punto del repositorio). HTML escape global. Meta robots noindex,nofollow en el panel admin. pip-audit limpio: zero CVEs verificado el 2026-05-29.</p>
+				</details>
+				<details>
+					<summary translate="crm-dossier-detail-5-summary">Compliance Ley 21.719 + RGPD</summary>
+					<p translate-html="crm-dossier-detail-5-p1">Derechos ARCO cubiertos por dos endpoints: export JSON completo del contacto (datos, deals, actividades) y erasure walk (contact → deals → actividades con retorno de conteo de filas eliminadas por tabla). Ambos gateados con Basic Auth.</p>
+					<p translate-html="crm-dossier-detail-5-p2">Documentación legal baseline: inventario de procesadores, política de retención, Medidas Técnicas y Organizativas (TOMs), runbook de breach notification, transferencias internacionales, base legal por actividad de tratamiento, contacto DPO y decisión de DPIA. Cobertura cruzada Ley 21.719 (Chile) + RGPD (Europa) + LGPD (Brasil).</p>
+					<p translate-html="crm-dossier-detail-5-p3">Datos clasificados por sensibilidad. Email PII enmascarado en logs de aplicación. Rate limiting en endpoints de captura. Security headers HTTP completos. Todos los accesos a datos de titulares quedan registrados en el log de actividad append-only.</p>
+				</details>
+				<details>
+					<summary translate="crm-dossier-detail-6-summary">Extracción de monorepo y backlog</summary>
+					<p translate-html="crm-dossier-detail-6-p1">Plan de spinoff en siete fases documentado desde el inicio. <strong>Completadas</strong>: Fase 1 (inventario Tier 1–4), Fase 2 (separación de código), Fase 3 (Postgres Railway propio), Fase 3.5 (contingencia), Fase 5 (auditoría Mariana Trench). <strong>Pendientes</strong>: Fase 4 (migración de datos del monorepo), Fase 6 (dominio propio + cutover), Fase 7 (deprecación en monorepo origen).</p>
+					<p translate-html="crm-dossier-detail-6-p2"><strong>33 hallazgos en backlog</strong> post-Mariana Trench (4 críticos + 4 altos + 10 medios + 9 bajos + 6 info), todos catalogados con ID, severidad y esfuerzo estimado en el roadmap. Los críticos restantes: refactor de densidad arquitectónica (diferido post-lanzamiento) y a11y baseline (diferido — panel operador-only). Todos los críticos de seguridad, legal y DevOps están cerrados.</p>
+				</details>
+			</section>
+
+			<footer class="dossier_footer">
+				<a class="dossier_cta dossier_cta--primary" href="index.html#contact_form" translate-html="crm-dossier-footer-cta-1">Hablar conmigo →</a>
+				<a class="dossier_cta dossier_cta--ghost" href="index.html" translate-html="crm-dossier-footer-cta-2">← Volver al portafolio</a>
+				<p class="dossier_footer_meta" translate-html="crm-dossier-footer-meta">Última actualización del dossier: 2026-05-29 · Producto operado por AGLAYA · Versión vigente v0.1.0 · Auditoría Mariana Trench cerrada el 2026-05-29.</p>
+			</footer>
+
+		</main>
+
+		<!-- @include ../components/project/footer-minimal.html -->
+	</div>
+
+	<div class="bottom_top">
+		<svg class="icon icon-arrow-up"><use href="assets/svg/icons.svg#icon-arrow-up"/></svg>
+	</div>
+
+	<!-- @include ../components/shared/translate-button.html -->
+	<!-- @include ../components/shared/analytics-ga4.html -->
+	<!-- @include ../components/shared/cookie-consent.html -->
+
+	<script defer src="assets/js/jquery.min.js"></script>
+	<script defer src="assets/js/custom.min.js"></script>
+	<script defer src="assets/js/translate.min.js"></script>
+</body>
+
+</html>
