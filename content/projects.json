@@ -31,7 +31,7 @@
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--crm\" role=\"img\" aria-label=\"CRM AGLAYA: CRM operativo propio extraído del monorepo legal-reg-tech — Python, FastAPI, SQLAlchemy, PostgreSQL, auditoría Mariana Trench cerrada\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">CRM propio · En producción</span>\n<strong>CRM AGLAYA</strong>\n<span class=\"project_spotlight_mockup_metric\">v0.1.0 · 220 tests verde</span>\n<span class=\"project_spotlight_mockup_note\">Python · FastAPI · SQLAlchemy · Mariana Trench cerrado</span>\n</div>",
     "title": {
-      "text": "CRM AGLAYA: CRM Operativo Propio",
+      "text": "CRM AGLAYA: Proprietary Operational CRM",
       "translate": "project-crm-title"
     },
     "description": {
