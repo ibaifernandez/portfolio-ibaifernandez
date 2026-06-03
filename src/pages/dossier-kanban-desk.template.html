@@ -12,7 +12,7 @@
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://portfolio.ibaifernandez.com/kanban-desk.html">
 	<meta property="og:title" content="AGLAYA Kanban Desk — Dossier | Ibai Fernández">
-	<meta property="og:description" content="Kanban multi-tenant para equipos que trabajan con clientes. Aislamiento Postgres-nativo (RLS), tres tipos de workspace (personal/interno/externo), email digest propio, auditoría Mariana Trench cerrada con 30 hallazgos remediados.">
+	<meta property="og:description" content="Kanban multi-tenant para equipos que trabajan con clientes. Aislamiento Postgres-nativo (RLS), tres tipos de workspace (personal/interno/externo), email digest propio, auditoría Mariana Trench cerrada con 38 hallazgos remediados.">
 	<meta property="twitter:card" content="summary_large_image">
 	<meta property="twitter:url" content="https://portfolio.ibaifernandez.com/kanban-desk.html">
 	<meta property="twitter:title" content="AGLAYA Kanban Desk — Dossier | Ibai Fernández">
@@ -150,7 +150,7 @@
 				<h2 translate="kanban-dossier-state-h2">Estado real</h2>
 				<ul class="dossier_state_grid">
 					<li><strong>v1.3.1</strong><span translate-html="kanban-dossier-state-version">Release vigente. Producción diaria del equipo AGLAYA en <code>kanban.aglaya.biz</code>.</span></li>
-					<li><strong>~100 tests verde</strong><span translate="kanban-dossier-state-tests">Jest + Supertest, suite full-stack server + client (101 passing, 4 skipped preexistentes con razón documentada).</span></li>
+					<li><strong>102 tests verde</strong><span translate="kanban-dossier-state-tests">Jest + Supertest, suite full-stack server + client (102 passing, 4 skipped preexistentes con razón documentada).</span></li>
 					<li><strong>Mariana Trench cerrado</strong><span translate="kanban-dossier-state-mariana">Auditoría propia de cuatro frentes — UX, Seguridad, Legal multi-jurisdicción, DevOps. 38 hallazgos remediados post-Sprint 1.</span></li>
 					<li><strong>18 críticos cerrados</strong><span translate="kanban-dossier-state-critical">Incluye dos críticos mitigados en vuelo durante el propio audit (XSS via upload, backup ausente). Todos los críticos del cierre del audit, resueltos.</span></li>
 					<li><strong>9/9 tablas con RLS</strong><span translate-html="kanban-dossier-state-rls">Row Level Security activo con funciones <code>SECURITY DEFINER</code>. 37 policies verificadas en smoke test de backup-restore.</span></li>
@@ -264,21 +264,21 @@
 					<summary translate="kanban-dossier-detail-5-summary">Observabilidad y operación</summary>
 					<p translate-html="kanban-dossier-detail-5-p1"><strong>Sentry</strong> inicializado server-side (<code>@sentry/node</code> requerido ANTES que cualquier otro <code>require</code> en <code>server/index.js</code>). Variables de entorno <code>SENTRY_DSN</code>, <code>SENTRY_ENVIRONMENT</code> y <code>SENTRY_RELEASE</code> configuradas en Railway. El error middleware en <code>server/app.js</code> captura 5xx (<code>Sentry.captureException</code>) y los intentos de bypass del proxy Netlify (B-03 monitor). Sentry cliente aún no añadido.</p>
 					<p translate-html="kanban-dossier-detail-5-p2"><strong>Backup workflow</strong> en GitHub Actions: cron <code>17 3 * * *</code> UTC, <code>pg_dump</code> con PG17 client, upload a Cloudflare R2 vía API nativa (<code>/accounts/{id}/r2/buckets/{b}/objects/{key}</code> con bearer <code>cfut_</code>; R2 rechaza esos tokens en el endpoint S3-compat, por eso fue necesario migrar de <code>rclone</code> y <code>aws-cli</code> a <code>boto3</code> y finalmente a la API nativa). Retention 30 días automática.</p>
-					<p translate-html="kanban-dossier-detail-5-p3"><strong>CI</strong> workflow GitHub Actions corre <code>npm test</code> en cada PR. Estado actual: 101 tests verde / 4 skipped (preexistentes de auth/admin/security con mocks legacy que requieren refactor mayor; skip documentado con razón). El 4 skipped es deliberado; cualquier rojo nuevo bloquea merge.</p>
+					<p translate-html="kanban-dossier-detail-5-p3"><strong>CI</strong> workflow GitHub Actions corre <code>npm test</code> en cada PR. Estado actual: 102 tests verde / 4 skipped (preexistentes de auth/admin/security con mocks legacy que requieren refactor mayor; skip documentado con razón). El 4 skipped es deliberado; cualquier rojo nuevo bloquea merge.</p>
 					<p translate-html="kanban-dossier-detail-5-p4"><strong>Healthcheck</strong> <code>/api/health</code> con verificación real de dependencias — devuelve no-200 si Supabase o secrets críticos no responden. Cobertura por test dedicado.</p>
 				</details>
 				<details>
 					<summary translate="kanban-dossier-detail-6-summary">Frontera honesta y backlog</summary>
 					<p translate-html="kanban-dossier-detail-6-p1"><strong>~35 hallazgos abiertos + 3 parciales</strong> post-Sprint 1, todos catalogados por ID, severidad y esfuerzo en <code>docs/backlog/audit-mariana-roadmap.md</code>. Sprint 2 cubre los altos remanentes: a11y restantes, B-03 Railway custom domain + Cloudflare WAF, refactor de tests legacy preexistentes. Sprints 3+ cubren medios y bajos.</p>
 					<p translate-html="kanban-dossier-detail-6-p2"><strong>Hallazgos parciales</strong> con cierre pendiente al 100%: <code>A-20</code> (h1 añadido en LoginPage, falta en WorkspaceDashboard / AdminPage / Toolbar / ResetPasswordPage), <code>B-03</code> (monitor activo, falta custom domain Railway + Cloudflare WAF/Tunnel — runbook <code>docs/runbooks/railway-custom-domain.md</code> listo), <code>C-09</code> (template DPIA creada; formal pendiente hasta crecimiento de usuarios o exigencia de cliente externo).</p>
-					<p translate-html="kanban-dossier-detail-6-p3"><strong>Drift conocido</strong>: <code>package.json</code> declara versión 1.1.5 mientras el README y el producto en producción declaran v1.3.1. Actualizar en el próximo release.</p>
+					<p translate-html="kanban-dossier-detail-6-p3"><strong>Drift resuelto</strong>: <code>package.json</code> declaraba versión 1.1.5 mientras el producto en producción declaraba v1.3.1. Corregido el 2026-06-03.</p>
 				</details>
 			</section>
 
 			<footer class="dossier_footer">
 				<a class="dossier_cta dossier_cta--primary" href="https://kanban.aglaya.biz" target="_blank" rel="noopener noreferrer" translate-html="kanban-dossier-footer-cta-1">Ver producto en vivo →</a>
 				<a class="dossier_cta dossier_cta--ghost" href="index.html#contact_form" translate-html="kanban-dossier-footer-cta-2">Hablar conmigo →</a>
-				<p class="dossier_footer_meta" translate-html="kanban-dossier-footer-meta">Última actualización del dossier: 2026-05-28 · Producto operado por AGLAYA · Versión vigente v1.3.1 · Auditoría Mariana Trench cerrada el 2026-05-28.</p>
+				<p class="dossier_footer_meta" translate-html="kanban-dossier-footer-meta">Última actualización del dossier: 2026-06-03 · Producto operado por AGLAYA · Versión vigente v1.3.1 · Auditoría Mariana Trench cerrada el 2026-05-28.</p>
 			</footer>
 
 		</main>
