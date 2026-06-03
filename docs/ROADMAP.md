@@ -1,6 +1,6 @@
 # ROADMAP
 
-**Last updated:** 2026-05-27
+**Last updated:** 2026-06-03
 **Single source of truth** for project state. If this drifts from reality, fix this file first.
 
 ---
@@ -8,7 +8,7 @@
 ## Current state
 
 Production live at https://portfolio.ibaifernandez.com.
-Last push to `origin/main`: `196d7ac` (`ROADMAP: close M4 (documentacion-profesional-if never indexed by Google)`).
+Last push to `origin/main`: `7c4ea3d` (`fix(kanban-dossier): corregir métricas QA y datos obsoletos`).
 CI green. Tests: 52/52 e2e (45 prior + 7 new CSP enforcement specs) + quality + i18n parity + coverage parser regression test.
 
 Narrative B locked: **AI Product Engineer · Founder-Operator**.
