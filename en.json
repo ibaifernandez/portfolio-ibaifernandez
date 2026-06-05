@@ -1036,7 +1036,7 @@
 
   "crm-dossier-footer-cta-1": "Talk to me →",
   "crm-dossier-footer-cta-2": "← Back to portfolio",
-  "crm-dossier-footer-meta": "Dossier last updated: 2026-05-29 · Product operated by AGLAYA · Current version v0.1.0 · Mariana Trench audit closed 2026-05-29.",
+  "crm-dossier-footer-meta": "Dossier last updated: 2026-06-03 · Product operated by AGLAYA · Current version v0.1.0 · Mariana Trench audit closed 2026-05-29.",
 
   "project-crm-title": "CRM AGLAYA: Proprietary Operational CRM",
   "project-crm-copy": "Proprietary operational CRM extracted from the legal-reg-tech monorepo. Typed deal pipeline, dual scoring, append-only activity log. Zero SQL injection, zero SSRF, zero RCE — Mariana Trench audit closed with 28 findings mitigated.",

@@ -1036,7 +1036,7 @@
 
   "crm-dossier-footer-cta-1": "Hablar conmigo →",
   "crm-dossier-footer-cta-2": "← Volver al portafolio",
-  "crm-dossier-footer-meta": "Última actualización del dossier: 2026-05-29 · Producto operado por AGLAYA · Versión vigente v0.1.0 · Auditoría Mariana Trench cerrada el 2026-05-29.",
+  "crm-dossier-footer-meta": "Última actualización del dossier: 2026-06-03 · Producto operado por AGLAYA · Versión vigente v0.1.0 · Auditoría Mariana Trench cerrada el 2026-05-29.",
 
   "project-crm-title": "CRM AGLAYA: CRM Operativo Propio",
   "project-crm-copy": "CRM operativo propio extraído del monorepo legal-reg-tech. Pipeline de deals tipado, scoring doble, log de actividad append-only. Cero inyección SQL, cero SSRF, cero RCE — auditoría Mariana Trench cerrada con 28 hallazgos mitigados.",
