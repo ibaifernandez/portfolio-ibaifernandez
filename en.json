@@ -1163,5 +1163,25 @@
   "outreach-dossier-footer-meta": "Dossier last updated: 2026-06-03 · Product operated by AGLAYA · Current version v1.6.0 · Mariana audit closed with 89/99 findings mitigated.",
 
   "project-outreach-title": "AGLAYA Outreach: B2B Campaign Intelligence SaaS",
-  "project-outreach-copy": "Multi-tenant SaaS that converts raw contact lists into approved, push-ready campaigns. Hypothesis-first LLM onboarding, deterministic YAML scoring, GPT-4o-mini copywriting, 4 ESPs. Mariana security audit closed. GDPR Art.17/20. Flask Blueprints · Supabase RLS · Railway."
+  "project-outreach-copy": "Multi-tenant SaaS that converts raw contact lists into approved, push-ready campaigns. Hypothesis-first LLM onboarding, deterministic YAML scoring, GPT-4o-mini copywriting, 4 ESPs. Mariana security audit closed. GDPR Art.17/20. Flask Blueprints · Supabase RLS · Railway.",
+
+  "mockup-scanner-aria": "Scanner 21.719: RegTech pipeline for public surface audit under Ley 21.719 — Python, Playwright, Redis+RQ, consensus engine",
+  "mockup-scanner-tag": "RegTech · In production",
+  "mockup-scanner-metric": "Consensus 4/5 · 12 controls",
+  "mockup-scanner-note": "Python · Playwright · Redis+RQ · Consensus engine",
+
+  "mockup-crm-aria": "CRM AGLAYA: Proprietary operational CRM extracted from legal-reg-tech — Python, FastAPI, SQLAlchemy, PostgreSQL, Mariana Trench audit closed",
+  "mockup-crm-tag": "Own CRM · In production",
+  "mockup-crm-metric": "v0.1.0 · 220 tests passing",
+  "mockup-crm-note": "Python · FastAPI · SQLAlchemy · Mariana Trench closed",
+
+  "mockup-kanban-aria": "AGLAYA Kanban Desk: Self-hosted multi-tenant Kanban for teams working with clients — React, Node.js, Supabase with RLS, Mariana Trench audit closed",
+  "mockup-kanban-tag": "Multi-tenant · In production",
+  "mockup-kanban-metric": "v1.3.1 · 102 tests passing",
+  "mockup-kanban-note": "React · Express · Supabase RLS · Mariana Trench closed",
+
+  "mockup-outreach-aria": "AGLAYA Outreach: Multi-tenant B2B campaign intelligence SaaS — Flask, Supabase RLS, GPT-4o-mini, Mariana audit closed",
+  "mockup-outreach-tag": "Multi-tenant SaaS · In production",
+  "mockup-outreach-metric": "v1.6.0 · Mariana closed",
+  "mockup-outreach-note": "Flask · Supabase RLS · GPT-4o-mini · 4 ESPs"
 }

@@ -1163,5 +1163,25 @@
   "outreach-dossier-footer-meta": "Última actualización del dossier: 2026-06-03 · Producto operado por AGLAYA · Versión vigente v1.6.0 · Auditoría Mariana cerrada con 89/99 hallazgos mitigados.",
 
   "project-outreach-title": "AGLAYA Outreach: SaaS de Inteligencia de Campaña B2B",
-  "project-outreach-copy": "SaaS multi-tenant que convierte bases de contactos crudas en campañas aprobadas listas para push. Onboarding LLM hipótesis-primero, scoring YAML determinista, copy con GPT-4o-mini, 4 ESPs. Auditoría Mariana cerrada. GDPR Art.17/20. Flask Blueprints · Supabase RLS · Railway."
+  "project-outreach-copy": "SaaS multi-tenant que convierte bases de contactos crudas en campañas aprobadas listas para push. Onboarding LLM hipótesis-primero, scoring YAML determinista, copy con GPT-4o-mini, 4 ESPs. Auditoría Mariana cerrada. GDPR Art.17/20. Flask Blueprints · Supabase RLS · Railway.",
+
+  "mockup-scanner-aria": "Scanner 21.719: RegTech pipeline para auditoría de superficie pública bajo Ley 21.719 — Python, Playwright, Redis+RQ, motor de consenso",
+  "mockup-scanner-tag": "RegTech · En producción",
+  "mockup-scanner-metric": "Consenso 4/5 · 12 controles",
+  "mockup-scanner-note": "Python · Playwright · Redis+RQ · Motor de consenso",
+
+  "mockup-crm-aria": "CRM AGLAYA: CRM operativo propio extraído del monorepo legal-reg-tech — Python, FastAPI, SQLAlchemy, PostgreSQL, auditoría Mariana Trench cerrada",
+  "mockup-crm-tag": "CRM propio · En producción",
+  "mockup-crm-metric": "v0.1.0 · 220 tests verde",
+  "mockup-crm-note": "Python · FastAPI · SQLAlchemy · Mariana Trench cerrado",
+
+  "mockup-kanban-aria": "AGLAYA Kanban Desk: Kanban multi-tenant auto-hospedado para equipos que trabajan con clientes — React, Node.js, Supabase con RLS, auditoría Mariana Trench cerrada",
+  "mockup-kanban-tag": "Multi-tenant · En producción",
+  "mockup-kanban-metric": "v1.3.1 · 102 tests verde",
+  "mockup-kanban-note": "React · Express · Supabase RLS · Mariana Trench cerrado",
+
+  "mockup-outreach-aria": "AGLAYA Outreach: SaaS multi-tenant de inteligencia de campaña B2B — Flask, Supabase RLS, GPT-4o-mini, auditoría Mariana cerrada",
+  "mockup-outreach-tag": "Multi-tenant SaaS · En producción",
+  "mockup-outreach-metric": "v1.6.0 · Mariana cerrado",
+  "mockup-outreach-note": "Flask · Supabase RLS · GPT-4o-mini · 4 ESPs"
 }
