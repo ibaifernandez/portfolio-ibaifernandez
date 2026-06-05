@@ -68,5 +68,27 @@
         "translate": "open-project-page"
       }
     }
+  },
+  {
+    "page": {
+      "output": "aglaya-outreach.html",
+      "keywords": "AGLAYA Outreach, SaaS B2B, email marketing intelligence, LLM onboarding, scoring YAML, multi-tenant, Flask Blueprints, Supabase RLS, GPT-4o-mini, Ibai Fernández"
+    },
+    "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--outreach\" role=\"img\" aria-label=\"AGLAYA Outreach: SaaS multi-tenant de inteligencia de campaña B2B — Flask, Supabase RLS, GPT-4o-mini, auditoría Mariana cerrada\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Multi-tenant SaaS · En producción</span>\n<strong>AGLAYA Outreach</strong>\n<span class=\"project_spotlight_mockup_metric\">v1.6.0 · Mariana cerrado</span>\n<span class=\"project_spotlight_mockup_note\">Flask · Supabase RLS · GPT-4o-mini · 4 ESPs</span>\n</div>",
+    "title": {
+      "text": "AGLAYA Outreach: B2B Campaign Intelligence SaaS",
+      "translate": "project-outreach-title"
+    },
+    "description": {
+      "text": "Multi-tenant SaaS that converts raw contact lists into approved, push-ready campaigns. Hypothesis-first LLM onboarding, deterministic YAML scoring, GPT-4o-mini copywriting, 4 ESPs. Mariana security audit closed. GDPR Art.17/20. Flask Blueprints · Supabase RLS · Railway.",
+      "translate": "project-outreach-copy"
+    },
+    "link": {
+      "href": "aglaya-outreach.html",
+      "label": {
+        "text": "Open Project Page",
+        "translate": "open-project-page"
+      }
+    }
   }
 ]

@@ -44,6 +44,14 @@
       "maxJsBytes": 160000,
       "maxImageBytes": 100000,
       "maxImageCount": 30
+    },
+    {
+      "file": "aglaya-outreach.html",
+      "maxHtmlBytes": 100000,
+      "maxCssBytes": 400000,
+      "maxJsBytes": 160000,
+      "maxImageBytes": 100000,
+      "maxImageCount": 30
     }
   ]
 }
