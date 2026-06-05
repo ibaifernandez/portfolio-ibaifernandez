@@ -72,6 +72,7 @@
   {
     "page": {
       "output": "aglaya-outreach.html",
+      "template": "src/pages/dossier-aglaya-outreach.template.html",
       "keywords": "AGLAYA Outreach, SaaS B2B, email marketing intelligence, LLM onboarding, scoring YAML, multi-tenant, Flask Blueprints, Supabase RLS, GPT-4o-mini, Ibai Fernández"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--outreach\" role=\"img\" aria-label=\"AGLAYA Outreach: SaaS multi-tenant de inteligencia de campaña B2B — Flask, Supabase RLS, GPT-4o-mini, auditoría Mariana cerrada\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Multi-tenant SaaS · En producción</span>\n<strong>AGLAYA Outreach</strong>\n<span class=\"project_spotlight_mockup_metric\">v1.6.0 · Mariana cerrado</span>\n<span class=\"project_spotlight_mockup_note\">Flask · Supabase RLS · GPT-4o-mini · 4 ESPs</span>\n</div>",

@@ -17,6 +17,7 @@ export const basePageEntries = [
   { template: 'src/pages/dossier-scanner-21179.template.html', output: 'scanner-21179.html' },
   { template: 'src/pages/dossier-kanban-desk.template.html', output: 'kanban-desk.html' },
   { template: 'src/pages/dossier-crm-aglaya.template.html', output: 'crm-aglaya.html' },
+  { template: 'src/pages/dossier-aglaya-outreach.template.html', output: 'aglaya-outreach.html' },
   { template: 'src/pages/404.template.html', output: '404.html' }
 ];
 

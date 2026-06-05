@@ -1082,7 +1082,7 @@
 
   "outreach-dossier-state-eyebrow": "● Today",
   "outreach-dossier-state-h2": "Real state",
-  "outreach-dossier-state-version": "In production at <a href=\"https://outreach.aglaya.biz\" target=\"_blank\" rel=\"noopener noreferrer\">outreach.aglaya.biz ↗</a>. Campaign architecture H22 and SaaS workspace redesign WS-1/2/3 complete.",
+  "outreach-dossier-state-version": "In production at <code>outreach.aglaya.biz</code>. Campaign architecture H22 and SaaS workspace redesign WS-1/2/3 complete.",
   "outreach-dossier-state-esps-label": "4 ESPs live",
   "outreach-dossier-state-esps": "Brevo · MailerLite · Mailchimp · MailJet — ESP-agnostic push + engagement webhooks. A single <code>esp_adapter.push_contacts()</code> for all.",
   "outreach-dossier-state-mariana-label": "89/99 Mariana mitigated",
