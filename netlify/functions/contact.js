@@ -10,19 +10,29 @@
  *   RESEND_API_KEY               Resend API key (requerida)
  *   FROM_EMAIL                   Remitente verificado en Resend (opcional)
  *   TO_EMAIL                     Destinatario de mensajes del formulario (opcional)
- *   PORTFOLIO_CAPTCHA_PROVIDER   "turnstile" | "recaptcha" | "hcaptcha"
- *   PORTFOLIO_CAPTCHA_SECRET     Captcha secret key
- *   PORTFOLIO_CAPTCHA_MIN_SCORE  (opcional) float 0-1, solo para reCAPTCHA v3
+ *   PORTFOLIO_CAPTCHA_PROVIDER     "turnstile" | "recaptcha" | "hcaptcha"
+ *   PORTFOLIO_CAPTCHA_SECRET       Captcha secret key
+ *   PORTFOLIO_CAPTCHA_MIN_SCORE    (opcional) float 0-1, solo para reCAPTCHA v3
+ *   PORTFOLIO_CAPTCHA_REQUIRED     (opcional) "1" para rechazar si el captcha no
+ *                                  puede aplicarse (fail-closed, B-FUNC-02)
+ *   PORTFOLIO_RATE_LIMIT_MAX       (opcional) máx. envíos por IP/ventana (def. 5)
+ *   PORTFOLIO_RATE_LIMIT_WINDOW_MS (opcional) ventana en ms (def. 600000 = 10 min)
  *
  * Qué se porta de ajax.php y qué cambia:
  *   ✅ Honeypot (campo "website")
  *   ✅ Timing check (form_started_at)
  *   ✅ Validación y saneamiento de campos
  *   ✅ Verificación de captcha (Turnstile / reCAPTCHA / hCaptcha)
- *   ↩  Rate limit por IP: eliminado — PHP usaba un JSON en disco que no persiste
- *      en Functions serverless. Con Turnstile activo la protección es suficiente.
- *   ↩  Cooldown por sesión PHP: eliminado — no hay sesiones en serverless.
+ *   ✅ Rate limit por IP best-effort en memoria (B-FUNC-01). Las instancias
+ *      serverless se reutilizan en caliente, así que esto frena a un atacante que
+ *      pega contra una misma instancia; para límite GLOBAL añadir una regla de
+ *      rate-limit de Netlify o un store compartido (Netlify Blobs / Upstash).
  *   🔄 mail() → Resend API
+ *
+ * DELIVERABILITY / ANTI-SPOOFING (acción del propietario, B-FUNC-03):
+ *   Configurar SPF + DKIM + DMARC para el dominio remitente en Resend para evitar
+ *   spoofing del FROM_EMAIL y backscatter de la auto-respuesta. No verificable
+ *   desde el repo; vive en la config DNS/Resend.
  */
 
 const { Resend } = require('resend');
@@ -30,6 +40,12 @@ const { Resend } = require('resend');
 // ── Constantes ────────────────────────────────────────────────────────────────
 const MIN_SUBMIT_DELAY_MS  = 1_200;
 const MAX_FORM_LIFETIME_MS = 86_400_000; // 24 h
+const RATE_LIMIT_MAX       = parseInt(process.env.PORTFOLIO_RATE_LIMIT_MAX || '5', 10);
+const RATE_LIMIT_WINDOW_MS = parseInt(process.env.PORTFOLIO_RATE_LIMIT_WINDOW_MS || '600000', 10);
+
+// Best-effort in-memory rate-limit bucket, keyed by client IP. Persists across
+// invocations on a warm instance only (see header note for the global caveat).
+const rateBuckets = new Map();
 
 // ── Entorno ───────────────────────────────────────────────────────────────────
 const RESEND_API_KEY    = process.env.RESEND_API_KEY || '';
@@ -65,6 +81,33 @@ function fail() { return { statusCode: 200, headers: { 'Content-Type': 'text/pla
 
 function shouldEnforceCaptcha() {
   return ['recaptcha', 'hcaptcha', 'turnstile'].includes(CAPTCHA_PROVIDER) && CAPTCHA_SECRET !== '';
+}
+
+const CAPTCHA_REQUIRED = ['1', 'true', 'yes'].includes(
+  (process.env.PORTFOLIO_CAPTCHA_REQUIRED || '').toLowerCase().trim()
+);
+
+// Returns true if this IP has exceeded RATE_LIMIT_MAX submissions within the
+// sliding window. Prunes expired timestamps; bounds memory opportunistically.
+function isRateLimited(ip) {
+  if (!ip) return false; // can't key without an IP — don't block legitimate users
+  const now = Date.now();
+  const cutoff = now - RATE_LIMIT_WINDOW_MS;
+  const hits = (rateBuckets.get(ip) || []).filter((t) => t > cutoff);
+  if (hits.length >= RATE_LIMIT_MAX) {
+    rateBuckets.set(ip, hits);
+    return true;
+  }
+  hits.push(now);
+  rateBuckets.set(ip, hits);
+  if (rateBuckets.size > 5_000) {
+    for (const [key, times] of rateBuckets) {
+      const fresh = times.filter((t) => t > cutoff);
+      if (fresh.length === 0) rateBuckets.delete(key);
+      else rateBuckets.set(key, fresh);
+    }
+  }
+  return false;
 }
 
 async function verifyCaptchaToken(token, remoteIp) {
@@ -132,6 +175,10 @@ exports.handler = async function handler(event) {
   // Honeypot — campo oculto "website": si tiene valor, es un bot
   if (String(body.website || '').trim() !== '') return fail();
 
+  // Rate limit por IP (best-effort, B-FUNC-01) — frena email-bombing / abuso de coste.
+  const clientIp = getClientIp(event.headers || {});
+  if (isRateLimited(clientIp)) return fail();
+
   // Timing check — el formulario debe haberse abierto hace entre 1.2 s y 24 h
   const formStartedAt = parseInt(body.form_started_at || '0', 10);
   const elapsed       = Date.now() - formStartedAt;
@@ -142,8 +189,13 @@ exports.handler = async function handler(event) {
   // Captcha
   if (shouldEnforceCaptcha()) {
     const token = String(body.captcha_token || '').trim();
-    const ip    = getClientIp(event.headers || {});
-    if (!(await verifyCaptchaToken(token, ip))) return fail();
+    if (!(await verifyCaptchaToken(token, clientIp))) return fail();
+  } else if (CAPTCHA_REQUIRED || (CAPTCHA_PROVIDER && !CAPTCHA_SECRET)) {
+    // Fail closed (B-FUNC-02): captcha was explicitly required, or a provider was
+    // configured without its secret (a misconfiguration). Refuse rather than
+    // silently accepting on honeypot+timing alone.
+    console.error('[contact] captcha required but not enforceable — set PORTFOLIO_CAPTCHA_PROVIDER + PORTFOLIO_CAPTCHA_SECRET');
+    return fail();
   }
 
   // Extracción y saneamiento de campos
