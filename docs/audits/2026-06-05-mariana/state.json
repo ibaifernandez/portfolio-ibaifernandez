@@ -1,0 +1,69 @@
+{
+  "audit": "mariana-trench",
+  "date": "2026-06-05",
+  "head": "3faadfb",
+  "repo": "portfolio-ibaifernandez",
+  "mode": "report",
+  "status": "complete",
+  "phases": {
+    "0-setup": "done",
+    "A-product-surface": "done",
+    "B-build-deps-architecture": "done",
+    "C-legal-privacy": "done",
+    "D-ops-docs-testing": "done",
+    "verify-adversarial": "done",
+    "delta-regression": "done"
+  },
+  "orchestration": {
+    "engine": "Workflow",
+    "run_id": "wf_e28a3e99-816",
+    "dimension_agents": 10,
+    "verify_agents": 1,
+    "delta_agents": 1,
+    "subagent_tokens": 813816
+  },
+  "totals": {
+    "findings": 84,
+    "CRITICAL": 0,
+    "HIGH": 0,
+    "MEDIUM": 25,
+    "LOW": 32,
+    "INFO": 27,
+    "actionable_medium_verifiable": 23
+  },
+  "evidence": {
+    "PROVEN": 76,
+    "SUSPECTED": 4,
+    "UNVERIFIABLE": 8,
+    "proven_pct": 90
+  },
+  "adversarial_verdicts": {
+    "SEO-OG-01": {
+      "original": "HIGH",
+      "confirmed": true,
+      "adjusted": "MEDIUM"
+    }
+  },
+  "regression_delta": {
+    "baseline": "docs/audits/marianas (2026-05-22, commit 1cabf77)",
+    "resolved": 19,
+    "persisting": 10,
+    "new": 64,
+    "regressed": 6
+  },
+  "deliverables": [
+    "REPORT.md",
+    "findings.json",
+    "audit-A.md",
+    "audit-B.md",
+    "audit-C.md",
+    "audit-D.md",
+    "regression-delta.md",
+    "EXECUTION-LOG.md",
+    "state.json"
+  ],
+  "next_actions": {
+    "task_17": "audit complete (report only); remediation deferred to gated sessions",
+    "task_18": "orphan-template cleanup plan in A-DEBT-03 (move 10 archived templates to src/pages/archived/; decide project.template.html fallback fate with A-DEBT-04)"
+  }
+}
