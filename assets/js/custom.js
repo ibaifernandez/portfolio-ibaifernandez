@@ -1359,15 +1359,39 @@ Assigned to: ThemeForest
 		if($('.submitForm').length > 0){
 			var _this = this;
 			var minSubmitDelayMs = 1200;
-			var messages = {
-				missingFields: 'Please complete the required fields.',
-				waitBeforeSubmit: 'Please wait a moment and try again.',
-				completeCaptcha: 'Please complete the security check.',
-				captchaUnavailable: 'Security verification is temporarily unavailable. Please try again later.',
-				genericError: 'Something went wrong. Please try again later.',
-				success: 'Your message has been sent successfully.',
-				invalidRule: 'Validation rule is not configured.'
+			// Bilingual feedback so a visitor on lang=es gets Spanish at the highest-
+			// intent moment (UX-FORM-01). `messages.<key>` resolves live against
+			// window.currentLanguage (set by translate.js) at access time, i.e. on submit.
+			var messagesByLang = {
+				en: {
+					missingFields: 'Please complete the required fields.',
+					waitBeforeSubmit: 'Please wait a moment and try again.',
+					completeCaptcha: 'Please complete the security check.',
+					captchaUnavailable: 'Security verification is temporarily unavailable. Please try again later.',
+					genericError: 'Something went wrong. Please try again later.',
+					success: 'Your message has been sent successfully.',
+					invalidRule: 'Validation rule is not configured.'
+				},
+				es: {
+					missingFields: 'Por favor, completa los campos obligatorios.',
+					waitBeforeSubmit: 'Espera un momento e inténtalo de nuevo.',
+					completeCaptcha: 'Por favor, completa la verificación de seguridad.',
+					captchaUnavailable: 'La verificación de seguridad no está disponible temporalmente. Inténtalo más tarde.',
+					genericError: 'Algo salió mal. Por favor, inténtalo más tarde.',
+					success: 'Tu mensaje se ha enviado correctamente.',
+					invalidRule: 'La regla de validación no está configurada.'
+				}
 			};
+			var messages = {};
+			Object.keys(messagesByLang.en).forEach(function(key){
+				Object.defineProperty(messages, key, {
+					enumerable: true,
+					get: function(){
+						var lang = (window.currentLanguage === 'es') ? 'es' : 'en';
+						return messagesByLang[lang][key];
+					}
+				});
+			});
 			var captchaScriptSrc = {
 				recaptcha: 'https://www.google.com/recaptcha/api.js?render=explicit',
 				hcaptcha: 'https://js.hcaptcha.com/1/api.js?render=explicit',
