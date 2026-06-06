@@ -52,6 +52,22 @@
       "maxJsBytes": 160000,
       "maxImageBytes": 100000,
       "maxImageCount": 30
+    },
+    {
+      "file": "404.html",
+      "maxHtmlBytes": 40000,
+      "maxCssBytes": 400000,
+      "maxJsBytes": 160000,
+      "maxImageBytes": 100000,
+      "maxImageCount": 30
+    },
+    {
+      "file": "lfi-legacy.html",
+      "maxHtmlBytes": 60000,
+      "maxCssBytes": 400000,
+      "maxJsBytes": 160000,
+      "maxImageBytes": 1000000,
+      "maxImageCount": 30
     }
   ]
 }

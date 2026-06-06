@@ -206,6 +206,22 @@ for (const file of targets) {
       failures.push(`${file}: <picture> for ${src} lacks matching AVIF source (${expectedAvif})`);
     }
   }
+
+  // Independent of the per-<img> alpha-skip path: every AVIF <source> declared on
+  // the page must resolve to a real file on disk. Closes the blind spot where an
+  // alpha PNG <img> is skipped while its sibling <source type="image/avif"> points
+  // at a non-existent .avif (P-PERF-02).
+  const avifSourceRegex = /<source\b[^>]*type=["']image\/avif["'][^>]*srcset=["']([^"']+)["'][^>]*>/gi;
+  let avifSourceMatch;
+  while ((avifSourceMatch = avifSourceRegex.exec(html))) {
+    for (const url of parseSrcsetUrls(avifSourceMatch[1])) {
+      if (!isLocalAsset(url)) continue;
+      const avifFile = path.resolve(path.dirname(absolute), normalizeUrl(url));
+      if (!fs.existsSync(avifFile)) {
+        failures.push(`${file}: declared AVIF <source> points to missing file ${url}`);
+      }
+    }
+  }
 }
 
 if (failures.length > 0) {

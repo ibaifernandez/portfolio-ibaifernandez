@@ -11,6 +11,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 
 const FINGERPRINT_ASSETS = [
+  'assets/css/bootstrap.min.css',
   'assets/css/style.min.css',
   'assets/css/font.min.css',
   'assets/css/animate.min.css',

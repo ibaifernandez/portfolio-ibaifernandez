@@ -267,8 +267,10 @@
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
-# Webfonts — 30 días + immutable (nunca cambian sin cambiar el nombre)
+# Webfonts — 30 días + immutable (nunca cambian sin cambiar el nombre).
+# Las fuentes self-hosted viven en /assets/fonts/ (no /assets/webfonts/), así que
+# el bloque debe apuntar ahí o las woff2 caen al catch-all /* sin Cache-Control (P-PERF-03).
 [[headers]]
-  for = "/assets/webfonts/*"
+  for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, immutable"
