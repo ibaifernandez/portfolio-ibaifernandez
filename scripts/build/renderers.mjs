@@ -1,3 +1,15 @@
+// renderers.mjs — the build's content engine. Three responsibilities:
+//   1. createBuildRuntime() exposes renderDirective() — resolves `<!-- @render X -->`
+//      tokens in templates to generated HTML (projects grid, training timeline,
+//      experience, CTAs, etc.), each reading from content/*.json.
+//   2. getPageEntries() = static basePageEntries + legacyPageEntries +
+//      renderProjectPageEntries() (data-driven dossiers from content/projects.json).
+//      Dossiers live ONLY in renderProjectPageEntries (single source — see A-ARCH-01);
+//      that path also computes each dossier's JSON-LD, canonical, share image and
+//      prev/next nav, surfaced into templates via {{placeholders}} / {{{rawHtml}}}.
+//   3. getManagedProjectOutputs() lists active + archived outputs so build-pages.mjs
+//      can delete retired pages from the repo root.
+// page.template is REQUIRED (assertRequired) — no silent scaffold fallback (A-DEBT-04).
 import {
   basePageEntries,
   defaultShareImage,

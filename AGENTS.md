@@ -102,7 +102,7 @@ npm run media:all
 ## The Golden Rules
 
 ### 1. Never edit generated files directly
-`index.html`, `privacy.html`, the root-level active dossier HTML pages (for example `lfi.html` or `elm-st.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
+`index.html`, `privacy.html`, the root-level active dossier HTML pages (the outputs listed in `content/projects.json` — currently `scanner-21179.html`, `crm-aglaya.html`, `kanban-desk.html`, `aglaya-outreach.html`), and the committed `.min` CSS/JS assets are **GENERATED** by `npm run build:pages`. Edits to these files will be overwritten on the next build.
 
 - To change page content → edit `src/pages/*.template.html`
 - To change component markup → edit `src/components/**/*.html`
@@ -159,8 +159,10 @@ The wrapper `port_sec_warapper` must remain a `<main>` element (not a `<div>`) f
 
 Every push to `main` runs one GitHub Actions workflow:
 
-1. **`ci.yml`** — install + build + `npm run test:quality` + `npm run test:e2e` + Netlify deploy
-   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, i18n parity drift, and any Playwright suite failure.
+1. **`ci.yml`** — install + build + `npm run test:quality` + dossier claim-check (`--all`) + `npm run test:unit` + `npm run test:smoke` + `npm run test:e2e` + Netlify deploy
+   - Blocks on: missing AVIF/WebP coverage, broken internal links, budget overruns, security header absence, `eval(`, blank hrefs, unsafe `target="_blank"`, hardcoded secrets, i18n parity drift, unrecognized dossier factual claims, CRITICAL npm advisories, build-unit-test failure, and any Playwright suite failure.
+   - See **`docs/TESTING.md`** for the full test inventory, the dossier claim-check pipeline, and the visual-baseline contract.
+2. **`link-health.yml`** — weekly scheduled external-link check (`workflow_dispatch` + cron). A failure surfaces as a red scheduled run (GitHub emails the repo owner by default).
 
 ---
 
@@ -210,4 +212,4 @@ Documentation footprint is intentionally minimal. See `docs/README.md` for the m
 
 ---
 
-*Last updated: 2026-03-03*
+*Last updated: 2026-06-06*

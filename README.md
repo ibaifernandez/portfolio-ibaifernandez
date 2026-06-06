@@ -133,13 +133,18 @@ Estado actual: la cobertura AVIF/WebP ya se valida sobre todas las páginas gene
 - `home.spec.js` — Render del home y bloques críticos. Sidebar, skip-link, AVIF/WebP, idioma, hardening de links.
 - `contact.spec.js` — Feedback accesible, validación de email, envío válido, timing guard real del endpoint.
 - `keyboard.spec.js` — Tab order para navegación crítica (skip-link, sidebar anchors, formulario, redes sociales).
-- `a11y.spec.js` — Axe sin violaciones `serious/critical` en Home y Contact.
+- `a11y.spec.js` — Axe WCAG 2.1 A + AA sin violaciones en Home.
 - `dossiers.spec.js` — Navegación prev/next cerrada sobre el set público activo.
+- `dossier-pages.spec.js` — Por dossier (matriz derivada de `content/projects.json`): render, botón de idioma nativo, toggle `<html lang>`, links externos endurecidos, axe WCAG.
 - `archived-dossiers.spec.js` — Los slugs archivados rebotan al índice de proyectos en vez de resolver como dossiers públicos.
-- `visual.spec.js` — Regresión visual de referencia para secciones clave.
+- `cookie-consent.spec.js` — Banner mostrar/aceptar/rechazar, persistencia, reapertura, sin cookie GA antes del consentimiento.
+- `csp.spec.js` — Enforcement de Content-Security-Policy en runtime.
+- `visual.spec.js` — Regresión visual de referencia para secciones clave (ver `docs/TESTING.md` para el contrato de baselines).
+
+Pruebas unitarias del build (`tests/build/*.test.mjs`) vía `npm run test:unit`. Inventario completo de tests y gates en **`docs/TESTING.md`**.
 
 Nota de producto: el portfolio ya no tiene blog público. La ruta heredada `/blog` / `/blog.html` redirige al home y los proyectos son la única superficie editorial pública.
-La superficie actual publicada se limita a `lfi.html`, `ruta-de-la-digitalizacion-y-2x2-mkt.html`, `elm-st.html` y `aglaya.html`.
+La superficie pública activa es la definida por `content/projects.json` (actualmente: `scanner-21179.html`, `crm-aglaya.html`, `kanban-desk.html`, `aglaya-outreach.html`). Esa es la fuente de verdad — no edites listas de dossiers a mano aquí.
 
 ---
 

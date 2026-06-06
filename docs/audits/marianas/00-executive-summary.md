@@ -1,5 +1,12 @@
 # Marianas Audit — Executive Summary
 
+> ⚠️ **HISTORICAL SNAPSHOT (2026-05-22).** This audit predates the dossier
+> redesign — page names here (lfi/aglaya/elm-st/ruta/cv-print) reflect the
+> pre-redesign surface and no longer exist. For the current dossier set see
+> `content/projects.json`; for the current audit see
+> `docs/audits/2026-06-05-mariana/`. Kept for git-history value; do not treat as
+> a live to-do list.
+
 **Date:** 2026-05-22
 **Auditor:** Claude Opus 4.7 (1M context)
 **Repo:** portfolio-ibaifernandez @ `1cabf77` (main)

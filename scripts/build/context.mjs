@@ -1,3 +1,9 @@
+// context.mjs — file IO + template resolution for the build.
+//   readJson / readComponent: cached reads of content/*.json and components.
+//   renderWithIncludes(filePath, { data, renderDirective }): the recursive template
+//   resolver. Order per file: (1) expand `<!-- @include path -->` (sandboxed to the
+//   repo root — B-INCL-01; cycles detected), (2) expand `<!-- @render name -->` via
+//   renderDirective, (3) substitute {{key}} / {{{rawKey}}} placeholders from `data`.
 import fs from 'node:fs';
 import path from 'node:path';
 
