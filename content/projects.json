@@ -27,6 +27,7 @@
     "page": {
       "output": "crm-aglaya.html",
       "template": "src/pages/dossier-crm-aglaya.template.html",
+      "shareImage": "assets/images/dossiers/crm-aglaya/og-image.png",
       "keywords": "CRM AGLAYA, CRM operativo propio, Python, FastAPI, SQLAlchemy, PostgreSQL, Railway, Cloudflare R2, lead scoring, Ley 21.719, auditoría Mariana Trench"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--crm\" role=\"img\" aria-label=\"CRM AGLAYA: CRM operativo propio extraído del monorepo legal-reg-tech — Python, FastAPI, SQLAlchemy, PostgreSQL, auditoría Mariana Trench cerrada\" translate-aria-label=\"mockup-crm-aria\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\" translate=\"mockup-crm-tag\">CRM propio · En producción</span>\n<strong>CRM AGLAYA</strong>\n<span class=\"project_spotlight_mockup_metric\" translate=\"mockup-crm-metric\">v0.1.0 · 220 tests verde</span>\n<span class=\"project_spotlight_mockup_note\" translate=\"mockup-crm-note\">Python · FastAPI · SQLAlchemy · Mariana Trench cerrado</span>\n</div>",
@@ -50,6 +51,7 @@
     "page": {
       "output": "kanban-desk.html",
       "template": "src/pages/dossier-kanban-desk.template.html",
+      "shareImage": "assets/images/dossiers/kanban-desk/og-image.png",
       "keywords": "AGLAYA Kanban Desk, Kanban multi-tenant, React, Node.js, Express, Supabase, PostgreSQL, RLS, auto-hospedado, agencias"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--kanban\" role=\"img\" aria-label=\"AGLAYA Kanban Desk: Kanban multi-tenant auto-hospedado para equipos que trabajan con clientes — React, Node.js, Supabase con RLS, auditoría Mariana Trench cerrada\" translate-aria-label=\"mockup-kanban-aria\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\" translate=\"mockup-kanban-tag\">Multi-tenant · En producción</span>\n<strong>AGLAYA Kanban Desk</strong>\n<span class=\"project_spotlight_mockup_metric\" translate=\"mockup-kanban-metric\">v1.3.1 · 102 tests verde</span>\n<span class=\"project_spotlight_mockup_note\" translate=\"mockup-kanban-note\">React · Express · Supabase RLS · Mariana Trench cerrado</span>\n</div>",
@@ -73,6 +75,7 @@
     "page": {
       "output": "aglaya-outreach.html",
       "template": "src/pages/dossier-aglaya-outreach.template.html",
+      "shareImage": "assets/images/dossiers/aglaya-outreach/og-image.png",
       "keywords": "AGLAYA Outreach, SaaS B2B, email marketing intelligence, LLM onboarding, scoring YAML, multi-tenant, Flask Blueprints, Supabase RLS, GPT-4o-mini, Ibai Fernández"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--outreach\" role=\"img\" aria-label=\"AGLAYA Outreach: SaaS multi-tenant de inteligencia de campaña B2B — Flask, Supabase RLS, GPT-4o-mini, auditoría Mariana cerrada\" translate-aria-label=\"mockup-outreach-aria\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\" translate=\"mockup-outreach-tag\">Multi-tenant SaaS · En producción</span>\n<strong>AGLAYA Outreach</strong>\n<span class=\"project_spotlight_mockup_metric\" translate=\"mockup-outreach-metric\">v1.6.0 · Mariana cerrado</span>\n<span class=\"project_spotlight_mockup_note\" translate=\"mockup-outreach-note\">Flask · Supabase RLS · GPT-4o-mini · 4 ESPs</span>\n</div>",

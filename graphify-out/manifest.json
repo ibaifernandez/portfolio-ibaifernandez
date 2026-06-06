@@ -45,9 +45,9 @@
     "semantic_hash": "5f71c4f172557ee42e6dbcbe4f0cca77"
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/check-i18n.mjs": {
-    "mtime": 1779486383.1382027,
-    "ast_hash": "9b94c859091f2ef64afe2c55c6f2c8d4",
-    "semantic_hash": "9b94c859091f2ef64afe2c55c6f2c8d4"
+    "mtime": 1780741706.646723,
+    "ast_hash": "646187a78123ac0cbb6bf4b3a5eacdf4",
+    "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/performance-budget.config.json": {
     "mtime": 1780686740.679641,
@@ -525,7 +525,7 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/kanban-desk.html": {
-    "mtime": 1780693554.474334,
+    "mtime": 1780741718.7333503,
     "ast_hash": "1377820e4e7fe02e65fa3922598c72fb",
     "semantic_hash": ""
   },
@@ -535,7 +535,7 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/crm-aglaya.html": {
-    "mtime": 1780693554.4746778,
+    "mtime": 1780741718.7330317,
     "ast_hash": "1e43c189b4dbc573c8b4af227578ab12",
     "semantic_hash": ""
   },
@@ -545,7 +545,7 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/aglaya-outreach.html": {
-    "mtime": 1780693554.4750473,
+    "mtime": 1780741718.7336981,
     "ast_hash": "20363fe092c5f4b45fc8ae53aff98840",
     "semantic_hash": ""
   },
