@@ -78,7 +78,7 @@ test('sidebar anchors and language toggle are keyboard reachable and activatable
   let translateButtonReached = false;
   for (let attempt = 0; attempt < 120; attempt += 1) {
     await page.keyboard.press('Tab');
-    translateButtonReached = await page.evaluate(() => document.activeElement?.id === 'translate-button-icon');
+    translateButtonReached = await page.evaluate(() => document.activeElement?.id === 'translate-button');
     if (translateButtonReached) {
       break;
     }

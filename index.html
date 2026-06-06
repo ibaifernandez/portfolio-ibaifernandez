@@ -36,7 +36,7 @@
 	<!-- animate.css: non-blocking (not needed above-the-fold) -->
 	<link rel="preload" as="style" data-preload-swap href="assets/css/animate.min.css?v=f208dc149e">
 	<noscript><link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e"></noscript>
-	<link rel="stylesheet" href="assets/css/style.min.css?v=c85f60c66c">
+	<link rel="stylesheet" href="assets/css/style.min.css?v=5af81cea36">
 	<link rel="stylesheet" href="assets/css/print.min.css?v=37e763be91" media="print">
 <!-- Swap <link rel="preload" as="style" data-preload-swap> to rel="stylesheet" once the
      stylesheet is fetched. Replaces the inline onload= handler (which CSP3 hash-based
@@ -136,7 +136,7 @@
 					
                     <li data-number="0">
 						<div class="tooltip_box">
-							<a href="#about_sec" class="siderbar_menuicon">
+							<a href="#about_sec" class="siderbar_menuicon" aria-label="About" translate-aria-label="sidebar-tooltip-about">
 								<span class="first_micon">
 									<svg class="nav_about_svg" xmlns="http://www.w3.org/2000/svg"
 										xmlns:xlink="http://www.w3.org/1999/xlink" width="26px" height="26px">
@@ -183,7 +183,7 @@
 
                     <li data-number="1">
 						<div class="tooltip_box">
-							<a href="#training_sec" class="siderbar_menuicon">
+							<a href="#training_sec" class="siderbar_menuicon" aria-label="Training" translate-aria-label="sidebar-tooltip-training">
 								<span class="first_micon">
 									<svg  height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                                     viewBox="0 0 355.438 355.438" xml:space="preserve">
@@ -269,7 +269,7 @@
 					
                     <li data-number="2">
 						<div class="tooltip_box">
-							<a href="#project_sec" class="siderbar_menuicon">
+							<a href="#project_sec" class="siderbar_menuicon" aria-label="Portfolio" translate-aria-label="sidebar-tooltip-portfolio">
 								<span class="first_micon">
                                     <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#000000">
                                         <!-- <defs>
@@ -312,7 +312,7 @@
 
                     <li data-number="4">
 						<div class="tooltip_box">
-							<a href="#contact_form" class="siderbar_menuicon">
+							<a href="#contact_form" class="siderbar_menuicon" aria-label="Contact" translate-aria-label="sidebar-tooltip-contact">
 								<span class="first_micon">
 									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.56 480.56"
 										class="nav_contact_svg" width="20px" height="20px">
@@ -471,7 +471,7 @@
 											<source type="image/webp" srcset="./assets/images/ibai-fernandez-2.webp">
 											<img class="img-fluid" src="./assets/images/ibai-fernandez-2.jpg" alt="About" title="more information click + icon" loading="lazy" decoding="async" width="445" height="980">
 										</picture>
-									<button type="button" class="about_icon_toggle" title="more information click + icon" aria-label="Show more information about Ibai">
+									<button type="button" class="about_icon_toggle" title="more information click + icon" aria-label="Show more information about Ibai" aria-expanded="false">
 										<div class="iconbox">
 											<span class="icon-plus icon_plus" aria-hidden="true"><svg class="icon" aria-hidden="true"><use href="assets/svg/icons.svg?v=2478e2193f#icon-plus"/></svg><span class="read-more-text" translate="read-more">Read more</span></span>
 											<svg class="icon icon-minus icon_minus" aria-hidden="true"><use href="assets/svg/icons.svg?v=2478e2193f#icon-minus"/></svg>
@@ -480,7 +480,7 @@
 								</div>
 								<div class="left_deatils">
 									<div class="personal_details">
-										<h1 class="ps_name">Ibai Fernández</h1>
+										<p class="ps_name">Ibai Fernández</p>
 										<p class="ps_designation">AI Product Engineer</p>
 										<ul class="info-list">
 											<li><span class="title" translate="remote-from">Remote from</span><span class="value" translate="location-value">Belo Horizonte, Minas Gerais, Brazil 🇧🇷</span></li>
@@ -852,7 +852,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-elm-st-r1-intro">Founded an audiovisual production company at the intersection of cinematic craft and brand storytelling. Built the narrative foundation that informed much of the digital work that followed from 2016 onwards. It allowed me to start my next professional step as Creative Director at NIC.ec, where I later moved into Marketing.</p>
-			<h4 translate="exp-elm-st-r1-resp-h">Highlights</h4>
+			<h3 translate="exp-elm-st-r1-resp-h">Highlights</h3>
 			<ul>
 				<li translate-html="exp-elm-st-r1-resp-1">Operated the studio end-to-end: pre-production, shoot, post, delivery.</li>
 				<li translate-html="exp-elm-st-r1-resp-2">Brand films, music videos, corporate documentaries for SMB + agency clients.</li>
@@ -880,7 +880,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-nic-ec-r1-intro">Joined as Creative Director to redesign the registry's brand surface, product packaging, and customer-facing communication. Built the in-house creative team and laid the foundation that anchored the next three years of growth.</p>
-			<h4 translate="exp-nic-ec-r1-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-nic-ec-r1-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-nic-ec-r1-resp-1">Brand identity redesign and visual system.</li>
 				<li translate-html="exp-nic-ec-r1-resp-2">Brand storytelling.</li>
@@ -900,7 +900,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-nic-ec-r2-intro">Promoted to Marketing & Communications Director. Owned the full demand-generation funnel, brand voice, PR, and content programs.</p>
-			<h4 translate="exp-nic-ec-r2-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-nic-ec-r2-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-nic-ec-r2-resp-1">Acquisition campaigns across digital, print, and events.</li>
 				<li translate-html="exp-nic-ec-r2-resp-2">External communications, PR, crisis messaging.</li>
@@ -919,7 +919,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-nic-ec-r3-intro">Final role at NIC.ec, with P&L responsibility for the marketing function and direct reporting to the General Manager and the CEO.</p>
-			<h4 translate="exp-nic-ec-r3-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-nic-ec-r3-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-nic-ec-r3-resp-1">Annual budget, quarterly planning, and reporting to GM and CEO.</li>
 				<li translate-html="exp-nic-ec-r3-resp-2">Channel mix optimization, attribution model, CAC/LTV reporting.</li>
@@ -942,7 +942,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-aglaya-1-r1-intro">Founded AGLAYA to operate as a remote digital agency combining marketing intelligence, lean business design, and design-thinking practices into delivery for B2B clients.</p>
-			<h4 translate="exp-aglaya-1-r1-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-aglaya-1-r1-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-aglaya-1-r1-resp-1">Defined the offer, the pricing, and the delivery playbook.</li>
 				<li translate-html="exp-aglaya-1-r1-resp-2">Closed and led engagements across LatAm and US-facing accounts.</li>
@@ -970,7 +970,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-lfi-r1-intro">Joined LFi as Mail Marketing and Automation Specialist for enterprise CRM campaigns. Shipped responsive email templates and customer-facing surfaces against deliverability and accessibility constraints.</p>
-			<h4 translate="exp-lfi-r1-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-lfi-r1-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-lfi-r1-resp-1">HTML/CSS templates for transactional and commercial email at enterprise scale.</li>
 				<li translate-html="exp-lfi-r1-resp-2">QA and cross-client rendering against the major MTAs and webmail clients.</li>
@@ -989,7 +989,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-lfi-r2-intro">Moved into the Marketing Coordinator role. Coordinated the content, design, and automation tracks across multiple enterprise accounts.</p>
-			<h4 translate="exp-lfi-r2-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-lfi-r2-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-lfi-r2-resp-1">Account briefing, creative kickoffs, and delivery oversight.</li>
 				<li translate-html="exp-lfi-r2-resp-2">QA gate before client preview and sign-off cycles.</li>
@@ -1008,7 +1008,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-lfi-r3-intro">I don't just manage lists or campaigns; I design data architectures that automate the relationship between enterprise brands and users at a global scale. As Director of Automation, I'm building the traditional email-marketing function into a strict discipline of revenue engineering.</p>
-			<h4 translate="exp-lfi-r3-resp-h">Key Responsibilities</h4>
+			<h3 translate="exp-lfi-r3-resp-h">Key Responsibilities</h3>
 			<ul>
 				<li translate-html="exp-lfi-r3-resp-1"><strong>AI-Driven Orchestration:</strong> LLMs and autonomous agents generating dynamic, hyper-personalized content in real time, cutting deployment cycles from days to a couple of hours.</li>
 				<li translate-html="exp-lfi-r3-resp-2"><strong>Full-Stack Architecture:</strong> Custom integrations with Next.js, TypeScript, and Python bridging complex CRMs and high-volume delivery engines.</li>
@@ -1033,7 +1033,7 @@
 		</summary>
 		<div class="career_role_content">
 			<p translate-html="exp-aglaya-2-r1-intro">Returned to AGLAYA — now as <em>The Uncomfortable AI·gency</em>. We build high-performance AI systems that replace manual chaos with automated certainty, so businesses recover their operational sovereignty instead of renting it from generic SaaS vendors.</p>
-			<h4 translate="exp-aglaya-2-r1-resp-h">Operating Principles</h4>
+			<h3 translate="exp-aglaya-2-r1-resp-h">Operating Principles</h3>
 			<ul>
 				<li translate-html="exp-aglaya-2-r1-resp-1"><strong>Algorithmic Sovereignty</strong> — autonomous corporate cognition, owned by the client, not the vendor.</li>
 				<li translate-html="exp-aglaya-2-r1-resp-2"><strong>Inevitable Logical Systems</strong> — design systems whose progression is logical, not reactive, so growth compounds rather than rebuilds.</li>
@@ -1709,9 +1709,13 @@
 	</div>
 	    <!-- =================== Translate Button ================== -->
     <div id="translate-button-container">
-        <img id="translate-button-icon" src="assets/images/flags/spain.svg" width="64" height="64" alt="Translate Button" loading="eager" decoding="sync" fetchpriority="high">
+        <button id="translate-button" type="button" class="translate-button-control" aria-label="Switch to English">
+            <img id="translate-button-icon" src="assets/images/flags/spain.svg" width="64" height="64" alt="" loading="eager" decoding="sync" fetchpriority="high">
+        </button>
     </div>
-	
+    <span id="language-live-region" class="visually-hidden" aria-live="polite"></span>
+
+
 	<!-- Google tag (gtag.js) — Consent Mode v2.
      Sync portion: dataLayer + consent defaults + runtime flags (read by custom.js).
      Deferred portion: gtag.js fetch, config, stored-consent restore.
@@ -1805,9 +1809,9 @@
 <!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script defer src="assets/js/jquery.min.js"></script>
-	<script defer src="assets/js/custom.min.js?v=3e267b54b8"></script>
+	<script defer src="assets/js/custom.min.js?v=2f27aabb3f"></script>
     <!-- TRANSLATOR -->
-    <script defer src="assets/js/translate.min.js?v=6a289682e5"></script>
+    <script defer src="assets/js/translate.min.js?v=569a8dde1f"></script>
 </body>
 
 </html>

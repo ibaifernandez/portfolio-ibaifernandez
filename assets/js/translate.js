@@ -136,15 +136,29 @@ function translateElements(translations) {
 // Función para cambiar el ícono del botón de acuerdo al idioma actual
 function toggleLanguageButton() {
     var buttonIcon = document.getElementById('translate-button-icon');
-    if (!buttonIcon) {
-        return;
-    }
+    var buttonControl = document.getElementById('translate-button');
     var isEnglish = currentLanguage === 'en';
     var iconPath = isEnglish ? 'assets/images/flags/spain.svg' : 'assets/images/flags/uk.svg';
     var nextLanguageLabel = isEnglish ? 'Switch to Spanish' : 'Switch to English';
-    buttonIcon.setAttribute('src', iconPath);
-    buttonIcon.setAttribute('alt', nextLanguageLabel);
-    buttonIcon.setAttribute('aria-label', nextLanguageLabel);
+    if (buttonIcon) {
+        buttonIcon.setAttribute('src', iconPath);
+    }
+    // The accessible name lives on the native <button> (A-A11Y-05); the flag <img>
+    // is decorative (alt=""), so the control announces the action, not "image".
+    if (buttonControl) {
+        buttonControl.setAttribute('aria-label', nextLanguageLabel);
+    }
+}
+
+// Announce the language switch to assistive tech via a polite live region (A-A11Y-06).
+function announceLanguageChange() {
+    var live = document.getElementById('language-live-region');
+    if (!live) {
+        return;
+    }
+    live.textContent = currentLanguage === 'es'
+        ? 'Idioma cambiado a español.'
+        : 'Language changed to English.';
 }
 
 function trackLanguageChange(previousLanguage, nextLanguage, source) {
@@ -180,6 +194,9 @@ function applyLanguage(language, source) {
         document.documentElement.setAttribute('lang', currentLanguage);
         translateElements(translations);
         toggleLanguageButton();
+        if (source !== 'initial_render') {
+            announceLanguageChange();
+        }
         try {
             document.dispatchEvent(new CustomEvent('portfolio:language-applied', {
                 detail: {
@@ -200,18 +217,12 @@ function translate(language) {
     applyLanguage(targetLanguage, 'toggle_button');
 }
 
-var buttonIcon = document.getElementById('translate-button-icon');
-if (buttonIcon) {
-    buttonIcon.setAttribute('role', 'button');
-    buttonIcon.setAttribute('tabindex', '0');
-    buttonIcon.addEventListener('click', function() {
+// Native <button> (A-A11Y-05): keyboard operability + role come for free, so no
+// manual role/tabindex/keydown wiring is needed — just the click handler.
+var translateControl = document.getElementById('translate-button');
+if (translateControl) {
+    translateControl.addEventListener('click', function() {
         translate();
-    });
-    buttonIcon.addEventListener('keydown', function(event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            translate();
-        }
     });
 }
 

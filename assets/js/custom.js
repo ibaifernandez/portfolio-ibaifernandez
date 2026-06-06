@@ -664,7 +664,8 @@ Assigned to: ThemeForest
 	about_opendetails: function() {
 		if($('.about_icon_toggle').length > 0){
 			$('.about_icon_toggle').on('click', function() {
-				$('.about_leftsection').toggleClass('open_details');
+				var isOpen = $('.about_leftsection').toggleClass('open_details').hasClass('open_details');
+				$(this).attr('aria-expanded', isOpen ? 'true' : 'false');
 			});
 		}
 	},

@@ -324,7 +324,7 @@ export function createBuildRuntime(context) {
         : '';
       return [
         `\t\t\t<p translate-html="${escapeHtml(introKey)}">${introText}</p>`,
-        `\t\t\t<h4 translate="${escapeHtml(respHeadingKey)}">${escapeHtml(respHeadingText)}</h4>`,
+        `\t\t\t<h3 translate="${escapeHtml(respHeadingKey)}">${escapeHtml(respHeadingText)}</h3>`,
         `\t\t\t<ul>`,
         renderResponsibilityList(role, prefix),
         `\t\t\t</ul>${closingBlock}`

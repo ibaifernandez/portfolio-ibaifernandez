@@ -31,17 +31,17 @@ for (const dossier of dossiers) {
       // h1 is the dossier title surface
       await expect(page.locator('h1').first()).toBeVisible();
 
-      // translate button keyboard-reachable
-      const translateButton = page.locator('#translate-button-icon');
+      // translate control is a native <button> (keyboard-operable, named)
+      const translateButton = page.locator('#translate-button');
       await expect(translateButton).toBeVisible();
-      await expect(translateButton).toHaveAttribute('role', 'button');
-      await expect(translateButton).toHaveAttribute('tabindex', '0');
+      await expect(translateButton).toHaveJSProperty('tagName', 'BUTTON');
+      await expect(translateButton).toHaveAttribute('aria-label', /Switch to/);
     });
 
     test('language toggle updates <html lang>', async ({ page }) => {
       await page.goto(`/${dossier.output}`);
       await expect(page.locator('html')).toHaveAttribute('lang', 'en');
-      await page.locator('#translate-button-icon').click();
+      await page.locator('#translate-button').click();
       await expect(page.locator('html')).toHaveAttribute('lang', 'es');
     });
 

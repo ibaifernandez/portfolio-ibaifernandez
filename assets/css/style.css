@@ -1430,7 +1430,7 @@ p.banner_pera:after {
 .career_role_content > p {
     margin: 0 0 10px;
 }
-.career_role_content h4 {
+.career_role_content h3 {
     margin: 14px 0 6px;
     font-size: 12px;
     text-transform: uppercase;
@@ -2122,7 +2122,7 @@ a.lang_cert .icon {
 .personal_details ul.info-list li {
     margin-bottom: 8px;
 }
-.personal_details h1.ps_name {
+.personal_details .ps_name {
     font-size: 26px;
     padding: 0;
     margin: 0;
@@ -5614,7 +5614,7 @@ h3.core-features:nth-of-type(3)::before {
     .footer_contact_info.footer_contact_info_blog {
         padding: 40px 0px 0px;
     }
-    .personal_details h1.ps_name {
+    .personal_details .ps_name {
         font-size: 18px;
     }
     .personal_details ul.info-list li {
@@ -5767,7 +5767,7 @@ h3.core-features:nth-of-type(3)::before {
     .anout_section_btn .portfolio_btn.btn_yellow {
         margin-right: 0px;
     }
-    .personal_details h1.ps_name {
+    .personal_details .ps_name {
         display:none;
     }
     .personal_details p.ps_designation {
@@ -6165,6 +6165,33 @@ body.privacy_page #translate-button-container {
     border-radius: 50%;
     background: var(--color-white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Native <button> wrapper around the flag icon (A-A11Y-05): transparent reset so
+   the control looks identical to the former bare <img> while gaining real keyboard
+   operability + a stable accessible name. */
+.translate-button-control {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    line-height: 0;
+    cursor: pointer;
+}
+
+/* Visually-hidden but screen-reader-available (used by the language live region). */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 .skip-link {
