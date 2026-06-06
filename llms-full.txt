@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-05-28
+Last-Updated: 2026-06-06
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview
@@ -19,7 +19,11 @@ Founder-operator who codes. AI Product Engineer with two decades connecting narr
   - Purpose: profile, capabilities, work history, project index, testimonials, contact.
 - scanner-21179.html: https://portfolio.ibaifernandez.com/scanner-21179.html
   - Purpose: see dossier page.
+- crm-aglaya.html: https://portfolio.ibaifernandez.com/crm-aglaya.html
+  - Purpose: see dossier page.
 - kanban-desk.html: https://portfolio.ibaifernandez.com/kanban-desk.html
+  - Purpose: see dossier page.
+- aglaya-outreach.html: https://portfolio.ibaifernandez.com/aglaya-outreach.html
   - Purpose: see dossier page.
 
 ## Contact

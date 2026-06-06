@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://portfolio.ibaifernandez.com/</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/?lang=en"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://portfolio.ibaifernandez.com/scanner-21179.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/scanner-21179.html?lang=en"/>
@@ -20,12 +20,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/scanner-21179.html"/>
   </url>
   <url>
+    <loc>https://portfolio.ibaifernandez.com/crm-aglaya.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/crm-aglaya.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://portfolio.ibaifernandez.com/crm-aglaya.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/crm-aglaya.html"/>
+  </url>
+  <url>
     <loc>https://portfolio.ibaifernandez.com/kanban-desk.html</loc>
-    <lastmod>2026-05-28</lastmod>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/kanban-desk.html?lang=en"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://portfolio.ibaifernandez.com/kanban-desk.html?lang=es"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/kanban-desk.html"/>
+  </url>
+  <url>
+    <loc>https://portfolio.ibaifernandez.com/aglaya-outreach.html</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/aglaya-outreach.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://portfolio.ibaifernandez.com/aglaya-outreach.html?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/aglaya-outreach.html"/>
   </url>
 </urlset>
