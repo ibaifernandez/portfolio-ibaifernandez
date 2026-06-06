@@ -51,7 +51,12 @@ for (const [k, v] of [...Object.entries(en), ...Object.entries(es)]) {
 // Walk HTML/template files and collect every `translate(-<attr>)="<key>"` usage.
 const used = new Set();
 const TEMPLATE_DIRS = ['src'];
-const HTML_AT_ROOT = ['index.html', 'privacy.html', 'lfi.html', 'aglaya.html', 'elm-st.html', 'ruta-de-la-digitalizacion-y-2x2-mkt.html', 'lfi-legacy.html'];
+// Built HTML at the repo root, discovered dynamically so the list can never drift
+// from the actual build output (D-TEST-03). Previously a hardcoded array that still
+// named four pages retired in the redesign.
+const HTML_AT_ROOT = fs.readdirSync(rootDir)
+  .filter((name) => name.endsWith('.html'))
+  .sort();
 
 function walk(dir, files) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });

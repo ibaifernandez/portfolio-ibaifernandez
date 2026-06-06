@@ -4,7 +4,6 @@ import {
   legacyPageEntries,
   personSchemaId,
   personSchemaName,
-  projectShareImageMap,
   siteBaseUrl,
   websiteSchemaId
 } from './config.mjs';
@@ -404,10 +403,13 @@ export function createBuildRuntime(context) {
       const title = project.title || {};
       const description = project.description || {};
       const output = assertRequired(page.output, `${labelPrefix}.page.output`);
-      const template = page.template || 'src/pages/project.template.html';
+      // template is REQUIRED — no silent scaffold fallback. A missing/typo'd
+      // template field used to route the page to the bare project.template.html
+      // scaffold and overwrite real content with no error (A-DEBT-04).
+      const template = assertRequired(page.template, `${labelPrefix}.page.template`);
       const pageDescription = assertRequired(description.text, `${labelPrefix}.description.text`);
       const pageCanonicalUrl = `${siteBaseUrl}/${output}`;
-      const shareImage = page.shareImage || projectShareImageMap[output] || defaultShareImage;
+      const shareImage = page.shareImage || defaultShareImage;
       const pageShareImage = toAbsoluteUrl(shareImage, siteBaseUrl);
       const pageKeywords = page.keywords || 'Ibai Fernández, portfolio project, digital architecture, automation';
 

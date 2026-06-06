@@ -57,6 +57,13 @@ export function createBuildContext(rootDir) {
     const raw = fs.readFileSync(absolutePath, 'utf8');
     const withIncludes = raw.replace(includePattern, (_match, includePath) => {
       const resolved = path.resolve(path.dirname(absolutePath), includePath);
+      // Defense-in-depth: an @include path must stay inside the repo root. Without
+      // this, a `<!-- @include ../../../../etc/hosts -->` in any template would be
+      // resolved and inlined into output (B-INCL-01, path traversal at build time).
+      const rootPrefix = rootDir.endsWith(path.sep) ? rootDir : rootDir + path.sep;
+      if (resolved !== rootDir && !resolved.startsWith(rootPrefix)) {
+        throw new Error(`Refusing @include outside repo root: ${includePath} (resolved to ${resolved})`);
+      }
       const relative = path.relative(rootDir, resolved);
       return renderWithIncludes(relative, {
         stack: [...stack, absolutePath],

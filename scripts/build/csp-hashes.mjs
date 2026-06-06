@@ -87,7 +87,14 @@ export function syncCspHashes(rootDir, { checkOnly = false } = {}) {
 	const hashes = computeCspHashes(rootDir);
 	const currentCsp = cspMatch[2];
 	const scriptSrcValue = buildScriptSrcValue(hashes);
-	const updatedCsp = currentCsp.replace(/script-src[^;]+;/, scriptSrcValue);
+	const scriptSrcRe = /script-src[^;]+;/;
+	// Fail loud, not open: if the CSP line exists but has no script-src directive
+	// (e.g. it was renamed/removed in a future edit), String.replace would no-op
+	// and silently ship inline scripts WITHOUT their integrity hashes (B-CSP-01).
+	if (!scriptSrcRe.test(currentCsp)) {
+		throw new Error("netlify.toml Content-Security-Policy has no 'script-src' directive — refusing to silently skip inline-script hash enforcement.");
+	}
+	const updatedCsp = currentCsp.replace(scriptSrcRe, scriptSrcValue);
 
 	if (currentCsp === updatedCsp) {
 		return { updated: false, ...hashes };
