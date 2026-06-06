@@ -52,10 +52,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # ── npm audit (non-blocking warn) ─────────────────────────────────────
-      # Flags transitive CVEs (mostly Resend's tree). Does not gate merge.
-      - name: npm audit (warn only)
-        run: npm audit --audit-level=high || true
+      # ── npm audit ─────────────────────────────────────────────────────────
+      # HIGH advisories warn (mostly transitive); CRITICAL advisories BLOCK merge.
+      - name: npm audit
+        run: |
+          npm audit --audit-level=high || echo "::warning::npm audit found high-severity advisories (non-blocking)"
+          npm audit --audit-level=critical
 
       # ── Build ─────────────────────────────────────────────────────────────
       # Genera los HTML finales desde src/ + content/ antes de cualquier test.
@@ -68,6 +70,21 @@ jobs:
       # cobertura AVIF/WebP, checker de links internos, parity i18n.
       - name: Quality guards
         run: npm run test:quality
+
+      # ── Dossier claim allowlist (server-side enforcement) ─────────────────
+      # The pre-commit hook only sees staged files locally and is bypassable; CI
+      # full-scans every dossier so unverified numeric claims cannot ship even if a
+      # contributor never installed the hook (A-OPS-02 / D-TEST-01).
+      - name: Dossier claim check
+        run: python3 scripts/dossier-claim-check.py --all
+
+      # ── Build-script unit tests ───────────────────────────────────────────
+      - name: Unit tests (build)
+        run: npm run test:unit
+
+      # ── Smoke test (served HTML structure) ────────────────────────────────
+      - name: Smoke test
+        run: npm run test:smoke
 
       # ── Playwright browser cache ──────────────────────────────────────────
       # Avoid re-downloading chromium (~150 MB) on every run.

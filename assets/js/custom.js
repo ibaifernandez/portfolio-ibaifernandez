@@ -9,6 +9,21 @@ Assigned to: ThemeForest
 
 ------------------------------------------------------------------*/
 
+// Minimal client-side error visibility (A-OPS-04). No external beacon — surfaces
+// runtime JS errors in the console for support/debugging without adding a
+// third-party error tracker or a new CSP connect-src origin.
+(function () {
+	if (typeof window === 'undefined') return;
+	window.addEventListener('error', function (event) {
+		if (event && event.message) {
+			console.error('[client-error]', event.message, (event.filename || '') + ':' + (event.lineno || 0));
+		}
+	});
+	window.addEventListener('unhandledrejection', function (event) {
+		console.error('[client-error] unhandled promise rejection:', event && event.reason);
+	});
+})();
+
 (function ($) {
 	"use strict";
 	var portfolio = {

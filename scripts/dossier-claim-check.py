@@ -157,6 +157,31 @@ def staged_dossier_files() -> list[Path]:
     return [p for p in files if any(pat.match(p.as_posix()) for pat in DOSSIER_PATH_PATTERNS)]
 
 
+def all_dossier_files() -> list[Path]:
+    """List every dossier-shaped file in the repo (for CI full-scan via --all).
+
+    Local pre-commit scans only staged files; CI has no staging area, so it scans
+    the whole surface to enforce the allowlist server-side (A-OPS-02 / D-TEST-01).
+    """
+    out: list[Path] = []
+    globs = ["*.html", "content/*.md", "src/pages/dossier-*.template.html"]
+    for g in globs:
+        for p in sorted(ROOT.glob(g)):
+            rel = p.relative_to(ROOT)
+            if any(pat.match(rel.as_posix()) for pat in DOSSIER_PATH_PATTERNS):
+                out.append(rel)
+    # dedupe preserving order
+    seen: set[str] = set()
+    uniq: list[Path] = []
+    for p in out:
+        key = p.as_posix()
+        if key in seen:
+            continue
+        seen.add(key)
+        uniq.append(p)
+    return uniq
+
+
 def extract_claims(text: str) -> list[tuple[str, str]]:
     """Return a list of (pattern_label, matched_substring) for each claim found.
 
@@ -198,8 +223,9 @@ def main() -> int:
         return 0
 
     warn_only = os.environ.get("DOSSIER_CHECK_WARN_ONLY") == "1"
+    scan_all = "--all" in sys.argv
 
-    dossiers = staged_dossier_files()
+    dossiers = all_dossier_files() if scan_all else staged_dossier_files()
     if not dossiers:
         return 0  # nothing dossier-shaped in this commit
 

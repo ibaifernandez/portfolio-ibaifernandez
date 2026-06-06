@@ -57,9 +57,12 @@ const imgRefs = `<picture>
 const multiSrcsetHtml = `<!doctype html><html><body>${imgRefs}</body></html>`;
 const fixturePass = writeFixture('pass.html', multiSrcsetHtml);
 
-// Required sibling assets — only the jpeg is required (the source format).
+// Required sibling assets — the jpeg is the source format; the AVIF variants must
+// also exist on disk because check-avif-coverage now validates every declared
+// AVIF <source> srcset URL (incl. the 160w variant) resolves (P-PERF-02).
 ensureDummyImage('assets/images/sample.jpeg');
 ensureDummyImage('assets/images/sample.avif');
+ensureDummyImage('assets/images/sample-160.avif');
 ensureDummyImage('assets/images/sample.webp');
 
 let result = runCheck('tests/check-avif-coverage.mjs', fixturePass);
