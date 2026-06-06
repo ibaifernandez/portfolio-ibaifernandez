@@ -226,7 +226,9 @@ const server = http.createServer((req, res) => {
   }
 
   const fullPath = path.resolve(root, `.${pathname}`);
-  if (!fullPath.startsWith(root)) {
+  // Compare against root + separator so a sibling dir sharing the root prefix
+  // (e.g. "<root>-secrets/") can't pass the guard (B-DEV-01 hardening).
+  if (fullPath !== root && !fullPath.startsWith(root + path.sep)) {
     return send(res, 403, 'Forbidden');
   }
 

@@ -7,6 +7,12 @@
 .git/
 .github/
 
+# i18n string dictionaries — 1166 keys each drown the build/.mjs structure in the
+# graph (god-node/community signals end up i18n-weighted). The templates that
+# reference these keys already carry the meaning (A-ARCH-09).
+en.json
+es.json
+
 # Node + Netlify
 node_modules/
 .netlify/

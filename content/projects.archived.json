@@ -2,7 +2,7 @@
   {
     "page": {
       "output": "debtracker.html",
-      "template": "src/pages/project-debtracker.template.html"
+      "template": "src/pages/archived/project-debtracker.template.html"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--debtracker\" role=\"img\" aria-label=\"DebTracker preview showing a debt-control ledger and payment-flow architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--ledger\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Financial OS</span>\n<strong>Debt Ledger Control</strong>\n<span class=\"project_spotlight_mockup_metric\">Auth + relational logic</span>\n<span class=\"project_spotlight_mockup_note\">Collections UX · Payment flows · Full-stack delivery</span>\n</div>",
     "title": {
@@ -24,7 +24,7 @@
   {
     "page": {
       "output": "gymtracker.html",
-      "template": "src/pages/project-gymtracker.template.html"
+      "template": "src/pages/archived/project-gymtracker.template.html"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--gymtracker\" role=\"img\" aria-label=\"GymTracker preview showing backend logic and API architecture for a training system\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--stack\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Backend Showcase</span>\n<strong>Logic + API Architecture</strong>\n<span class=\"project_spotlight_mockup_metric\">Flask + SQLite</span>\n<span class=\"project_spotlight_mockup_note\">Training logic · Deterministic pipelines · Local-first build</span>\n</div>",
     "title": {
@@ -46,7 +46,7 @@
   {
     "page": {
       "output": "brevo-intelligence-layer.html",
-      "template": "src/pages/project-brevo-intelligence-layer.template.html",
+      "template": "src/pages/archived/project-brevo-intelligence-layer.template.html",
       "shareImage": "assets/images/norden.png",
       "keywords": "Brevo Intelligence Layer, Brevo business intelligence, Brevo reporting tool, local-first BI, diagnostic system, stakeholder-safe publication, decision support, Ibai Fernandez"
     },
@@ -70,7 +70,7 @@
   {
     "page": {
       "output": "portfolio-ibaifernandez.html",
-      "template": "src/pages/project-portfolio-ibaifernandez.template.html",
+      "template": "src/pages/archived/project-portfolio-ibaifernandez.template.html",
       "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "Ibai Fernandez, portfolio case study, Netlify, Playwright, accessibility, performance, CI/CD"
     },
@@ -94,7 +94,7 @@
   {
     "page": {
       "output": "lfi.html",
-      "template": "src/pages/lfi.template.html",
+      "template": "src/pages/archived/lfi.template.html",
       "keywords": "LFi, revenue operations, agency automation, CRM systems, Salesforce, HubSpot, enterprise campaign delivery"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--lfi\" role=\"img\" aria-label=\"LFi preview showing agency operating systems, enterprise accounts, and revenue operations governance\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Agency OS</span>\n<strong>Revenue Operations</strong>\n<span class=\"project_spotlight_mockup_metric\">18+ enterprise accounts</span>\n<span class=\"project_spotlight_mockup_note\">POCURO · Leben · CRM routing · QA systems</span>\n</div>",
@@ -117,7 +117,7 @@
   {
     "page": {
       "output": "ruta-de-la-digitalizacion-y-2x2-mkt.html",
-      "template": "src/pages/project-ruta-digitalizacion-2x2mkt.template.html"
+      "template": "src/pages/archived/project-ruta-digitalizacion-2x2mkt.template.html"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--ruta\" role=\"img\" aria-label=\"Route to Digitalization preview showing a national field program turned into a remote conversion engine\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--route\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Field Program</span>\n<strong>National Adoption Pivot</strong>\n<span class=\"project_spotlight_mockup_metric\">10,600+ users</span>\n<span class=\"project_spotlight_mockup_note\">On-site rollout · Remote conversion engine · Crisis pivot</span>\n</div>",
     "title": {
@@ -139,7 +139,7 @@
   {
     "page": {
       "output": "elm-st.html",
-      "template": "src/pages/project-elm-st.template.html",
+      "template": "src/pages/archived/project-elm-st.template.html",
       "keywords": "Elm St, audiovisual production, cinematic web design, YouTube reel, custom brand website, Ibai Fernandez"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--elmst\" role=\"img\" aria-label=\"Elm St preview showing a cinematic reel-first website and custom brand architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--cinema\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Cinematic Brand</span>\n<strong>Reel-First Web System</strong>\n<span class=\"project_spotlight_mockup_metric\">Custom-coded presence</span>\n<span class=\"project_spotlight_mockup_note\">YouTube embeds · Brand psychology · Audiovisual UX</span>\n</div>",
@@ -162,7 +162,7 @@
   {
     "page": {
       "output": "aglaya.html",
-      "template": "src/pages/project-aglaya.template.html",
+      "template": "src/pages/archived/project-aglaya.template.html",
       "keywords": "AGLAYA, remote agency, brand evaluation, growth strategy, conversion-focused UX, marketing systems"
     },
     "mediaHtml": "<div class=\"project_spotlight_mockup project_spotlight_mockup--aglaya\" role=\"img\" aria-label=\"AGLAYA preview showing a remote agency operating system and conversion-focused growth architecture\">\n<div class=\"project_spotlight_mockup_grid project_spotlight_mockup_grid--signals\" aria-hidden=\"true\">\n<span></span><span></span><span></span><span></span>\n</div>\n<span class=\"project_spotlight_mockup_tag\">Remote Agency</span>\n<strong>Conversion Infrastructure</strong>\n<span class=\"project_spotlight_mockup_metric\">Offer system</span>\n<span class=\"project_spotlight_mockup_note\">Assessment funnel · B2B positioning · Growth architecture</span>\n</div>",
@@ -185,7 +185,7 @@
   {
     "page": {
       "output": "my-board.html",
-      "template": "src/pages/project-myboard.template.html",
+      "template": "src/pages/archived/project-myboard.template.html",
       "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "MyBoard, Kanban, React, Express, dnd-kit, Tailwind, zero vendor lock-in, task management"
     },
@@ -209,7 +209,7 @@
   {
     "page": {
       "output": "the-research-engine.html",
-      "template": "src/pages/project-the-research-engine.template.html",
+      "template": "src/pages/archived/project-the-research-engine.template.html",
       "shareImage": "assets/images/260525-featured-image.jpeg",
       "keywords": "The Research Engine, AI prompt pack, digital product, VSL, Gumroad, product marketing, research workflows"
     },
