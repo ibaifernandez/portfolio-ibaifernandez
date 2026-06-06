@@ -13,9 +13,9 @@ test('home renders critical UI blocks', async ({ page }) => {
 
   await expect(page).toHaveTitle(/Ibai Fernández/i);
   await expect(page.locator('h1.banner_name')).toBeVisible();
-  await expect(page.locator('#translate-button-icon')).toBeVisible();
-  await expect(page.locator('#translate-button-icon')).toHaveAttribute('role', 'button');
-  await expect(page.locator('#translate-button-icon')).toHaveAttribute('tabindex', '0');
+  await expect(page.locator('#translate-button')).toBeVisible();
+  await expect(page.locator('#translate-button')).toHaveJSProperty('tagName', 'BUTTON');
+  await expect(page.locator('#translate-button')).toHaveAttribute('aria-label', /Switch to/);
   await expect(page.locator('.port_navigation.index_navigation .nav_list li')).toHaveCount(4);
 });
 
@@ -83,7 +83,7 @@ test('language toggle updates html lang and hero pre-title text', async ({ page 
 test('language toggle supports keyboard activation', async ({ page }) => {
   await page.goto('/index.html');
 
-  const button = page.locator('#translate-button-icon');
+  const button = page.locator('#translate-button');
   await button.focus();
   await page.keyboard.press('Enter');
 
