@@ -81,6 +81,7 @@ Post-render hooks (run inside `build-pages.mjs` after all HTML is emitted):
 |---|---|
 | `scripts/build/fingerprint.mjs` | Append `?v=<content-hash>` to every CSS/JS reference in generated HTML. Auto-invalidates browser cache on any change. |
 | `scripts/build/csp-hashes.mjs`  | Scan inline `<script>` blocks across generated HTML, compute SHA256 hashes, rewrite `netlify.toml` so `script-src` lists those hashes (no `'unsafe-inline'`, no `'unsafe-hashes'`). |
+| `scripts/build/purge-bootstrap.mjs` | Purge unused Bootstrap rules from `assets/css/bootstrap.full.css` (source) against the built HTML+JS, minify, write `assets/css/bootstrap.min.css` (served). `--check` fails if stale. ~155 KB → ~26 KB. Safelist covers runtime-toggled + grid classes. |
 
 ### Build Directives
 
