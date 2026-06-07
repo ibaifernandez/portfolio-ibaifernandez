@@ -9,6 +9,7 @@ import { createBuildRuntime } from './build/renderers.mjs';
 import { renderSitemap, renderLlmsTxt, renderLlmsFullTxt } from './build/sitemap.mjs';
 import { fingerprintGeneratedHtml } from './build/fingerprint.mjs';
 import { syncCspHashes } from './build/csp-hashes.mjs';
+import { purgeBootstrap } from './build/purge-bootstrap.mjs';
 
 const rootDir = process.cwd();
 const args = new Set(process.argv.slice(2));
@@ -133,6 +134,21 @@ for (const entry of discoveryEntries) {
     hasErrors = true;
     console.error(`[FAIL] ${entry.output}: ${error.message}`);
   }
+}
+
+// Purge unused Bootstrap rules against the built HTML + JS (P-PERF-04). Must run
+// after the pages are on disk (it scans them) and before fingerprinting (so the
+// fingerprint hashes the purged file).
+try {
+  const purge = await purgeBootstrap(rootDir, { checkOnly });
+  if (checkOnly) {
+    console.log('[OK] assets/css/bootstrap.min.css is in sync with bootstrap.full.css');
+  } else {
+    console.log(`[OK] Purged bootstrap.min.css from bootstrap.full.css (${(purge.bytes / 1024).toFixed(1)} KB)`);
+  }
+} catch (error) {
+  hasErrors = true;
+  console.error(`[FAIL] bootstrap purge: ${error.message}`);
 }
 
 // Fingerprint asset references inside generated HTML files. Replaces the manual

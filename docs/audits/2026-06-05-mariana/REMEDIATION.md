@@ -7,9 +7,9 @@ auto-deployed to production.
 
 ## Result
 
-**59 of 60 code/content-fixable findings resolved.** 1 deferred (needs a dedicated
-browser-validated session). 6 require owner action outside the repo (dashboard / DNS
-/ strategic). 0 CRITICAL/HIGH existed.
+**60 of 60 code/content-fixable findings resolved** (P-PERF-04 closed 2026-06-07 with
+browser validation). 6 require owner action outside the repo (dashboard / DNS /
+strategic). 0 CRITICAL/HIGH existed.
 
 ## Fixed — by commit
 
@@ -29,13 +29,16 @@ browser-validated session). 6 require owner action outside the repo (dashboard /
 
 INFO positives left as-is by design and noted in docs: A-ARCH-08, B-SUPPLY-01, D-LOCK-01.
 
-## Deferred (1) — needs a dedicated, browser-validated session
+## Deferred — none remaining
 
-- **P-PERF-04** — ~333 KB render-blocking CSS (full Bootstrap on a custom design).
-  Critical-CSS extraction / PurgeCSS needs build tooling (penthouse/PurgeCSS), a
-  dynamic-class safelist, and visual QA. Doing it blind risks FOUC / broken layout,
-  so it was not rushed into this sweep. The cache/cache-bust wins (P-PERF-06) and the
-  font header fix (P-PERF-03) already improve repeat-visit cost.
+- **P-PERF-04 (DONE, 2026-06-07)** — render-blocking CSS cut from ~333 KB to ~207 KB.
+  Added a build step (`scripts/build/purge-bootstrap.mjs` + purgecss devDep) that
+  purges unused Bootstrap rules against the built HTML + JS with a runtime-class
+  safelist: bootstrap.min.css 155.9 KB → 25.8 KB. Source of truth is the committed
+  `assets/css/bootstrap.full.css`; `build:pages --check` enforces sync. Validated in
+  a real browser (index + dossier: grid, contact form, jvectormap, accordions,
+  infographic — no console errors, no layout shift) plus full `test:ci` (57 e2e incl.
+  visual regression + axe). style.min.css left untouched (it is all in use).
 
 ## Owner action required (outside the repo)
 

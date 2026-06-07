@@ -8,6 +8,9 @@ src/
 scripts/
 content/
 
+# Bootstrap sin purgar — solo fuente del purge; el navegador recibe bootstrap.min.css
+assets/css/bootstrap.full.css
+
 # Tests y artefactos de CI
 tests/
 playwright.config.js
