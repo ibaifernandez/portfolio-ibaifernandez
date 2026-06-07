@@ -1197,10 +1197,6 @@ Assigned to: ThemeForest
                             name: 'Aachen'
                         },
                         {
-                            latLng: [52.5200, 13.4050],
-                            name: 'Berlín'
-                        },
-                        {
                             latLng: [48.8566, 2.3522],
                             name: 'París'
                         },
@@ -1307,6 +1303,18 @@ Assigned to: ThemeForest
                         {
                             latLng: [-19.92083, -43.93778],
                             name: 'Belo Horizonte'
+                        },
+                        {
+                            latLng: [-4.21528, -69.94056],
+                            name: 'Leticia'
+                        },
+                        {
+                            latLng: [-4.25316, -69.93834],
+                            name: 'Tabatinga'
+                        },
+                        {
+                            latLng: [-23.55052, -46.63331],
+                            name: 'São Paulo'
                         }
 					]
 				  });
