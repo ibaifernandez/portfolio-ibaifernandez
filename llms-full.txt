@@ -1,6 +1,6 @@
 # Ibai Fernandez Portfolio - Full LLM Index
 
-Last-Updated: 2026-06-07
+Last-Updated: 2026-06-11
 Base-URL: https://portfolio.ibaifernandez.com/
 
 ## Overview

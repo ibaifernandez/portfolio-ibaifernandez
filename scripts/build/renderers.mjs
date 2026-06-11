@@ -252,7 +252,7 @@ export function createBuildRuntime(context) {
     const testimonials = readJson('content/testimonials.json');
     const slideTemplate = readComponent('src/components/index/testimonial-slide.html');
 
-    return testimonials.map((testimonial, index) => {
+    return testimonials.filter(t => !t.hidden).map((testimonial, index) => {
       const labelPrefix = `testimonials[${index}]`;
       return renderTemplate(slideTemplate, {
         imageHtml: normalizeMultilineHtml(assertRequired(testimonial.imageHtml, `${labelPrefix}.imageHtml`)),
