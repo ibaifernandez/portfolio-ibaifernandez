@@ -376,10 +376,13 @@ The current shape was selected over alternatives:
 - Netlify CDN + Functions over cPanel/PHP — atomic deploys, serverless contact form, no shared-hosting friction.
 - Resend over SMTP/PHPMailer — REST-based, no SMTP credential management.
 - Non-blocking CSS via `rel="preload"` + `onload="this.rel='stylesheet'"` for above-fold critical-path reduction.
+- Font LCP optimisation (2026-06-11): `rel="preload"` for Josefin Sans 700+600 woff2 in `index.template.html` and `dossier-head.html`; `font-display: fallback` for non-italic variants (text visible within 100ms with system-font fallback). Reduced homepage mobile LCP 4.0s → 3.4s, scanner mobile 6.1s → 5.0s.
 - CSS-variable design tokens (`--hero-*`, `--color-*`) for theme cohesion.
+- Testimonials content-gating (2026-06-11): entries in `content/testimonials.json` use `hidden: true` to exclude from render without deleting data. Renderer (`renderers.mjs`) filters at build time; `translate: null` prevents i18n-checker false positives for hidden entries.
+- Bootstrap is purge-generated: source is `assets/css/bootstrap.full.css`; `build:pages` runs purgecss against built HTML+JS to produce `bootstrap.min.css` (155.9 KB → 25.8 KB). Never edit `.min` directly.
 
 For rationale-by-decision detail, `git log --grep` against the historical changelog.
 
 ---
 
-*Last updated: 2026-05-23*
+*Last updated: 2026-06-11*

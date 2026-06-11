@@ -4,103 +4,65 @@
 decisiones tuyas). Ninguna bloquea producción; son el "último 5%" para el 10/10.
 Marca cada una al cerrarla.
 
----
-
-## 1. GA4 — retención + Google Signals  ·  ~3 min  ·  (L-PRIV-09)
-
-La política ya declara **14 meses**; hay que ponerlo de verdad en GA4.
-
-- [ ] Analytics → **Admin** → (propiedad `G-T8FTTWBQS3`) → **Data settings → Data retention**.
-- [ ] *Event data retention* → **14 months** → Save.
-- [ ] Admin → **Data collection** → desactiva **Google Signals** (si está on).
-- [ ] Confirma que no hay enlaces a Google Ads (Admin → Product links).
-
-**Por qué:** minimización de datos (RGPD Art.5(1)(e)). Ya lo prometes en la política;
-esto lo hace cierto.
+**Estado: ✅ todas completadas — 2026-06-11**
 
 ---
 
-## 2. DNS — SPF / DKIM / DMARC del dominio de Resend  ·  ~15 min + propagación  ·  (B-FUNC-03)
+## 1. GA4 — retención + Google Signals  ·  ✅ DONE 2026-06-11  ·  (L-PRIV-09)
 
-Sin esto, cualquiera puede falsificar tu `FROM_EMAIL` y la auto-respuesta puede generar
-backscatter.
-
-- [ ] Resend → **Domains** → tu dominio remitente → sigue las instrucciones DKIM/SPF
-      que te da Resend (te dan los registros TXT exactos).
-- [ ] Añade en tu DNS los TXT de **SPF** (`v=spf1 include:...resend... ~all`) y **DKIM**
-      (el CNAME/TXT que indique Resend).
-- [ ] Añade un **DMARC**: TXT en `_dmarc.tudominio` →
-      `v=DMARC1; p=quarantine; rua=mailto:info@ibaifernandez.com`.
-- [ ] Espera propagación, verifica el dominio en Resend (todo en verde).
-
-**Por qué:** anti-spoofing + entregabilidad. Es config de correo, no de la web.
+- [x] *Event data retention* → **14 months** → guardado.
+- [x] Google Signals → **OFF**.
+- [x] Sin enlaces a Google Ads (AdSense ni Ads Product links).
 
 ---
 
-## 3. Activar el captcha (fail-closed)  ·  ~10 min  ·  (B-FUNC-02)
+## 2. DNS — SPF / DKIM / DMARC del dominio de Resend  ·  ✅ DONE 2026-06-11  ·  (B-FUNC-03)
 
-El código ya está listo y testeado; solo faltan las llaves. Recomendado: **Cloudflare
-Turnstile** (gratis).
-
-- [ ] Cloudflare → **Turnstile** → *Add site* → dominio `portfolio.ibaifernandez.com`.
-      Copia **Site Key** (pública) y **Secret Key** (privada).
-- [ ] Netlify → Site → **Environment variables**:
-      - `PORTFOLIO_CAPTCHA_PROVIDER` = `turnstile`
-      - `PORTFOLIO_CAPTCHA_SECRET` = (la Secret Key)
-      - `PORTFOLIO_CAPTCHA_REQUIRED` = `1`   ← activa el rechazo si el captcha no aplica
-- [ ] El front necesita la **Site Key** para pintar el widget. Avísame y la cableo
-      (es un cambio pequeño en el template del formulario); o si ya hay un sitio para
-      la site key, ponla ahí.
-- [ ] Redeploy y prueba un envío real.
-
-**Por qué:** hoy el form se apoya solo en honeypot + timing + rate-limit. Con esto, bots
-con captcha fallido quedan fuera de verdad.
+- [x] Dominio `ibaifernandez.com` verificado en Resend (DKIM + SPF en verde).
+- [x] DMARC `_dmarc.ibaifernandez.com` añadido en Cloudflare DNS.
 
 ---
 
-## 4. Netlify — confirmar deploy gated + runbook de rollback  ·  ~5 min  ·  (A-OPS-10)
+## 3. Activar el captcha (fail-closed)  ·  ✅ DONE 2026-06-11  ·  (B-FUNC-02)
 
-El deploy a producción lo hace **CI por CLI** tras pasar todo el gate (quality + claim
-+ unit + smoke + e2e). Si el auto-build de Git de Netlify está ON, podría publicar un
-build sin pasar e2e.
-
-- [ ] Netlify → Site configuration → **Build & deploy** → **Stop builds** (o desactiva
-      el auto-publish del repo). Que solo despliegue el CLI desde CI.
-- [ ] Rollback (apúntalo): Netlify → **Deploys** → elige el deploy anterior bueno →
-      **Publish deploy**. Vuelve en segundos.
-
-**Por qué:** un solo camino de publicación, siempre gateado; rollback en 1 clic.
+- [x] Widget Turnstile existente reutilizado (site key ya estaba hardcoded en `analytics-ga4.html`).
+- [x] Variables en Netlify: `PORTFOLIO_CAPTCHA_PROVIDER=turnstile`,
+      `PORTFOLIO_CAPTCHA_SECRET` (corregido: era `_KEY`, ahora sin sufijo),
+      `PORTFOLIO_CAPTCHA_REQUIRED=1`.
+- [x] `.env` local corregido: `PORTFOLIO_CAPTCHA_SECRET_KEY` → `PORTFOLIO_CAPTCHA_SECRET`.
 
 ---
 
-## 5. Lighthouse / PageSpeed en producción  ·  ~5 min  ·  (P-PERF-08)
+## 4. Netlify — deploy gated + runbook de rollback  ·  ✅ DONE 2026-06-11  ·  (A-OPS-10)
 
-Las Core Web Vitals reales solo se miden contra el deploy. Acabamos de quitar ~126 KB
-de CSS bloqueante (purge de Bootstrap) — vale la pena ver el número.
-
-- [ ] [PageSpeed Insights](https://pagespeed.web.dev/) → `https://portfolio.ibaifernandez.com`
-      → corre **Mobile** y **Desktop**.
-- [ ] Repite en `…/scanner-21179`.
-- [ ] Si LCP sigue alto, dímelo y miramos el siguiente cuello (probablemente imagen
-      hero o `style.min.css`).
-
-**Por qué:** cerrar el loop de perf con datos reales, no estáticos.
+- [x] Auto-builds de Git detenidos en Netlify UI ("Stopped builds").
+- [x] Único camino de deploy: CLI desde CI tras gate completo (quality + claim + unit + smoke + e2e).
+- [x] Rollback: Netlify → **Deploys** → deploy anterior → **Publish deploy**.
 
 ---
 
-## 6. Aviso legal — identidad fiscal  ·  ~10 min  ·  (L-PRIV-04)
+## 5. Lighthouse / PageSpeed en producción  ·  ✅ DONE 2026-06-11  ·  (P-PERF-08)
 
-La política ya nombra autoridades de control (AEPD/Chile/ANPD) y al responsable
-(Ibai Fernández + email). Para un aviso legal LSSI-CE completo falta tu identidad fiscal.
+PSI ejecutado tras font preloads + font-display:fallback (commit `8b6c90e`) y testimonials (commit `54b9610`):
 
-- [ ] Decide régimen: ¿autónomo/profesional registrado (España) u otra jurisdicción?
-- [ ] Si España: pásame **nombre fiscal completo + NIF + domicilio** y añado un bloque
-      de *aviso legal* en `privacy.template.html` (sección nueva).
-- [ ] Si es estrictamente personal bajo otra jurisdicción: dímelo y documento qué
-      régimen aplica (nombre + email ya es defendible).
+| Página | Dispositivo | Score | LCP |
+|---|---|---|---|
+| homepage | Mobile | 90 | 3.4s (era 4.0s) |
+| homepage | Desktop | 92 | 1.2s |
+| scanner-21179 | Mobile | 77 | 5.0s (era 6.1s) |
+| scanner-21179 | Desktop | 97 | 1.3s |
 
-**Por qué:** LSSI-CE Art.10 pide establecimiento identificable si operas comercialmente
-desde España. Yo no puedo inventar tus datos fiscales.
+Siguiente palanca scanner mobile: imágenes hero del dossier.
+
+---
+
+## 6. Aviso legal — identidad fiscal  ·  ✅ DONE 2026-06-11  ·  (L-PRIV-04)
+
+- [x] Sección 8 LSSI-CE añadida en `privacy.template.html` (commit `268e31c`).
+      Datos: Antonio Ibai Fernández Gutiérrez · NIF 74853234X · C/ Juan de Ortega,
+      s/n, 29190, Málaga · info@ibaifernandez.com.
+      Nota: profesional freelance independiente con carácter itinerante; la dirección
+      es el domicilio postal registrado en España.
 
 ---
 

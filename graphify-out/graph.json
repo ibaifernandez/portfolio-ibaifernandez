@@ -5630,64 +5630,64 @@
       "norm_label": "owner actions \u2014 cierre del audit 2026-06-05"
     },
     {
-      "label": "1. GA4 \u2014 retenci\u00f3n + Google Signals  \u00b7  ~3 min  \u00b7  (L-PRIV-09)",
+      "label": "1. GA4 \u2014 retenci\u00f3n + Google Signals  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (L-PRIV-09)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L9",
-      "id": "docs_owner_actions_1_ga4_retenci\u00f3n_google_signals_3_min_l_priv_09",
+      "source_location": "L11",
+      "id": "docs_owner_actions_1_ga4_retenci\u00f3n_google_signals_done_2026_06_11_l_priv_09",
       "community": 0,
-      "norm_label": "1. ga4 \u2014 retencion + google signals  \u00b7  ~3 min  \u00b7  (l-priv-09)"
+      "norm_label": "1. ga4 \u2014 retencion + google signals  \u00b7  \u2705 done 2026-06-11  \u00b7  (l-priv-09)"
     },
     {
-      "label": "2. DNS \u2014 SPF / DKIM / DMARC del dominio de Resend  \u00b7  ~15 min + propagaci\u00f3n  \u00b7  (B-FUNC-03)",
+      "label": "2. DNS \u2014 SPF / DKIM / DMARC del dominio de Resend  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (B-FUNC-03)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L23",
-      "id": "docs_owner_actions_2_dns_spf_dkim_dmarc_del_dominio_de_resend_15_min_propagaci\u00f3n_b_func_03",
+      "source_location": "L19",
+      "id": "docs_owner_actions_2_dns_spf_dkim_dmarc_del_dominio_de_resend_done_2026_06_11_b_func_03",
       "community": 0,
-      "norm_label": "2. dns \u2014 spf / dkim / dmarc del dominio de resend  \u00b7  ~15 min + propagacion  \u00b7  (b-func-03)"
+      "norm_label": "2. dns \u2014 spf / dkim / dmarc del dominio de resend  \u00b7  \u2705 done 2026-06-11  \u00b7  (b-func-03)"
     },
     {
-      "label": "3. Activar el captcha (fail-closed)  \u00b7  ~10 min  \u00b7  (B-FUNC-02)",
+      "label": "3. Activar el captcha (fail-closed)  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (B-FUNC-02)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L40",
-      "id": "docs_owner_actions_3_activar_el_captcha_fail_closed_10_min_b_func_02",
+      "source_location": "L26",
+      "id": "docs_owner_actions_3_activar_el_captcha_fail_closed_done_2026_06_11_b_func_02",
       "community": 0,
-      "norm_label": "3. activar el captcha (fail-closed)  \u00b7  ~10 min  \u00b7  (b-func-02)"
+      "norm_label": "3. activar el captcha (fail-closed)  \u00b7  \u2705 done 2026-06-11  \u00b7  (b-func-02)"
     },
     {
-      "label": "4. Netlify \u2014 confirmar deploy gated + runbook de rollback  \u00b7  ~5 min  \u00b7  (A-OPS-10)",
+      "label": "4. Netlify \u2014 deploy gated + runbook de rollback  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (A-OPS-10)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L61",
-      "id": "docs_owner_actions_4_netlify_confirmar_deploy_gated_runbook_de_rollback_5_min_a_ops_10",
+      "source_location": "L36",
+      "id": "docs_owner_actions_4_netlify_deploy_gated_runbook_de_rollback_done_2026_06_11_a_ops_10",
       "community": 0,
-      "norm_label": "4. netlify \u2014 confirmar deploy gated + runbook de rollback  \u00b7  ~5 min  \u00b7  (a-ops-10)"
+      "norm_label": "4. netlify \u2014 deploy gated + runbook de rollback  \u00b7  \u2705 done 2026-06-11  \u00b7  (a-ops-10)"
     },
     {
-      "label": "5. Lighthouse / PageSpeed en producci\u00f3n  \u00b7  ~5 min  \u00b7  (P-PERF-08)",
+      "label": "5. Lighthouse / PageSpeed en producci\u00f3n  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (P-PERF-08)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L76",
-      "id": "docs_owner_actions_5_lighthouse_pagespeed_en_producci\u00f3n_5_min_p_perf_08",
+      "source_location": "L44",
+      "id": "docs_owner_actions_5_lighthouse_pagespeed_en_producci\u00f3n_done_2026_06_11_p_perf_08",
       "community": 0,
-      "norm_label": "5. lighthouse / pagespeed en produccion  \u00b7  ~5 min  \u00b7  (p-perf-08)"
+      "norm_label": "5. lighthouse / pagespeed en produccion  \u00b7  \u2705 done 2026-06-11  \u00b7  (p-perf-08)"
     },
     {
-      "label": "6. Aviso legal \u2014 identidad fiscal  \u00b7  ~10 min  \u00b7  (L-PRIV-04)",
+      "label": "6. Aviso legal \u2014 identidad fiscal  \u00b7  \u2705 DONE 2026-06-11  \u00b7  (L-PRIV-04)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L91",
-      "id": "docs_owner_actions_6_aviso_legal_identidad_fiscal_10_min_l_priv_04",
+      "source_location": "L59",
+      "id": "docs_owner_actions_6_aviso_legal_identidad_fiscal_done_2026_06_11_l_priv_04",
       "community": 0,
-      "norm_label": "6. aviso legal \u2014 identidad fiscal  \u00b7  ~10 min  \u00b7  (l-priv-04)"
+      "norm_label": "6. aviso legal \u2014 identidad fiscal  \u00b7  \u2705 done 2026-06-11  \u00b7  (l-priv-04)"
     },
     {
       "label": "Fuera de alcance por decisi\u00f3n \u2014 SEO biling\u00fce (SEO-BILINGUAL-01)",
       "file_type": "document",
       "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L107",
+      "source_location": "L69",
       "id": "docs_owner_actions_fuera_de_alcance_por_decisi\u00f3n_seo_biling\u00fce_seo_bilingual_01",
       "community": 0,
       "norm_label": "fuera de alcance por decision \u2014 seo bilingue (seo-bilingual-01)"
@@ -7007,6 +7007,60 @@
       "norm_label": "10. compliance"
     },
     {
+      "label": "1. GA4 \u2014 retenci\u00f3n + Google Signals  \u00b7  ~3 min  \u00b7  (L-PRIV-09)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L9",
+      "community": 0,
+      "norm_label": "1. ga4 \u2014 retencion + google signals  \u00b7  ~3 min  \u00b7  (l-priv-09)",
+      "id": "docs_owner_actions_1_ga4_retenci\u00f3n_google_signals_3_min_l_priv_09"
+    },
+    {
+      "label": "2. DNS \u2014 SPF / DKIM / DMARC del dominio de Resend  \u00b7  ~15 min + propagaci\u00f3n  \u00b7  (B-FUNC-03)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L23",
+      "community": 0,
+      "norm_label": "2. dns \u2014 spf / dkim / dmarc del dominio de resend  \u00b7  ~15 min + propagacion  \u00b7  (b-func-03)",
+      "id": "docs_owner_actions_2_dns_spf_dkim_dmarc_del_dominio_de_resend_15_min_propagaci\u00f3n_b_func_03"
+    },
+    {
+      "label": "3. Activar el captcha (fail-closed)  \u00b7  ~10 min  \u00b7  (B-FUNC-02)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L40",
+      "community": 0,
+      "norm_label": "3. activar el captcha (fail-closed)  \u00b7  ~10 min  \u00b7  (b-func-02)",
+      "id": "docs_owner_actions_3_activar_el_captcha_fail_closed_10_min_b_func_02"
+    },
+    {
+      "label": "4. Netlify \u2014 confirmar deploy gated + runbook de rollback  \u00b7  ~5 min  \u00b7  (A-OPS-10)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L61",
+      "community": 0,
+      "norm_label": "4. netlify \u2014 confirmar deploy gated + runbook de rollback  \u00b7  ~5 min  \u00b7  (a-ops-10)",
+      "id": "docs_owner_actions_4_netlify_confirmar_deploy_gated_runbook_de_rollback_5_min_a_ops_10"
+    },
+    {
+      "label": "5. Lighthouse / PageSpeed en producci\u00f3n  \u00b7  ~5 min  \u00b7  (P-PERF-08)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L76",
+      "community": 0,
+      "norm_label": "5. lighthouse / pagespeed en produccion  \u00b7  ~5 min  \u00b7  (p-perf-08)",
+      "id": "docs_owner_actions_5_lighthouse_pagespeed_en_producci\u00f3n_5_min_p_perf_08"
+    },
+    {
+      "label": "6. Aviso legal \u2014 identidad fiscal  \u00b7  ~10 min  \u00b7  (L-PRIV-04)",
+      "file_type": "document",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L91",
+      "community": 0,
+      "norm_label": "6. aviso legal \u2014 identidad fiscal  \u00b7  ~10 min  \u00b7  (l-priv-04)",
+      "id": "docs_owner_actions_6_aviso_legal_identidad_fiscal_10_min_l_priv_04"
+    },
+    {
       "label": "robots.txt",
       "file_type": "document",
       "source_file": "robots.txt",
@@ -7018,19 +7072,6 @@
       "community": 57,
       "norm_label": "robots.txt",
       "id": "robots_txt"
-    },
-    {
-      "label": "Architecture",
-      "file_type": "document",
-      "source_file": "docs/ARCHITECTURE.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "community": 69,
-      "norm_label": "architecture",
-      "id": "architecture_doc"
     },
     {
       "label": "AI Rules",
@@ -14803,6 +14844,76 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_1_ga4_retenci\u00f3n_google_signals_done_2026_06_11_l_priv_09",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_2_dns_spf_dkim_dmarc_del_dominio_de_resend_done_2026_06_11_b_func_03",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_3_activar_el_captcha_fail_closed_done_2026_06_11_b_func_02",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_4_netlify_deploy_gated_runbook_de_rollback_done_2026_06_11_a_ops_10",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_5_lighthouse_pagespeed_en_producci\u00f3n_done_2026_06_11_p_perf_08",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_6_aviso_legal_identidad_fiscal_done_2026_06_11_l_priv_04",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
+      "target": "docs_owner_actions_fuera_de_alcance_por_decisi\u00f3n_seo_biling\u00fce_seo_bilingual_01"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/OWNER-ACTIONS.md",
       "source_location": "L9",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -14858,16 +14969,6 @@
       "confidence_score": 1.0,
       "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
       "target": "docs_owner_actions_6_aviso_legal_identidad_fiscal_10_min_l_priv_04"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "docs/OWNER-ACTIONS.md",
-      "source_location": "L107",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "docs_owner_actions_owner_actions_cierre_del_audit_2026_06_05",
-      "target": "docs_owner_actions_fuera_de_alcance_por_decisi\u00f3n_seo_biling\u00fce_seo_bilingual_01"
     },
     {
       "relation": "contains",
@@ -16262,26 +16363,6 @@
     {
       "relation": "references",
       "confidence": "EXTRACTED",
-      "confidence_score": 0.8,
-      "source_file": "docs/ARCHITECTURE.md",
-      "source_location": null,
-      "weight": 0.8,
-      "source": "architecture_doc",
-      "target": "analytics_ga4"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.8,
-      "source_file": "docs/ARCHITECTURE.md",
-      "source_location": null,
-      "weight": 0.8,
-      "source": "architecture_doc",
-      "target": "preload_swap"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/README.md",
       "source_location": null,
@@ -16801,5 +16882,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "895f29eee0488939ba568fa48416fc729593f34d"
+  "built_at_commit": "54b96105819b771f68e9d56cafa6d99f9b8cf6d8"
 }

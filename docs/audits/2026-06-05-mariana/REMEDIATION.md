@@ -42,20 +42,23 @@ INFO positives left as-is by design and noted in docs: A-ARCH-08, B-SUPPLY-01, D
 
 ## Owner action required (outside the repo)
 
-These cannot be fixed from source — they live in dashboards, DNS, or are strategic:
+**All 6 completed — 2026-06-11.** See `docs/OWNER-ACTIONS.md` for full detail.
 
-1. **L-PRIV-09 / GA4 admin** — set Data Retention to **14 months** (now disclosed in
-   the privacy policy) and disable Google Signals on property `G-T8FTTWBQS3`.
-2. **B-FUNC-03 / DNS** — configure SPF + DKIM + DMARC for the Resend sending domain.
-3. **B-FUNC-02 activation** — set `PORTFOLIO_CAPTCHA_PROVIDER` + `PORTFOLIO_CAPTCHA_SECRET`
-   in Netlify env, then `PORTFOLIO_CAPTCHA_REQUIRED=1` to enforce captcha fail-closed
-   (the code path is shipped and tested; it just needs the keys).
-4. **A-OPS-10 / Netlify UI** — confirm Git auto-publish is OFF (CI deploys via CLI after
-   the full gate) so an ungated build can't publish; document the rollback runbook.
-5. **P-PERF-08** — run PageSpeed Insights / Lighthouse against production to capture
-   real Core Web Vitals (and re-check after P-PERF-04).
-6. **L-PRIV-04 (partial)** — supervisory authorities are now named; a full LSSI-CE
-   *aviso legal* (fiscal ID / postal identity) needs the operator's registration data.
+1. **L-PRIV-09 / GA4 admin** ✅ — Data Retention set to 14 months; Google Signals OFF;
+   no Ads product links.
+2. **B-FUNC-03 / DNS** ✅ — `ibaifernandez.com` verified in Resend (DKIM + SPF green);
+   DMARC `_dmarc.ibaifernandez.com` added in Cloudflare.
+3. **B-FUNC-02 activation** ✅ — Turnstile keys wired in Netlify env
+   (`PORTFOLIO_CAPTCHA_SECRET` — `.env` typo `_KEY` suffix also corrected);
+   `PORTFOLIO_CAPTCHA_REQUIRED=1` live.
+4. **A-OPS-10 / Netlify UI** ✅ — Git auto-builds stopped; single deploy path = CLI
+   from CI after full gate. Rollback: Netlify → Deploys → Publish deploy (seconds).
+5. **P-PERF-08** ✅ — PSI run post font-preload + testimonials deploy (2026-06-11):
+   homepage mobile 90/3.4s LCP (was 4.0s); scanner mobile 77/5.0s (was 6.1s).
+   Next lever: dossier hero image weight.
+6. **L-PRIV-04** ✅ — LSSI-CE Section 8 added to `privacy.template.html` (commit
+   `268e31c`): Antonio Ibai Fernández Gutiérrez · NIF 74853234X · C/ Juan de Ortega,
+   s/n, 29190, Málaga.
 
 ## Out of scope by decision
 

@@ -145,9 +145,9 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/content/testimonials.json": {
-    "mtime": 1775743275.620769,
-    "ast_hash": "850bfd81960a8f97992d1e21762f6f88",
-    "semantic_hash": "850bfd81960a8f97992d1e21762f6f88"
+    "mtime": 1781172670.7368796,
+    "ast_hash": "83dcd2bf92c86231d4022c21fc27eaef",
+    "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/netlify/functions/contact.js": {
     "mtime": 1780747090.9460626,
@@ -275,8 +275,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/docs/ARCHITECTURE.md": {
-    "mtime": 1780872480.6444583,
-    "ast_hash": "3d27adf689de4844fcdf9dfb76857e79",
+    "mtime": 1781177952.7714684,
+    "ast_hash": "f70baa0c00bc7c7acbcb6ae7419254c2",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/docs/AI_RULES.md": {
@@ -415,8 +415,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/privacy.template.html": {
-    "mtime": 1780748640.539984,
-    "ast_hash": "c8608b1e3bcdb988ef88c05ab8766a2f",
+    "mtime": 1781170422.6978803,
+    "ast_hash": "f9a617ffffd8c3617325198b660b15f3",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/404.template.html": {
@@ -435,8 +435,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/index.template.html": {
-    "mtime": 1780854400.3686953,
-    "ast_hash": "5b1990058dcb7137fcb34eeabd9f9287",
+    "mtime": 1781173178.7325363,
+    "ast_hash": "39fa77cc0fc82f1691165016c46c95a1",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/visual.spec.js-snapshots/projects-section.png": {
@@ -470,8 +470,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/kanban-desk.html": {
-    "mtime": 1780871353.7990506,
-    "ast_hash": "163f944b954ac040264abf506520cf27",
+    "mtime": 1781173183.3717132,
+    "ast_hash": "f47cf27c1b8d3205d9eaa9c60fb82e35",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/dossier-kanban-desk.template.html": {
@@ -480,8 +480,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/crm-aglaya.html": {
-    "mtime": 1780871353.7986813,
-    "ast_hash": "7c5be230237335bea683f73c277a823c",
+    "mtime": 1781173183.3713422,
+    "ast_hash": "fc817ded8352dce675b4692481873652",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/dossier-crm-aglaya.template.html": {
@@ -490,8 +490,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/aglaya-outreach.html": {
-    "mtime": 1780871353.79963,
-    "ast_hash": "a8cec0d1f5e6671d90db74090c269420",
+    "mtime": 1781173183.3721092,
+    "ast_hash": "ad3225366bd508a7cff320417faac9e5",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/pages/dossier-aglaya-outreach.template.html": {
@@ -500,8 +500,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/src/components/project/dossier-head.html": {
-    "mtime": 1780746174.2772765,
-    "ast_hash": "e0f9e8ee804d7b5286fa452452f3198e",
+    "mtime": 1781171462.9611986,
+    "ast_hash": "7376a6af843d49dce4142602f21f05a7",
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/tests/e2e/cookie-consent.spec.js": {
@@ -570,8 +570,8 @@
     "semantic_hash": ""
   },
   "/Users/AGLAYA/Local Sites/26-04-portfolio-if/docs/OWNER-ACTIONS.md": {
-    "mtime": 1780872257.907715,
-    "ast_hash": "4e5d819999e3d52d6cedf0100bfacc30",
+    "mtime": 1781177917.7039824,
+    "ast_hash": "e755c171062d1cbd8c46bacf4f9c2d48",
     "semantic_hash": ""
   }
 }
