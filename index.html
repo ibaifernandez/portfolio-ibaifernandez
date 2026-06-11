@@ -28,11 +28,15 @@
 
 	<!-- Preload the LCP image (sidebar profile picture, AVIF). Imagesrcset lets browser pick 160w or 1024w. -->
 	<link rel="preload" as="image" type="image/avif" imagesrcset="assets/images/ibai-fernandez-1x1-sidebar-160.avif 160w, assets/images/ibai-fernandez-1x1-sidebar.avif 1024w" imagesizes="80px" fetchpriority="high">
+	<!-- Preload above-the-fold Josefin Sans: weight 700 (banner_name h1) + 600 (banner_typingtext).
+	     Fetched in parallel with CSS so font is ready when render tree needs it — cuts waterfall ~1.5s. -->
+	<link rel="preload" as="font" type="font/woff2" href="assets/fonts/josefin-sans/josefin-700-latin.woff2" crossorigin>
+	<link rel="preload" as="font" type="font/woff2" href="assets/fonts/josefin-sans/josefin-600-latin.woff2" crossorigin>
 
 	<!--Start Style -->
 	<!-- Webfonts self-hosted (Roboto + Inter + Josefin Sans + Roboto Mono) — no third-party requests. -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=ea5ad1be93">
-	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
+	<link rel="stylesheet" href="assets/css/font.min.css?v=82f0e0d2dd">
 	<!-- animate.css: non-blocking (not needed above-the-fold) -->
 	<link rel="preload" as="style" data-preload-swap href="assets/css/animate.min.css?v=f208dc149e">
 	<noscript><link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e"></noscript>

@@ -17,9 +17,13 @@
 	<link rel="alternate" hreflang="es" href="https://portfolio.ibaifernandez.com/scanner-21179.html?lang=es">
 	<link rel="alternate" hreflang="en" href="https://portfolio.ibaifernandez.com/scanner-21179.html?lang=en">
 	<link rel="alternate" hreflang="x-default" href="https://portfolio.ibaifernandez.com/scanner-21179.html">
+	<!-- Preload above-the-fold Josefin Sans: weight 700 (dossier hero h1). Parallel with CSS fetch. -->
+	<link rel="preload" as="font" type="font/woff2" href="assets/fonts/josefin-sans/josefin-700-latin.woff2" crossorigin>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=ea5ad1be93">
-	<link rel="stylesheet" href="assets/css/font.min.css?v=4835f59900">
-	<link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e">
+	<link rel="stylesheet" href="assets/css/font.min.css?v=82f0e0d2dd">
+	<!-- animate.css: non-blocking (not needed above-the-fold) -->
+	<link rel="preload" as="style" data-preload-swap href="assets/css/animate.min.css?v=f208dc149e">
+	<noscript><link rel="stylesheet" href="assets/css/animate.min.css?v=f208dc149e"></noscript>
 	<link rel="stylesheet" href="assets/css/style.min.css?v=5af81cea36">
 	<link rel="stylesheet" href="assets/css/print.min.css?v=37e763be91" media="print">
 	<link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
@@ -85,6 +89,25 @@
     }
   ]
 }</script>
+<!-- Swap <link rel="preload" as="style" data-preload-swap> to rel="stylesheet" once the
+     stylesheet is fetched. Replaces the inline onload= handler (which CSP3 hash-based
+     enforcement could only allow via 'unsafe-hashes', unsupported in Safari pre-15.4). -->
+<script>
+	(function () {
+		var links = document.querySelectorAll('link[data-preload-swap]');
+		for (var i = 0; i < links.length; i++) {
+			var link = links[i];
+			if (link.sheet) {
+				link.rel = 'stylesheet';
+				continue;
+			}
+			link.addEventListener('load', function () {
+				this.rel = 'stylesheet';
+			}, { once: true });
+		}
+	})();
+</script>
+
 
 	<meta name="description" content="Scanner Ley 21.719 — RegTech preliminar para auditar la capa pública de webs chilenas bajo la nueva Ley de Protección de Datos. Stack: Python, Playwright, Redis+RQ, Railway. Producto en producción operado por AGLAYA.">
 	<meta name="keywords" content="Scanner Ley 21.719, RegTech Chile, auditoría regulatoria, Ley de Protección de Datos Chile, AGLAYA, Ibai Fernández, AI Product Engineer, full-stack Python">
