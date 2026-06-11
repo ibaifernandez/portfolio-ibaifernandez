@@ -35,7 +35,7 @@
 
 	<!--Start Style -->
 	<!-- Webfonts self-hosted (Roboto + Inter + Josefin Sans + Roboto Mono) — no third-party requests. -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=ea5ad1be93">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=8f03729c5a">
 	<link rel="stylesheet" href="assets/css/font.min.css?v=82f0e0d2dd">
 	<!-- animate.css: non-blocking (not needed above-the-fold) -->
 	<link rel="preload" as="style" data-preload-swap href="assets/css/animate.min.css?v=f208dc149e">
@@ -1227,8 +1227,132 @@
 				</div>
 			</div>
 		</div><!-- End Portfolio section  -->
-		<!-- Testimonial section temporarily removed from render. Markup preserved at src/components/index/testimonial-section.html, slide template at src/components/index/testimonial-slide.html, content at content/testimonials.json (8 entries), renderer 'testimonials-slides' in renderers.mjs. Swiper plugin still lazy-loaded by the main JS when .swiper-container is in DOM. To re-enable, change @include-DISABLED back to @include on the next line. -->
-		<!-- @include-DISABLED ../components/index/testimonial-section.html -->
+				<!-- start testimonial section  -->
+		<div class="port_testimonial_setions  page_scroll" data-scroll="3"
+			id="testi_sec">
+			<div class="testimonial_section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="port_heading_wrapper text-center ">
+								<div class="port_sub_heading_wrapper">
+										<p class="port_sub_heading" translate="praise-parade">Colleagues and clients</p>
+									</div>
+								<h2 class="port_heading" translate="words-that-warm-the-heart">What people say after working with me</h2>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="port_test_data">
+
+                                <!-- Swiper -->
+
+                                <div class="swiper-container">
+									<div class="swiper-wrapper">
+
+                                        <!-- First Slide: Belén Guarnieri -->
+
+
+										<div class="swiper-slide">
+	<div class="port_testimonial_box">
+		<div class="testimonial_top_box">
+			<div class="testimonial_img">
+			<picture>
+			<source type="image/avif" srcset="assets/images/franco-ogaz.avif">
+			<source type="image/webp" srcset="assets/images/franco-ogaz.webp">
+			<img src="assets/images/franco-ogaz.jpeg" alt="Franco Ogaz Palma - Head of Sales" class="img-fluid" loading="lazy" decoding="async" width="799" height="800" data-avif-fallback="true">
+			</picture>
+			</div>
+		</div>
+		<div class="testimonial_details_box">
+			<p translate="franco-recommendation">Ibai is a true digital alchemist, turning ideas into effective and memorable email marketing campaigns. He has a level of care for detail that makes the difference, delivering impeccable campaigns that generate results and reflect his passion for what he does.</p>
+			<h3>Franco Ogaz Palma</h3>
+			<h4>Head of Sales</h4>
+			<h5>Real Estate | LFi Client</h5>
+			<div class="port_testi_quote">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512px" height="512px">
+					<g>
+						<g>
+							<polygon points="0,4 0,28 12,16 12,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+							<polygon points="20,4 20,28 32,16 32,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+						</g>
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="swiper-slide">
+	<div class="port_testimonial_box">
+		<div class="testimonial_top_box">
+			<div class="testimonial_img">
+			<picture>
+			<source type="image/avif" srcset="assets/images/fernanda-munoz.avif">
+			<source type="image/webp" srcset="assets/images/fernanda-munoz.webp">
+			<img src="assets/images/fernanda-munoz.jpeg" alt="Fernanda Muñoz Onetto - Account Director" class="img-fluid" loading="lazy" decoding="async" width="800" height="800" data-avif-fallback="true">
+			</picture>
+			</div>
+		</div>
+		<div class="testimonial_details_box">
+			<p translate="fernanda-recommendation">Ibai is a great professional and person. He cares deeply about his team and the work, constantly seeks ways to optimize tasks, and has broad expertise in email marketing. It is a pleasure to work with him day to day!</p>
+			<h3>Fernanda Muñoz Onetto</h3>
+			<h4>Account Director</h4>
+			<h5>LFi</h5>
+			<div class="port_testi_quote">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512px" height="512px">
+					<g>
+						<g>
+							<polygon points="0,4 0,28 12,16 12,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+							<polygon points="20,4 20,28 32,16 32,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+						</g>
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="swiper-slide">
+	<div class="port_testimonial_box">
+		<div class="testimonial_top_box">
+			<div class="testimonial_img">
+			<img src="assets/images/bani-barranco.jpeg" alt="Bani Barranco - Colleague at LFi" class="img-fluid" loading="lazy" decoding="async" width="500" height="500">
+			</div>
+		</div>
+		<div class="testimonial_details_box">
+			<p translate="bani-recommendation">Ibai Fernández is a recent and invaluable asset to our team. His unique blend of skills in audiovisuals, development, and marketing automation is rare. Despite running a successful business, he finds time for complex requests. His peers at LFi Agency describe him as joyful, eloquent, kind, and direct. His ability to overdeliver and provide a wider perspective has lightened our workload. His sense of humor and commitment to timely solutions make him an integral part of our team. I wholeheartedly recommend Ibai for his consistent delivery of solutions that hugely contribute to our success. Ibai rocks! 🤘</p>
+			<h3>Bani Barranco</h3>
+			<h4>Automation Specialist</h4>
+			<h5>Colleague at LFi</h5>
+			<div class="port_testi_quote">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="512px" height="512px">
+					<g>
+						<g>
+							<polygon points="0,4 0,28 12,16 12,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+							<polygon points="20,4 20,28 32,16 32,4" data-original="#030104" class="active-path" data-old_color="#f4f4f4" fill="#f4f4f4" />
+						</g>
+					</g>
+				</svg>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+        <!-- End testimonial section  -->
+
 
 		<!-- start responsers section  -->
 		<div class="port_responsor_setions  ">
