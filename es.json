@@ -528,6 +528,8 @@
     "privacy-s6-p": "Algunos procesadores (Resend, Netlify, Cloudflare, Google) tienen su sede en Estados Unidos y pueden procesar datos fuera de tu país de residencia. Google y Cloudflare se autocertifican bajo el Marco de Privacidad de Datos UE–EE.UU. (EU–US Data Privacy Framework); Resend y Netlify se basan en las Cláusulas Contractuales Estándar (SCCs) de la Comisión Europea. Hay una copia de las garantías aplicables disponible a petición vía info@ibaifernandez.com.",
     "privacy-s7-h2": "7. Cambios en esta política",
     "privacy-s7-p": "Los cambios sustanciales se reflejarán en la fecha de \"Última actualización\" en la parte superior de esta página. El historial completo de versiones está en el git log de este repositorio.",
+    "privacy-s8-h2": "8. Aviso legal (LSSI-CE)",
+    "privacy-s8-p": "En cumplimiento del artículo 10 de la Ley de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE): <strong>Nombre:</strong> Antonio Ibai Fernández Gutiérrez · <strong>NIF:</strong> 74853234X · <strong>Domicilio postal:</strong> C/ Juan de Ortega, s/n, 29190, Málaga, España · <strong>Contacto:</strong> <a href=\"mailto:info@ibaifernandez.com\">info@ibaifernandez.com</a>. El responsable es un profesional independiente con actividad itinerante; el domicilio indicado es la dirección postal registrada en España.",
     "project-aglaya-copy": "El caso detrás de una agencia digital remota: diseño de oferta, operaciones con clientes, experimentos de crecimiento y los sistemas usados para operarla.",
     "project-aglaya-title": "AGLAYA: operaciones de agencia remota",
     "project-debtracker-copy": "Una app full-stack para control compartido de deudas, manejo de datos relacionales y flujos de pago más claros.",
